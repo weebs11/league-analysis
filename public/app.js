@@ -55,6 +55,25 @@ async function api(path, opts = {}) {
   return data;
 }
 
+// ---------- splash art ----------
+const SPLASH_BASE = 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash';
+function splashUrl(ddragonId) {
+  return `${SPLASH_BASE}/${ddragonId}_0.jpg`;
+}
+function setSplash(el, ddragonId) {
+  if (!el) return;
+  if (ddragonId) {
+    el.classList.add('has-splash');
+    el.style.setProperty('--splash', `url('${splashUrl(ddragonId)}')`);
+  } else {
+    el.classList.remove('has-splash');
+    el.style.removeProperty('--splash');
+  }
+}
+// Rotating hero art for the home screen.
+const HERO_CHAMPS = ['Jinx', 'Ahri', 'Yasuo', 'Lux', 'Garen', 'Kaisa', 'Ezreal', 'Vi', 'Thresh', 'Leona'];
+const heroChamp = HERO_CHAMPS[Math.floor(Math.random() * HERO_CHAMPS.length)];
+
 // ---------- state ----------
 let state = null;           // latest server snapshot
 let currentPlan = null;     // generated game plan
@@ -119,6 +138,7 @@ function showView(name) {
 }
 
 function renderWaiting() {
+  setSplash($('.hero-card'), heroChamp);
   const el = $('#detect-status');
   if (state.clientDetected) {
     el.innerHTML = `<span class="ok">✔ League client detected.</span> Queue up — I'll follow you into champ select.`;
@@ -151,6 +171,8 @@ function renderChampSelect() {
     ? cs.bans.map((b) => `<img src="${esc(b.image)}" title="${esc(b.name)}" alt="${esc(b.name)}" />`).join('')
     : '<span class="muted">None yet</span>';
   $('#cs-bans-wrap').classList.toggle('hidden', false);
+
+  setSplash($('#view-champselect .advice-panel'), cs.me?.champion?.id);
 
   const isDemo = state.mode === 'demo';
   $('#cs-demo-badge').classList.toggle('hidden', !isDemo);
@@ -208,6 +230,7 @@ function renderGameHeader() {
     <div class="team-side">${g.allies.map(stripChamp).join('')}</div>
     <div class="vs">VS</div>
     <div class="team-side">${g.enemies.map(stripChamp).join('')}</div>`;
+  setSplash($('#game-teams'), g.me?.champion?.id);
   const isDemo = state.mode === 'demo';
   $('#game-demo-badge').classList.toggle('hidden', !isDemo);
   $('#btn-exit-demo-game').classList.toggle('hidden', !isDemo);
