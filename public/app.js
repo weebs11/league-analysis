@@ -56,9 +56,9 @@ async function api(path, opts = {}) {
 }
 
 // ---------- splash art ----------
-const SPLASH_BASE = 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash';
+// Served by our own server, which caches Riot's art on disk.
 function splashUrl(ddragonId) {
-  return `${SPLASH_BASE}/${ddragonId}_0.jpg`;
+  return `/img/champion/splash/${ddragonId}`;
 }
 function setSplash(el, ddragonId) {
   if (!el) return;

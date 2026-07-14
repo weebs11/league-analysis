@@ -15,6 +15,20 @@ const app = express();
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ---- Champion artwork (proxied + cached from Riot's CDN) --------------------
+
+app.get('/img/champion/:kind/:id', async (req, res) => {
+  try {
+    const img = await ddragon.championImage(req.params.kind, req.params.id);
+    if (!img) return res.status(404).end();
+    res.set('Content-Type', img.type);
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(img.data);
+  } catch {
+    res.status(502).end();
+  }
+});
+
 // ---- State pushed to the browser -------------------------------------------
 
 // Cached generations, keyed by a fingerprint of the situation, so we don't

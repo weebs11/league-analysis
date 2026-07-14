@@ -140,10 +140,49 @@ export function itemName(itemId) {
   return items?.[String(itemId)]?.name || `Item ${itemId}`;
 }
 
+// Artwork is served through the app (/img/champion/...) rather than linking
+// the browser straight to Riot's CDN — the server fetches each image once
+// and caches it on disk, so art always renders and survives going offline.
 export function imageUrls(ddragonId) {
   return {
-    square: `${BASE}/cdn/${version}/img/champion/${ddragonId}.png`,
-    splash: `${BASE}/cdn/img/champion/splash/${ddragonId}_0.jpg`,
-    loading: `${BASE}/cdn/img/champion/loading/${ddragonId}_0.jpg`,
+    square: `/img/champion/square/${ddragonId}`,
+    splash: `/img/champion/splash/${ddragonId}`,
+    loading: `/img/champion/loading/${ddragonId}`,
   };
+}
+
+const IMAGE_KINDS = {
+  // Square icons are patch-versioned; splash/loading art lives at an
+  // unversioned CDN path.
+  square: { url: (id) => `${BASE}/cdn/${version}/img/champion/${id}.png`, type: 'image/png', versioned: true },
+  splash: { url: (id) => `${BASE}/cdn/img/champion/splash/${id}_0.jpg`, type: 'image/jpeg', versioned: false },
+  loading: { url: (id) => `${BASE}/cdn/img/champion/loading/${id}_0.jpg`, type: 'image/jpeg', versioned: false },
+};
+
+const inflightImages = new Map();
+
+export async function championImage(kind, ddragonId) {
+  const spec = IMAGE_KINDS[kind];
+  // Validating the id against the champion index also makes the route safe —
+  // only real champion ids ever reach the filesystem or the CDN.
+  if (!spec || !championIndex?.byId[ddragonId]) return null;
+  const fileName = spec.versioned ? `${kind}-${version}-${ddragonId}` : `${kind}-${ddragonId}`;
+  const file = path.join(CACHE_DIR, 'img', fileName);
+  try {
+    return { data: fs.readFileSync(file), type: spec.type };
+  } catch {
+    // not cached yet
+  }
+  const inflightKey = `${kind}:${ddragonId}`;
+  if (inflightImages.has(inflightKey)) return inflightImages.get(inflightKey);
+  const fetching = (async () => {
+    const res = await fetch(spec.url(ddragonId));
+    if (!res.ok) return null;
+    const data = Buffer.from(await res.arrayBuffer());
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, data);
+    return { data, type: spec.type };
+  })().finally(() => inflightImages.delete(inflightKey));
+  inflightImages.set(inflightKey, fetching);
+  return fetching;
 }
