@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoL Matchup Coach</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🎯</span>
+      <div>
+        <h1>LoL Matchup Coach</h1>
+        <p class="tagline">Learn every matchup as you play</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div id="status-pill" class="status-pill waiting">
+        <span class="dot"></span><span id="status-text">Starting…</span>
+      </div>
+      <button id="btn-settings" class="icon-btn" title="Settings">⚙️</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ======== WAITING VIEW ======== -->
+    <section id="view-waiting" class="view">
+      <div class="waiting-grid">
+        <div class="card hero-card">
+          <h2>Waiting for a game…</h2>
+          <p>Leave this page open while you play. The coach wakes up automatically when you:</p>
+          <ul class="checklist">
+            <li><strong>Enter champion select</strong> — get a briefing on your champion and early plan</li>
+            <li><strong>Load into a match</strong> — get a full matchup breakdown, strategy for your role, and an item plan</li>
+          </ul>
+          <div id="detect-status" class="detect-status"></div>
+        </div>
+
+        <div class="card demo-card">
+          <h2>👀 Try it without League running</h2>
+          <p>Explore a practice scenario to see what the coach does:</p>
+          <div class="field">
+            <label for="demo-scenario">Scenario</label>
+            <select id="demo-scenario"></select>
+          </div>
+          <div class="btn-row">
+            <button id="btn-demo-cs" class="btn secondary">Demo champ select</button>
+            <button id="btn-demo-game" class="btn primary">Demo live game</button>
+          </div>
+        </div>
+
+        <div class="card learn-card">
+          <h2>📖 While you wait: the vocabulary</h2>
+          <p>League has a lot of jargon. Browse the glossary any time — the coach also defines terms as it uses them.</p>
+          <button id="btn-open-glossary" class="btn secondary">Open glossary</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== CHAMP SELECT VIEW ======== -->
+    <section id="view-champselect" class="view hidden">
+      <div class="phase-banner">
+        <h2>Champion Select</h2>
+        <span id="cs-demo-badge" class="badge demo hidden">DEMO</span>
+        <button id="btn-exit-demo-cs" class="btn tiny hidden">Exit demo</button>
+      </div>
+      <div class="cs-grid">
+        <div class="card">
+          <h3>Your team</h3>
+          <div id="cs-myteam" class="team-list"></div>
+          <h3 style="margin-top:14px">Enemy picks so far</h3>
+          <div id="cs-theirteam" class="team-list"></div>
+          <div id="cs-bans-wrap">
+            <h3 style="margin-top:14px">Bans</h3>
+            <div id="cs-bans" class="ban-row"></div>
+          </div>
+        </div>
+        <div class="card advice-panel">
+          <div class="advice-header">
+            <h3>Pre-game briefing</h3>
+            <button id="btn-cs-generate" class="btn primary">Get briefing</button>
+          </div>
+          <div id="cs-advice" class="advice-body">
+            <p class="muted">Lock in a champion, then hit <em>Get briefing</em> for a 90-second read on how your champion works and what to expect.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== IN-GAME VIEW ======== -->
+    <section id="view-ingame" class="view hidden">
+      <div class="phase-banner">
+        <h2>Live Game</h2>
+        <span id="game-meta" class="muted"></span>
+        <span id="game-demo-badge" class="badge demo hidden">DEMO</span>
+        <button id="btn-exit-demo-game" class="btn tiny hidden">Exit demo</button>
+      </div>
+
+      <div id="game-teams" class="card teams-strip"></div>
+
+      <div class="gen-bar card" id="gen-bar">
+        <div>
+          <strong id="gen-title">Ready to coach this game</strong>
+          <p class="muted" id="gen-sub">Generates a matchup breakdown, a plan for your role, and an item path — tailored to all ten champions.</p>
+        </div>
+        <div class="btn-row">
+          <button id="btn-generate" class="btn primary big">Coach this game</button>
+          <button id="btn-regenerate" class="btn secondary hidden" title="Re-analyze with current items and levels">↻ Refresh</button>
+        </div>
+      </div>
+
+      <nav id="tabs" class="tabs hidden">
+        <button data-tab="plan" class="tab active">Game plan</button>
+        <button data-tab="matchup" class="tab">Your lane</button>
+        <button data-tab="threats" class="tab">Enemy threats</button>
+        <button data-tab="items" class="tab">Items</button>
+        <button data-tab="chat" class="tab">Ask the coach</button>
+      </nav>
+
+      <div id="tab-panels" class="hidden">
+        <div id="panel-plan" class="panel"></div>
+        <div id="panel-matchup" class="panel hidden"></div>
+        <div id="panel-threats" class="panel hidden"></div>
+        <div id="panel-items" class="panel hidden"></div>
+        <div id="panel-chat" class="panel hidden">
+          <div class="card chat-card">
+            <div id="chat-log" class="chat-log">
+              <div class="chat-msg assistant">
+                <p>Ask me anything about this game — "why that item?", "what does kiting mean?", "how do I fight Darius?"…</p>
+              </div>
+            </div>
+            <form id="chat-form" class="chat-form">
+              <input id="chat-input" type="text" placeholder="Ask a question about this game…" autocomplete="off" />
+              <button class="btn primary" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======== SETTINGS MODAL ======== -->
+  <div id="modal-settings" class="modal hidden">
+    <div class="modal-card card">
+      <h2>Settings</h2>
+      <div class="field">
+        <label for="set-apikey">Anthropic API key</label>
+        <input id="set-apikey" type="password" placeholder="sk-ant-…" />
+        <p class="hint" id="apikey-hint">Powers the AI coach. Get a key at <a href="https://platform.claude.com" target="_blank" rel="noreferrer">platform.claude.com</a>. Stored only on this computer.</p>
+      </div>
+      <div class="field">
+        <label for="set-model">Coaching model</label>
+        <select id="set-model">
+          <option value="claude-opus-4-8">Claude Opus 4.8 — smartest coaching (~10–15¢ per game)</option>
+          <option value="claude-sonnet-5">Claude Sonnet 5 — great quality (~4–6¢ per game)</option>
+          <option value="claude-haiku-4-5">Claude Haiku 4.5 — fastest & cheapest (~1–2¢ per game)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="set-leaguepath">League install folder <span class="muted">(only if auto-detect fails)</span></label>
+        <input id="set-leaguepath" type="text" placeholder="C:\Riot Games\League of Legends" />
+      </div>
+      <div class="btn-row right">
+        <button id="btn-settings-close" class="btn secondary">Cancel</button>
+        <button id="btn-settings-save" class="btn primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== GLOSSARY MODAL ======== -->
+  <div id="modal-glossary" class="modal hidden">
+    <div class="modal-card card wide">
+      <div class="advice-header">
+        <h2>📖 League glossary</h2>
+        <button id="btn-glossary-close" class="btn secondary">Close</button>
+      </div>
+      <input id="glossary-search" type="text" placeholder="Search terms…" />
+      <div id="glossary-list" class="glossary-list"></div>
+    </div>
+  </div>
+
+  <footer class="foot muted">
+    Runs locally on your PC · Not affiliated with Riot Games · Champion data from Riot Data Dragon
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

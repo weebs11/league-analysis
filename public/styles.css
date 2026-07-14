@@ -1,0 +1,264 @@
+/* LoL Matchup Coach — dark, readable, calm. */
+:root {
+  --bg: #0b0e14;
+  --bg-soft: #11151f;
+  --card: #161b28;
+  --card-edge: #232a3d;
+  --text: #e8ecf4;
+  --text-dim: #97a0b5;
+  --gold: #d4b06a;
+  --gold-soft: #8d7947;
+  --blue: #4aa8ff;
+  --green: #4ade80;
+  --red: #f87171;
+  --orange: #fbbf24;
+  --radius: 12px;
+  font-size: 15px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(74, 168, 255, 0.07), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(212, 176, 106, 0.06), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4 { margin: 0 0 8px; font-weight: 650; letter-spacing: 0.01em; }
+h1 { font-size: 1.15rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.02rem; color: var(--gold); }
+p { margin: 6px 0; }
+a { color: var(--blue); }
+.muted { color: var(--text-dim); font-size: 0.92em; }
+.hidden { display: none !important; }
+
+/* ---- top bar ---- */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px; border-bottom: 1px solid var(--card-edge);
+  background: rgba(11, 14, 20, 0.8); backdrop-filter: blur(6px);
+  position: sticky; top: 0; z-index: 20;
+}
+.brand { display: flex; gap: 12px; align-items: center; }
+.brand-icon { font-size: 1.8rem; }
+.tagline { margin: 0; color: var(--text-dim); font-size: 0.8rem; }
+.topbar-right { display: flex; gap: 12px; align-items: center; }
+
+.status-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 999px; font-size: 0.85rem;
+  border: 1px solid var(--card-edge); background: var(--bg-soft);
+}
+.status-pill .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-dim); }
+.status-pill.waiting .dot { background: var(--text-dim); animation: pulse 2s infinite; }
+.status-pill.champselect .dot { background: var(--orange); animation: pulse 1.2s infinite; }
+.status-pill.ingame .dot { background: var(--green); animation: pulse 1.2s infinite; }
+@keyframes pulse { 50% { opacity: 0.35; } }
+
+.icon-btn {
+  background: var(--bg-soft); border: 1px solid var(--card-edge); color: var(--text);
+  border-radius: 10px; padding: 7px 11px; cursor: pointer; font-size: 1rem;
+}
+.icon-btn:hover { border-color: var(--gold-soft); }
+
+/* ---- layout ---- */
+main { flex: 1; width: min(1180px, 96vw); margin: 22px auto; }
+.view { display: block; }
+
+.card {
+  background: var(--card); border: 1px solid var(--card-edge);
+  border-radius: var(--radius); padding: 18px 20px; margin-bottom: 16px;
+}
+
+.waiting-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+.waiting-grid .learn-card { grid-column: 1 / -1; }
+@media (max-width: 860px) { .waiting-grid { grid-template-columns: 1fr; } }
+
+.checklist { padding-left: 20px; }
+.checklist li { margin: 6px 0; }
+.detect-status { margin-top: 12px; font-size: 0.9rem; color: var(--text-dim); }
+.detect-status .ok { color: var(--green); }
+.detect-status .warn { color: var(--orange); }
+
+/* ---- buttons & fields ---- */
+.btn {
+  border: 1px solid var(--card-edge); border-radius: 10px; cursor: pointer;
+  padding: 9px 16px; font-size: 0.92rem; font-weight: 600;
+  background: var(--bg-soft); color: var(--text);
+  transition: transform 0.06s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.btn:hover { border-color: var(--gold-soft); transform: translateY(-1px); }
+.btn:disabled { opacity: 0.55; cursor: wait; transform: none; }
+.btn.primary {
+  background: linear-gradient(135deg, #c9a55d, #a07f3c); color: #14100a; border: none;
+}
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.big { padding: 12px 22px; font-size: 1rem; }
+.btn.tiny { padding: 4px 10px; font-size: 0.78rem; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-row.right { justify-content: flex-end; margin-top: 14px; }
+
+.field { margin: 12px 0; }
+.field label { display: block; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 5px; }
+input, select {
+  width: 100%; padding: 9px 12px; border-radius: 9px; font-size: 0.92rem;
+  background: var(--bg-soft); color: var(--text); border: 1px solid var(--card-edge);
+}
+input:focus, select:focus { outline: none; border-color: var(--gold-soft); }
+.hint { font-size: 0.8rem; color: var(--text-dim); margin-top: 5px; }
+
+/* ---- badges ---- */
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: 999px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.badge.demo { background: rgba(74, 168, 255, 0.18); color: var(--blue); }
+.badge.easy, .badge.low { background: rgba(74, 222, 128, 0.15); color: var(--green); }
+.badge.moderate, .badge.mixed { background: rgba(251, 191, 36, 0.15); color: var(--orange); }
+.badge.hard, .badge.high { background: rgba(248, 113, 113, 0.16); color: var(--red); }
+.badge.very.hard, .badge.veryhard, .badge.extreme { background: rgba(248, 113, 113, 0.3); color: #fca5a5; }
+.badge.physical { background: rgba(248, 113, 113, 0.16); color: var(--red); }
+.badge.magic { background: rgba(96, 165, 250, 0.18); color: var(--blue); }
+.badge.neutral { background: rgba(151, 160, 181, 0.15); color: var(--text-dim); }
+
+/* ---- phase banner ---- */
+.phase-banner { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.phase-banner h2 { margin: 0; }
+
+/* ---- champ select ---- */
+.cs-grid { display: grid; grid-template-columns: 340px 1fr; gap: 16px; align-items: start; }
+@media (max-width: 900px) { .cs-grid { grid-template-columns: 1fr; } }
+.team-list { display: flex; flex-direction: column; gap: 6px; }
+.team-member {
+  display: flex; align-items: center; gap: 10px; padding: 6px 8px;
+  border-radius: 9px; background: var(--bg-soft); border: 1px solid transparent;
+}
+.team-member.me { border-color: var(--gold-soft); background: rgba(212, 176, 106, 0.08); }
+.team-member img { width: 34px; height: 34px; border-radius: 8px; }
+.team-member .who { flex: 1; }
+.team-member .who .nm { font-weight: 600; font-size: 0.92rem; }
+.team-member .who .rl { font-size: 0.75rem; color: var(--text-dim); }
+.champ-placeholder {
+  width: 34px; height: 34px; border-radius: 8px; background: var(--card-edge);
+  display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 1.1rem;
+}
+.ban-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.ban-row img { width: 28px; height: 28px; border-radius: 6px; filter: grayscale(1) brightness(0.75); }
+
+/* ---- teams strip (in game) ---- */
+.teams-strip { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 18px; }
+.team-side { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.strip-champ { position: relative; text-align: center; width: 58px; }
+.strip-champ img { width: 46px; height: 46px; border-radius: 10px; border: 2px solid transparent; }
+.strip-champ.me img { border-color: var(--gold); box-shadow: 0 0 12px rgba(212, 176, 106, 0.45); }
+.strip-champ .cn { display: block; font-size: 0.66rem; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vs { font-weight: 800; color: var(--text-dim); letter-spacing: 0.1em; }
+
+/* ---- generation bar ---- */
+.gen-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.gen-bar p { margin: 2px 0 0; }
+
+/* ---- tabs ---- */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--card-edge); margin: 4px 0 16px; overflow-x: auto; }
+.tab {
+  background: none; border: none; color: var(--text-dim); padding: 10px 16px;
+  font-size: 0.94rem; font-weight: 600; cursor: pointer; border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ---- advice content ---- */
+.advice-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.advice-body { min-height: 60px; }
+
+.kv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 10px 0; }
+.kv {
+  background: var(--bg-soft); border: 1px solid var(--card-edge);
+  border-radius: 10px; padding: 12px 14px;
+}
+.kv .k { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 4px; }
+.kv .v { font-size: 0.95rem; }
+
+.tip-list { padding-left: 20px; margin: 6px 0; }
+.tip-list li { margin: 5px 0; }
+
+.threat-card { margin-bottom: 12px; }
+.threat-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.threat-head img { width: 44px; height: 44px; border-radius: 10px; }
+.threat-head .t-name { font-weight: 700; }
+.threat-head .t-role { font-size: 0.78rem; color: var(--text-dim); }
+.threat-head .spacer { flex: 1; }
+
+.ability-row { display: flex; gap: 10px; margin: 8px 0; padding: 8px 10px; background: var(--bg-soft); border-radius: 9px; }
+.ability-key {
+  flex: 0 0 auto; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; background: var(--card-edge); color: var(--gold); font-weight: 800; font-size: 0.8rem;
+}
+.ability-body { font-size: 0.9rem; }
+.ability-body .an { font-weight: 650; }
+.ability-body .react { color: var(--blue); font-size: 0.86rem; margin-top: 2px; }
+
+.build-step { display: flex; gap: 12px; align-items: baseline; padding: 9px 0; border-bottom: 1px dashed var(--card-edge); }
+.build-step:last-child { border-bottom: none; }
+.build-step .idx {
+  flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%; background: var(--card-edge);
+  color: var(--gold); font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: center;
+  align-self: flex-start;
+}
+.build-step .item-n { font-weight: 650; }
+.build-step .item-w { color: var(--text-dim); font-size: 0.88rem; }
+
+.glossary-inline { margin-top: 16px; }
+.glossary-inline summary { cursor: pointer; color: var(--gold); font-weight: 600; }
+.g-term { margin: 8px 0; font-size: 0.9rem; }
+.g-term b { color: var(--gold); }
+
+/* ---- chat ---- */
+.chat-card { display: flex; flex-direction: column; height: 480px; }
+.chat-log { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding-bottom: 10px; }
+.chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 0.93rem; }
+.chat-msg p { margin: 4px 0; }
+.chat-msg.user { align-self: flex-end; background: rgba(74, 168, 255, 0.14); border: 1px solid rgba(74, 168, 255, 0.25); }
+.chat-msg.assistant { align-self: flex-start; background: var(--bg-soft); border: 1px solid var(--card-edge); }
+.chat-msg.thinking { color: var(--text-dim); font-style: italic; }
+.chat-form { display: flex; gap: 8px; margin-top: 10px; }
+.chat-form input { flex: 1; }
+
+/* ---- modals ---- */
+.modal {
+  position: fixed; inset: 0; background: rgba(5, 7, 11, 0.72); z-index: 50;
+  display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-card { width: min(520px, 94vw); margin: 0; max-height: 88vh; overflow-y: auto; }
+.modal-card.wide { width: min(700px, 94vw); }
+.glossary-list { margin-top: 12px; max-height: 55vh; overflow-y: auto; }
+
+/* ---- spinner / loading ---- */
+.loading { display: flex; align-items: center; gap: 12px; color: var(--text-dim); padding: 18px 4px; }
+.spinner {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 3px solid var(--card-edge); border-top-color: var(--gold);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-box {
+  background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #fda4a4; border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 0.9rem;
+}
+
+.notice-box {
+  background: rgba(74, 168, 255, 0.08); border: 1px solid rgba(74, 168, 255, 0.25);
+  border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 0.9rem;
+}
+
+.foot { text-align: center; padding: 18px; font-size: 0.78rem; border-top: 1px solid var(--card-edge); }

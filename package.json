@@ -1,0 +1,17 @@
+{
+  "name": "lol-matchup-coach",
+  "version": "1.0.0",
+  "description": "A local companion app that detects your active League of Legends game and coaches you through matchups, strategy, and itemization — built for players who are still learning the game.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.0",
+    "express": "^4.21.2"
+  }
+}
