@@ -84,18 +84,7 @@ async function request(endpoint) {
     if (!creds) return null;
   }
   const auth = Buffer.from(`riot:${creds.password}`).toString('base64');
-  try {
-    const res = await fetch(`https://127.0.0.1:${creds.port}${endpoint}`, {
-      headers: { Authorization: `Basic ${auth}` },
-      dispatcher: undefined,
-      // Node fetch (undici) has no per-request https.Agent; fall back below.
-    });
-    if (!res.ok) return null;
-    return await res.json();
-  } catch {
-    // fetch/undici rejects the self-signed cert; use the https module.
-    return httpsGet(endpoint, auth);
-  }
+  return httpsGet(endpoint, auth);
 }
 
 function httpsGet(endpoint, auth) {
