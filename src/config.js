@@ -5,7 +5,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const CONFIG_PATH = path.join(ROOT, 'config.json');
+// LOL_COACH_CONFIG lets tests point at a throwaway file instead of the real config.
+const CONFIG_PATH = process.env.LOL_COACH_CONFIG || path.join(ROOT, 'config.json');
 
 const DEFAULTS = {
   // Anthropic API key. Empty string means "not set" — the app falls back to

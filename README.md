@@ -62,6 +62,13 @@ public/            Dashboard (vanilla HTML/CSS/JS, no build step)
 To develop without League: `node test/mock-league-server.js` in one terminal, then
 `LIVE_CLIENT_INSECURE_HTTP=1 npm start` in another — the app will "detect" a fake game.
 
+**Tests:** `npm test` (Node's built-in runner, no extra dependencies). Unit tests cover
+the Data Dragon client, both game-state normalizers, the demo scenarios, and the
+basic-mode coach; integration tests boot the real server against the mock Live Client
+API and exercise detection, coaching endpoints, artwork serving, settings, and SSE.
+Tests are hermetic: they use a throwaway config file (`LOL_COACH_CONFIG`) and never
+touch your API key. They need internet on the first run to prime the Data Dragon cache.
+
 The server binds to `127.0.0.1` only. Your API key never leaves your machine except in requests to Anthropic.
 
 *LoL Matchup Coach isn't endorsed by Riot Games. League of Legends is a trademark of Riot Games, Inc. Using the local client APIs is permitted for companion apps; this app doesn't read game memory or automate play.*

@@ -51,7 +51,7 @@ function champRef(champ) {
   };
 }
 
-function normalizeChampSelect(session) {
+export function normalizeChampSelect(session) {
   if (!session || !Array.isArray(session.myTeam)) return null;
   const mapMember = (m) => {
     const champ =
@@ -84,7 +84,7 @@ function normalizeChampSelect(session) {
   };
 }
 
-function normalizeLiveGame(data) {
+export function normalizeLiveGame(data) {
   if (!data || !Array.isArray(data.allPlayers) || data.allPlayers.length === 0) return null;
   const activeName = data.activePlayer?.riotIdGameName || data.activePlayer?.summonerName || '';
 
@@ -166,8 +166,8 @@ async function pollOnce() {
     const game = normalizeLiveGame(liveData);
     if (game) {
       state.clientDetected = true;
-      // Keep gameTime fresh on the snapshot without spamming updates.
-      if (state.game) state.game.gameTime = game.gameTime;
+      // setPhase stores the fresh snapshot (incl. gameTime) but only emits an
+      // SSE update when something meaningful changed — see gameFingerprint.
       setPhase('ingame', { game });
       return;
     }

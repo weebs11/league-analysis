@@ -79,7 +79,6 @@ let state = null;           // latest server snapshot
 let currentPlan = null;     // generated game plan
 let currentCsAdvice = null; // champ select advice
 let chatHistory = [];
-let lastPlanKeyRendered = null;
 
 // ---------- SSE ----------
 function connectEvents() {
@@ -239,7 +238,6 @@ function renderGameHeader() {
 function resetGamePanels() {
   currentPlan = null;
   chatHistory = [];
-  lastPlanKeyRendered = null;
   $('#tabs').classList.add('hidden');
   $('#tab-panels').classList.add('hidden');
   $('#gen-bar').classList.remove('hidden');
@@ -328,7 +326,7 @@ function renderThreatsTab(plan) {
             ${img ? `<img src="${esc(img)}" alt="${esc(t.champion)}" />` : ''}
             <div><div class="t-name">${esc(t.champion)}</div><div class="t-role">${esc(t.role || '')}</div></div>
             <div class="spacer"></div>
-            ${levelBadge(t.threatLevel + (t.threatLevel === 'Extreme' ? '' : '') )}
+            ${levelBadge(t.threatLevel)}
           </div>
           <p>${esc(t.summary || '')}</p>
           ${(t.keyAbilities || []).map((a) => `
