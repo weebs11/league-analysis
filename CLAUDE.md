@@ -1,0 +1,3 @@
+# league-analysis
+
+@AGENTS.md
