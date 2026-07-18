@@ -249,6 +249,27 @@ export async function writeSyncState(patch) {
   return next;
 }
 
+// ---- rank history ----------------------------------------------------------
+
+// Append-only log of rank snapshots, one array in one file. Unlike the Archive
+// this is *our own observation*, not Riot data that exists nowhere else — losing
+// it loses a graph, not matches — so a plain atomic rewrite is enough and the
+// write-once machinery would be overkill. Growth is bounded by play rate: a
+// snapshot is only appended when the rank actually changed, so even a heavy
+// season is a few thousand small rows.
+export async function readRankHistory() {
+  const rows = await readJson(P.rankHistoryPath);
+  return Array.isArray(rows) ? rows : [];
+}
+
+export async function appendRankSnapshots(snapshots) {
+  if (!snapshots.length) return [];
+  const rows = await readRankHistory();
+  rows.push(...snapshots);
+  await writeJsonAtomic(P.rankHistoryPath, rows);
+  return rows;
+}
+
 // Test seam: drops the in-memory index so the next read comes off disk.
 export function _resetCache() {
   indexCache = null;

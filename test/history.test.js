@@ -477,3 +477,76 @@ test('store: coaching records round-trip and are reflected on the index row', as
   const rows = await store.rebuildIndex();
   assert.equal(rows.find((r) => r.matchId === id).hasCoachingRecord, true);
 });
+
+// ---- rank tracking ----------------------------------------------------------
+
+test('rank: ladder values are monotonic across the whole climb', async () => {
+  const { ladderValue } = await import('../src/history/rank.js');
+  const climb = [
+    ladderValue('IRON', 'IV', 0),
+    ladderValue('IRON', 'I', 99),
+    ladderValue('BRONZE', 'IV', 0),
+    ladderValue('GOLD', 'IV', 43),
+    ladderValue('DIAMOND', 'I', 99),
+    ladderValue('MASTER', null, 0),
+    ladderValue('GRANDMASTER', null, 480),
+    ladderValue('CHALLENGER', null, 1200),
+  ];
+  for (let i = 1; i < climb.length; i++) {
+    assert.ok(climb[i] > climb[i - 1], `step ${i} must rank above step ${i - 1} (${climb[i - 1]} → ${climb[i]})`);
+  }
+  assert.equal(ladderValue('GOLD', 'IV', 43), 3 * 400 + 0 + 43);
+});
+
+test('rank: snapshots cover ranked queues only, and never fabricate a standing for unranked', async () => {
+  const { snapshotsFromRankedStats } = await import('../src/history/rank.js');
+  const payload = readFixture('lcu-ranked-stats.json');
+  const snaps = snapshotsFromRankedStats(payload, 1000);
+
+  // Fixture: solo GOLD IV 43LP, flex NONE (in placements), plus a TFT entry
+  // that must be ignored — TFT rank on an LoL LP graph would be nonsense.
+  assert.equal(snaps.length, 1);
+  const solo = snaps[0];
+  assert.equal(solo.queueId, 420);
+  assert.deepEqual(
+    { tier: solo.tier, division: solo.division, lp: solo.lp, at: solo.at },
+    { tier: 'GOLD', division: 'IV', lp: 43, at: 1000 }
+  );
+  assert.equal(solo.value, 1243);
+});
+
+test('rank: only a changed standing appends — wins count as change even at equal LP', async () => {
+  const { snapshotsFromRankedStats, changedSnapshots } = await import('../src/history/rank.js');
+  const base = snapshotsFromRankedStats(readFixture('lcu-ranked-stats.json'), 1000);
+
+  // Same standing again → nothing to append.
+  assert.equal(changedSnapshots(base, base).length, 0);
+
+  // LP moved → append.
+  const lpMoved = base.map((s) => ({ ...s, at: 2000, lp: s.lp + 17, value: s.value + 17 }));
+  assert.equal(changedSnapshots(lpMoved, base).length, 1);
+
+  // LP identical but a game was played (dodge, decay compensation): still a
+  // point — dropping it would make the line imply the account sat idle.
+  const winAtSameLp = base.map((s) => ({ ...s, at: 2000, wins: s.wins + 1 }));
+  assert.equal(changedSnapshots(winAtSameLp, base).length, 1);
+});
+
+test('rank: history store round-trips and appends in order', async () => {
+  const first = { at: 1, queueId: 420, tier: 'GOLD', division: 'IV', lp: 43, wins: 1, losses: 0, value: 1243 };
+  const second = { at: 2, queueId: 420, tier: 'GOLD', division: 'IV', lp: 61, wins: 2, losses: 0, value: 1261 };
+  await store.appendRankSnapshots([first]);
+  await store.appendRankSnapshots([second]);
+  const rows = await store.readRankHistory();
+  assert.deepEqual(rows.slice(-2), [first, second]);
+});
+
+test('rank: recordRankSnapshot resolves to a count and never throws', async () => {
+  const { recordRankSnapshot } = await import('../src/history/rank.js');
+  // The unit-test env has no mock lockfile, but lcu.js probes real install
+  // paths — so on a dev machine with League open this may genuinely record.
+  // The contract under test is narrower: it resolves to a number and can never
+  // throw into Forward Sync, whatever the client is doing.
+  const appended = await recordRankSnapshot();
+  assert.equal(typeof appended, 'number');
+});

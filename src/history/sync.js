@@ -8,6 +8,7 @@
 // per match, because a match already on disk is skipped before any detail fetch.
 import * as lcu from '../lcu.js';
 import * as store from './store.js';
+import { recordRankSnapshot } from './rank.js';
 import { makeMatchId } from './paths.js';
 
 // Ranked Solo/Duo and Ranked Flex. Everything else is out of scope: ARAM and
@@ -27,6 +28,13 @@ export async function syncForward() {
     if (!me?.puuid) return { added: 0, skipped: 0, reason: 'no-summoner' };
 
     const owner = { puuid: me.puuid, gameName: me.gameName || null, tagLine: me.tagLine || null };
+
+    // Rank first, matches second: EndOfGame is a sync trigger, so this is the
+    // moment LP just moved — and the standing must be captured even if the
+    // match-list call below fails and returns early. recordRankSnapshot never
+    // throws; a missed snapshot costs one point on a graph, not a match.
+    await recordRankSnapshot();
+
     const games = await lcu.matchList();
     if (!games) return { added: 0, skipped: 0, reason: 'no-match-list' };
 

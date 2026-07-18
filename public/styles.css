@@ -578,3 +578,38 @@ select option { background: var(--hx-panel-2); }
   .match-row .mr-col:nth-of-type(2), .match-row .mr-col:nth-of-type(3) { display: none; }
   .obj-wrap { grid-template-columns: 1fr; }
 }
+
+/* ---------- rank chart ---------- */
+/* Chrome stays recessive: hairline solid gridlines one step off the panel,
+   axis text in the muted ink. The two series colors are validated for the
+   panel surface — see the note in app.js before changing them. */
+.rank-card { padding: 14px 16px 10px; }
+.rank-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+.rank-head .lbl { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); }
+.rank-head .spacer { flex: 1; }
+.rank-legend { display: flex; gap: 12px; font-size: 0.78rem; color: var(--text-dim); }
+.rk-key, .rk-now { display: inline-flex; align-items: center; gap: 6px; }
+.rk-now { font-size: 0.82rem; color: var(--text); }
+.rk-swatch { width: 12px; height: 2px; border-radius: 1px; display: inline-block; }
+.rank-plot { position: relative; }
+.rank-plot svg { width: 100%; height: auto; display: block; outline: none; }
+.rank-plot svg:focus-visible { outline: 1px solid var(--teal-dark); border-radius: 4px; }
+.rk-grid { stroke: var(--hx-line); stroke-width: 1; }
+.rk-tick { fill: var(--text-dim); font-size: 10px; }
+.rk-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.rk-dot { stroke: var(--hx-panel); stroke-width: 2; } /* surface ring — keeps dots legible where lines cross */
+.rk-cross { stroke: var(--text-dim); stroke-width: 1; }
+.rank-tip {
+  position: absolute; top: 8px; transform: translateX(-50%);
+  background: var(--hx-deep); border: 1px solid var(--hx-line); border-radius: 4px;
+  padding: 7px 10px; font-size: 0.8rem; pointer-events: none; white-space: nowrap; z-index: 4;
+}
+.rk-tip-row { display: flex; align-items: center; gap: 6px; }
+.rk-tip-row b { color: var(--text); font-weight: 600; }
+.rk-tip-when { font-size: 0.72rem; margin-top: 3px; }
+.rank-table { margin-top: 4px; }
+.rank-table summary { cursor: pointer; }
+.rank-table table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 6px; }
+.rank-table th { text-align: left; color: var(--text-dim); font-weight: 500; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px 3px 0; }
+.rank-table td { padding: 3px 10px 3px 0; border-top: 1px solid var(--hx-line); font-variant-numeric: tabular-nums; }

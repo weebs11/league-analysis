@@ -88,6 +88,7 @@ function fixture(name) {
 }
 
 const summoner = fixture('lcu-current-summoner.json');
+const rankedStats = fixture('lcu-ranked-stats.json');
 const matchList = fixture('lcu-matchlist.json');
 const matchDetail = fixture('lcu-match-detail.json');
 const gameflow = fixture('lcu-gameflow-session.json');
@@ -126,6 +127,7 @@ http
     if (url.pathname === '/lol-summoner/v1/current-summoner') return summoner ? send(summoner) : send({}, 404);
     if (url.pathname === '/lol-gameflow/v1/gameflow-phase') return send(process.env.MOCK_GAMEFLOW_PHASE || 'None');
     if (url.pathname === '/lol-gameflow/v1/session') return gameflow ? send(gameflow) : send({}, 404);
+    if (url.pathname === '/lol-ranked/v1/current-ranked-stats') return rankedStats ? send(rankedStats) : send({}, 404);
     if (url.pathname === '/lol-match-history/v1/products/lol/current-summoner/matches') {
       return matchList ? send(matchList) : send({}, 404);
     }

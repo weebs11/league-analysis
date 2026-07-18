@@ -431,8 +431,14 @@ coaching file.
 | `GET /api/history/matches?page=0&size=20&champion=&role=&queue=` | `{ rows, total, page, size }` — Index Rows, newest first |
 | `GET /api/history/matches/:matchId` | Full detail: all 10 players, teams block, benchmark comparisons, coaching record if present |
 | `GET /api/history/summary?window=20` | Record, winrate, top champions, Personal Baseline + deltas for headline stats |
+| `GET /api/history/rank` | `{ queues: [{ queueId, queueLabel, points }] }` — Rank Snapshots per queue, oldest first (ADR-0006) |
 | `POST /api/history/sync` | Manual Forward Sync trigger; returns `{ added, skipped }` |
 | `POST /api/history/rebuild-index` | Rebuild Index from Archive; returns `{ rows }` |
+
+Rank Snapshot point shape: `{ at, queueId, tier, division, lp, wins, losses, value }`,
+where `value` is the continuous ladder position (`tier×400 + division×100 + LP`; apex
+tiers share base 2800). Recorded by Forward Sync only when the standing changed; queues
+never ranked this season produce no series. See `src/history/rank.js` and ADR-0006.
 
 All read paths serve from the in-memory Index. Detail lazily reads the raw container.
 

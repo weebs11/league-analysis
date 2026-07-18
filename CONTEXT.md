@@ -38,6 +38,7 @@ than the concepts warrant.
 | **Personal Baseline** | The player's own rolling average over recent Matches, used to answer "am I improving?". Computed from the Index; needs no sourcing. |
 | **Remake** | A Match that ended early enough not to count as real play (under 5 minutes, or flagged early-surrender). Flagged at write time, excluded from all aggregates and Benchmarks, still listed. |
 | **Coaching Record** | The Game Plan that was generated for a Match, persisted alongside it and joined on Match ID. Lets the detail view show what you were told next to how it went. |
+| **Rank Snapshot** | One observation of the player's standing in one ranked queue — tier, division, LP, wins, losses — recorded by Forward Sync whenever the standing changed. Forward-only: historical LP is not retrievable from any API ([ADR-0006](docs/adr/0006-forward-only-rank-tracking.md)). Avoid: "LP history" as if it were fetched — it is observed, never downloaded. |
 
 ## Scope
 
