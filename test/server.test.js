@@ -12,7 +12,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const APP_PORT = 3971;
 const MOCK_PORT = 3972;
 const BASE = `http://127.0.0.1:${APP_PORT}`;
+const MOCK_LCU_PORT = 3973;
 const tmpConfig = path.join(os.tmpdir(), `lol-coach-server-test-${process.pid}.json`);
+// The archive holds matches that exist nowhere else, so the suite gets its own
+// data directory and must never be able to reach the real one.
+const tmpData = path.join(os.tmpdir(), `lol-coach-server-data-${process.pid}`);
+const tmpLockfile = path.join(tmpData, 'lockfile');
 
 let appProc;
 let mockProc;
@@ -48,17 +53,35 @@ async function waitFor(fn, what, timeoutMs = 45000, everyMs = 400) {
 }
 
 before(async () => {
+  fs.mkdirSync(tmpData, { recursive: true });
+  // LOL_COACH_DATA_DIR moves the Data Dragon cache as well as the archive, so
+  // seed it from the real one — otherwise every run re-downloads champion data.
+  // Only the archive needs isolating; the cache is disposable either way.
+  const realCache = path.join(ROOT, 'data', 'cache');
+  if (fs.existsSync(realCache)) fs.cpSync(realCache, path.join(tmpData, 'cache'), { recursive: true });
   mockProc = spawn(process.execPath, [path.join(ROOT, 'test', 'mock-league-server.js')], {
-    env: { ...process.env, MOCK_PORT: String(MOCK_PORT) },
+    env: {
+      ...process.env,
+      MOCK_PORT: String(MOCK_PORT),
+      MOCK_LCU_PORT: String(MOCK_LCU_PORT),
+      MOCK_LOCKFILE: tmpLockfile,
+    },
     stdio: 'ignore',
   });
+  // The mock writes the lockfile once its LCU listener is up; the app discovers
+  // credentials from it exactly as it would from a real install.
+  await waitFor(async () => fs.existsSync(tmpLockfile), 'mock LCU lockfile');
+
   appProc = spawn(process.execPath, [path.join(ROOT, 'server.js')], {
     env: {
       ...process.env,
       PORT: String(APP_PORT),
       LIVE_CLIENT_PORT: String(MOCK_PORT),
       LIVE_CLIENT_INSECURE_HTTP: '1',
+      LCU_INSECURE_HTTP: '1',
+      LEAGUE_LOCKFILE: tmpLockfile,
       LOL_COACH_CONFIG: tmpConfig,
+      LOL_COACH_DATA_DIR: tmpData,
       ANTHROPIC_API_KEY: '', // hermetic: never bill the developer's key from tests
     },
     stdio: 'ignore',
@@ -70,6 +93,7 @@ after(() => {
   appProc?.kill();
   mockProc?.kill();
   fs.rmSync(tmpConfig, { force: true });
+  fs.rmSync(tmpData, { recursive: true, force: true });
 });
 
 test('detects the (mock) live game and identifies the player', async () => {
@@ -149,6 +173,101 @@ test('settings round-trip persists to the (test) config file', async () => {
   assert.equal(after_.body.leaguePath, 'C:\\Riot Games\\League of Legends');
   assert.equal(after_.body.hasApiKey, false);
   assert.ok(fs.existsSync(tmpConfig), 'config written to the test path, not the real one');
+});
+
+// ---- Match history ----------------------------------------------------------
+
+test('history: detecting the client captures ranked matches with no manual trigger', async () => {
+  // Boot fires the client-connect trigger, so the archive fills on its own.
+  const list = await waitFor(async () => {
+    const { body } = await get('/api/history/matches?size=50');
+    return body.total > 0 ? body : null;
+  }, 'matches to be captured by the automatic sync');
+
+  assert.ok(list.rows.every((r) => [420, 440].includes(r.queueId)), 'only ranked queues are stored');
+  assert.ok(list.rows.every((r) => /^[A-Z0-9]+_\d+$/.test(r.matchId)), 'ids are platform-qualified');
+  assert.ok(list.rows.every((r) => r.puuid), 'every row records which account it belongs to');
+});
+
+test('history: sync is idempotent — a second pass writes nothing', async () => {
+  const { body: before_ } = await get('/api/history/matches?size=50');
+  const { status, body } = await post('/api/history/sync');
+  assert.equal(status, 200);
+  assert.equal(body.added, 0, `nothing new should be written, got ${JSON.stringify(body)}`);
+  assert.ok(body.skipped > 0, 'the already-stored matches are skipped before any detail fetch');
+  const { body: after_ } = await get('/api/history/matches?size=50');
+  assert.equal(after_.total, before_.total);
+});
+
+test('history: archive files are written under the test data dir, never the real one', () => {
+  const rawDir = path.join(tmpData, 'matches', 'raw');
+  const files = fs.readdirSync(rawDir);
+  assert.ok(files.length > 0, 'raw payloads land in the isolated archive');
+  assert.ok(files.every((f) => f.endsWith('.json')));
+  assert.ok(!fs.existsSync(path.join(ROOT, 'data', 'matches')), 'the real archive must not be created by tests');
+});
+
+test('history: summary excludes remakes and reports a record', async () => {
+  const { status, body } = await get('/api/history/summary?window=20');
+  assert.equal(status, 200);
+  assert.equal(body.record.wins + body.record.losses, Math.min(20, body.playableMatches));
+  assert.ok(body.playableMatches <= body.totalMatches);
+  assert.ok(body.totalMatches > body.playableMatches, 'the captured fixture list contains remakes');
+  assert.ok(Array.isArray(body.topChampions));
+});
+
+test('history: detail returns all ten players, teams, and benchmark comparisons', async () => {
+  const { body: list } = await get('/api/history/matches?size=1');
+  const id = list.rows[0].matchId;
+  const { status, body } = await get(`/api/history/matches/${id}`);
+  assert.equal(status, 200);
+  assert.equal(body.players.length, 10);
+  assert.equal(body.teams.length, 2);
+  assert.equal(body.match.matchId, id);
+  // Every team should have a complete role set — the invariant lane-opponent
+  // pairing depends on.
+  for (const teamId of [...new Set(body.players.map((p) => p.teamId))]) {
+    const roles = body.players.filter((p) => p.teamId === teamId).map((p) => p.role).sort();
+    assert.deepEqual(roles, ['ADC', 'Jungle', 'Mid', 'Support', 'Top']);
+  }
+  assert.equal(body.coaching, null, 'no plan was generated for this match');
+});
+
+test('history: rejects malformed match ids instead of touching the filesystem', async () => {
+  assert.equal((await get('/api/history/matches/not-an-id')).status, 400);
+  assert.equal((await get('/api/history/matches/NA1_999999999')).status, 404);
+});
+
+test('history: the index rebuilds from the archive alone', async () => {
+  const { body: before_ } = await get('/api/history/matches?size=50');
+  fs.rmSync(path.join(tmpData, 'matches', 'index.json'), { force: true });
+  const rebuilt = await post('/api/history/rebuild-index');
+  assert.equal(rebuilt.status, 200);
+  assert.equal(rebuilt.body.rows, before_.total);
+  const { body: after_ } = await get('/api/history/matches?size=50');
+  assert.deepEqual(after_.rows.map((r) => r.matchId), before_.rows.map((r) => r.matchId));
+});
+
+test('history: filters and pagination narrow the list', async () => {
+  const { body: all } = await get('/api/history/matches?size=50');
+  const role = all.rows.find((r) => r.role)?.role;
+  if (role) {
+    const { body: filtered } = await get(`/api/history/matches?size=50&role=${role}`);
+    assert.ok(filtered.rows.every((r) => r.role === role));
+    assert.ok(filtered.total <= all.total);
+  }
+  const { body: page0 } = await get('/api/history/matches?size=2&page=0');
+  const { body: page1 } = await get('/api/history/matches?size=2&page=1');
+  assert.equal(page0.rows.length, 2);
+  assert.notEqual(page0.rows[0].matchId, page1.rows[0]?.matchId);
+});
+
+test('history: serves item artwork through the local cache', async () => {
+  const img = await get('/img/item/3006');
+  assert.equal(img.status, 200);
+  assert.equal(img.type, 'image/png');
+  assert.ok(img.body.byteLength > 500, 'expected real image bytes');
+  assert.equal((await get('/img/item/99999999')).status, 404);
 });
 
 test('SSE endpoint streams the current state immediately', async () => {

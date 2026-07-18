@@ -5,11 +5,16 @@ import { EventEmitter } from 'events';
 import * as lcu from './lcu.js';
 import * as live from './livegame.js';
 import * as ddragon from './ddragon.js';
+import * as historySync from './history/sync.js';
 
 export const events = new EventEmitter();
 events.setMaxListeners(50);
 
 const POLL_MS = 2000;
+// Safety net for the two event triggers below. Load-bearing rather than
+// belt-and-braces: the LCU holds only the 20 most recent matches, so a game
+// that is never captured is gone for good.
+const HISTORY_SYNC_INTERVAL_MS = 5 * 60 * 1000;
 
 const state = {
   mode: 'live', // 'live' | 'demo'
@@ -157,6 +162,54 @@ function gameFingerprint(g) {
   });
 }
 
+// ---- Match history triggers -------------------------------------------------
+
+let lastClientDetected = false;
+let lastGameflowPhase = null;
+let lastHistorySyncAt = 0;
+// Set when a trigger fired but a sync was already running. Edge triggers only
+// fire once, so without this the work would simply be dropped — and the game
+// that just ended is exactly the one at risk, because the LCU forgets it after
+// 20 more matches.
+let syncRetryPending = false;
+
+function fireHistorySync() {
+  const startedAt = Date.now();
+  // Fire-and-forget: history capture must never delay or break game detection.
+  historySync.syncForward().then(
+    (result) => {
+      if (result?.busy) {
+        // Another run held the lock. Retry on the next poll instead of waiting
+        // out the full safety-net interval.
+        syncRetryPending = true;
+        return;
+      }
+      syncRetryPending = false;
+      // Only stamp when a sync actually ran. Stamping on a no-op used to push
+      // the safety net five minutes further out — making a missed trigger worse
+      // rather than harmless.
+      lastHistorySyncAt = startedAt;
+    },
+    () => { syncRetryPending = true; }
+  );
+}
+
+// Demo mode fabricates game-shaped objects. The archive is permanent, so it only
+// ever accepts data read from a real client — hence the mode guard here, on top
+// of sync reading the LCU directly rather than these snapshots.
+function checkHistoryTriggers(phase) {
+  if (state.mode !== 'live') return;
+  const detected = state.clientDetected;
+
+  if (detected && !lastClientDetected) fireHistorySync();
+  else if (phase === 'EndOfGame' && phase !== lastGameflowPhase) fireHistorySync();
+  else if (detected && syncRetryPending) fireHistorySync();
+  else if (detected && Date.now() - lastHistorySyncAt >= HISTORY_SYNC_INTERVAL_MS) fireHistorySync();
+
+  lastClientDetected = detected;
+  if (phase !== null && phase !== undefined) lastGameflowPhase = phase;
+}
+
 async function pollOnce() {
   if (state.mode === 'demo') return;
 
@@ -166,6 +219,7 @@ async function pollOnce() {
     const game = normalizeLiveGame(liveData);
     if (game) {
       state.clientDetected = true;
+      checkHistoryTriggers(null);
       // setPhase stores the fresh snapshot (incl. gameTime) but only emits an
       // SSE update when something meaningful changed — see gameFingerprint.
       setPhase('ingame', { game });
@@ -176,6 +230,7 @@ async function pollOnce() {
   // 2) Otherwise ask the League client what's happening.
   const phase = await lcu.gameflowPhase();
   state.clientDetected = phase !== null;
+  checkHistoryTriggers(phase);
   if (phase === 'ChampSelect') {
     const session = await lcu.champSelectSession();
     const champSelect = normalizeChampSelect(session);

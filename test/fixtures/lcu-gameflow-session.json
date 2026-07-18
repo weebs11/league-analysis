@@ -1,0 +1,350 @@
+{
+  "gameClient": {
+    "observerServerIp": "",
+    "observerServerPort": 0,
+    "running": true,
+    "serverIp": "192.207.0.5",
+    "serverPort": 7000,
+    "visible": true
+  },
+  "gameData": {
+    "gameId": 5603947409,
+    "gameName": "",
+    "isCustomGame": false,
+    "password": "",
+    "playerChampionSelections": [
+      {
+        "championId": 234,
+        "puuid": "00000000-0000-4000-8000-000000000000",
+        "selectedSkinIndex": 7,
+        "spell1Id": 11,
+        "spell2Id": 4
+      },
+      {
+        "championId": 555,
+        "puuid": "00000000-0000-4000-8000-000000000010",
+        "selectedSkinIndex": 0,
+        "spell1Id": 4,
+        "spell2Id": 14
+      },
+      {
+        "championId": 106,
+        "puuid": "00000000-0000-4000-8000-000000000011",
+        "selectedSkinIndex": 7,
+        "spell1Id": 12,
+        "spell2Id": 6
+      },
+      {
+        "championId": 55,
+        "puuid": "00000000-0000-4000-8000-000000000012",
+        "selectedSkinIndex": 47,
+        "spell1Id": 12,
+        "spell2Id": 14
+      },
+      {
+        "championId": 51,
+        "puuid": "00000000-0000-4000-8000-000000000013",
+        "selectedSkinIndex": 13,
+        "spell1Id": 7,
+        "spell2Id": 4
+      },
+      {
+        "championId": 24,
+        "puuid": "00000000-0000-4000-8000-000000000014",
+        "selectedSkinIndex": 13,
+        "spell1Id": 4,
+        "spell2Id": 11
+      },
+      {
+        "championId": 54,
+        "puuid": "00000000-0000-4000-8000-000000000015",
+        "selectedSkinIndex": 27,
+        "spell1Id": 12,
+        "spell2Id": 4
+      },
+      {
+        "championId": 12,
+        "puuid": "00000000-0000-4000-8000-000000000016",
+        "selectedSkinIndex": 29,
+        "spell1Id": 7,
+        "spell2Id": 4
+      },
+      {
+        "championId": 21,
+        "puuid": "00000000-0000-4000-8000-000000000017",
+        "selectedSkinIndex": 74,
+        "spell1Id": 4,
+        "spell2Id": 21
+      },
+      {
+        "championId": 22,
+        "puuid": "00000000-0000-4000-8000-000000000018",
+        "selectedSkinIndex": 21,
+        "spell1Id": 4,
+        "spell2Id": 6
+      }
+    ],
+    "queue": {
+      "allowablePremadeSizes": [
+        0,
+        1,
+        2
+      ],
+      "areFreeChampionsAllowed": true,
+      "assetMutator": "",
+      "category": "PvP",
+      "championsRequiredToPlay": 16,
+      "description": "Ranked Solo/Duo",
+      "detailedDescription": "",
+      "gameMode": "CLASSIC",
+      "gameTypeConfig": {
+        "advancedLearningQuests": false,
+        "allowTrades": false,
+        "banMode": "",
+        "banTimerDuration": 0,
+        "battleBoost": false,
+        "crossTeamChampionPool": false,
+        "deathMatch": false,
+        "doNotRemove": false,
+        "duplicatePick": false,
+        "exclusivePick": false,
+        "id": 18,
+        "learningQuests": false,
+        "mainPickTimerDuration": 0,
+        "maxAllowableBans": 0,
+        "name": "",
+        "onboardCoopBeginner": false,
+        "pickMode": "",
+        "postPickTimerDuration": 0,
+        "reroll": false,
+        "teamChampionPool": false
+      },
+      "id": 420,
+      "isBotHonoringAllowed": false,
+      "isCustom": false,
+      "isRanked": true,
+      "isTeamBuilderManaged": true,
+      "lastToggledOffTime": 0,
+      "lastToggledOnTime": 0,
+      "mapId": 11,
+      "maximumParticipantListSize": 2,
+      "minLevel": 30,
+      "minimumParticipantListSize": 0,
+      "name": "Ranked Solo/Duo",
+      "numPlayersPerTeam": 5,
+      "pickMode": "TeamBuilderDraftPickStrategy",
+      "queueAvailability": "Available",
+      "queueRewards": {
+        "isChampionPointsEnabled": true,
+        "isIpEnabled": true,
+        "isXpEnabled": true,
+        "partySizeIpRewards": []
+      },
+      "removalFromGameAllowed": false,
+      "removalFromGameDelayMinutes": 0,
+      "shortName": "Ranked Solo/Duo",
+      "showPositionSelector": true,
+      "spectatorEnabled": true,
+      "type": "RANKED_SOLO_5x5"
+    },
+    "spectatorKey": "",
+    "spectatorsAllowed": false,
+    "teamOne": [
+      {
+        "championId": 555,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 3231,
+        "puuid": "00000000-0000-4000-8000-000000000010",
+        "selectedPosition": "UTILITY",
+        "selectedRole": "UTILITY.PRIMARY.UTILITY.TOP",
+        "summonerId": 100000012,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 2
+      },
+      {
+        "championId": 51,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 3543,
+        "puuid": "00000000-0000-4000-8000-000000000013",
+        "selectedPosition": "BOTTOM",
+        "selectedRole": "BOTTOM.PRIMARY.BOTTOM.UTILITY",
+        "summonerId": 100000013,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 4
+      },
+      {
+        "championId": 234,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 4793,
+        "puuid": "00000000-0000-4000-8000-000000000000",
+        "selectedPosition": "JUNGLE",
+        "selectedRole": "JUNGLE.SECONDARY.BOTTOM.JUNGLE.FILL",
+        "summonerId": 100000002,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 1
+      },
+      {
+        "championId": 55,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 3545,
+        "puuid": "00000000-0000-4000-8000-000000000012",
+        "selectedPosition": "MIDDLE",
+        "selectedRole": "MIDDLE.PRIMARY.MIDDLE.TOP.FILL",
+        "summonerId": 100000014,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 3
+      },
+      {
+        "championId": 106,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 5495,
+        "puuid": "00000000-0000-4000-8000-000000000011",
+        "selectedPosition": "TOP",
+        "selectedRole": "TOP.PRIMARY.TOP.JUNGLE",
+        "summonerId": 100000015,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 3
+      }
+    ],
+    "teamTwo": [
+      {
+        "championId": 12,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 2098,
+        "puuid": "00000000-0000-4000-8000-000000000016",
+        "selectedPosition": "UTILITY",
+        "selectedRole": "UTILITY.PRIMARY.UTILITY.BOTTOM",
+        "summonerId": 100000016,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 7
+      },
+      {
+        "championId": 22,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 4833,
+        "puuid": "00000000-0000-4000-8000-000000000018",
+        "selectedPosition": "BOTTOM",
+        "selectedRole": "BOTTOM.PRIMARY.BOTTOM.JUNGLE",
+        "summonerId": 100000017,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 8
+      },
+      {
+        "championId": 21,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 7167,
+        "puuid": "00000000-0000-4000-8000-000000000017",
+        "selectedPosition": "TOP",
+        "selectedRole": "TOP.SECONDARY.BOTTOM.TOP",
+        "summonerId": 100000018,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 7
+      },
+      {
+        "championId": 24,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 5292,
+        "puuid": "00000000-0000-4000-8000-000000000014",
+        "selectedPosition": "JUNGLE",
+        "selectedRole": "JUNGLE.FILL_PRIMARY.FILL.UNSELECTED.FILL",
+        "summonerId": 100000019,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 5
+      },
+      {
+        "championId": 54,
+        "lastSelectedSkinIndex": 0,
+        "profileIconId": 3593,
+        "puuid": "00000000-0000-4000-8000-000000000015",
+        "selectedPosition": "MIDDLE",
+        "selectedRole": "MIDDLE.PRIMARY.MIDDLE.TOP",
+        "summonerId": 100000020,
+        "summonerInternalName": "",
+        "summonerName": "",
+        "teamOwner": false,
+        "teamParticipantId": 6
+      }
+    ]
+  },
+  "gameDodge": {
+    "dodgeIds": [],
+    "phase": "None",
+    "state": "Invalid"
+  },
+  "map": {
+    "assets": {
+      "champ-select-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/music-cs-blindpick-default.ogg",
+      "champ-select-flyout-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-flyout-background.jpg",
+      "champ-select-planning-intro": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/champ-select-planning-intro.jpg",
+      "game-select-icon-active": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-active.png",
+      "game-select-icon-active-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-active.webm",
+      "game-select-icon-default": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-default.png",
+      "game-select-icon-disabled": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-disabled.png",
+      "game-select-icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/game-select-icon-hover.png",
+      "game-select-icon-intro-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/game-select-icon-intro.webm",
+      "gameflow-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background.jpg",
+      "gameflow-background-dark": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/gameflow-background-dark.jpg",
+      "gameselect-button-hover-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Shared/sound/sfx-gameselect-button-hover.ogg",
+      "icon-defeat": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat.png",
+      "icon-defeat-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-defeat-v2.png",
+      "icon-defeat-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-defeat.webm",
+      "icon-empty": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-empty.png",
+      "icon-hover": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-hover.png",
+      "icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver.png",
+      "icon-leaver-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-leaver-v2.png",
+      "icon-loss-forgiven-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-loss-forgiven-v2.png",
+      "icon-v2": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-v2.png",
+      "icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/icon-victory.png",
+      "icon-victory-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/icon-victory.webm",
+      "map-north": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-north.png",
+      "map-south": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/map-south.png",
+      "music-inqueue-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/music-inqueue-loop-summonersrift.ogg",
+      "parties-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/parties-background.jpg",
+      "position-assignment-map-intro-north-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/map-north-intro.webm",
+      "position-assignment-map-intro-south-video": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/video/map-south-intro.webm",
+      "postgame-ambience-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+      "ready-check-background": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/ready-check-background.png",
+      "ready-check-background-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-readycheck-sr-portal.ogg",
+      "sfx-ambience-pregame-loop-sound": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/sound/sfx-ambience-loop-summonersrift.ogg",
+      "social-icon-leaver": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-leaver.png",
+      "social-icon-victory": "lol-game-data/assets/content/src/LeagueClient/GameModeAssets/Classic_SRU/img/social-icon-victory.png",
+      "tutorial-img": "lol-game-data/assets/ASSETS/LeagueClient/GameModeAssets/Ranked/tutorial-modal-landscape.png"
+    },
+    "categorizedContentBundles": {},
+    "description": "The newest and most venerated battleground is known as Summoner's Rift. Traverse down one of three different paths in order to attack your enemy at their weakest point. Work with your allies to siege the enemy base and destroy their Nexus!",
+    "gameMode": "CLASSIC",
+    "gameModeName": "Summoner's Rift",
+    "gameModeShortName": "Summoner's Rift",
+    "gameMutator": "",
+    "id": 11,
+    "isRGM": false,
+    "mapStringId": "SR",
+    "name": "Summoner's Rift",
+    "perPositionDisallowedSummonerSpells": {},
+    "perPositionRequiredSummonerSpells": {},
+    "platformId": "",
+    "platformName": "",
+    "properties": {
+      "suppressRunesMasteriesPerks": false
+    }
+  },
+  "phase": "InProgress"
+}

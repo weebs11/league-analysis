@@ -3,9 +3,9 @@
 // and the app keeps working offline once primed.
 import fs from 'fs';
 import path from 'path';
-import { projectRoot } from './config.js';
+import { dataRoot } from './config.js';
 
-const CACHE_DIR = path.join(projectRoot, 'data', 'cache');
+const CACHE_DIR = path.join(dataRoot, 'cache');
 const BASE = 'https://ddragon.leagueoflegends.com';
 
 let version = null;
@@ -249,6 +249,31 @@ const IMAGE_KINDS = {
 };
 
 const inflightImages = new Map();
+
+// Item icons, cached on disk like champion art. Validating against the item
+// catalogue keeps arbitrary ids off the filesystem and the CDN.
+export async function itemImage(itemId) {
+  const id = String(itemId);
+  if (!/^\d{1,6}$/.test(id) || !items?.[id]) return null;
+  const file = path.join(CACHE_DIR, 'img', `item-${version}-${id}.png`);
+  try {
+    return { data: fs.readFileSync(file), type: 'image/png' };
+  } catch {
+    // not cached yet
+  }
+  const inflightKey = `item:${id}`;
+  if (inflightImages.has(inflightKey)) return inflightImages.get(inflightKey);
+  const fetching = (async () => {
+    const res = await fetch(`${BASE}/cdn/${version}/img/item/${id}.png`);
+    if (!res.ok) return null;
+    const data = Buffer.from(await res.arrayBuffer());
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, data);
+    return { data, type: 'image/png' };
+  })().finally(() => inflightImages.delete(inflightKey));
+  inflightImages.set(inflightKey, fetching);
+  return fetching;
+}
 
 export async function championImage(kind, ddragonId) {
   const spec = IMAGE_KINDS[kind];

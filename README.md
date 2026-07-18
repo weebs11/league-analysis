@@ -11,6 +11,8 @@ It watches for two moments:
 
 Plus an **"Ask the coach" chat** for follow-up questions mid-game ("why that item?", "what does kiting mean?", "how do I fight Darius?") and a built-in **glossary** so the jargon never leaves you behind.
 
+And a **match history** that records every ranked game you play — permanently, on your own PC — with the diagnostic stats that actually tell you what to work on.
+
 Everything is written to teach, not just instruct — advice explains the *why* so the lessons transfer to your next game.
 
 ## How it works
@@ -35,6 +37,48 @@ Everything is written to teach, not just instruct — advice explains the *why* 
 
 With the default model (Claude Opus 4.8), a full game breakdown costs roughly **10–15¢**; chat questions are about a cent each. Settings offers cheaper models (Sonnet ≈ 4–6¢, Haiku ≈ 1–2¢ per game). Generations are cached per game, so reopening the page is free.
 
+## Match history
+
+The **History** tab keeps a permanent record of your ranked games (Solo/Duo and Flex).
+It fills itself in while the app runs — no button to press — and unlike the in-client
+history it never forgets: the League client only ever exposes your 20 most recent games,
+so anything older survives only because this app wrote it down.
+
+Each game shows the usual numbers plus the ones that point at something to fix:
+
+- **CS/min against your role's target** — and against *your own* recent average, so a month
+  of improvement reads as progress rather than "still below target"
+- **CS difference against your lane opponent** — the single clearest signal of how laning went
+- **Kill participation** and **share of your team's damage**
+- The full ten-player scoreboard, items, and objectives
+- **The coaching you were given before that game**, if you generated any — so you can read
+  the plan next to how it actually turned out
+
+Remakes are recorded but never counted in your winrate or averages.
+
+### Importing games from before you installed this
+
+Your first launch starts with whatever the client is holding (up to 20 games). To pull in
+up to **two years** of past ranked games, run the importer once with a free Riot API key
+from [developer.riotgames.com](https://developer.riotgames.com) (a 24-hour development key
+is fine — you only run this once):
+
+```
+node scripts/import-history.mjs --key=RGAPI-your-key-here
+```
+
+Run the app once with League open first, so a sync records which account and shard to import
+for. If you'd rather not, name them explicitly:
+
+```
+node scripts/import-history.mjs --key=RGAPI-… --riot-id="Name#TAG" --platform=NA1
+```
+
+Add `--dry-run` to see what it would fetch without writing anything.
+
+It walks month by month, respects Riot's rate limits (expect 10–20 minutes for a few
+hundred games), and can be interrupted and re-run — it picks up where it stopped.
+
 ## Try it without League
 
 Click **Demo live game** on the home screen — it loads a practice scenario (bot lane, jungle, or top) so you can explore every feature without the game running. This also works on a laptop that doesn't have League installed.
@@ -56,7 +100,9 @@ src/ddragon.js     Data Dragon static data with disk cache
 src/coach.js       Claude API integration (structured JSON coaching + chat)
 src/fallback.js    Basic mode advice from Riot data (no API key)
 src/mock.js        Demo scenarios
-test/mock-league-server.js  Fake Live Client API for development
+src/history/       Match history: archive, sync, normalizers, benchmarks, routes
+scripts/import-history.mjs  One-time historical import via Riot's match-v5 API
+test/mock-league-server.js  Fake Live Client API + LCU for development
 public/            Dashboard (vanilla HTML/CSS/JS, no build step)
 ```
 
@@ -64,11 +110,32 @@ To develop without League: `node test/mock-league-server.js` in one terminal, th
 `LIVE_CLIENT_INSECURE_HTTP=1 npm start` in another — the app will "detect" a fake game.
 
 **Tests:** `npm test` (Node's built-in runner, no extra dependencies). Unit tests cover
-the Data Dragon client, both game-state normalizers, the demo scenarios, and the
-basic-mode coach; integration tests boot the real server against the mock Live Client
-API and exercise detection, coaching endpoints, artwork serving, settings, and SSE.
-Tests are hermetic: they use a throwaway config file (`LOL_COACH_CONFIG`) and never
-touch your API key. They need internet on the first run to prime the Data Dragon cache.
+the Data Dragon client, the game-state normalizers, the demo scenarios, the basic-mode
+coach, and the match-history subsystem — its two payload normalizers (against payloads
+captured from a real client), role assignment, remake handling, benchmarks, aggregates,
+archive concurrency, and the import script's windowing. Integration tests boot the real
+server against mocks of both local Riot APIs and exercise detection, coaching endpoints,
+artwork serving, settings, SSE, and the history sync and routes end to end.
+
+Tests are hermetic: a throwaway config file (`LOL_COACH_CONFIG`) keeps them off your API
+key, and `LOL_COACH_DATA_DIR` keeps them off the real match archive — which matters more,
+because the archive holds games that exist nowhere else. They need internet on the first
+run to prime the Data Dragon cache.
+
+Match history is stored under `data/matches/`. `raw/` holds payloads exactly as received, one
+file per match per source (`NA1_5603939853.lcu.json`), each created with an atomic
+create-if-not-exists so it can never be overwritten — the app and the import script write to
+the same archive from different processes. `index.json` is derived and can be deleted at any
+time; it rebuilds from `raw/`. Tests point `LOL_COACH_DATA_DIR` at a throwaway directory so
+they can never reach the real archive, which holds games that exist nowhere else.
+
+To exercise match history against the mock, the app also needs `LCU_INSECURE_HTTP=1` and
+`LEAGUE_LOCKFILE` pointing at the lockfile the mock writes — see `test/server.test.js` for the
+full environment. Without those, only live-game detection is mocked and history never syncs.
+
+Design decisions and the evidence behind them are in [`docs/adr/`](docs/adr/), the
+implementation spec in [`docs/specs/match-history.md`](docs/specs/match-history.md), and the
+domain vocabulary in [`CONTEXT.md`](CONTEXT.md).
 
 The server binds to `127.0.0.1` only. Your API key never leaves your machine except in requests to Anthropic.
 

@@ -1,0 +1,35 @@
+{
+  "_comment": "Per-role absolute targets for Ranked Summoner's Rift. Hand-maintained; these move slowly between patches. csFormula drives how CS is counted, not just the threshold — a jungler's farm is camps plus lane minions, and Support has no meaningful CS target at all.",
+  "roles": {
+    "Top": {
+      "csPerMin": 7.0,
+      "visionScore": 20,
+      "killParticipation": 0.5,
+      "csFormula": "lane"
+    },
+    "Jungle": {
+      "csPerMin": 5.5,
+      "visionScore": 28,
+      "killParticipation": 0.7,
+      "csFormula": "camps+lane"
+    },
+    "Mid": {
+      "csPerMin": 7.5,
+      "visionScore": 22,
+      "killParticipation": 0.6,
+      "csFormula": "lane"
+    },
+    "ADC": {
+      "csPerMin": 7.5,
+      "visionScore": 18,
+      "killParticipation": 0.55,
+      "csFormula": "lane"
+    },
+    "Support": {
+      "csPerMin": null,
+      "visionScore": 45,
+      "killParticipation": 0.65,
+      "csFormula": "none"
+    }
+  }
+}
