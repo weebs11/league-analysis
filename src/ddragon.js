@@ -42,20 +42,23 @@ async function cachedFetch(name, url) {
 }
 
 export async function init() {
+  // Resolve the target patch and fetch everything into locals first; module
+  // state is committed only once every fetch has succeeded. A half-applied
+  // init would otherwise leave `version` pointing at data we don't hold
+  // (see checkForNewPatch, whose catch swallows refresh failures).
+  let nextVersion;
   try {
     const versions = await fetchJson(`${BASE}/api/versions.json`);
-    version = versions[0];
-    fs.mkdirSync(CACHE_DIR, { recursive: true });
-    fs.writeFileSync(cachePath('version.json'), JSON.stringify(version));
+    nextVersion = versions[0];
   } catch {
     try {
-      version = JSON.parse(fs.readFileSync(cachePath('version.json'), 'utf8'));
+      nextVersion = JSON.parse(fs.readFileSync(cachePath('version.json'), 'utf8'));
     } catch {
       throw new Error('Cannot reach Data Dragon and no cached data exists. Connect to the internet once to prime the cache.');
     }
   }
 
-  const champJson = await cachedFetch(`champion-${version}.json`, `${BASE}/cdn/${version}/data/en_US/champion.json`);
+  const champJson = await cachedFetch(`champion-${nextVersion}.json`, `${BASE}/cdn/${nextVersion}/data/en_US/champion.json`);
   const byId = {}; const byKey = {}; const byName = {};
   for (const c of Object.values(champJson.data)) {
     const entry = {
@@ -71,9 +74,14 @@ export async function init() {
     byKey[entry.key] = entry;
     byName[entry.name.toLowerCase()] = entry;
   }
-  championIndex = { byId, byKey, byName };
 
-  const itemJson = await cachedFetch(`item-${version}.json`, `${BASE}/cdn/${version}/data/en_US/item.json`);
+  const itemJson = await cachedFetch(`item-${nextVersion}.json`, `${BASE}/cdn/${nextVersion}/data/en_US/item.json`);
+
+  // Commit — everything for nextVersion is in hand.
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+  fs.writeFileSync(cachePath('version.json'), JSON.stringify(nextVersion));
+  version = nextVersion;
+  championIndex = { byId, byKey, byName };
   items = itemJson.data;
   itemCatalog = buildItemCatalog(items);
 }
@@ -131,8 +139,11 @@ async function checkForNewPatch() {
     const versions = await fetchJson(`${BASE}/api/versions.json`);
     if (versions[0] && versions[0] !== version) {
       console.log(`New League patch detected: ${version} -> ${versions[0]}. Reloading Data Dragon...`);
-      championDetails.clear();
+      // init() commits state only on full success, so a failed refresh leaves
+      // the old (consistent) patch data in place. Clear the per-champion
+      // details cache only after the swap actually happened.
       await init();
+      championDetails.clear();
       console.log(`Data Dragon refreshed (patch ${version}).`);
     }
   } catch {
