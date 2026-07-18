@@ -1,8 +1,10 @@
 // AI coach — generates beginner-friendly, matchup-specific coaching via the
 // Claude API. Uses structured outputs (output_config.format) so the UI can
 // render advice as cards instead of parsing prose.
+import fs from 'fs';
+import path from 'path';
 import Anthropic from '@anthropic-ai/sdk';
-import { getConfig } from './config.js';
+import { getConfig, dataRoot } from './config.js';
 import * as ddragon from './ddragon.js';
 
 function client() {
@@ -39,8 +41,35 @@ function systemBlocks() {
       text: `CURRENT-PATCH ITEM CATALOG (patch ${ddragon.getVersion()}, authoritative — every purchasable Summoner's Rift item):\n${catalog}`,
     });
   }
-  blocks[blocks.length - 1].cache_control = { type: 'ephemeral' };
+  // 1h TTL rather than the default 5 minutes: a session is "generate a plan at
+  // game start, then ask questions across a 30-minute game". At 5 minutes most
+  // follow-ups land after expiry and re-pay the write premium; at 1h we pay one
+  // 2x write and read cheap for the rest of the game.
+  blocks[blocks.length - 1].cache_control = { type: 'ephemeral', ttl: '1h' };
   return blocks;
+}
+
+// ---- Model capabilities ------------------------------------------------------
+// Haiku 4.5 predates the 4.6-era API surface: it supports neither `effort` nor
+// adaptive thinking, and rejects both with a 400 rather than ignoring them.
+// Opus 4.8 and Sonnet 5 — the other two options in Settings — support both.
+function isLegacyModel(model) {
+  return model.startsWith('claude-haiku');
+}
+
+// Spreadable fragments so call sites stay declarative on every model.
+// `effortFor` merges into an existing output_config; `outputConfigFor` is for
+// calls that would otherwise have none (and must not send an empty object).
+function effortFor(model, level) {
+  return isLegacyModel(model) ? {} : { effort: level };
+}
+
+function outputConfigFor(model, level) {
+  return isLegacyModel(model) ? {} : { output_config: { effort: level } };
+}
+
+function thinkingFor(model) {
+  return isLegacyModel(model) ? {} : { thinking: { type: 'adaptive' } };
 }
 
 // ---- Live meta lookup --------------------------------------------------------
@@ -49,26 +78,61 @@ function systemBlocks() {
 // current-patch meta build. Best-effort: any failure just means the plan is
 // generated from static patch data alone.
 
-const metaNotesCache = new Map(); // "champ:role:patch" -> notes text
+// "champ:role:patch" -> notes text. Persisted under data/cache so a restart
+// doesn't re-pay a web search plus a model call for champions already looked up
+// this patch — the app is meant to be left running across sessions, and the
+// keys are patch-scoped so entries stay correct until Riot ships a new patch.
+const META_CACHE_FILE = path.join(dataRoot, 'cache', 'meta-notes.json');
+let metaNotes = null; // Map, loaded from disk on first use
 
-function webSearchTool(model) {
-  // Haiku predates the dynamic-filtering search tool; everything else in the
-  // settings list (Opus 4.8, Sonnet 5) supports it.
-  const type = model.startsWith('claude-haiku') ? 'web_search_20250305' : 'web_search_20260209';
-  return { type, name: 'web_search', max_uses: 4 };
+function metaCache() {
+  if (metaNotes) return metaNotes;
+  metaNotes = new Map();
+  try {
+    for (const [k, v] of Object.entries(JSON.parse(fs.readFileSync(META_CACHE_FILE, 'utf8')))) {
+      metaNotes.set(k, v);
+    }
+  } catch {
+    // No cache yet, or it's unreadable — regenerating costs one Haiku call.
+  }
+  return metaNotes;
 }
+
+function persistMetaNotes() {
+  const patch = ddragon.getVersion();
+  const keep = [...metaCache()].filter(
+    // Old-patch entries are dead weight. Empty values mean "the search failed
+    // or found nothing" — fine to memoize for this process, but writing them
+    // to disk would poison that champion for the rest of the patch.
+    ([key, notes]) => notes && key.endsWith(`:${patch}`)
+  );
+  try {
+    fs.mkdirSync(path.dirname(META_CACHE_FILE), { recursive: true });
+    fs.writeFileSync(META_CACHE_FILE, JSON.stringify(Object.fromEntries(keep)));
+  } catch (err) {
+    console.error('could not persist meta build cache (continuing):', err.message);
+  }
+}
+
+// Search-and-summarize is an extraction task with a 2k-token cap, not a
+// reasoning task, so it runs on Haiku regardless of the configured coaching
+// model — no reason to pay Opus rates for bullet points that the game-plan
+// model re-checks against the item catalog anyway. Haiku predates the
+// dynamic-filtering search tool, hence the basic variant.
+const META_MODEL = 'claude-haiku-4-5';
+const META_SEARCH_TOOL = { type: 'web_search_20250305', name: 'web_search', max_uses: 4 };
 
 async function fetchMetaNotes(championName, role) {
   const key = `${championName}:${role || 'any'}:${ddragon.getVersion()}`;
-  if (metaNotesCache.has(key)) return metaNotesCache.get(key);
+  const cache = metaCache();
+  if (cache.has(key)) return cache.get(key);
   const anthropic = client();
   if (!anthropic) return '';
-  const cfg = getConfig();
   try {
     const response = await anthropic.messages.create({
-      model: cfg.model,
+      model: META_MODEL,
       max_tokens: 2000,
-      tools: [webSearchTool(cfg.model)],
+      tools: [META_SEARCH_TOOL],
       messages: [{
         role: 'user',
         content: [
@@ -84,7 +148,8 @@ async function fetchMetaNotes(championName, role) {
       .join('\n')
       .trim();
     const notes = !text || text.includes('NO_DATA') ? '' : text;
-    metaNotesCache.set(key, notes);
+    cache.set(key, notes);
+    if (notes) persistMetaNotes();
     return notes;
   } catch (err) {
     console.error('meta build search failed (continuing without it):', err.message);
@@ -213,33 +278,44 @@ function playerLine(p) {
   return bits.join(' — ');
 }
 
+// Returns the context split by how often it changes. `champions` is fixed for
+// the whole game (~10k tokens of ability data) and can sit behind a cache
+// breakpoint; `live` changes every tick and must stay after one. Callers that
+// make a single request can just join the two.
 async function buildGameContext(game) {
   const me = game.me;
   const enemyRefs = game.enemies.map((e) => e.champion).filter(Boolean);
   const champData = await abilityContext([me?.champion, ...enemyRefs].filter(Boolean));
   const minutes = Math.floor((game.gameTime || 0) / 60);
 
-  return [
-    `PATCH: ${ddragon.getVersion()}`,
-    `GAME MODE: ${game.gameMode}, game time: ${minutes} minutes`,
-    ``,
-    `THE PLAYER (the person you are coaching):`,
-    `  ${playerLine(me)}`,
-    ``,
-    `PLAYER'S TEAM:`,
-    ...game.allies.filter((a) => !a.isMe).map((a) => `  ${playerLine(a)}`),
-    ``,
-    `ENEMY TEAM:`,
-    ...game.enemies.map((e) => `  ${playerLine(e)}`),
-    ``,
-    `CURRENT-PATCH CHAMPION DATA (authoritative):`,
-    JSON.stringify(champData, null, 1),
-  ].join('\n');
+  return {
+    champions: [
+      `PATCH: ${ddragon.getVersion()}`,
+      `GAME MODE: ${game.gameMode}`,
+      ``,
+      `CURRENT-PATCH CHAMPION DATA (authoritative):`,
+      // Minified: the model reads indented and minified JSON identically, so
+      // the whitespace is pure token cost on the largest block in the prompt.
+      JSON.stringify(champData),
+    ].join('\n'),
+    live: [
+      `GAME TIME: ${minutes} minutes`,
+      ``,
+      `THE PLAYER (the person you are coaching):`,
+      `  ${playerLine(me)}`,
+      ``,
+      `PLAYER'S TEAM:`,
+      ...game.allies.filter((a) => !a.isMe).map((a) => `  ${playerLine(a)}`),
+      ``,
+      `ENEMY TEAM:`,
+      ...game.enemies.map((e) => `  ${playerLine(e)}`),
+    ].join('\n'),
+  };
 }
 
 // ---- Generation ---------------------------------------------------------------
 
-async function generateStructured(schema, userPrompt, maxTokens = 16000) {
+async function generateStructured(schema, userPrompt, { maxTokens = 16000, effort = 'high' } = {}) {
   const anthropic = client();
   if (!anthropic) throw new CoachError('no_api_key', 'No Anthropic API key configured.');
   const cfg = getConfig();
@@ -247,9 +323,12 @@ async function generateStructured(schema, userPrompt, maxTokens = 16000) {
   const stream = anthropic.messages.stream({
     model: cfg.model,
     max_tokens: maxTokens,
-    thinking: { type: 'adaptive' },
+    ...thinkingFor(cfg.model),
     system: systemBlocks(),
-    output_config: { format: { type: 'json_schema', schema } },
+    output_config: {
+      format: { type: 'json_schema', schema },
+      ...effortFor(cfg.model, effort),
+    },
     messages: [{ role: 'user', content: userPrompt }],
   });
 
@@ -299,7 +378,9 @@ export async function generateGamePlan(game) {
   const prompt = [
     `Coach me through this League of Legends game. I'm playing ${game.me?.champion?.name}. ${role}`,
     ``,
-    context,
+    context.champions,
+    ``,
+    context.live,
     ``,
     ...(metaNotes
       ? [
@@ -314,7 +395,8 @@ export async function generateGamePlan(game) {
     `- "itemization" must react to the actual enemy team (their damage types, healing, tanks) and to items they already have. Recommend current-patch items only.`,
     `- "glossary" should define every jargon term you used (aim for 5-12 terms).`,
   ].join('\n');
-  return generateStructured(GAME_PLAN_SCHEMA, prompt);
+  // The game plan is the deliverable — full effort here.
+  return generateStructured(GAME_PLAN_SCHEMA, prompt, { effort: 'high' });
 }
 
 // Lighter champ-select briefing (enemy picks may be partially known).
@@ -335,11 +417,12 @@ export async function generateChampSelectAdvice(champSelect) {
     ``,
     `PATCH: ${ddragon.getVersion()}`,
     `CURRENT-PATCH CHAMPION DATA (authoritative):`,
-    JSON.stringify(champData, null, 1),
+    JSON.stringify(champData),
     ``,
     `Give me a pre-game briefing I can absorb in ~90 seconds: how my champion works, a plan for the first minutes, and what to expect from any known enemies.`,
   ].join('\n');
-  return generateStructured(CHAMP_SELECT_SCHEMA, prompt, 8000);
+  // A 90-second briefing doesn't need game-plan depth.
+  return generateStructured(CHAMP_SELECT_SCHEMA, prompt, { maxTokens: 8000, effort: 'medium' });
 }
 
 // Follow-up Q&A about the current game. `history` is [{role, content}] from
@@ -349,28 +432,53 @@ export async function chat(history, game, gamePlan) {
   if (!anthropic) throw new CoachError('no_api_key', 'No Anthropic API key configured.');
   const cfg = getConfig();
 
-  let contextBlock = 'No game is currently active.';
+  const system = systemBlocks();
+  system.push({
+    type: 'text',
+    text: `The player is asking follow-up questions. Answer conversationally in Markdown. Keep answers short (under ~200 words) unless they ask for depth.`,
+  });
+
   if (game) {
-    contextBlock = await buildGameContext(game);
+    const context = await buildGameContext(game);
+    const planBlock = gamePlan
+      ? `\n\nYou already gave the player this game plan (JSON): ${JSON.stringify(gamePlan)}`
+      : '';
+    // Champion data and the already-delivered plan are fixed for the whole
+    // game, so they get their own breakpoint: every follow-up after the first
+    // reads them from cache instead of re-paying full price for ~10k tokens.
+    system.push({
+      type: 'text',
+      text: `Current game context:\n\n${context.champions}${planBlock}`,
+      cache_control: { type: 'ephemeral', ttl: '1h' },
+    });
+    system.push({
+      type: 'text',
+      text: `LIVE GAME STATE (changes as the game goes on):\n${context.live}`,
+    });
+  } else {
+    system.push({ type: 'text', text: 'No game is currently active.' });
   }
-  const planBlock = gamePlan
-    ? `\n\nYou already gave the player this game plan (JSON): ${JSON.stringify(gamePlan)}`
-    : '';
+
+  const messages = history.slice(-20).map((m) => ({
+    role: m.role === 'assistant' ? 'assistant' : 'user',
+    content: String(m.content).slice(0, 4000),
+  }));
+  // Breakpoint on the newest turn so the *next* question reads the whole
+  // conversation so far from cache. Default 5-minute TTL — chat turns cluster,
+  // and the history is small enough that a 2x write premium wouldn't pay off.
+  const newest = messages[messages.length - 1];
+  if (newest) {
+    newest.content = [
+      { type: 'text', text: newest.content, cache_control: { type: 'ephemeral' } },
+    ];
+  }
 
   const response = await anthropic.messages.create({
     model: cfg.model,
     max_tokens: 1500,
-    system: [
-      ...systemBlocks(),
-      {
-        type: 'text',
-        text: `The player is asking follow-up questions. Answer conversationally in Markdown. Keep answers short (under ~200 words) unless they ask for depth. Current game context:\n\n${contextBlock}${planBlock}`,
-      },
-    ],
-    messages: history.slice(-20).map((m) => ({
-      role: m.role === 'assistant' ? 'assistant' : 'user',
-      content: String(m.content).slice(0, 4000),
-    })),
+    system,
+    ...outputConfigFor(cfg.model, 'low'),
+    messages,
   });
   if (response.stop_reason === 'refusal') {
     throw new CoachError('refusal', 'The model declined to answer this request.');
