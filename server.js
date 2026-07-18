@@ -62,12 +62,14 @@ app.get('/api/events', (req, res) => {
 // ---- Coaching endpoints ------------------------------------------------------
 
 function planKey(kind, snapshot) {
+  // Keyed by patch too, so cached advice doesn't outlive a mid-session patch refresh.
+  const patch = ddragon.getVersion();
   if (kind === 'game') {
     const g = snapshot;
-    return `game:${g.me?.champion?.id}:${g.enemies.map((e) => e.champion?.id).join(',')}`;
+    return `${patch}:game:${g.me?.champion?.id}:${g.enemies.map((e) => e.champion?.id).join(',')}`;
   }
   const cs = snapshot;
-  return `cs:${cs.me?.champion?.id}:${cs.theirTeam.map((e) => e.champion?.id || '_').join(',')}`;
+  return `${patch}:cs:${cs.me?.champion?.id}:${cs.theirTeam.map((e) => e.champion?.id || '_').join(',')}`;
 }
 
 app.post('/api/coach/gameplan', async (req, res) => {
@@ -188,6 +190,8 @@ const port = Number(process.env.PORT || getConfig().port || 3000);
 console.log('Loading champion data from Data Dragon...');
 await ddragon.init();
 console.log(`Data Dragon ready (patch ${ddragon.getVersion()}).`);
+// Re-check Riot's version list hourly so a long-running app picks up new patches.
+ddragon.startAutoRefresh();
 
 gamestate.start();
 

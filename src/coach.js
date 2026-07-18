@@ -22,9 +22,75 @@ Rules for every piece of advice you write:
 - Briefly explain WHY, so the player learns transferable principles, not just instructions.
 - When you use a League term of art (e.g. "wave management", "power spike", "peel", "kite", "tempo"), use it — that's how they learn — but make sure it appears in the glossary you return.
 - Ability descriptions must match the CURRENT patch data provided. If provided data conflicts with your memory, trust the provided data.
-- Never invent items or abilities. Use exact item names.
+- Item advice must come from the CURRENT-PATCH ITEM CATALOG provided in this conversation. Your training data's item knowledge is outdated — items are added, removed, and reworked every patch. Recommend only items that appear in the catalog, using their exact names. If the player mentions an item you don't recognize, check the catalog before ever claiming it doesn't exist.
+- Never invent items or abilities.
 - Keep individual strings tight: 1-3 sentences unless the field clearly calls for more.
 - Difficulty and threat ratings should be honest — don't inflate everything to "High".`;
+
+// System prompt + current-patch item catalog. The catalog is a stable ~7k-token
+// block (changes only on patch day), so the cache breakpoint goes on it — one
+// cache write per patch, then every generation and chat message reads it cheap.
+function systemBlocks() {
+  const blocks = [{ type: 'text', text: SYSTEM_PROMPT }];
+  const catalog = ddragon.itemCatalogText();
+  if (catalog) {
+    blocks.push({
+      type: 'text',
+      text: `CURRENT-PATCH ITEM CATALOG (patch ${ddragon.getVersion()}, authoritative — every purchasable Summoner's Rift item):\n${catalog}`,
+    });
+  }
+  blocks[blocks.length - 1].cache_control = { type: 'ephemeral' };
+  return blocks;
+}
+
+// ---- Live meta lookup --------------------------------------------------------
+// The model's build knowledge is frozen at its training cutoff, so before
+// generating a game plan we let it search the web for the champion's
+// current-patch meta build. Best-effort: any failure just means the plan is
+// generated from static patch data alone.
+
+const metaNotesCache = new Map(); // "champ:role:patch" -> notes text
+
+function webSearchTool(model) {
+  // Haiku predates the dynamic-filtering search tool; everything else in the
+  // settings list (Opus 4.8, Sonnet 5) supports it.
+  const type = model.startsWith('claude-haiku') ? 'web_search_20250305' : 'web_search_20260209';
+  return { type, name: 'web_search', max_uses: 4 };
+}
+
+async function fetchMetaNotes(championName, role) {
+  const key = `${championName}:${role || 'any'}:${ddragon.getVersion()}`;
+  if (metaNotesCache.has(key)) return metaNotesCache.get(key);
+  const anthropic = client();
+  if (!anthropic) return '';
+  const cfg = getConfig();
+  try {
+    const response = await anthropic.messages.create({
+      model: cfg.model,
+      max_tokens: 2000,
+      tools: [webSearchTool(cfg.model)],
+      messages: [{
+        role: 'user',
+        content: [
+          `Search the web for the current best League of Legends build for ${championName}${role ? ` ${role}` : ''} on patch ${ddragon.getVersion()} (or the closest recent patch you can find).`,
+          `Then summarize as terse bullet points: starting items, core build order, boots, common situational items, and any notable recent patch changes to this champion or their core items.`,
+          `Plain text only, no preamble. If you can't find current information, reply with exactly: NO_DATA`,
+        ].join('\n'),
+      }],
+    });
+    const text = response.content
+      .filter((b) => b.type === 'text')
+      .map((b) => b.text)
+      .join('\n')
+      .trim();
+    const notes = !text || text.includes('NO_DATA') ? '' : text;
+    metaNotesCache.set(key, notes);
+    return notes;
+  } catch (err) {
+    console.error('meta build search failed (continuing without it):', err.message);
+    return '';
+  }
+}
 
 // ---- Structured output schemas ---------------------------------------------
 
@@ -182,7 +248,7 @@ async function generateStructured(schema, userPrompt, maxTokens = 16000) {
     model: cfg.model,
     max_tokens: maxTokens,
     thinking: { type: 'adaptive' },
-    system: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
+    system: systemBlocks(),
     output_config: { format: { type: 'json_schema', schema } },
     messages: [{ role: 'user', content: userPrompt }],
   });
@@ -225,13 +291,23 @@ export function describeApiError(err) {
 
 // Full in-game breakdown: matchup, threats, strategy, items.
 export async function generateGamePlan(game) {
-  const context = await buildGameContext(game);
+  const [context, metaNotes] = await Promise.all([
+    buildGameContext(game),
+    fetchMetaNotes(game.me?.champion?.name, game.me?.role),
+  ]);
   const role = game.me?.role ? `Their role this game is ${game.me.role}.` : 'Infer their likely role from the team layout.';
   const prompt = [
     `Coach me through this League of Legends game. I'm playing ${game.me?.champion?.name}. ${role}`,
     ``,
     context,
     ``,
+    ...(metaNotes
+      ? [
+          `LIVE META NOTES (gathered just now via web search — cross-check against the item catalog; catalog names are authoritative):`,
+          metaNotes,
+          ``,
+        ]
+      : []),
     `Produce the full coaching breakdown:`,
     `- "laneMatchup" should focus on the enemy laner(s) directly opposing my role (for bot lane, cover both the enemy ADC and support as a duo).`,
     `- "enemyThreats" must cover ALL five enemy champions, ordered from most to least dangerous to me specifically. Only include abilities worth knowing about (2-4 per champion).`,
@@ -285,7 +361,7 @@ export async function chat(history, game, gamePlan) {
     model: cfg.model,
     max_tokens: 1500,
     system: [
-      { type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } },
+      ...systemBlocks(),
       {
         type: 'text',
         text: `The player is asking follow-up questions. Answer conversationally in Markdown. Keep answers short (under ~200 words) unless they ask for depth. Current game context:\n\n${contextBlock}${planBlock}`,

@@ -45,6 +45,20 @@ test('ddragon: item ids resolve to names', () => {
   assert.match(ddragon.itemName(999999999), /^Item /);
 });
 
+test('ddragon: item catalog lists current-patch purchasable items for the coach', () => {
+  const catalog = ddragon.itemCatalogText();
+  assert.ok(catalog.length > 10000, 'catalog has real content');
+  const lines = catalog.split('\n');
+  assert.ok(lines.length > 150, `expected the full SR shop, got ${lines.length} items`);
+  assert.ok(lines.every((l) => /^- .+ \(\d+g, (Completed|Component|Boots|Consumable)\): /.test(l)), 'every line is well-formed');
+  // Staples that exist in every patch.
+  assert.ok(catalog.includes("- Doran's Blade ("), 'includes starter items');
+  assert.ok(/^- Boots \(/m.test(catalog), 'includes boots');
+  // One name per item — no Ornn masterwork or duplicate-id variants.
+  const names = lines.map((l) => l.match(/^- (.+?) \(\d+g/)[1]);
+  assert.equal(new Set(names).size, names.length, 'no duplicate item names');
+});
+
 test('ddragon: artwork urls point at the app, not the CDN', () => {
   const urls = ddragon.imageUrls('Jinx');
   assert.ok(urls.square.startsWith('/img/champion/square/'));

@@ -12,6 +12,7 @@ let version = null;
 let championIndex = null; // { byId, byKey, byName }
 const championDetails = new Map(); // ddragon id -> full champion data
 let items = null; // itemId -> { name, plaintext, tags, gold }
+let itemCatalog = null; // compact text list of purchasable SR items, for the coach
 
 function cachePath(name) {
   return path.join(CACHE_DIR, name);
@@ -74,10 +75,82 @@ export async function init() {
 
   const itemJson = await cachedFetch(`item-${version}.json`, `${BASE}/cdn/${version}/data/en_US/item.json`);
   items = itemJson.data;
+  itemCatalog = buildItemCatalog(items);
 }
 
 export function getVersion() {
   return version;
+}
+
+// ---- Item catalog for the AI coach -----------------------------------------
+// The coach model's training data predates recent patches, so item advice must
+// be grounded in what the shop actually sells right now. This builds a compact
+// one-line-per-item listing of every purchasable Summoner's Rift item.
+
+function buildItemCatalog(itemData) {
+  // The same item can appear under several ids (e.g. Ornn masterwork variants).
+  // Keep one entry per name — the base-shop version with the lowest id.
+  const byName = new Map();
+  for (const [id, it] of Object.entries(itemData)) {
+    if (!it.maps?.['11']) continue; // Summoner's Rift only
+    if (it.gold?.purchasable === false) continue;
+    if (it.inStore === false) continue;
+    if (it.requiredAlly || it.requiredChampion) continue; // Ornn/champion-specific variants
+    if (it.hideFromAll) continue;
+    const prev = byName.get(it.name);
+    if (!prev || Number(id) < Number(prev.id)) byName.set(it.name, { id, it });
+  }
+  const lines = [...byName.values()].map(({ it }) => {
+    const cat = it.tags?.includes('Boots') ? 'Boots'
+      : it.tags?.includes('Consumable') ? 'Consumable'
+      : it.into?.length ? 'Component'
+      : 'Completed';
+    const desc = (it.plaintext || stripHtml(it.description)).slice(0, 220);
+    return `- ${it.name} (${it.gold.total}g, ${cat}): ${desc}`;
+  });
+  return lines.join('\n');
+}
+
+export function itemCatalogText() {
+  return itemCatalog;
+}
+
+// ---- Patch auto-refresh -----------------------------------------------------
+// The app is meant to be left running for days; without this it would keep
+// serving whatever patch was live at startup. Checks hourly and re-inits when
+// Riot ships a new version.
+
+const REFRESH_MS = 60 * 60 * 1000;
+let refreshTimer = null;
+let refreshing = false;
+
+async function checkForNewPatch() {
+  if (refreshing) return;
+  refreshing = true;
+  try {
+    const versions = await fetchJson(`${BASE}/api/versions.json`);
+    if (versions[0] && versions[0] !== version) {
+      console.log(`New League patch detected: ${version} -> ${versions[0]}. Reloading Data Dragon...`);
+      championDetails.clear();
+      await init();
+      console.log(`Data Dragon refreshed (patch ${version}).`);
+    }
+  } catch {
+    // Offline or CDN hiccup — keep serving the current data and retry later.
+  } finally {
+    refreshing = false;
+  }
+}
+
+export function startAutoRefresh() {
+  if (refreshTimer) return;
+  refreshTimer = setInterval(() => { checkForNewPatch(); }, REFRESH_MS);
+  refreshTimer.unref?.();
+}
+
+export function stopAutoRefresh() {
+  if (refreshTimer) clearInterval(refreshTimer);
+  refreshTimer = null;
 }
 
 export function champByNumericKey(key) {
