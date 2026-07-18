@@ -208,8 +208,25 @@ gamestate.start();
 
 // Bind to localhost only — the app stores an API key and is meant for the
 // machine League runs on.
-app.listen(port, '127.0.0.1', () => {
+const server = app.listen(port, '127.0.0.1', () => {
   console.log(`\n  LoL Matchup Coach is running:  http://localhost:${port}\n`);
   console.log('  Leave this window open while you play. The app detects');
   console.log('  champion select and live games automatically.\n');
+});
+
+// Fail with a readable explanation instead of an unhandled 'error' event and a
+// raw stack trace. EADDRINUSE almost always means the app is already running in
+// another window.
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n  Port ${port} is already in use.\n`);
+    console.error('  The LoL Matchup Coach is probably already running in another window.');
+    console.error(`  Try opening http://localhost:${port} in your browser first.\n`);
+    console.error('  If it is not running, another program is using the port. You can');
+    console.error('  start this app on a different port, e.g. in a terminal:\n');
+    console.error('      set PORT=3100 && node server.js     (Windows)');
+    console.error('      PORT=3100 node server.js            (macOS/Linux)\n');
+    process.exit(1);
+  }
+  throw err;
 });
