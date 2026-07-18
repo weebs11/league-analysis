@@ -34,7 +34,14 @@ app.get('/img/champion/:kind/:id', async (req, res) => {
 // Cached generations, keyed by a fingerprint of the situation, so we don't
 // re-bill for the same game every time the page reloads.
 const planCache = new Map();
-let lastGamePlan = null; // handed to the chat endpoint as context
+// Handed to the chat endpoint as context. Tagged with the patch it was
+// generated on so a plan from before an hourly patch refresh never grounds
+// post-refresh chat answers: { plan, patch }.
+let lastGamePlan = null;
+
+function currentGamePlan() {
+  return lastGamePlan?.patch === ddragon.getVersion() ? lastGamePlan.plan : null;
+}
 
 app.get('/api/state', (_req, res) => {
   res.json({ ...gamestate.snapshot(), aiAvailable: coach.aiAvailable() });
@@ -61,13 +68,14 @@ app.get('/api/events', (req, res) => {
 
 // ---- Coaching endpoints ------------------------------------------------------
 
-function planKey(kind, snapshot) {
+function planKey(kind, snapshot, patch) {
+  // Keyed by patch too, so cached advice doesn't outlive a mid-session patch refresh.
   if (kind === 'game') {
     const g = snapshot;
-    return `game:${g.me?.champion?.id}:${g.enemies.map((e) => e.champion?.id).join(',')}`;
+    return `${patch}:game:${g.me?.champion?.id}:${g.enemies.map((e) => e.champion?.id).join(',')}`;
   }
   const cs = snapshot;
-  return `cs:${cs.me?.champion?.id}:${cs.theirTeam.map((e) => e.champion?.id || '_').join(',')}`;
+  return `${patch}:cs:${cs.me?.champion?.id}:${cs.theirTeam.map((e) => e.champion?.id || '_').join(',')}`;
 }
 
 app.post('/api/coach/gameplan', async (req, res) => {
@@ -77,10 +85,15 @@ app.post('/api/coach/gameplan', async (req, res) => {
     return res.status(409).json({ error: 'No active game (or your champion could not be identified).' });
   }
   const force = Boolean(req.body?.force);
-  const key = planKey('game', game);
+  // Capture the patch once, before the (long) generation await — if a patch
+  // refresh lands mid-generation, the plan is tagged with the patch whose
+  // data actually produced it, so currentGamePlan() correctly drops it.
+  const patch = ddragon.getVersion();
+  const key = planKey('game', game, patch);
   if (!force && planCache.has(key)) {
-    lastGamePlan = planCache.get(key);
-    return res.json({ plan: lastGamePlan, cached: true });
+    const plan = planCache.get(key);
+    lastGamePlan = { plan, patch };
+    return res.json({ plan, cached: true });
   }
   try {
     let plan;
@@ -91,7 +104,7 @@ app.post('/api/coach/gameplan', async (req, res) => {
       plan = await fallback.generateBasicGamePlan(game);
     }
     planCache.set(key, plan);
-    lastGamePlan = plan;
+    lastGamePlan = { plan, patch };
     res.json({ plan, cached: false });
   } catch (err) {
     console.error('gameplan generation failed:', err);
@@ -106,7 +119,7 @@ app.post('/api/coach/champselect', async (req, res) => {
     return res.status(409).json({ error: 'Not in champion select (or no champion hovered yet).' });
   }
   const force = Boolean(req.body?.force);
-  const key = planKey('cs', cs);
+  const key = planKey('cs', cs, ddragon.getVersion());
   if (!force && planCache.has(key)) {
     return res.json({ advice: planCache.get(key), cached: true });
   }
@@ -133,7 +146,7 @@ app.post('/api/coach/chat', async (req, res) => {
     return res.status(409).json({ error: 'The coach chat needs an Anthropic API key — add one in Settings.' });
   }
   try {
-    const reply = await coach.chat(history, gamestate.snapshot().game, lastGamePlan);
+    const reply = await coach.chat(history, gamestate.snapshot().game, currentGamePlan());
     res.json({ reply });
   } catch (err) {
     console.error('chat failed:', err);
@@ -188,6 +201,8 @@ const port = Number(process.env.PORT || getConfig().port || 3000);
 console.log('Loading champion data from Data Dragon...');
 await ddragon.init();
 console.log(`Data Dragon ready (patch ${ddragon.getVersion()}).`);
+// Re-check Riot's version list hourly so a long-running app picks up new patches.
+ddragon.startAutoRefresh();
 
 gamestate.start();
 
