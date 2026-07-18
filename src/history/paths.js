@@ -10,6 +10,7 @@ export const rawDir = path.join(matchesDir, 'raw');
 export const coachingDir = path.join(matchesDir, 'coaching');
 export const indexPath = path.join(matchesDir, 'index.json');
 export const syncStatePath = path.join(matchesDir, 'sync-state.json');
+export const rankHistoryPath = path.join(matchesDir, 'rank-history.json');
 
 // The only Sources that may reach the filesystem. An allowlist rather than
 // sanitising, because these become filenames.

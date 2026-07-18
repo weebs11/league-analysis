@@ -170,6 +170,15 @@ export async function matchDetail(gameId) {
   return d?.participants?.length ? d : null;
 }
 
+// Current rank per queue — { queueMap: { RANKED_SOLO_5x5: { tier, division,
+// leaguePoints, wins, losses, … }, RANKED_FLEX_SR: { … } } }. This is a live
+// snapshot only: no API anywhere serves historical LP, which is why rank
+// tracking records these as they happen (see src/history/rank.js).
+export async function rankedStats() {
+  const r = await request('/lol-ranked/v1/current-ranked-stats');
+  return r?.queueMap ? r : null;
+}
+
 // Live game session. gameData.gameId is only readable while a game is running,
 // and it is the join key between a generated plan and the match it was for.
 export async function gameflowSession() {

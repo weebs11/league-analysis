@@ -87,6 +87,30 @@ router.get('/matches/:matchId', async (req, res) => {
   }
 });
 
+// The LP time series, grouped per queue for the chart. Forward-only by nature:
+// points exist from the day tracking started, because historical LP is not
+// retrievable from any API (ADR-0006).
+router.get('/rank', async (_req, res) => {
+  try {
+    const rows = await store.readRankHistory();
+    const byQueue = new Map();
+    for (const row of rows) {
+      if (!byQueue.has(row.queueId)) byQueue.set(row.queueId, []);
+      byQueue.get(row.queueId).push(row);
+    }
+    res.json({
+      queues: [...byQueue.entries()].map(([queueId, points]) => ({
+        queueId,
+        queueLabel: QUEUE_LABELS[queueId] || 'Ranked',
+        points,
+      })),
+    });
+  } catch (err) {
+    console.error('rank history failed:', err);
+    res.status(500).json({ error: 'Could not read rank history.' });
+  }
+});
+
 router.post('/sync', async (_req, res) => {
   const result = await sync.syncForward();
   res.json(result);

@@ -21,6 +21,7 @@ const tmpLockfile = path.join(tmpData, 'lockfile');
 
 let appProc;
 let mockProc;
+const suiteStartedAt = Date.now();
 
 const get = async (p) => {
   const res = await fetch(BASE + p);
@@ -204,7 +205,16 @@ test('history: archive files are written under the test data dir, never the real
   const files = fs.readdirSync(rawDir);
   assert.ok(files.length > 0, 'raw payloads land in the isolated archive');
   assert.ok(files.every((f) => f.endsWith('.json')));
-  assert.ok(!fs.existsSync(path.join(ROOT, 'data', 'matches')), 'the real archive must not be created by tests');
+  // The real archive may legitimately exist on a dev machine that has run the
+  // app — what tests must never do is ADD to it. Every file this run produced
+  // has to be under tmpData, which the mtime of the real raw dir can witness:
+  // it must predate the suite. (An absence check here failed for anyone who had
+  // actually used the app.)
+  const realRaw = path.join(ROOT, 'data', 'matches', 'raw');
+  if (fs.existsSync(realRaw)) {
+    assert.ok(fs.statSync(realRaw).mtimeMs < suiteStartedAt,
+      'the real archive must not gain files during a test run');
+  }
 });
 
 test('history: summary excludes remakes and reports a record', async () => {
@@ -281,4 +291,32 @@ test('SSE endpoint streams the current state immediately', async () => {
   const snap = JSON.parse(frame.replace(/^data: /, ''));
   assert.ok(['waiting', 'champselect', 'ingame'].includes(snap.phase));
   await reader.cancel();
+});
+
+test('history: rank is snapshotted by sync and served grouped per queue', async () => {
+  // The automatic sync above already ran, so a snapshot should exist. The mock
+  // reports solo GOLD IV 43LP, flex unranked, and a TFT entry that must not
+  // leak into an LoL LP graph.
+  const rank = await waitFor(async () => {
+    const { body } = await get('/api/history/rank');
+    return body.queues?.length ? body : null;
+  }, 'a rank snapshot to be recorded');
+
+  assert.equal(rank.queues.length, 1, 'unranked flex and TFT must not produce series');
+  const solo = rank.queues[0];
+  assert.equal(solo.queueId, 420);
+  assert.equal(solo.queueLabel, 'Ranked Solo/Duo');
+  assert.equal(solo.points.length, 1);
+  const p = solo.points[0];
+  assert.deepEqual(
+    { tier: p.tier, division: p.division, lp: p.lp, value: p.value },
+    { tier: 'GOLD', division: 'IV', lp: 43, value: 1243 }
+  );
+  assert.ok(p.at > 0 && p.wins >= 0 && p.losses >= 0);
+
+  // An unchanged standing must not append: rank history grows on change, not
+  // on every sync tick.
+  await post('/api/history/sync');
+  const { body: again } = await get('/api/history/rank');
+  assert.equal(again.queues[0].points.length, 1, 'same standing re-synced must not duplicate');
 });

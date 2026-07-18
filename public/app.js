@@ -658,7 +658,7 @@ function outcomeLabel(m) {
 }
 
 async function refreshHistory() {
-  await Promise.allSettled([loadSummary(), loadMatches()]);
+  await Promise.allSettled([loadSummary(), loadMatches(), loadRankChart()]);
 }
 
 async function loadSummary() {
@@ -780,6 +780,169 @@ function renderPager() {
   const next = $('#pg-next');
   if (prev) prev.onclick = () => { hist.page--; loadMatches(); };
   if (next) next.onclick = () => { hist.page++; loadMatches(); };
+}
+
+// ---------- rank chart ----------
+//
+// LP over time, from the snapshots Forward Sync records (ADR-0006). Forward-only
+// by nature — no API serves historical LP — so the graph grows from the day
+// tracking started. Vanilla SVG: 2px lines, 8px markers ringed in the surface
+// color, hairline solid gridlines, a crosshair + one tooltip listing every
+// series at the hovered time. Series colors are validated steps of the app's
+// teal and gold (CVD ΔE 11.9, both ≥3:1 on the panel surface) — don't swap in
+// the raw brand hexes, they fail the lightness/chroma checks.
+const RANK_SERIES = { 420: { color: '#0b9a8e', label: 'Solo/Duo' }, 440: { color: '#bd8a2e', label: 'Flex' } };
+const RANK_TIERS = ['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Emerald', 'Diamond'];
+const RANK_DIVS = ['IV', 'III', 'II', 'I'];
+
+// Inverse of the server's ladderValue: a y-axis position back into words.
+// Apex (≥2800) can't distinguish Master/GM/Challenger from the value alone, so
+// point labels use the tier recorded on the snapshot; this is for tick marks.
+function rankLabel(value) {
+  if (value >= 2800) return `Master+ ${value - 2800} LP`;
+  const t = Math.floor(value / 400);
+  return `${RANK_TIERS[t] || '?'} ${RANK_DIVS[Math.floor((value % 400) / 100)]}`;
+}
+
+function pointLabel(p) {
+  const tier = p.tier.charAt(0) + p.tier.slice(1).toLowerCase();
+  return p.division ? `${tier} ${p.division} · ${p.lp} LP` : `${tier} · ${p.lp} LP`;
+}
+
+async function loadRankChart() {
+  try {
+    const data = await api('/api/history/rank');
+    renderRankChart(data.queues || []);
+  } catch {
+    $('#history-rank').innerHTML = '';
+  }
+}
+
+function renderRankChart(queues) {
+  const card = $('#history-rank');
+  const series = queues.filter((q) => q.points?.length && RANK_SERIES[q.queueId]);
+  if (!series.length) {
+    card.innerHTML = `<div class="rank-head"><span class="lbl">Rank over time</span></div>
+      <p class="muted small">No rank recorded yet. Your LP graph starts building the first time the app sees the
+      League client — snapshots are taken automatically after each game.</p>`;
+    return;
+  }
+
+  const W = 640, H = 220, PAD = { t: 14, r: 16, b: 26, l: 66 };
+  const pts = series.flatMap((s) => s.points);
+  let tMin = Math.min(...pts.map((p) => p.at));
+  let tMax = Math.max(...pts.map((p) => p.at));
+  if (tMax - tMin < 36e5) { tMin -= 432e5; tMax += 432e5; } // <1h of data: pad ±12h so lone points sit mid-chart
+  let vMin = Math.min(...pts.map((p) => p.value));
+  let vMax = Math.max(...pts.map((p) => p.value));
+  vMin = Math.floor((vMin - 25) / 100) * 100; // snap to division boundaries
+  vMax = Math.ceil((vMax + 25) / 100) * 100;
+
+  const x = (t) => PAD.l + ((t - tMin) / (tMax - tMin)) * (W - PAD.l - PAD.r);
+  const y = (v) => H - PAD.b - ((v - vMin) / (vMax - vMin)) * (H - PAD.t - PAD.b);
+
+  // Gridlines on division boundaries, thinned to ≤5 labeled ticks.
+  const step = 100 * Math.max(1, Math.ceil((vMax - vMin) / 100 / 5));
+  let grid = '';
+  for (let v = vMin; v <= vMax; v += step) {
+    grid += `<line class="rk-grid" x1="${PAD.l}" y1="${y(v)}" x2="${W - PAD.r}" y2="${y(v)}"/>
+      <text class="rk-tick" x="${PAD.l - 8}" y="${y(v) + 3}" text-anchor="end">${esc(rankLabel(v))}</text>`;
+  }
+  const day = (t) => new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  grid += `<text class="rk-tick" x="${PAD.l}" y="${H - 8}">${esc(day(tMin))}</text>
+    <text class="rk-tick" x="${W - PAD.r}" y="${H - 8}" text-anchor="end">${esc(day(tMax))}</text>`;
+
+  const marks = series.map((s) => {
+    const c = RANK_SERIES[s.queueId].color;
+    const line = s.points.length > 1
+      ? `<polyline class="rk-line" stroke="${c}" points="${s.points.map((p) => `${x(p.at)},${y(p.value)}`).join(' ')}"/>`
+      : '';
+    const dots = s.points.map((p) =>
+      `<circle class="rk-dot" cx="${x(p.at)}" cy="${y(p.value)}" r="4" fill="${c}"/>`).join('');
+    return line + dots;
+  }).join('');
+
+  // Legend only when both queues are present — one series is named by the title.
+  const legend = series.length > 1
+    ? `<span class="rank-legend">${series.map((s) =>
+        `<span class="rk-key"><span class="rk-swatch" style="background:${RANK_SERIES[s.queueId].color}"></span>${esc(RANK_SERIES[s.queueId].label)}</span>`).join('')}</span>`
+    : '';
+  const latest = series.map((s) => {
+    const p = s.points[s.points.length - 1];
+    return `<span class="rk-now"><span class="rk-swatch" style="background:${RANK_SERIES[s.queueId].color}"></span><b>${esc(pointLabel(p))}</b></span>`;
+  }).join('');
+
+  card.innerHTML = `
+    <div class="rank-head">
+      <span class="lbl">Rank over time</span>${legend}<span class="spacer"></span>${latest}
+    </div>
+    <div class="rank-plot">
+      <svg viewBox="0 0 ${W} ${H}" tabindex="0" role="img" aria-label="LP and rank over time">
+        ${grid}
+        <line class="rk-cross hidden" y1="${PAD.t}" y2="${H - PAD.b}"/>
+        ${marks}
+      </svg>
+      <div class="rank-tip hidden"></div>
+    </div>
+    <details class="rank-table"><summary class="muted small">View as table</summary>
+      <table><thead><tr><th>When</th><th>Queue</th><th>Rank</th><th>W–L</th></tr></thead><tbody>${
+        series.flatMap((s) => s.points.map((p) => ({ s, p })))
+          .sort((a, b) => b.p.at - a.p.at)
+          .map(({ s, p }) => `<tr><td>${esc(new Date(p.at).toLocaleString())}</td><td>${esc(RANK_SERIES[s.queueId].label)}</td><td>${esc(pointLabel(p))}</td><td>${p.wins}–${p.losses}</td></tr>`).join('')
+      }</tbody></table>
+    </details>`;
+
+  attachRankHover(card, series, x, tMin, tMax);
+}
+
+// Crosshair + one tooltip for all series: the hairline snaps to the nearest
+// snapshot time, and the readout lists every queue's standing at that moment —
+// nobody has to land a pointer on a 2px line. Focus shows the newest point, so
+// the same details are reachable from the keyboard.
+function attachRankHover(card, series, x, tMin, tMax) {
+  const svg = card.querySelector('svg');
+  const cross = card.querySelector('.rk-cross');
+  const tip = card.querySelector('.rank-tip');
+  const times = [...new Set(series.flatMap((s) => s.points.map((p) => p.at)))].sort((a, b) => a - b);
+
+  const show = (t) => {
+    cross.setAttribute('x1', x(t)); cross.setAttribute('x2', x(t));
+    cross.classList.remove('hidden');
+    tip.replaceChildren(...series.map((s) => {
+      // Standing "as of" the crosshair time: the latest snapshot at or before it.
+      const p = [...s.points].reverse().find((q) => q.at <= t) || s.points[0];
+      const row = document.createElement('div');
+      row.className = 'rk-tip-row';
+      const key = document.createElement('span');
+      key.className = 'rk-swatch';
+      key.style.background = RANK_SERIES[s.queueId].color;
+      const val = document.createElement('b');
+      val.textContent = pointLabel(p); // LCU strings are untrusted — textContent, never innerHTML
+      const lbl = document.createElement('span');
+      lbl.className = 'muted';
+      lbl.textContent = ` ${RANK_SERIES[s.queueId].label}`;
+      row.append(key, val, lbl);
+      return row;
+    }));
+    const when = document.createElement('div');
+    when.className = 'rk-tip-when muted';
+    when.textContent = new Date(t).toLocaleString();
+    tip.append(when);
+    tip.classList.remove('hidden');
+    const box = svg.getBoundingClientRect();
+    const px = ((x(t)) / 640) * box.width;
+    tip.style.left = `${Math.min(Math.max(px, 70), box.width - 70)}px`;
+  };
+  const hide = () => { cross.classList.add('hidden'); tip.classList.add('hidden'); };
+
+  svg.addEventListener('pointermove', (ev) => {
+    const box = svg.getBoundingClientRect();
+    const t = tMin + ((ev.clientX - box.left) / box.width) * (tMax - tMin);
+    show(times.reduce((a, b) => (Math.abs(b - t) < Math.abs(a - t) ? b : a)));
+  });
+  svg.addEventListener('pointerleave', hide);
+  svg.addEventListener('focus', () => show(times[times.length - 1]));
+  svg.addEventListener('blur', hide);
 }
 
 // ---------- history detail ----------

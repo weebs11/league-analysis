@@ -1,0 +1,35 @@
+{
+  "queueMap": {
+    "RANKED_SOLO_5x5": {
+      "queueType": "RANKED_SOLO_5x5",
+      "tier": "GOLD",
+      "division": "IV",
+      "leaguePoints": 43,
+      "wins": 112,
+      "losses": 98,
+      "isProvisional": false,
+      "highestTier": "GOLD",
+      "highestDivision": "II"
+    },
+    "RANKED_FLEX_SR": {
+      "queueType": "RANKED_FLEX_SR",
+      "tier": "NONE",
+      "division": "NA",
+      "leaguePoints": 0,
+      "wins": 0,
+      "losses": 0,
+      "isProvisional": true,
+      "highestTier": "",
+      "highestDivision": "NA"
+    },
+    "RANKED_TFT": {
+      "queueType": "RANKED_TFT",
+      "tier": "SILVER",
+      "division": "I",
+      "leaguePoints": 75,
+      "wins": 30,
+      "losses": 28,
+      "isProvisional": false
+    }
+  }
+}
