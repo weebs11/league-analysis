@@ -36,6 +36,13 @@
   </header>
 
   <main id="main">
+    <nav class="mainnav">
+      <button class="navbtn active" data-section="live">Live</button>
+      <button class="navbtn" data-section="history">History</button>
+    </nav>
+
+    <!-- Live: the three phase views below auto-switch exactly as before. -->
+    <div id="section-live">
     <!-- ======== WAITING VIEW ======== -->
     <section id="view-waiting" class="view">
       <div class="waiting-grid">
@@ -149,6 +156,47 @@
           </div>
         </div>
       </div>
+    </section>
+    </div><!-- /#section-live -->
+
+    <!-- ======== HISTORY ======== -->
+    <section id="section-history" class="hidden">
+      <!-- Phase changes never navigate away from History; they surface here. -->
+      <div id="phase-notice" class="phase-notice hidden">
+        <span id="phase-notice-text"></span>
+        <button id="btn-goto-live" class="btn tiny">Go to live</button>
+        <button id="btn-dismiss-notice" class="icon-btn small" title="Dismiss">✕</button>
+      </div>
+
+      <div id="history-list-view">
+        <div id="history-summary" class="summary-strip card"></div>
+
+        <div class="history-toolbar">
+          <div class="field inline">
+            <label for="hist-role">Role</label>
+            <select id="hist-role">
+              <option value="">All roles</option>
+              <option>Top</option><option>Jungle</option><option>Mid</option>
+              <option>ADC</option><option>Support</option>
+            </select>
+          </div>
+          <div class="field inline">
+            <label for="hist-queue">Queue</label>
+            <select id="hist-queue">
+              <option value="">All ranked</option>
+              <option value="420">Solo/Duo</option>
+              <option value="440">Flex</option>
+            </select>
+          </div>
+          <div class="spacer"></div>
+          <button id="btn-hist-sync" class="btn secondary">↻ Sync now</button>
+        </div>
+
+        <div id="history-list" class="history-list"></div>
+        <div id="history-pager" class="pager"></div>
+      </div>
+
+      <div id="history-detail-view" class="hidden"></div>
     </section>
   </main>
 

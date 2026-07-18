@@ -9,6 +9,10 @@ import * as gamestate from './src/gamestate.js';
 import * as coach from './src/coach.js';
 import * as fallback from './src/fallback.js';
 import * as mock from './src/mock.js';
+import * as lcu from './src/lcu.js';
+import { router as historyRouter } from './src/history/routes.js';
+import * as historyStore from './src/history/store.js';
+import { ensureDirs, makeMatchId } from './src/history/paths.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -20,6 +24,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/img/champion/:kind/:id', async (req, res) => {
   try {
     const img = await ddragon.championImage(req.params.kind, req.params.id);
+    if (!img) return res.status(404).end();
+    res.set('Content-Type', img.type);
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(img.data);
+  } catch {
+    res.status(502).end();
+  }
+});
+
+app.get('/img/item/:id', async (req, res) => {
+  try {
+    const img = await ddragon.itemImage(req.params.id);
     if (!img) return res.status(404).end();
     res.set('Content-Type', img.type);
     res.set('Cache-Control', 'public, max-age=86400');
@@ -41,6 +57,38 @@ let lastGamePlan = null;
 
 function currentGamePlan() {
   return lastGamePlan?.patch === ddragon.getVersion() ? lastGamePlan.plan : null;
+}
+
+// Persists the generated plan against the match it was generated for, so the
+// history detail view can show what you were told next to how it went.
+//
+// The join key is only readable while the game is running — gameData.gameId off
+// the gameflow session — so this has to happen now or never. The match itself
+// arrives later via Forward Sync and joins on the same id.
+async function persistCoaching(plan, patch) {
+  try {
+    if (gamestate.snapshot().mode !== 'live') return; // demo never reaches the archive
+    const session = await lcu.gameflowSession();
+    const gameId = session?.gameData?.gameId;
+    if (!gameId) return;
+    // The gameflow session carries no platformId, so the canonical id needs the
+    // one Forward Sync recorded. Before the first sync there is nothing to join
+    // against anyway.
+    const { platformId } = await historyStore.readSyncState();
+    const matchId = makeMatchId(platformId, gameId);
+    if (!matchId) return;
+    await historyStore.writeCoaching(matchId, {
+      matchId,
+      generatedAt: Date.now(),
+      model: getConfig().model,
+      patch,
+      basicMode: Boolean(plan.basicMode),
+      plan,
+    });
+  } catch {
+    // Coaching capture is best-effort — never fail a generation because the
+    // archive write did not work out.
+  }
 }
 
 app.get('/api/state', (_req, res) => {
@@ -105,6 +153,7 @@ app.post('/api/coach/gameplan', async (req, res) => {
     }
     planCache.set(key, plan);
     lastGamePlan = { plan, patch };
+    persistCoaching(plan, patch); // fire-and-forget; never blocks the response
     res.json({ plan, cached: false });
   } catch (err) {
     console.error('gameplan generation failed:', err);
@@ -154,6 +203,10 @@ app.post('/api/coach/chat', async (req, res) => {
   }
 });
 
+// ---- Match history --------------------------------------------------------------
+
+app.use('/api/history', historyRouter);
+
 // ---- Demo mode ----------------------------------------------------------------
 
 app.get('/api/demo/scenarios', (_req, res) => res.json(mock.scenarioList()));
@@ -197,6 +250,8 @@ app.post('/api/settings', (req, res) => {
 // ---- Boot -----------------------------------------------------------------------
 
 const port = Number(process.env.PORT || getConfig().port || 3000);
+
+ensureDirs();
 
 console.log('Loading champion data from Data Dragon...');
 await ddragon.init();

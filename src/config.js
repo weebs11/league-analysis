@@ -52,3 +52,9 @@ export function updateConfig(patch) {
 }
 
 export const projectRoot = ROOT;
+
+// Everything the app writes lives under this directory: the Data Dragon cache
+// and the permanent match archive. LOL_COACH_DATA_DIR lets tests point at a
+// throwaway location — the archive holds matches that exist nowhere else, so a
+// test suite must never be able to reach the real one.
+export const dataRoot = process.env.LOL_COACH_DATA_DIR || path.join(ROOT, 'data');

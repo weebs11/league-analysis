@@ -1,0 +1,24 @@
+{
+  "accountId": 100000000,
+  "displayName": "",
+  "gameName": "Player1",
+  "internalName": "",
+  "nameChangeFlag": false,
+  "percentCompleteForNextLevel": 87,
+  "privacy": "PUBLIC",
+  "profileIconId": 4793,
+  "puuid": "00000000-0000-4000-8000-000000000000",
+  "rerollPoints": {
+    "currentPoints": 500,
+    "maxRolls": 2,
+    "numberOfRolls": 2,
+    "pointsCostToRoll": 250,
+    "pointsToReroll": 0
+  },
+  "summonerId": 100000002,
+  "summonerLevel": 274,
+  "tagLine": "TEST",
+  "unnamed": false,
+  "xpSinceLastLevel": 3179,
+  "xpUntilNextLevel": 3648
+}
