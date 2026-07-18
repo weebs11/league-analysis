@@ -34,7 +34,14 @@ app.get('/img/champion/:kind/:id', async (req, res) => {
 // Cached generations, keyed by a fingerprint of the situation, so we don't
 // re-bill for the same game every time the page reloads.
 const planCache = new Map();
-let lastGamePlan = null; // handed to the chat endpoint as context
+// Handed to the chat endpoint as context. Tagged with the patch it was
+// generated on so a plan from before an hourly patch refresh never grounds
+// post-refresh chat answers: { plan, patch }.
+let lastGamePlan = null;
+
+function currentGamePlan() {
+  return lastGamePlan?.patch === ddragon.getVersion() ? lastGamePlan.plan : null;
+}
 
 app.get('/api/state', (_req, res) => {
   res.json({ ...gamestate.snapshot(), aiAvailable: coach.aiAvailable() });
@@ -81,8 +88,9 @@ app.post('/api/coach/gameplan', async (req, res) => {
   const force = Boolean(req.body?.force);
   const key = planKey('game', game);
   if (!force && planCache.has(key)) {
-    lastGamePlan = planCache.get(key);
-    return res.json({ plan: lastGamePlan, cached: true });
+    const plan = planCache.get(key);
+    lastGamePlan = { plan, patch: ddragon.getVersion() };
+    return res.json({ plan, cached: true });
   }
   try {
     let plan;
@@ -93,7 +101,7 @@ app.post('/api/coach/gameplan', async (req, res) => {
       plan = await fallback.generateBasicGamePlan(game);
     }
     planCache.set(key, plan);
-    lastGamePlan = plan;
+    lastGamePlan = { plan, patch: ddragon.getVersion() };
     res.json({ plan, cached: false });
   } catch (err) {
     console.error('gameplan generation failed:', err);
@@ -135,7 +143,7 @@ app.post('/api/coach/chat', async (req, res) => {
     return res.status(409).json({ error: 'The coach chat needs an Anthropic API key — add one in Settings.' });
   }
   try {
-    const reply = await coach.chat(history, gamestate.snapshot().game, lastGamePlan);
+    const reply = await coach.chat(history, gamestate.snapshot().game, currentGamePlan());
     res.json({ reply });
   } catch (err) {
     console.error('chat failed:', err);
