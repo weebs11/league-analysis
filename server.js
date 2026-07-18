@@ -68,9 +68,8 @@ app.get('/api/events', (req, res) => {
 
 // ---- Coaching endpoints ------------------------------------------------------
 
-function planKey(kind, snapshot) {
+function planKey(kind, snapshot, patch) {
   // Keyed by patch too, so cached advice doesn't outlive a mid-session patch refresh.
-  const patch = ddragon.getVersion();
   if (kind === 'game') {
     const g = snapshot;
     return `${patch}:game:${g.me?.champion?.id}:${g.enemies.map((e) => e.champion?.id).join(',')}`;
@@ -86,10 +85,14 @@ app.post('/api/coach/gameplan', async (req, res) => {
     return res.status(409).json({ error: 'No active game (or your champion could not be identified).' });
   }
   const force = Boolean(req.body?.force);
-  const key = planKey('game', game);
+  // Capture the patch once, before the (long) generation await — if a patch
+  // refresh lands mid-generation, the plan is tagged with the patch whose
+  // data actually produced it, so currentGamePlan() correctly drops it.
+  const patch = ddragon.getVersion();
+  const key = planKey('game', game, patch);
   if (!force && planCache.has(key)) {
     const plan = planCache.get(key);
-    lastGamePlan = { plan, patch: ddragon.getVersion() };
+    lastGamePlan = { plan, patch };
     return res.json({ plan, cached: true });
   }
   try {
@@ -101,7 +104,7 @@ app.post('/api/coach/gameplan', async (req, res) => {
       plan = await fallback.generateBasicGamePlan(game);
     }
     planCache.set(key, plan);
-    lastGamePlan = { plan, patch: ddragon.getVersion() };
+    lastGamePlan = { plan, patch };
     res.json({ plan, cached: false });
   } catch (err) {
     console.error('gameplan generation failed:', err);
@@ -116,7 +119,7 @@ app.post('/api/coach/champselect', async (req, res) => {
     return res.status(409).json({ error: 'Not in champion select (or no champion hovered yet).' });
   }
   const force = Boolean(req.body?.force);
-  const key = planKey('cs', cs);
+  const key = planKey('cs', cs, ddragon.getVersion());
   if (!force && planCache.has(key)) {
     return res.json({ advice: planCache.get(key), cached: true });
   }

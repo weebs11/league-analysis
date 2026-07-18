@@ -140,8 +140,9 @@ async function checkForNewPatch() {
     if (versions[0] && versions[0] !== version) {
       console.log(`New League patch detected: ${version} -> ${versions[0]}. Reloading Data Dragon...`);
       // init() commits state only on full success, so a failed refresh leaves
-      // the old (consistent) patch data in place. Clear the per-champion
-      // details cache only after the swap actually happened.
+      // the old (consistent) patch data in place. Details are cached under
+      // patch-scoped keys, so the clear here is only reclaiming memory —
+      // even an in-flight old-patch fetch can't leak into the new patch.
       await init();
       championDetails.clear();
       console.log(`Data Dragon refreshed (patch ${version}).`);
@@ -189,13 +190,17 @@ function stripHtml(s) {
     .trim();
 }
 
-// Full per-champion data: abilities, tips, stats. Cached per champion.
+// Full per-champion data: abilities, tips, stats. Cached per champion + patch —
+// keying by patch (pinned before the fetch) means a fetch that started on the
+// old patch can't finish after a refresh and pollute the new patch's cache.
 export async function champDetails(ddragonId) {
   if (!ddragonId || !championIndex?.byId[ddragonId]) return null;
-  if (championDetails.has(ddragonId)) return championDetails.get(ddragonId);
+  const v = version;
+  const cacheKey = `${v}:${ddragonId}`;
+  if (championDetails.has(cacheKey)) return championDetails.get(cacheKey);
   const raw = await cachedFetch(
-    `champ-${ddragonId}-${version}.json`,
-    `${BASE}/cdn/${version}/data/en_US/champion/${ddragonId}.json`
+    `champ-${ddragonId}-${v}.json`,
+    `${BASE}/cdn/${v}/data/en_US/champion/${ddragonId}.json`
   );
   const c = raw.data[ddragonId];
   const keys = ['Q', 'W', 'E', 'R'];
@@ -216,7 +221,7 @@ export async function champDetails(ddragonId) {
     allytips: c.allytips || [],
     enemytips: c.enemytips || [],
   };
-  championDetails.set(ddragonId, detail);
+  championDetails.set(cacheKey, detail);
   return detail;
 }
 
