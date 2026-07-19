@@ -1,0 +1,92 @@
+{
+  "id": "TwistedFate",
+  "name": "Twisted Fate",
+  "playstyleSummary": "Twisted Fate is a card-throwing mage-marksman whose biggest strength is being able to teleport to almost anywhere on the map with his ultimate. Playing him feels like being a roaming threat: you poke with Wild Cards, line up a card ahead of time with Pick a Card, and once you hit level 6, you can appear in any lane to help secure a kill or defend an objective. He's less about dueling and more about map presence and picking off overextended enemies.",
+  "strengths": [
+    "Destiny reveals the whole enemy team and lets him teleport almost anywhere on the map",
+    "Strong poke and wave clear with Wild Cards",
+    "Gold card from Pick a Card gives a reliable stun for picks",
+    "Flexible build that lets him adapt to different team compositions"
+  ],
+  "weaknesses": [
+    "Wild Cards is a skillshot that can miss if not lined up well",
+    "Needs to pre-select the right card before a fight for full value",
+    "Mediocre 1v1 potential without his cards ready",
+    "Squishy and reliant on picks rather than sustained damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Loaded Dice",
+      "howToUseIt": "Killing units gives you bonus gold at random. There's nothing to actively manage — it's simply extra gold from farming and takedowns."
+    },
+    {
+      "key": "Q",
+      "name": "Wild Cards",
+      "howToUseIt": "Throws three cards in a line for poke and wave clear. Line it up to catch multiple enemies or minions at once for extra value."
+    },
+    {
+      "key": "W",
+      "name": "Pick a Card",
+      "howToUseIt": "Choose one of three cards ahead of time to empower your next attack: the gold card stuns, the red card deals bonus damage and reveals, and the blue card restores mana. Pick the gold card before engaging to set up a stun."
+    },
+    {
+      "key": "E",
+      "name": "Stacked Deck",
+      "howToUseIt": "Every 4th attack deals bonus damage and speeds up your attacks. Weave in autos whenever it's safe to keep this rolling and maximize your damage."
+    },
+    {
+      "key": "R",
+      "name": "Destiny",
+      "howToUseIt": "Reveals every enemy champion on the map and lets you teleport to any location for a few seconds. Use it to pick off a low-health enemy across the map, set up a gank, or teleport in for a teamfight."
+    }
+  ],
+  "earlyGamePlan": "Poke the enemy laner with Wild Cards while farming with autos to build up Stacked Deck. Keep a card pre-selected with Pick a Card in case a fight breaks out, and once you hit level 6, look for chances to use Destiny to help another lane or punish an overextended enemy.",
+  "quickTips": [
+    "Pre-select the gold card with Pick a Card before you plan to engage, so the stun is ready",
+    "Use Wild Cards to poke and clear the wave at the same time when you can line it up",
+    "Save Destiny to snipe kills across the map or to teleport into a fight your team is starting",
+    "Weave in autos to keep Stacked Deck's bonus damage active",
+    "Roam with Destiny once you have priority in your own lane",
+    "Watch the enemy's health bars across the map since Destiny reveals everyone briefly"
+  ],
+  "whatToExpect": "Enemy Twisted Fate can teleport to any lane in seconds with Destiny, which also reveals your whole team, so play a little safer and watch the minimap once he hits level 6. His gold card stun is dangerous when he engages, so back off if you see him line up Pick a Card before approaching.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chip damage dealt from a safe range to whittle enemies down before a bigger fight."
+    },
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help fight or gank in another part of the map."
+    },
+    {
+      "term": "wave clear",
+      "definition": "The ability to quickly kill a wave of minions."
+    },
+    {
+      "term": "pick",
+      "definition": "Isolating and killing a single enemy champion, usually away from their team."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss if the target moves out of its path."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "gank",
+      "definition": "Ambushing an enemy in a lane with extra teammates, usually from a jungle or side path."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "overextended",
+      "definition": "Pushed or positioned too far from safety, such as too far from teammates or turret protection."
+    }
+  ]
+}

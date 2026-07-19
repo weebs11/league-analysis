@@ -1,0 +1,67 @@
+{
+  "id": "KSante",
+  "name": "K'Sante",
+  "playstyleSummary": "K'Sante is a tanky fighter who marks enemies with his abilities for bonus damage on his next attack, then can flip the switch with his ultimate into a more aggressive, higher-damage form at the cost of his defenses. Most of the game he plays like a sturdy front-liner setting up damage for himself, but his ultimate turns a fight into an all-or-nothing gamble. He rewards players who like a kit that changes shape mid-fight.",
+  "strengths": [
+    "Ntofo Strikes builds toward a shockwave that pulls enemies in, great for punishing overextended targets.",
+    "Path Maker reduces incoming damage while charging and can knock back and stun enemies.",
+    "Footwork gives mobility and a shield to himself or an ally.",
+    "All Out transforms him into a much higher-damage, higher-healing form for finishing fights."
+  ],
+  "weaknesses": [
+    "All Out lowers his defenses in exchange for offense, making him more vulnerable while transformed.",
+    "Needs to land an ability before attacking to get the bonus damage from Dauntless Instinct.",
+    "Ntofo Strikes needs two stacks before its shockwave pull is available.",
+    "Complex kit with abilities that behave differently once All Out is active, making him hard to master."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Dauntless Instinct",
+      "howToUseIt": "Your abilities mark enemies, and your next Attack against a marked target deals bonus damage — try to land an ability before attacking for extra damage. Once you go All Out from your ultimate, this bonus increases further on both Attacks and Abilities."
+    },
+    {
+      "key": "Q",
+      "name": "Ntofo Strikes",
+      "howToUseIt": "Hit an enemy to slow them and gain a stack; at two stacks, your next cast fires a shockwave that pulls enemies in — use it to set up fights or punish enemies who get close. While All Out, its cooldown is shorter."
+    },
+    {
+      "key": "W",
+      "name": "Path Maker",
+      "howToUseIt": "Charge it up to reduce incoming damage, then release to dash forward, knocking back and stunning enemies in your path — great for engaging or protecting yourself while charging. While All Out, it deals more damage but no longer knocks back or stuns, so use it differently in that state."
+    },
+    {
+      "key": "E",
+      "name": "Footwork",
+      "howToUseIt": "Dash for a shield on your own, or target an ally for increased range with both of you gaining a shield — use it to close distance, escape, or protect a teammate. While All Out, its cooldown is shorter and it grants extra speed."
+    },
+    {
+      "key": "R",
+      "name": "All Out",
+      "howToUseIt": "Knock an enemy back through any wall behind them, then transform into a more aggressive form and dash after them — you'll deal more damage and heal more, but your defenses drop, so commit carefully."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Ntofo Strikes to poke and build stacks, saving the two-stack shockwave to punish enemies who walk up carelessly. Play a normal tanky role early, using Path Maker and Footwork for engage and protection, and save All Out for when you can commit to a fight, since it lowers your defenses in exchange for damage.",
+  "quickTips": [
+    "Land an ability before attacking whenever possible — Dauntless Instinct rewards you with bonus damage on marked targets.",
+    "Build two stacks of Ntofo Strikes to unlock its shockwave pull, which is great for punishing overextended enemies.",
+    "Use Path Maker's charge time to shield yourself from incoming damage before committing to the dash.",
+    "Remember All Out trades your defenses for offense — don't activate it if you're not ready to fully commit to the fight.",
+    "Use Footwork on an ally to protect them with a shield while repositioning together."
+  ],
+  "whatToExpect": "An enemy K'Sante marks you with his abilities before attacking for bonus damage, so expect extra damage right after he lands a spell. Watch for two stacks of Ntofo Strikes, since the next hit pulls you toward him. His ultimate, All Out, knocks you back through terrain and then transforms him into a more aggressive, higher-damage form with lower defenses — since his defenses drop while All Out, focusing him down during that window can be effective.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing damage from a safe distance to slowly wear an enemy down."
+    },
+    {
+      "term": "stack",
+      "definition": "Building up multiple instances of an effect — here, charges of Ntofo Strikes."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing first, often with crowd control or a dash."
+    }
+  ]
+}

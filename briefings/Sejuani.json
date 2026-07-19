@@ -1,0 +1,80 @@
+{
+  "id": "Sejuani",
+  "name": "Sejuani",
+  "playstyleSummary": "Sejuani is a tanky jungler who leads fights with crowd control rather than damage. She builds up Frost stacks on enemies with her attacks and Winter's Wrath, then freezes and stuns anyone who reaches maximum stacks, chaining that into her bola ultimate for a huge team fight stun. She feels like the initiator who dives in first so her more fragile teammates can follow up safely.",
+  "strengths": [
+    "Excellent crowd control that can lock down multiple enemies at once",
+    "Frost Armor makes her hard to slow and gives extra defenses out of combat",
+    "Glacial Prison is a powerful teamfight-starting stun with a slowing ice storm",
+    "Very tanky, able to dive in and survive focus fire"
+  ],
+  "weaknesses": [
+    "Relatively low damage compared to other junglers",
+    "Needs to land her crowd control to be effective, which can be dodged",
+    "Frost Armor drops if she's kept in combat, removing her tenacity to slows",
+    "Relies on teammates to follow up her engages for the fight to actually pay off"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Fury of the North",
+      "howToUseIt": "Stay out of combat when you can to build Frost Armor for extra defenses and immunity to slows, and look for a stunned enemy to attack directly for a burst of bonus magic damage."
+    },
+    {
+      "key": "Q",
+      "name": "Arctic Assault",
+      "howToUseIt": "Charge forward to engage a fight, interrupt a channeled enemy spell, or chase down a fleeing enemy — remember it stops the moment you hit an enemy champion."
+    },
+    {
+      "key": "W",
+      "name": "Winter's Wrath",
+      "howToUseIt": "Swing this in fights to slow enemies and build Frost stacks on them, but watch out that the second swing deals most of the damage, so it's most dangerous to enemies who stay in range."
+    },
+    {
+      "key": "E",
+      "name": "Permafrost",
+      "howToUseIt": "Use this to stun an enemy champion once you've built up their Frost stacks to maximum with your attacks or Winter's Wrath — melee allies can help stack Frost too."
+    },
+    {
+      "key": "R",
+      "name": "Glacial Prison",
+      "howToUseIt": "Throw this to freeze and stun the first enemy champion hit while slowing everyone else nearby with an ice storm — save it for a grouped fight where your team can follow up on the stun."
+    }
+  ],
+  "earlyGamePlan": "Focus on clearing jungle camps efficiently and looking for early ganks using Arctic Assault to engage and Winter's Wrath to build Frost stacks toward a stun. Coordinate with your laners so they're ready to follow up the moment you land a crowd control chain.",
+  "quickTips": [
+    "Stay out of combat between fights to build Frost Armor for the slow immunity",
+    "Watch for melee allies who can help stack Frost on a target for your stun",
+    "Save Glacial Prison for grouped fights where your team can follow up immediately",
+    "Use Arctic Assault to interrupt a dangerous channeled enemy ability",
+    "Attack a stunned enemy directly to shatter Frost Armor's bonus magic damage",
+    "Don't engage alone without teammates nearby to capitalize on your crowd control"
+  ],
+  "whatToExpect": "Enemy Sejuani will try to charge in with Arctic Assault and chain crowd control into a Glacial Prison stun to start a fight for her team, so try to dodge her initial engage and don't clump up where the ice storm and follow-up bola can catch everyone. She has strong tenacity to slows while Frost Armor is up, but that defense drops once she's been in a fight for a while.",
+  "glossary": [
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that take away an enemy's ability to move or act."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing crowd control or damage on the enemy team first."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill."
+    },
+    {
+      "term": "follow up",
+      "definition": "Adding your own damage or crowd control right after a teammate starts a fight."
+    },
+    {
+      "term": "tenacity",
+      "definition": "Resistance that reduces how long crowd control effects last on you."
+    },
+    {
+      "term": "channeled",
+      "definition": "An ability that takes time to complete and can be interrupted by crowd control."
+    }
+  ]
+}

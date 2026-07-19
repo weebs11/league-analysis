@@ -1,0 +1,76 @@
+{
+  "id": "Bard",
+  "name": "Bard",
+  "playstyleSummary": "Bard is a wandering support who splits his attention between his lane partner and the whole map — collecting roaming Chimes, healing allies with shrines, and opening one-way portals through walls. He feels chaotic and exploratory at first, since half his kit is about map movement rather than direct fighting, but that unpredictability is exactly what makes him strong.",
+  "strengths": [
+    "Unique mobility lets him roam the map and surprise enemies from unexpected angles",
+    "Strong crowd control with a stun that can catch two enemies at once",
+    "Ultimate can single-handedly stop a fight or save an ally from death",
+    "Passive rewards proactive map awareness with permanent power gains"
+  ],
+  "weaknesses": [
+    "High difficulty — good Bard play requires constant map awareness",
+    "Chasing Chimes can pull you out of lane at bad times",
+    "His stun requires hitting a wall or a second target, so it's not always reliable",
+    "Weak base stats if you fail to collect Chimes and meeps"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Traveler's Call",
+      "howToUseIt": "Collect Chimes that spawn around the map to permanently power up your meeps' attacks and to restore mana and speed you up outside combat. Take short trips to grab nearby Chimes between lane trades rather than ignoring them, since they add up over the game."
+    },
+    {
+      "key": "Q",
+      "name": "Cosmic Binding",
+      "howToUseIt": "Fire a slowing missile that stuns the target if it hits a wall, or stuns both targets if it hits a second enemy. Aim it to bounce a wall or line up two enemies whenever you can for a much stronger stun."
+    },
+    {
+      "key": "W",
+      "name": "Caretaker's Shrine",
+      "howToUseIt": "Drop a healing shrine and let it charge up before an ally uses it, since a fully charged shrine heals and speeds up far more. Place it where your ally can reach it during a trade or before a fight."
+    },
+    {
+      "key": "E",
+      "name": "Magical Journey",
+      "howToUseIt": "Open a one-way portal through nearby terrain that both allies and enemies can use. Use it to bring your lane partner in for a surprise play, or to give yourself and allies an escape route enemies might also exploit."
+    },
+    {
+      "key": "R",
+      "name": "Tempered Fate",
+      "howToUseIt": "Freeze everything in a target area — champions, minions, monsters, and turrets — in stasis for a brief time. Use it to stop an enemy engage, save a dying ally by freezing their attacker, or lock down an objective fight, but remember it can hit your own allies too."
+    }
+  ],
+  "earlyGamePlan": "Focus on landing Cosmic Binding for trades and collecting nearby Chimes when it's safe, rather than chasing every one across the map. Use Magical Journey to bring your lane partner into good positions, and consider short roams once your lane is stable to help other lanes with your mobility.",
+  "quickTips": [
+    "Prioritize collecting Chimes to power up your meeps, but don't abandon your lane partner to do it",
+    "Aim Cosmic Binding at a wall or a second enemy for a much stronger stun",
+    "Let Caretaker's Shrine fully charge before using it — the heal is much bigger",
+    "Remember enemies can walk through your Magical Journey doorways too, so use them with awareness",
+    "Tempered Fate affects allies and enemies alike, so time it carefully in group fights",
+    "Use your mobility to scout and contest objectives across the map, not just to fight in one lane"
+  ],
+  "whatToExpect": "An enemy Bard can appear almost anywhere on the map thanks to his roaming and portals, so don't assume your lane is safe just because you don't see him. If you get hit by Cosmic Binding, try to move away from allies or walls to avoid a double stun, and be ready to fight or flee if you see Tempered Fate being cast — it can freeze you in place at the worst moment.",
+  "glossary": [
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help fights or take objectives elsewhere on the map."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance or using crowd control on the enemy first."
+    },
+    {
+      "term": "objective",
+      "definition": "A map goal like a turret, dragon, or Baron that gives a team a strategic advantage when taken."
+    }
+  ]
+}

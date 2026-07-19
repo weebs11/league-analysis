@@ -1,0 +1,80 @@
+{
+  "id": "Mel",
+  "name": "Mel",
+  "playstyleSummary": "Mel is a ranged mage who builds up bonus attack projectiles every time she casts a spell, stacking a mark called Overwhelm on enemies that can execute them outright once it gets high enough. She also has a defensive barrier that reflects enemy projectiles, making her surprisingly safe against other ranged threats.",
+  "strengths": [
+    "Rebuttal can reflect dangerous enemy spells and projectiles back at them",
+    "Her passive builds toward an execute, letting her pick off enemies other mages couldn't finish",
+    "Golden Eclipse can hit every marked enemy on the map regardless of positioning",
+    "Solar Snare offers a root plus zone control from a single cast"
+  ],
+  "weaknesses": [
+    "Needs to land abilities consistently to keep bonus projectiles and Overwhelm stacks flowing",
+    "Rebuttal only protects her briefly and has a cooldown, so it can't be used constantly",
+    "Overwhelm stacks decay if she stops landing hits, weakening her execute threat",
+    "Relatively fragile if caught without Rebuttal available"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Searing Brilliance",
+      "howToUseIt": "Cast a spell before attacking to gain bonus projectiles on your next attack, and keep landing damage on the same target to stack Overwhelm toward an execute."
+    },
+    {
+      "key": "Q",
+      "name": "Radiant Volley",
+      "howToUseIt": "Aim this at a location enemies are standing in, since it deals repeated damage to anyone caught inside the area."
+    },
+    {
+      "key": "W",
+      "name": "Rebuttal",
+      "howToUseIt": "Activate this when you expect incoming damage or a big enemy spell - it reflects projectiles back at them and makes you immune to damage while it's up."
+    },
+    {
+      "key": "E",
+      "name": "Solar Snare",
+      "howToUseIt": "Try to land the center of this orb directly on an enemy to root them, since the surrounding area only slows and deals damage over time."
+    },
+    {
+      "key": "R",
+      "name": "Golden Eclipse",
+      "howToUseIt": "Save this for when enemies already have Overwhelm stacked on them from your other spells, since it hits every marked enemy no matter where they are and deals more damage per stack."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Radiant Volley and Solar Snare to build Overwhelm stacks on the enemy, and hold Rebuttal in reserve to reflect their strongest spell back at them. Watch your own Overwhelm stacks too - if you're taking a lot of damage and stacks are piling up, back off before you become an execute target yourself.",
+  "quickTips": [
+    "Cast a spell before attacking whenever possible to gain bonus projectiles from your passive",
+    "Time Rebuttal to block or reflect an incoming key spell rather than using it early",
+    "Aim Solar Snare's center directly on your target for the root, not just the slow zone",
+    "Save Golden Eclipse for after you've already stacked Overwhelm on your targets",
+    "Track your own Overwhelm stacks in fights and disengage before they can execute you",
+    "Use Radiant Volley on grouped enemies since its damage repeats over the area"
+  ],
+  "whatToExpect": "Mel will poke you with her abilities to stack Overwhelm, and if it gets high enough her next hit can execute you outright, so back off and let the stacks fall off if your health gets low. She can also reflect your projectiles and spells with Rebuttal, so wait until it's down before throwing your strongest abilities her way.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "execute",
+      "definition": "A damage effect that deals bonus or guaranteed damage to low-health enemies, often finishing them off."
+    },
+    {
+      "term": "zone control",
+      "definition": "Using abilities to control or deny an area of the map to the enemy."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight and retreating to safety."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that locks a champion in place, preventing them from moving but not from acting."
+    },
+    {
+      "term": "damage over time (DoT)",
+      "definition": "Damage that is dealt gradually over several seconds rather than all at once."
+    }
+  ]
+}

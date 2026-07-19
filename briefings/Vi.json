@@ -1,0 +1,80 @@
+{
+  "id": "Vi",
+  "name": "Vi",
+  "playstyleSummary": "Vi is a hard-hitting jungler or fighter who dives straight at a chosen target and locks them down with her ultimate. She feels very direct: charge up a punch, blast through minions, and run down whoever you're chasing. Her kit is simple to read but demands good target selection, since her ultimate commits you fully to one enemy.",
+  "strengths": [
+    "Cease and Desist is a reliable, hard-to-avoid engage on a single target",
+    "Vault Breaker rewards charging for burst damage and gap-closing",
+    "Denting Blows shreds armor, helping her deal with tanky enemies",
+    "Blast Shield gives her free sustain in fights and jungle clears"
+  ],
+  "weaknesses": [
+    "Very commit-heavy; a missed or bad ultimate can lose the fight",
+    "Vulnerable to being peeled off her intended target",
+    "Falls off somewhat in the late game compared to scaling carries",
+    "Needs to land Vault Breaker to trigger a lot of her follow-up damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Blast Shield",
+      "howToUseIt": "This shield charges over time and activates when you hit an enemy with an ability. Use an ability before diving into a jungle camp or trade to have the shield ready to absorb damage."
+    },
+    {
+      "key": "Q",
+      "name": "Vault Breaker",
+      "howToUseIt": "Hold this to charge up before releasing for double damage and a longer dash. Use a full charge to catch fleeing enemies or start a fight, and a quick tap for a faster, weaker gap-closer."
+    },
+    {
+      "key": "W",
+      "name": "Denting Blows",
+      "howToUseIt": "This passively breaks armor and grants attack speed when you land your punches on the same target. Focus your attacks on one enemy in a fight to stack this up and shred their defenses."
+    },
+    {
+      "key": "E",
+      "name": "Relentless Force",
+      "howToUseIt": "This attack blasts through your target and deals full damage to enemies behind them. Use it against enemies hiding behind minions in lane, or to hit multiple enemies lined up in a fight."
+    },
+    {
+      "key": "R",
+      "name": "Cease and Desist",
+      "howToUseIt": "Commit this to the enemy carry or key target, since you'll run them down, knock them into the air, and slam them back to the ground. Make sure your target can't easily escape, since you can't stop the ability once it starts."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, clear efficiently using Vault Breaker to hit multiple camps at once, then look to gank a lane once you have levels for Cease and Desist. Use a charged Vault Breaker to catch enemies off guard, and pick ganks on lanes where the enemy has already used their escape tools or is overextended.",
+  "quickTips": [
+    "Charge Vault Breaker fully when you have time, tap it quickly when you need to react fast",
+    "Focus one enemy with attacks in a fight to build up Denting Blows' armor shred",
+    "Use an ability before diving in so Blast Shield is ready to absorb damage",
+    "Only commit Cease and Desist when your target can't easily escape or be peeled for",
+    "Use Relentless Force to poke through minions and hit hidden enemies in lane",
+    "Don't overextend alone after using your ultimate, since you can't cancel it"
+  ],
+  "whatToExpect": "An enemy Vi will try to charge a Vault Breaker at you or save her ultimate to run you down and isolate you from your team, so avoid standing still in the open where she can commit to you. If she ults you, look to your team for peel, and try to burn a defensive tool to survive the knockup and slam, since she cannot stop the ability once she's locked onto you.",
+  "glossary": [
+    {
+      "term": "jungler",
+      "definition": "The player who clears neutral monster camps in the jungle instead of laning, and ganks lanes to help teammates."
+    },
+    {
+      "term": "gank",
+      "definition": "When a player, often the jungler, ambushes an enemy lane to help their ally get a kill or force enemies away."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with crowd control or a dive."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities or positioning to protect a teammate from an enemy diving onto them."
+    },
+    {
+      "term": "carry",
+      "definition": "A champion, usually a marksman or mage, whose damage output is expected to win fights in the late game."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, away from safety or teammates, leaving yourself open to a gank or dive."
+    }
+  ]
+}

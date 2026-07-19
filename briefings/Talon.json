@@ -1,0 +1,80 @@
+{
+  "id": "Talon",
+  "name": "Talon",
+  "playstyleSummary": "Talon is an assassin who thrives on hopping over walls to appear where enemies don't expect him, land a burst combo, and vanish again. Playing him feels fast and aggressive: you farm efficiently, then look for windows to roam through terrain and pick off isolated enemies before they can react. He falls off if he can't keep getting kills, so early aggression matters a lot.",
+  "strengths": [
+    "Excellent roaming and dive potential thanks to Assassin's Path",
+    "High burst damage in short trades",
+    "Snowballs quickly with early kills",
+    "Strong 1v1 potential against most other roamers"
+  ],
+  "weaknesses": [
+    "Falls off in the late game if he doesn't get ahead early",
+    "Very squishy and easy to burst down himself",
+    "Assassin's Path puts the used terrain on a long cooldown, limiting repeated escapes",
+    "Vulnerable when Shadow Assault is on cooldown"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Blade's End",
+      "howToUseIt": "Your spells apply Wound stacks to champions and large monsters; at 3 stacks, your next attack causes heavy bleed damage over time. Land your abilities on a target before auto-attacking it for maximum damage."
+    },
+    {
+      "key": "Q",
+      "name": "Noxian Diplomacy",
+      "howToUseIt": "In melee range this is a guaranteed crit; from farther away it acts as a gap-closer, leaping you in first. Killing with it refunds health and cooldown, so look for finishing blows to keep your pressure going."
+    },
+    {
+      "key": "W",
+      "name": "Rake",
+      "howToUseIt": "Throws daggers out and pulls them back, dealing damage both ways and slowing on the return — throw it before engaging to soften and slow your target."
+    },
+    {
+      "key": "E",
+      "name": "Assassin's Path",
+      "howToUseIt": "Vaults you over walls or structures to roam or escape. It has a short cooldown itself, but puts that specific terrain on a long cooldown, so plan your route instead of relying on the same wall twice."
+    },
+    {
+      "key": "R",
+      "name": "Shadow Assault",
+      "howToUseIt": "Sends out a ring of blades and turns you invisible with bonus speed; when you reappear, the blades converge back on your location. Use it to engage unseen or to escape a fight that's going badly."
+    }
+  ],
+  "earlyGamePlan": "Farm carefully in lane and look for short trades using Rake and Noxian Diplomacy when the enemy misplays. Once you have a few levels and some gold, use Assassin's Path to vault through walls and roam to other lanes for kills, since Talon's roaming is one of his biggest strengths.",
+  "quickTips": [
+    "Pick your target before a fight starts — splitting damage between multiple enemies wastes your burst",
+    "Use Assassin's Path to set up behind an enemy before going for a melee Noxian Diplomacy",
+    "Save Shadow Assault as an escape tool if a fight turns against you, not just for offense",
+    "Look for roaming opportunities once you have priority in your own lane",
+    "Remember the terrain you vault stays on cooldown, so don't rely on it twice in a row",
+    "Trade with Rake before committing your gap-closer, since it deals damage on the way out and back"
+  ],
+  "whatToExpect": "Enemy Talon roams constantly through walls to gank other lanes, so track his position and warn or ward side lanes when he disappears from his own. He deals heavy burst physical damage and is most dangerous with Shadow Assault available; punish him when it's on cooldown, since he has few ways left to escape.",
+  "glossary": [
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help fight or gank in another part of the map."
+    },
+    {
+      "term": "gank",
+      "definition": "Ambushing an enemy in a lane with extra teammates, usually from a jungle or side path."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill outright."
+    },
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into a bigger and bigger lead over the course of the game."
+    },
+    {
+      "term": "gap-closer",
+      "definition": "An ability that lets a champion quickly close the distance to a target, like a dash or leap."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    }
+  ]
+}

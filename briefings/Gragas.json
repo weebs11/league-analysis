@@ -1,0 +1,84 @@
+{
+  "id": "Gragas",
+  "name": "Gragas",
+  "playstyleSummary": "Gragas is a bruiser-mage hybrid played jungle, top, or mid, who fights in short bursts using area damage, a body-check stun, and a powerful knockback ultimate that can single-handedly swing a teamfight. He feels chaotic and high-impact — one well-placed ultimate can flip an entire fight.",
+  "strengths": [
+    "Strong area-of-effect damage and crowd control from Body Slam and Explosive Cask",
+    "Built-in sustain from Happy Hour",
+    "Game-changing knockback ultimate that can peel for allies or engage on enemies",
+    "Flexible role — viable in the jungle, top lane, or mid lane"
+  ],
+  "weaknesses": [
+    "Body Slam has short range and telegraphs where he's going",
+    "Positioning the ultimate well takes real practice — a bad cast can help the enemy instead",
+    "Shorter effective range than true mages",
+    "Briefly vulnerable during Drunken Rage's channel"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Happy Hour",
+      "howToUseIt": "You heal a bit whenever you use a skill. Using your abilities regularly in lane, not just in fights, adds up to solid sustain over time."
+    },
+    {
+      "key": "Q",
+      "name": "Barrel Roll",
+      "howToUseIt": "Roll the cask to a location and detonate it early with a follow-up for a quicker but weaker slow, or let it grow stronger before it explodes on its own after 4 seconds. Use it to zone enemies away from a spot or poke a wave."
+    },
+    {
+      "key": "W",
+      "name": "Drunken Rage",
+      "howToUseIt": "Channel for a second to gain bonus area damage on your next attack and reduced damage taken. Pop this just before an expected trade or incoming burst so the damage reduction is active when it matters."
+    },
+    {
+      "key": "E",
+      "name": "Body Slam",
+      "howToUseIt": "Charge into the first enemy you reach to stun and damage everyone nearby. Use it both to engage a fight and to escape, since it lets you charge straight through minions."
+    },
+    {
+      "key": "R",
+      "name": "Explosive Cask",
+      "howToUseIt": "Knock back everyone in the blast to scatter a grouped enemy team, knock enemies into your tower, or peel divers off a teammate. Be careful not to knock enemies into a position that's actually worse for your own team."
+    }
+  ],
+  "earlyGamePlan": "If jungling, use Barrel Roll and Body Slam to clear camps efficiently and look for early ganks using Body Slam's stun. In lane, poke with Barrel Roll and pop Drunken Rage before trades for the damage reduction. Save Explosive Cask for a moment where the knockback swings a fight, like scattering enemies during a gank or peeling for a low-health ally.",
+  "quickTips": [
+    "Detonate Barrel Roll early with a follow-up ability for burst, or let it cook for a stronger explosion if enemies can't easily leave the area.",
+    "Activate Drunken Rage before damage is about to land on you, not after — the reduction only helps if it's already active.",
+    "Use Body Slam both offensively to stun-engage and defensively to escape, since it lets you charge through minions.",
+    "Be very careful with Explosive Cask's aim — knocking enemies the wrong way can help them instead of your team.",
+    "Try to combo Body Slam's stun into a quick Explosive Cask for a reliable knockback on a stunned target.",
+    "Watch your positioning during Drunken Rage's channel, since you're briefly vulnerable while drinking."
+  ],
+  "whatToExpect": "Enemy Gragas will look to land Body Slam on you to stun and set up damage, then can follow with Explosive Cask to knock you into a bad position, like away from your team or into his. Try not to group too tightly near walls or turrets he could knock you into, and back off if you see him charging Body Slam toward you. His passive heals him whenever he uses a spell, so extended trades tend to favor him if he's landing his abilities.",
+  "glossary": [
+    {
+      "term": "Sustain",
+      "definition": "Healing or health regeneration that lets a champion stay in lane or fight longer without needing to recover elsewhere."
+    },
+    {
+      "term": "Zoning",
+      "definition": "Using threats of damage or crowd control to control where enemies can safely stand."
+    },
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "Peel",
+      "definition": "Using abilities or positioning to protect a teammate from an enemy trying to reach them."
+    },
+    {
+      "term": "Channel",
+      "definition": "A spell that takes a moment to cast, during which the caster is often vulnerable or immobile."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    }
+  ]
+}

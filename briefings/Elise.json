@@ -1,0 +1,88 @@
+{
+  "id": "Elise",
+  "name": "Elise",
+  "playstyleSummary": "Elise is a shapeshifting jungle assassin-mage who swaps between a ranged Human Form and a fast, healing Spider Form depending on the situation. She's one of the more complex champions to learn since her three basic abilities change completely between forms, but the payoff is a jungler who can quickly finish off low-health targets and jump around the map with her aerial ability once she's comfortable switching forms on the fly.",
+  "strengths": [
+    "Very strong early jungle clear and ganks",
+    "Excellent at finishing off low-health targets in Spider Form",
+    "Cocoon provides reliable crowd control to set up kills",
+    "Rappel gives strong mobility for engaging or repositioning"
+  ],
+  "weaknesses": [
+    "High difficulty from constantly managing two different ability sets",
+    "Falls off somewhat in the late game compared to some other junglers",
+    "Rappel has a long cooldown, leaving her vulnerable after using it",
+    "Fragile and easy to punish if caught without her mobility available"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Spider Queen",
+      "howToUseIt": "In Human Form, landing abilities gives you a Spiderling to fight alongside you; in Spider Form, your attacks deal bonus damage and heal you, so switch to Spider Form when you want sustain in a fight."
+    },
+    {
+      "key": "Q",
+      "name": "Neurotoxin / Venomous Bite",
+      "howToUseIt": "Use Neurotoxin in Human Form against healthy targets since it scales with their current health, and switch to Spider Form's Venomous Bite to finish off targets who are already low."
+    },
+    {
+      "key": "W",
+      "name": "Volatile Spiderling / Skittering Frenzy",
+      "howToUseIt": "Send out a Spiderling in Human Form to poke or scout, or switch to Spider Form to buff your attack speed alongside your Spiderlings during a fight."
+    },
+    {
+      "key": "E",
+      "name": "Cocoon / Rappel",
+      "howToUseIt": "Use Cocoon in Human Form to stun and reveal an enemy from range, or use Rappel in Spider Form to leap into the air and land on a target, which also boosts your Spider Queen bonuses afterward."
+    },
+    {
+      "key": "R",
+      "name": "Spider Form",
+      "howToUseIt": "Toggle between forms to match the situation — Human Form for range and crowd control, Spider Form for speed, healing, and finishing power against low-health enemies."
+    }
+  ],
+  "earlyGamePlan": "Clear jungle camps using Human Form's Neurotoxin for efficient damage, and look to gank lanes once you have Cocoon available at level 2 or later to lock down a target. Practice switching into Spider Form when your gank target is already low, since Venomous Bite and the healing from Spider Queen can secure kills that Human Form alone might not finish.",
+  "quickTips": [
+    "Use Human Form's Neurotoxin against high-health targets and Spider Form's Venomous Bite against low-health ones",
+    "Save Cocoon to open a gank or fight with guaranteed crowd control",
+    "Switch to Spider Form when you need the healing from your passive in a fight",
+    "Use Rappel to leap onto a target for extra Spider Queen bonuses, not just to travel",
+    "Remember Rappel has a long cooldown, so don't use it carelessly to cross terrain",
+    "Prioritize landing abilities in Human Form to stack up Spiderlings before a fight"
+  ],
+  "whatToExpect": "Elise will try to poke you in Human Form and land a Cocoon stun before switching to Spider Form to finish you off quickly once you're low, healing off her attacks as she does. She is vulnerable right after using Rappel since it has a long cooldown, so punish that window if you can catch her without it.",
+  "glossary": [
+    {
+      "term": "jungle",
+      "definition": "The area of the map between lanes filled with neutral monster camps, cleared by the jungler instead of laning."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally ambushes a lane to help get a kill, usually from an unexpected direction."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "sustain",
+      "definition": "Ongoing healing or health regeneration that lets a champion stay in lane or fights longer."
+    },
+    {
+      "term": "clear",
+      "definition": "Killing through a set of jungle monster camps, typically done efficiently and in a set order."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can cast it again."
+    },
+    {
+      "term": "stack",
+      "definition": "A stored charge or accumulated instance of an effect, such as extra allied Spiderlings building up."
+    }
+  ]
+}

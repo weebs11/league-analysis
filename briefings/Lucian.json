@@ -1,0 +1,80 @@
+{
+  "id": "Lucian",
+  "name": "Lucian",
+  "playstyleSummary": "Lucian is a fast, aggressive marksman who weaves abilities between attacks to fire extra double-shot attacks from his passive. He plays a mobile, high-tempo style, dashing in and out of fights with Relentless Pursuit while chaining damage from his abilities and attacks together.",
+  "strengths": [
+    "High burst damage when combining abilities with double-shot attacks",
+    "Strong mobility from Relentless Pursuit, especially with its cooldown resets",
+    "Ardent Blaze reveals and marks enemies, useful for both damage and vision",
+    "Explosive early trading power in lane"
+  ],
+  "weaknesses": [
+    "Little sustained damage once his combo is used up",
+    "The Culling's angle can't be changed once fired, so it's easy to dodge if anticipated",
+    "Piercing Light doesn't extend his attack range, so he still needs a target in normal range",
+    "Falls off compared to some marksmen in very long, drawn-out fights"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Lightslinger",
+      "howToUseIt": "Cast an ability right before attacking so your next attack fires as a bonus double-shot - weave abilities between your attacks constantly to maximize damage."
+    },
+    {
+      "key": "Q",
+      "name": "Piercing Light",
+      "howToUseIt": "Use this to poke or finish enemies at range, but remember it doesn't add extra range - you still need a target in your normal attack range to aim it."
+    },
+    {
+      "key": "W",
+      "name": "Ardent Blaze",
+      "howToUseIt": "Try to line this up so its star-shaped explosion hits multiple enemies, and keep attacking marked targets afterward for the Move Speed bonus."
+    },
+    {
+      "key": "E",
+      "name": "Relentless Pursuit",
+      "howToUseIt": "Use this dash to chase down enemies or escape danger - attacking with Lightslinger's double-shot reduces its cooldown, so weave it in during fights."
+    },
+    {
+      "key": "R",
+      "name": "The Culling",
+      "howToUseIt": "Pick your angle carefully before firing since you can't adjust it afterward - use it when enemies are grouped or have no room to dodge."
+    }
+  ],
+  "earlyGamePlan": "In lane, look to combine Relentless Pursuit into Piercing Light for a quick burst trade, then follow up with a double-shot attack from your passive. Play aggressively when your cooldowns are up, since Lucian's early trades are strong, but be cautious once your abilities are spent since your sustained damage is weaker.",
+  "quickTips": [
+    "Weave an ability before every attack you can to trigger double-shot damage",
+    "Try to combo Relentless Pursuit into Piercing Light for burst trades",
+    "Aim Ardent Blaze so its star pattern can hit multiple enemies at once",
+    "Favor damage-boosting stats over attack speed, since Lightslinger rewards single hits",
+    "Commit to an angle on The Culling only when enemies can't easily sidestep it",
+    "Use Relentless Pursuit's cooldown reset from attacks to keep repositioning in fights"
+  ],
+  "whatToExpect": "Lucian hits hard early with quick burst combos and can dash in and out with Relentless Pursuit, so expect strong trades if you fight him at close range. He struggles once his combo is spent and has little sustained damage, and his ultimate's angle can't be changed after casting, so watch for the shots and move to the side to avoid them.",
+  "glossary": [
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage in a very short time."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing laners."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together for a specific effect."
+    },
+    {
+      "term": "sustained damage",
+      "definition": "Steady damage dealt over time, as opposed to a single big burst."
+    },
+    {
+      "term": "weave",
+      "definition": "Alternating actions, like attacks and abilities, in quick succession to maximize damage output."
+    }
+  ]
+}

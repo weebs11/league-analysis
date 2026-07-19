@@ -1,0 +1,76 @@
+{
+  "id": "Skarner",
+  "name": "Skarner",
+  "playstyleSummary": "Skarner is a jungler who fights up close, builds up a stacking damage effect on whoever he keeps hitting, and can single out and drag away a key enemy with his ultimate. He rewards sticking to a target and using terrain to land his stun, and gets noticeably stronger around the map's Crystal Spires.",
+  "strengths": [
+    "Strong dueling power when he can stay on a target",
+    "Impale can isolate and lock down a priority enemy target during a fight",
+    "Ixtal's Impact lets him cross terrain to land stuns",
+    "Gets significant bonuses from controlling Crystal Spires"
+  ],
+  "weaknesses": [
+    "Ixtal's Impact can be canceled by stuns, roots, or knock-ups",
+    "Impale can be avoided with a well-timed dash or Flash",
+    "Needs to stay in melee range to deal his best damage",
+    "Relies on map control around Crystal Spires to reach full power"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Threads of Vibration",
+      "howToUseIt": "Keep attacking and using your abilities on the same target to stack Quaking. At max stacks it deals a burst of health-based damage, so don't switch targets too often."
+    },
+    {
+      "key": "Q",
+      "name": "Shattered Earth / Upheaval",
+      "howToUseIt": "Use this to empower your next few attacks, or throw the boulder as a projectile when you need to hit someone at range instead."
+    },
+    {
+      "key": "W",
+      "name": "Seismic Bastion",
+      "howToUseIt": "Cast this before engaging for a shield, and use the shockwave to damage and slow a group of enemies around you."
+    },
+    {
+      "key": "E",
+      "name": "Ixtal's Impact",
+      "howToUseIt": "Charge through terrain to reach an enemy who thinks they're safe, and remember it can be interrupted by stuns, roots, or knock-ups, so use it when those are down."
+    },
+    {
+      "key": "R",
+      "name": "Impale",
+      "howToUseIt": "Use this to suppress and drag away the enemy's most important target, positioning them for your team to follow up on."
+    }
+  ],
+  "earlyGamePlan": "Clear your jungle and prioritize taking Crystal Spires when they're up, since holding them makes Skarner noticeably stronger in fights near them. Look for ganks where you can use Ixtal's Impact to cross a wall and catch an enemy who has already used their escape.",
+  "quickTips": [
+    "Stick to one target in fights to build up Quaking stacks for bonus damage.",
+    "Save Ixtal's Impact for when the enemy has no stun, root, or knock-up ready to interrupt it.",
+    "Prioritize controlling Crystal Spires before objective fights for a big power boost.",
+    "Use Impale to drag the enemy's priority target away from their team.",
+    "Cast Seismic Bastion before diving into a fight, not after, to get the shield's value.",
+    "Watch for enemies with Flash or dashes ready; they can escape your ultimate."
+  ],
+  "whatToExpect": "Skarner will look to charge through walls to catch you out with a stun, then use his ultimate to drag you away from your team, so keep an escape tool ready if he's near a wall. Try to avoid fighting him near Crystal Spires he controls, since those make him considerably stronger.",
+  "glossary": [
+    {
+      "term": "jungler",
+      "definition": "The role responsible for clearing neutral monsters and roaming to help lanes rather than staying in one lane."
+    },
+    {
+      "term": "gank",
+      "definition": "When a champion, often the jungler, shows up in a lane to help ambush an enemy."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's movement or actions."
+    },
+    {
+      "term": "follow up",
+      "definition": "Adding damage or crowd control right after a teammate starts a fight."
+    },
+    {
+      "term": "Flash",
+      "definition": "A summoner spell that instantly teleports your champion a short distance, often used to escape or engage."
+    }
+  ]
+}

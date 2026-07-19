@@ -1,0 +1,76 @@
+{
+  "id": "Senna",
+  "name": "Senna",
+  "playstyleSummary": "Senna is a support who scales like a marksman: souls appear near anything that dies nearby, and collecting them permanently grows her attack damage, range, and critical strike chance. Early on she pokes and heals from a distance with her cannon, and by the late game she can become one of the strongest ranged damage dealers on her team. She rewards patience and good soul collection over flashy early plays.",
+  "strengths": [
+    "Scales extremely well if she collects enough souls",
+    "Piercing Darkness both heals allies and damages enemies through them",
+    "Curse of the Black Mist can hide her whole team and disguise them as decoys",
+    "Dawning Shadow is a global ability that can shield allies or punish enemies anywhere on the map"
+  ],
+  "weaknesses": [
+    "Weak early on before she's collected souls",
+    "Needs to prioritize last-hitting souls over pure trading, which takes practice",
+    "Attacks from her Relic Cannon are slow, so poor positioning gets punished",
+    "Relies on allies to convert her scaling into won fights"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Absolution",
+      "howToUseIt": "Watch for souls appearing when units die nearby and attack them to collect the soul — this is a core part of playing Senna well, since every soul permanently strengthens your Relic Cannon."
+    },
+    {
+      "key": "Q",
+      "name": "Piercing Darkness",
+      "howToUseIt": "Fire this through an ally and enemy in a line to heal your teammate and damage the enemy at the same time — great for trading in lane while topping off your ADC."
+    },
+    {
+      "key": "W",
+      "name": "Last Embrace",
+      "howToUseIt": "Throw this toward an enemy to root them and everything nearby after a short delay — use it to punish an enemy who's grouped up with their laning partner."
+    },
+    {
+      "key": "E",
+      "name": "Curse of the Black Mist",
+      "howToUseIt": "Activate this to camouflage yourself and any allies who step into it, disguising you all as wraiths — use it to ambush, to safely retreat, or to confuse the enemy about which wraith is the real threat."
+    },
+    {
+      "key": "R",
+      "name": "Dawning Shadow",
+      "howToUseIt": "Fire this globally toward a fight anywhere on the map to shield your allies along its path and deal heavy damage to enemies caught in the center — great for saving a teammate in a fight you're not even near."
+    }
+  ],
+  "earlyGamePlan": "Prioritize collecting souls whenever a unit dies nearby, since that's your main source of power, while using Piercing Darkness to poke the enemy bot lane and heal your ADC. Play a bit safer than a typical support until you've built up enough souls to fight confidently.",
+  "quickTips": [
+    "Always look to collect nearby souls — they're a permanent, stacking source of power",
+    "Use Piercing Darkness to heal your ADC and poke the enemy in the same cast",
+    "Save Last Embrace for enemies standing close together to root both of them",
+    "Use Curse of the Black Mist to disguise your team when repositioning or ambushing",
+    "Dawning Shadow can shield or save a teammate anywhere on the map, even far from you",
+    "Play patiently early — Senna's real power shows up once she has souls and items"
+  ],
+  "whatToExpect": "Enemy Senna will poke you from range with Piercing Darkness and try to root you and an ally together with Last Embrace, becoming increasingly dangerous the more souls she collects over the game. Watch for her ultimate's global beam threatening allies even far from her, and try to deny her easy soul pickups when a unit dies near your lane.",
+  "glossary": [
+    {
+      "term": "scale",
+      "definition": "How a champion's strength grows over time as they gain levels and items."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range before a real fight starts."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that stops an enemy from moving but doesn't stop them from attacking or casting."
+    },
+    {
+      "term": "last-hitting",
+      "definition": "Landing the killing blow on a minion or unit to get its gold or resource, timed carefully rather than attacking early."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    }
+  ]
+}

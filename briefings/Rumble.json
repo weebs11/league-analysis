@@ -1,0 +1,80 @@
+{
+  "id": "Rumble",
+  "name": "Rumble",
+  "playstyleSummary": "Rumble is a mech-piloting fighter-mage who manages a Heat gauge instead of mana. Casting spells builds Heat, and once he hits the Danger Zone his abilities become stronger, but overdo it and he Overheats and can't cast for a few seconds. Playing him well is a balancing act of pushing your Heat high for bonus power without tipping over into being locked out at the worst time.",
+  "strengths": [
+    "Abilities become significantly stronger while in the Danger Zone",
+    "Flamespitter and The Equalizer deal heavy sustained and area damage",
+    "Scrap Shield gives him a shield and speed burst to survive early trades",
+    "The Equalizer can wall off a chokepoint or an enemy trying to escape"
+  ],
+  "weaknesses": [
+    "Overheating locks him out of casting spells at a dangerous moment",
+    "Mostly melee-range damage, so he's exposed while fighting",
+    "Needs practice to manage the Heat gauge without accidentally overheating",
+    "Vulnerable to being kited since he lacks hard crowd control besides his ultimate"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Junkyard Titan",
+      "howToUseIt": "Watch your Heat bar while casting spells — try to sit near 50% (Danger Zone) for empowered abilities without climbing all the way to 100% and Overheating mid-fight."
+    },
+    {
+      "key": "Q",
+      "name": "Flamespitter",
+      "howToUseIt": "Channel this at enemies in front of you during a trade or fight; it deals more damage in the Danger Zone, so try to have some Heat built up before using it as your main damage source."
+    },
+    {
+      "key": "W",
+      "name": "Scrap Shield",
+      "howToUseIt": "Use this to block incoming damage and get a speed boost, either to engage a fight or to survive an enemy's burst — it's stronger in the Danger Zone."
+    },
+    {
+      "key": "E",
+      "name": "Electro Harpoon",
+      "howToUseIt": "Throw this to slow a target and reduce their Magic Resist before your other spells land; you can hold two charges, so use one to poke and save the other for a fight."
+    },
+    {
+      "key": "R",
+      "name": "The Equalizer",
+      "howToUseIt": "Fire this along a line to create a wall of flames — use it to zone enemies away from a fight, block an escape path, or wall off a chokepoint your team controls."
+    }
+  ],
+  "earlyGamePlan": "Farm with Flamespitter and Electro Harpoon while watching your Heat gauge, aiming to hit the Danger Zone right as you go for a trade rather than randomly. Avoid casting too many spells back-to-back early on since Overheating during a fight leaves you defenseless.",
+  "quickTips": [
+    "Watch your Heat bar and time trades for when you're in the Danger Zone",
+    "Don't chain-cast spells carelessly — overheating mid-fight leaves you unable to cast",
+    "Use Electro Harpoon's slow and Magic Resist reduction to set up your other damage",
+    "Save The Equalizer to block an escape route or wall off a fight in your favor",
+    "Scrap Shield is a good defensive tool against burst damage, not just an engage",
+    "Build some sustain or safety into your rotation so you're not fighting right after overheating"
+  ],
+  "whatToExpect": "Enemy Rumble deals heavy magic damage in melee range and gets much stronger once he hits the Danger Zone, so watch his Heat bar during fights. If you see him Overheat, his spells are locked out for a few seconds, which is the best time to go in for a kill — also watch for his ultimate's incoming rocket wall and move out of it quickly.",
+  "glossary": [
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill on its own."
+    },
+    {
+      "term": "zone",
+      "definition": "Using threats or area damage to control where enemies can safely stand."
+    },
+    {
+      "term": "chokepoint",
+      "definition": "A narrow area on the map that forces enemies to pass through a small space."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while still attacking or damaging them, staying out of their range."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that take away an enemy's ability to move or act."
+    }
+  ]
+}

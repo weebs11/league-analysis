@@ -1,0 +1,88 @@
+{
+  "id": "Gwen",
+  "name": "Gwen",
+  "playstyleSummary": "Gwen is a skirmishing fighter, usually played top lane or jungle, who fights best in extended one-on-one duels inside her own protective mist. She wants to be constantly attacking to trigger bonus damage and healing, snowballing a fight the longer it goes on.",
+  "strengths": [
+    "Strong sustain and percent-health damage in extended fights via her passive",
+    "Hallowed Mist gives her safety from enemies who don't commit to the fight",
+    "Good dueling potential",
+    "Scales well since her passive damage is based on the target's current health"
+  ],
+  "weaknesses": [
+    "Needs to land several attacks to ramp up her damage, so early bursts punish her",
+    "Hallowed Mist only follows her once and then dissipates, so she can be zoned out of it",
+    "Relatively short range without her E active",
+    "Her ultimate needs to hit something to be recast, so evasive enemies can shut it down"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "A Thousand Cuts",
+      "howToUseIt": "Your attacks deal bonus magic damage based on the target's current health and heal you for a portion of that against champions. Keep attacking during fights rather than only relying on your spells, since this passive rewards sustained engagement."
+    },
+    {
+      "key": "Q",
+      "name": "Snip Snip!",
+      "howToUseIt": "Snip in a cone toward your target up to 6 times, dealing true damage to whatever is centered in the cone. Aim it directly at the enemy champion rather than their general direction to maximize the true damage hits."
+    },
+    {
+      "key": "W",
+      "name": "Hallowed Mist",
+      "howToUseIt": "Summon the mist so enemies outside it can't target you; they can only hit you once they step inside. Use it to force bad engages or create a safe zone to fight from, but remember it only follows you once before dissipating if you leave."
+    },
+    {
+      "key": "E",
+      "name": "Skip 'n Slash",
+      "howToUseIt": "Dash toward an enemy for bonus attack speed, range, and on-hit magic damage, and land an attack during that window to refund part of the cooldown. Chain this into fights to keep resetting it."
+    },
+    {
+      "key": "R",
+      "name": "Needlework",
+      "howToUseIt": "Throw a needle that slows and damages, and recast it up to two more times for additional needles. You need to hit something with each cast to recast, so aim carefully rather than firing all charges from far away."
+    }
+  ],
+  "earlyGamePlan": "In lane, play a bit passively until level 3-4, since Gwen needs several attacks to start dealing significant damage. Use Snip Snip! to poke and clear waves, and set up trades by pulling the enemy into your Hallowed Mist so they can't easily disengage once committed.",
+  "quickTips": [
+    "Keep attacking during fights — your passive's bonus damage and healing depend on landing basic attacks, not just spells.",
+    "Use Hallowed Mist to bait overconfident enemies into a fight they can't escape once they step in.",
+    "Remember the mist only follows you once when you leave it, so don't wander too far from where you cast it.",
+    "Land a hit with each cast of Needlework to keep recasting it — don't waste all three charges without confirming hits.",
+    "Chain Skip 'n Slash into fights whenever it connects to refresh its cooldown and keep the attack speed buff rolling.",
+    "Because your damage ramps up, try to extend fights rather than going for a quick burst trade."
+  ],
+  "whatToExpect": "Enemy Gwen wants to draw you into her Hallowed Mist and then out-duel you with sustained attacks that deal more damage the longer the fight goes and heal her back up. Try to burst her down quickly before she gets several attacks in, and disengage before stepping inside her mist if you're not confident you can win the extended fight. Dodging her Needlework casts also denies her the recast, since she needs to hit something to throw the next one.",
+  "glossary": [
+    {
+      "term": "Sustain",
+      "definition": "Healing or health regeneration that lets a champion stay in a fight or lane longer than usual."
+    },
+    {
+      "term": "Dueling",
+      "definition": "Fighting one-on-one against a single enemy champion."
+    },
+    {
+      "term": "Zoning",
+      "definition": "Using threats of damage or crowd control to control where enemies can safely stand."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "Disengage",
+      "definition": "Breaking off from a fight or trade, usually by retreating or using an escape tool."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Snowball",
+      "definition": "Turning an early advantage into a bigger and bigger lead over the course of a game or fight."
+    }
+  ]
+}

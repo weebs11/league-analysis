@@ -1,0 +1,80 @@
+{
+  "id": "Veigar",
+  "name": "Veigar",
+  "playstyleSummary": "Veigar is a mage who literally gets stronger every time he lands a spell on an enemy champion, stacking permanent ability power over the course of the game. Playing him feels like a scaling puzzle: you land Baleful Strike for stacks in lane, then set up stuns with Event Horizon so your teammates can land follow-up damage. He's extremely fragile, so most of the skill is positioning safely while still finding chances to hit your spells.",
+  "strengths": [
+    "Permanently grows stronger the more he lands spells and gets takedowns",
+    "Primordial Burst deals massive execute-style damage to low-health targets",
+    "Event Horizon is one of the best area stuns in the game for setting up kills",
+    "Can one-shot squishy targets once ahead in stacks"
+  ],
+  "weaknesses": [
+    "Extremely fragile with very low health and defenses",
+    "Falls behind badly if he can't land spells to build his passive",
+    "Short dash-free kit means he's easy to catch if out of position",
+    "Very reliant on cooldowns and mana to keep up pressure"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Phenomenal Evil Power",
+      "howToUseIt": "Every time you hit an enemy champion with a spell or get a takedown, you permanently gain ability power. Prioritize landing spells on champions over minions when you get the choice, since this stacking is what makes you scale so well."
+    },
+    {
+      "key": "Q",
+      "name": "Baleful Strike",
+      "howToUseIt": "Use this to poke enemies and last-hit minions in a line, since killing units with it also grants permanent ability power. Try to line up two enemies or a minion-plus-champion hit to get extra value out of each cast."
+    },
+    {
+      "key": "W",
+      "name": "Dark Matter",
+      "howToUseIt": "Target a location ahead of time since it has a delay before the damage lands; watch for the visual warning it gives enemies. Use it to punish enemies standing in one spot, especially right after they've been stunned by Event Horizon."
+    },
+    {
+      "key": "E",
+      "name": "Event Horizon",
+      "howToUseIt": "Cast this so an enemy has to cross the ring's edge, since it only stuns them at the edge, not in the middle. Use it to set up kills with your team or to block enemies from reaching you when you're being chased."
+    },
+    {
+      "key": "R",
+      "name": "Primordial Burst",
+      "howToUseIt": "Save this to finish off a champion, since it deals more damage the lower their health is. It's most effective as an execute after your other spells have already done some damage."
+    }
+  ],
+  "earlyGamePlan": "In lane, focus on safely poking with Baleful Strike to build stacks of your passive and last-hit minions without overextending, since you're very squishy against most matchups. Look for chances to land Event Horizon on the edge to stun your opponent, then follow up with Dark Matter or Primordial Burst if they're low enough. Consider a defensive summoner spell since one bad engage can get you killed instantly.",
+  "quickTips": [
+    "Land spells on enemy champions whenever possible to permanently grow your ability power",
+    "Aim Event Horizon so enemies have to cross the ring's edge, not the middle, to actually stun them",
+    "Save Primordial Burst as a finishing move on low-health targets rather than opening with it",
+    "Play from a safe distance since you have no dash or escape tool",
+    "Watch for Dark Matter's warning indicator so you know when and where the damage will land",
+    "Consider a defensive summoner spell given how easily you can be caught and killed"
+  ],
+  "whatToExpect": "An enemy Veigar will try to poke you with Baleful Strike and land Event Horizon to stun you before following up with Dark Matter and an execute from Primordial Burst, especially once you're at low health. Play around minion waves to block his line poke, avoid standing still inside his stun ring's edge, and try to shut him down early before his passive stacks make him a threat that can one-shot you.",
+  "glossary": [
+    {
+      "term": "mage",
+      "definition": "A champion type that primarily deals magic damage through abilities rather than auto-attacks."
+    },
+    {
+      "term": "scale",
+      "definition": "How a champion's power grows over the course of the game, usually through levels and items."
+    },
+    {
+      "term": "execute",
+      "definition": "An ability that deals bonus or guaranteed damage to enemies below a certain health threshold, often finishing them off."
+    },
+    {
+      "term": "squishy",
+      "definition": "A champion with low health and defenses who dies quickly if caught, usually mages or marksmen."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before committing to a full fight."
+    },
+    {
+      "term": "summoner spell",
+      "definition": "One of two extra abilities (like Flash or Ignite) chosen before the game that any champion can use."
+    }
+  ]
+}

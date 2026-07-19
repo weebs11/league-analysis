@@ -1,0 +1,76 @@
+{
+  "id": "Pantheon",
+  "name": "Pantheon",
+  "playstyleSummary": "Pantheon is an aggressive lane bully who dives onto enemies with a stunning dash, then finishes them off with a spear throw that executes low-health targets. He rewards understanding enemy cooldowns and timing over pure mechanical skill, since much of his kit is about picking the right moment to strike.",
+  "strengths": [
+    "Very strong early-game lane pressure",
+    "Shield Vault gives a reliable stun to start fights",
+    "Comet Spear can execute low-health enemies from range",
+    "Aegis Assault blocks all frontal damage, great for tanking incoming poke"
+  ],
+  "weaknesses": [
+    "Falls off in raw power compared to some other fighters as the game goes on",
+    "Aegis Assault only blocks damage from the front",
+    "Grand Starfall gives the enemy team a long warning before he lands",
+    "Needs to land Mortal Will's empowered spell well to maximize damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Mortal Will",
+      "howToUseIt": "Every 5 spells or attacks, your next spell gets empowered - plan your combo so the empowered cast lands during a real fight, not while just farming."
+    },
+    {
+      "key": "Q",
+      "name": "Comet Spear",
+      "howToUseIt": "Thrust it for a quick poke, or throw it for a longer-range hit that can execute low-health enemies - save the throw to finish a low-health target rather than to start a fight."
+    },
+    {
+      "key": "W",
+      "name": "Shield Vault",
+      "howToUseIt": "Dash to an enemy to stun them - this is usually how you start a fight, so use it to open on an isolated target rather than someone surrounded by allies."
+    },
+    {
+      "key": "E",
+      "name": "Aegis Assault",
+      "howToUseIt": "Set your shield to become invulnerable to damage from the front while striking repeatedly - great for tanking a wave of poke or burst, but you can recast it early to fire off a shield slam if your target is about to escape."
+    },
+    {
+      "key": "R",
+      "name": "Grand Starfall",
+      "howToUseIt": "Leap into the air and land at a chosen location - it takes a few seconds to arrive, giving the enemy a warning, so use it to threaten multiple lanes or punish enemies who can't escape in time."
+    }
+  ],
+  "earlyGamePlan": "Pantheon is strongest in the first several minutes, so trade aggressively - use Comet Spear's thrust to poke, then Shield Vault in when your opponent is low or out of position for a stun into extra damage. Try to end fights quickly, and don't be afraid to all-in early since your power fades in the late game.",
+  "quickTips": [
+    "Use Shield Vault to open fights on isolated enemies, not ones near their allies",
+    "Save Comet Spear's thrown version to execute a fleeing, low-health target",
+    "Face Aegis Assault toward incoming damage - it only blocks hits from the front",
+    "Recast Aegis Assault early if your target is about to get out of range",
+    "Push your advantage early in the game since your power drops off later",
+    "Time your all-ins to spend your empowered Mortal Will spell in the fight"
+  ],
+  "whatToExpect": "Pantheon is dangerous early - expect him to trade aggressively and try to stun you with Shield Vault before finishing you with a thrown Comet Spear if your health gets low. If he activates Aegis Assault, get behind him or wait it out rather than trading face-to-face, since he's invulnerable to frontal damage while it's active; also watch the sky for Grand Starfall's warning so you can move out of the way before he lands.",
+  "glossary": [
+    {
+      "term": "execute",
+      "definition": "An effect that deals bonus or guaranteed damage to low-health targets, sometimes enough to kill them outright."
+    },
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range before a real fight starts."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight rather than trading and backing off."
+    },
+    {
+      "term": "isolated",
+      "definition": "Separated from allies, making a target easier and safer to attack."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    }
+  ]
+}

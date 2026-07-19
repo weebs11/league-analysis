@@ -1,0 +1,79 @@
+{
+  "id": "Nunu",
+  "name": "Nunu & Willump",
+  "playstyleSummary": "Nunu is a jungler who grows a giant snowball to smash through the enemy jungle and set up fights, then channels a slow-but-devastating ultimate that can wipe out a whole team if it lands. He feels tanky and forgiving early, but rewards good timing on his ultimate more than mechanical skill.",
+  "strengths": [
+    "Very fast jungle clear thanks to Consume",
+    "Strong ganks once Biggest Snowball Ever! is rolling",
+    "Huge teamfight-ending ultimate in Absolute Zero",
+    "Tanky and hard to kill early"
+  ],
+  "weaknesses": [
+    "The snowball takes time to build up and is easy to see coming",
+    "Absolute Zero has a long channel that can be interrupted",
+    "Low mobility outside of the snowball",
+    "Needs teammates to protect him during his ultimate's channel"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Call of the Freljord",
+      "howToUseIt": "Stick near an ally when moving around the map - it speeds both of you up and makes Willump's attacks splash onto nearby enemies, which helps with jungle clears and wave-clear."
+    },
+    {
+      "key": "Q",
+      "name": "Consume",
+      "howToUseIt": "Eat monsters to heal quickly during your jungle clear. On enemy champions it deals a lot of damage but heals less, so save it for finishing a kill or topping off health rather than just poking."
+    },
+    {
+      "key": "W",
+      "name": "Biggest Snowball Ever!",
+      "howToUseIt": "Start rolling early when there's open space, then steer it into the enemy - it grows bigger, faster, and hits harder the longer it rolls, but it turns slowly, so plan your path before you commit."
+    },
+    {
+      "key": "E",
+      "name": "Snowball Barrage",
+      "howToUseIt": "Throw this to poke and slow enemies before you engage. Landing all the snowballs roots any champion hit, which is a great setup for a big Biggest Snowball Ever! or to buy your team time."
+    },
+    {
+      "key": "R",
+      "name": "Absolute Zero",
+      "howToUseIt": "Only cast this when you're safe and your team is ready to protect you - it takes a few seconds to detonate, and the earlier you start the channel before a fight breaks out, the more damage it does when it finally goes off."
+    }
+  ],
+  "earlyGamePlan": "Clear jungle camps quickly using Consume to heal between them, then look to gank a lane around level 3 once Biggest Snowball Ever! is available. Try to gank lanes where the enemy is pushed up or has used their escape, since your snowball needs space and time to build speed.",
+  "quickTips": [
+    "Use Consume on jungle monsters to sustain through your first clear",
+    "Start your snowball rolling before you reach the enemy so it has time to grow",
+    "Save Absolute Zero for when you can start the channel unseen or protected",
+    "Snowball Barrage's root is a great tool when your snowball isn't ready",
+    "Stay near an ally for the passive's attack speed and move speed bonus"
+  ],
+  "whatToExpect": "A Nunu player will build up their snowball off to the side, then send it barreling toward your group - watch for the growing snowball and spread out or move to the side to dodge it, since it can't turn sharply. If Nunu starts channeling Absolute Zero, interrupt him with crowd control or get out of the growing circle immediately, since standing in it as it finishes can wipe out your health bar.",
+  "glossary": [
+    {
+      "term": "jungle",
+      "definition": "The area between lanes filled with monsters that junglers fight for gold and experience."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) leaves their area to ambush an enemy in a lane."
+    },
+    {
+      "term": "wave-clear",
+      "definition": "Killing a group of minions quickly."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that prevents a target from moving, though they can usually still attack or cast spells."
+    },
+    {
+      "term": "channel",
+      "definition": "A spell that takes time to complete and can be interrupted before it finishes."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, and roots that limit what an enemy can do."
+    }
+  ]
+}

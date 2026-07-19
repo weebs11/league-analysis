@@ -1,0 +1,83 @@
+{
+  "id": "Nocturne",
+  "name": "Nocturne",
+  "playstyleSummary": "Nocturne is a jungle assassin who blinds the map with his ultimate and dashes onto a single isolated target to burst them down before their team can react. He feels like a hunter - most of his power comes from picking the right moment and target for Paranoia rather than fighting head-on.",
+  "strengths": [
+    "Paranoia is a powerful engage that removes enemy vision and can dash across the map",
+    "Shroud of Darkness blocks a single enemy ability, which can counter key crowd control",
+    "Duskbringer's trail gives strong chase and escape mobility",
+    "Umbra Blades adds sustained area damage and healing in extended fights"
+  ],
+  "weaknesses": [
+    "Relies heavily on landing his combo and picking the right target with Paranoia",
+    "Loses much of his impact if the enemy team can still see and reach the fight",
+    "Squishy if Shroud of Darkness whiffs or is baited out early",
+    "Loses effectiveness if his target has an escape or isn't actually isolated"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Umbra Blades",
+      "howToUseIt": "Every few seconds your next attack hits everyone nearby for bonus damage and heals you - basic attacks reduce the cooldown, so keep attacking to bring it back faster."
+    },
+    {
+      "key": "Q",
+      "name": "Duskbringer",
+      "howToUseIt": "Throw this to deal damage and leave a trail; step onto that trail for bonus move speed and attack damage, and to move through units, which is great for chasing or escaping."
+    },
+    {
+      "key": "W",
+      "name": "Shroud of Darkness",
+      "howToUseIt": "Activate this to fade into the shadows and block the next enemy ability aimed at you - use it to bait out a crucial crowd control ability before you commit to a fight."
+    },
+    {
+      "key": "E",
+      "name": "Unspeakable Horror",
+      "howToUseIt": "Plant this on a target and stay close - if they can't get out of range before it ends, they become feared, so use it right before you engage to guarantee the fear lands."
+    },
+    {
+      "key": "R",
+      "name": "Paranoia",
+      "howToUseIt": "Cast this to blind the whole enemy team's vision and dash onto a chosen target - pick someone isolated from their team so you can burst them down before help arrives."
+    }
+  ],
+  "earlyGamePlan": "If jungling, clear efficiently and use Duskbringer's trail to move quickly between camps or into a gank. Look for an isolated enemy to use Paranoia on once you hit level 6, since removing their team's vision makes it much harder for allies to help them in time.",
+  "quickTips": [
+    "Save Shroud of Darkness to block a dangerous crowd control ability rather than using it as free attack speed.",
+    "Step onto your own Duskbringer trail for bonus move speed and damage when chasing or escaping.",
+    "Use Paranoia on isolated targets - if their team can still see the fight, they can help even without vision of you.",
+    "Plant Unspeakable Horror before you engage so the fear lands right as you arrive.",
+    "Keep attacking to reduce Umbra Blades' cooldown faster in extended fights."
+  ],
+  "whatToExpect": "Nocturne will use Paranoia to remove your team's vision and dash onto an isolated target, so try to stay near allies when his ultimate is up. His Shroud of Darkness blocks the next ability aimed at him, so bait it out with a low-value spell before using your real crowd control, and save escape or defensive abilities for when Unspeakable Horror's fear timer is about to expire.",
+  "glossary": [
+    {
+      "term": "isolated",
+      "definition": "Separated from teammates, making it easier for an enemy to pick you off."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler shows up in a lane to help kill an enemy laner by surprise."
+    },
+    {
+      "term": "fear",
+      "definition": "A crowd control effect that forces a character to move away uncontrollably."
+    },
+    {
+      "term": "bait",
+      "definition": "Intentionally provoking an enemy into using an ability or committing, so it can be avoided or countered afterward."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight of parts of the map, usually granted by wards, that reveals nearby enemies."
+    },
+    {
+      "term": "combo",
+      "definition": "Using two or more abilities together in sequence for a stronger effect."
+    }
+  ]
+}

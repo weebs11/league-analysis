@@ -1,0 +1,75 @@
+{
+  "id": "Kayle",
+  "name": "Kayle",
+  "playstyleSummary": "Kayle starts every game as a short-range fighter who feels weak and awkward, then gradually transforms into a powerful long-range hybrid carry as she levels up. The early game is about patience and survival, while the mid-to-late game is about cashing in on that patience with huge attacks and a game-saving ultimate. She's a great pick if you like champions that reward playing the long game.",
+  "strengths": [
+    "One of the strongest late-game scaling champions in the game.",
+    "Celestial Blessing heals and speeds up herself or an ally, giving good sustain and utility.",
+    "Divine Judgment can save a teammate from a lethal hit at a critical moment.",
+    "Gains attack range, attack speed, and Move Speed automatically just from leveling up."
+  ],
+  "weaknesses": [
+    "Very weak in the early levels, especially at short range before she transforms.",
+    "Vulnerable to aggressive lane opponents and ganks before her power spike.",
+    "Divine Judgment blocks damage but not crowd control, so allies can still be stunned or slowed while invulnerable.",
+    "Needs to survive the early game uneventfully to reach her strong late game."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Divine Ascent",
+      "howToUseIt": "Just keep leveling up your abilities — Kayle automatically gains attack range, attack speed, and Move Speed over time, turning her from a short-range fighter into a long-range threat. Play safe in the early game while you wait for these upgrades."
+    },
+    {
+      "key": "Q",
+      "name": "Radiant Blast",
+      "howToUseIt": "Use it to poke enemies from range and clear the minion wave, since it pierces through everyone in a line and briefly reduces their resistances."
+    },
+    {
+      "key": "W",
+      "name": "Celestial Blessing",
+      "howToUseIt": "Cast it on yourself or a nearby ally to heal and gain Move Speed — use it to survive trades or catch up to a retreating enemy."
+    },
+    {
+      "key": "E",
+      "name": "Starfire Spellblade",
+      "howToUseIt": "Its passive adds bonus magic damage to your attacks automatically, so just keep auto-attacking; use the active on a low-health target to help finish them off."
+    },
+    {
+      "key": "R",
+      "name": "Divine Judgment",
+      "howToUseIt": "Cast it on yourself or a carry ally right before they take a big hit — it grants invulnerability to damage, but crowd control like stuns and slows still lands, so use it before the incoming crowd control, not after."
+    }
+  ],
+  "earlyGamePlan": "Play cautiously in lane — you're a weaker melee-range fighter for the first several levels and easy to punish if you overextend. Focus on farming safely with Radiant Blast and avoid unnecessary trades. Your goal is simply to survive to the mid-game, where Divine Ascent starts making you much stronger.",
+  "quickTips": [
+    "Prioritize surviving over kills in the early levels — you scale into one of the strongest late-game champions.",
+    "Use Celestial Blessing to heal through poke damage in lane.",
+    "Save Divine Judgment for a teammate about to take lethal damage, not for yourself unless you're the target.",
+    "Remember Divine Judgment blocks damage but not crowd control — pair it with peel from your team if possible.",
+    "Keep auto-attacking whenever you can; Starfire Spellblade's passive damage adds up for free."
+  ],
+  "whatToExpect": "An enemy Kayle is weak and easy to punish in the early game, so look for trades or ganks against her before she levels up. Once she reaches her power spike from Divine Ascent, she becomes a dangerous ranged threat — be ready for her to use Divine Judgment to save a teammate, and remember it doesn't stop crowd control, so stuns and slows still work on her invulnerable ally.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing damage from a safe distance to slowly wear an enemy down."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit what a champion can do."
+    },
+    {
+      "term": "peel",
+      "definition": "Protecting a teammate from enemies trying to attack them."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game where a champion becomes noticeably stronger, often from leveling up or completing an item."
+    },
+    {
+      "term": "scale",
+      "definition": "How much stronger a champion gets over time as they gain levels and items."
+    }
+  ]
+}

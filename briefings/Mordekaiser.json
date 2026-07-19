@@ -1,0 +1,83 @@
+{
+  "id": "Mordekaiser",
+  "name": "Mordekaiser",
+  "playstyleSummary": "Mordekaiser is a bruiser who dominates one-on-one fights, especially once he can drag a single enemy into a private duel where nobody else can interfere. He feels relentless: stay in fights to build a shield and a damage aura, then finish off whoever he's isolated with his ultimate. He's less about finesse and more about grinding an opponent down through sheer pressure.",
+  "strengths": [
+    "Extremely strong at winning 1v1 duels",
+    "Realm of Death lets him isolate a key enemy away from their team",
+    "Indestructible's shield makes him hard to kill in extended fights",
+    "Obliterate is a strong lane poke and wave clear tool"
+  ],
+  "weaknesses": [
+    "Struggles to hit multiple enemies at once outside of Obliterate's area",
+    "No dash or hard escape, so he's vulnerable to ganks",
+    "Realm of Death removes him from the rest of the fight, which can backfire if his team needs him elsewhere",
+    "Needs to land hits to build up Darkness Rise before he's at full strength"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Darkness Rise",
+      "howToUseIt": "Landing 3 attacks or spells on champions or monsters grants a damage aura and move speed - keep weaving in damage so you're always close to triggering it."
+    },
+    {
+      "key": "Q",
+      "name": "Obliterate",
+      "howToUseIt": "Aim this at a single enemy for maximum damage; it still hits everyone nearby, so it doubles as decent wave clear when you need it."
+    },
+    {
+      "key": "W",
+      "name": "Indestructible",
+      "howToUseIt": "Fight aggressively to build up a shield from damage dealt and taken, then consume it to heal back up before or after the fight."
+    },
+    {
+      "key": "E",
+      "name": "Death's Grasp",
+      "howToUseIt": "Pull enemies out of position to start a fight or to catch someone trying to escape - it also helps line up your ultimate on the target you actually want."
+    },
+    {
+      "key": "R",
+      "name": "Realm of Death",
+      "howToUseIt": "Drag a single enemy into a duel where nobody else can interfere - save this for a key target like an enemy carry, not a tank."
+    }
+  ],
+  "earlyGamePlan": "Poke with Obliterate whenever the enemy steps up to farm, and stay in fights rather than backing off, since Indestructible turns damage you deal and take into a shield you can heal off later. Look for chances to land Death's Grasp on an isolated enemy to pull them in for a kill.",
+  "quickTips": [
+    "Aim Obliterate at a single target for the damage bonus, not spread across the wave, unless you need the wave clear.",
+    "Save Realm of Death for the enemy's most important target, like their carry, not their tank.",
+    "Stack Darkness Rise before a big fight by landing hits on jungle monsters or minions first.",
+    "Use Indestructible's shield proactively before a trade, not only as emergency healing.",
+    "You have no dash, so avoid overextending without vision of the enemy jungler."
+  ],
+  "whatToExpect": "Mordekaiser wants to isolate you with Realm of Death and win a duel where your team can't help. If he pulls you in with Death's Grasp or drags you away with his ultimate, focus on surviving and save your own defensive abilities for that moment - your teammates cannot enter that space to save you.",
+  "glossary": [
+    {
+      "term": "duel",
+      "definition": "A one-on-one fight between two champions."
+    },
+    {
+      "term": "carry",
+      "definition": "A damage-focused champion a team leans on for late-game damage."
+    },
+    {
+      "term": "tank",
+      "definition": "A champion built to absorb damage and protect teammates rather than deal it."
+    },
+    {
+      "term": "wave clear",
+      "definition": "Killing a group of minions quickly, usually with an ability that hits multiple targets."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, away from allies, turret protection, or vision."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight of parts of the map, usually provided by wards, that reveals nearby enemies."
+    },
+    {
+      "term": "isolate",
+      "definition": "Separate a single enemy from their team so their allies can't help them."
+    }
+  ]
+}

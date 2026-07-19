@@ -1,0 +1,80 @@
+{
+  "id": "Varus",
+  "name": "Varus",
+  "playstyleSummary": "Varus is a ranged marksman who mixes long-range poke with burst damage from stacking Blight. He feels like a patient sniper in lane, charging up a big Piercing Arrow to punish enemies who wander too far forward, and turns into a real threat once he can chain his ultimate to lock down multiple targets. He's rated as one of the easier champions to pick up, with straightforward point-and-click style tools.",
+  "strengths": [
+    "Long range on Piercing Arrow lets him poke safely from a distance",
+    "Chain of Corruption can lock down and chain-immobilize multiple enemies",
+    "Strong follow-up damage against enemies affected by Blight",
+    "Snowballs quickly with kills or assists thanks to his passive"
+  ],
+  "weaknesses": [
+    "Very fragile with low defensive stats, easy to burst down if caught",
+    "Piercing Arrow takes time to charge, making him vulnerable while winding up",
+    "Chain of Corruption can be dodged by breaking line of sight or running away",
+    "Relies on positioning well since he has no dash or blink to escape"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Living Vengeance",
+      "howToUseIt": "After a kill or assist you temporarily gain attack damage and ability power, so look to chain fights or clean up kills quickly while this bonus is active."
+    },
+    {
+      "key": "Q",
+      "name": "Piercing Arrow",
+      "howToUseIt": "Hold this down to charge extra range and damage before firing, and use it to poke enemies from safety in lane. In short trades or all-in fights, fire it quickly instead of fully charging so you don't get caught standing still."
+    },
+    {
+      "key": "W",
+      "name": "Blighted Quiver",
+      "howToUseIt": "This passively adds magic damage to your auto-attacks and applies Blight; your other abilities then detonate Blight for extra damage based on the target's max health. Level this early to harass in lane and secure minion kills more easily, and activate it before a big Piercing Arrow for extra burst."
+    },
+    {
+      "key": "E",
+      "name": "Hail of Arrows",
+      "howToUseIt": "Fire this into a group of enemies to deal damage and desecrate the ground, slowing them and cutting their healing. Use it to zone enemies away from objectives or to weaken a target before you commit to a fight."
+    },
+    {
+      "key": "R",
+      "name": "Chain of Corruption",
+      "howToUseIt": "Aim this at the enemy you most want locked down, since it immobilizes the first champion hit and can spread to chain onto nearby uninfected enemies. Try to fire it when the enemy team is grouped up so the tendril can spread for a multi-person lockdown."
+    }
+  ],
+  "earlyGamePlan": "In lane, put an early point into Blighted Quiver to harass with auto-attacks and last-hit minions more easily, then use Piercing Arrow at safe range to chip away at your opponent's health. Avoid overcommitting to trades since you have no escape tool, and look for moments when the enemy is out of position to land a full-charge Piercing Arrow for a bigger hit.",
+  "quickTips": [
+    "Charge Piercing Arrow fully when safe, but fire it quickly in close-range trades",
+    "Level Blighted Quiver early to make last-hitting and harass easier",
+    "Use Hail of Arrows to slow enemies' movement and reduce their healing before a fight",
+    "Aim Chain of Corruption at grouped enemies so it can spread and lock down more than one target",
+    "Stay at max range in fights since you have no dash or blink to bail you out",
+    "Chain kills quickly while your passive's damage bonus is active"
+  ],
+  "whatToExpect": "An enemy Varus will try to poke you from long range with Piercing Arrow and punish you for standing near desecrated ground from Hail of Arrows, then land his Chain of Corruption to lock you down for a kill. Play behind minions to block his charged shots, avoid grouping up tightly so his ultimate can't chain to your allies, and if the tendril is heading your way, run perpendicular to make it lose track of you.",
+  "glossary": [
+    {
+      "term": "marksman",
+      "definition": "A ranged champion type, often called an ADC, who deals sustained physical damage from a distance using auto-attacks."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before committing to a full fight."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a squishy target outright."
+    },
+    {
+      "term": "harass",
+      "definition": "Repeatedly damaging or pressuring an enemy in lane to wear them down without full-on fighting."
+    },
+    {
+      "term": "zone",
+      "definition": "Using threats of damage or crowd control to keep an enemy away from an area, like minions or an objective."
+    },
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into an even bigger one, growing stronger relative to the enemy over time."
+    }
+  ]
+}

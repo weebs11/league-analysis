@@ -1,0 +1,88 @@
+{
+  "id": "Corki",
+  "name": "Corki",
+  "playstyleSummary": "Corki is a ranged fighter-marksman who pokes from a distance with bombs and a machine gun, then relies on true damage to punch through armor. He plays a patient poke game in lane before diving in with his flight ability, and he rewards players who like aiming their shots carefully and knowing exactly when each ability will be ready again, rather than just right-clicking.",
+  "strengths": [
+    "Strong lane poke with Phosphorus Bomb",
+    "True damage from his passive shreds armor stackers",
+    "Valkyrie gives him a built-in dash for engage or escape",
+    "Missile Barrage lets him threaten kills from unusually long range"
+  ],
+  "weaknesses": [
+    "Fragile if caught without Valkyrie ready",
+    "Vulnerable for a moment right after using Valkyrie",
+    "Needs mana management since every ability costs mana",
+    "Missile Barrage requires banking missiles over time, so early ultimates are weak"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Hextech Munitions",
+      "howToUseIt": "A portion of every basic attack you land becomes true damage automatically, so don't be afraid to auto-attack tanks — you're always dealing some damage that can't be reduced."
+    },
+    {
+      "key": "Q",
+      "name": "Phosphorus Bomb",
+      "howToUseIt": "Use this to poke enemies in lane from max range and to check nearby brush for hidden enemies before you walk into it."
+    },
+    {
+      "key": "W",
+      "name": "Valkyrie",
+      "howToUseIt": "Save this dash for either finishing off a low-health target or escaping danger — it also leaves a damaging fire trail, so aim it through enemies when you can."
+    },
+    {
+      "key": "E",
+      "name": "Gatling Gun",
+      "howToUseIt": "Turn this on when enemies are near you in a fight; it keeps damaging them and lowers their armor and magic resist while you can still auto-attack normally."
+    },
+    {
+      "key": "R",
+      "name": "Missile Barrage",
+      "howToUseIt": "Fire missiles whenever they're available since they build up automatically over time — remember every third one is a Big One that hits much harder, so try to save it for a real kill threat."
+    }
+  ],
+  "earlyGamePlan": "Stay at max range and use Phosphorus Bomb to poke whoever you're laning against while farming the minion wave with your basic attacks. Avoid exchanging hits up close early since you have no mana to waste and Valkyrie is your only escape — hold it until you actually need it to punish a mistake or save yourself.",
+  "quickTips": [
+    "Land Phosphorus Bomb before all-in fights to soften your target and reveal brush",
+    "Auto-attack often — your passive true damage adds up even against tanks",
+    "Don't burn Valkyrie just to poke; save it for engage, escape, or securing a kill",
+    "Fire Missile Barrage missiles as they become available so you don't waste stored ones",
+    "Turn on Gatling Gun during extended fights, not from max range where it won't reach",
+    "Watch your mana bar — you can run dry quickly if you spam every skill"
+  ],
+  "whatToExpect": "Corki will sit at long range and poke you with Phosphorus Bomb, then dash in with Valkyrie for a burst of true damage once you're low. He is briefly vulnerable right after using Valkyrie, so punish that window with crowd control or a quick exchange of damage — and remember his true damage passive means armor alone won't fully protect you.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resist entirely, so building defense doesn't reduce it."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight, using your key abilities to try to win it outright rather than just exchanging hits."
+    },
+    {
+      "term": "brush",
+      "definition": "Tall grass on the map that hides units standing inside it from enemies outside."
+    },
+    {
+      "term": "mana",
+      "definition": "The resource many champions spend to cast abilities; running out means you can't use your skills."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with a dash or crowd control effect."
+    },
+    {
+      "term": "farm",
+      "definition": "Killing minions with your attacks to earn steady gold and experience."
+    }
+  ]
+}

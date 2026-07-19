@@ -1,0 +1,88 @@
+{
+  "id": "Irelia",
+  "name": "Irelia",
+  "playstyleSummary": "Irelia is a mobile skirmishing fighter usually played top lane, who resets her dash Bladesurge off marked or low-health targets to chain gap-closers together and stay in the fight while stacking attack speed from her passive. She feels fast-paced and combo-heavy — landing her E mark unlocks a lot of extra mobility and damage from Bladesurge.",
+  "strengths": [
+    "High mobility through Bladesurge, especially with kills or marked targets to reset off of",
+    "Defiant Dance gives damage reduction against physical damage during dangerous windows",
+    "Flawless Duet's stun has no max range, letting her set up unusual angles",
+    "Scales attack speed quickly in fights via her passive"
+  ],
+  "weaknesses": [
+    "Relies on minions or marked targets nearby to maximize Bladesurge's mobility",
+    "Defiant Dance only reduces physical damage, not magic",
+    "Predictable engage pattern that can be interrupted with well-timed crowd control",
+    "Falls off if her Ionian Fervor stacks are reset by disengaging from a fight"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Ionian Fervor",
+      "howToUseIt": "Landing spells on enemies stacks bonus attack speed, and at max stacks you also deal bonus on-hit damage. Try to land as many spells as possible in a fight to ramp this up before going all-in with your attacks."
+    },
+    {
+      "key": "Q",
+      "name": "Bladesurge",
+      "howToUseIt": "Dash to strike a target and heal yourself; if the target is Marked or dies from the hit, the cooldown refreshes. Use it on a low-health minion to cross gaps safely, or chain it off a marked champion to keep dashing through a fight."
+    },
+    {
+      "key": "W",
+      "name": "Defiant Dance",
+      "howToUseIt": "Charge up a strike that deals more damage the longer you hold it, and you take reduced physical damage while charging. This can't be interrupted by crowd control, so time it to absorb an incoming disable or burst of physical damage."
+    },
+    {
+      "key": "E",
+      "name": "Flawless Duet",
+      "howToUseIt": "Send out two blades that converge on each other, damaging, stunning, and Marking anyone caught between them. Since it has no maximum range, you can use it creatively from further away than enemies expect."
+    },
+    {
+      "key": "R",
+      "name": "Vanguard's Edge",
+      "howToUseIt": "Fire a wave of blades that explode and Mark champions they hit, then leave behind a wall that damages and slows anyone who walks through it. Use it both to burst a target and to zone off an area like a chokepoint or escape route."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Bladesurge on low-health minions to safely poke the enemy laner or reposition, and look for Flawless Duet to land its stun and Mark, which opens up a Bladesurge reset onto the champion. Play around Defiant Dance's damage reduction to soak up expected physical damage during trades, and be mindful that without minions nearby your mobility is more limited.",
+  "quickTips": [
+    "Use Bladesurge on a low-health minion to cross the lane safely or reposition, not just on champions.",
+    "Land Flawless Duet's stun and Mark first when you can — it opens a free Bladesurge reset onto the marked champion.",
+    "Time Defiant Dance to absorb incoming physical damage or crowd control, since it can't be interrupted and reduces physical damage taken.",
+    "Keep attacking during fights to build your passive's attack speed stacks before committing to your biggest damage window.",
+    "Use Vanguard's Edge's leftover wall to zone enemies away from an objective or cut off their escape route.",
+    "Remember you're more mobile with minions or marked targets nearby — be cautious in isolated fights away from a wave."
+  ],
+  "whatToExpect": "Enemy Irelia is most dangerous once she's built up attack speed stacks and can chain Bladesurge dashes off minions or marked targets, so try to engage her away from minion waves to limit her mobility. Watch out for Flawless Duet's stun, which has no maximum range and can catch you by surprise from odd angles, and remember Defiant Dance can't be interrupted by crowd control, so don't waste your disables on it.",
+  "glossary": [
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "All-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to kill or be killed, rather than trading and retreating."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that take away an enemy's ability to move or act normally."
+    },
+    {
+      "term": "Zoning",
+      "definition": "Using threats of damage or crowd control to control where enemies can safely stand."
+    },
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Chokepoint",
+      "definition": "A narrow area of the map that limits how many champions can pass through or fight at once."
+    },
+    {
+      "term": "Reset",
+      "definition": "Refreshing an ability's cooldown early, usually as a reward for a kill or a specific condition, letting it be used again sooner."
+    }
+  ]
+}

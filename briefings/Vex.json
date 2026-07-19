@@ -1,0 +1,80 @@
+{
+  "id": "Vex",
+  "name": "Vex",
+  "playstyleSummary": "Vex is a mage who punishes mobile, dash-heavy champions by fearing them out of their engage. She feels like a grumpy turret: she doesn't move much herself, but anyone who dashes near her gets marked and then feared when her passive is charged. She's a good pick if you want straightforward damage abilities without needing pinpoint precision.",
+  "strengths": [
+    "Strong answer to dash-reliant champions thanks to her passive interrupting them",
+    "Personal Space gives her a shield plus damage, making her safe to play up close",
+    "Looming Darkness slows and zones enemies out of an area",
+    "Shadow Surge gives reliable engage or kill pressure on a marked target"
+  ],
+  "weaknesses": [
+    "Low mobility outside of her ultimate, making positioning important",
+    "Relies on her empowered passive timing to get the most value from fights",
+    "Vulnerable if caught before her shield or fear is available",
+    "Struggles against enemies who don't rely on dashes to engage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Doom 'n Gloom",
+      "howToUseIt": "Periodically your next basic ability becomes empowered to fear enemies and interrupt dashes, and nearby enemy dashes apply a mark you can consume for bonus damage. Save your empowered ability for when an enemy commits to a dash at you, and try to consume marks in fights for extra damage."
+    },
+    {
+      "key": "Q",
+      "name": "Mistral Bolt",
+      "howToUseIt": "Fire this missile early since it speeds up as it travels, making it hit harder at range. Use it to poke enemies from a distance before they can close the gap."
+    },
+    {
+      "key": "W",
+      "name": "Personal Space",
+      "howToUseIt": "Use this when enemies get close to gain a shield while damaging everyone nearby. It rewards standing your ground rather than backing away, so use it as enemies dive onto you."
+    },
+    {
+      "key": "E",
+      "name": "Looming Darkness",
+      "howToUseIt": "Drop this zone on the ground to damage and slow enemies who stand in it. Use it to control an area during a fight or to zone enemies away from objectives."
+    },
+    {
+      "key": "R",
+      "name": "Shadow Surge",
+      "howToUseIt": "Fire this to mark an enemy champion, then recast it to dash to them and deal damage. Use it to catch an isolated enemy or to finish off someone trying to escape."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Mistral Bolt from range while looking for enemies to dash in on you so you can use your empowered passive to fear and punish them. Use Personal Space when opponents get close to trade favorably thanks to the shield, and don't be afraid to hold your ground rather than kiting away, since Vex has few tools for chasing from a distance.",
+  "quickTips": [
+    "Save your empowered ability for the moment an enemy dashes toward you",
+    "Use Personal Space proactively when enemies close the distance, not after you're already low",
+    "Land Looming Darkness to control space and slow enemies during a fight",
+    "Use Shadow Surge on marked or isolated targets to secure kills",
+    "Poke with Mistral Bolt at range before committing to close-range trades",
+    "Play more stationary than mobile, using zone control instead of chasing"
+  ],
+  "whatToExpect": "An enemy Vex will punish you hard if you dash into her, since her passive fears and interrupts dashes, so approach her carefully rather than engaging directly. Watch for her empowered passive icon before committing a dash-based ability, and try to burst her down at range since she has limited ways to reposition once you're on top of her.",
+  "glossary": [
+    {
+      "term": "mage",
+      "definition": "A champion type that primarily deals magic damage through abilities rather than auto-attacks."
+    },
+    {
+      "term": "fear",
+      "definition": "A crowd control effect that forces the affected champion to run away, unable to control their own movement."
+    },
+    {
+      "term": "dash",
+      "definition": "A short, quick movement ability that repositions a champion, often used to engage or escape."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before committing to a full fight."
+    },
+    {
+      "term": "zone",
+      "definition": "Using threats of damage or crowd control to keep an enemy away from an area, like minions or an objective."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with crowd control or a dive."
+    }
+  ]
+}

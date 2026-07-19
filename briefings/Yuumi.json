@@ -1,0 +1,80 @@
+{
+  "id": "Yuumi",
+  "name": "Yuumi",
+  "playstyleSummary": "Yuumi is a support who spends most of her time attached to an ally champion, riding along untargetable while healing and buffing them instead of standing in lane herself. Playing her feels very different from most champions since you're rarely exposed directly to danger, making her approachable for players nervous about dying, but it also means you need to pay close attention to your ally's positioning since you move with them. She rewards good decision-making about when to detach and help elsewhere versus staying attached for safety.",
+  "strengths": [
+    "Very safe playstyle since she's untargetable by most things while attached to an ally",
+    "Strong healing and shielding support for her chosen ally",
+    "Final Chapter can damage enemies and heal allies across a wide channel",
+    "Low mechanical difficulty makes her accessible for newer players"
+  ],
+  "weaknesses": [
+    "Very low personal combat stats if she has to fight while detached",
+    "Provides little value if her attached ally is playing poorly or out of position",
+    "Can still be targeted by turrets while attached",
+    "Relies entirely on teammates to create opportunities, since she has no escape of her own when detached"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Feline Friendship",
+      "howToUseIt": "Land attacks and abilities on champions to periodically heal yourself and your Attached ally, and remember the ally you attach to most builds a bond that enhances your abilities over time."
+    },
+    {
+      "key": "Q",
+      "name": "Prowling Projectile",
+      "howToUseIt": "Fire this at enemies to slow them, and hold it briefly before it reaches max range for bonus damage and a stronger slow — while Attached you can steer the missile with your cursor for extra accuracy."
+    },
+    {
+      "key": "W",
+      "name": "You and Me!",
+      "howToUseIt": "Use this to dash onto an ally and become untargetable except to turrets, which is your main tool for staying safe — attach to whichever ally needs protection or is about to fight."
+    },
+    {
+      "key": "E",
+      "name": "Zoomies",
+      "howToUseIt": "Activate this for a shield and speed boost, which passes to your attached ally instead of yourself if you're currently Attached, so use it to help them dodge or chase."
+    },
+    {
+      "key": "R",
+      "name": "Final Chapter",
+      "howToUseIt": "Channel this during team fights to damage enemies and heal allies across five waves — you can still move, attach, and use Zoomies while channeling, so keep repositioning for safety."
+    }
+  ],
+  "earlyGamePlan": "Attach to your ally laner early and use Prowling Projectile to poke and slow enemies from a safe distance, saving Zoomies to help your ally either engage or escape a bad trade. Stay attached during dangerous moments since you're mostly safe while doing so, only detaching briefly to grab items or reposition. Avoid detaching near enemies since you have very little defense on your own.",
+  "quickTips": [
+    "Stay attached to your ally as much as possible for safety, especially during enemy jungler ganks",
+    "Use You and Me! proactively to save an ally who's about to take a bad engage, not just reactively",
+    "Hold Prowling Projectile a bit before it hits max range for the bonus damage and stronger slow",
+    "Reposition constantly while channeling Final Chapter since you're exposed while casting",
+    "Pick the ally with the best positioning and impact to attach to, not just whoever asks first",
+    "Remember turrets can still target you while attached, so don't hide behind a turret dive"
+  ],
+  "whatToExpect": "Yuumi will usually be invisible on your screen while attached to one of her allies, providing them healing, shields, and slows from safety — focus down her attached ally rather than trying to chase her directly, since she's untargetable while riding along. She has very little combat power if you can isolate her without her ally nearby, so splitting up the pair can neutralize her value. Watch for Prowling Projectile's slow, which can set up her ally for a kill.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range repeatedly to wear enemies down before a bigger fight."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill on an overextended enemy."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance on the enemy team."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to cast while the caster stays in place and vulnerable, often interruptible by crowd control."
+    },
+    {
+      "term": "dive",
+      "definition": "Aggressively pushing into enemy territory, often under their turret, to secure a kill."
+    }
+  ]
+}

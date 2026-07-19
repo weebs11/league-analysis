@@ -14,6 +14,7 @@ const { normalizeChampSelect, normalizeLiveGame } = await import('../src/gamesta
 const fallback = await import('../src/fallback.js');
 const mock = await import('../src/mock.js');
 const coach = await import('../src/coach.js');
+const briefings = await import('../src/briefings.js');
 
 before(async () => {
   // Needs network on first ever run; afterwards served from data/cache.
@@ -187,6 +188,42 @@ test('fallback: basic champ select briefing lists passive + QWER', async () => {
   assert.deepEqual(advice.yourChampion.abilities.map((a) => a.key), ['Passive', 'Q', 'W', 'E', 'R']);
   assert.ok(advice.knownEnemies.length >= 1, 'visible enemy picks are covered');
   assert.doesNotMatch(advice.yourChampion.playstyleSummary, /Uses None/, 'manaless champs read cleanly');
+});
+
+// ---- briefing library ---------------------------------------------------------
+
+test('briefings: library is present and covers the current roster', () => {
+  const info = briefings.libraryInfo();
+  assert.ok(info, 'briefing library is shipped with the repo');
+  assert.ok(info.count > 150, `expected the full roster, got ${info.count}`);
+  const missing = ddragon.allChampions().filter((c) => !briefings.getBriefing(c.id)).map((c) => c.id);
+  // Champions released after the library was generated are allowed to be
+  // missing (they fall back to basic mode) — but only a handful.
+  assert.ok(missing.length <= 3, `too many uncovered champions: ${missing.join(', ')}`);
+});
+
+test('briefings: every briefing has the full structure', () => {
+  for (const c of ddragon.allChampions()) {
+    const b = briefings.getBriefing(c.id);
+    if (!b) continue; // roster drift is covered by the test above
+    assert.deepEqual(b.abilities.map((a) => a.key), ['Passive', 'Q', 'W', 'E', 'R'], c.id);
+    assert.ok(b.playstyleSummary.length > 30, `${c.id}: playstyleSummary`);
+    assert.ok(b.whatToExpect.length > 30, `${c.id}: whatToExpect`);
+    assert.ok(b.earlyGamePlan.length > 30, `${c.id}: earlyGamePlan`);
+    assert.ok(b.strengths.length >= 2 && b.weaknesses.length >= 2, `${c.id}: strengths/weaknesses`);
+    assert.ok(b.quickTips.length >= 3, `${c.id}: quickTips`);
+    assert.ok(b.glossary.length >= 2, `${c.id}: glossary`);
+  }
+});
+
+test('briefings: champ select advice assembles from the library', async () => {
+  const advice = await briefings.champSelectAdvice(mock.buildChampSelectSnapshot('top'));
+  assert.equal(advice.basicMode, false);
+  assert.ok(advice.briefingPatch, 'reports the patch it was generated on');
+  assert.deepEqual(advice.yourChampion.abilities.map((a) => a.key), ['Passive', 'Q', 'W', 'E', 'R']);
+  assert.ok(advice.knownEnemies.length >= 1, 'visible enemy picks are covered');
+  assert.ok(advice.knownEnemies.every((e) => e.whatToExpect.length > 0));
+  assert.ok(advice.quickTips.length >= 3);
 });
 
 // ---- AI coach guardrails -------------------------------------------------------------

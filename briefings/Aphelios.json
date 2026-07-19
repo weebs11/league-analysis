@@ -1,0 +1,75 @@
+{
+  "id": "Aphelios",
+  "name": "Aphelios",
+  "playstyleSummary": "Aphelios is a highly complex marksman who cycles through five different guns, each with a unique basic attack and ability, swapping between two at a time. He can do almost anything depending on which pair of guns he's holding, from long-range poke to rooting enemies in place. He's one of the hardest champions in the game to learn, so expect a real learning curve before his kit feels intuitive.",
+  "strengths": [
+    "Extremely versatile — different gun combinations suit different situations",
+    "Very high damage output once his weapon combinations click",
+    "Root and utility options from certain guns most marksmen don't have",
+    "Strong scaling into the late game"
+  ],
+  "weaknesses": [
+    "One of the most complex champions to learn — hard to track which guns do what",
+    "No guaranteed access to any specific gun when you need it",
+    "Relies on his sister Alune's marker circle for vision around him",
+    "Vulnerable if caught with the wrong weapon pair equipped"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "The Hitman and the Seer",
+      "howToUseIt": "You always have two of five possible guns equipped, each with its own basic attack and ability — pay attention to which two you're holding, since your damage type and playstyle change dramatically depending on the pair."
+    },
+    {
+      "key": "Q",
+      "name": "Weapon Abilites",
+      "howToUseIt": "This ability changes completely based on your current main-hand weapon (for example, marking a target for a follow-up shot, rooting slowed enemies, or blasting a cone) — learn what your current gun's ability does before using it in a fight."
+    },
+    {
+      "key": "W",
+      "name": "Phase",
+      "howToUseIt": "Swaps your main-hand and off-hand guns, instantly changing your basic attack and ability — use this to access whichever gun's effect you need in the moment."
+    },
+    {
+      "key": "E",
+      "name": "Weapon Queue System",
+      "howToUseIt": "This slot just shows you which gun is coming next, so you can plan around it — it has no active effect of its own."
+    },
+    {
+      "key": "R",
+      "name": "Moonlight Vigil",
+      "howToUseIt": "Fires an explosive blast of moonlight that also applies your current main-hand gun's special on-hit effect — check which gun you have equipped before using it for maximum value."
+    }
+  ],
+  "earlyGamePlan": "Since Aphelios has a very complex kit, spend early levels learning what each of the five guns' basic attacks and abilities do rather than trying to master everything at once. Farm safely with whichever gun you're holding, and use Phase to access the gun you need for a specific situation, like the rooting Gravitum gun to punish an overextended enemy.",
+  "quickTips": [
+    "Check which two guns you're holding before engaging — your plan changes completely depending on the pair.",
+    "Use Phase to swap to whichever gun's effect helps most in the moment.",
+    "Watch the queue in your E slot to know which gun is coming next and plan around it.",
+    "Don't panic if you don't recognize a gun's effect yet — learn one or two combinations at a time.",
+    "Use Moonlight Vigil to apply your current main-hand gun's bonus effect at long range."
+  ],
+  "whatToExpect": "Aphelios is unpredictable because his abilities change entirely based on which of his five guns he's currently holding — watch his weapon icon to get a sense of what he can do to you, especially the purple Gravitum gun, which can root you if you're slowed. Because his kit is so complex, many Aphelios players make mistakes, so punishing bad or overextended positioning is often more reliable than trying to memorize every gun combination.",
+  "glossary": [
+    {
+      "term": "on-hit effect",
+      "definition": "A bonus effect that triggers automatically whenever a champion's basic attack lands."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that prevents movement but still allows the target to attack or cast most abilities."
+    },
+    {
+      "term": "scaling",
+      "definition": "How much stronger a champion becomes as the game goes on, usually through levels and items."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight over an area of the map, provided by wards, allied champions, or certain abilities."
+    },
+    {
+      "term": "overextended",
+      "definition": "Positioned too far forward, away from allies or safety, and vulnerable to being caught."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "Garen",
+  "name": "Garen",
+  "playstyleSummary": "Garen is a simple, resource-free top laner (no mana bar) designed to be low-complexity but high-durability, making him a great beginner pick. He plays like a point-and-click spin-to-win fighter, spamming Judgment in trades and finishing off low-health enemies with Demacian Justice, backed by strong self-healing when he avoids damage.",
+  "strengths": [
+    "No mana bar to manage — spells only cost cooldown",
+    "Strong sustained health regeneration if he avoids damage",
+    "Tanky with reliable teamfight damage from Judgment",
+    "Simple, low-skill-floor kit that's great for learning fundamentals"
+  ],
+  "weaknesses": [
+    "No mobility besides Decisive Strike's speed boost — no dash or blink",
+    "Easy to kite since he has no ranged tools",
+    "Can be poked down before he gets a chance to regenerate",
+    "Fairly predictable combo that experienced enemies can play around"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Perseverance",
+      "howToUseIt": "If you avoid taking damage for a few seconds you heal a large chunk of health each second. Disengage from trades and hide behind minions or in brush to let this kick in before re-engaging."
+    },
+    {
+      "key": "Q",
+      "name": "Decisive Strike",
+      "howToUseIt": "Use this to break free of a slow and close the gap on a target, or to start a trade. Your next attack after casting also silences them, so lead with it to shut down an important enemy spell."
+    },
+    {
+      "key": "W",
+      "name": "Courage",
+      "howToUseIt": "Activate before an enemy burst combo lands on you for a shield and tenacity, giving you reduced damage taken afterward. It also passively grants armor and magic resist for takedowns, so it rewards aggressive play."
+    },
+    {
+      "key": "E",
+      "name": "Judgment",
+      "howToUseIt": "Spin to deal damage to everyone nearby, but it hits hardest when only one enemy champion is in range — try to isolate your target instead of fighting inside a full minion wave."
+    },
+    {
+      "key": "R",
+      "name": "Demacian Justice",
+      "howToUseIt": "Finish off a low-health enemy champion with this execute. Save it for when it will secure a kill rather than throwing it early on a healthy target for minor extra damage."
+    }
+  ],
+  "earlyGamePlan": "In lane, farm with basic attacks and use Judgment on cooldown when you can hit the enemy champion without also feeding a full minion wave. Look for trades where you can land Decisive Strike's silence to shut down their spells, then back off and let Perseverance heal you back up between trades.",
+  "quickTips": [
+    "Try to fight one enemy at a time so Judgment's damage isn't diluted across minions.",
+    "Step out of vision or behind minions between trades to trigger Perseverance's strong health regen.",
+    "Save Demacian Justice for a kill rather than throwing it early — it's your best execute tool.",
+    "Use Decisive Strike's silence to interrupt an enemy's key spell in a trade, not just to gap-close.",
+    "Activate Courage right before an expected burst of damage — timing it early beats reacting after the fact.",
+    "Because you have no mana, feel free to use your basic abilities liberally on cooldown to farm and trade."
+  ],
+  "whatToExpect": "An enemy Garen will try to isolate you for a spinning Judgment combo, then finish you with Demacian Justice once you're low. Fight him near a full minion wave when possible to dilute his spin damage, and be aware that if you disengage and give him a few seconds without taking damage, he heals a large amount — so commit to finishing a trade rather than poking him and walking away.",
+  "glossary": [
+    {
+      "term": "Kite",
+      "definition": "Attacking or retreating while keeping distance from a melee enemy so they can't catch you."
+    },
+    {
+      "term": "Execute",
+      "definition": "An ability that deals bonus or guaranteed damage to low-health targets, often finishing them off."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Tenacity",
+      "definition": "A stat that reduces the duration of crowd control effects applied to you."
+    },
+    {
+      "term": "Disengage",
+      "definition": "Breaking off from a fight or trade, usually by retreating or using an escape tool."
+    },
+    {
+      "term": "Gap-close",
+      "definition": "Closing the distance to a target quickly, usually with a dash or speed boost."
+    },
+    {
+      "term": "Isolate",
+      "definition": "Getting an enemy alone, away from allies or minions, to fight them without interference."
+    }
+  ]
+}

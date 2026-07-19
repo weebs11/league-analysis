@@ -18,7 +18,8 @@ than the concepts warrant.
 | **Phase** | What the player is doing right now: `waiting`, `champselect`, or `ingame`. Derived from the LCU gameflow and the Live Client API. Drives the Live view's auto-switching. Avoid: "screen", "state". |
 | **Snapshot** | A normalized, UI-ready view of the current phase, emitted over SSE. Never persisted. Avoid: "payload". |
 | **Game Plan** | The AI-generated coaching for one game: matchup analysis, phase-by-phase plan, threat cards, itemization with reasoning. Avoid: "advice" (that's the champ-select variant), "report". |
-| **Basic Mode** | Coaching generated from Riot data alone, with no Anthropic API key present. |
+| **Basic Mode** | Coaching generated from Riot data alone. For the in-game Game Plan it appears when no Anthropic API key is present; for the champ-select briefing it appears only when a champion is missing from the Briefing Library. |
+| **Briefing Library** | The checked-in, pre-generated per-champion briefings under `briefings/` (one JSON per champion plus `manifest.json`). Written by Claude (Sonnet) at authoring time from current-patch Data Dragon data, served instantly during champ select with no API key or network call. Regenerated on demand, not automatically — `manifest.json` records the patch and model that produced it. Avoid: "cache" — nothing regenerates it at runtime. |
 
 ### Match history (new)
 

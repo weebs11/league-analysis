@@ -1,0 +1,80 @@
+{
+  "id": "Zeri",
+  "name": "Zeri",
+  "playstyleSummary": "Zeri is a highly mobile marksman who deals magic damage with her basic attacks and abilities, which is unusual for the role. She feels less like standing and shooting and more like darting around a fight, dashing over walls, and building up speed the longer the fight goes on. Because her ultimate makes her move faster every time she hits a champion, playing her rewards staying active and repositioning constantly rather than sitting still.",
+  "strengths": [
+    "Very mobile — can dash and vault over walls with Spark Surge to escape or reposition",
+    "Deals magic damage from basic attacks, which is harder for enemies to itemize against",
+    "Gets faster and hits harder the longer a teamfight goes on thanks to her ultimate",
+    "Strong poke and wave clear at range with Burst Fire and Ultrashock Laser"
+  ],
+  "weaknesses": [
+    "Very squishy early — dies fast if caught without her dash ready",
+    "Needs to keep moving to charge her passive, which takes practice to use well",
+    "Spark Surge has a cooldown, so she's much easier to catch right after using it",
+    "Falls behind quickly if she can't farm safely in the early game"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Living Battery",
+      "howToUseIt": "Keep moving and weave in Burst Fire whenever you can — it fills your Sparkpack, and your next attack after it's full deals bonus damage, so try to land that big hit on an enemy champion rather than a minion."
+    },
+    {
+      "key": "Q",
+      "name": "Burst Fire",
+      "howToUseIt": "This is your basic attack, so use it constantly to farm minions and damage enemies; it hits the first enemy in its path, so line it up on a single target when you can."
+    },
+    {
+      "key": "W",
+      "name": "Ultrashock Laser",
+      "howToUseIt": "Fire it into a wall whenever possible — it turns into a long-range laser that can poke or finish off enemies from much farther away than it looks like it can."
+    },
+    {
+      "key": "E",
+      "name": "Spark Surge",
+      "howToUseIt": "Use this to dash toward or away from a fight, cross walls to escape ganks, and briefly make your Q pierce through multiple enemies — save it rather than burning it just to move faster in lane."
+    },
+    {
+      "key": "R",
+      "name": "Lightning Crash",
+      "howToUseIt": "Save this for teamfights — it deals a burst of damage around you and then keeps making you faster every time you hit an enemy champion, so keep attacking during it instead of retreating."
+    }
+  ],
+  "earlyGamePlan": "Play it safe in lane and prioritize last-hitting minions with Burst Fire — you're fragile early and don't want to trade carelessly. Use Ultrashock Laser off cooldown to poke the enemy bot lane when you can do so safely, and keep Spark Surge ready in case of a gank rather than using it just to walk faster. Look for kill opportunities once you have a level or item advantage that lets you burst someone down quickly.",
+  "quickTips": [
+    "Keep moving between auto-attacks so your passive charges faster",
+    "Aim Ultrashock Laser at walls to threaten from much longer range",
+    "Don't burn Spark Surge just to save a few seconds of walking — save it for danger",
+    "In teamfights, stay near the edges and keep attacking to build your ultimate's speed stacks",
+    "Wait for your ultimate to be up before committing to a big all-in fight, since it's a huge power spike",
+    "Vault over walls with your dash to escape ganks the enemy jungler didn't expect"
+  ],
+  "whatToExpect": "An enemy Zeri will try to poke you from range with Ultrashock Laser and use walls to extend its range, then dash through terrain with Spark Surge to escape if you try to punish her. She's very squishy early, so look to engage while her dash is on cooldown; in teamfights, be careful once she uses her ultimate, since she'll keep getting faster and hitting harder the longer the fight drags on.",
+  "glossary": [
+    {
+      "term": "squishy",
+      "definition": "A champion with low health and defenses who dies quickly if caught out of position."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you have to wait after using an ability before you can use it again."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before a real fight starts."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight where most or all champions from both teams are involved at once."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game where a champion suddenly becomes much stronger, often from leveling an ability or finishing a key item."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to attack the enemy team, usually with an ability that closes the distance or locks someone down."
+    }
+  ]
+}

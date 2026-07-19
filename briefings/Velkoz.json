@@ -1,0 +1,80 @@
+{
+  "id": "Velkoz",
+  "name": "Vel'Koz",
+  "playstyleSummary": "Vel'Koz is a poke mage who can be played in the mid lane or as a support, dealing consistent damage from range while stacking a mark that eventually detonates for true damage. Playing him feels like chipping away at enemies from safety rather than diving in, and his channeled ultimate rewards good positioning and awareness of the fight around you. He has very little mobility, so most of his skill expression is in aiming and staying out of danger.",
+  "strengths": [
+    "Strong sustained poke damage from a safe range",
+    "Organic Deconstruction stacks add true damage, which is hard to build around",
+    "Tectonic Disruption can knock up multiple enemies to set up kills",
+    "Life Form Disintegration Ray deals huge damage if left unchecked"
+  ],
+  "weaknesses": [
+    "Very low mobility, making him easy to gank or catch out",
+    "His ultimate channel can be interrupted by stuns, silences, and knockups",
+    "Squishy and dies quickly if focused in a fight",
+    "Needs to land skillshots consistently to be effective"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Organic Deconstruction",
+      "howToUseIt": "Your abilities apply stacks to enemies on hit, and at three stacks they take a burst of true damage. Try to hit the same enemy with multiple abilities in a fight to trigger this bonus damage."
+    },
+    {
+      "key": "Q",
+      "name": "Plasma Fission",
+      "howToUseIt": "Fire this bolt and reactivate it (or let it hit an enemy) to split it in two for extra coverage. Aim it to farm minions from a distance while also poking whoever is standing near them."
+    },
+    {
+      "key": "W",
+      "name": "Void Rift",
+      "howToUseIt": "Use this to deal an initial burst of damage followed by a second burst after a delay, great for both farming and building your passive stacks. In lane, use it on minions to safely poke your opponent standing behind them."
+    },
+    {
+      "key": "E",
+      "name": "Tectonic Disruption",
+      "howToUseIt": "Cast this to knock up enemies in an area and knock nearby enemies slightly away. Use it to set up a kill combo with your team or to peel an enemy off you and your allies."
+    },
+    {
+      "key": "R",
+      "name": "Life Form Disintegration Ray",
+      "howToUseIt": "Channel this beam and follow the cursor onto your target for heavy damage over its duration; it also causes your passive stacks to deal true damage instead of magic damage. Use it when you're safe from interruption, since stuns, silences, and knockups will cut it short."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Void Rift to farm minions safely while chipping away at your opponent's health and building stacks of Organic Deconstruction on them. Stay near minions to poke from behind them, and avoid pushing too far up since you have no way to escape a gank. Look for a chance to land Tectonic Disruption on an isolated enemy to combo into big damage.",
+  "quickTips": [
+    "Poke with Void Rift and Plasma Fission from behind your minions to stay safe",
+    "Try to land multiple abilities on the same enemy to trigger true damage from your passive",
+    "Only channel Life Form Disintegration Ray when you're safe from stuns or knockups",
+    "Use Tectonic Disruption to knock up and set up kills, or to save yourself from a diving enemy",
+    "Avoid pushing your lane too far since you have no escape tool against ganks",
+    "Play with vision awareness since you're very vulnerable if caught alone"
+  ],
+  "whatToExpect": "An enemy Vel'Koz will try to poke you down from range and land his knockup to set up damage, then finish with his channeled ultimate if you're caught without a way to interrupt him. Save your stuns, silences, or knockups to cancel his ultimate mid-channel, and look to gank or dive him early since he has almost no way to escape once you're on top of him.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before committing to a full fight."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resistance entirely, so defensive stats don't reduce it."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to cast while the caster keeps performing it, often interruptible by crowd control."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged by moving out of its path, as opposed to auto-locking onto a target."
+    },
+    {
+      "term": "gank",
+      "definition": "When a player, often the jungler, ambushes an enemy lane to help their ally get a kill or force enemies away."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight over parts of the map, usually granted by wards, that reveals enemy movement and prevents ambushes."
+    }
+  ]
+}

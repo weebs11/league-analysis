@@ -1,0 +1,88 @@
+{
+  "id": "Fiora",
+  "name": "Fiora",
+  "playstyleSummary": "Fiora is a precise duelist top laner who wins fights by hitting glowing Vitals on her target rather than just exchanging damage evenly. She's a rewarding pick for a player who enjoys quick, decisive trades and pattern recognition, since parrying an enemy's key ability with Riposte can single-handedly swing a fight in her favor.",
+  "strengths": [
+    "Riposte can block and punish a single enemy ability, including hard crowd control",
+    "Duelist's Dance heals and speeds her up, letting her keep fighting through extended trades",
+    "Grand Challenge can heal her whole team if she lands enough Vitals or gets the kill",
+    "Very strong in isolated 1v1 fights, true to her duelist identity"
+  ],
+  "weaknesses": [
+    "Struggles in fights with lots of crowd control or many enemies at once",
+    "Riposte only blocks a single instance of damage or one effect, so timing matters",
+    "Relatively weak against enemies who can chip away at her from range before she closes in",
+    "Needs to land Vitals consistently to get her full value, which takes practice"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Duelist's Dance",
+      "howToUseIt": "A glowing Vital appears on nearby enemies — hitting it with an attack heals you and speeds you up, so try to angle your attacks toward the marked spot during a trade."
+    },
+    {
+      "key": "Q",
+      "name": "Lunge",
+      "howToUseIt": "Dash toward a nearby enemy to stab them, which also applies your on-hit effects — use it to close distance quickly or to reach a Vital you couldn't otherwise hit."
+    },
+    {
+      "key": "W",
+      "name": "Riposte",
+      "howToUseIt": "Activate this to block all incoming damage for a moment and disable yourself briefly, then stab back — save it to counter a key enemy ability, since blocking an immobilizing effect turns your counterattack into a stun instead of just a slow."
+    },
+    {
+      "key": "E",
+      "name": "Bladework",
+      "howToUseIt": "Use this before or during a trade for two fast, empowered attacks — the first slows your target and the second always critically strikes, so time it to land both hits."
+    },
+    {
+      "key": "R",
+      "name": "Grand Challenge",
+      "howToUseIt": "Activate this on an enemy champion to reveal all four Vitals and gain move speed near them — hit all four Vitals, or get the kill after landing at least one, to heal yourself and nearby allies."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for short trades where you can land your marked Vital with an attack to heal and speed up, then disengage rather than committing to a long fight. Hold onto Riposte until your opponent uses their key ability or crowd control, since blocking it can completely swing a trade in your favor.",
+  "quickTips": [
+    "Angle your attacks toward the glowing Vital marked by Duelist's Dance whenever possible",
+    "Save Riposte to block a specific dangerous ability rather than using it reflexively the moment it's available",
+    "Time Bladework so both empowered attacks land on your target",
+    "Use Lunge to reach a Vital that's out of normal attack range",
+    "Pop Grand Challenge before an extended fight, not right as it ends, so you have time to hit multiple Vitals",
+    "Avoid fighting into groups of enemies — Fiora is built for 1v1s, not chaotic teamfights"
+  ],
+  "whatToExpect": "Fiora will try to land quick trades on her glowing Vital and can block one of your abilities entirely with Riposte, so be careful about using your key crowd control or damage combo on her without bait first. She's much weaker in group fights than in a straight 1v1, so try to engage on her with allies rather than alone.",
+  "glossary": [
+    {
+      "term": "duelist",
+      "definition": "A champion built around winning quick, isolated fights against a single opponent."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing laners."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "on-hit effects",
+      "definition": "Bonus effects that trigger automatically whenever a champion's basic attack lands."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight and retreating to safety."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with a dash or crowd control effect."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once, as opposed to a small skirmish."
+    },
+    {
+      "term": "bait",
+      "definition": "Deliberately looking vulnerable to provoke an enemy into using an ability or committing to a fight you're actually prepared for."
+    }
+  ]
+}

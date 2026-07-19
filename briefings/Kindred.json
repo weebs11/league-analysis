@@ -1,0 +1,75 @@
+{
+  "id": "Kindred",
+  "name": "Kindred",
+  "playstyleSummary": "Kindred is a ranged jungle marksman who marks enemies or jungle camps as Hunts and permanently grows stronger by completing them. She plays a patient, kiting style rather than diving into fights first, using her mobility and ranged attacks to whittle enemies down. Her ultimate is unique — it stops anyone inside from dying at all, which can either save your team or deny you a kill.",
+  "strengths": [
+    "Completing Hunts permanently strengthens her basic abilities, letting her snowball over the game.",
+    "Dance of Arrows gives good kiting potential, letting her deal damage while dodging attacks.",
+    "Lamb's Respite can save a low-health ally from dying at a critical moment.",
+    "Wolf's Frenzy provides built-in sustain when fully charged."
+  ],
+  "weaknesses": [
+    "Fragile and easy to punish if caught without support.",
+    "Has no hard engage of her own, so she depends on her team to start fights.",
+    "Picking bad Hunts wastes their value, since some targets are too risky to complete.",
+    "Lamb's Respite can accidentally save the enemy you were trying to finish off."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Mark of the Kindred",
+      "howToUseIt": "Mark enemies or jungle camps to Hunt, then complete the Hunt (usually by killing that target) to permanently power up one of your basic abilities. Choose Hunts you can realistically finish — every four completed Hunts also increases your attack range."
+    },
+    {
+      "key": "Q",
+      "name": "Dance of Arrows",
+      "howToUseIt": "Tumble away from danger while firing arrows at nearby targets — use it both to deal damage and to dodge incoming attacks or skillshots."
+    },
+    {
+      "key": "W",
+      "name": "Wolf's Frenzy",
+      "howToUseIt": "Activate it near enemies to have Wolf attack them automatically, while moving and attacking builds up a stack for Lamb; use the fully-charged bonus attack to heal yourself when you need sustain."
+    },
+    {
+      "key": "E",
+      "name": "Mounting Dread",
+      "howToUseIt": "Land three attacks on the same target, including the marking shot, and the third connects for a much bigger hit from Wolf. Use it to threaten large burst damage on a single target."
+    },
+    {
+      "key": "R",
+      "name": "Lamb's Respite",
+      "howToUseIt": "Cast this zone in a fight to stop anyone inside from dying, whether ally or enemy — great for saving a low-health teammate, but be careful, since it can also save the enemy you were about to finish off."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, clear camps efficiently with Dance of Arrows and Wolf's Frenzy, and pick Hunts you can realistically complete rather than ones that are too risky. Avoid initiating fights yourself since you're fragile and lack hard engage — let your team start fights and follow up with damage from range.",
+  "quickTips": [
+    "Choose Hunts carefully — completing them permanently strengthens your abilities, so pick ones you can actually finish.",
+    "Use Dance of Arrows to dodge incoming damage or skillshots while still dealing damage yourself.",
+    "Move and attack often while Wolf's Frenzy is active to charge Lamb's healing attack faster.",
+    "Don't engage fights first — you're fragile and better suited to fighting from range after your team commits.",
+    "Time Lamb's Respite carefully — it saves everyone in the zone, including enemies you might otherwise kill."
+  ],
+  "whatToExpect": "An enemy Kindred is fragile, so apply pressure on her and she'll be forced to play cautiously and kite rather than fight head-on. Watch for Hunts marked on jungle camps and consider contesting or clearing them to slow her power growth. If she casts Lamb's Respite during a fight, remember nothing inside the zone can die — don't waste your own burst trying to finish someone off while it's active.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged, rather than one that automatically hits its target."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking while moving away to avoid taking damage in return."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing first, often with crowd control or a dash."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt in a very short time."
+    },
+    {
+      "term": "sustain",
+      "definition": "Healing or lifesteal that lets a champion keep fighting or stay in lane longer."
+    }
+  ]
+}

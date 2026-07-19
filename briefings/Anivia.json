@@ -1,0 +1,79 @@
+{
+  "id": "Anivia",
+  "name": "Anivia",
+  "playstyleSummary": "Anivia is a stationary control mage who zones enemies with a wall, sets up stuns with her frost sphere, and can shrug off one death by reverting to an egg. She has no mobility, so playing her well is about controlling space from a distance rather than diving into the action. Her combo is simple to learn but deadly once timed correctly.",
+  "strengths": [
+    "Extremely high damage ceiling from her combo",
+    "Rebirth gives her a second life in most fights",
+    "Crystallize is one of the best wall abilities for zoning and blocking paths",
+    "Strong area control from Glacial Storm in team fights"
+  ],
+  "weaknesses": [
+    "No mobility, making her very vulnerable to being caught out and ganked",
+    "The egg from Rebirth can be killed to remove her safety net",
+    "Very mana-hungry, especially when using Glacial Storm",
+    "Requires careful positioning since she has few defensive tools"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Rebirth",
+      "howToUseIt": "If you'd normally die, you instead revert to an egg with full health after a short delay — this gives you a safety net in fights, but the egg can still be killed, so don't get too reckless."
+    },
+    {
+      "key": "Q",
+      "name": "Flash Frost",
+      "howToUseIt": "Send the ice sphere out to chill and damage enemies in its path, then detonate it (or let it expire) for a stun in an area — try to land the initial sphere on a target before detonating for the best stun."
+    },
+    {
+      "key": "W",
+      "name": "Crystallize",
+      "howToUseIt": "Creates a wall of ice to block movement and vision — use it to cut off an enemy's escape route, split up a group, or block a gank path."
+    },
+    {
+      "key": "E",
+      "name": "Frostbite",
+      "howToUseIt": "Deals damage to a target, doubled if they were recently hit by Flash Frost or your fully-formed Glacial Storm — always try to combo this after one of those two."
+    },
+    {
+      "key": "R",
+      "name": "Glacial Storm",
+      "howToUseIt": "Summons a damaging, slowing storm around you that grows stronger the longer it channels — use it in fights or to zone enemies out of an area."
+    }
+  ],
+  "earlyGamePlan": "Play at max range in lane, poking with Flash Frost and following up with Frostbite for the damage bonus. Save Crystallize to block enemy escapes or to protect yourself if someone dives you, and be mindful of your mana, since Anivia depends heavily on it to use Glacial Storm in fights.",
+  "quickTips": [
+    "Combo Flash Frost into Frostbite for doubled damage.",
+    "Use Crystallize to block enemy escape routes or cut off a diving enemy.",
+    "Don't assume you're safe after 'dying' — your egg can still be killed, so retreat if possible.",
+    "Manage your mana carefully, since Glacial Storm drains it quickly.",
+    "Stay at max range in lane since you have no way to escape a dive."
+  ],
+  "whatToExpect": "Anivia has no mobility, so if you can catch her out of position with a gank, she's usually an easy kill — except that she reverts to an egg with full health instead of dying once. Focus on destroying the egg quickly with multiple attackers if she goes down, or she'll simply hatch back into the fight. Watch for her ice wall (Crystallize), which she'll use to block your escape or split your team up.",
+  "glossary": [
+    {
+      "term": "zoning",
+      "definition": "Using threats or abilities to control where an enemy can safely stand or walk."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe range before committing to a fight."
+    },
+    {
+      "term": "gank",
+      "definition": "An ambush on an enemy laner, usually by the jungler or a roaming ally."
+    },
+    {
+      "term": "mana",
+      "definition": "A resource many champions need to cast abilities, which regenerates slowly over time."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to complete and can be canceled by moving or crowd control."
+    },
+    {
+      "term": "caught out",
+      "definition": "Being isolated from allies and vulnerable to an enemy ambush."
+    }
+  ]
+}

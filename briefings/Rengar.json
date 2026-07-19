@@ -1,0 +1,80 @@
+{
+  "id": "Rengar",
+  "name": "Rengar",
+  "playstyleSummary": "Rengar is a jungle assassin who hunts from the shadows: hiding in brush lets him leap onto an enemy with his basic attack, and casting abilities builds Ferocity that empowers his next ability once it's maxed out. The whole champion is about ambushing a single target, landing a burst of damage, and getting out before the rest of their team reacts.",
+  "strengths": [
+    "Can leap onto enemies for free from brush, making him great at picking off isolated targets",
+    "Empowered abilities from Ferocity add healing, crowd control, or damage on top",
+    "Thrill of the Hunt lets him track down and camouflage onto a chosen target",
+    "Strong at snowballing kills onto weak or unprotected champions"
+  ],
+  "weaknesses": [
+    "Falls off badly if he can't get ahead early",
+    "Very reliant on brush and positioning to get his leap and combos off",
+    "Squishy once his burst is spent, so bad engages get him killed",
+    "Predictable to good players who track his Ferocity bar and play around brush"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Unseen Predator",
+      "howToUseIt": "Stand in brush before engaging so your next basic attack leaps onto the target, and pay attention to your Ferocity bar building as you cast spells so you know when your next ability is empowered."
+    },
+    {
+      "key": "Q",
+      "name": "Savagery",
+      "howToUseIt": "Use this on your target to add bonus damage to your next attack; with max Ferocity it also grants attack speed, so weave it into fights and jungle clearing alike."
+    },
+    {
+      "key": "W",
+      "name": "Battle Roar",
+      "howToUseIt": "Use this to heal off recent damage taken during a skirmish; at max Ferocity it also cleanses crowd control, so save the empowered version for when you're locked down."
+    },
+    {
+      "key": "E",
+      "name": "Bola Strike",
+      "howToUseIt": "Throw this to slow a fleeing or approaching enemy; at max Ferocity it roots instead, which is great for locking down a target before you commit fully."
+    },
+    {
+      "key": "R",
+      "name": "Thrill of the Hunt",
+      "howToUseIt": "Activate this to go camouflaged and see the nearest enemy champion, then leap to them from anywhere without needing brush — use it to pick off a target who's wandered from their team."
+    }
+  ],
+  "earlyGamePlan": "Path the jungle toward brush-heavy areas near a lane where you can set up ambushes on overextended enemies. Focus your ganks and clears on building Ferocity so your abilities are empowered right when you commit to a fight.",
+  "quickTips": [
+    "Check your Ferocity bar before engaging — try to have it maxed for an empowered ability",
+    "Use brush to set up your passive leap rather than walking in directly",
+    "Save empowered Battle Roar for when you're being crowd controlled, since it cleanses",
+    "Target isolated enemies with Thrill of the Hunt rather than ones near their team",
+    "Rengar wants to snowball, so prioritize picks over long, even fights",
+    "Back off if your combo doesn't secure the kill — you have little left afterward"
+  ],
+  "whatToExpect": "Enemy Rengar will hide in brush waiting to leap onto you or use his ultimate to sneak up on an isolated target, so avoid walking near unwarded brush alone. He's most dangerous with an empowered ability ready, and much weaker if you can force a fight before his Ferocity builds up or bring vision to deny his ambush.",
+  "glossary": [
+    {
+      "term": "brush",
+      "definition": "Bushes on the map that hide champions standing inside them from enemy vision."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill."
+    },
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into a bigger and bigger lead over time."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill on its own."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight over an area of the map, usually provided by wards, that reveals enemies moving through it."
+    },
+    {
+      "term": "overextended",
+      "definition": "Being positioned too far from your team or turret, making you vulnerable to being caught."
+    }
+  ]
+}

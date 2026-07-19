@@ -1,0 +1,79 @@
+{
+  "id": "Quinn",
+  "name": "Quinn",
+  "playstyleSummary": "Quinn is a hybrid marksman-assassin who uses her eagle Valor to mark targets for bonus damage, then can transform into an extremely fast roaming mode with her ultimate to catch enemies across the map by surprise. She plays less like a standard lane marksman and more like a mobile skirmisher who punishes overextended enemies.",
+  "strengths": [
+    "Very strong roaming potential thanks to Behind Enemy Lines' speed",
+    "Vault lets her dash in, disrupt an enemy, and reposition in one move",
+    "Blinding Assault reduces enemy vision and marks a target",
+    "Harrier marks reward aggressive attacking with bonus damage"
+  ],
+  "weaknesses": [
+    "Weaker in extended teamfights than standard marksmen",
+    "Vault can be risky since enemies get a chance to hit her while she dashes in",
+    "Behind Enemy Lines loses its extra move speed if she takes damage while using it",
+    "Relies on marks and cooldowns more than consistent auto-attacking"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Harrier",
+      "howToUseIt": "Valor periodically marks an enemy - your first attack on a marked target deals bonus damage, so look to attack marked enemies before anyone else."
+    },
+    {
+      "key": "Q",
+      "name": "Blinding Assault",
+      "howToUseIt": "Send Valor to mark an enemy and reduce their vision before damaging everyone nearby - use it to poke a group, mark a priority target, or blind an enemy right before they try to fight back."
+    },
+    {
+      "key": "W",
+      "name": "Heightened Senses",
+      "howToUseIt": "You automatically gain attack speed and move speed after attacking a Harrier-marked target; activate it any time to have Valor reveal a large nearby area, great for scouting before you commit to a fight."
+    },
+    {
+      "key": "E",
+      "name": "Vault",
+      "howToUseIt": "Dash to an enemy, damage and slow them, then leap off to land near your max attack range away from them - use it to engage, disrupt, and reposition all at once, but remember enemies can hit you while you're next to them mid-ability."
+    },
+    {
+      "key": "R",
+      "name": "Behind Enemy Lines",
+      "howToUseIt": "Transform to fly around the map at great speed; ending the ability unleashes Skystrike, damaging nearby enemies and marking champions with Harrier - use this to roam to another lane, farm quickly, or chase down a fleeing target."
+    }
+  ],
+  "earlyGamePlan": "Lane normally with auto-attacks and use Blinding Assault to poke and mark your opponent, following up your first attack on a marked target for bonus damage. Once you have levels in Vault, look for chances to dash in for extra damage and immediately reposition to safety, and consider using Behind Enemy Lines to roam to a side lane once your own lane is stable.",
+  "quickTips": [
+    "Prioritize attacking whichever enemy Valor has marked for the bonus passive damage",
+    "Use Heightened Senses to scout brush or the jungle before committing to fights",
+    "Vault both engages and repositions you - use it to hit-and-run rather than staying in melee range",
+    "Use Behind Enemy Lines to roam and pressure other lanes when your lane is safe to leave",
+    "Remember taking damage while in Behind Enemy Lines removes her bonus move speed - the same is true for enemies using similar effects"
+  ],
+  "whatToExpect": "Quinn can use Behind Enemy Lines to cross the map quickly and appear in your lane without warning, so keep track of her position when she disappears from vision. After she marks you with Harrier, move away so she can't land the bonus-damage attack, and if she Vaults onto you, fight back or retreat immediately since she'll be forced to stay next to you for a moment.",
+  "glossary": [
+    {
+      "term": "mark",
+      "definition": "A debuff placed on an enemy that enables or boosts a follow-up effect."
+    },
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help or fight in another part of the map."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight over an area of the map, usually granted by wards or abilities."
+    },
+    {
+      "term": "brush",
+      "definition": "Foliage on the map that hides champions standing inside it."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by closing the distance on the enemy."
+    },
+    {
+      "term": "hit-and-run",
+      "definition": "Attacking briefly then retreating rather than committing to a full fight."
+    }
+  ]
+}

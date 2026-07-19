@@ -1,0 +1,80 @@
+{
+  "id": "Rakan",
+  "name": "Rakan",
+  "playstyleSummary": "Rakan is a mobile, engage-focused support who dances around the battlefield shielding and healing allies while looking for chances to charm and knock up the enemy team. He feels fast and flashy, darting between allies and enemies, but needs allies nearby to unlock his full potential.",
+  "strengths": [
+    "Grand Entrance provides reliable engage with a knock-up",
+    "Battle Dance lets him bounce between allies for shields and speed",
+    "The Quickness charms multiple enemies for a team-wide engage or peel tool",
+    "Gleaming Quill provides ranged poke and healing for allies"
+  ],
+  "weaknesses": [
+    "Very reliant on having allies nearby - much weaker when isolated",
+    "Lower base damage compared to more aggressive supports",
+    "Dash abilities can be predicted since their destination is shown before landing",
+    "Vulnerable if caught alone away from his team"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Fey Feathers",
+      "howToUseIt": "You periodically gain a shield - use it by walking into poke or trades rather than saving it for no reason, since it recharges over time regardless."
+    },
+    {
+      "key": "Q",
+      "name": "Gleaming Quill",
+      "howToUseIt": "Throw a feather that deals magic damage; hitting a champion or epic monster lets you heal your allies on your next cast, so land it before trades to add healing to your combo."
+    },
+    {
+      "key": "W",
+      "name": "Grand Entrance",
+      "howToUseIt": "Dash to a location, knocking up nearby enemies on arrival - this is your main engage tool, so use it to start fights on isolated enemies or to interrupt something dangerous."
+    },
+    {
+      "key": "E",
+      "name": "Battle Dance",
+      "howToUseIt": "Fly to an allied champion to shield them, and you can recast it again for free shortly after - chain it between allies or back to yourself to stay mobile and protected."
+    },
+    {
+      "key": "R",
+      "name": "The Quickness",
+      "howToUseIt": "Gain a burst of move speed while charming and damaging enemies you touch - use it to close distance in a big fight and lock down multiple enemies at once."
+    }
+  ],
+  "earlyGamePlan": "As support, poke with Gleaming Quill when your ally is trading, and use Battle Dance to shield your ADC or dash back to safety after engaging. Look for a chance to land Grand Entrance's knock-up on an isolated enemy once you have allies nearby to follow up, since Rakan is much stronger with support than alone.",
+  "quickTips": [
+    "Stay near allies - most of Rakan's tools need them to work at full strength",
+    "Land Gleaming Quill on a champion before a trade so your next ability heals your team",
+    "Use Grand Entrance to engage on isolated targets, not enemies grouped with allies",
+    "Chain Battle Dance between allies to stay mobile and keep shields active",
+    "Save The Quickness for a real teamfight rather than using it just to reposition",
+    "Watch enemy positioning - your dashes telegraph their landing spot, so time them for when the enemy can't react"
+  ],
+  "whatToExpect": "Rakan wants to engage with Grand Entrance's knock-up and then charm your team with The Quickness, so watch for him dashing toward your group and be ready to spread out or use crowd control on him first. He's much less dangerous when caught without allies nearby, so if you find him alone, look to punish him rather than letting him reset in safety.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "Starting a fight by closing the distance on the enemy."
+    },
+    {
+      "term": "isolated",
+      "definition": "Separated from allies, making a target easier and safer to attack."
+    },
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range before a real fight starts."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, roots, and knock-ups that limit what an enemy can do."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all of both teams."
+    },
+    {
+      "term": "telegraph",
+      "definition": "To visibly show where or when an ability will land before it happens, giving enemies a chance to react."
+    }
+  ]
+}

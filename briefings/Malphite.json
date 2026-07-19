@@ -1,0 +1,80 @@
+{
+  "id": "Malphite",
+  "name": "Malphite",
+  "playstyleSummary": "Malphite is a tanky mage/fighter who soaks up damage in the front line and looks for one big moment: launching his ultimate into the enemy team to open a fight on his team's terms. He's simple to pick up and forgiving to play, but still has real damage and disruption impact.",
+  "strengths": [
+    "Unstoppable Force can single-handedly start a winning teamfight by landing a knock-up on multiple enemies",
+    "Granite Shield gives him free sustain in lane if he avoids taking damage for a few seconds",
+    "Ground Slam punishes enemies who rely on basic attacks",
+    "Simple kit that's very forgiving for new players"
+  ],
+  "weaknesses": [
+    "Very reliant on hitting his ultimate well to be useful in fights",
+    "Low damage output compared to true damage dealers",
+    "Predictable engage pattern that experienced enemies can play around",
+    "Needs to build defense to reach full effectiveness, so early levels can feel weak"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Granite Shield",
+      "howToUseIt": "Avoid taking damage for a few seconds whenever possible to let this shield recharge - it blocks a chunk of incoming damage, so recharging it before a fight makes you much harder to kill."
+    },
+    {
+      "key": "Q",
+      "name": "Seismic Shard",
+      "howToUseIt": "Use this to poke a target from range and slow their escape by stealing some of their Move Speed for a few seconds."
+    },
+    {
+      "key": "W",
+      "name": "Thunderclap",
+      "howToUseIt": "Activate this before attacking in a fight so your attacks send out extra aftershocks, adding free damage while you tank hits."
+    },
+    {
+      "key": "E",
+      "name": "Ground Slam",
+      "howToUseIt": "Use this against enemies who rely on basic attacks to fight you - it reduces their Attack Speed and deals more damage the more Armor you have."
+    },
+    {
+      "key": "R",
+      "name": "Unstoppable Force",
+      "howToUseIt": "Save this for when several enemies are grouped together - launching into the middle of them knocks them all into the air, giving your team a huge opening to fight."
+    }
+  ],
+  "earlyGamePlan": "In lane, farm safely with your abilities and let Granite Shield recharge between trades so you can absorb extra damage. Avoid over-committing before level 6, since Malphite's real power spike comes from being able to use Unstoppable Force to start fights.",
+  "quickTips": [
+    "Let Granite Shield recharge by avoiding damage for a few seconds before engaging",
+    "Save your ultimate for when multiple enemies are grouped up",
+    "Use Ground Slam against enemies who fight with basic attacks rather than spells",
+    "Build defense to make the most of Ground Slam's Armor scaling",
+    "Don't use your ultimate just to pick off one target - it's most valuable knocking up a group",
+    "Play patiently early since you're mostly waiting for your power spike at level 6"
+  ],
+  "whatToExpect": "Malphite will try to walk up and land Unstoppable Force on your team for a knock-up that opens a fight, so watch his position closely once he's near level 6 and try to spread out. If you rely on basic attacks, be wary of Ground Slam reducing your Attack Speed, and remember he can also jungle, so track his summoner spells if he's missing from lane.",
+  "glossary": [
+    {
+      "term": "power spike",
+      "definition": "A point in the game (usually a level or item) where a champion becomes significantly stronger."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to an attack on the enemy team."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "knock-up",
+      "definition": "A crowd control effect that launches a champion into the air, preventing them from acting."
+    },
+    {
+      "term": "sustain",
+      "definition": "Recovering health over time, usually through healing or shielding effects."
+    },
+    {
+      "term": "jungle",
+      "definition": "The area of the map between lanes filled with neutral monsters, typically farmed by one player per team."
+    }
+  ]
+}

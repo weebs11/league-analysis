@@ -1,0 +1,80 @@
+{
+  "id": "Ziggs",
+  "name": "Ziggs",
+  "playstyleSummary": "Ziggs is a mage who prefers to fight from extreme range rather than up close, throwing bombs, planting mines, and lobbing a screen-crossing ultimate. He feels like a siege and poke champion — most of his value comes from chipping enemies down and demolishing towers from a distance rather than diving into fights.",
+  "strengths": [
+    "Excellent poke — most of his damage can be thrown from very long range",
+    "One of the best champions in the game at destroying turrets, even from outside their attack range",
+    "Hexplosive Minefield's area denial makes it costly for enemies to walk over him",
+    "Mega Inferno Bomb can influence fights happening far across the map"
+  ],
+  "weaknesses": [
+    "Very fragile if caught in melee range — has almost no escape besides Satchel Charge",
+    "Most abilities have long cooldowns, so he's vulnerable right after using them",
+    "Relies on landing skillshots; whiffing his abilities leaves him with little to fall back on",
+    "Short attack range makes early trading and last-hitting under pressure tricky"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Short Fuse",
+      "howToUseIt": "You don't have to aim this — it triggers automatically on your next attack. Use abilities often to keep its cooldown low, and try to land the empowered attack on an enemy champion when you get the chance."
+    },
+    {
+      "key": "Q",
+      "name": "Bouncing Bomb",
+      "howToUseIt": "Your main poke and farming tool — throw it to damage enemies at range or clear waves of minions from a safe distance."
+    },
+    {
+      "key": "W",
+      "name": "Satchel Charge",
+      "howToUseIt": "Drop it near yourself and detonate it early to knock yourself over a wall and escape, or drop it near a tower and blow it up to deal huge damage to enemy turrets."
+    },
+    {
+      "key": "E",
+      "name": "Hexplosive Minefield",
+      "howToUseIt": "Scatter these in a chokepoint or over your Mega Inferno Bomb's landing zone so enemies get slowed and take extra damage when they walk in — great for setting up your ultimate."
+    },
+    {
+      "key": "R",
+      "name": "Mega Inferno Bomb",
+      "howToUseIt": "Aim for the center of a fight since enemies closer to the middle take far more damage; this can hit targets from almost anywhere on the map, so use it to help teammates in fights you're not even near."
+    }
+  ],
+  "earlyGamePlan": "Stay at maximum range in lane and use Bouncing Bomb to poke the enemy and farm minions — you don't want to be caught in melee range early. Save Satchel Charge mainly as an escape rather than for damage until you're confident in the matchup, and look for chances to use Mega Inferno Bomb to help your jungler or other lanes once it's available.",
+  "quickTips": [
+    "Always fight from max range — Ziggs loses most trades up close",
+    "Save Satchel Charge as your main escape tool rather than spending it for damage",
+    "Use Hexplosive Minefield in chokepoints where enemies can't avoid stepping on it",
+    "Watch for enemies closing the gap right after you use your abilities, since your cooldowns are long",
+    "Use Mega Inferno Bomb to poke enemy turrets or help distant fights, not just to finish a kill in your own lane",
+    "Aim your ultimate at the middle of a group of enemies for the biggest damage"
+  ],
+  "whatToExpect": "An enemy Ziggs will try to poke you constantly from long range and clear waves quickly, so avoid standing in the open near his mines or in lines he can hit with Bouncing Bomb. He has almost no escape besides Satchel Charge, so if you can close the distance right after he uses his abilities, he's very killable — just watch for mines underfoot and his hard-hitting, long-range ultimate.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before a real fight starts."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you have to wait after using an ability before you can use it again."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that has to be aimed and can miss, rather than one that automatically hits its target."
+    },
+    {
+      "term": "farm",
+      "definition": "Earning gold and experience by last-hitting minions."
+    },
+    {
+      "term": "turret",
+      "definition": "A defensive structure (also called a tower) that attacks enemies who get close to it."
+    },
+    {
+      "term": "chokepoint",
+      "definition": "A narrow path on the map that forces enemies through a small area, making them easier to hit with area-of-effect abilities."
+    }
+  ]
+}

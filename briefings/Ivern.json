@@ -1,0 +1,84 @@
+{
+  "id": "Ivern",
+  "name": "Ivern",
+  "playstyleSummary": "Ivern is an unusual jungler who helps jungle camps instead of killing them, trading personal damage for powerful crowd control and utility for his team. He feels like playing a support who happens to live in the jungle, using roots, shields, and a giant sentinel to set up plays rather than dueling.",
+  "strengths": [
+    "Strong crowd control with Rootcaller's root",
+    "Very safe early game since he can't be attacked by normal jungle camps",
+    "Great vision and ambush potential from Brushmaker",
+    "Powerful teamfight presence once he summons Daisy"
+  ],
+  "weaknesses": [
+    "Very low personal damage, especially early",
+    "Loses most 1v1 fights against real fighters",
+    "Mana hungry until he gets more items",
+    "Weak if caught alone without allies or Daisy"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Friend of the Forest",
+      "howToUseIt": "You can't damage or be damaged by normal jungle monsters, so grow groves on camps and free them once fully grown for gold and experience instead of auto-attacking them down."
+    },
+    {
+      "key": "Q",
+      "name": "Rootcaller",
+      "howToUseIt": "Fire this at an enemy to root them, then follow up yourself or let an ally dash in to engage - it's your main tool for starting fights."
+    },
+    {
+      "key": "W",
+      "name": "Brushmaker",
+      "howToUseIt": "Activate it near a lane to plant a long-lasting patch of brush you can use to ambush enemies or set up wards; fighting inside any brush also boosts your and nearby allies' attack damage."
+    },
+    {
+      "key": "E",
+      "name": "Triggerseed",
+      "howToUseIt": "Shield an ally before a skirmish so it explodes into a slow and damage burst on whoever attacks them; if it never triggers it will refresh on its own."
+    },
+    {
+      "key": "R",
+      "name": "Daisy!",
+      "howToUseIt": "Summon Daisy before a teamfight to tank hits and threaten damage, then recast the ability to redirect her at a new target or location."
+    }
+  ],
+  "earlyGamePlan": "Start in the jungle and route toward camps you can free quickly for experience, since you can't just auto-attack them down like other junglers. Once you have Rootcaller up, look to gank a lane by rooting the enemy laner so your ally can follow up, and drop Brushmaker patches near objectives you'll want to contest later.",
+  "quickTips": [
+    "Plan your jungle clear around which camps you can grow and free fastest, since you can't fight them directly.",
+    "Save Rootcaller for setting up a kill rather than using it just to poke.",
+    "Drop Brushmaker in choke points before fights so you can ambush from brush.",
+    "Keep Triggerseed on an ally in lane - it costs you nothing if it never pops.",
+    "Never fight alone; you're built to peel and engage for teammates, not to duel.",
+    "Ward around your jungle since your early damage is too low to fight off invaders."
+  ],
+  "whatToExpect": "An enemy Ivern will try to root you with Rootcaller so an ally can follow up, or spring an ambush from a Brushmaker patch he planted earlier. He deals little damage on his own, so punishing him directly is safe if he's isolated - but be ready for a surprise Daisy in bigger fights.",
+  "glossary": [
+    {
+      "term": "gank",
+      "definition": "When a jungler leaves their own area to ambush an enemy laner and help a teammate get a kill or lead."
+    },
+    {
+      "term": "ward",
+      "definition": "A placeable item that reveals an area of the map so your team can see enemies coming."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by being the first to commit crowd control or damage onto the enemy team."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to block, slow, or otherwise stop enemies from reaching a teammate you're protecting."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "jungle clear",
+      "definition": "The route and order a jungler kills or, for Ivern, frees jungle camps to gain gold and experience."
+    },
+    {
+      "term": "invade",
+      "definition": "Entering the enemy team's jungle, usually early in the game, to fight them or steal their camps."
+    }
+  ]
+}

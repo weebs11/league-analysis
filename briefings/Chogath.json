@@ -1,0 +1,80 @@
+{
+  "id": "Chogath",
+  "name": "Cho'Gath",
+  "playstyleSummary": "Cho'Gath is a tanky mage who permanently grows bigger and stronger the more he eats enemies with his ultimate, becoming a slow but unstoppable wall as the game goes on. He plays like a patient, punishing lane bully early — poke, slow, and wait for the moment your ultimate can secure a kill and make you even bigger.",
+  "strengths": [
+    "Grows permanently larger and tankier by landing kills with his ultimate",
+    "Strong crowd control with a knock-up and a silence",
+    "Very tanky and hard to kill once he's grown in size",
+    "Vorpal Spikes provide free area damage while farming or trading"
+  ],
+  "weaknesses": [
+    "Relies on landing his ultimate on champions to grow, which isn't always safe",
+    "Rupture has a visible warning that lets careful enemies avoid it",
+    "Lower damage output than other mages once behind",
+    "Slow movement speed makes him vulnerable to being kited"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Carnivore",
+      "howToUseIt": "Killing a unit restores your Health and Mana, with the amount increasing as you level up. Use last hits, including with your other abilities, to keep your resources topped up during extended lane fights."
+    },
+    {
+      "key": "Q",
+      "name": "Rupture",
+      "howToUseIt": "Rupture the ground at a location after a brief warning, popping enemies into the air, damaging, and slowing them. Try to line this up with minions to farm and harass at the same time, and combine it with your other spells for a bigger combo."
+    },
+    {
+      "key": "W",
+      "name": "Feral Scream",
+      "howToUseIt": "Unleash a cone-shaped scream that deals magic damage and silences enemies for a few seconds. Use it to stop an enemy from casting a key spell, especially an escape or a heal, right when it matters most."
+    },
+    {
+      "key": "E",
+      "name": "Vorpal Spikes",
+      "howToUseIt": "Your attacks release spikes that damage and slow all enemies in front of you. Line up your attacks with the minion wave so you can farm and harass the enemy champion with the same hit."
+    },
+    {
+      "key": "R",
+      "name": "Feast",
+      "howToUseIt": "Devour an enemy unit for a large amount of true damage, growing permanently in max Health if the kill lands. Try eating minions or monsters to grow early on if champion kills aren't available yet, since size is what makes you dangerous later."
+    }
+  ],
+  "earlyGamePlan": "Use Vorpal Spikes and Rupture together to farm minions and harass your lane opponent at the same time, watching for a chance to land Feast on a low-health enemy champion for early growth. If champion kills aren't available, eat large minions or jungle monsters to still gain size, since every bit of growth compounds over the game.",
+  "quickTips": [
+    "Try to land Rupture through the minion wave to hit both farm and your opponent at once",
+    "Save Feral Scream's silence for interrupting an enemy's escape or a key spell",
+    "Eat minions or monsters with Feast if a champion kill isn't safely available",
+    "Line up Vorpal Spikes attacks with the wave to combine farming and harassment",
+    "Remember Rupture has a visible warning, so try to disguise your aim or catch enemies distracted",
+    "Focus on growing in size over damage items, since your health scaling is what makes you a threat late"
+  ],
+  "whatToExpect": "An enemy Cho'Gath becomes a much bigger threat every time his ultimate lands a kill, so be extra cautious around his health and mana total when he's low — that's exactly when he'll try to Feast on you. Watch for the warning cloud before Rupture lands and step out of it, and try to keep some distance in a group fight since Vorpal Spikes reward you for standing directly in front of him.",
+  "glossary": [
+    {
+      "term": "last hit",
+      "definition": "Landing the final blow on a minion to earn its gold, which requires good timing rather than just attacking constantly."
+    },
+    {
+      "term": "farm",
+      "definition": "Killing minions or monsters over time to earn gold and experience."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together in a specific order for maximum effect."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking an enemy while continually moving away to avoid taking damage in return."
+    },
+    {
+      "term": "scaling",
+      "definition": "How a champion's power grows over the course of the game, whether through levels, items, or unique mechanics."
+    }
+  ]
+}

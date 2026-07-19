@@ -1,0 +1,91 @@
+{
+  "id": "Yunara",
+  "name": "Yunara",
+  "playstyleSummary": "Yunara is a marksman who leans hard into critical strikes, dealing bonus magic damage every time she crits on top of her normal attacks. Playing her feels like a fairly standard attack-and-kite marksman early on, but her ultimate transforms her basic abilities into stronger versions, giving her a clear power spike moment to plan around. She's approachable for newer players since her kit is mostly about attacking often and using simple, telegraphed abilities.",
+  "strengths": [
+    "Critical strikes deal extra magic damage on top of normal physical damage",
+    "Cultivation of Spirit spreads on-hit damage to nearby enemies for wave clear and fights",
+    "Kanmei's Steps grants Move Speed and makes her briefly untargetable by enemies to help her reposition",
+    "Ultimate meaningfully upgrades her other abilities, giving a clear late-fight power spike"
+  ],
+  "weaknesses": [
+    "Relies on landing basic attacks and abilities consistently to do damage",
+    "Squishy like most marksmen, vulnerable if caught out of position",
+    "Needs to reach her Transcendent State to unlock her strongest tools",
+    "Arc of Judgment and Kanmei's Steps behave differently before and after her ultimate, which takes practice to use well"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Vow of the First Lands",
+      "howToUseIt": "Build toward critical strikes when you can, since each one adds bonus magic damage on top of your normal attack damage."
+    },
+    {
+      "key": "Q",
+      "name": "Cultivation of Spirit",
+      "howToUseIt": "Activate this before extended fights or when farming a wave, since your attacks gain bonus on-hit damage and spread to nearby enemies, helping you clear minions and hit multiple targets at once."
+    },
+    {
+      "key": "W",
+      "name": "Arc of Judgment | Arc of Ruin",
+      "howToUseIt": "Use this to poke and slow enemies from range before your ultimate; once you're in your Transcendent State it becomes a laser that does the same job with a different shape, so adjust your aim accordingly."
+    },
+    {
+      "key": "E",
+      "name": "Kanmei's Steps | Untouchable Shadow",
+      "howToUseIt": "Use this to gain Move Speed and become Ghosted for repositioning or escaping; after your ultimate it instead dashes you in a direction, so use it more aggressively to close distance or dodge in a fight."
+    },
+    {
+      "key": "R",
+      "name": "Transcend One's Self",
+      "howToUseIt": "Activate this during a fight to upgrade your Q and E into stronger versions — plan your fight timing around this power spike rather than using it too early."
+    }
+  ],
+  "earlyGamePlan": "Lane with your support and focus on landing basic attacks safely behind your minions, using Cultivation of Spirit when you need extra wave clear or ongoing damage in a trade. Use Kanmei's Steps defensively to dodge skillshots or escape ganks before you have your ultimate. Look to fight once you can activate Transcend One's Self, since it noticeably strengthens your kit.",
+  "quickTips": [
+    "Save Transcend One's Self for the moment a fight actually starts rather than using it preemptively",
+    "Use Cultivation of Spirit before clearing a wave or starting an extended trade for extra damage",
+    "Kanmei's Steps makes you briefly untargetable — use it to dodge a key enemy ability, not just to run away",
+    "Remember your W and E change behavior once your ultimate is active, so practice both versions",
+    "Land basic attacks consistently since your passive's bonus magic damage relies on critical strikes"
+  ],
+  "whatToExpect": "Yunara will poke you with Arc of Judgment and try to farm safely until she can activate her ultimate, after which her abilities become notably stronger and she can dash around more aggressively. Watch for the moment she enters her Transcendent State, since that's when she becomes a much bigger threat in fights. Punishing her before she reaches that point, or interrupting her positioning with crowd control, reduces her overall damage output.",
+  "glossary": [
+    {
+      "term": "critical strike (crit)",
+      "definition": "An attack that deals significantly increased damage, occurring at a percentage chance determined by critical strike chance."
+    },
+    {
+      "term": "on-hit damage",
+      "definition": "Extra damage effects that trigger whenever a champion lands a basic attack."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game, often tied to a level or item, where a champion becomes significantly stronger."
+    },
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range repeatedly to wear enemies down before a bigger fight."
+    },
+    {
+      "term": "wave clear",
+      "definition": "The ability to quickly kill a wave of minions, useful for pushing lanes or freeing up time to roam."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill on an overextended enemy."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or fears that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "squishy",
+      "definition": "A champion with low health or defenses who dies quickly if focused, common for mages and marksmen."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged, as opposed to one that automatically hits its target."
+    }
+  ]
+}

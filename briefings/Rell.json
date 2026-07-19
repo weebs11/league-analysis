@@ -1,0 +1,76 @@
+{
+  "id": "Rell",
+  "name": "Rell",
+  "playstyleSummary": "Rell is a support tank who plays like a battering ram: you gallop around fast and fragile on your horse, then slam down into dismounted form to become an armored wall who knocks people up and shields herself. Fights revolve around picking the right moment to dismount and commit, because once you're on the ground you're slow and can't easily leave. It feels aggressive and all-in rather than cautious.",
+  "strengths": [
+    "Strong engage that can start a fight by itself with knockups and a stun",
+    "Very tanky once dismounted, hard to burst down",
+    "Great at breaking enemy shields with Shattering Strike",
+    "Can boost an ally's movement speed to help them stick to targets or escape"
+  ],
+  "weaknesses": [
+    "Low damage output compared to other supports",
+    "Dismounted form is slowed, so a bad engage leaves you stuck",
+    "Very squishy while still mounted, before you commit",
+    "Fights are mostly one big commitment, less room to poke safely"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Break the Mold",
+      "howToUseIt": "This works automatically whenever you attack or use abilities on enemies, so just play normally and you'll passively steal some of their Armor and Magic Resist over the course of a fight."
+    },
+    {
+      "key": "Q",
+      "name": "Shattering Strike",
+      "howToUseIt": "Line this up on an enemy champion to stun them and break any shield they have up, which makes it a great way to start an engage or cancel a shield right before your team's damage lands."
+    },
+    {
+      "key": "W",
+      "name": "Ferromancy: Crash Down",
+      "howToUseIt": "Dismount into the fight when you're ready to commit for the knockup, shield, and tankiness; remount afterward to zoom back to safety or catch up, remembering you're slow while dismounted."
+    },
+    {
+      "key": "E",
+      "name": "Full Tilt",
+      "howToUseIt": "Cast this near the ally you want to fight alongside (or protect) so you both gain a burst of movement speed toward the enemy, then let your next attack detonate for bonus damage."
+    },
+    {
+      "key": "R",
+      "name": "Magnet Storm",
+      "howToUseIt": "Save this for when multiple enemies are grouped up near you; it yanks them in and keeps dragging them toward you, so use it to start or lock down a teamfight rather than a 1v1."
+    }
+  ],
+  "earlyGamePlan": "Stay mounted in lane so you're mobile and safe from poke, and look for moments to dash in with Shattering Strike to stun an overextended enemy for your ADC to punish. Only dismount for a real engage attempt, not just to farm or trade, since you can't easily take it back.",
+  "quickTips": [
+    "Stay mounted until you actually want to fight — dismounting commits you to the fight",
+    "Use Shattering Strike to strip a shield right before your ADC's big damage lands",
+    "Full Tilt's speed boost is great for chasing down a low-health enemy with your ADC",
+    "Don't dismount alone into multiple enemies; wait for your team to be nearby",
+    "Save Magnet Storm for when the enemy team is grouped, not a single isolated target",
+    "Remount after a fight ends to rotate to the next objective quickly"
+  ],
+  "whatToExpect": "Enemy Rell will look to catch you out with Shattering Strike's stun or dive in with Crash Down's knockup, then hold you in place with Magnet Storm while her team follows up. Try not to get caught alone or clumped up tightly with your teammates, and punish her hard if she dismounts without backup nearby since she can't retreat quickly afterward.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing crowd control or damage on the enemy team first."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or knockups that take away an enemy's ability to move or act."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range before a real fight starts."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate (usually your ADC) from an enemy trying to attack them."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with no plan to disengage, betting everything on winning it."
+    }
+  ]
+}

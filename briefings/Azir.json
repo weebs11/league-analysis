@@ -1,0 +1,76 @@
+{
+  "id": "Azir",
+  "name": "Azir",
+  "playstyleSummary": "Azir fights through Sand Soldiers instead of his own body, attacking and dashing from a distance while staying out of danger himself. He is one of the hardest champions to pick up because you're managing soldier placement and mana at the same time as normal laning, but it's very rewarding once the pieces click.",
+  "strengths": [
+    "Can deal damage and control space without exposing himself directly",
+    "Strong ultimate that can wall off or displace an entire enemy team",
+    "Scales well into the late game with sustained damage over a fight",
+    "Good wave clear once soldiers are set up"
+  ],
+  "weaknesses": [
+    "High difficulty — soldier placement takes real practice",
+    "Lacks upfront burst compared to other mages",
+    "Very vulnerable if caught without a soldier nearby to dash to",
+    "Soldiers are stationary between casts, giving sharp windows to punish him"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Shurima's Legacy",
+      "howToUseIt": "You can summon a Disc of the Sun from the ruins of any destroyed turret, allied or enemy, giving you a soldier-summoning point far from your usual position. Keep this in mind when turrets fall — it opens up new ways to threaten the map."
+    },
+    {
+      "key": "Q",
+      "name": "Conquering Sands",
+      "howToUseIt": "Send all your Sand Soldiers toward a location to damage and slow everything they pass through. Use it to poke, clear waves, or slow enemies chasing your team."
+    },
+    {
+      "key": "W",
+      "name": "Arise!",
+      "howToUseIt": "Summon a Sand Soldier that takes over your basic attacks against nearby targets, hitting in a line. Try to keep a soldier in reserve rather than placing both down at once, so you always have an escape or engage option ready."
+    },
+    {
+      "key": "E",
+      "name": "Shifting Sands",
+      "howToUseIt": "Shield yourself and dash to one of your soldiers, damaging enemies along the way. Landing this on an enemy champion instantly readies a new soldier, so use it both to reposition and to refresh your resources."
+    },
+    {
+      "key": "R",
+      "name": "Emperor's Divide",
+      "howToUseIt": "Summon a wall of soldiers that charges forward, knocking back and damaging enemies. Think of it as defensive first — use it to blow melee attackers off you or your allies, since your team can walk through the wall while enemies get pushed away."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Arise! and Conquering Sands together to poke and last-hit from behind your soldiers rather than walking up yourself. Position soldiers between the enemy's minions and their champion so you threaten damage without exposing your own body to harassment.",
+  "quickTips": [
+    "Never drop both stored soldiers with Arise! unless you're committing to an all-in — always keep one in reserve for a dash or escape",
+    "Watch for moments when the enemy Azir's soldiers are stationary; that's your best window to engage on him",
+    "Use Emperor's Divide reactively, when the enemy engages, rather than to start a fight yourself",
+    "Position your soldiers between minions and the enemy champion in lane to threaten damage safely",
+    "Remember Shifting Sands both repositions you and can refresh a soldier if it hits an enemy champion",
+    "Don't stand in the area where soldiers are about to attack — treat their line of fire like fire itself"
+  ],
+  "whatToExpect": "An enemy Azir will try to poke you with soldier attacks from a distance and clear waves quickly, but he can only move his soldiers so often — watch for the moments right after he repositions them, since that's when he's most vulnerable to an engage. His damage builds up over a fight rather than bursting you down instantly, so trying to end the fight fast can catch him before he turns it around, but be ready to react to Emperor's Divide knocking your team apart.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance with low-commitment spells before going for a bigger trade."
+    },
+    {
+      "term": "wave clear",
+      "definition": "The ability to quickly kill a group of minions, useful for controlling lane position and freeing yourself up to do other things."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to win it decisively, leaving little held in reserve."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance or using crowd control on the enemy first."
+    },
+    {
+      "term": "last-hit",
+      "definition": "Landing the final blow on a minion to earn its gold, which requires good timing rather than just attacking constantly."
+    }
+  ]
+}

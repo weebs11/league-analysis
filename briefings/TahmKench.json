@@ -1,0 +1,84 @@
+{
+  "id": "TahmKench",
+  "name": "Tahm Kench",
+  "playstyleSummary": "Tahm Kench is a big, tough support (or top laner) who protects allies by literally swallowing them out of danger. Playing him feels like being a bodyguard: you poke enemies with your tongue, build up pressure, and use Devour either to shield a teammate about to die or to threaten to eat an enemy carry. He's slow to reposition outside of his dive, so patience and good timing matter more than fast reflexes.",
+  "strengths": [
+    "Devour can single-handedly save an ally from death",
+    "Very tanky and hard to burst down",
+    "Strong disengage or engage using Abyssal Dive",
+    "Can threaten a stun on enemies who take too much damage from him"
+  ],
+  "weaknesses": [
+    "Abyssal Dive has a long cooldown, so mobility is limited between uses",
+    "Tongue Lash is a skillshot that can miss",
+    "Needs 3 stacks of An Acquired Taste before he can swallow an enemy",
+    "Using Thick Skin's shield stops him from healing gray health until it's back off cooldown"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "An Acquired Taste",
+      "howToUseIt": "Damaging enemy champions builds stacks; at 3 stacks you can Devour that enemy. Poke with attacks and Tongue Lash to build toward a kill threat."
+    },
+    {
+      "key": "Q",
+      "name": "Tongue Lash",
+      "howToUseIt": "Your main poke and setup tool — it slows normally, but stuns instead once the target has 3 stacks of An Acquired Taste. Use it to peel divers off your carry or set up a Devour."
+    },
+    {
+      "key": "W",
+      "name": "Abyssal Dive",
+      "howToUseIt": "Use it to dive onto the enemy backline in a fight or to escape danger yourself — it knocks up everyone where you land, so time it for when enemies are grouped."
+    },
+    {
+      "key": "E",
+      "name": "Thick Skin",
+      "howToUseIt": "You passively store some of the damage you take and heal it back over time out of combat. Use the active to turn that stored damage into a shield right before a big hit lands, but know it pauses the passive healing until it recharges."
+    },
+    {
+      "key": "R",
+      "name": "Devour",
+      "howToUseIt": "Swallow an ally to shield them from incoming damage — this is your best tool for saving a teammate about to die. On an enemy champion (once they have 3 stacks of An Acquired Taste), it locks them out of the fight entirely for a few seconds."
+    }
+  ],
+  "earlyGamePlan": "As a support, focus on poking the enemy bot lane with Tongue Lash while staying close enough to protect your ADC with Devour if they're threatened. Build stacks of An Acquired Taste on priority targets so you have the option to swallow an enemy later, and save Abyssal Dive for either an aggressive dive or an emergency escape.",
+  "quickTips": [
+    "Keep Devour's range and cooldown in mind at all times so you're ready to save an ally",
+    "Watch your stack count on enemies — at 3 stacks, Tongue Lash stuns instead of slows",
+    "Don't use Thick Skin's shield too early; sometimes the passive healing is more valuable",
+    "Use Abyssal Dive to engage onto priority targets or to escape a losing fight",
+    "Poke safely with Tongue Lash rather than walking up to trade in melee",
+    "Devouring an ally is often better than saving it for a kill on an enemy"
+  ],
+  "whatToExpect": "Enemy Tahm Kench will try to poke you with Tongue Lash and swallow your allies to protect them from your team's burst, or eat one of your squishier champions once he reaches 3 stacks on them. Watch his stack count in fights and back off before he can land the stun — and remember his dive can be interrupted with crowd control while he's channeling.",
+  "glossary": [
+    {
+      "term": "peel",
+      "definition": "Using abilities to knock back, slow, or otherwise stop an enemy from reaching a teammate."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage dealt from a safe range to whittle enemies down before a bigger fight."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight or forcing enemies to retreat, often with a slow, knockback, or wall."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill outright."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, slows, or knockbacks that limit an enemy's ability to act."
+    },
+    {
+      "term": "gray health",
+      "definition": "Damage that's temporarily marked but not yet permanently lost, which can be healed back before it fully applies."
+    }
+  ]
+}

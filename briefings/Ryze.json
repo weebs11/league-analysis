@@ -1,0 +1,80 @@
+{
+  "id": "Ryze",
+  "name": "Ryze",
+  "playstyleSummary": "Ryze is a mana-hungry mage who loops his abilities together: Overload's cooldown resets whenever he casts Rune Prison or Spell Flux, and marking enemies with Flux makes his other spells hit even harder. He wants to build a lot of mana, chain his spells rapidly, and can even open portals with his ultimate to teleport his team around the map. He rewards players who enjoy piecing together an ability rotation over simple point-and-click damage.",
+  "strengths": [
+    "Can chain Overload rapidly by weaving it with his other spells",
+    "Flux makes his other abilities noticeably stronger against a marked target",
+    "Scales very well into the late game with enough mana",
+    "Realm Warp can teleport his whole team to a new part of the map for surprise plays"
+  ],
+  "weaknesses": [
+    "Needs practice to use his spell rotation efficiently",
+    "Relatively weak early before he has enough mana and levels",
+    "Realm Warp's portal can be canceled if he's crowd controlled while it charges",
+    "Immobile compared to many modern mages, so he's easy to catch out of position"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Arcane Mastery",
+      "howToUseIt": "Build up bonus mana from items to increase your spell damage, and note that gaining ability power also increases your max mana, so mana and damage feed into each other."
+    },
+    {
+      "key": "Q",
+      "name": "Overload",
+      "howToUseIt": "Use this as your main damage spell and re-cast it often — landing your other abilities resets its cooldown, so weave it in between them, and try to land it with two runes charged for a movement speed burst."
+    },
+    {
+      "key": "W",
+      "name": "Rune Prison",
+      "howToUseIt": "Use this to slow a target from a distance, or to root them outright if they're already marked with Flux — a great way to lock down someone before finishing them off."
+    },
+    {
+      "key": "E",
+      "name": "Spell Flux",
+      "howToUseIt": "Cast this on a target to mark them with Flux, which makes your other spells hit harder and behave differently against them — try to apply this before your other abilities in a fight."
+    },
+    {
+      "key": "R",
+      "name": "Realm Warp",
+      "howToUseIt": "Place this near your team ahead of time in a spot you want to move to, since it takes a few seconds before allies standing near it get teleported — use it to reposition your team for a surprise engage or to escape a losing fight."
+    }
+  ],
+  "earlyGamePlan": "Farm safely with Overload while building mana items, and try to apply Spell Flux on enemies you're trading with to boost your other spells' effects. Avoid overextending early since Ryze lacks the mobility to escape a gank until he has some levels and mana behind him.",
+  "quickTips": [
+    "Weave Overload between your other spells to keep resetting its cooldown",
+    "Apply Spell Flux before your other abilities so they get the bonus Flux effect",
+    "Use Rune Prison to root instead of slow once a target already has Flux on them",
+    "Place Realm Warp's portal well ahead of time near where you want your team to go",
+    "Prioritize mana growth items since your damage scales directly off bonus mana",
+    "Play patiently early — Ryze gets much stronger as the game goes on"
+  ],
+  "whatToExpect": "Enemy Ryze becomes dangerous once he marks you with Flux, since his other spells hit much harder afterward, and he only gets stronger as the game continues. Watch for Realm Warp's portal charging up, since crowd controlling him during that window cancels it, and try to end fights or the game before he scales out of control.",
+  "glossary": [
+    {
+      "term": "root",
+      "definition": "A crowd control effect that stops an enemy from moving but doesn't stop them from attacking or casting."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill."
+    },
+    {
+      "term": "scale",
+      "definition": "How a champion's strength grows over time as they gain levels and items."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or silences that take away an enemy's ability to move or act."
+    },
+    {
+      "term": "overextending",
+      "definition": "Being positioned too far from your team or turret, making you vulnerable to being caught."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing crowd control or damage on the enemy team first."
+    }
+  ]
+}

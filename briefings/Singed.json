@@ -1,0 +1,76 @@
+{
+  "id": "Singed",
+  "name": "Singed",
+  "playstyleSummary": "Singed is an unusual tank who wins by running around the map covered in poison, daring enemies to chase him into it. Rather than fighting head-on, he tanks and disrupts by kiting enemies through his trail and flinging key targets into bad positions. He's forgiving to farm with, but takes practice to use effectively in fights.",
+  "strengths": [
+    "Excellent, low-risk wave clear and farming",
+    "Extremely tanky and hard to kill",
+    "Fling can throw dangerous enemies out of position or into your team",
+    "Insanity Potion makes him very strong in extended chases and fights"
+  ],
+  "weaknesses": [
+    "Deals little burst damage on his own",
+    "Needs to be near enemies to be useful, which can be risky",
+    "Weak if kept at a distance or crowd controlled",
+    "Can feel unrewarding since much of his value is indirect"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Noxious Slipstream",
+      "howToUseIt": "Run near allies or enemies to get a burst of Move Speed. Use this to catch up in chases or extend your poison-trail kiting."
+    },
+    {
+      "key": "Q",
+      "name": "Poison Trail",
+      "howToUseIt": "Keep this on while farming or laning; walking near minions and enemies with it active clears waves and chips away at your opponent's health for free."
+    },
+    {
+      "key": "W",
+      "name": "Mega Adhesive",
+      "howToUseIt": "Throw this on the ground to slow and ground enemies who walk through it, great for stopping a chase or covering an escape."
+    },
+    {
+      "key": "E",
+      "name": "Fling",
+      "howToUseIt": "Throw a key enemy target, like their carry or someone chasing you, behind you and toward your team or your poison trail, or even into your own turret."
+    },
+    {
+      "key": "R",
+      "name": "Insanity Potion",
+      "howToUseIt": "Activate this before a fight or chase for a big stat boost, and remember it makes your Poison Trail apply Grievous Wounds, weakening enemy healing."
+    }
+  ],
+  "earlyGamePlan": "Keep Poison Trail active while last-hitting minions to farm safely and pressure your lane opponent without much risk. Avoid unnecessary trades early; your value comes online later once you can run through fights with Insanity Potion active and use Fling to disrupt enemies.",
+  "quickTips": [
+    "Keep Poison Trail toggled on whenever you're near minions or an enemy to farm and poke for free.",
+    "Use Fling on the enemy's most dangerous or fragile target, not just whoever is closest.",
+    "Drop Mega Adhesive behind you when running from a fight, or ahead of enemies to stop them from escaping.",
+    "Activate Insanity Potion before engaging or disengaging, not mid-fight, to get full value.",
+    "Bait enemies into chasing you through your own poison trail.",
+    "Build up Move Speed advantages using your passive to stay just out of reach."
+  ],
+  "whatToExpect": "Singed wants to bait you into chasing him through his poison trail, or fling you into a bad position away from your team. Keep your distance rather than chasing him blindly, and watch out when he gets close since Fling can throw you toward his allies or into his own poison.",
+  "glossary": [
+    {
+      "term": "wave clear",
+      "definition": "How quickly and safely a champion can kill a wave of minions."
+    },
+    {
+      "term": "farming",
+      "definition": "Killing minions or monsters for gold and experience, usually with last hits."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance without committing to a full trade."
+    },
+    {
+      "term": "Grievous Wounds",
+      "definition": "A debuff that reduces how much health an affected champion can regain from healing effects."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight or retreating rather than continuing to fight."
+    }
+  ]
+}

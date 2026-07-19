@@ -1,0 +1,88 @@
+{
+  "id": "Gangplank",
+  "name": "Gangplank",
+  "playstyleSummary": "Gangplank is an old-school pirate captain played top lane, mixing ranged poke from Parrrley with barrels that can chain into big area combos, plus a global ultimate that can finish enemies or zone objectives from anywhere on the map. A lot of his power comes from precise last-hits and keg placement, so he has a real learning curve.",
+  "strengths": [
+    "Strong ranged poke and lane pressure through Parrrley",
+    "Powerful global ultimate for cross-map plays and zoning",
+    "Powder Kegs create big area damage and combo potential",
+    "Remove Scurvy cleanses crowd control and heals, giving him resilience to ganks"
+  ],
+  "weaknesses": [
+    "High skill difficulty — keg combos and Parrrley last-hits take real practice",
+    "No dash or blink, so he's easy to punish if he overextends",
+    "Weaker early dueling than true bruisers until he scales up",
+    "Relies heavily on farming Parrrley for gold and tempo"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Trial by Fire",
+      "howToUseIt": "Melee attacks periodically set the target on fire for damage over time. Mix in basic attacks during trades to add chip damage beyond your spells."
+    },
+    {
+      "key": "Q",
+      "name": "Parrrley",
+      "howToUseIt": "Use it to last-hit minions from range and to poke the enemy laner in trades. Landing the killing blow on an enemy champion grants bonus gold, so prioritize champions over minions when both are close to dying."
+    },
+    {
+      "key": "W",
+      "name": "Remove Scurvy",
+      "howToUseIt": "Save this to cleanse incoming crowd control right before it would lock you down, or use it reactively to heal up after taking damage — good timing can save you from a gank."
+    },
+    {
+      "key": "E",
+      "name": "Powder Keg",
+      "howToUseIt": "Drop a keg near where you expect a fight or a fleeing enemy, then hit it with an attack (including Parrrley) to detonate it for area damage and a slow. Chaining multiple kegs together creates huge combo damage."
+    },
+    {
+      "key": "R",
+      "name": "Cannon Barrage",
+      "howToUseIt": "Use this globally to secure kills on low-health enemies anywhere on the map, zone enemies off an objective, or cut off an escape route. It has a delay before it lands, so lead your target."
+    }
+  ],
+  "earlyGamePlan": "In lane, focus on last-hitting minions with Parrrley for gold and use it to poke the enemy laner whenever you get the chance. Place Powder Kegs in bushes or choke points near your lane so you can detonate them for a strong trade if the enemy walks over one. Play a bit passively until you have a few levels, since Gangplank has no gap-closer and can be punished hard for overextending.",
+  "quickTips": [
+    "Last-hit minions with Parrrley when you can — it also chips the enemy laner if the minion dies near them.",
+    "Hold Remove Scurvy for when you're about to get crowd-controlled rather than using it purely to heal.",
+    "Place Powder Kegs in brush or along paths enemies are likely to walk through, then detonate them with an attack.",
+    "Watch the map for low-health enemies — Cannon Barrage has global range and can pick off kills your team can't otherwise reach.",
+    "Because you lack a dash, be extra cautious about overextending in lane; junglers can punish you hard early.",
+    "Practice landing Parrrley on moving targets — most of Gangplank's power comes from hitting it consistently."
+  ],
+  "whatToExpect": "An enemy Gangplank will poke you with Parrrley from range and try to bait you onto a Powder Keg before detonating it for a big burst of damage and a slow. Play carefully around unexplained barrels near your lane, and remember his ultimate, Cannon Barrage, has global range — don't sit at very low health anywhere on the map once he hits level 6, since he can snipe you from across the map after a short delay.",
+  "glossary": [
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that take away an enemy's ability to move or act normally."
+    },
+    {
+      "term": "Skillshot",
+      "definition": "An ability you have to aim yourself, which can miss if the target moves out of the way."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Last-hit",
+      "definition": "Landing the killing blow on a minion to collect its gold."
+    },
+    {
+      "term": "Gank",
+      "definition": "When a teammate (often the jungler) shows up in your lane to help you kill or pressure the enemy laner."
+    },
+    {
+      "term": "Zoning",
+      "definition": "Using threats of damage or crowd control to control where enemies can safely stand."
+    },
+    {
+      "term": "Gap-closer",
+      "definition": "A dash, blink, or leap that lets a champion close distance to a target quickly."
+    }
+  ]
+}

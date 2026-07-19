@@ -1,0 +1,79 @@
+{
+  "id": "Aatrox",
+  "name": "Aatrox",
+  "playstyleSummary": "Aatrox is a melee bruiser who wants to walk up, land his hook, and grind you down over a long trade instead of one big burst. He heals off his own damage, so fights often turn into extended slugfests where patience and positioning matter more than reflexes. He's forgiving to pick up, but landing his skillshots consistently is what separates a good Aatrox from a great one.",
+  "strengths": [
+    "Strong sustain in trades from his passive and Umbral Dash",
+    "Great extended 1v1 duelist",
+    "World Ender can single-handedly flip a losing teamfight",
+    "Q clears minion waves quickly"
+  ],
+  "weaknesses": [
+    "Very reliant on landing skillshots to do damage",
+    "Limited mobility outside of Umbral Dash's short dash",
+    "Struggles against enemies who can kite him or keep distance",
+    "Vulnerable to crowd control locking him out of his combo"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Deathbringer Stance",
+      "howToUseIt": "Watch for the visual cue showing it's ready, then land it on your next basic attack in a fight — it heals more against tanky targets since it scales off their max health."
+    },
+    {
+      "key": "Q",
+      "name": "The Darkin Blade",
+      "howToUseIt": "Aim each of the three swings so their arcs sweep back over where the enemy is standing; landing all three is where most of your damage comes from."
+    },
+    {
+      "key": "W",
+      "name": "Infernal Chains",
+      "howToUseIt": "Throw this at an enemy (even through minions) to either stun them in place or drag them to you if they try to run — it's your main tool for starting a fight."
+    },
+    {
+      "key": "E",
+      "name": "Umbral Dash",
+      "howToUseIt": "Use the dash to close distance, escape, or reposition mid-combo, and remember it quietly heals you whenever you damage a champion."
+    },
+    {
+      "key": "R",
+      "name": "World Ender",
+      "howToUseIt": "Only pop this when you're sure a fight is winnable — it makes you much stronger and lets you keep the bonus going by securing kills."
+    }
+  ],
+  "earlyGamePlan": "In the early minutes, focus on last-hitting minions with your Q and only trade when Infernal Chains lands cleanly. Avoid all-in fights until you have a few levels, since your damage output early is lower than many other fighters. Look for moments when the enemy pushes too far forward to punish them with your hook.",
+  "quickTips": [
+    "Land Infernal Chains before committing to a full combo — it's what makes your fights winnable.",
+    "Use Umbral Dash to weave in and out of range rather than just holding it to escape.",
+    "Save World Ender for fights you're confident you can win, not as a panic button.",
+    "Farm safely with Q when you're behind instead of forcing bad trades.",
+    "Position your Q swings so the last hit lands where the enemy is trying to walk to."
+  ],
+  "whatToExpect": "Aatrox will try to land his hook (Infernal Chains) to lock you down, then combo his sword swings while healing off the damage he deals. Stand near your minions so the hook is harder to land, and if you see the impact circle land near you, move to its edge quickly rather than standing still. Back off and regroup with allies if he activates his demonic ultimate.",
+  "glossary": [
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between two laners, usually ended once one side backs off."
+    },
+    {
+      "term": "sustain",
+      "definition": "Healing a champion gets from their own abilities, letting them stay in lane or fight longer without recalling."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss, as opposed to one that automatically hits a target."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with the intent to kill, rather than a quick poke and retreat."
+    },
+    {
+      "term": "1v1",
+      "definition": "A fight between exactly one champion on each side."
+    }
+  ]
+}

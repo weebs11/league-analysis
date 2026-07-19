@@ -1,0 +1,84 @@
+{
+  "id": "Zilean",
+  "name": "Zilean",
+  "playstyleSummary": "Zilean is a supportive mage who plays from a distance, throwing bombs that stick to enemies, speeding up allies or slowing enemies down, and protecting a teammate from death with his ultimate. He feels less like a damage dealer and more like a battle conductor — timing bombs, speed buffs, and revives to swing fights in your team's favor.",
+  "strengths": [
+    "Chronoshift can save a teammate from a fight-losing death and bait enemies into wasting their damage",
+    "Time Warp gives strong utility, speeding up allies or slowing enemies to chase or escape",
+    "A well-timed double Time Bomb can stun a target and lock them down for your team",
+    "Very safe to play from range, with no need to get close to enemies"
+  ],
+  "weaknesses": [
+    "Very fragile with no reliable escape of his own — has to kite carefully",
+    "Needs practice to combo Time Bomb with itself for the stun",
+    "Chronoshift can be baited or timed wrong, making it less effective if used too early",
+    "The passive requires actively right-clicking allies at the right moment, which is easy to forget as a newer player"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Time In A Bottle",
+      "howToUseIt": "Once the icon over your head fills up, right-click an ally to give them a free level's worth of Experience — try to give it to your team's main damage dealer so they hit their power spikes earlier."
+    },
+    {
+      "key": "Q",
+      "name": "Time Bomb",
+      "howToUseIt": "Throw this onto an enemy or the ground near them; it sticks and explodes after 3 seconds. If you throw a second one at an enemy who already has a bomb stuck to them, it detonates early and stuns everyone caught in it."
+    },
+    {
+      "key": "W",
+      "name": "Rewind",
+      "howToUseIt": "This lowers the cooldowns on your other abilities, so use it whenever you're about to need Time Bomb, Time Warp, or Chronoshift again soon, especially right before a fight."
+    },
+    {
+      "key": "E",
+      "name": "Time Warp",
+      "howToUseIt": "Cast it on a fleeing enemy to slow them down for a kill, or on a teammate to help them chase or escape — it's one of your best tools for both engaging and disengaging."
+    },
+    {
+      "key": "R",
+      "name": "Chronoshift",
+      "howToUseIt": "Cast this on a teammate before they take a potentially lethal hit — if they'd otherwise die while it's active, they come back to life instead. Try not to cast it too early or the enemy may simply switch targets."
+    }
+  ],
+  "earlyGamePlan": "In lane, stay at range and use Time Bomb to poke and farm rather than trading in melee. Look for chances to land both Time Bombs in a row on an isolated enemy for the stun combo, and use Rewind before you plan to fight so your cooldowns are ready. Keep an eye on your passive's charge and give it to your ADC to help them level up faster.",
+  "quickTips": [
+    "Give your passive's bonus Experience to your team's main damage dealer whenever it's ready",
+    "Practice throwing a second Time Bomb onto an already-bombed enemy for the stun",
+    "Use Rewind right before a planned fight so your other abilities come back faster",
+    "Save Chronoshift for when a teammate is actually about to die, not the moment a fight starts",
+    "Use Time Warp defensively to speed up a retreating ally as often as you use it offensively",
+    "Stay at range in lane — you have no escape if you get caught in melee"
+  ],
+  "whatToExpect": "An enemy Zilean will poke you with Time Bomb from a distance and try to stun you by landing a second bomb on top of the first, so back off once you see a bomb stick to you. Watch out for Chronoshift making a target briefly unkillable in a fight — don't waste all your damage on someone who might just revive, and be ready for Time Warp to speed up his allies or slow down yours during a chase.",
+  "glossary": [
+    {
+      "term": "power spike",
+      "definition": "A point in the game where a champion suddenly becomes much stronger, often from leveling an ability or finishing a key item."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before a real fight starts."
+    },
+    {
+      "term": "farm",
+      "definition": "Earning gold and experience by last-hitting minions."
+    },
+    {
+      "term": "stun",
+      "definition": "A crowd control effect that stops an enemy from moving, attacking, or casting spells for a short time."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to attack the enemy team, usually with an ability that closes the distance or locks someone down."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight and retreating, often using speed boosts or crowd control to create distance."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you have to wait after using an ability before you can use it again."
+    }
+  ]
+}

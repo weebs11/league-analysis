@@ -1,0 +1,75 @@
+{
+  "id": "Ornn",
+  "name": "Ornn",
+  "playstyleSummary": "Ornn is a durable tank who builds up armor and magic resist just by playing the game, and he brings a unique crafting mechanic that rewards map-wide thinking as much as combat skill. He wants to walk into the enemy team, survive everything, and set up knock-ups for his team to follow.",
+  "strengths": [
+    "Extremely tanky thanks to bonus armor and magic resist from his passive",
+    "Can shop and upgrade equipment from anywhere on the map",
+    "Volcanic Rupture and Searing Charge both set up knock-ups near walls",
+    "Call of the Forge God is a strong team-wide crowd control tool"
+  ],
+  "weaknesses": [
+    "Low mobility outside of Searing Charge",
+    "Most of his crowd control needs a wall nearby to be at its strongest",
+    "Lower personal damage output compared to other tanks",
+    "Easy to punish early before he can safely reach walls"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Living Forge",
+      "howToUseIt": "You get bonus armor and magic resist automatically, and you can spend gold to buy non-consumable items without returning to base - use this to stay in lane longer instead of recalling to shop."
+    },
+    {
+      "key": "Q",
+      "name": "Volcanic Rupture",
+      "howToUseIt": "Throw this to slow enemies and, after a short delay, create a magma pillar at the end location - use the pillar to block enemy paths or set up your other abilities."
+    },
+    {
+      "key": "W",
+      "name": "Bellows Breath",
+      "howToUseIt": "Walk forward breathing fire; enemies hit by the final burst become Brittle, meaning they take extra damage from your next big hit, so follow up quickly."
+    },
+    {
+      "key": "E",
+      "name": "Searing Charge",
+      "howToUseIt": "Charge forward and slam into a wall or other terrain to create a shockwave that knocks up nearby enemies - aim your charge at a wall, since charging through open space does far less."
+    },
+    {
+      "key": "R",
+      "name": "Call of the Forge God",
+      "howToUseIt": "Summon an elemental that chases you and knocks up and Brittles anyone it runs over. You can recast to charge into it and redirect where it goes, so aim it toward grouped-up enemies."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for chances to land Volcanic Rupture on enemies near a wall, then follow with Searing Charge into that wall for a knock-up. Use your passive to buy upgrades without recalling, which lets you hold your lane longer than opponents who need to walk back to base.",
+  "quickTips": [
+    "Fight near walls whenever possible - most of Ornn's crowd control is much stronger there",
+    "Use your passive to shop from lane instead of wasting time walking back to base",
+    "Land Bellows Breath's final burst before a big follow-up hit to apply Brittle",
+    "Aim Call of the Forge God through grouped enemies to hit as many as possible",
+    "Don't overextend early - your damage is lower than other tanks until your knock-ups land"
+  ],
+  "whatToExpect": "Ornn wants to combo his abilities off walls, so be extra careful fighting him near the edges of lanes, jungle walls, or the river - that's where his stuns and knock-ups hit hardest. Watch for the elemental from Call of the Forge God during teamfights; if you get hit by it while Brittle, follow-up damage from Ornn's team will hurt a lot more, so try to dodge it or spread out.",
+  "glossary": [
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, roots, and knock-ups that limit what an enemy can do."
+    },
+    {
+      "term": "knock-up",
+      "definition": "A crowd control effect that launches a target into the air, briefly disabling them."
+    },
+    {
+      "term": "recall",
+      "definition": "Teleporting back to your base to shop and heal."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all of both teams."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward without support, leaving yourself open to being caught."
+    }
+  ]
+}

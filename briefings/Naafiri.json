@@ -1,0 +1,83 @@
+{
+  "id": "Naafiri",
+  "name": "Naafiri",
+  "playstyleSummary": "Naafiri is an assassin who fights alongside a pack of AI-controlled hounds, applying bleed with her daggers and diving onto priority targets with her dash ultimate. She feels aggressive and pack-based - your damage output depends on keeping your packmates alive and pointed at the same target you are.",
+  "strengths": [
+    "Extra damage and pressure from her packmates attacking alongside her",
+    "Strong dive and pick potential with Hounds' Pursuit",
+    "Eviscerate gives mobility and heals her pack back up between fights",
+    "Snowballs quickly off early kills"
+  ],
+  "weaknesses": [
+    "Her all-in pattern is fairly telegraphed once enemies learn it",
+    "Squishy like most assassins - dies fast if caught",
+    "Packmates die easily to area damage, which cuts into her overall damage",
+    "Vulnerable to crowd control that catches her mid-dive"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "We Are More",
+      "howToUseIt": "Your packmates automatically attack whoever you hit with an attack or ability, so just landing your abilities on a target brings extra free damage along with it."
+    },
+    {
+      "key": "Q",
+      "name": "Darkin Daggers",
+      "howToUseIt": "Throw a dagger to apply bleed, then throw the second for bonus damage if the target is already bleeding - hitting a champion or monster also sends your packmates to leap onto that target."
+    },
+    {
+      "key": "W",
+      "name": "The Call of the Pack",
+      "howToUseIt": "Use this to become untargetable and summon more packmates before or during a fight, giving yourself extra damage and speed to close a gap or ride out incoming burst."
+    },
+    {
+      "key": "E",
+      "name": "Eviscerate",
+      "howToUseIt": "Dash through enemies to deal damage and pull your packmates back to your side, fully healing them - use it to top your pack back up before the next fight."
+    },
+    {
+      "key": "R",
+      "name": "Hounds' Pursuit",
+      "howToUseIt": "Dash at a priority target with your whole pack for a big burst of damage; if you get the kill, recast to dash again and gain a shield, letting you chain onto the next target."
+    }
+  ],
+  "earlyGamePlan": "Look for chances to throw Darkin Daggers onto the enemy laner to apply bleed and bring your packmates into the fight, then follow up with a second dagger for bonus damage. Play patiently before level 6, since Hounds' Pursuit is what turns your all-ins into real kill threats.",
+  "quickTips": [
+    "Land your first dagger before committing - it applies bleed and sets up the second dagger's bonus damage.",
+    "Use The Call of the Pack to survive incoming burst by turning untargetable at the right moment.",
+    "Save Hounds' Pursuit for isolated priority targets like the enemy carry, not the frontmost tank.",
+    "Eviscerate heals your packmates, so use it to top them back up between skirmishes.",
+    "Recast Hounds' Pursuit right after a kill to chain onto another low-health target."
+  ],
+  "whatToExpect": "Naafiri will look for picks on isolated targets, using Hounds' Pursuit to dive in with her whole pack for a burst of damage. Killing her packmates quickly with area damage cuts into her overall damage, and since she's a squishy assassin, punishing her dive with crowd control or burst of your own is usually enough to turn the fight around.",
+  "glossary": [
+    {
+      "term": "bleed",
+      "definition": "Damage dealt gradually over time by certain abilities."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    },
+    {
+      "term": "untargetable",
+      "definition": "Cannot be targeted by enemy abilities or attacks for a duration."
+    },
+    {
+      "term": "pick",
+      "definition": "Catching and killing an isolated enemy champion, usually setting up an advantage before a teamfight."
+    },
+    {
+      "term": "carry",
+      "definition": "A damage-focused champion a team leans on for late-game damage."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and cooldowns to try to kill an enemy right now."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    }
+  ]
+}

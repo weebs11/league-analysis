@@ -1,0 +1,80 @@
+{
+  "id": "Belveth",
+  "name": "Bel'Veth",
+  "playstyleSummary": "Bel'Veth is a jungle fighter who snowballs from clearing camps into an unstoppable attack-speed monster, especially after transforming with her ultimate. She feels like a champion that starts unassuming and gets scarier the longer the game goes and the more she fights, so pacing your aggression around her power spikes matters a lot.",
+  "strengths": [
+    "Very fast jungle clear that builds toward permanent attack speed",
+    "Ultimate dramatically increases her stats and lets her fight from range",
+    "Strong dueling potential once she's ahead",
+    "Can transition between skirmishes and objective control smoothly"
+  ],
+  "weaknesses": [
+    "Very high difficulty to play and pilot well",
+    "Falls behind if she can't clear camps and fight safely early",
+    "Vulnerable before her ultimate is available or off cooldown",
+    "Needs Void coral remnants near epic monsters to get her strongest ultimate uptime"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Death in Lavender",
+      "howToUseIt": "You gain permanent attack speed stacks from taking down large minions, monsters, and champions, plus temporary bonus attack speed after casting a spell. Prioritize clearing large jungle camps and taking champion takedowns to build up your stacks over the game."
+    },
+    {
+      "key": "Q",
+      "name": "Void Surge",
+      "howToUseIt": "Dash in a direction, damaging everyone you pass through. Use it to clear camps quickly, close the gap in a fight, or reposition around an enemy."
+    },
+    {
+      "key": "W",
+      "name": "Above and Below",
+      "howToUseIt": "Slam the ground to damage, knock up, and slow enemies. Use it to start a fight or to punish an enemy who's committed to standing near you."
+    },
+    {
+      "key": "E",
+      "name": "Royal Maelstrom",
+      "howToUseIt": "Root yourself and channel a storm of slashes toward the lowest-health nearby enemy, gaining lifesteal and damage reduction while channeling. This is your main dueling tool — use it once you're already in range and safe from being interrupted or kited away."
+    },
+    {
+      "key": "R",
+      "name": "Endless Banquet",
+      "howToUseIt": "Consume Void coral remnants to transform into your true form, gaining increased health, attack range, attack speed, and out-of-combat move speed. Time this transformation around fights and objectives, since consuming remnants near an epic monster gives you extra duration and lets you summon Void remora."
+    }
+  ],
+  "earlyGamePlan": "Clear jungle camps efficiently to build up Death in Lavender stacks and look for Void coral remnants to fuel your ultimate. Avoid extended duels before you have your ultimate available, since Bel'Veth's power grows sharply once she can transform — play patiently and gank when a lane is clearly overextended.",
+  "quickTips": [
+    "Farm large jungle camps first since they build your permanent attack speed stacks faster",
+    "Save Royal Maelstrom for when you're already close to your target, since it roots you in place",
+    "Try to time Endless Banquet around fights near epic monsters for the longest duration",
+    "Avoid committing to fights before your ultimate is up if you can help it",
+    "Use Void Surge to reposition mid-fight, not just to close distance",
+    "Track when the enemy jungler is likely low on cooldowns before invading their camps"
+  ],
+  "whatToExpect": "An early Bel'Veth is manageable, but she gets significantly more dangerous once her ultimate is available, transforming into a fast, high-damage duelist. Try to avoid isolated fights against her once she has Endless Banquet up, and focus on kiting or using crowd control to interrupt her Royal Maelstrom channel before it can heal her back up.",
+  "glossary": [
+    {
+      "term": "jungle clear",
+      "definition": "The process of killing neutral monster camps in the jungle for gold and experience."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or roaming ally ambushes an enemy in a lane to help get a kill."
+    },
+    {
+      "term": "duel",
+      "definition": "A one-on-one fight between two champions."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking an enemy while continually moving away to avoid taking damage in return."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game, often tied to a level or item, where a champion becomes significantly stronger."
+    }
+  ]
+}

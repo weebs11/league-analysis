@@ -1,0 +1,80 @@
+{
+  "id": "Gnar",
+  "name": "Gnar",
+  "playstyleSummary": "Gnar is a mobile, high-skill top laner (or jungler) who swaps between two forms: nimble ranged Mini Gnar, who pokes and repositions, and giant melee Mega Gnar, who tanks and stuns. Managing when you transform is the core of playing him well — you want your Mega Gnar form ready for a fight, not wasted while just farming.",
+  "strengths": [
+    "Very mobile in Mini form thanks to Hop's bounce",
+    "Huge teamfight-swinging stun in Mega form's ultimate, especially near walls",
+    "Flexible — can poke from range or brawl in melee depending on form",
+    "Strong wave clear and split-push potential"
+  ],
+  "weaknesses": [
+    "High difficulty — managing Rage and transformation timing takes practice",
+    "Mini Gnar is squishy and dies fast if caught",
+    "Can't build Rage for a short time right after transforming back to Mini",
+    "Positioning near walls matters a lot for his ultimate to land its full effect"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Rage Gene",
+      "howToUseIt": "Fighting builds Rage over time; at maximum Rage your next ability transforms you into Mega Gnar. Try to time this for when a fight is about to happen rather than letting it trigger randomly while pushing a wave."
+    },
+    {
+      "key": "Q",
+      "name": "Boomerang Throw / Boulder Toss",
+      "howToUseIt": "As Mini Gnar, throw it to slow and poke, then catch it on the way back to reduce its cooldown. As Mega Gnar it becomes a boulder that stops on the first target hit and can be picked up again to refresh its cooldown."
+    },
+    {
+      "key": "W",
+      "name": "Hyper / Wallop",
+      "howToUseIt": "As Mini Gnar, land attacks and spells to hype up for bonus damage and move speed on your next attack. As Mega Gnar it instead becomes a ground-slam stun in front of you during a fight."
+    },
+    {
+      "key": "E",
+      "name": "Hop / Crunch",
+      "howToUseIt": "As Mini Gnar, hop to a location and bounce further off any unit you land on for extra mobility or engage. As Mega Gnar it becomes a hard-hitting area slam instead of a mobility tool."
+    },
+    {
+      "key": "R",
+      "name": "GNAR!",
+      "howToUseIt": "Only usable as Mega Gnar — throw everything around you in a direction. Anyone who hits a wall gets stunned and takes bonus damage, so try to position enemies against terrain before using it."
+    }
+  ],
+  "earlyGamePlan": "Play Mini Gnar cautiously in lane, using Boomerang Throw to poke and Hop to reposition or catch enemies overextending. Track your Rage bar and try to save your transformation into Mega Gnar for a moment where you can actually threaten a kill or survive a gank, rather than transforming randomly while just farming.",
+  "quickTips": [
+    "Catch your Boomerang Throw on the way back whenever safe — it refreshes the cooldown much faster.",
+    "Try to time your transformation into Mega Gnar for the start of a fight, not the middle of farming a wave.",
+    "After transforming back to Mini Gnar, you can't build Rage for a short time — play safe during that window.",
+    "Position enemies near walls before using GNAR! so the stun actually lands.",
+    "Use Mini Gnar's Hop to bounce off a minion or enemy for extra range when chasing or escaping.",
+    "Mega Gnar is slow and melee-only — don't chase fast enemies in that form, let them come to you instead."
+  ],
+  "whatToExpect": "Enemy Gnar will poke you with Boomerang Throw as Mini Gnar and try to bait you into fighting right as he transforms into the much tankier, stun-capable Mega Gnar. Watch his Rage bar and animations for signs he's about to transform, and be extra careful about fighting near walls once he's Mega Gnar, since his ultimate stuns and deals bonus damage to anyone knocked into terrain. After he transforms back to Mini Gnar, he's vulnerable for a short time — that's a good window to punish him.",
+  "glossary": [
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Wave clear",
+      "definition": "How quickly a champion can kill an entire wave of minions."
+    },
+    {
+      "term": "Split-push",
+      "definition": "Pushing a lane alone, away from your team, to pressure objectives and force the enemy to respond."
+    },
+    {
+      "term": "Gank",
+      "definition": "When a teammate (often the jungler) shows up in your lane to help you kill or pressure the enemy laner."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "Squishy",
+      "definition": "A champion with low health or defenses who dies quickly if focused."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "Yorick",
+  "name": "Yorick",
+  "playstyleSummary": "Yorick is a top lane fighter who builds an army of undead minions to fight alongside him, turning 1-versus-1 lanes into something closer to 2-versus-1. Playing him feels methodical: you dig graves with your basic attacks and abilities, then summon Mist Walkers from them to wear the enemy down. He rewards patient, sustained pressure over flashy combos, and his ultimate can single-handedly push a lane if left unchecked.",
+  "strengths": [
+    "Summons an army of Mist Walkers that provide extra damage and map pressure",
+    "Dark Procession's wall can block enemy escape routes or split up a fight",
+    "Strong side-lane pushing power, especially with his ultimate active",
+    "Good sustain from Last Rites healing"
+  ],
+  "weaknesses": [
+    "Relatively weak in direct 1-versus-1 fights before he builds up his undead army",
+    "Mist Walkers are individually weak and die easily to area damage",
+    "Low mobility with no dash, making him easy to kite",
+    "Needs graves dug beforehand to get full value from his kit"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Shepherd of Souls",
+      "howToUseIt": "This lets you summon Mist Walkers from graves you've dug — keep an eye on how many graves you have available and use them to add extra damage in fights or to push a wave."
+    },
+    {
+      "key": "Q",
+      "name": "Last Rites",
+      "howToUseIt": "Use this on enemy champions or large monsters to deal bonus damage, heal yourself, and dig a grave for later use — you don't need to recast it to be able to use it again."
+    },
+    {
+      "key": "W",
+      "name": "Dark Procession",
+      "howToUseIt": "Place this wall to block an enemy's escape route during a fight, or to split the enemy team so you can fight a smaller group."
+    },
+    {
+      "key": "E",
+      "name": "Mourning Mist",
+      "howToUseIt": "Throw this to mark an enemy, reducing their armor and slowing them, which also speeds up your Mist Walkers when they chase that marked target."
+    },
+    {
+      "key": "R",
+      "name": "Eulogy of the Isles",
+      "howToUseIt": "Summon the Maiden of the Mist before a major fight or when pushing a side lane, since your attacks against her target deal bonus damage and she can raise more Walkers from enemies she kills."
+    }
+  ],
+  "earlyGamePlan": "In the top lane, use Last Rites on the enemy laner when you get the chance to heal and dig a grave, and try to time your first big grave-based push around level 6 when your ultimate comes online. Avoid all-in fights before you have graves and Mist Walkers built up, since your raw dueling power is weaker early. Focus on farming safely and using Mourning Mist to poke and reduce enemy armor when they approach.",
+  "quickTips": [
+    "Use Last Rites on champions specifically since it always digs a grave against them",
+    "Save Dark Procession to block an enemy's escape path or split up an approaching gank",
+    "Don't fight without any Mist Walkers or graves banked if you can help it",
+    "Send the Maiden of the Mist down a side lane alone to apply pressure, but watch that you don't lose too much power from your team fight",
+    "Mark priority targets with Mourning Mist so your Mist Walkers path toward them faster"
+  ],
+  "whatToExpect": "Yorick will try to accumulate graves and Mist Walkers over time, becoming much scarier the longer a fight or lane goes on, so try to end fights quickly rather than letting them drag out. His Mist Walkers are individually weak and die to a single basic attack or spell, so clear them out before engaging him directly. Watch for his ultimate's Maiden of the Mist, which hits hard and can raise more Walkers from anyone she kills, so avoid dying near her if possible.",
+  "glossary": [
+    {
+      "term": "sustain",
+      "definition": "The ability to heal or regenerate health, letting a champion stay in fights or the jungle longer without returning to base."
+    },
+    {
+      "term": "side lane",
+      "definition": "A lane (top or bottom) away from the main team fighting area, often pushed by a champion who can apply pressure alone."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with the intent to win it or kill the target, without holding back resources."
+    },
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range repeatedly to wear enemies down before a bigger fight."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while still attacking them, common for ranged champions fighting melee opponents."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill on an overextended enemy."
+    }
+  ]
+}

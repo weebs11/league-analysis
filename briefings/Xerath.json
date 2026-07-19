@@ -1,0 +1,84 @@
+{
+  "id": "Xerath",
+  "name": "Xerath",
+  "playstyleSummary": "Xerath is a long-range mage who bombards enemies from a safe distance without ever needing to get close. Playing him feels like sniping — you poke enemies down over time with huge-range spells and then unleash a channeled ultimate that fires repeated barrages across the map. He is a great pick for players who prefer positioning and aiming over close-quarters combat.",
+  "strengths": [
+    "Extremely long ability range keeps him safe from most enemies",
+    "Strong poke damage that wears enemies down before fights",
+    "Rite of the Arcane can deal huge damage across a wide area, even from a distance",
+    "Shocking Orb provides reliable, guaranteed crowd control"
+  ],
+  "weaknesses": [
+    "Very immobile and easy to kill if enemies close the distance",
+    "Becomes a sitting target while channeling his ultimate",
+    "Relies heavily on landing skillshots to do damage",
+    "Vulnerable early before he has levels and items to punish approaches"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Mana Surge",
+      "howToUseIt": "Weave in basic attacks between spell casts when safe to do so — it periodically restores mana, letting you poke more often without running dry."
+    },
+    {
+      "key": "Q",
+      "name": "Arcanopulse",
+      "howToUseIt": "Fire this down lanes or through jungle paths since it hits every enemy in its line — it's easiest to land when the enemy is moving toward or away from you rather than side to side."
+    },
+    {
+      "key": "W",
+      "name": "Eye of Destruction",
+      "howToUseIt": "Use this to slow enemies before following up with Arcanopulse, and aim for the center of the area where the damage and slow are strongest."
+    },
+    {
+      "key": "E",
+      "name": "Shocking Orb",
+      "howToUseIt": "Save this to stun an isolated enemy, then immediately follow up with a centered Eye of Destruction for guaranteed extra damage."
+    },
+    {
+      "key": "R",
+      "name": "Rite of the Arcane",
+      "howToUseIt": "Cast this when you have a clear line of sight to enemies and no immediate danger, since you're immobile while channeling — use its huge range to hit fights you aren't even standing in."
+    }
+  ],
+  "earlyGamePlan": "Stay at max range in lane and use Arcanopulse to poke the enemy whenever they step forward to farm, since your range advantage makes it hard for most opponents to trade back safely. Look for chances to land Shocking Orb on approaching enemies as a way to punish aggression. Avoid overextending past your minions, since you have very little escape if someone dives on you.",
+  "quickTips": [
+    "Poke from max range — your spells outrange almost everything, so use that gap",
+    "Land Shocking Orb before Eye of Destruction to guarantee the strongest hit",
+    "Never channel Rite of the Arcane without checking that no enemies can reach you",
+    "Watch for enemies closing distance quickly and back off before they arrive",
+    "Use Arcanopulse to farm and poke at the same time when the wave lines up",
+    "Play near allies or terrain you can retreat behind since you have no dash"
+  ],
+  "whatToExpect": "Xerath will sit at extreme range and poke you with Arcanopulse and Eye of Destruction, so try to break line of sight using terrain or minion waves. When he starts channeling Rite of the Arcane you'll see a clear cast animation — start moving immediately since it hits from very far away. Closing the distance on him quickly punishes him hard since he has no way to escape once you're on top of him.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range repeatedly to wear enemies down before a bigger fight."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged, as opposed to one that automatically hits its target."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to cast while the caster stays in place and vulnerable, often interruptible by crowd control."
+    },
+    {
+      "term": "line of sight",
+      "definition": "Whether terrain or objects block a straight path between two points, preventing certain abilities from being cast or landing."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "dive",
+      "definition": "Aggressively pushing into enemy territory, often under their turret, to secure a kill."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or fears that limit an enemy's ability to move or act."
+    }
+  ]
+}

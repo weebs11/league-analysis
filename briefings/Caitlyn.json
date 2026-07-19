@@ -1,0 +1,76 @@
+{
+  "id": "Caitlyn",
+  "name": "Caitlyn",
+  "playstyleSummary": "Caitlyn is a long-range marksman who controls lane with the longest basic attack range in the game, setting traps and firing shots to punish anyone who gets close. She feels like a game of keep-away — you win by staying at maximum range and denying your opponent, not by brawling.",
+  "strengths": [
+    "Longest attack range of any marksman, making her hard to approach",
+    "Traps provide vision and a strong follow-up when sprung",
+    "Ace in the Hole threatens huge damage from an enormous range",
+    "Strong at zoning opponents away from minions in lane"
+  ],
+  "weaknesses": [
+    "Very fragile if enemies do manage to close the distance",
+    "Piltover Peacemaker loses damage against each additional target hit",
+    "Traps can be seen and avoided by careful opponents",
+    "Ace in the Hole's shot can be blocked by an ally protecting the target"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Headshot",
+      "howToUseIt": "Every few basic attacks, or any attack on a trapped or netted target, fires a bonus-damage headshot, with doubled range against trapped or netted enemies. Try to line up your attack count so a headshot lands right when you spring a trap on someone."
+    },
+    {
+      "key": "Q",
+      "name": "Piltover Peacemaker",
+      "howToUseIt": "Rev up for a second to fire a penetrating shot that deals less damage to each additional target it passes through. Use it for poke and to hit multiple enemies lined up, but expect reduced value if it passes through minions first."
+    },
+    {
+      "key": "W",
+      "name": "Yordle Snap Trap",
+      "howToUseIt": "Set an invisible trap that immobilizes and reveals an enemy champion who steps on it, granting an empowered Headshot. Place traps preemptively in bushes or chokepoints so you always have one ready during a fight."
+    },
+    {
+      "key": "E",
+      "name": "90 Caliber Net",
+      "howToUseIt": "Fire a net to slow your target, with the recoil knocking you backward. Use it to slow a pursuer while creating distance, or fire it away from an enemy to close a gap or hop over a wall yourself."
+    },
+    {
+      "key": "R",
+      "name": "Ace in the Hole",
+      "howToUseIt": "Take time to line up a huge-damage, huge-range shot on a single target, which enemies can intercept for their ally. Use it to threaten kills on enemies far from their team, and be aware an ally can body-block the shot for their teammate."
+    }
+  ],
+  "earlyGamePlan": "Place a Yordle Snap Trap early where the enemy is likely to step, and use your long attack range to farm and poke from a distance they can't easily punish. Stay behind minions when trading with Piltover Peacemaker so you don't lose damage to minions blocking the shot, and use 90 Caliber Net to peel away anyone who closes the gap.",
+  "quickTips": [
+    "Pre-place Yordle Snap Traps so you always have one ready during a trade or gank",
+    "Stay at max range in lane — Caitlyn wins by not letting opponents get close",
+    "Avoid using Ace in the Hole into large team fights, since it can be blocked by the wrong target",
+    "Fire 90 Caliber Net away from an enemy to gap-close or escape over terrain, not just to slow them",
+    "Time your basic attacks so a headshot procs right as you spring a trap for maximum burst",
+    "Watch minion positioning before casting Piltover Peacemaker so it isn't wasted on the wave"
+  ],
+  "whatToExpect": "An enemy Caitlyn wants to keep you at long range and punish you the moment you approach, so stay behind your minions to reduce Piltover Peacemaker's damage and watch bushes and chokepoints for hidden traps. If she lines up Ace in the Hole on you, an ally standing in the shot's path can intercept it, so play near teammates when she has her ultimate available.",
+  "glossary": [
+    {
+      "term": "zoning",
+      "definition": "Using threats of damage or crowd control to keep an enemy away from an area, like the minion wave, without necessarily attacking them directly."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance with low-commitment spells before going for a bigger trade."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate by blocking, slowing, or removing a threat near them."
+    },
+    {
+      "term": "gap-close",
+      "definition": "Quickly covering the distance between yourself and a target, often with a dash or leap."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing champions, usually in lane."
+    }
+  ]
+}

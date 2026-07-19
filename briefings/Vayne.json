@@ -1,0 +1,80 @@
+{
+  "id": "Vayne",
+  "name": "Vayne",
+  "playstyleSummary": "Vayne is a marksman who plays more like a duelist, hopping around with Tumble and punishing anyone who stands still with true damage from Silver Bolts. She's very weak early and needs careful play to survive, but scales into one of the strongest single-target damage dealers in the late game. She rewards patience: waiting for the right moment instead of engaging first.",
+  "strengths": [
+    "Silver Bolts deals true damage based on max health, which shreds tanks",
+    "Scales extremely well into the late game with items",
+    "Condemn can stun and secure kills by pinning enemies to walls",
+    "Gains bonus movement speed chasing down enemies via her passive"
+  ],
+  "weaknesses": [
+    "Very fragile and easily killed if caught out of position",
+    "Weak in the early laning phase compared to most marksmen",
+    "Short attack range makes her vulnerable to being poked down",
+    "Needs to land three consecutive hits on the same target for her main damage, which can be interrupted"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Night Hunter",
+      "howToUseIt": "You gain move speed when moving toward nearby enemy champions, which helps you chase down low-health targets. Use this to close gaps in fights, but remember it only helps when moving toward enemies, not away from them."
+    },
+    {
+      "key": "Q",
+      "name": "Tumble",
+      "howToUseIt": "Use this to reposition for a better attack angle and to add bonus damage to your next attack. It cannot cross over walls, so plan your dodges and repositioning around terrain rather than through it."
+    },
+    {
+      "key": "W",
+      "name": "Silver Bolts",
+      "howToUseIt": "This is your core damage tool: your third consecutive attack or ability on the same target deals bonus true damage based on their max health. Focus one target consistently in fights rather than spreading damage around so you can trigger this as often as possible."
+    },
+    {
+      "key": "E",
+      "name": "Condemn",
+      "howToUseIt": "Fire this at a fleeing or approaching enemy to knock them back; if they hit a wall, they're stunned and take extra damage. Use it near walls to secure kills, or as an escape tool to knock a pursuer off you."
+    },
+    {
+      "key": "R",
+      "name": "Final Hour",
+      "howToUseIt": "Activate this before a fight for bonus attack damage, invisibility during Tumble, a shorter Tumble cooldown, and more movement speed. Use the invisibility window to reposition safely or dodge incoming abilities mid-fight."
+    }
+  ],
+  "earlyGamePlan": "In lane, play cautiously since Vayne is weak early: focus on farming safely with auto-attacks and use Tumble mainly to dodge skillshots or reposition rather than to engage. Avoid extended trades until you have some levels and items, and look to punish overextended enemies with Condemn near a wall rather than initiating fights yourself.",
+  "quickTips": [
+    "Focus a single target in fights so you can land the third-hit true damage from Silver Bolts",
+    "Save Tumble to dodge key abilities rather than using it just for extra damage",
+    "Use Condemn near walls to stun and secure kills, not in open areas",
+    "Play safe and farm in the early game since your power comes later",
+    "Don't engage teamfights first; let your team create an opening for you",
+    "Use your passive's move speed to chase, but back off if you're overextending alone"
+  ],
+  "whatToExpect": "An enemy Vayne is weak early, so lane aggressively against her before she gets items, but be very careful once she scales up since her true damage melts through defensive stats. Watch for her tumbling near walls to set up a Condemn stun, and try to burst her down quickly in fights since she has no way to save herself once caught without escape tools nearby.",
+  "glossary": [
+    {
+      "term": "marksman",
+      "definition": "A ranged champion type, often called an ADC, who deals sustained physical damage from a distance using auto-attacks."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resistance entirely, so defensive stats don't reduce it."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged by moving out of its path, as opposed to auto-locking onto a target."
+    },
+    {
+      "term": "scale",
+      "definition": "How a champion's power grows over the course of the game, usually through levels and items."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with crowd control or a dive."
+    },
+    {
+      "term": "farm",
+      "definition": "Killing minions (and monsters) for gold and experience."
+    }
+  ]
+}

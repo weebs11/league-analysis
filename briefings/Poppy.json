@@ -1,0 +1,75 @@
+{
+  "id": "Poppy",
+  "name": "Poppy",
+  "playstyleSummary": "Poppy is a tanky duelist who specializes in shutting down mobile, dash-heavy champions - her whole kit punishes enemies for dashing near her or getting caught against a wall. She feels like a wall herself: hard to kill, and devastating to anyone who charges at her.",
+  "strengths": [
+    "Steadfast Presence can stop enemy dashes completely, countering mobile champions",
+    "Heroic Charge stuns enemies pushed into a wall",
+    "Keeper's Verdict can knock an enemy so far away it removes them from a fight",
+    "Very tanky and hard to kill in extended fights"
+  ],
+  "weaknesses": [
+    "Relatively low damage output compared to more damage-focused fighters",
+    "Needs walls nearby to land Heroic Charge's stun",
+    "Keeper's Verdict telegraphs, letting alert enemies avoid it",
+    "Less effective against enemies who don't rely on dashes"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Iron Ambassador",
+      "howToUseIt": "Your buckler bounces off a target and lands nearby - walk over it to pick it up and gain a temporary shield, so try to route your movement over it after throwing it."
+    },
+    {
+      "key": "Q",
+      "name": "Hammer Shock",
+      "howToUseIt": "Swing your hammer to damage and slow enemies, leaving behind a zone that explodes after a delay - use it to push enemies away from an area or punish them for standing still."
+    },
+    {
+      "key": "W",
+      "name": "Steadfast Presence",
+      "howToUseIt": "This passively gives you armor and magic resist that grows as you lose health. Activate it to gain move speed and stop nearby enemy dashes, slowing and grounding anyone whose dash you stop."
+    },
+    {
+      "key": "E",
+      "name": "Heroic Charge",
+      "howToUseIt": "Dash to an enemy and shove them backward - if they hit a wall, they're stunned, so always check for terrain behind your target before using this."
+    },
+    {
+      "key": "R",
+      "name": "Keeper's Verdict",
+      "howToUseIt": "Channel a hammer swing that knocks enemies extremely far away - release it immediately instead to pop the target straight up, which is useful in 1v1 duels."
+    }
+  ],
+  "earlyGamePlan": "In lane, look to pick up your buckler after throwing it to keep your passive shield active, and use Hammer Shock to poke and push your opponent away from minions. Save Heroic Charge for moments when your opponent is near a wall so you can land the stun, and don't be afraid to trade since Poppy gets tankier as her health drops.",
+  "quickTips": [
+    "Walk over your thrown buckler to pick up its shield",
+    "Activate Steadfast Presence right as an enemy dashes at you to stop them",
+    "Only use Heroic Charge on enemies near a wall to guarantee the stun",
+    "Use Keeper's Verdict's instant release in 1v1s to pop a target up for follow-up",
+    "Don't play too passively at medium health - Poppy scales well with health lost"
+  ],
+  "whatToExpect": "Poppy punishes dash-heavy champions hard, so if you play someone with a dash, be careful using it near her since Steadfast Presence can stop it completely and ground you. Watch for her spinning up Keeper's Verdict - that's your warning she's about to try to knock you away from the fight - and avoid fighting her with your back to a wall since that's how Heroic Charge stuns you.",
+  "glossary": [
+    {
+      "term": "zone",
+      "definition": "To control an area by threatening damage so enemies avoid standing there."
+    },
+    {
+      "term": "ground",
+      "definition": "A crowd control effect that prevents movement abilities like dashes or blinks."
+    },
+    {
+      "term": "duelist",
+      "definition": "A champion built to win 1v1 fights."
+    },
+    {
+      "term": "scale",
+      "definition": "To grow stronger relative to opponents as the game, or a specific condition, progresses."
+    },
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range before a real fight starts."
+    }
+  ]
+}

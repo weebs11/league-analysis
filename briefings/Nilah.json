@@ -1,0 +1,83 @@
+{
+  "id": "Nilah",
+  "name": "Nilah",
+  "playstyleSummary": "Nilah is a highly mobile melee fighter who dodges incoming attacks entirely with a well-timed ability and shares in her allies' healing and shielding. She feels like an all-in duelist who lives or dies by timing - a well-placed Jubilant Veil can single-handedly win a trade, but a mistimed one leaves her with almost nothing to fall back on.",
+  "strengths": [
+    "Jubilant Veil lets her dodge all incoming attacks for a window, a huge defensive tool",
+    "Joy Unending shares and boosts nearby allies' healing and shielding",
+    "Slipstream gives a strong dash to engage or chase down enemies",
+    "Apotheosis is a powerful area pull and damage ultimate in a crowded fight"
+  ],
+  "weaknesses": [
+    "One of the hardest champions in the game to play well",
+    "Needs precise timing on Jubilant Veil to dodge the right attack",
+    "Short attack range outside of Formless Blade's brief extension",
+    "Melee champion who is vulnerable to being kited by ranged enemies"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Joy Unending",
+      "howToUseIt": "You gain bonus experience from last-hitting minions, and any healing or shielding your allies get near you is shared with and boosted for you too - stick near supportive allies to get the most out of it."
+    },
+    {
+      "key": "Q",
+      "name": "Formless Blade",
+      "howToUseIt": "Swing this in a chosen direction to hit everyone in a line and temporarily extend your attack range - use it to poke safely or to threaten enemies who think they're out of reach."
+    },
+    {
+      "key": "W",
+      "name": "Jubilant Veil",
+      "howToUseIt": "Activate this right before a big attack or ability is about to hit you - while it's active you dodge everything, and any ally you touch gets the same effect, so use it to protect a teammate too."
+    },
+    {
+      "key": "E",
+      "name": "Slipstream",
+      "howToUseIt": "Dash toward a target enemy, damaging anyone you pass through along the way - use it to engage a fight or to chase down someone trying to escape."
+    },
+    {
+      "key": "R",
+      "name": "Apotheosis",
+      "howToUseIt": "Use this when you're already in the middle of a group of enemies - it damages everyone around you and then pulls them closer, locking them into the fight with you."
+    }
+  ],
+  "earlyGamePlan": "Nilah is a tough champion to pick up, so focus on last-hitting minions with basic attacks and using Formless Blade for safe poke and wave clear. Avoid committing to fights until you're confident timing Jubilant Veil, since dodging a key attack can completely swing a trade in your favor.",
+  "quickTips": [
+    "Time Jubilant Veil to dodge a specific enemy ability or burst window rather than using it on cooldown.",
+    "Stick near allies who provide healing or shielding, since your passive shares and boosts those effects for you too.",
+    "Use Formless Blade's extended range to poke enemies who think they're safe.",
+    "Save Slipstream to chase a fleeing enemy or to close the gap before a fight.",
+    "Only commit to Apotheosis when you're already surrounded by enemies, since it pulls them toward you."
+  ],
+  "whatToExpect": "Nilah will try to dash in with Slipstream and use Jubilant Veil to dodge your key crowd control or burst damage during the trade. Since she has no ranged poke outside Formless Blade, punishing her from range before she closes the distance is one of the safest ways to deal with her, and holding your crowd control until after Jubilant Veil expires can stop her from dodging it.",
+  "glossary": [
+    {
+      "term": "last-hitting",
+      "definition": "Getting the killing blow on a minion, which grants gold."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage traded from range to wear enemies down before a real fight."
+    },
+    {
+      "term": "wave clear",
+      "definition": "Killing a group of minions quickly, usually with an ability that hits multiple targets."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight, usually by committing crowd control or a dash onto an enemy."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "trade",
+      "definition": "Exchanging damage with an opponent, usually in lane."
+    }
+  ]
+}

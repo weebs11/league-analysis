@@ -1,0 +1,91 @@
+{
+  "id": "XinZhao",
+  "name": "Xin Zhao",
+  "playstyleSummary": "Xin Zhao is a straightforward, aggressive fighter who jumps into fights, chains his abilities together, and knocks enemies around. Playing him feels satisfying because his combo is simple to execute and he can dive straight at the enemy backline. He's a great beginner pick since his kit rewards just running at the right target and pressing your buttons in order.",
+  "strengths": [
+    "Simple, low-difficulty combo that's easy to execute consistently",
+    "Strong dueling power from his passive's bonus damage and healing",
+    "Ultimate lets him leap into fights and become resistant to outside damage",
+    "Good at initiating fights and disrupting enemy formations"
+  ],
+  "weaknesses": [
+    "Falls off in effectiveness if his attack combo gets interrupted",
+    "Lacks a hard crowd control tool besides knockups and slows",
+    "Can be kited by enemies with strong disengage or mobility",
+    "Needs to get in melee range, so ranged poke can wear him down first"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Determination",
+      "howToUseIt": "Just keep auto-attacking during fights — every third hit deals bonus damage and heals you, so don't hold back from trading in extended skirmishes."
+    },
+    {
+      "key": "Q",
+      "name": "Three Talon Strike",
+      "howToUseIt": "Use this to start fights since your third attack knocks the target airborne, which is a great setup to follow with Audacious Charge or your ultimate."
+    },
+    {
+      "key": "W",
+      "name": "Wind Becomes Lightning",
+      "howToUseIt": "Cast this to slow enemies and mark them as Challenged, which sets up a longer-range Audacious Charge on that target."
+    },
+    {
+      "key": "E",
+      "name": "Audacious Charge",
+      "howToUseIt": "Use this to close the gap onto an enemy and slow everyone nearby — it reaches further if the target is already Challenged from Wind Becomes Lightning."
+    },
+    {
+      "key": "R",
+      "name": "Crescent Guard",
+      "howToUseIt": "Activate this when diving into the enemy team to knock back anyone not Challenged and become resistant to damage from outside the circle, buying time for your team to catch up."
+    }
+  ],
+  "earlyGamePlan": "In the jungle, clear camps efficiently using Three Talon Strike's bonus damage, then look for early skirmish opportunities where you can knock an enemy up and follow through with your full combo. Gank lanes where the enemy is overextended, using Audacious Charge to close the distance quickly. Focus on completing your full Q-W-E combo in fights rather than trading single abilities.",
+  "quickTips": [
+    "Always try to land the third hit of Three Talon Strike to get the airborne knockup",
+    "Mark a target with Wind Becomes Lightning before using Audacious Charge for extra range",
+    "Use Crescent Guard to dive backline targets and shrug off outside damage while you work",
+    "Position your ultimate's knockback to push enemies away from their team, not toward it",
+    "Keep auto-attacking in fights to benefit from Determination's healing and bonus damage"
+  ],
+  "whatToExpect": "Xin Zhao will try to jump onto your team's weakest target and chain his abilities into a knockup combo, so watch for him closing the gap with Audacious Charge. His ultimate makes him resistant to damage from outside a circle around him, so grouping up and focusing him from within that circle is more effective than kiting away. Interrupting his Three Talon Strike combo with crowd control significantly reduces his damage output.",
+  "glossary": [
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill on an overextended enemy."
+    },
+    {
+      "term": "knockup",
+      "definition": "A crowd control effect that launches a champion into the air, preventing them from acting until they land."
+    },
+    {
+      "term": "backline",
+      "definition": "The squishier, high-damage champions positioned behind the frontline in a team fight, like mages and marksmen."
+    },
+    {
+      "term": "disengage",
+      "definition": "Tools or abilities that let a team break off from a fight, such as slows on enemies or shields for allies."
+    },
+    {
+      "term": "initiating",
+      "definition": "Starting a team fight, usually by engaging on the enemy team first."
+    },
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities cast together for maximum effect."
+    },
+    {
+      "term": "dive",
+      "definition": "Aggressively pushing into enemy territory, often under their turret, to secure a kill."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or fears that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while still attacking them, common for ranged champions fighting melee opponents."
+    }
+  ]
+}

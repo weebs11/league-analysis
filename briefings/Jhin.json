@@ -1,0 +1,80 @@
+{
+  "id": "Jhin",
+  "name": "Jhin",
+  "playstyleSummary": "Jhin is an unusual marksman who fires only four shots at a time instead of attacking continuously, with his fourth always critically striking for extra execute damage. He feels rhythmic and precise - you're counting shots, setting up roots, and timing your fourth bullet for maximum value rather than just holding down attack.",
+  "strengths": [
+    "Massive burst damage on his fourth shot, especially against low-health targets",
+    "Deadly Flourish gives huge point-and-click range for a root when set up",
+    "Invisible traps from Captive Audience punish careless positioning",
+    "Ultimate provides safe, long-range poke and kill pressure across the map"
+  ],
+  "weaknesses": [
+    "Fixed four-shot rhythm means a real reload window where he's vulnerable",
+    "Lower attack speed ramp than normal marksmen since Whisper's rate is fixed",
+    "Ultimate immobilizes him while channeling",
+    "Weaker against enemies with full health, since much of his damage scales off missing health"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Whisper",
+      "howToUseIt": "You only get four shots before a brief reload, and the fourth always critically strikes with bonus execute damage - use your other abilities to fill the reload downtime instead of standing idle."
+    },
+    {
+      "key": "Q",
+      "name": "Dancing Grenade",
+      "howToUseIt": "Throw this at an enemy or minion; it bounces to a new target on a kill and gains damage each time, so use it to finish off minions near enemy champions to chain into them."
+    },
+    {
+      "key": "W",
+      "name": "Deadly Flourish",
+      "howToUseIt": "Fire this long-range shot at an enemy who was recently hit by you, an ally, or a lotus trap to root them in place - great for finishing a fleeing target or setting up a kill from surprising range."
+    },
+    {
+      "key": "E",
+      "name": "Captive Audience",
+      "howToUseIt": "Drop this invisible trap in bushes or chokepoints; it slows and damages anyone who steps on it, and one automatically appears near any enemy champion you kill."
+    },
+    {
+      "key": "R",
+      "name": "Curtain Call",
+      "howToUseIt": "Channel this to fire four long-range shots that slow enemies and deal execute damage, with the fourth guaranteed to critically strike - save it for finishing low-health targets across the map rather than opening a fight with it."
+    }
+  ],
+  "earlyGamePlan": "In lane, farm carefully since you only get four shots before reloading, and use Dancing Grenade to safely poke or finish minions near the enemy. Look for chances to land Deadly Flourish on an overextended opponent for a long-range root, and drop Captive Audience traps in bushes you expect them to walk through.",
+  "quickTips": [
+    "Keep track of your four-shot count - plan spell casts around your reload rather than getting caught empty.",
+    "Save your ultimate to execute low-health enemies rather than opening a fight with it.",
+    "Land Deadly Flourish on targets recently hit by you or allies to root them from long range.",
+    "Drop Captive Audience traps in bushes and chokepoints for vision and free damage.",
+    "Bounce Dancing Grenade off minions near enemy champions to poke them safely.",
+    "Remember your fourth shot always crits - try to land it on the highest-value target."
+  ],
+  "whatToExpect": "An enemy Jhin will poke from range, try to root you with Deadly Flourish, and save his fourth shot - both on basic attacks and his ultimate - to execute you once you're low. He's vulnerable right after using his fourth shot since he has to reload, so that's a good window to punish him if you're close enough.",
+  "glossary": [
+    {
+      "term": "execute",
+      "definition": "Damage that increases or becomes guaranteed-lethal as a target's health gets lower."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range without committing to a full fight."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that stops a champion from moving but still lets them act otherwise."
+    },
+    {
+      "term": "crit / critically strike",
+      "definition": "An attack that deals significantly more damage than normal, based on a chance or guaranteed trigger."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, past the safety of allies or turret, and becoming vulnerable."
+    },
+    {
+      "term": "chokepoint",
+      "definition": "A narrow path on the map where enemies are forced to pass close together, good for landing area effects."
+    }
+  ]
+}

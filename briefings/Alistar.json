@@ -1,0 +1,79 @@
+{
+  "id": "Alistar",
+  "name": "Alistar",
+  "playstyleSummary": "Alistar is a tanky support built around chain crowd control — knocking enemies into the air and then smashing them into his own team. He's not about dealing big damage himself; his job is to set up his teammates for easy kills and to soak up punishment while doing it. He's beginner-friendly in that he's very hard to kill, but his combos take practice to land well.",
+  "strengths": [
+    "Extremely tanky and hard to kill",
+    "Powerful chain crowd control with Pulverize into Headbutt",
+    "Unbreakable Will lets him engage or survive burst safely",
+    "Strong at peeling enemies off allies by knocking them away or into his own team"
+  ],
+  "weaknesses": [
+    "Very low mobility outside his short-range abilities",
+    "Deals relatively low damage compared to other supports",
+    "Needs to land his combo to be effective — whiffing leaves him with little else",
+    "Can be kited if his crowd control misses"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Triumphant Roar",
+      "howToUseIt": "This charges up when you stun or displace enemies, or when nearby enemies die — once charged, use it to heal yourself and nearby allies, so try to fight where your team can benefit from it."
+    },
+    {
+      "key": "Q",
+      "name": "Pulverize",
+      "howToUseIt": "Knocks nearby enemies into the air — use it to set up your Headbutt combo or to peel an enemy off a diving ally."
+    },
+    {
+      "key": "W",
+      "name": "Headbutt",
+      "howToUseIt": "Rams a target and knocks them back — combine with Pulverize to knock an enemy up then smash them into your team (or away from an ally you're protecting)."
+    },
+    {
+      "key": "E",
+      "name": "Trample",
+      "howToUseIt": "Passively reduces the physical damage you take and builds stacks when you damage champions; activate it to deal area damage, and at full stacks your next attack on a champion stuns them."
+    },
+    {
+      "key": "R",
+      "name": "Unbreakable Will",
+      "howToUseIt": "Clears all crowd control on you and reduces incoming damage — use it to survive burst damage, or to cleanse a stun or root right before engaging."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for chances to combo Pulverize into Headbutt to knock an enemy into your ADC for a big trade, but be careful not to overextend since you have no mobility beyond these abilities. Focus on protecting your ally and setting up kills rather than farming, since your role is to enable your teammate's damage.",
+  "quickTips": [
+    "Combo Pulverize into Headbutt to knock enemies into your team, not away from them.",
+    "Use Headbutt on an ally to reposition them, not just on enemies to knock them back.",
+    "Save Unbreakable Will to survive burst damage or to engage safely through crowd control.",
+    "Fight near your allies so Triumphant Roar's heal benefits everyone.",
+    "Build up Trample stacks in fights for the bonus stun on your next attack."
+  ],
+  "whatToExpect": "Alistar will look to knock you up with Pulverize and then Headbutt you into his team (or towards a tower), so try not to clump up with allies when he's nearby. He's very tanky and hard to punish directly, so focus more fragile targets instead. Watch for Unbreakable Will — if he pops it, crowd control won't stick to him for its duration, so it's often better to disengage than keep attacking him.",
+  "glossary": [
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, knock-ups, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect an ally by knocking back, slowing, or disabling whoever is attacking them."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually by using crowd control or mobility to start the action."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from a melee attacker while still dealing damage to them, keeping distance."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt in a very short window."
+    },
+    {
+      "term": "cleanse",
+      "definition": "Removing crowd control effects currently active on a champion."
+    }
+  ]
+}

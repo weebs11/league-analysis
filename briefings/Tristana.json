@@ -1,0 +1,80 @@
+{
+  "id": "Tristana",
+  "name": "Tristana",
+  "playstyleSummary": "Tristana is a marksman who starts out short-ranged and a little clunky, then grows into a long-range threat as her passive increases her attack range with levels. Playing her feels aggressive for a marksman: instead of only farming safely, she can jump in with Rocket Jump, drop an explosive on a target, and burst them down at close range like an assassin. She commits hard when she jumps in, so timing her all-ins matters a lot.",
+  "strengths": [
+    "Attack range grows with levels, letting her out-range most enemies later in the game",
+    "Strong all-in burst combo using Rocket Jump and Explosive Charge",
+    "Good mobility for diving priority targets or escaping",
+    "Scales well into the late game with items"
+  ],
+  "weaknesses": [
+    "Short attack range early, before her passive kicks in",
+    "Rocket Jump can't be canceled once used, so it's a big commitment",
+    "Very squishy if her all-in doesn't secure a kill",
+    "Relies on levels and stacks to reach her full potential"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Draw a Bead",
+      "howToUseIt": "Your attack range grows as you level, so play safer early with short range and lean on your extra range more as you level up."
+    },
+    {
+      "key": "Q",
+      "name": "Rapid Fire",
+      "howToUseIt": "A burst of Attack Speed — use it to shred through a target quickly in a fight or to stack Explosive Charge faster."
+    },
+    {
+      "key": "W",
+      "name": "Rocket Jump",
+      "howToUseIt": "Jumps you to a location, damaging and slowing nearby enemies where you land. It's your main engage and escape tool, but you can't cancel it mid-air, so commit to the landing spot carefully."
+    },
+    {
+      "key": "E",
+      "name": "Explosive Charge",
+      "howToUseIt": "Place a bomb on an enemy that explodes after a delay, or that triggers automatically off a kill near them. Use Rocket Jump right after it detonates to finish off a low-health target."
+    },
+    {
+      "key": "R",
+      "name": "Buster Shot",
+      "howToUseIt": "Knocks a target back a long distance — great for peeling a diver off a teammate, finishing a fleeing enemy, or doubling the explosion radius if they're carrying your Explosive Charge bomb."
+    }
+  ],
+  "earlyGamePlan": "Farm carefully with basic attacks since your range is short at low levels, and avoid extended trades until you've leveled up a bit. Once you have Rocket Jump and Explosive Charge available, look for a chance to all-in an enemy who's pushed too far from safety, jumping in, dropping the bomb, and finishing with attacks.",
+  "quickTips": [
+    "Farm safely early since your attack range is shorter than most marksmen at low levels",
+    "Save Rocket Jump for a real engage or an emergency escape, not casual repositioning",
+    "Stack Explosive Charge with Rapid Fire before committing to an all-in",
+    "Use Buster Shot to peel a diver off a teammate or to finish a fleeing enemy",
+    "Kite backward with attacks once your range advantage kicks in at higher levels",
+    "Don't jump in unless you're confident you can finish the fight, since Rocket Jump can't be canceled"
+  ],
+  "whatToExpect": "Enemy Tristana will try to jump in with Rocket Jump, drop Explosive Charge, and burst you down at close range — since her jump commits her, punish her hard if you can survive the initial burst and she has no escape left afterward. Watch out for Buster Shot knocking you away from your team or peeling a diving ally off her.",
+  "glossary": [
+    {
+      "term": "all-in",
+      "definition": "Committing all of your damage and cooldowns to try to secure a kill in one engagement."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while continuing to attack them, keeping distance so they can't retaliate."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to knock back, slow, or otherwise stop an enemy from reaching a teammate."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill outright."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "scaling",
+      "definition": "How much stronger a champion becomes over time as they gain levels and items."
+    }
+  ]
+}

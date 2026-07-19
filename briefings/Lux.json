@@ -1,0 +1,80 @@
+{
+  "id": "Lux",
+  "name": "Lux",
+  "playstyleSummary": "Lux is a ranged mage who controls the battlefield from a safe distance with long-range skillshots, then finishes enemies off by detonating her passive mark for bonus damage after landing a spell. She excels at zoning enemies away from an area and picking off targets who wander too close.",
+  "strengths": [
+    "Long range on all her abilities lets her poke safely",
+    "Light Binding can root two enemies at once, great for setting up kills",
+    "Lucent Singularity offers strong zone control, denying an area to enemies",
+    "Final Spark deals big burst damage across a whole team if lined up well"
+  ],
+  "weaknesses": [
+    "All her abilities are skillshots, so she deals little if enemies dodge them",
+    "Relatively low health and defense, dangerous if caught out of position",
+    "Needs to land a spell before an attack to get full passive value",
+    "Final Spark telegraphs before firing, giving alert enemies time to dodge"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Illumination",
+      "howToUseIt": "After hitting an enemy with a damaging spell, follow up with an attack to detonate the mark for bonus magic damage - this is a core part of Lux's damage combo."
+    },
+    {
+      "key": "Q",
+      "name": "Light Binding",
+      "howToUseIt": "Aim this through two enemies when possible since it can root and damage both - use it to set up kills or peel divers off an ally."
+    },
+    {
+      "key": "W",
+      "name": "Prismatic Barrier",
+      "howToUseIt": "Throw this through a retreating ally to shield them, and remember it also shields on the way back, so position yourself to catch it twice."
+    },
+    {
+      "key": "E",
+      "name": "Lucent Singularity",
+      "howToUseIt": "Place this to zone enemies away from an area or slow their advance, then detonate it for extra damage once enemies are inside it."
+    },
+    {
+      "key": "R",
+      "name": "Final Spark",
+      "howToUseIt": "Line this up across as many enemies as possible for huge burst damage, and remember it also detonates your passive mark on anyone already hit by another spell."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Light Binding and Lucent Singularity from max range, following up with an attack to pop your passive mark for extra damage. Use Lucent Singularity to scout brush before walking in, since it reveals what's hiding there, and play carefully since all your damage relies on landing skillshots.",
+  "quickTips": [
+    "Always try to land a spell before attacking to detonate your passive for bonus damage",
+    "Aim Light Binding through two enemies to root and poke both at once",
+    "Throw Lucent Singularity into brush before walking in to check for ambushes",
+    "Remember Prismatic Barrier shields on the way back too - position to catch the return",
+    "Watch for a warning beam before Final Spark fires and get ready to line it up across enemies",
+    "Stay at max range since Lux has very little defense if she's caught"
+  ],
+  "whatToExpect": "Lux will try to poke you from long range with Light Binding and Lucent Singularity, then finish with the burst from Final Spark and her passive mark, so spreading out with your team makes it harder for her to hit everyone at once. When retreating at low health, watch for a red targeting beam that fires just before Final Spark and sidestep it rather than running in a straight line.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability you aim manually that can miss if the enemy moves out of the way."
+    },
+    {
+      "term": "zone control",
+      "definition": "Using abilities to control or deny an area of the map to the enemy."
+    },
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage in a very short time."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect an ally from being attacked, usually by slowing or blocking an enemy diver."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together for a specific effect."
+    }
+  ]
+}

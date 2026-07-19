@@ -1,0 +1,84 @@
+{
+  "id": "Ekko",
+  "name": "Ekko",
+  "playstyleSummary": "Ekko is a slippery assassin-mage who circles around a fight, sets a delayed trap, and then dashes in to detonate it once enemies wander in. His ultimate lets him rewind to safety and heal off damage he just took, which gives him a lot of room to make aggressive plays without fully committing — but landing his combo takes practice and good timing.",
+  "strengths": [
+    "Chronobreak provides a powerful escape and a strong counter-engage tool",
+    "Parallel Convergence can stun and shield him if he times it well",
+    "High burst damage against low-health targets",
+    "Phase Dive gives him mobility to dash onto backline targets or reposition"
+  ],
+  "weaknesses": [
+    "Much weaker when Chronobreak is on cooldown",
+    "Parallel Convergence's stun zone takes a few seconds to arm, so it can be dodged if spotted",
+    "Relatively fragile if caught out of position",
+    "Needs to line up multiple abilities to deal his real damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Z-Drive Resonance",
+      "howToUseIt": "Every third attack or damaging spell on the same target deals bonus damage and speeds you up if it's a champion, so try to weave attacks and spells together on one target rather than spreading damage around."
+    },
+    {
+      "key": "Q",
+      "name": "Timewinder",
+      "howToUseIt": "Throw this at an enemy champion to slow and damage them, then stay near its path since it deals more damage on the way back to you — try to catch the same target with both hits."
+    },
+    {
+      "key": "W",
+      "name": "Parallel Convergence",
+      "howToUseIt": "Cast this ahead of a fight since the stun zone takes a few seconds to arm; if you're standing in it when it activates you get a shield, and any enemy caught inside gets stunned."
+    },
+    {
+      "key": "E",
+      "name": "Phase Dive",
+      "howToUseIt": "Use this to dash to a target with bonus damage on your next attack — it's great for chasing, engaging onto a backline target, or simply repositioning during a fight."
+    },
+    {
+      "key": "R",
+      "name": "Chronobreak",
+      "howToUseIt": "Save this for when you're about to die or want to reset a fight — you become untargetable, rewind a few seconds, and heal based on the damage you took in that window, while enemies near where you land take heavy damage."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Timewinder and try to line up its return hit on the same target for extra damage, while saving Parallel Convergence to punish an overextending enemy once its stun zone is armed. Avoid committing to risky all-ins before level 6 since Chronobreak is what makes Ekko's aggressive plays safe, and you don't have that safety net yet.",
+  "quickTips": [
+    "Try to land both the outgoing and returning hit of Timewinder on the same enemy",
+    "Cast Parallel Convergence a few seconds before you actually need the stun, since it arms slowly",
+    "Stand inside your own Parallel Convergence zone when it triggers to get the shield",
+    "Use Phase Dive to reposition mid-fight, not just as a finishing dash",
+    "Play more cautiously whenever Chronobreak is on cooldown",
+    "Focus your attacks and spells on one target to trigger Z-Drive Resonance's bonus damage"
+  ],
+  "whatToExpect": "Ekko will try to set up a delayed stun zone with Parallel Convergence and dash in with Phase Dive once it's armed, then use Chronobreak to escape or turn the fight around if things go badly for him. He is significantly weaker whenever his ultimate is on cooldown, so watch for the trail effect it leaves and press your advantage while it's down.",
+  "glossary": [
+    {
+      "term": "backline",
+      "definition": "The fragile, high-damage characters who stay behind their team in a fight, like marksmen and mages."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight, using your key abilities to try to win it outright rather than just exchanging hits."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can cast it again."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with a dash or stun."
+    },
+    {
+      "term": "shield",
+      "definition": "A temporary buffer of extra effective health that absorbs incoming damage before your health is lost."
+    }
+  ]
+}

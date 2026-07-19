@@ -1,0 +1,71 @@
+{
+  "id": "KogMaw",
+  "name": "Kog'Maw",
+  "playstyleSummary": "Kog'Maw is a ranged hyper-carry who deals enormous sustained damage but has absolutely no escape or mobility tools, so he lives or dies by staying behind his team and minions. He scales incredibly well into the late game, where his attacks and abilities start to melt enemies from long range. Even after he dies, his passive can still punish anyone standing too close.",
+  "strengths": [
+    "Bio-Arcane Barrage lets his attacks deal bonus damage based on the target's max health, great against tanky enemies.",
+    "Living Artillery can poke or finish off enemies from extreme range.",
+    "Icathian Surprise punishes enemies who linger near his body after he dies.",
+    "Scales into one of the highest sustained damage dealers in the late game."
+  ],
+  "weaknesses": [
+    "Has zero escape or mobility tools, making him very vulnerable if caught.",
+    "Extremely fragile and easy to burst down if isolated.",
+    "Casting too many Living Artillery shots in a short time raises its Mana cost.",
+    "Needs consistent protection from his team to be effective."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Icathian Surprise",
+      "howToUseIt": "When you die, you explode a few seconds later for true damage to anyone nearby — if you're about to die anyway, try to position so the explosion catches your pursuers."
+    },
+    {
+      "key": "Q",
+      "name": "Caustic Spittle",
+      "howToUseIt": "Use it to poke enemies from range while also weakening their armor and magic resist, and enjoy the bonus attack speed it grants you afterward."
+    },
+    {
+      "key": "W",
+      "name": "Bio-Arcane Barrage",
+      "howToUseIt": "Turn this on to extend your attack range and make your attacks deal bonus damage based on the target's max health — great for both poking and taking down tanky enemies."
+    },
+    {
+      "key": "E",
+      "name": "Void Ooze",
+      "howToUseIt": "Fire this to damage anyone it passes through and leave a slowing trail on the ground — use the trail to set up a more accurate Living Artillery."
+    },
+    {
+      "key": "R",
+      "name": "Living Artillery",
+      "howToUseIt": "Fire this from extreme range to poke enemies or finish off low-health targets, but don't spam it repeatedly, since casting several in a short time raises its Mana cost."
+    }
+  ],
+  "earlyGamePlan": "In lane, focus on farming safely with Caustic Spittle and Void Ooze from a distance — you have no escape tools, so avoid trading in melee range or overextending near brush where you could get ganked. Let your team know you need protection, since you're extremely vulnerable if caught alone.",
+  "quickTips": [
+    "Stay behind your minions and allies — you have zero mobility, so getting caught is usually fatal.",
+    "Use Bio-Arcane Barrage to poke from extended range before committing to a fight.",
+    "Save Void Ooze's slow trail to help land Living Artillery more reliably.",
+    "Watch out for casting too many Living Artillery shots quickly, since the Mana cost rises.",
+    "Don't panic if you're about to die — your Icathian Surprise explosion can still punish anyone standing too close."
+  ],
+  "whatToExpect": "An enemy Kog'Maw has no escape tools and is very fragile, so he's one of the best targets to gank or dive if you can reach him. Just remember to back off after killing him — his Icathian Surprise passive makes him explode for true damage a few seconds after death, and if you're too close it will hurt you. He can also poke and finish off low-health targets from very long range with Living Artillery, so don't let your health get too low near him.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing damage from a safe distance to slowly wear an enemy down."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resist entirely."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) shows up in a lane to help get a kill."
+    },
+    {
+      "term": "dive",
+      "definition": "Aggressively pushing in to kill a target, often deep in dangerous territory."
+    }
+  ]
+}

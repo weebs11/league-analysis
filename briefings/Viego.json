@@ -1,0 +1,80 @@
+{
+  "id": "Viego",
+  "name": "Viego",
+  "playstyleSummary": "Viego is a jungler or fighter whose whole identity is possessing the bodies of enemies (and monsters) he's just killed, temporarily gaining their abilities and items. Playing him feels like a chain of opportunities: land a kill, hop into the corpse, use it to fight or reposition, then look for the next takedown. It's a flashy, snowball-heavy playstyle that rewards aggressive, opportunistic play.",
+  "strengths": [
+    "Possessing a dead enemy grants healing and temporary access to their abilities",
+    "Blade of the Ruined King deals strong percent-health damage in extended fights",
+    "Harrowed Path gives camouflage and mobility for repositioning or ganking",
+    "Heartbreaker can execute a priority target from range and disrupt their allies"
+  ],
+  "weaknesses": [
+    "Loses most of his power if he can't get takedowns to possess bodies",
+    "Spectral Maw's dash telegraphs his engage, giving enemies time to react",
+    "Falls off if the game stalls without kills to chain off of",
+    "Vulnerable during the wind-up on his dash before it fires"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Sovereign's Domination",
+      "howToUseIt": "When an enemy dies near you, they leave a wraith; attacking it lets you possess their body, healing you and temporarily granting their abilities plus a free cast of your own ultimate. Always look to possess a wraith after a kill instead of walking away, since it refreshes your resources and options."
+    },
+    {
+      "key": "Q",
+      "name": "Blade of the Ruined King",
+      "howToUseIt": "This passively deals bonus damage based on current health on your attacks and steals health when it strikes twice against a recently-hit enemy. Activate it to thrust forward and hit multiple enemies in a line, especially useful for poking or finishing a fight."
+    },
+    {
+      "key": "W",
+      "name": "Spectral Maw",
+      "howToUseIt": "Charge this up before dashing forward to stun the first enemy hit with a ball of mist. Use it to engage a fight or to punish an enemy who's out of position, but be aware the wind-up gives them a chance to react."
+    },
+    {
+      "key": "E",
+      "name": "Harrowed Path",
+      "howToUseIt": "Cast this on terrain to haunt it, then hide inside as a camouflaged wraith with bonus move and attack speed. Use it to scout brush safely, set up an ambush, or reposition for a gank without being seen."
+    },
+    {
+      "key": "R",
+      "name": "Heartbreaker",
+      "howToUseIt": "Teleport to a location near your target to execute them on arrival, knocking their allies away with the shockwave. Save this for isolated priority targets, since it can be a game-changing pick if it lands clean."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, clear efficiently with Blade of the Ruined King's percent-health damage, then look for early ganks using Spectral Maw's stun to set up kills. Once you get a takedown, always possess the resulting wraith to heal up and gain extra tools before continuing your gank or fight, since chaining kills is how Viego snowballs.",
+  "quickTips": [
+    "Always possess a wraith after a kill to heal and gain temporary access to their abilities",
+    "Use Harrowed Path to scout brush and set up ambushes with camouflage",
+    "Don't dash in with Spectral Maw against an alert enemy who can dodge the wind-up",
+    "Save Heartbreaker for isolated, high-priority targets rather than into a grouped enemy team",
+    "Chain kills quickly since your power depends heavily on possessing bodies",
+    "Use Blade of the Ruined King's health-based damage to help against tanky enemies"
+  ],
+  "whatToExpect": "An enemy Viego will look to snowball off early kills, so deny him easy takedowns and be careful about dying near him since he can possess your body for a heal and your own abilities. Watch for a hidden wraith near brush from Harrowed Path, and try to stay grouped with allies so his Heartbreaker execute can't isolate and pick you off.",
+  "glossary": [
+    {
+      "term": "jungler",
+      "definition": "The player who clears neutral monster camps in the jungle instead of laning, and ganks lanes to help teammates."
+    },
+    {
+      "term": "gank",
+      "definition": "When a player, often the jungler, ambushes an enemy lane to help their ally get a kill or force enemies away."
+    },
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into an even bigger one, growing stronger relative to the enemy over time."
+    },
+    {
+      "term": "camouflage",
+      "definition": "A stealth-like state where a champion is hidden from enemies unless they have vision-revealing effects nearby."
+    },
+    {
+      "term": "brush",
+      "definition": "Tall grass on the map that hides champions standing inside it from enemies outside."
+    },
+    {
+      "term": "isolated",
+      "definition": "A target who is alone, away from their teammates, and easier to safely engage or kill."
+    }
+  ]
+}

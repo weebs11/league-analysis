@@ -1,0 +1,76 @@
+{
+  "id": "Sivir",
+  "name": "Sivir",
+  "playstyleSummary": "Sivir is a marksman built around clearing waves quickly and keeping her team moving. Her boomerang blade and bouncing attacks make her excellent at hitting multiple targets, and her spell shield lets her shrug off a key enemy ability. She feels straightforward and forgiving compared to other marksmen.",
+  "strengths": [
+    "Very strong wave clear from Boomerang Blade",
+    "Spell Shield blocks a key enemy ability, punishing overextensions",
+    "On The Hunt gives her whole team a speed boost to force or avoid fights",
+    "Fleet of Foot passive helps her kite while attacking"
+  ],
+  "weaknesses": [
+    "Lower single-target burst than many other marksmen",
+    "Boomerang Blade costs significant mana, punishing you for missing",
+    "Spell Shield timing can be baited out by opponents",
+    "Relies on teammates to follow up in fights"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Fleet of Foot",
+      "howToUseIt": "Attacking an enemy champion gives you a burst of Move Speed. Use this to reposition or kite right after landing a hit."
+    },
+    {
+      "key": "Q",
+      "name": "Boomerang Blade",
+      "howToUseIt": "Throw this through minions or enemies and let it return through them again on the way back for a second hit, since it deals damage both ways."
+    },
+    {
+      "key": "W",
+      "name": "Ricochet",
+      "howToUseIt": "Activate this before a fight to get bonus attack speed and let your basic attacks bounce between multiple enemies, and remember it resets your attack timer so use it right after a normal attack."
+    },
+    {
+      "key": "E",
+      "name": "Spell Shield",
+      "howToUseIt": "Save this for dangerous enemy abilities like stuns or roots rather than using it defensively too early; blocking a spell also heals you and speeds you up."
+    },
+    {
+      "key": "R",
+      "name": "On The Hunt",
+      "howToUseIt": "Use this to catch a retreating enemy, chase down a kill, or help your team get somewhere fast; your own attacks also reduce your spell cooldowns while it's active."
+    }
+  ],
+  "earlyGamePlan": "Focus on farming safely with Boomerang Blade and watch your mana, since missing it wastes a lot of resources. Save Spell Shield for the enemy's most threatening ability rather than trading it away early, and look to push the wave in so you can help nearby fights.",
+  "quickTips": [
+    "Land Boomerang Blade through the minion wave to clear it quickly on both throw and return.",
+    "Time Spell Shield for crowd control abilities, not just any incoming spell.",
+    "Activate Ricochet right after a normal attack to reset your swing timer for extra damage.",
+    "Use your passive Move Speed burst to kite while attacking in fights.",
+    "Save On The Hunt to catch fleeing enemies or rotate quickly to another lane.",
+    "Don't overextend when pushed up; Sivir's strong wave clear makes her a target for ganks."
+  ],
+  "whatToExpect": "Sivir will push the wave in quickly and can block one of your abilities with Spell Shield, so try to bait that out before using your real engage tool. Watch for her using On The Hunt to chase you down or rotate to help a fight elsewhere on the map.",
+  "glossary": [
+    {
+      "term": "marksman",
+      "definition": "A ranged carry champion who deals consistent damage over time through basic attacks, usually squishy."
+    },
+    {
+      "term": "wave clear",
+      "definition": "How quickly and safely a champion can kill a wave of minions."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's movement or actions."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an attacker while still dealing damage, rather than standing still."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually with a tool that locks down an enemy."
+    }
+  ]
+}

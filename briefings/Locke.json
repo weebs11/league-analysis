@@ -1,0 +1,80 @@
+{
+  "id": "Locke",
+  "name": "Locke",
+  "playstyleSummary": "Locke is a melee assassin/mage hybrid who marks enemies with Ritual Nails, then dashes in with Ashen Pursuit to convert those marks into extra damage on his attacks. He deals more damage the lower an enemy's health is, so he excels at finishing off already-weakened targets rather than opening a fight from full health.",
+  "strengths": [
+    "Snowballs hard against low-health targets thanks to his passive",
+    "High mobility from Ashen Pursuit lets him reposition mid-fight",
+    "His ultimate can execute fleeing enemies from range",
+    "Strong dueling potential once his marks are applied"
+  ],
+  "weaknesses": [
+    "Soul Ignition damages himself, so timing it poorly is risky",
+    "Relies on landing Ritual Nails marks to reach full damage",
+    "Vulnerable if caught before he can dash away or reposition",
+    "Squishy target if focused early in fights"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Silver Stake",
+      "howToUseIt": "Attack low-health enemies whenever possible - this passive deals more bonus magic damage the more Health they're missing, making it great for finishing kills."
+    },
+    {
+      "key": "Q",
+      "name": "Ritual Nails",
+      "howToUseIt": "Throw your nails to mark enemies, then attack marked targets to consume the marks for bonus damage."
+    },
+    {
+      "key": "W",
+      "name": "Soul Ignition",
+      "howToUseIt": "Activate this to speed up your attacks and movement during a fight, but remember it costs you Health, so use it when you're ready to commit, not just to poke."
+    },
+    {
+      "key": "E",
+      "name": "Ashen Pursuit",
+      "howToUseIt": "Use this to teleport in and dash through enemies toward your target, damaging anyone in your path - great for both engaging and repositioning."
+    },
+    {
+      "key": "R",
+      "name": "Purgatory",
+      "howToUseIt": "Throw this at a low-health enemy to try to execute them outright, and remember sealing away champions with it makes you stronger for the rest of the fight."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Ritual Nails to apply marks and consume them with an attack when you get the chance, without overcommitting since Soul Ignition costs you health. Look to punish enemies who are already low, since your passive rewards finishing kills more than starting fights from full health.",
+  "quickTips": [
+    "Save your attacks for after marking an enemy with Ritual Nails to maximize damage",
+    "Only use Soul Ignition when you intend to fight, since it self-damages you",
+    "Use Ashen Pursuit's teleport-then-dash to both engage and escape depending on where you aim it",
+    "Look for execute opportunities with your ultimate on enemies who are already low",
+    "Track enemy missing Health, since your passive scales up as they get lower",
+    "Don't overextend before your dash and self-heal windows are both available"
+  ],
+  "whatToExpect": "Locke will look to mark you with Ritual Nails and then dash in with Ashen Pursuit to burst you down, dealing more damage the lower your health drops. Try to stay topped up on health and back off early if you see him land his marks, since he becomes far more dangerous, and potentially lethal with his ultimate, once you're low.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "execute",
+      "definition": "A damage effect that deals bonus or guaranteed damage to low-health enemies, often finishing them off."
+    },
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage in a very short time."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to an attack on the enemy team."
+    },
+    {
+      "term": "dueling",
+      "definition": "A one-on-one fight between two champions."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward or staying too long in a dangerous area, risking a gank or death."
+    }
+  ]
+}

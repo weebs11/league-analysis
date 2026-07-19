@@ -120,6 +120,32 @@ test('generates a basic-mode game plan for the detected game', async () => {
   assert.equal(again.body.cached, true);
 });
 
+test('gameplan generation streams coachprogress events over SSE', async () => {
+  const res = await fetch(`${BASE}/api/events`);
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  // Drain the initial snapshot frame so the stream is definitely open before
+  // the generation starts — progress events are not replayed.
+  let buf = decoder.decode((await reader.read()).value);
+
+  const postDone = post('/api/coach/gameplan', { force: true }); // force past the cache
+  const deadline = Date.now() + 30000;
+  while (!buf.includes('"phase":"done"') && Date.now() < deadline) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buf += decoder.decode(value);
+  }
+  const { status } = await postDone;
+  await reader.cancel();
+  assert.equal(status, 200);
+
+  const frames = [...buf.matchAll(/^event: coachprogress\ndata: (.+)$/gm)].map((m) => JSON.parse(m[1]));
+  assert.ok(frames.length >= 2, `expected at least preparing + done frames, got ${frames.length}`);
+  assert.ok(frames.some((f) => f.phase === 'preparing'), 'reports the preparing phase');
+  const last = frames[frames.length - 1];
+  assert.deepEqual({ phase: last.phase, pct: last.pct }, { phase: 'done', pct: 100 });
+});
+
 test('serves champion artwork with caching headers', async () => {
   const img = await get('/img/champion/square/Jinx');
   assert.equal(img.status, 200);
@@ -142,8 +168,11 @@ test('demo mode overrides live detection and champ select advice works', async (
 
   const advice = await post('/api/coach/champselect');
   assert.equal(advice.status, 200);
-  assert.equal(advice.body.advice.basicMode, true);
+  // Served from the checked-in briefing library — no API key involved.
+  assert.equal(advice.body.advice.basicMode, false);
+  assert.ok(advice.body.advice.briefingPatch);
   assert.ok(advice.body.advice.yourChampion.abilities.length === 5);
+  assert.ok(advice.body.advice.knownEnemies.length > 0);
 
   const stop = await post('/api/demo/stop');
   assert.equal(stop.status, 200);

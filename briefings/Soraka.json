@@ -1,0 +1,76 @@
+{
+  "id": "Soraka",
+  "name": "Soraka",
+  "playstyleSummary": "Soraka is a healer support whose entire job is keeping her team alive, sometimes from across the map. She rewards good awareness of teammates' health bars over mechanical flashiness, sacrificing her own health to fuel powerful heals for others.",
+  "strengths": [
+    "Extremely strong sustained healing for the whole team",
+    "Wish can save allies anywhere on the map, even far from her",
+    "Starcall provides safe poke and self-sustain in lane",
+    "Equinox can lock down and punish enemies who overextend"
+  ],
+  "weaknesses": [
+    "Very low damage output on her own",
+    "Sacrifices her own health to heal others, which can be risky",
+    "Easy to kill if she's caught away from her team",
+    "Equinox has a long cooldown and telegraphed setup"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Salvation",
+      "howToUseIt": "Move toward low-health allies to get extra Move Speed. Use this to reach a struggling teammate quickly and land a heal in time."
+    },
+    {
+      "key": "Q",
+      "name": "Starcall",
+      "howToUseIt": "Throw this to poke and slow enemies, and try to land it on enemy champions since hitting one restores your own health."
+    },
+    {
+      "key": "W",
+      "name": "Astral Infusion",
+      "howToUseIt": "Use this on a hurt ally, keeping in mind it costs some of your own health; don't heal yourself down too low while topping off teammates."
+    },
+    {
+      "key": "E",
+      "name": "Equinox",
+      "howToUseIt": "Place this zone to silence enemies who are in it, and remember anyone still inside when it ends gets rooted, so it rewards patience over an instant cast."
+    },
+    {
+      "key": "R",
+      "name": "Wish",
+      "howToUseIt": "Save this for the moment your team takes big simultaneous damage, since it heals every allied champion on the map at once, no matter how far away they are."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Starcall to poke the enemy while topping off your own health, and use Astral Infusion carefully to keep your laning partner alive through trades without draining yourself too low. Stay behind your ally rather than in front; your job is support, not soaking damage.",
+  "quickTips": [
+    "Watch your own health when healing allies with Astral Infusion; it costs you health too.",
+    "Try to land Starcall on enemy champions for the self-heal bonus.",
+    "Use your passive Move Speed boost to reach low-health allies before they die.",
+    "Save Wish for team-wide damage moments rather than a single ally's small poke.",
+    "Stay positioned behind your team, not on the front line, since you're very fragile.",
+    "Use Equinox to punish enemies who overextend into it rather than as your opener."
+  ],
+  "whatToExpect": "Soraka will try to keep her team topped up with heals from a safe distance, and her ultimate can undo a lot of damage your team just dealt, even from across the map. Focus her down early in fights when possible, since she has very little way to defend herself if caught.",
+  "glossary": [
+    {
+      "term": "support",
+      "definition": "A role focused on protecting and enabling teammates rather than dealing the most damage."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance without committing to a full trade."
+    },
+    {
+      "term": "sustain",
+      "definition": "The ability to recover health over time, letting a champion stay in lane or fights longer."
+    },
+    {
+      "term": "front line",
+      "definition": "The forward-most position in a fight, usually held by tankier champions."
+    },
+    {
+      "term": "focus",
+      "definition": "Directing your team's attacks onto one priority target."
+    }
+  ]
+}

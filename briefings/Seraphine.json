@@ -1,0 +1,76 @@
+{
+  "id": "Seraphine",
+  "name": "Seraphine",
+  "playstyleSummary": "Seraphine is a support mage who layers damage, shields, and healing onto every third spell cast, since every third basic spell she casts fires twice. She also gets a bonus attack when she casts spells near allies, encouraging her to stick close to her team rather than play alone. She feels like a musical conductor, weaving abilities together to buff her team while chipping away at enemies.",
+  "strengths": [
+    "Every third spell cast doubles in effect, rewarding steady ability use",
+    "Surround Sound both shields and heals allies when timed right",
+    "Encore's charm range extends every time it hits an allied or enemy champion, letting it chain across a fight",
+    "Casting near allies grants bonus damage and range on her next attack, rewarding grouping up"
+  ],
+  "weaknesses": [
+    "Needs to track which spell cast is the empowered 'every third' one to play optimally",
+    "Relatively fragile and reliant on landing her line-based abilities",
+    "Wants to stay near allies to get her passive's attack bonus, limiting solo play",
+    "Encore's charm has to actually connect to chain further, which takes good positioning"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Stage Presence",
+      "howToUseIt": "Keep track of your spell casts, since every third one fires twice for extra value, and cast spells while near allies so your next basic attack gets bonus magic damage and range."
+    },
+    {
+      "key": "Q",
+      "name": "High Note",
+      "howToUseIt": "Use this to deal area damage in a fight or to poke enemies in lane, and try to time it as your 'third cast' when possible for the doubled effect."
+    },
+    {
+      "key": "W",
+      "name": "Surround Sound",
+      "howToUseIt": "Cast this near your team to shield and speed them up, and cast it again shortly after if they're already shielded to heal them as well."
+    },
+    {
+      "key": "E",
+      "name": "Beat Drop",
+      "howToUseIt": "Fire this in a line to damage and slow enemies caught in it — a good way to punish enemies who are lined up or to peel one off a teammate."
+    },
+    {
+      "key": "R",
+      "name": "Encore",
+      "howToUseIt": "Use this to charm enemies in its path, and remember hitting any allied or enemy champion extends its range further — aim it through a group fight for maximum reach."
+    }
+  ],
+  "earlyGamePlan": "Poke the enemy bot lane with High Note and Beat Drop while sticking close to your ADC so your passive's bonus attack triggers often. Keep track of your spell count so you can time your empowered third cast for a key trade or all-in.",
+  "quickTips": [
+    "Track your spell casts to land your empowered third cast during an important trade",
+    "Stay near allies when casting to get the bonus damage and range on your next attack",
+    "Re-cast Surround Sound quickly to heal allies who are already shielded",
+    "Aim Encore through as many enemies (or allies) as possible to extend its charm range",
+    "Use Beat Drop to peel a diving enemy off a teammate, not just for damage",
+    "Group with your team rather than wandering off alone — most of her value comes from proximity"
+  ],
+  "whatToExpect": "Enemy Seraphine will poke you with High Note and Beat Drop from range and look for a chance to land Encore's charm, which gets more dangerous the more of your team it clips since it extends its own range on each hit. Try to spread out in fights so a single charm can't lock down multiple people, and watch for her empowered every-third-cast spells hitting harder than expected.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range before a real fight starts."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with no plan to disengage, betting everything on winning it."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate (usually your ADC) from an enemy trying to attack them."
+    },
+    {
+      "term": "charm",
+      "definition": "A crowd control effect that forces an enemy to walk toward the source of the charm."
+    }
+  ]
+}

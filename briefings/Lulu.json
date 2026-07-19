@@ -1,0 +1,80 @@
+{
+  "id": "Lulu",
+  "name": "Lulu",
+  "playstyleSummary": "Lulu is a support mage who empowers her allies with shields, speed boosts, and a giant knock-up ultimate, while disrupting enemies by turning them into helpless critters. She plays from a safe distance, using her faerie companion Pix's homing bolts to add extra poke whenever her ally attacks.",
+  "strengths": [
+    "Extremely strong at protecting a single ally with shields, speed, and her ultimate",
+    "Whimsy can completely shut down a dangerous enemy carry for its duration",
+    "Wild Growth's knock-up is great for starting or breaking up fights",
+    "Good poke and wave clear from Pix's bolts and Glitterlance"
+  ],
+  "weaknesses": [
+    "Relatively low base damage compared to other mages",
+    "Very reliant on allies committing to fights to get value from her tools",
+    "Squishy and low mobility if caught alone",
+    "Whimsy and Help, Pix! must be aimed carefully since they behave differently on allies vs. enemies"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Pix, Faerie Companion",
+      "howToUseIt": "Whenever the champion Pix is following attacks, he fires a bonus bolt at the same target - keep Pix on your ally carry so their attacks deal extra damage."
+    },
+    {
+      "key": "Q",
+      "name": "Glitterlance",
+      "howToUseIt": "Aim carefully - moving your cursor closer to you changes the area it covers - and use it to slow multiple enemies for your team to follow up on."
+    },
+    {
+      "key": "W",
+      "name": "Whimsy",
+      "howToUseIt": "Cast this on an ally to speed them up for an engage or a chase, or cast it on a dangerous enemy to turn them into a critter that can't attack or cast spells."
+    },
+    {
+      "key": "E",
+      "name": "Help, Pix!",
+      "howToUseIt": "Send Pix to an ally to shield them and boost their attacks, or send him to an enemy to damage them and reveal their location to you."
+    },
+    {
+      "key": "R",
+      "name": "Wild Growth",
+      "howToUseIt": "Cast this on an ally engaging or being engaged on - it knocks up nearby enemies and gives a large Health buffer, making it great both to start fights and to save teammates."
+    }
+  ],
+  "earlyGamePlan": "In lane, stay behind your ally and use Glitterlance and Pix's bolts to poke the enemy duo whenever they go for a trade. Save Whimsy for when the enemy commits hard to an all-in, since polymorphing their key threat can completely swing a fight.",
+  "quickTips": [
+    "Keep Pix following the ally who fights the most for the extra poke damage",
+    "Use Whimsy on ranged attackers or dangerous champions to remove their damage during the effect",
+    "Cast Help, Pix! on ranged carries so they get the extra Pix attacks, and save Wild Growth for tankier allies to engage with",
+    "Move your cursor near yourself and Pix to widen Glitterlance's coverage",
+    "Play from behind your minions so enemies can't easily intercept Pix's bolts",
+    "Look for engage windows with Wild Growth rather than saving it purely to peel"
+  ],
+  "whatToExpect": "Lulu will try to poke you with Glitterlance and Pix's bolts while protecting her carry with shields and speed, and can turn you into a harmless critter with Whimsy if you commit to an all-in. Hide behind your minions to block Pix's extra attacks, and hold your engage until you know Whimsy is on cooldown so you don't get shut down mid-fight.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your resources to kill an enemy in a single fight, with little held back."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to an attack on the enemy team."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect an ally from being attacked, usually by slowing or blocking an enemy diver."
+    },
+    {
+      "term": "wave clear",
+      "definition": "The ability to quickly kill a wave of minions."
+    },
+    {
+      "term": "carry",
+      "definition": "A damage-focused champion whose team leans on them to win fights, usually a marksman or mage."
+    }
+  ]
+}

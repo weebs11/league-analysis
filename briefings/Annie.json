@@ -1,0 +1,79 @@
+{
+  "id": "Annie",
+  "name": "Annie",
+  "playstyleSummary": "Annie is a burst mage whose every fourth spell stuns, letting her land a devastating point-and-click stun combo backed by her summoned bear, Tibbers. She's straightforward to pick up since her stun doesn't require aiming, but timing when to use it is what makes or breaks a fight. She has almost no mobility, so positioning safely is essential.",
+  "strengths": [
+    "Extremely strong point-and-click stun that's hard to avoid",
+    "High burst damage once her combo lands",
+    "Tibbers provides zone control and extra damage after being summoned",
+    "Molten Shield gives her a defensive tool most burst mages lack"
+  ],
+  "weaknesses": [
+    "No mobility or escape tools of her own",
+    "Very vulnerable if caught without her stun ready",
+    "Short range compared to many other mages",
+    "Predictable once opponents learn to track her spell count"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Pyromania",
+      "howToUseIt": "Every four spells you cast, your next offensive spell also stuns its target — track your spell count so you know exactly when your stun is armed, especially since you start the game with it ready."
+    },
+    {
+      "key": "Q",
+      "name": "Disintegrate",
+      "howToUseIt": "A mana-efficient fireball that refunds its cost on a kill — great for safely last-hitting minions and for poking down enemies from range."
+    },
+    {
+      "key": "W",
+      "name": "Incinerate",
+      "howToUseIt": "Hits everyone in a cone in front of you — best used when multiple enemies are grouped or against a target already near you."
+    },
+    {
+      "key": "E",
+      "name": "Molten Shield",
+      "howToUseIt": "Shields yourself or an ally, grants a burst of speed, and punishes anyone who attacks the shielded target — use it to protect a teammate or to build toward your Pyromania stun."
+    },
+    {
+      "key": "R",
+      "name": "Summon: Tibbers",
+      "howToUseIt": "Summons a bear that deals instant area damage and then burns anyone standing near him — position him to block a chokepoint or throw him directly onto a grouped enemy team for the initial hit and stun."
+    }
+  ],
+  "earlyGamePlan": "Farm safely with Disintegrate, watching your spell count so you know when Pyromania's stun is ready. Look for a moment when you can land the stun and follow with Incinerate or Tibbers for a big damage burst, but be cautious extending too far since you have no mobility of your own.",
+  "quickTips": [
+    "Keep track of your spell casts so you always know when your stun (Pyromania) is armed.",
+    "Use Disintegrate to safely farm and refund mana on kills.",
+    "Land your stun before committing to a full combo, not after.",
+    "Throw Tibbers onto grouped enemies to hit as many as possible with the initial impact.",
+    "Use Molten Shield on yourself or an ally before an expected trade to help build toward your stun."
+  ],
+  "whatToExpect": "Annie's biggest threat is her stun — once every four spells, her next offensive spell will stun you, and she can hold it for a surprise engage. Watch for a white, swirling glow around her, which signals the stun is ready, and play cautiously until it's used. Keep your distance from her summoned bear, Tibbers, since he burns anyone standing near him after being summoned.",
+  "glossary": [
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage in a very short window."
+    },
+    {
+      "term": "point-and-click",
+      "definition": "An ability that automatically hits its target once selected, rather than requiring aim like a skillshot."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually with crowd control or mobility."
+    },
+    {
+      "term": "chokepoint",
+      "definition": "A narrow path or area that forces enemies to funnel through it, making them easier to hit with area effects."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together in a specific order for maximum effect."
+    },
+    {
+      "term": "mana",
+      "definition": "A resource many champions need to cast abilities, which regenerates slowly over time."
+    }
+  ]
+}

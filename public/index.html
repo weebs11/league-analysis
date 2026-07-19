@@ -98,10 +98,9 @@
         <div class="card advice-panel">
           <div class="advice-header">
             <h3>Pre-game briefing</h3>
-            <button id="btn-cs-generate" class="btn primary">Get briefing</button>
           </div>
           <div id="cs-advice" class="advice-body">
-            <p class="muted">Lock in a champion, then hit <em>Get briefing</em> for a 90-second read on how your champion works and what to expect.</p>
+            <p class="muted">Hover or lock in a champion — your briefing appears here automatically.</p>
           </div>
         </div>
       </div>
@@ -119,9 +118,10 @@
       <div id="game-teams" class="card teams-strip"></div>
 
       <div class="gen-bar card" id="gen-bar">
-        <div>
+        <div class="gen-text">
           <strong id="gen-title">Ready to coach this game</strong>
           <p class="muted" id="gen-sub">Generates a matchup breakdown, a plan for your role, and an item path — tailored to all ten champions.</p>
+          <div id="gen-progress" class="progress hidden"><div id="gen-progress-fill" class="progress-fill"></div></div>
         </div>
         <div class="btn-row">
           <button id="btn-generate" class="btn primary big">Coach this game</button>

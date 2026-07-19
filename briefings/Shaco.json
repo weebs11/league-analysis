@@ -1,0 +1,80 @@
+{
+  "id": "Shaco",
+  "name": "Shaco",
+  "playstyleSummary": "Shaco is a sneaky assassin jungler who lives in the shadows, popping out to burst down a single target and then vanishing before anyone can punish him. It feels like playing a puzzle of misdirection: you use fake clones and hidden traps to make enemies guess wrong, then capitalize when they do. He's mechanically demanding and punishes mistakes hard, but incredibly rewarding when your tricks land.",
+  "strengths": [
+    "Massive burst damage against isolated targets",
+    "Deceive gives a reliable escape and repositioning tool",
+    "Jack In The Box provides free vision and area denial",
+    "Great at picking off enemies who wander alone"
+  ],
+  "weaknesses": [
+    "Very mechanically demanding, hard to play well",
+    "Falls behind fast if his ambushes keep failing",
+    "Squishy and easy to burst down once caught",
+    "Needs picks to stay relevant, struggles in straight teamfights"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Backstab",
+      "howToUseIt": "Try to walk around or blink behind enemies before attacking. Hitting them from behind deals extra damage, so positioning matters more for Shaco than almost anyone."
+    },
+    {
+      "key": "Q",
+      "name": "Deceive",
+      "howToUseIt": "Use this to go invisible and reposition behind an enemy for a free empowered attack, or to vanish and escape when a fight turns bad."
+    },
+    {
+      "key": "W",
+      "name": "Jack In The Box",
+      "howToUseIt": "Drop these in brush, jungle entrances, or near objectives. They scare off scouts, reveal enemies who trigger them, and can fear a whole group caught off guard."
+    },
+    {
+      "key": "E",
+      "name": "Two-Shiv Poison",
+      "howToUseIt": "Throw this to slow and damage a target from range, and remember it hits much harder once they're below 30% health, making it a good finishing tool."
+    },
+    {
+      "key": "R",
+      "name": "Hallucinate",
+      "howToUseIt": "Send out your clone to bait enemies into wasting damage or cooldowns on it, and use the real you to punish whoever falls for it. When the clone dies it leaves boxes behind."
+    }
+  ],
+  "earlyGamePlan": "Start in the jungle and use your early camps to build up gold and levels while placing a Jack In The Box near an entrance you expect the enemy jungler to pass through. Look to gank lanes where the enemy has already used their escape or has no vision of the river. Avoid long fights before level 3, since you're at your weakest before Deceive and Two-Shiv Poison are both online.",
+  "quickTips": [
+    "Always attack from behind when possible; Backstab damage adds up fast.",
+    "Save Deceive to escape rather than always using it offensively, especially early.",
+    "Place Jack In The Boxes in bushes near objectives to get free vision and warning of enemy movement.",
+    "Bait with your ultimate clone, then punish enemies who commit to attacking it.",
+    "Two-Shiv Poison is a strong execute tool; save it to finish low-health enemies.",
+    "Avoid predictable pathing. Shaco thrives on the enemy team not knowing where he is."
+  ],
+  "whatToExpect": "Shaco will try to hide in bushes or the jungle and burst down whoever wanders alone, then vanish with Deceive before you can retaliate. Ward bushes and river entrances so he can't ambush you for free, and if he uses Deceive to engage, focus him quickly since he can't use it again right away to escape.",
+  "glossary": [
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a squishy target almost instantly."
+    },
+    {
+      "term": "jungle",
+      "definition": "The area between lanes filled with neutral monsters; junglers fight monsters there and move between lanes to help teammates."
+    },
+    {
+      "term": "gank",
+      "definition": "When a champion (often the jungler) shows up in a lane to help ambush and kill an enemy laner."
+    },
+    {
+      "term": "vision",
+      "definition": "Seeing map areas via wards or line of sight, so you know where enemies are instead of walking in blind."
+    },
+    {
+      "term": "execute",
+      "definition": "An effect that deals bonus damage to low-health targets, often finishing them off."
+    },
+    {
+      "term": "bait",
+      "definition": "Deliberately looking vulnerable or unimportant to lure an enemy into a bad attack or overextension."
+    }
+  ]
+}

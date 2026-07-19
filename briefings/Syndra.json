@@ -1,0 +1,80 @@
+{
+  "id": "Syndra",
+  "name": "Syndra",
+  "playstyleSummary": "Syndra is a ranged mage who fights from a distance by throwing and detonating Dark Spheres. Playing her feels like setting up a puzzle: you position spheres near enemies, then chain your other abilities to slow, stun, and burst them down in one combo. She has huge damage but no dash or blink, so landing skillshots and staying at range is everything.",
+  "strengths": [
+    "Very high burst damage once her combo lands",
+    "Strong wave clear thanks to Dark Sphere",
+    "Abilities get powerful bonus effects at rank 5, giving her clear power spikes",
+    "Can threaten kills from long range without entering melee"
+  ],
+  "weaknesses": [
+    "No dash, blink, or other escape tool, so she's vulnerable if caught",
+    "Combo relies on landing skillshots, which can be dodged",
+    "Mana hungry in the early levels",
+    "Vulnerable during the long cooldown after Scatter the Weak"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Transcendent",
+      "howToUseIt": "You automatically collect Splinters of Wrath from leveling up and damaging enemies, which upgrade your spells over time. There's nothing to activate — just play normally and your abilities will grow stronger."
+    },
+    {
+      "key": "Q",
+      "name": "Dark Sphere",
+      "howToUseIt": "Use it to farm waves and to place spheres near enemies you might want to combo later. Think of it as setup for your other abilities, not just a damage tool."
+    },
+    {
+      "key": "W",
+      "name": "Force of Will",
+      "howToUseIt": "Throw a nearby sphere or minion at an enemy champion to slow them, then chase up with another spell while they're slowed."
+    },
+    {
+      "key": "E",
+      "name": "Scatter the Weak",
+      "howToUseIt": "Knocks enemies and Dark Spheres back; if an enemy gets hit by a sphere during the knockback, they're stunned. Use it to peel divers off you or to set up your stun combo."
+    },
+    {
+      "key": "R",
+      "name": "Unleashed Power",
+      "howToUseIt": "Bombards one enemy champion with every Dark Sphere currently on the map, so it hits hardest when you have several spheres already out — don't fire it the moment it's off cooldown if you can wait for more spheres."
+    }
+  ],
+  "earlyGamePlan": "Stay at max range in lane and use Dark Sphere to farm safely while watching your mana. Look for moments when an enemy walks near one of your spheres to land Force of Will into a stun combo. Because you have no escape, always keep track of the enemy jungler and play a little more cautiously than a mobile mage would.",
+  "quickTips": [
+    "Place a Dark Sphere near an enemy before you commit to your combo, not after",
+    "Save Unleashed Power until multiple spheres are on the field for maximum burst",
+    "Respect wave management — pushing too hard with Dark Sphere can invite a gank",
+    "Poke safely from range rather than trading in melee, where you have no tools",
+    "Get one ability to rank 5 as early as possible to unlock its bonus effect",
+    "Punish enemies right after they see you use Scatter the Weak, since it has a long cooldown"
+  ],
+  "whatToExpect": "Enemy Syndra will poke you from range with Dark Sphere and look to land a stun combo (usually Force of Will into Scatter the Weak or Dark Sphere) before bursting you down. Because she has no dash or blink, closing the distance on her while her stun is on cooldown is very risky for her — punish her when her spells are down.",
+  "glossary": [
+    {
+      "term": "wave management",
+      "definition": "Controlling whether the minion wave pushes toward you or the enemy, which affects safety and roaming options."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game (often a level or item) where a champion suddenly becomes much stronger."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage dealt from a safe range to whittle enemies down before a bigger fight."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill outright."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss if the target moves out of its path."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to knock back, slow, or otherwise stop an enemy from reaching a teammate."
+    }
+  ]
+}

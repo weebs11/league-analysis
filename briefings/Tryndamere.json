@@ -1,0 +1,88 @@
+{
+  "id": "Tryndamere",
+  "name": "Tryndamere",
+  "playstyleSummary": "Tryndamere is a relentless duelist who becomes more dangerous the lower his health gets, and who can refuse to die outright with his ultimate. Playing him feels aggressive and simple: you build up Fury by attacking, heal and hit harder with Bloodlust the more wounded you are, and slash toward enemies with a dash. His biggest strength is turning a fight around at the last second, so patience with his ultimate's timing is key.",
+  "strengths": [
+    "Undying Rage makes him impossible to kill outright for a few seconds",
+    "Bloodlust gives strong self-healing and scaling Attack Damage",
+    "Spinning Slash provides a reliable gap-closer and escape tool",
+    "Strong 1v1 duelist and split-pusher"
+  ],
+  "weaknesses": [
+    "Falls off if shut down hard in the early game",
+    "Undying Rage has a duration and cooldown, so timing it badly wastes it",
+    "Can be kited or crowd controlled right after his ultimate ends",
+    "Needs Fury built up before Bloodlust is worth casting"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Battle Fury",
+      "howToUseIt": "Attacks and critical strikes build Fury, which raises your crit chance and fuels Bloodlust. Keep attacking minions or enemies to keep your Fury bar topped up before a fight."
+    },
+    {
+      "key": "Q",
+      "name": "Bloodlust",
+      "howToUseIt": "Heals you and boosts Attack Damage more the lower your health is, consuming your Fury. Save some Fury for a real fight instead of casting it early so you get a bigger heal when it matters."
+    },
+    {
+      "key": "W",
+      "name": "Mocking Shout",
+      "howToUseIt": "Weakens nearby enemies' Attack Damage and slows anyone facing away from you — use it while chasing a fleeing enemy for the slow, or defensively to reduce incoming damage in a fight."
+    },
+    {
+      "key": "E",
+      "name": "Spinning Slash",
+      "howToUseIt": "A gap-closer that dashes you toward a target, damaging enemies along the way. Use it to close distance for a duel, dodge a skillshot, or escape a bad fight."
+    },
+    {
+      "key": "R",
+      "name": "Undying Rage",
+      "howToUseIt": "You can't die while it's active, no matter how low your health goes. Delay activating it as long as safely possible to bait the enemy into over-committing, then turn the fight around while they're out of position."
+    }
+  ],
+  "earlyGamePlan": "Farm and trade carefully in lane, using Spinning Slash defensively to dodge skillshots or escape ganks rather than only for engaging. Avoid fully committing to fights you don't need to take, since Tryndamere becomes much stronger once he has levels and a bit of gold behind him.",
+  "quickTips": [
+    "Delay Undying Rage as long as it's safe to bait the enemy into overcommitting",
+    "Save Fury for real fights rather than casting Bloodlust the moment it's available",
+    "Use Spinning Slash to dodge key skillshots, not just to close distance",
+    "Remember Mocking Shout only slows enemies whose backs are turned to you",
+    "Look for isolated duels rather than group fights early on",
+    "Back off and reset if a fight goes badly rather than forcing an all-in"
+  ],
+  "whatToExpect": "Enemy Tryndamere becomes unkillable for a few seconds once he activates Undying Rage, so don't waste all your cooldowns trying to finish him during it — back off and wait it out, then punish him once it ends while he's still critically low. He can also dash away with Spinning Slash, so save some crowd control to stop his escape.",
+  "glossary": [
+    {
+      "term": "duel",
+      "definition": "A 1-on-1 fight between two champions."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while continuing to attack them, keeping distance so they can't retaliate."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "bait",
+      "definition": "Deliberately luring an enemy into a bad decision, such as overcommitting to a kill that isn't actually there."
+    },
+    {
+      "term": "gap-closer",
+      "definition": "An ability that lets a champion quickly close the distance to a target, like a dash or leap."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or knockbacks that limit an enemy's ability to act."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all of your damage and cooldowns to try to secure a kill in one engagement."
+    },
+    {
+      "term": "gank",
+      "definition": "Ambushing an enemy in a lane with extra teammates, usually from a jungle or side path."
+    }
+  ]
+}

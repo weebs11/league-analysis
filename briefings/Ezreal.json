@@ -1,0 +1,88 @@
+{
+  "id": "Ezreal",
+  "name": "Ezreal",
+  "playstyleSummary": "Ezreal is a mobile, skillshot-based marksman who deals damage entirely through aimed abilities rather than standing and auto-attacking. He's a forgiving pick for a newer player who likes ranged poke and having an escape button ready at all times, since Arcane Shift lets him blink away from danger whenever it's needed.",
+  "strengths": [
+    "Arcane Shift gives him a reliable blink for escaping or repositioning",
+    "Mystic Shot pokes safely from range while lowering his other cooldowns",
+    "Trueshot Barrage can deal massive damage across the whole map",
+    "Flexible itemization lets him build in different directions depending on the game"
+  ],
+  "weaknesses": [
+    "Very fragile if caught without Arcane Shift available",
+    "Entirely reliant on landing skillshots rather than guaranteed damage",
+    "Weaker early auto-attack damage than more traditional marksmen",
+    "Needs to land spells consistently to keep his passive attack speed stacked"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Rising Spell Force",
+      "howToUseIt": "Landing spells stacks up attack speed up to five times, so try to weave successful spell hits into fights to keep the stacks rolling."
+    },
+    {
+      "key": "Q",
+      "name": "Mystic Shot",
+      "howToUseIt": "Fire this to poke enemies from range and farm minions; landing it on an enemy unit also shortens your other cooldowns, so use it often when you can."
+    },
+    {
+      "key": "W",
+      "name": "Essence Flux",
+      "howToUseIt": "Fire this at a champion or objective to stick an orb to them, then hit them with an attack or another spell to detonate it for extra damage."
+    },
+    {
+      "key": "E",
+      "name": "Arcane Shift",
+      "howToUseIt": "Blink to a nearby location to dodge danger, reposition, or close distance, and it fires a homing bolt afterward that prioritizes enemies marked by Essence Flux."
+    },
+    {
+      "key": "R",
+      "name": "Trueshot Barrage",
+      "howToUseIt": "Fire this powerful barrage down a lane or across the map to poke or finish off enemies at long range — try to line it up through multiple minions or enemies for maximum value."
+    }
+  ],
+  "earlyGamePlan": "Stay at range and use Mystic Shot to farm minions and poke your opponent, saving Arcane Shift for when you actually need to dodge an incoming skillshot or escape a gank. Since everything Ezreal does is a skillshot, focus on hitting Mystic Shot consistently before worrying about landing Essence Flux for extra damage.",
+  "quickTips": [
+    "Keep minions between you and melee threats since you're fragile at close range",
+    "Save Arcane Shift as an escape tool rather than using it just to poke",
+    "Fire Mystic Shot often — it pokes, farms, and cuts down your other cooldowns when it lands",
+    "Land Essence Flux before following up with an attack or spell to trigger its bonus damage",
+    "Line up Trueshot Barrage to hit multiple enemies or minion waves for extra value",
+    "Weave in spell casts to keep Rising Spell Force's attack speed stacks active during fights"
+  ],
+  "whatToExpect": "Ezreal will poke you from a safe distance with Mystic Shot and keep Arcane Shift ready to dodge whatever you throw at him or escape danger. He is completely reliant on skillshots and has fairly low base health, so punishing him hard when he's out of position or has used Arcane Shift already can shut him down.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss, rather than automatically hitting its target."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "blink",
+      "definition": "An effect that instantly teleports a champion a short distance, ignoring the terrain between."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can cast it again."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally ambushes a lane to help get a kill, usually from an unexpected direction."
+    },
+    {
+      "term": "objective",
+      "definition": "A major neutral goal on the map, like a tower, dragon, or Baron, that gives a team a big advantage when taken."
+    },
+    {
+      "term": "stack",
+      "definition": "A stored charge or accumulated instance of an effect, such as attack speed building up with each hit."
+    },
+    {
+      "term": "farm",
+      "definition": "Killing minions with your attacks to earn steady gold and experience."
+    }
+  ]
+}

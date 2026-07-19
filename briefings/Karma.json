@@ -1,0 +1,80 @@
+{
+  "id": "Karma",
+  "name": "Karma",
+  "playstyleSummary": "Karma is a mage-support who empowers her next ability with Mantra for a stronger effect, letting her flex between poking, shielding, or rooting depending on the moment. She feels flexible and rewarding - since Mantra doesn't cost a skill point, you always have it available from level one.",
+  "strengths": [
+    "Mantra is available from level 1, giving early flexibility no other ability offers",
+    "Strong poke damage with empowered Inner Flame",
+    "Focused Resolve can lock down and punish an isolated enemy",
+    "Empowered Inspire shields her whole team at once, great in teamfights"
+  ],
+  "weaknesses": [
+    "Low base damage without Mantra active",
+    "Relies on landing abilities on enemies to recharge Mantra quickly via her passive",
+    "Focused Resolve's root requires the tether to stay unbroken, which can be walked away from",
+    "No hard escape or mobility tool if caught out"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Gathering Fire",
+      "howToUseIt": "Landing your damaging abilities on enemies reduces Mantra's cooldown, so play aggressively when you safely can to keep Mantra available more often."
+    },
+    {
+      "key": "Q",
+      "name": "Inner Flame",
+      "howToUseIt": "Throw this for an explosion of damage on hit; with Mantra active it adds a delayed second explosion, so use the empowered version for extra poke or burst in a fight."
+    },
+    {
+      "key": "W",
+      "name": "Focused Resolve",
+      "howToUseIt": "Tether yourself to an enemy to damage and reveal them, rooting and hitting them again if they don't break the tether by moving away; with Mantra active this also heals you and extends the root, making it a strong dueling tool."
+    },
+    {
+      "key": "E",
+      "name": "Inspire",
+      "howToUseIt": "Shield an ally and speed them up before they take damage; with Mantra active the shield spreads to nearby allied champions too, so save the empowered version for teamfights rather than solo peel."
+    },
+    {
+      "key": "R",
+      "name": "Mantra",
+      "howToUseIt": "This empowers whichever ability you cast next - it's available at level 1 without using a skill point, so decide each fight whether you need extra poke, sustain, or team shielding."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Inner Flame and use Mantra on whichever ability best punishes the enemy's positioning, since it costs no skill point and refreshes faster the more you land damage. Use Focused Resolve to threaten a root on an overextended enemy, and save empowered Inspire for when a real fight breaks out.",
+  "quickTips": [
+    "Decide each cast of Mantra based on the situation - extra poke, a stronger root, or a team-wide shield.",
+    "Land damaging abilities on enemies whenever safe to recharge Mantra faster.",
+    "Use Focused Resolve on enemies who are out of position, since breaking the tether requires them to react.",
+    "Save empowered Inspire for teamfights, since it shields multiple allies at once.",
+    "Karma has no dash or blink, so keep your distance in fights rather than relying on an escape.",
+    "Poke safely with Inner Flame rather than trading in melee range."
+  ],
+  "whatToExpect": "An enemy Karma will poke you with Inner Flame and try to land Focused Resolve's tether when you're isolated, saving Mantra for whichever moment gives the most value - often a big shield for her team in a fight. She has no escape tools, so aggressive early pressure can pay off if you can catch her out of position.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range without committing to a full fight."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, past the safety of allies or turret, and becoming vulnerable."
+    },
+    {
+      "term": "dash",
+      "definition": "A short, fast movement ability that repositions a champion, often used to escape or engage."
+    },
+    {
+      "term": "isolated",
+      "definition": "Being separated from allies, making a champion an easier and safer target to attack."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "Malzahar",
+  "name": "Malzahar",
+  "playstyleSummary": "Malzahar is a mage who wins fights through sustained damage and hard crowd control rather than burst, using Malefic Visions to slowly burn down a target and Call of the Void to silence enemies. His passive can make him surprisingly hard to kill if he avoids damage for a moment, and his ultimate is one of the strongest single-target lockdowns in the game.",
+  "strengths": [
+    "Nether Grasp is a long, powerful suppress that shuts down a single enemy in fights",
+    "Void Shift can make him immune to crowd control and take much less damage if left alone",
+    "Malefic Visions provides strong sustained damage that spreads between targets on kill",
+    "Call of the Void silences enemies, shutting down their abilities"
+  ],
+  "weaknesses": [
+    "Void Swarm's Voidlings need nearby enemies to be useful, so timing matters",
+    "Relies on channeling Nether Grasp, which leaves him stationary and vulnerable",
+    "Low mobility and defense if his passive shield is down",
+    "Enemies can dodge Call of the Void's delayed projectiles if they react in time"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Void Shift",
+      "howToUseIt": "Avoid taking damage and crowd control whenever you can - the longer you go without being hit, the more damage reduction and crowd control immunity you build up, so play safe to keep this active."
+    },
+    {
+      "key": "Q",
+      "name": "Call of the Void",
+      "howToUseIt": "Use this to zone enemies out of an area or silence them before they can cast an important spell - remember there's a short delay before the portals fire."
+    },
+    {
+      "key": "W",
+      "name": "Void Swarm",
+      "howToUseIt": "Cast this when enemies are nearby so your Voidlings have something to attack - it's wasted if used with no targets around."
+    },
+    {
+      "key": "E",
+      "name": "Malefic Visions",
+      "howToUseIt": "Apply this to a target and use your other spells on them to refresh the damage over time - if the target dies while affected, the Visions spread to a nearby enemy and refund you Mana."
+    },
+    {
+      "key": "R",
+      "name": "Nether Grasp",
+      "howToUseIt": "Channel this on a key enemy champion during a fight to suppress them completely - just be aware you're stationary and vulnerable while channeling."
+    }
+  ],
+  "earlyGamePlan": "In lane, apply Malefic Visions early and refresh it with Call of the Void whenever it's up, since the damage over time adds up quickly. Play patiently and avoid unnecessary trades so Void Shift stays active, giving you extra safety while you farm.",
+  "quickTips": [
+    "Refresh Malefic Visions with your other spells to keep the damage over time ticking",
+    "Avoid taking damage or crowd control when you can to keep Void Shift active",
+    "Only cast Void Swarm when there are enemies nearby for the Voidlings to attack",
+    "Save Nether Grasp to shut down the most dangerous enemy in a fight",
+    "Be careful about minion waves affected by Malefic Visions, since it can jump to you if a minion dies while infected",
+    "Stay protected while channeling your ultimate since you can't move or defend yourself"
+  ],
+  "whatToExpect": "Malzahar will try to apply Malefic Visions to slowly burn down your health and silence you with Call of the Void so you can't escape or fight back, then finish with Nether Grasp to suppress you completely if you're caught alone. Try to interrupt or kill him quickly if he channels his ultimate on you, and avoid clearing minion waves that have Malefic Visions on them since the damage over time can jump to you.",
+  "glossary": [
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, and slows that limit an enemy's actions."
+    },
+    {
+      "term": "silence",
+      "definition": "A crowd control effect that prevents a champion from casting abilities."
+    },
+    {
+      "term": "suppress",
+      "definition": "A powerful form of crowd control that stuns a target and prevents most escape effects."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes a period of time to complete, during which the caster is often vulnerable."
+    },
+    {
+      "term": "damage over time (DoT)",
+      "definition": "Damage that is dealt gradually over several seconds rather than all at once."
+    },
+    {
+      "term": "zone",
+      "definition": "To control or deny an area of the map to the enemy through the threat of your abilities."
+    }
+  ]
+}

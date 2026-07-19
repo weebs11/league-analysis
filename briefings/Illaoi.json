@@ -1,0 +1,80 @@
+{
+  "id": "Illaoi",
+  "name": "Illaoi",
+  "playstyleSummary": "Illaoi is a tentacle-summoning bruiser/tank usually played top lane, built around controlling the fight with allied Tentacles that spawn near walls and pillars. She wants to fight near her tentacles and force enemies to deal with her passive's spirit mechanic or die trying to escape it.",
+  "strengths": [
+    "Extremely strong extended fights when tentacles are up, since they add damage and healing",
+    "Test of Spirit punishes enemies who can't quickly kill the spirit or escape it",
+    "Scales well with more allied tentacles around, especially near walls",
+    "Tough to burst down thanks to tentacle healing"
+  ],
+  "weaknesses": [
+    "Much weaker without tentacles nearby, so open areas without walls hurt her",
+    "Relies on landing Test of Spirit or being near terrain to get full value",
+    "Can be kited if she has no tentacles to fight around",
+    "A fairly one-dimensional win condition — get tentacles up, force fights near them"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Prophet of an Elder God",
+      "howToUseIt": "You and any Vessels you create spawn Tentacles on nearby walls; Tentacles attack spirits, Vessels, and Test of Spirit targets, healing you when they hit a champion. Fight near walls whenever possible so tentacles are available to help you."
+    },
+    {
+      "key": "Q",
+      "name": "Tentacle Smash",
+      "howToUseIt": "Activate to smash down a tentacle for direct damage, which also increases the ongoing damage all your tentacles deal. Use it both as a damage tool and to boost your overall tentacle pressure in a fight."
+    },
+    {
+      "key": "W",
+      "name": "Harsh Lesson",
+      "howToUseIt": "Leap to your target to deal damage and pull nearby tentacles into attacking them too. Use it to start a fight or to punish an enemy standing near your tentacles."
+    },
+    {
+      "key": "E",
+      "name": "Test of Spirit",
+      "howToUseIt": "Rip the spirit from an enemy, forcing it to take a percentage of the damage you or your tentacles deal to their body. If the spirit dies or the target runs too far, the enemy becomes a Vessel that spawns tentacles for you, so whittle their health down first to make the spirit easier to kill."
+    },
+    {
+      "key": "R",
+      "name": "Leap of Faith",
+      "howToUseIt": "Smash down for area damage and spawn a tentacle for every enemy champion hit. This is best used as a follow-up after your team engages, since spawning multiple tentacles in a teamfight is huge value, rather than using it to start the fight alone."
+    }
+  ],
+  "earlyGamePlan": "In lane, position near walls or pillars whenever possible so your tentacles can spawn and contribute to trades. Use Test of Spirit on the enemy laner when you get an opening, and try to lower their health first so the spirit dies quickly and turns them into a Vessel. Avoid fighting in open areas away from walls, since you lose a lot of your power there.",
+  "quickTips": [
+    "Always try to fight or trade near walls so your tentacles have somewhere to spawn.",
+    "Whittle an enemy's health down before using Test of Spirit so their spirit dies fast and turns them into a Vessel.",
+    "Use Tentacle Smash both for direct damage and to boost the ongoing damage of all your tentacles.",
+    "Save Leap of Faith as a teamfight follow-up rather than an opener, since hitting multiple champions spawns multiple tentacles.",
+    "Pick fights near walls and pillars deliberately — scouting for good tentacle terrain before engaging is worth the extra few seconds.",
+    "Avoid one-on-one fights far from any walls, since you lose most of your tentacle advantage in open areas."
+  ],
+  "whatToExpect": "Enemy Illaoi is dangerous mainly near walls, where her Tentacles spawn and deal extra damage and healing — try to fight her away from those areas when you can. If she uses Test of Spirit on you, fight back against your spirit rather than running, since dealing damage to it reduces how long it lasts; running away only helps her by turning you into a Vessel. Focus down her Tentacles first in a fight to cut off her healing and damage output.",
+  "glossary": [
+    {
+      "term": "Kite",
+      "definition": "Attacking or retreating while keeping distance from a melee enemy so they can't catch you."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "Teamfight",
+      "definition": "A fight involving most or all of both teams at once, rather than a small skirmish."
+    },
+    {
+      "term": "Win condition",
+      "definition": "The main plan or requirement a champion or team needs to fulfill in order to succeed in a game."
+    },
+    {
+      "term": "Trade",
+      "definition": "A short exchange of damage between opposing laners, usually without either side fully committing."
+    }
+  ]
+}

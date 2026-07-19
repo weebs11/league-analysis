@@ -1,0 +1,67 @@
+{
+  "id": "Kled",
+  "name": "Kled",
+  "playstyleSummary": "Kled is an aggressive fighter who rides his lizard mount, Skaarl, into fights, dealing full damage while mounted and reduced damage to champions once dismounted. He rebuilds his Courage by fighting, which lets him remount and heal back up mid-fight, so playing him is a rhythm of committing hard, surviving the dismounted window, and remounting stronger. He's a great pick if you enjoy relentless, in-your-face skirmishing.",
+  "strengths": [
+    "Deals strong damage to champions while mounted on Skaarl.",
+    "Violent Tendencies gives a big attack speed burst for dueling.",
+    "Jousting provides mobility and lets him hit a target twice in one dash.",
+    "Chaaaaaaaarge!!! can be cast from long range, giving a shield and starting fights from a safe distance."
+  ],
+  "weaknesses": [
+    "Deals much less damage to champions while dismounted.",
+    "Vulnerable right after being dismounted, before Courage refills.",
+    "Needs to fight enemies, not just minions, to build Courage effectively.",
+    "Commits hard to fights, which can backfire if the trade goes badly."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Skaarl, the Cowardly Lizard",
+      "howToUseIt": "Skaarl soaks up damage for you while mounted. When Skaarl's health runs out you're dismounted and deal less damage to champions until your Courage bar fills back up — fight enemies, not just minions, to build Courage fastest and remount with bonus health."
+    },
+    {
+      "key": "Q",
+      "name": "Bear Trap on a Rope",
+      "howToUseIt": "While mounted, throw this to hook and pull an enemy toward you if they stay shackled — great for starting a fight. Once dismounted, it's replaced by Pocket Pistol, a ranged blast that knocks you back and helps build Courage."
+    },
+    {
+      "key": "W",
+      "name": "Violent Tendencies",
+      "howToUseIt": "Attack four times in a row to gain a big burst of attack speed, with the fourth attack hitting harder — try to land all four attacks on a champion to maximize the damage."
+    },
+    {
+      "key": "E",
+      "name": "Jousting",
+      "howToUseIt": "Dash toward an enemy for damage and a speed boost, then use it again to dash back through them for a second hit — useful for sticking to a target or repositioning."
+    },
+    {
+      "key": "R",
+      "name": "Chaaaaaaaarge!!!",
+      "howToUseIt": "Cast this from long range to charge toward a location, granting a shield and leaving a speed trail for allies — Skaarl automatically rams the first enemy champion you reach, so try to predict where they'll be."
+    }
+  ],
+  "earlyGamePlan": "In lane, fight enemies (not just minions) when you can to build Courage, since it's what lets you remount and stay strong. Use Bear Trap on a Rope to start trades while mounted, and be cautious right after you get dismounted, since you deal less damage to champions in that state until Courage refills.",
+  "quickTips": [
+    "Fight champions, not just minions, to build Courage fastest — minions only give a small amount.",
+    "Watch your Courage bar when dismounted — at 100% you remount and heal, which can turn a fight around.",
+    "Land all four hits of Violent Tendencies on a champion for its strongest burst of damage.",
+    "Use Chaaaaaaaarge!!! from far away and predict where enemies will be, since it takes time to arrive.",
+    "Play more cautiously right after being dismounted, since you're weaker until Courage refills."
+  ],
+  "whatToExpect": "An enemy Kled deals much less damage to champions once he's dismounted, so pay attention to whether he's on Skaarl or not — punishing him right after he's dismounted is a good time to fight. Watch his Courage bar too, since it fills up as he fights, kills minions, and damages structures; at full Courage he remounts and heals a chunk of health. He's most threatening when Violent Tendencies is ready, so be cautious of sudden attack speed bursts.",
+  "glossary": [
+    {
+      "term": "burst",
+      "definition": "A large amount of damage — or in this case, attack speed — gained or dealt very quickly."
+    },
+    {
+      "term": "Courage",
+      "definition": "Kled's resource, filled by fighting enemies, that determines how much health Skaarl has and lets Kled remount when full."
+    },
+    {
+      "term": "trade",
+      "definition": "Exchanging damage with an enemy in a short exchange rather than committing to a full fight."
+    }
+  ]
+}

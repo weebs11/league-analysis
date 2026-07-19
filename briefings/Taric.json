@@ -1,0 +1,80 @@
+{
+  "id": "Taric",
+  "name": "Taric",
+  "playstyleSummary": "Taric is a tanky support who protects his allies with shields, heals, and a game-changing invulnerability ultimate. Playing him feels straightforward and rewarding: you weave spells and auto-attacks together to keep your cooldowns low, stick close to your team's carry, and cast Cosmic Radiance right before a big fight to make your whole team briefly unkillable. He has almost no mobility of his own, so staying near your allies is the whole game plan.",
+  "strengths": [
+    "Extremely strong sustain from Starlight's Touch",
+    "Cosmic Radiance can single-handedly win a teamfight by preventing deaths",
+    "Tanky and hard to kill while protecting a linked ally with Bastion",
+    "Simple, low-mechanical-skill kit that's easy to learn"
+  ],
+  "weaknesses": [
+    "Very low mobility and no dash of his own",
+    "Dazzle has a visible wind-up that lets enemies sidestep it",
+    "Cosmic Radiance has a delay before it activates, so bad timing wastes it",
+    "Needs to stay close to allies to be useful, which can be exploited by poke"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Bravado",
+      "howToUseIt": "Casting any spell empowers your next two attacks with bonus damage and reduced spell cooldowns. Weave in auto-attacks between spell casts whenever it's safe to get your abilities back faster."
+    },
+    {
+      "key": "Q",
+      "name": "Starlight's Touch",
+      "howToUseIt": "Heals all nearby allies using stored charges, and Bravado-empowered attacks build more charges. Auto-attack minions or enemies to build charges before you actually need a big heal."
+    },
+    {
+      "key": "W",
+      "name": "Bastion",
+      "howToUseIt": "Link this to an ally to share your bonus Armor and let your other spells also affect them wherever they are. Keep it on your team's carry or whoever needs the most protection."
+    },
+    {
+      "key": "E",
+      "name": "Dazzle",
+      "howToUseIt": "A delayed stun beam — use it to punish enemies who are already committing to a fight, since the wind-up gives them a chance to sidestep if they're paying attention."
+    },
+    {
+      "key": "R",
+      "name": "Cosmic Radiance",
+      "howToUseIt": "Makes nearby allies invulnerable after a short delay. Cast it a moment before big damage is about to land, not after someone is already dying, since it won't save them if they die before it activates."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Dazzle when the enemy overextends and keep Bastion linked to whichever ally is taking the most risk. Auto-attack whenever you cast a spell to keep Bravado's cooldown reduction rolling, and prioritize keeping your carry topped up with Starlight's Touch over aggressive plays.",
+  "quickTips": [
+    "Weave an auto-attack in right after every spell cast to trigger Bravado",
+    "Keep Bastion on your carry or the ally most likely to get focused",
+    "Cast Cosmic Radiance a beat before the damage lands, not after someone is already critical",
+    "Use Dazzle to punish enemies committing to an engage rather than opening with it blindly",
+    "Build up Starlight's Touch charges with autos before you need the heal",
+    "Stay close to your team since almost all of your value depends on proximity"
+  ],
+  "whatToExpect": "Enemy Taric will try to link Bastion onto their carry and keep them topped up and armored, and his Cosmic Radiance can make his whole team briefly invulnerable, so don't dump all your cooldowns into a fight the instant he casts it. His Dazzle stun has a visible wind-up before it lands, so watch for the beam and sidestep it rather than walking straight through.",
+  "glossary": [
+    {
+      "term": "sustain",
+      "definition": "Healing or shielding that lets a champion stay in a fight or lane longer."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage dealt from a safe range to whittle enemies down before a bigger fight."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "wind-up",
+      "definition": "A visible delay before an ability activates, giving opponents a chance to react or dodge."
+    },
+    {
+      "term": "invulnerable",
+      "definition": "Temporarily immune to all damage."
+    }
+  ]
+}
