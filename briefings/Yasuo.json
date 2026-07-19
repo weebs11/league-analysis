@@ -1,0 +1,80 @@
+{
+  "id": "Yasuo",
+  "name": "Yasuo",
+  "playstyleSummary": "Yasuo is a mobile swordsman who darts around the battlefield with dashes, builds up a personal shield while moving, and finishes fights with a dramatic ultimate that pulls in every airborne enemy nearby. Playing him feels fast and flashy, but he is genuinely one of the hardest champions in the game to use well because his tools require precise timing and combos with allies. New players should expect a steep learning curve but a lot of room to grow.",
+  "strengths": [
+    "Wind Wall can block enemy projectiles entirely, countering many ranged threats",
+    "Sweeping Blade provides strong mobility to chase or escape",
+    "Last Breath can turn any ally's knockup into a devastating team fight finisher",
+    "High damage potential once his combos are mastered"
+  ],
+  "weaknesses": [
+    "Very difficult to play well, with a demanding combo and positioning requirements",
+    "His shield only lasts briefly and requires him to keep moving to rebuild",
+    "Vulnerable right after using his whirlwind, with abilities on cooldown",
+    "Struggles against champions who can easily sidestep his narrow Steel Tempest"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Way of the Wanderer",
+      "howToUseIt": "Keep moving whenever it's safe to do so, since a shield builds up over time while you move and triggers the moment you take champion or monster damage — standing still leaves you without this defense."
+    },
+    {
+      "key": "Q",
+      "name": "Steel Tempest",
+      "howToUseIt": "Land two hits in a row to fire a whirlwind that knocks enemies airborne — this is your main setup for a kill, so use it before diving into a fight rather than randomly."
+    },
+    {
+      "key": "W",
+      "name": "Wind Wall",
+      "howToUseIt": "Place this to block incoming enemy projectiles like skillshots or arrows, using it defensively when you or an ally is about to be hit by something dangerous."
+    },
+    {
+      "key": "E",
+      "name": "Sweeping Blade",
+      "howToUseIt": "Dash through an enemy to close distance or escape, and remember dashing through a minion instead preserves an escape route rather than committing you to the fight."
+    },
+    {
+      "key": "R",
+      "name": "Last Breath",
+      "howToUseIt": "Cast this on any airborne enemy champion, including ones knocked up by allies, to deal damage and hold them in place for your team to follow up."
+    }
+  ],
+  "earlyGamePlan": "In lane, focus on landing single hits of Steel Tempest to poke and farm, since your real damage spike comes from setting up the double-hit whirlwind combo. Use Sweeping Blade carefully to avoid overcommitting, since you're weak right after using your whirlwind. Practice weaving Wind Wall in reactively when the enemy laner throws out a dangerous skillshot.",
+  "quickTips": [
+    "Keep moving between fights so your passive shield is charged when you need it",
+    "Don't waste Steel Tempest's whirlwind alone — wait until you can immediately follow with Last Breath or a teammate's engage",
+    "Use Wind Wall to block key enemy abilities like ultimates, not just random pokes",
+    "Dash through minions with Sweeping Blade when you want to keep an escape option open",
+    "You're weakest right after firing your whirlwind, so don't overextend immediately after",
+    "Watch for any ally knockup on the enemy team — you can follow it up with Last Breath even if you didn't cause it"
+  ],
+  "whatToExpect": "Yasuo will try to land two Steel Tempests in a row to launch you airborne and follow up with a big combo, so watch and listen for the whirlwind's cue and try to dodge sideways rather than in a straight line. He is at his weakest right after using the whirlwind since his cooldowns and shield are down, so that's the best time to engage him. His Wind Wall can block your ranged abilities entirely, so bait it out before committing your key spells.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged, as opposed to one that automatically hits its target."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance on the enemy team."
+    },
+    {
+      "term": "knockup",
+      "definition": "A crowd control effect that launches a champion into the air, preventing them from acting until they land."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time an ability needs after use before it can be cast again."
+    },
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities cast together for maximum effect."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, past the safety of allies or turret range, leaving yourself open to being caught."
+    }
+  ]
+}

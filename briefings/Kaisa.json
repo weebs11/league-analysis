@@ -1,0 +1,80 @@
+{
+  "id": "Kaisa",
+  "name": "Kai'Sa",
+  "playstyleSummary": "Kai'Sa is a scaling marksman/mage hybrid whose abilities get stronger as she buys certain items, and whose ultimate lets her dash straight at a marked enemy. She feels like a late-game hunter - early on she's setting up plasma stacks and item power spikes, and later she's diving in to finish off marked targets.",
+  "strengths": [
+    "Ultimate gives a guaranteed gap-closer onto an enemy champion",
+    "Scales very well with items thanks to her evolving abilities",
+    "Strong burst damage against isolated targets via her passive stacks",
+    "Flexible skill order lets her adapt to different matchups"
+  ],
+  "weaknesses": [
+    "Weak early before her abilities evolve",
+    "Vulnerable to being kited or outranged by longer-range champions",
+    "Relies on teammates landing crowd control to stack her passive quickly",
+    "Killer Instinct requires a nearby enemy champion to use, limiting escape options"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Second Skin",
+      "howToUseIt": "Your basic attacks stack a mark called Plasma on enemies for rising bonus damage, and allied crowd control on a marked enemy helps stack it faster - also note that specific item purchases will upgrade your Q, W, or E, so build toward the upgrades you want."
+    },
+    {
+      "key": "Q",
+      "name": "Icathian Rain",
+      "howToUseIt": "Fire a swarm of homing missiles at nearby enemies - good for clearing waves or adding burst damage in a fight, and it fires more missiles once upgraded."
+    },
+    {
+      "key": "W",
+      "name": "Void Seeker",
+      "howToUseIt": "Fire this long-range shot to mark a target with Plasma stacks from a distance; once upgraded it applies more marks and its cooldown drops when it hits a champion, letting you poke more often."
+    },
+    {
+      "key": "E",
+      "name": "Supercharge",
+      "howToUseIt": "Activate for a burst of move speed followed by attack speed - use it to reposition in a fight or chase, and once upgraded it grants a brief window of invisibility, great for repositioning unseen."
+    },
+    {
+      "key": "R",
+      "name": "Killer Instinct",
+      "howToUseIt": "Dash to a spot near an enemy champion - save it to finish a marked or low-health target, since it needs an enemy champion nearby to use at all."
+    }
+  ],
+  "earlyGamePlan": "Farm safely in lane and use Icathian Rain to trade or clear waves, prioritizing the items that will evolve your abilities as soon as you can afford them. Avoid overcommitting before you have some item power, since Kai'Sa's early damage and mobility are both limited until then.",
+  "quickTips": [
+    "Prioritize the item purchases that upgrade your Q, W, or E as early as you reasonably can.",
+    "Use Void Seeker from max range to stack Plasma on a target before engaging.",
+    "Save Killer Instinct to finish a marked target rather than as your opening move.",
+    "Ask allies to land crowd control on your target so your passive stacks faster in fights.",
+    "Use Supercharge to reposition mid-fight, not just to chase.",
+    "Play patiently early - your power spikes come from items, not early levels."
+  ],
+  "whatToExpect": "An enemy Kai'Sa is relatively harmless early but becomes a serious threat once she has a few items, since her ultimate lets her dash straight onto an isolated target. Stay grouped with allies so she can't easily pick you off, and try to shut her down with crowd control or early pressure before her power spikes arrive.",
+  "glossary": [
+    {
+      "term": "scaling",
+      "definition": "How much stronger a champion gets over time as they gain levels and items, relative to others."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game - usually tied to levels or items - where a champion becomes noticeably stronger."
+    },
+    {
+      "term": "gap-closer",
+      "definition": "An ability that lets a champion quickly close the distance to a target, such as a dash or leap."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking or damaging an enemy while continuously moving away to avoid their retaliation."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "isolated",
+      "definition": "Being separated from allies, making a champion an easier and safer target to attack."
+    }
+  ]
+}

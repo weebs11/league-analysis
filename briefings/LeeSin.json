@@ -1,0 +1,75 @@
+{
+  "id": "LeeSin",
+  "name": "Lee Sin",
+  "playstyleSummary": "Lee Sin is a jungle fighter-assassin built around chaining his abilities together — find an enemy with Sonic Wave, dash in with Resonating Strike, and finish with a well-placed Dragon's Rage kick. He runs on Energy, and weaving basic attacks between spells through his passive keeps him fueled for extended fights. He's a highly mobile, mechanically demanding champion who rewards players who enjoy combos and precise aim.",
+  "strengths": [
+    "Sonic Wave into Resonating Strike gives strong gap-closing mobility and pick potential.",
+    "Safeguard and Iron Will provide a shield and sustain, useful for jungling and dueling.",
+    "Dragon's Rage can knock an enemy into their own teammates for a bonus knock-up.",
+    "Flurry rewards weaving basic attacks between abilities with extra attack speed and Energy."
+  ],
+  "weaknesses": [
+    "Relies heavily on landing Sonic Wave and chaining abilities together to be effective.",
+    "Melee range makes him vulnerable to being kited by ranged enemies.",
+    "Can run out of Energy if abilities are used without weaving in basic attacks.",
+    "High skill requirement to combo his abilities correctly under pressure."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Flurry",
+      "howToUseIt": "After you use any ability, your next two basic attacks gain attack speed and return Energy — weave attacks between your spells to keep your Energy topped up instead of running out."
+    },
+    {
+      "key": "Q",
+      "name": "Sonic Wave / Resonating Strike",
+      "howToUseIt": "Throw Sonic Wave to find an enemy at range; if it hits, you can follow up within 3 seconds with Resonating Strike to dash to them for damage based on their missing Health. Use Sonic Wave to scout through fog of war too."
+    },
+    {
+      "key": "W",
+      "name": "Safeguard / Iron Will",
+      "howToUseIt": "Dash to an ally (or yourself) for a shield with Safeguard, then follow up with Iron Will for lifesteal-like sustain in the fight that follows — great for diving into the jungle or backing up an ally."
+    },
+    {
+      "key": "E",
+      "name": "Tempest / Cripple",
+      "howToUseIt": "Smash the ground with Tempest to damage and reveal enemies in the area; if it hits, follow up with Cripple to slow everyone it caught, which is great for setting up a gank or finishing a chase."
+    },
+    {
+      "key": "R",
+      "name": "Dragon's Rage",
+      "howToUseIt": "Kick your target back — if they collide with a teammate or wall, that enemy is knocked into the air too, so aim it to send your target crashing into other enemies for a bigger teamfight impact."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, use Tempest and Resonating Strike to clear jungle camps efficiently, weaving in attacks after each ability to keep your Energy up through Flurry. Look for early ganks using Sonic Wave to check a lane first, then Resonating Strike to close the gap and finish the kill.",
+  "quickTips": [
+    "Weave a basic attack in after each ability to refund Energy through Flurry and avoid running dry.",
+    "Use Sonic Wave first in fights so you can follow up with Resonating Strike, especially before using Dragon's Rage to chase down a target.",
+    "Aim Dragon's Rage to knock your target into their own teammates for a bonus knock-up on a second enemy.",
+    "Self-cast Safeguard when clearing jungle camps for a shield, then use Iron Will for extra sustain.",
+    "Use Tempest to reveal and slow enemies hiding in brush before committing to a gank."
+  ],
+  "whatToExpect": "An enemy Lee Sin wants to land Sonic Wave on you before dashing in with Resonating Strike, so try to dodge that first hit if you can — it denies his main follow-up. Spread out from your teammates so his ultimate, Dragon's Rage, can't knock you into an ally for a bonus knock-up. He relies heavily on chaining his abilities together, so crowd control that interrupts one piece of his combo can shut down the rest.",
+  "glossary": [
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) shows up in a lane to help get a kill."
+    },
+    {
+      "term": "sustain",
+      "definition": "Healing or lifesteal that lets a champion keep fighting or stay in lane longer."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together for a bigger effect."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or silences that limit what a champion can do."
+    },
+    {
+      "term": "fog of war",
+      "definition": "The hidden, unseen parts of the map outside your vision."
+    }
+  ]
+}

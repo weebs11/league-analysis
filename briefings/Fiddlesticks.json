@@ -1,0 +1,88 @@
+{
+  "id": "Fiddlesticks",
+  "name": "Fiddlesticks",
+  "playstyleSummary": "Fiddlesticks is a terrifying jungle mage who uses fake scarecrow decoys to scout the map before teleporting in with a channeled ultimate that wrecks anyone caught nearby. Playing him well means thinking about deception and timing rather than mechanical skill, since much of his power comes from making enemies guess wrong about where he actually is.",
+  "strengths": [
+    "Crowstorm can turn a fight instantly by teleporting into the middle of the enemy team",
+    "Scarecrow effigies let him scout the map safely from a distance",
+    "Bountiful Harvest drains health steadily over time and finishes with an execute",
+    "Reap can silence enemies caught in the center, shutting down their abilities"
+  ],
+  "weaknesses": [
+    "Crowstorm requires a channel to activate, so it can be interrupted if spotted early",
+    "Relatively fragile if his ambush is countered or vision denies his approach",
+    "Relies heavily on setting up ambushes rather than straightforward fighting",
+    "Weak if forced to fight directly without the element of surprise"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "A Harmless Scarecrow",
+      "howToUseIt": "Your trinket becomes a scarecrow effigy instead of a normal ward — place these in useful spots to scout enemies and to give yourself extra places to teleport in from with your ultimate."
+    },
+    {
+      "key": "Q",
+      "name": "Terrify",
+      "howToUseIt": "Damage enemies with spells while unseen, or activate this directly to fear a target and send them fleeing — use it to peel an aggressive enemy off an ally or to stop an enemy from reaching you."
+    },
+    {
+      "key": "W",
+      "name": "Bountiful Harvest",
+      "howToUseIt": "Channel this to drain health from nearby enemies over time, with bonus execute damage at the end — great both for taking down jungle camps and finishing off a fight."
+    },
+    {
+      "key": "E",
+      "name": "Reap",
+      "howToUseIt": "Slash this through a group of enemies to slow everyone hit and silence anyone caught in the center, shutting down their ability to cast spells at a key moment."
+    },
+    {
+      "key": "R",
+      "name": "Crowstorm",
+      "howToUseIt": "Channel this from a hidden position, effigy, or even brush to teleport in and deal continuous damage to everyone nearby — it's most effective when the enemy team doesn't see it coming, so use fog of war and your effigies to hide the setup."
+    }
+  ],
+  "earlyGamePlan": "Take jungle camps with Bountiful Harvest and place scarecrow effigies in bushes or chokepoints to build vision without revealing yourself. Avoid direct fights early since Fiddlesticks is fragile without his ultimate ready, and instead look for a chance to ambush an isolated enemy once Crowstorm is available at level 6.",
+  "quickTips": [
+    "Place effigies in useful bushes to scout enemies without using a normal ward",
+    "Channel Crowstorm from an unexpected or hidden spot for maximum surprise",
+    "Use Reap to silence a key target right as a fight starts",
+    "Save Terrify to peel an enemy off you or a teammate in a pinch",
+    "Take jungle camps efficiently with Bountiful Harvest before hunting for ambush opportunities",
+    "Avoid direct 1v1 fights right after using your ultimate — you're much weaker until it's ready again"
+  ],
+  "whatToExpect": "Fiddlesticks wants to hide, scout with his scarecrow effigies, and then channel Crowstorm to teleport into your group unexpectedly for heavy damage. Buy vision to spot him or his effigies before he can set up, and if you see him start channeling nearby, interrupt him or spread out immediately since the ability can be canceled if he's caught early.",
+  "glossary": [
+    {
+      "term": "jungle",
+      "definition": "The area of the map between lanes filled with neutral monster camps, cleared by the jungler instead of laning."
+    },
+    {
+      "term": "execute",
+      "definition": "An ability that deals bonus or guaranteed damage to low-health targets, often finishing them off outright."
+    },
+    {
+      "term": "channel",
+      "definition": "Casting an ability that takes time to complete, during which the caster is often vulnerable to being interrupted."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate by knocking back, slowing, or otherwise stopping enemies attacking them."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight over parts of the map, usually provided by wards, that lets you see enemies before they reach you."
+    },
+    {
+      "term": "ward",
+      "definition": "A placeable item that grants vision of an area, revealing enemies who pass through it."
+    },
+    {
+      "term": "brush",
+      "definition": "Tall grass on the map that hides units standing inside it from enemies outside."
+    },
+    {
+      "term": "trinket",
+      "definition": "A free utility item every champion carries from the start, most commonly used to place a ward for vision."
+    }
+  ]
+}

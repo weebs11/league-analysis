@@ -1,0 +1,79 @@
+{
+  "id": "Ahri",
+  "name": "Ahri",
+  "playstyleSummary": "Ahri is a mobile mage who leans on poke and clever positioning rather than raw burst alone. Her Charm can lock down a target completely, turning a good trade into a kill, and her ultimate lets her dash in, fight, and get back out with ease. She's a great pick for learning skillshot aim and combo timing without being totally punished for early misses.",
+  "strengths": [
+    "Very mobile and hard to pin down thanks to Spirit Rush",
+    "Strong poke from Orb of Deception's double-hit damage",
+    "Charm turns any follow-up spell into an easy hit",
+    "Scales into a dangerous burst threat with levels and items"
+  ],
+  "weaknesses": [
+    "Squishy with little defense if caught without her ultimate",
+    "Full combo depends on landing the Charm skillshot",
+    "Vulnerable during the short window her ultimate is on cooldown",
+    "Can be shut down hard by crowd control that locks down her mobility"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Essence Theft",
+      "howToUseIt": "Landing minion kills and champion takedowns heals you over time — this is a big part of your sustain in lane, so don't ignore minion farm."
+    },
+    {
+      "key": "Q",
+      "name": "Orb of Deception",
+      "howToUseIt": "Throw it through the enemy and let it fly back through them again for a second hit — lining up both hits is your main source of poke damage."
+    },
+    {
+      "key": "W",
+      "name": "Fox-Fire",
+      "howToUseIt": "Activate this right before or during a trade to add extra damage from the fox-fires, which automatically lock onto nearby enemies."
+    },
+    {
+      "key": "E",
+      "name": "Charm",
+      "howToUseIt": "This is your key setup tool — landing it stops their movement dead and walks them toward you, making your other abilities easy to land afterward."
+    },
+    {
+      "key": "R",
+      "name": "Spirit Rush",
+      "howToUseIt": "Use the dashes to reposition around a fight, chase down a low-health enemy, or escape danger; killing a champion refunds a dash so you can keep going."
+    }
+  ],
+  "earlyGamePlan": "Poke enemies with Orb of Deception when they step up to last-hit, aiming to land it on both the outgoing throw and the return. Look for a chance to land Charm on an overextended enemy to open up a trade, but don't force it — safe farming with Q is fine while you're still learning her range and timing.",
+  "quickTips": [
+    "Aim Orb of Deception so both the outgoing and return pass hit the same target for double damage.",
+    "Save Charm for a moment you're confident you can land it — it's the key to her combos.",
+    "Stand behind minions to make it harder for enemies to land skillshots like Charm on you too.",
+    "Use Spirit Rush proactively to reposition in fights, not just as a last-second escape.",
+    "Watch your mana before committing to a trade, since Ahri's abilities aren't free to spam."
+  ],
+  "whatToExpect": "Ahri will poke you with Orb of Deception from range and look for a chance to land Charm, which locks you in place and lets her follow up with everything else. Stand behind your minions when she's near to make Charm harder to land, and be extra cautious about overextending when her Spirit Rush is up, since it lets her dash in, burst, and escape easily.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe range before committing to a fight."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss, unlike one that auto-targets."
+    },
+    {
+      "term": "squishy",
+      "definition": "A champion with low health and defenses who dies quickly if caught."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, away from allies or towers, making yourself vulnerable to being caught."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing laners."
+    }
+  ]
+}

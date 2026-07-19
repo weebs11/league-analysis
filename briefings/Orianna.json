@@ -1,0 +1,80 @@
+{
+  "id": "Orianna",
+  "name": "Orianna",
+  "playstyleSummary": "Orianna is a mid-lane mage who fights through a ball that she commands to different locations - her power comes from herself and the ball being in the right spot to layer damage, shields, and slows. She feels like a strategic puzzle: figuring out where to put the ball matters more than raw mechanical execution.",
+  "strengths": [
+    "Strong poke and wave clear with Command: Attack",
+    "Can shield and protect an ally with Command: Protect",
+    "Ultimate can pull the whole enemy team together for a teamfight-winning combo",
+    "Flexible - can play aggressive or defensive depending on where she sends the ball"
+  ],
+  "weaknesses": [
+    "Very squishy with no personal escape or mobility",
+    "All her power is tied to the ball's location, so losing track of it hurts",
+    "Ultimate has a delay before it triggers, giving enemies a chance to spread out",
+    "No way to fight effectively up close"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Clockwork Windup",
+      "howToUseIt": "Attacking the same enemy repeatedly ramps up bonus magic damage, so focus one target with your attacks in a fight instead of spreading them around."
+    },
+    {
+      "key": "Q",
+      "name": "Command: Attack",
+      "howToUseIt": "Send this to poke enemies in lane or clear minion waves. The ball stays where it lands, so think about where you want it before casting your other spells."
+    },
+    {
+      "key": "W",
+      "name": "Command: Dissonance",
+      "howToUseIt": "This damages and slows enemies near the ball while speeding up allies near it - use it defensively to slow a chaser, or offensively before an all-in."
+    },
+    {
+      "key": "E",
+      "name": "Command: Protect",
+      "howToUseIt": "Send the ball to shield yourself or an ally and deal damage to enemies along the way - casting it on yourself is a fast way to pull the ball back to your position."
+    },
+    {
+      "key": "R",
+      "name": "Command: Shockwave",
+      "howToUseIt": "Save this for when several enemies are grouped near the ball - after a short delay it pulls them all toward the ball, so line it up with your team's follow-up damage or crowd control."
+    }
+  ],
+  "earlyGamePlan": "Poke your lane opponent with Command: Attack whenever they step up to farm, and use Command: Protect on yourself if you need the ball back quickly or a shield against incoming damage. Stay behind your minions since you have no escape spell, and look for moments to land Command: Shockwave for an early kill once you hit level 6.",
+  "quickTips": [
+    "Keep track of where your ball is - your other three spells all depend on it",
+    "Cast Command: Protect on yourself to quickly retrieve the ball",
+    "Focus your attacks on one enemy to build up your passive's bonus damage",
+    "Land Command: Dissonance on chasers to slow them and secure your escape",
+    "Look for Command: Shockwave when 2 or more enemies are clustered near your ball",
+    "Stay near allies before a fight so you can shield the right person with Command: Protect"
+  ],
+  "whatToExpect": "Orianna deals most of her damage and control through her ball, so watch where it is - if it's not near you, she's much less threatening for a moment. Be careful grouping up with your team once she's level 6, since her ultimate can pull your whole group together for the rest of her team to follow up on; spreading out reduces how many of you get caught.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range before a real fight starts."
+    },
+    {
+      "term": "minion wave",
+      "definition": "The group of minions that march down a lane."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight rather than trading and backing off."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, and roots that limit what an enemy can do."
+    },
+    {
+      "term": "squishy",
+      "definition": "A champion with low health or defenses who dies quickly."
+    },
+    {
+      "term": "farm",
+      "definition": "Killing minions or monsters for gold and experience."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "Zaahen",
+  "name": "Zaahen",
+  "playstyleSummary": "Zaahen is a melee fighter who grows more dangerous the longer a fight goes on, stacking up a resource called Determination from hitting enemy champions until he becomes empowered and can even revive after dying. Playing him feels like a war of attrition where you want to keep landing hits and sticking to fights rather than trading briefly and backing off. He's approachable for newer players thanks to a low listed difficulty and a kit built around straightforward dashes and strikes.",
+  "strengths": [
+    "Builds a resource from fighting champions that grants bonus Attack Damage and even a revive when full",
+    "Aureate Rush provides a dash for engaging or repositioning",
+    "The Darkin Glaive offers a recastable attack with healing and a knockup follow-up",
+    "Grim Deliverance heals him based on damage dealt, helping him survive extended fights"
+  ],
+  "weaknesses": [
+    "Needs sustained fighting to build up Determination before he's at his strongest",
+    "Low magic damage stat makes him less threatening early against tankier targets",
+    "His revive is a one-time effect that only helps once Determination is full",
+    "Relatively simple kit that skilled opponents can learn to play around"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Cultivation of War",
+      "howToUseIt": "Keep fighting enemy champions to stack Determination — once you're filled up, you gain extra Attack Damage and can revive after a fatal hit, so don't be afraid to commit to longer fights."
+    },
+    {
+      "key": "Q",
+      "name": "The Darkin Glaive",
+      "howToUseIt": "Use this to deal bonus damage and heal on your next attack, then recast it when you want a follow-up attack that knocks your target up for extra control."
+    },
+    {
+      "key": "W",
+      "name": "Dreaded Return",
+      "howToUseIt": "Stab in a direction to damage and then pull enemies toward you, useful for dragging a fleeing target back into range or gathering multiple enemies together."
+    },
+    {
+      "key": "E",
+      "name": "Aureate Rush",
+      "howToUseIt": "Dash into a fight or gap-close on a target, then use the follow-up slice around yourself to hit anyone nearby."
+    },
+    {
+      "key": "R",
+      "name": "Grim Deliverance",
+      "howToUseIt": "Use this to rise up and slam down for damage and self-healing, ideal as a finishing move or to sustain through a prolonged skirmish."
+    }
+  ],
+  "earlyGamePlan": "Focus on landing hits with The Darkin Glaive to poke and heal in lane, using Aureate Rush to engage when you have an opening. Try to extend fights rather than trading briefly, since your Determination stacks build up the longer you're in combat with enemy champions. Play a bit more cautiously before your Determination is filled, since you won't have your revive safety net yet.",
+  "quickTips": [
+    "Try to stay in fights longer rather than poking and retreating, since Determination rewards sustained combat",
+    "Recast The Darkin Glaive for the knockup follow-up when you want to lock a target down",
+    "Use Dreaded Return to pull a fleeing enemy back into your attack range",
+    "Save Grim Deliverance to finish a fight or heal yourself back up in an extended skirmish",
+    "Once Determination is full, you can afford to play more aggressively since you have a revive as a safety net"
+  ],
+  "whatToExpect": "Zaahen gets more dangerous the longer a fight drags on, so try to burst him down quickly or disengage early rather than trading with him repeatedly. Once his Determination is filled he can survive what should be a killing blow and revive, so don't assume a fight is over just because he drops to zero health. Watch for Dreaded Return pulling you out of position, and be ready to kite away from his Aureate Rush engage.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range repeatedly to wear enemies down before a bigger fight."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance on the enemy team."
+    },
+    {
+      "term": "gap-close",
+      "definition": "Quickly covering the distance between yourself and a target, usually with a dash or leap."
+    },
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while still attacking them, common for ranged champions fighting melee opponents."
+    },
+    {
+      "term": "knockup",
+      "definition": "A crowd control effect that launches a champion into the air, preventing them from acting until they land."
+    },
+    {
+      "term": "sustain",
+      "definition": "The ability to heal or regenerate health, letting a champion stay in fights or the jungle longer without returning to base."
+    }
+  ]
+}

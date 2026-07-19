@@ -1,0 +1,88 @@
+{
+  "id": "Zyra",
+  "name": "Zyra",
+  "playstyleSummary": "Zyra is a mage who fights with an army of living plants as much as with her own spells. She feels like a trap-setter: you plant seeds ahead of time, then detonate Deadly Spines or Grasping Roots near them to grow turret-like plants that keep fighting even while you do something else, all backed by heavy area damage and a knockup ultimate.",
+  "strengths": [
+    "Plants provide extra damage and vision without Zyra having to be present",
+    "Grasping Roots can root a target, setting up big damage or a kill for her team",
+    "Stranglethorns deals big area damage and knocks enemies airborne, great for starting or winning teamfights",
+    "Strong at controlling an area — enemies who walk in take damage from spells, plants, and roots all at once"
+  ],
+  "weaknesses": [
+    "Very fragile and easy to kill if caught without her crowd control up",
+    "Needs to preposition seeds ahead of time to get full value from her kit, which takes planning",
+    "Plants can be destroyed simply by stepping on the seed before it grows",
+    "Loses a lot of value if the fight moves away from her seeded area"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Garden of Thorns",
+      "howToUseIt": "Seeds spawn near you automatically over time. Cast Deadly Spines or Grasping Roots close to a seed to instantly grow a plant that fights alongside you — try to always have seeds down before a fight starts."
+    },
+    {
+      "key": "Q",
+      "name": "Deadly Spines",
+      "howToUseIt": "Use this to damage a group of enemies, or cast it right on top of a seed to grow a Thorn Spitter plant that keeps attacking enemies from range even after you move away."
+    },
+    {
+      "key": "W",
+      "name": "Rampant Growth",
+      "howToUseIt": "This plants a seed for later use — drop seeds in brush or along paths enemies are likely to walk through, since you can hold several seeds at once and killing enemies lets you plant more, faster."
+    },
+    {
+      "key": "E",
+      "name": "Grasping Roots",
+      "howToUseIt": "This roots the first enemy it hits, so use it to lock down a target before following up with damage, or cast it near a seed to grow a Vine Lasher that slows enemies who get close to it."
+    },
+    {
+      "key": "R",
+      "name": "Stranglethorns",
+      "howToUseIt": "Cast this on a grouped-up enemy team — it deals damage as it expands and then knocks everyone inside airborne as it closes, making it a strong teamfight-starting or teamfight-winning tool, especially with plants already enraged nearby."
+    }
+  ],
+  "earlyGamePlan": "In lane, plant seeds with Rampant Growth in spots you expect fights to happen, like brush near the wave. Use Deadly Spines to poke and farm minions, and look for a Grasping Roots root on an overextended enemy to set up a kill with your ally. Be cautious engaging without a seed nearby, since a plant can make a fight go your way.",
+  "quickTips": [
+    "Keep seeds down in brush or narrow paths before a fight starts, not during it",
+    "Grow a plant right before a fight so it can tank hits and deal damage while you stay safer",
+    "Land Grasping Roots first in a trade — it sets up everything else you do",
+    "Save Stranglethorns for when the enemy team is grouped up so the knockup hits multiple people",
+    "Watch your own health — you have low defenses and can be killed quickly if caught without crowd control ready",
+    "Destroy enemy seeds by walking over them if you see one placed near you"
+  ],
+  "whatToExpect": "An enemy Zyra will try to seed the area around her before a fight, then grow plants and land Grasping Roots on you to set up damage or a kill — avoid standing near unclaimed seeds so she can't turn them into plants for free. She's very fragile if you catch her without her root or a plant nearby, and her ultimate can knock your whole team airborne if you group up on top of her seeds, so consider spreading out before engaging.",
+  "glossary": [
+    {
+      "term": "crowd control",
+      "definition": "Ability effects like roots, stuns, or knockups that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that stops an enemy from moving, though they can usually still attack or cast spells."
+    },
+    {
+      "term": "knockup",
+      "definition": "A crowd control effect that launches an enemy into the air, briefly preventing them from acting."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before a real fight starts."
+    },
+    {
+      "term": "farm",
+      "definition": "Earning gold and experience by last-hitting minions."
+    },
+    {
+      "term": "brush",
+      "definition": "Patches of tall grass on the map that hide anyone standing inside from enemies outside it."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight where most or all champions from both teams are involved at once."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far into dangerous territory, past the point where your team can help you."
+    }
+  ]
+}

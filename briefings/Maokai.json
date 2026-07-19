@@ -1,0 +1,80 @@
+{
+  "id": "Maokai",
+  "name": "Maokai",
+  "playstyleSummary": "Maokai is a tanky front-line champion who dives into fights to disrupt enemies with knockbacks and roots while sustaining himself through his passive healing attacks. He thrives on chaining spells and trading damage to speed up his passive, letting him stay in fights far longer than expected.",
+  "strengths": [
+    "Very durable thanks to Sap Magic healing and general tankiness",
+    "Twisted Advance is a safe engage tool since he's untargetable while dashing",
+    "Nature's Grasp can zone or root an entire enemy team caught in its path",
+    "Saplings deal big damage and deny vision when hidden in brush"
+  ],
+  "weaknesses": [
+    "Relies on landing spells or being hit to keep his sustain cooldown low",
+    "Low direct damage output compared to true damage-focused champions",
+    "Saplings can be baited out or destroyed before they matter",
+    "Vulnerable during Twisted Advance's animation if he mistimes the dash"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Sap Magic",
+      "howToUseIt": "Try to land spells or trade damage in fights since both reduce this ability's cooldown - the more you're able to attack, the more you heal, making you very hard to kill in prolonged fights."
+    },
+    {
+      "key": "Q",
+      "name": "Bramble Smash",
+      "howToUseIt": "Use this to knock enemies away from you or your allies, slowing them as they're pushed back - great for peeling divers or setting up a chase."
+    },
+    {
+      "key": "W",
+      "name": "Twisted Advance",
+      "howToUseIt": "Dash onto a key target to root them - you're untargetable while dashing, so this is a safe way to engage a fight."
+    },
+    {
+      "key": "E",
+      "name": "Sapling Toss",
+      "howToUseIt": "Toss saplings into brush for a much stronger, hidden effect, and use them to scout or punish enemies who wander too close."
+    },
+    {
+      "key": "R",
+      "name": "Nature's Grasp",
+      "howToUseIt": "Aim this wall of brambles so it catches enemies off guard, ideally from a flank they aren't expecting, since it roots and damages everyone it advances through."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for chances to engage with Twisted Advance and follow up with Bramble Smash to control the fight, and remember your passive heals you back up if you keep landing spells or trading. Toss saplings into brush near your lane to deny vision and punish enemies who walk through them.",
+  "quickTips": [
+    "Trade spells often to keep Sap Magic's cooldown low and stay topped up on health",
+    "Use Twisted Advance's untargetable dash to engage safely, since you can't be caught mid-flight",
+    "Hide saplings in brush for a stronger, surprise effect rather than throwing them in the open",
+    "Save Nature's Grasp for flanks or moments the enemy can't easily walk away from",
+    "Use Bramble Smash to peel dangerous enemies off your low-health allies",
+    "Don't waste spells chasing a single low-priority target - save your kit for real fights"
+  ],
+  "whatToExpect": "Maokai will try to dash in with Twisted Advance to root you, then follow up with Bramble Smash and his ultimate to zone your team, healing himself back up the more he fights. Be careful walking through brush near his lane since hidden saplings deal big damage, and try to punish him early before his passive cooldown comes back online from spell trades.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to an attack on the enemy team."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect an ally from being attacked, usually by slowing or blocking an enemy diver."
+    },
+    {
+      "term": "sustain",
+      "definition": "Recovering health over time, usually through healing or shielding effects."
+    },
+    {
+      "term": "zone",
+      "definition": "To control or deny an area of the map to the enemy through the threat of your abilities."
+    },
+    {
+      "term": "brush",
+      "definition": "Tall grass on the map that hides champions standing inside it from enemy vision."
+    },
+    {
+      "term": "flank",
+      "definition": "Attacking from an unexpected side or angle rather than head-on."
+    }
+  ]
+}

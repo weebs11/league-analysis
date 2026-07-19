@@ -1,0 +1,75 @@
+{
+  "id": "RekSai",
+  "name": "Rek'Sai",
+  "playstyleSummary": "Rek'Sai is a jungler who alternates between burrowed and un-burrowed forms, using tunnels to zip around the map and a powerful bite that gets stronger as she builds Fury. She's a strong pick for players who like fast jungle clears and map-wide mobility over standing and slugging it out.",
+  "strengths": [
+    "Very fast jungle clear and early ganks",
+    "Burrow grants increased move speed and warns her of nearby enemies",
+    "Tunnels let her cross the map quickly once placed",
+    "Void Rush lets her dodge damage briefly while lunging at a marked target"
+  ],
+  "weaknesses": [
+    "Loses her basic attacks and has reduced vision while burrowed",
+    "Tunnels can be destroyed by enemies standing on the entrances",
+    "Furious Bite's true damage bonus requires building up full Fury first",
+    "Less effective if enemies deny her tunnel network"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Fury of the Xer'Sai",
+      "howToUseIt": "You build Fury by attacking and landing basic abilities, then consume it while burrowed to heal - burrow between fights or camps to recover health using your stored Fury."
+    },
+    {
+      "key": "Q",
+      "name": "Queen's Wrath / Prey Seeker",
+      "howToUseIt": "While un-burrowed, your next 3 attacks deal bonus damage to enemies nearby; while burrowed, this instead launches a burst that damages and reveals enemies in the area."
+    },
+    {
+      "key": "W",
+      "name": "Burrow / Un-burrow",
+      "howToUseIt": "Burrow into the ground for increased move speed, reduced vision, and new abilities, but you lose the ability to basic attack - burrow to travel safely and unburrow when you're ready to fight."
+    },
+    {
+      "key": "E",
+      "name": "Furious Bite / Tunnel",
+      "howToUseIt": "While un-burrowed, bite your target for physical damage, or true damage instead if your Fury is full; while burrowed, place a long-lasting tunnel you can use to travel - spread your tunnels around the map for options later."
+    },
+    {
+      "key": "R",
+      "name": "Void Rush",
+      "howToUseIt": "Mark enemies by damaging them, then activate to become briefly untargetable and lunge at a marked target for heavy damage based on their max health - save it to punish or finish a high-health target you've already damaged."
+    }
+  ],
+  "earlyGamePlan": "Start your jungle clear un-burrowed for the bonus attack damage from Queen's Wrath, then burrow between camps to heal off your built-up Fury and move faster. Place tunnels around the map early so you have travel options later, and look to gank a lane once you've got a full clear or two under your belt.",
+  "quickTips": [
+    "Burrow between jungle camps to heal using your stored Fury",
+    "Place tunnels in useful spots early - you'll want travel options later in the game",
+    "Save Furious Bite for when your Fury is full to get the true damage bonus",
+    "Use Void Rush to finish off a high-health target you've already marked with damage",
+    "Remember you can't basic attack while burrowed, so unburrow before a straight fight"
+  ],
+  "whatToExpect": "Rek'Sai can travel the map quickly using tunnels and her burrowed move speed, so don't assume she's far away just because you don't see her - destroy any tunnel entrances you find by standing on them. Be careful when your health is high, since Void Rush lets her briefly dodge damage and lunge at you for a hit based on your maximum health, so try to avoid getting marked by her damage in the first place.",
+  "glossary": [
+    {
+      "term": "jungler",
+      "definition": "The role and area between lanes filled with monsters that junglers fight for gold and experience."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler leaves their area to ambush an enemy in a lane."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resist, so it always deals its full value."
+    },
+    {
+      "term": "untargetable",
+      "definition": "A state where a champion cannot be selected as the target of attacks or most abilities."
+    },
+    {
+      "term": "mark",
+      "definition": "A debuff placed on an enemy that enables or boosts a follow-up effect."
+    }
+  ]
+}

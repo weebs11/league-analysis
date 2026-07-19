@@ -1,0 +1,83 @@
+{
+  "id": "Morgana",
+  "name": "Morgana",
+  "playstyleSummary": "Morgana is a ranged mage who controls fights from a distance, landing a long-range root to set up kills and dropping a damage zone that punishes low-health enemies. She also protects teammates with a shield that blocks crowd control outright. She feels like a spellcaster who sets up plays for her team rather than diving in herself.",
+  "strengths": [
+    "Dark Binding is a strong long-range root that sets up kills",
+    "Black Shield can completely save an ally from a game-changing crowd control ability",
+    "Soul Shackles is a powerful teamfight-winning stun",
+    "Tormented Shadow is great for farming and wave clear when laning alone"
+  ],
+  "weaknesses": [
+    "Dark Binding has a long cooldown, so missing it leaves her much weaker",
+    "Low mobility with no escape of her own",
+    "Squishy and easy to kill if caught out of position",
+    "Relies on hitting skillshots to be effective"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Soul Siphon",
+      "howToUseIt": "You heal whenever your damage hits champions, large minions, or bigger jungle monsters, so stay in fights and keep landing damage rather than choosing to disengage early."
+    },
+    {
+      "key": "Q",
+      "name": "Dark Binding",
+      "howToUseIt": "This is your main crowd control - a skillshot that roots the first thing it hits, so aim it through minions to catch enemies hiding behind their wave, or use your own minions to block it when it's aimed at you."
+    },
+    {
+      "key": "W",
+      "name": "Tormented Shadow",
+      "howToUseIt": "Drop this on or near enemies, especially low-health ones - it deals more damage the lower their health is, making it great for finishing people off or zoning them out of an area."
+    },
+    {
+      "key": "E",
+      "name": "Black Shield",
+      "howToUseIt": "Shield an ally right before they're about to take a dangerous crowd control ability or a burst of magic damage - once it's up, they're immune to disables until the shield breaks."
+    },
+    {
+      "key": "R",
+      "name": "Soul Shackles",
+      "howToUseIt": "Cast this when several enemies are nearby to chain them; anyone who doesn't break free in time gets stunned, making it great for starting or turning a teamfight."
+    }
+  ],
+  "earlyGamePlan": "Play at max range and look for chances to land Dark Binding on an enemy standing too far forward to set up a kill with your support duo. Use Tormented Shadow to zone enemies away from the wave or to poke, since it also works as a solid farming tool if you end up in lane alone.",
+  "quickTips": [
+    "Use minions to block enemy skillshots aimed at you, and do the same by aiming Dark Binding through the wave.",
+    "Hold Black Shield until you see a dangerous crowd control ability coming, rather than using it just to top off health.",
+    "Tormented Shadow deals more damage the longer a low-health target stays in it, so drop it early to punish enemies who linger.",
+    "Cast Soul Shackles when multiple enemies are grouped for a much bigger fight-winning stun.",
+    "You have no escape, so poke from max range and let your team protect you instead of walking up for damage."
+  ],
+  "whatToExpect": "Morgana will try to land Dark Binding on you from range to set up a kill, and can save a teammate from your crowd control with Black Shield. If she walks up and catches your team grouped, watch for Soul Shackles chaining and stunning everyone nearby - break line of sight or spread out so she can't land it on multiple people at once.",
+  "glossary": [
+    {
+      "term": "root",
+      "definition": "Crowd control that stops a target from moving but still lets them act or attack."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed manually and can be dodged, rather than one that automatically hits its target."
+    },
+    {
+      "term": "zone",
+      "definition": "To use the threat of damage or crowd control to control where enemies can safely stand."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight or trade rather than continuing it."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act (often shortened to CC)."
+    },
+    {
+      "term": "line of sight",
+      "definition": "Whether something like a wall or brush blocks vision and targeting between two points."
+    }
+  ]
+}

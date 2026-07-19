@@ -1,0 +1,80 @@
+{
+  "id": "Samira",
+  "name": "Samira",
+  "playstyleSummary": "Samira is an aggressive marksman-assassin hybrid who wants to dive straight into the middle of a fight rather than stand back and auto-attack. She builds a combo by using different attacks and abilities in a row without repeating the same one twice, and she has strong tools to dash through enemies and shred incoming projectiles. She feels like a flashy, high-risk brawler more than a typical ranged carry.",
+  "strengths": [
+    "Wild Rush lets her dash through enemies to close gaps or escape, and resets on a kill",
+    "Blade Whirl destroys enemy projectiles, giving her a way to shut down enemy skillshots",
+    "Deals bonus damage when fighting in melee range",
+    "Inferno Trigger can hit and heavily damage everyone around her at once"
+  ],
+  "weaknesses": [
+    "Very fragile if her combo or dashes are interrupted",
+    "Needs to fight in the middle of the action, unlike most ranged carries who stay safe",
+    "Loses a lot of value if she can't chain unique attacks and abilities together",
+    "Punished hard by crowd control that stops her before she can dash away"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Daredevil Impulse",
+      "howToUseIt": "Alternate between different attacks and abilities rather than repeating the same one twice in a row to keep your combo going, and remember your attacks deal bonus damage up close in melee range."
+    },
+    {
+      "key": "Q",
+      "name": "Flair",
+      "howToUseIt": "Use this as a basic damage tool between other abilities to keep your combo alive, and if you cast it during Wild Rush it'll strike every enemy along your dash path when it finishes."
+    },
+    {
+      "key": "W",
+      "name": "Blade Whirl",
+      "howToUseIt": "Activate this when the enemy is throwing out skillshots at you — it damages nearby enemies and destroys incoming enemy missiles, so it doubles as a defensive tool in a dangerous fight."
+    },
+    {
+      "key": "E",
+      "name": "Wild Rush",
+      "howToUseIt": "Dash through an enemy champion or structure to close the distance or escape danger, and remember getting a champion kill refreshes this ability, letting you chain kills together."
+    },
+    {
+      "key": "R",
+      "name": "Inferno Trigger",
+      "howToUseIt": "Fire this off once you're deep in a fight with your combo built up for a burst of damage to everyone around you — it's your finisher, so use it once you're already committed rather than to start a fight."
+    }
+  ],
+  "earlyGamePlan": "Farm from range in lane like a normal marksman early on, since you're still fragile before you have items, but look for chances to use Wild Rush and Flair together to punish an overextended enemy. Avoid diving in with your full combo until you have some levels and at least one item to back it up.",
+  "quickTips": [
+    "Alternate abilities and attacks to keep building your combo instead of repeating one",
+    "Use Blade Whirl to cancel dangerous enemy skillshots aimed at you",
+    "Wild Rush through an enemy to escape a bad fight, not just to engage",
+    "Save Inferno Trigger for once you're already in the fight with your combo going",
+    "Chase a kill with Wild Rush's refresh to snowball a fight in your favor",
+    "Don't dive into the enemy team without backup until you have some items"
+  ],
+  "whatToExpect": "Enemy Samira will try to dash into the middle of your team with Wild Rush and chain her combo for burst damage, using Blade Whirl to shred any skillshots you throw at her. She's very vulnerable if you can crowd control her before she dashes in or focus her down quickly once she's committed, since she has little defense once her combo is spent.",
+  "glossary": [
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities and attacks used together for maximum effect."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability you have to aim manually that can miss, rather than one that automatically hits its target."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill on its own."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or knockups that take away an enemy's ability to move or act."
+    },
+    {
+      "term": "overextended",
+      "definition": "Being positioned too far from your team or turret, making you vulnerable to being caught."
+    },
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into a bigger and bigger lead over time."
+    }
+  ]
+}

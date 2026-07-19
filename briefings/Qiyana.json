@@ -1,0 +1,79 @@
+{
+  "id": "Qiyana",
+  "name": "Qiyana",
+  "playstyleSummary": "Qiyana is a highly mobile assassin who reshapes her damage by dashing near terrain to enchant her weapon with an element, then dives onto a single target to burst them down quickly. She's one of the most mechanically demanding champions in the game, rewarding players who master her terrain-based tools and combos.",
+  "strengths": [
+    "Extremely high burst damage against a single target",
+    "Very mobile thanks to Terrashape and Audacity",
+    "Passive rewards spreading bonus damage across new targets",
+    "Supreme Display of Talent can stun and heavily damage multiple grouped enemies"
+  ],
+  "weaknesses": [
+    "Very difficult to play well - one of the hardest champions in the game",
+    "Low base defenses, so she dies quickly if her burst doesn't secure a kill",
+    "Most of her power depends on being near the right terrain",
+    "Punishing to learn since mistakes are costly"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Royal Privilege",
+      "howToUseIt": "Your first attack or ability against each enemy deals bonus damage - try to spread this bonus across multiple enemies in a fight rather than hitting the same target twice in a row."
+    },
+    {
+      "key": "Q",
+      "name": "Elemental Wrath / Edge of Ixtal",
+      "howToUseIt": "Swing your weapon for damage plus a bonus effect that changes depending on which element your weapon is currently enchanted with."
+    },
+    {
+      "key": "W",
+      "name": "Terrashape",
+      "howToUseIt": "Dash to a nearby patch of terrain to enchant your weapon with that terrain's element, gaining bonus damage on your attacks and abilities while enchanted - use this both to reposition and to power up before a fight."
+    },
+    {
+      "key": "E",
+      "name": "Audacity",
+      "howToUseIt": "Dash directly to an enemy and damage them - this is your main way to close the distance for an all-in or to escape after diving in."
+    },
+    {
+      "key": "R",
+      "name": "Supreme Display of Talent",
+      "howToUseIt": "Send out a shockwave that detonates any active elements you've placed, stunning and damaging nearby enemies - line this up when enemies are grouped together for the biggest impact."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Terrashape to dash near terrain and enchant your weapon before trading, since the bonus effect adds real damage to your combo. Look for kill opportunities when your passive is up on your opponent, and use Audacity to close the gap for an all-in once you have a damage advantage - but be cautious, since your low defenses mean a bad trade can get you killed.",
+  "quickTips": [
+    "Enchant your weapon with Terrashape before engaging to add bonus damage to your combo",
+    "Save your passive's bonus damage for confirming a kill rather than wasting it",
+    "Use Audacity to close gaps quickly, but have an escape plan since your defenses are low",
+    "Look for Supreme Display of Talent opportunities when enemies are grouped up",
+    "Practice her combos in a low-pressure game first - Qiyana has one of the steepest learning curves in the game"
+  ],
+  "whatToExpect": "Qiyana is an assassin who wants to dash in, burst down a single target fast, and get out - if you're caught alone or at low health, expect her to dive on you quickly. Watch her position relative to terrain, since dashing near it powers up her next attacks, and try to fight her in open areas or grouped with allies so she can't isolate you for an easy kill.",
+  "glossary": [
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    },
+    {
+      "term": "assassin",
+      "definition": "A champion role focused on quickly eliminating a single high-value target."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight rather than trading and backing off."
+    },
+    {
+      "term": "isolate",
+      "definition": "To separate a target from their allies, making them easier and safer to attack."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together for a bigger effect."
+    },
+    {
+      "term": "learning curve",
+      "definition": "How much practice or skill a champion takes to play well."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "Milio",
+  "name": "Milio",
+  "playstyleSummary": "Milio is a supportive mage who stays close to his allies, empowering their next attack or spell with bonus damage through his passive while healing and shielding them to keep them in fights. His ultimate is one of the strongest cleanse-and-heal tools in the game, letting his team fight through crowd control that would otherwise end the fight.",
+  "strengths": [
+    "Breath of Life can cleanse crowd control from multiple allies at once, a huge teamfight swing",
+    "Warm Hugs gives reliable shielding and speed with two charges for back-to-back saves",
+    "Cozy Campfire offers sustained healing and bonus attack range while allies stand in it",
+    "Passive adds free bonus damage and burn to allies' attacks, boosting their trades"
+  ],
+  "weaknesses": [
+    "Needs allies nearby to make use of most of his kit",
+    "Low personal damage and no hard crowd control of his own beyond a knockback and slow",
+    "Squishy and easy to punish if caught without allies around",
+    "Cozy Campfire and other tools require good positioning to get full value"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Fired Up!",
+      "howToUseIt": "Touch allies with your abilities to enchant them - their next damage deals bonus damage and burns the target, so use your kit on allies right before they attack or cast."
+    },
+    {
+      "key": "Q",
+      "name": "Ultra Mega Fire Kick",
+      "howToUseIt": "Kick this at an enemy to knock them back, then let it fall and slow them again on impact - useful for peeling divers off your allies."
+    },
+    {
+      "key": "W",
+      "name": "Cozy Campfire",
+      "howToUseIt": "Cast this near a fight to heal allies standing in it and extend their attack range - it follows whichever ally is nearest to where you cast it, so place it carefully."
+    },
+    {
+      "key": "E",
+      "name": "Warm Hugs",
+      "howToUseIt": "Toss this shield to a threatened ally for extra Health and Move Speed - you have two charges, so you can save two different allies in quick succession."
+    },
+    {
+      "key": "R",
+      "name": "Breath of Life",
+      "howToUseIt": "Save this for a critical moment when your team is affected by crowd control - it heals and cleanses crowd control from every ally in range at once."
+    }
+  ],
+  "earlyGamePlan": "In lane, stay near your ally and use Warm Hugs and Cozy Campfire to keep them topped up during trades, saving Ultra Mega Fire Kick to punish enemies who overextend. Track enemy crowd control cooldowns so you know when to hold Breath of Life in reserve for a big engage.",
+  "quickTips": [
+    "Touch allies with an ability just before they attack or cast to trigger bonus passive damage",
+    "Place Cozy Campfire where your team is fighting, since it follows the nearest ally",
+    "Save one Warm Hugs charge in reserve rather than using both immediately",
+    "Time Breath of Life to cleanse crowd control during a critical teamfight moment, not early",
+    "Use Ultra Mega Fire Kick to peel enemies diving your carries",
+    "Stay near your allies at all times, since most of Milio's kit only helps people close to him"
+  ],
+  "whatToExpect": "Milio will try to keep his allies topped up with heals and shields and can cleanse your crowd control with Breath of Life, so don't assume a stun or root will guarantee a kill against his team. His movement abilities show their destination before landing, so watch for that and try to isolate him away from his allies, since he has little impact alone.",
+  "glossary": [
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, and slows that limit an enemy's actions."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to an attack on the enemy team."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect an ally from being attacked, usually by slowing or blocking an enemy diver."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward or staying too long in a dangerous area, risking a gank or death."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "cleanse",
+      "definition": "Removing crowd control effects from a champion."
+    }
+  ]
+}

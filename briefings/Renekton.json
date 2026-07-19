@@ -1,0 +1,80 @@
+{
+  "id": "Renekton",
+  "name": "Renekton",
+  "playstyleSummary": "Renekton is an aggressive bruiser who wants to bully his lane opponent early using Fury, a resource he builds up by attacking. Once he has enough Fury, his abilities become stronger versions of themselves, so the rhythm of playing him is building Fury and then dumping it into an empowered ability at the right moment. He feels like a boxer who hits harder the longer the fight goes on.",
+  "strengths": [
+    "Very strong early game, especially before enemies have much health or armor",
+    "Empowered abilities hit hard and can stun for a long time",
+    "Cull the Meek heals him back up during extended fights",
+    "Dominus gives him a big health and damage boost to close out fights"
+  ],
+  "weaknesses": [
+    "Falls off in the mid-to-late game compared to other bruisers",
+    "Needs to spend Fury efficiently or his abilities feel weak",
+    "Slice and Dice can be baited out and punished if it whiffs",
+    "Vulnerable to being harassed and denied Fury before he can fight"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Reign of Anger",
+      "howToUseIt": "Attack enemies (including minions) to build Fury, especially when you're low on health since it builds faster then — try to have Fury ready before you commit to a trade."
+    },
+    {
+      "key": "Q",
+      "name": "Cull the Meek",
+      "howToUseIt": "Use this in melee range to hit everything around you and heal off the damage; with over 50 Fury it hits much harder and heals more, so save it for that threshold when possible."
+    },
+    {
+      "key": "W",
+      "name": "Ruthless Predator",
+      "howToUseIt": "Use this to stun your target for a trade or combo starter; above 50 Fury it stuns for much longer and even destroys shields, so it's worth holding Fury for a big trade."
+    },
+    {
+      "key": "E",
+      "name": "Slice and Dice",
+      "howToUseIt": "Dash in to start a fight or dash out to reset the trade — the empowered version deals bonus damage and shreds armor, so use it as your opener when you have Fury saved up."
+    },
+    {
+      "key": "R",
+      "name": "Dominus",
+      "howToUseIt": "Activate this in a close fight or when diving the enemy backline for bonus health and constant area damage, and let it also passively refill your Fury for follow-up abilities."
+    }
+  ],
+  "earlyGamePlan": "Play aggressively from level 1: build Fury on minions and enemies, then use Slice and Dice to dash in and Ruthless Predator to stun for a trade once you have enough Fury saved up. Try to win your lane hard before power spikes even out, since Renekton loses relative strength as the game goes on.",
+  "quickTips": [
+    "Trade when your Fury bar is above 50 for empowered, much stronger abilities",
+    "Use Slice and Dice to engage, then Dice back out again to escape after trading",
+    "Cull the Meek's heal is strongest with high Fury, use it to win extended trades",
+    "Push your early lead — Renekton wants to end games before the late game",
+    "Save Dominus for either a close skirmish or an all-in dive on a priority target",
+    "Don't waste Fury on minions if you're about to trade with the enemy champion"
+  ],
+  "whatToExpect": "Enemy Renekton will try to bully you early with stuns and dashes while his Fury is easy to build, especially if you let him freely hit minions. Play safe in the first several levels, avoid extended trades where his Cull the Meek heal outvalues you, and know that he becomes much less threatening as the game goes long.",
+  "glossary": [
+    {
+      "term": "bruiser",
+      "definition": "A champion built to fight in melee range with a mix of damage and durability."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game where a champion suddenly becomes much stronger, often from levels or items."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with no plan to disengage, betting everything on winning it."
+    },
+    {
+      "term": "dive",
+      "definition": "Aggressively pushing into enemy territory, often under their turret, to get a kill."
+    },
+    {
+      "term": "backline",
+      "definition": "The squishy, high-damage champions positioned at the back of a team fight, like ADCs and mages."
+    }
+  ]
+}

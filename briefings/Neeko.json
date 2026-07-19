@@ -1,0 +1,75 @@
+{
+  "id": "Neeko",
+  "name": "Neeko",
+  "playstyleSummary": "Neeko is a mage who can disguise herself as an ally or another unit to confuse enemies, then punishes anyone who gets too close with area damage. She feels sneaky and a bit trickster-ish - much of her power comes from making opponents second-guess who's actually standing in front of them before she bursts them down.",
+  "strengths": [
+    "Inherent Glamour's disguise lets her scout and bait enemies into bad decisions",
+    "Pop Blossom is a strong teamfight engage, especially when its telegraph is hidden by disguise",
+    "Tangle-Barbs punishes enemies who group up near minions",
+    "Blooming Burst rewards good positioning with a second hit for extra damage"
+  ],
+  "weaknesses": [
+    "Disguise breaks easily from crowd control, casting a damaging spell, or taking enough damage",
+    "Fairly squishy and easy to kill once revealed",
+    "Her disguise tricks become less effective once enemies learn to watch for them",
+    "Relies on landing skillshots to deal real damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Inherent Glamour",
+      "howToUseIt": "Disguise yourself as an ally or another unit to confuse or bait enemies - remember that crowd control, casting a damaging spell, or taking too much damage will break the disguise, so use it carefully."
+    },
+    {
+      "key": "Q",
+      "name": "Blooming Burst",
+      "howToUseIt": "Throw this at an enemy, and it detonates again if it hits a champion or kills something - line it up so both hits land on the same target for double the damage."
+    },
+    {
+      "key": "W",
+      "name": "Shapesplitter",
+      "howToUseIt": "Every third attack deals bonus damage passively, and you can send a clone in a direction to fake out enemies, recasting to redirect it mid-flight."
+    },
+    {
+      "key": "E",
+      "name": "Tangle-Barbs",
+      "howToUseIt": "Aim this through multiple enemies or minions - it grows bigger, faster, and lasts longer each time it kills something or passes through a champion, so a wide-open line makes it far more dangerous."
+    },
+    {
+      "key": "R",
+      "name": "Pop Blossom",
+      "howToUseIt": "Use this while disguised so the warning telegraph is hidden, catching enemies off guard with the knock-up and stun when you land."
+    }
+  ],
+  "earlyGamePlan": "Poke with Blooming Burst when the enemy steps up to farm, aiming to hit them directly for the double-hit bonus. Use your disguise sparingly early - save it for moments where faking out the enemy actually matters, since overusing it teaches them to stop falling for it.",
+  "quickTips": [
+    "Line up Tangle-Barbs through as many minions or champions as possible to make it bigger and longer-lasting.",
+    "Cast Pop Blossom while disguised to hide the telegraph and catch enemies by surprise.",
+    "Remember your disguise breaks if you take crowd control, cast a damaging spell, or take enough damage.",
+    "Aim Blooming Burst to land both hits on the same champion for maximum damage.",
+    "Use Shapesplitter's clone to scout a brush or bait an enemy into revealing themselves."
+  ],
+  "whatToExpect": "Neeko can disguise herself as an ally or minion to sneak up on you, so be a little cautious around units that could actually be her. Watch for a hidden Pop Blossom setting up a knock-up and stun in a teamfight, and remember that focusing damage onto her or landing crowd control on her breaks her disguise immediately.",
+  "glossary": [
+    {
+      "term": "disguise",
+      "definition": "Appearing as another unit to hide your identity - a mechanic Neeko uses to confuse enemies until it's broken."
+    },
+    {
+      "term": "telegraph",
+      "definition": "A visible warning or animation that reveals an ability is about to happen, giving enemies a chance to react."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage traded from range to wear enemies down before a real fight."
+    },
+    {
+      "term": "brush",
+      "definition": "Bushes on the map that hide any unit standing inside them from enemies outside."
+    }
+  ]
+}

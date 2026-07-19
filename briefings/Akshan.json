@@ -1,0 +1,79 @@
+{
+  "id": "Akshan",
+  "name": "Akshan",
+  "playstyleSummary": "Akshan is a mobile marksman-assassin hybrid who swings around the map on his grappling hook, snipes with a returning boomerang, and can revive fallen allies by hunting down whoever killed them. He rewards patient farming punctuated by sudden, high-value plays rather than constant lane pressure.",
+  "strengths": [
+    "Very mobile thanks to Heroic Swing, hard to pin down",
+    "Can create a big tempo swing by hunting down Scoundrels to revive fallen allies",
+    "Strong dueling potential from Dirty Fighting's bonus damage and shield",
+    "Camouflage from Going Rogue lets him roam and gank unseen"
+  ],
+  "weaknesses": [
+    "Falls behind if he can't find kills on Scoundrels",
+    "Heroic Swing requires nearby terrain to use effectively",
+    "Comeuppance's channel time can be interrupted",
+    "Weaker early poke than many marksmen"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Dirty Fighting",
+      "howToUseIt": "Every third hit (whether attack or ability) against a champion deals bonus damage and shields you — try to sequence your attacks and abilities to line this up during trades."
+    },
+    {
+      "key": "Q",
+      "name": "Avengerang",
+      "howToUseIt": "Throw the boomerang out and let it return through the target for a second hit; each enemy it hits also extends its range, so it can snowball into longer throws."
+    },
+    {
+      "key": "W",
+      "name": "Going Rogue",
+      "howToUseIt": "Activate this to enter camouflage and hunt down 'Scoundrels' — enemies who killed your allies. Killing one revives the allies they killed and clears everyone's marks, which is a huge tempo swing when it comes together."
+    },
+    {
+      "key": "E",
+      "name": "Heroic Swing",
+      "howToUseIt": "Fire the grappling hook into terrain to swing around it and attack the nearest enemy repeatedly — it acts as your gap-closer, escape tool, and way to reposition around fights."
+    },
+    {
+      "key": "R",
+      "name": "Comeuppance",
+      "howToUseIt": "Lock onto a target and channel to build up bullets, then release them for big damage based on their missing health — best used on already-low targets or to threaten from range before a fight starts."
+    }
+  ],
+  "earlyGamePlan": "Farm safely with your basic attacks and Avengerang from range, since your kit rewards patience over forcing early fights. Use Heroic Swing to reposition around fights or dodge skillshots rather than always as a pure gap-closer. Keep an eye out for any ally deaths near you — killing the Scoundrel who caused them gives you a big lane advantage.",
+  "quickTips": [
+    "Line up your third hit (auto or ability) on a champion to trigger Dirty Fighting's bonus damage and shield.",
+    "Use Heroic Swing near terrain to escape ganks or reposition mid-fight.",
+    "Prioritize killing a Scoundrel if one appears — it revives your fallen ally and creates a big tempo swing in your favor.",
+    "Try to land both passes of Avengerang on the same target for maximum damage.",
+    "Use Going Rogue's camouflage to roam other lanes without being spotted."
+  ],
+  "whatToExpect": "Akshan will try to snipe you with Avengerang from range and swing in on his grappling hook to pick fights, especially if he's gone camouflaged while hunting a Scoundrel mark. If he's marked one of your allies' killers, expect him to play aggressively to secure that revive — focus him down before he gets there if you can. Be ready for a burst of damage from his ultimate if you're already low on health.",
+  "glossary": [
+    {
+      "term": "gap-closer",
+      "definition": "An ability that lets a champion quickly close distance to a target, like a dash or swing."
+    },
+    {
+      "term": "tempo",
+      "definition": "The advantage of using time efficiently — getting ahead through fast, impactful plays rather than raw stats."
+    },
+    {
+      "term": "camouflage",
+      "definition": "A stealth effect that hides a champion from enemy vision unless revealed by a nearby ward or ability."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes a moment to complete and can be interrupted by crowd control or moving out of range."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe range before committing to a fight."
+    },
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help fights or get kills in other lanes."
+    }
+  ]
+}

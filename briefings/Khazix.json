@@ -1,0 +1,67 @@
+{
+  "id": "Khazix",
+  "name": "Kha'Zix",
+  "playstyleSummary": "Kha'Zix is a jungle assassin who hunts down enemies caught away from their team, dealing massively increased damage to Isolated targets. He customizes his kit over the game by Evolving one ability each time he ranks up his ultimate, so no two games play out quite the same way. He rewards patient hunting and picking the right moment to strike over blindly diving into groups.",
+  "strengths": [
+    "Deals much higher damage to Isolated enemies, making him a great pick-off threat.",
+    "Void Assault lets him turn invisible, both for engaging safely and escaping.",
+    "Evolving his abilities through his ultimate gives him flexibility to adapt his build to the game.",
+    "Strong single-target burst damage from Taste Their Fear."
+  ],
+  "weaknesses": [
+    "Much weaker against enemies who stay grouped near allies, since he loses his Isolated damage bonus.",
+    "Leap and Void Assault have long cooldowns, leaving him vulnerable after using them.",
+    "Commits hard once he leaps into a fight, with limited ways to back out.",
+    "Relies on picking good targets rather than brute-forcing fights."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Unseen Threat",
+      "howToUseIt": "Look for enemies who are Isolated, meaning they have no allies nearby — your abilities deal much more damage to them. Stepping into brush or using Void Assault to go invisible refreshes Unseen Threat, so your next attack on a champion deals bonus damage and slows them."
+    },
+    {
+      "key": "Q",
+      "name": "Taste Their Fear",
+      "howToUseIt": "Your main damage tool — it hits much harder against Isolated targets, so prioritize using it on enemies who are away from their allies."
+    },
+    {
+      "key": "W",
+      "name": "Void Spike",
+      "howToUseIt": "Fire it at enemies for damage and healing if you're caught in the explosion too — useful for both trading and sustaining through jungle clears."
+    },
+    {
+      "key": "E",
+      "name": "Leap",
+      "howToUseIt": "Use this to jump into range for a kill or to escape danger — its cooldown is long early on, so don't waste it without a good reason."
+    },
+    {
+      "key": "R",
+      "name": "Void Assault",
+      "howToUseIt": "Each rank lets you Evolve one of your other abilities for a permanent upgrade — choose based on what your build needs. Activating it also turns you invisible and speeds you up, which retriggers Unseen Threat for a free bonus-damage attack."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, clear your jungle camps efficiently with Void Spike and Taste Their Fear, and look for ganks on lanes where the enemy is Isolated from their team. Pick your Evolve upgrades as you unlock ranks of Void Assault based on how the game is going — for example, more range on Leap for mobility, or a cone on Void Spike for teamfights.",
+  "quickTips": [
+    "Prioritize fighting Isolated enemies — your damage against them is much higher.",
+    "Use brush or Void Assault to trigger Unseen Threat before engaging, for a free burst of bonus damage.",
+    "Don't Leap in without a plan — its long cooldown leaves you stuck if the fight goes badly.",
+    "Pick your Evolve upgrades to counter what the enemy team is doing, not just out of habit.",
+    "Gank lanes where the enemy laner is pushed up alone and away from allies."
+  ],
+  "whatToExpect": "An enemy Kha'Zix deals much more damage to you if you're Isolated from your teammates, so stick near allies or minions when he's nearby. He's most dangerous with Leap and Void Assault available, and much weaker right after using them since both have long cooldowns. Watch for him going invisible with Void Assault — he'll be looking for a free bonus-damage attack when he reappears.",
+  "glossary": [
+    {
+      "term": "Isolated",
+      "definition": "A status where an enemy has no allied champions or minions nearby, making them easier to burst down."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) shows up in a lane to help get a kill."
+    },
+    {
+      "term": "Evolve",
+      "definition": "Kha'Zix's mechanic of permanently upgrading one ability each time he ranks up his ultimate."
+    }
+  ]
+}

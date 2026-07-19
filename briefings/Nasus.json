@@ -1,0 +1,79 @@
+{
+  "id": "Nasus",
+  "name": "Nasus",
+  "playstyleSummary": "Nasus is a scaling fighter whose signature ability permanently grows in power every time it kills a minion or champion, so he turns into a late-game monster if he's allowed to farm safely. Playing him well means being patient early and prioritizing farm over flashy trades, then cashing in that patience in the mid-to-late game.",
+  "strengths": [
+    "Siphoning Strike stacks permanently, letting him scale almost infinitely into the late game",
+    "Wither is a strong answer to enemies who deal damage through auto attacks",
+    "Fury of the Sands turns him into a powerful threat in extended fights",
+    "Spirit Fire shreds armor and helps with wave clear"
+  ],
+  "weaknesses": [
+    "Weak and passive during the early game",
+    "Needs a lot of uninterrupted farming time to reach his full power",
+    "Easily kited when his ultimate isn't active",
+    "Vulnerable to being zoned off his minions, which stalls his scaling"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Soul Eater",
+      "howToUseIt": "You gain bonus life steal passively, which helps you sustain through lane trades and farming without needing to activate anything."
+    },
+    {
+      "key": "Q",
+      "name": "Siphoning Strike",
+      "howToUseIt": "Prioritize getting the killing blow on minions with this - every kill permanently increases its damage, so safely farming with it is the core of playing Nasus well."
+    },
+    {
+      "key": "W",
+      "name": "Wither",
+      "howToUseIt": "Use this on an enemy champion who deals a lot of their damage through auto attacks - it slows their move speed and attack speed over time, crippling them in a fight."
+    },
+    {
+      "key": "E",
+      "name": "Spirit Fire",
+      "howToUseIt": "Drop this on the wave to help clear it, or on a champion you're fighting - it reduces the armor of anyone standing in it, making your other damage hit harder."
+    },
+    {
+      "key": "R",
+      "name": "Fury of the Sands",
+      "howToUseIt": "Activate this when you're ready to fight - it boosts your health, armor, magic resistance, and attack range, and lets you use Siphoning Strike more often."
+    }
+  ],
+  "earlyGamePlan": "Your early game is weak, so focus almost entirely on getting the killing blow on minions with Siphoning Strike rather than trading with your opponent. Avoid unnecessary trades and just farm safely - every stack you get now pays off enormously later in the game.",
+  "quickTips": [
+    "Prioritize farming minions with Siphoning Strike over trading damage with your lane opponent early on.",
+    "Save Wither for enemies who rely on auto attacks, since it cripples their damage output.",
+    "Use Spirit Fire on the wave when you need help farming, or on an enemy for the armor shred in a fight.",
+    "Don't activate Fury of the Sands until you're actually ready to commit to a fight, since it has a limited duration.",
+    "Get some survivability even on a damage-focused build, since enemies will target you even while you're empowered."
+  ],
+  "whatToExpect": "Nasus is weak early but becomes a serious threat the more Siphoning Strike stacks he gets from farming, so try to deny his farm or punish him in lane before he scales. Once his ultimate is up, he can dish out heavy damage and armor shred in fights - avoid standing still near him and use crowd control or kiting to keep him from reaching you.",
+  "glossary": [
+    {
+      "term": "scale",
+      "definition": "To grow stronger relative to enemies over time, typically through farming and leveling up."
+    },
+    {
+      "term": "farm",
+      "definition": "Killing minions and monsters for gold and experience."
+    },
+    {
+      "term": "sustain",
+      "definition": "Healing or otherwise recovering health during a fight or lane phase."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking or damaging an enemy while continually moving away to avoid their retaliation."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "zone",
+      "definition": "To use the threat of damage or crowd control to control where enemies can safely stand."
+    }
+  ]
+}

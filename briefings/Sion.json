@@ -1,0 +1,76 @@
+{
+  "id": "Sion",
+  "name": "Sion",
+  "playstyleSummary": "Sion is a tanky bruiser who charges up powerful abilities and grows his health throughout the game, then gets a second life after dying that can still swing a fight. Playing him is about patient setup, like charging your stun or timing your shield explosion, rather than fast reactions.",
+  "strengths": [
+    "Very tanky with health that grows throughout the game",
+    "Decimating Smash is a powerful stun if charged fully",
+    "Unstoppable Onslaught is a long-range engage that can catch enemies off guard",
+    "Glory in Death lets him fight on even after dying"
+  ],
+  "weaknesses": [
+    "Charged abilities can be interrupted or dodged if telegraphed",
+    "Unstoppable Onslaught has limited steering, so it's easy to juke in tight spaces",
+    "Vulnerable while charging Decimating Smash",
+    "Falls off if the enemy team plays around his commitment-based kit"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Glory in Death",
+      "howToUseIt": "Don't panic after dying; you'll briefly reanimate with fast, healing attacks, so try to get one more hit on a low-health enemy before you go down for good."
+    },
+    {
+      "key": "Q",
+      "name": "Decimating Smash",
+      "howToUseIt": "Hold this down to charge it fully for a knock-up and stun. A quick tap still deals damage but without the crowd control, so use the short version if you just need a fast poke."
+    },
+    {
+      "key": "W",
+      "name": "Soul Furnace",
+      "howToUseIt": "Shield yourself before a trade, then reactivate it a few seconds later for burst damage. Killing enemies with Soul Furnace also permanently grows your max health."
+    },
+    {
+      "key": "E",
+      "name": "Roar of the Slayer",
+      "howToUseIt": "Use this to set up your other abilities; it slows and reduces armor, and against minions it knocks them back into anyone standing behind them."
+    },
+    {
+      "key": "R",
+      "name": "Unstoppable Onslaught",
+      "howToUseIt": "Charge toward the enemy team in a straight line to start a fight; steer early since your turning gets harder to control the longer you charge."
+    }
+  ],
+  "earlyGamePlan": "Farm safely in lane using Soul Furnace to shield through trades, and look to fully charge Decimating Smash when the enemy is out of position. Avoid overcommitting with your ultimate before you have some health built up; Sion gets much stronger as the game goes on and his health total grows.",
+  "quickTips": [
+    "Fully charge Decimating Smash when you can; the stun is much stronger than the quick-tap version.",
+    "Use Soul Furnace before trades for a shield, and time the reactivation for maximum damage.",
+    "Steer Unstoppable Onslaught early since it's hard to turn once you're at full speed.",
+    "Try to land a hit during your post-death reanimation for extra value.",
+    "Roar of the Slayer through a minion wave to knock back and weaken multiple enemies.",
+    "Build up max health from Soul Furnace kills to keep scaling your durability."
+  ],
+  "whatToExpect": "Sion will try to fully charge his stun or barrel into your team with his long-range ultimate, so watch his position and be ready to sidestep. Remember he gets a short second life after dying with fast healing attacks, so finish him off completely or back away rather than assuming he's dead.",
+  "glossary": [
+    {
+      "term": "bruiser",
+      "definition": "A durable, melee champion built to both deal and take a fair amount of damage."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's movement or actions."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually with a tool that locks down an enemy."
+    },
+    {
+      "term": "scaling",
+      "definition": "How a champion's power grows over the course of the game, often through levels and items."
+    },
+    {
+      "term": "juke",
+      "definition": "Dodging a skillshot or dash by moving unpredictably."
+    }
+  ]
+}

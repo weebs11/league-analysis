@@ -1,0 +1,84 @@
+{
+  "id": "MonkeyKing",
+  "name": "Wukong",
+  "playstyleSummary": "Wukong is a bruiser who dives into fights, gets tougher the longer he's in them, and uses a dash-plus-clone combo to reposition or catch enemies off guard. He feels active and mobile - you're constantly hopping in with Nimbus Strike, faking enemies out with Warrior Trickster, then finishing with a big knockup ultimate. He rewards committing to fights rather than poking from a distance.",
+  "strengths": [
+    "Gets tankier the longer he fights thanks to Stone Skin",
+    "Strong engage and repositioning tools with Nimbus Strike and Warrior Trickster",
+    "Cyclone is a powerful teamfight-turning knockup",
+    "Solid 1v1 skirmisher once he's on top of a target"
+  ],
+  "weaknesses": [
+    "Relies on landing his dash combo, which can be dodged or predicted",
+    "Vulnerable before Stone Skin stacks up, especially against ranged harass",
+    "Needs to get into melee range, so kiting and crowd control shut him down",
+    "Mana can run short early if you use abilities too freely"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Stone Skin",
+      "howToUseIt": "The longer you stay in a fight against champions or monsters, the more armor and health regen you stack, so don't disengage early once you're committed - keep swinging."
+    },
+    {
+      "key": "Q",
+      "name": "Crushing Blow",
+      "howToUseIt": "Use this on your next attack when starting a trade - it lets you hit from further away and shreds the target's armor for you and your team."
+    },
+    {
+      "key": "W",
+      "name": "Warrior Trickster",
+      "howToUseIt": "Turn invisible and dash away or into a fight; the clone left behind attacks nearby enemies and can bait them into wasting abilities on it."
+    },
+    {
+      "key": "E",
+      "name": "Nimbus Strike",
+      "howToUseIt": "Dash onto a target enemy to start a fight or catch someone trying to run; the images that spawn also hit anyone else standing near your target."
+    },
+    {
+      "key": "R",
+      "name": "Cyclone",
+      "howToUseIt": "Use this in the middle of a group of enemies to knock them all up and open a fight for your team's damage to follow up on."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Crushing Blow before trades to poke safely from extra range and shred armor, then follow up with Nimbus Strike if the enemy overextends. Since Stone Skin rewards staying in fights, don't disengage from an even trade too early - but be cautious about engaging before level 6, since you lack the big Cyclone knockup to seal the fight.",
+  "quickTips": [
+    "Combo Nimbus Strike into Warrior Trickster to dash in, then vanish and dash back out.",
+    "Use Warrior Trickster near brush or around a corner to bait enemies into attacking your clone instead of you.",
+    "Keep fighting once you've committed - Stone Skin makes you tougher the longer the fight lasts.",
+    "Save Cyclone for when multiple enemies are grouped together so the knockup hits more than one target.",
+    "Crushing Blow's extra range is great for starting a trade before the enemy can react.",
+    "Watch your mana early - your combo relies on chaining several abilities together."
+  ],
+  "whatToExpect": "Wukong will try to dash onto you with Nimbus Strike, then use Warrior Trickster to either escape or fake you out with his clone. If your team gets caught grouped up, watch for Cyclone knocking everyone into the air - focus him down quickly, since he gets much harder to kill the longer a fight against him drags on.",
+  "glossary": [
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight or trade rather than continuing it."
+    },
+    {
+      "term": "trade",
+      "definition": "Exchanging damage with an opponent, usually in lane."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight, usually by committing crowd control or a dash onto an enemy."
+    },
+    {
+      "term": "combo",
+      "definition": "Using two or more abilities together in sequence for a stronger effect than either alone."
+    },
+    {
+      "term": "knockup",
+      "definition": "A crowd control effect that launches a target into the air, briefly stopping them from acting."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, away from allies, turret protection, or vision."
+    },
+    {
+      "term": "brush",
+      "definition": "Bushes on the map that hide any unit standing inside them from enemies outside."
+    }
+  ]
+}

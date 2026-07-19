@@ -1,0 +1,88 @@
+{
+  "id": "Galio",
+  "name": "Galio",
+  "playstyleSummary": "Galio is a tanky mage usually played in the middle lane or as a support, built around protecting teammates and blowing up enemy dives with magic damage and crowd control. He is forgiving and durable rather than mechanically demanding — most of his skill comes from timing his abilities to save allies or disrupt fights, not fancy combos.",
+  "strengths": [
+    "Very tanky while still dealing solid magic damage",
+    "Strong crowd control between his taunt and knockup",
+    "Global ultimate lets him help teammates anywhere on the map",
+    "Good wave clear with Winds of War"
+  ],
+  "weaknesses": [
+    "Low mobility outside of Justice Punch and his ultimate",
+    "Mana hungry early in the game",
+    "His ultimate telegraphs where he's headed, so bad timing wastes it",
+    "Lower single-target burst than true assassins"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Colossal Smash",
+      "howToUseIt": "After using an ability, your next basic attack deals bonus magic damage in an area. Weave in an auto attack between spells to trade better and clear minion waves faster."
+    },
+    {
+      "key": "Q",
+      "name": "Winds of War",
+      "howToUseIt": "Fire the tornado down a lane or through the enemy to poke and clear minion waves. It deals damage over time, so it's strongest against enemies who can't easily step out of it."
+    },
+    {
+      "key": "W",
+      "name": "Shield of Durand",
+      "howToUseIt": "Start charging it right as enemies commit to engaging or diving your team, not too early. Releasing taunts and damages nearby enemies, and it can even be released while you're crowd controlled."
+    },
+    {
+      "key": "E",
+      "name": "Justice Punch",
+      "howToUseIt": "Save this to knock up an isolated enemy champion who overextends, or use the step-back on its own to dodge an incoming skillshot."
+    },
+    {
+      "key": "R",
+      "name": "Hero's Entrance",
+      "howToUseIt": "Cast it on an ally under pressure anywhere on the map using their minimap icon, shielding your team and knocking up enemies where you land. Try to land during a fight already in progress rather than telegraphing too early."
+    }
+  ],
+  "earlyGamePlan": "Galio is usually played mid or as a support. In lane, farm safely with Winds of War and poke enemies who stand in it, looking for Justice Punch to punish anyone who overextends. Avoid all-in fights until you have some levels, since your damage ramps up over time — your early job is to survive, farm, and set up your team with vision and good W timing.",
+  "quickTips": [
+    "Weave a basic attack after each spell to proc Colossal Smash for extra damage and faster wave clear.",
+    "Charge Shield of Durand as a fight starts, not before — releasing too early wastes the taunt.",
+    "Use Hero's Entrance on the minimap to save a teammate from across the map, not only to engage.",
+    "Justice Punch's step-back can dodge point-blank skillshots even without a target to hit.",
+    "Don't walk your ultimate's landing spot in a straight predictable line — the delay before landing lets enemies peel.",
+    "Build tanky and let your crowd control and shields carry teamfights instead of trying to out-damage carries."
+  ],
+  "whatToExpect": "Enemy Galio will try to poke you with Winds of War and punish overextensions with Justice Punch's knockup, then follow up with Shield of Durand's taunt in a fight. Watch for his ultimate landing near an ally under pressure — it shields his team and knocks up anyone standing there, so don't group tightly on top of a low-health ally he might save. He's tanky, so focus other targets in fights rather than trying to burst him down.",
+  "glossary": [
+    {
+      "term": "Crowd control (CC)",
+      "definition": "Effects like stuns, taunts, roots, or knockups that take away an enemy's ability to move or act."
+    },
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Wave clear",
+      "definition": "How quickly a champion can kill an entire wave of minions."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "Telegraph",
+      "definition": "Any visible sign (animation, targeting reticle, delay) that reveals what an ability is about to do before it happens."
+    },
+    {
+      "term": "Overextend",
+      "definition": "Pushing too far past your minions or team, leaving yourself open to a gank or ambush."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "All-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to kill or be killed, rather than trading and retreating."
+    }
+  ]
+}

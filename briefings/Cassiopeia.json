@@ -1,0 +1,80 @@
+{
+  "id": "Cassiopeia",
+  "name": "Cassiopeia",
+  "playstyleSummary": "Cassiopeia is a snake-like mage who has no dashes or blinks, relying entirely on poison zones and pure move speed to control fights from a distance. She's one of the hardest champions to learn since she can't flash or leap out of danger the way most mages can, but her damage over time and area denial are extremely strong once mastered.",
+  "strengths": [
+    "Very high sustained magic damage through poison stacking",
+    "Miasma grounds enemies, shutting down their movement abilities",
+    "Petrifying Gaze can stun an entire team if they're facing her",
+    "Gains extra value from move speed thanks to her unique passive"
+  ],
+  "weaknesses": [
+    "No dash or blink, making her very difficult to disengage with",
+    "Very high difficulty — combos require precise spacing and prediction",
+    "Vulnerable to gap-closers and crowd control since she can't reposition quickly",
+    "Petrifying Gaze only stuns enemies facing her; turned-away enemies are just slowed"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Serpentine Grace",
+      "howToUseIt": "All your move speed bonuses are more effective than they would be on other champions. Since you have no dash, prioritize movement speed to help you kite and reposition safely instead of relying on a gap-closer."
+    },
+    {
+      "key": "Q",
+      "name": "Noxious Blast",
+      "howToUseIt": "Blast an area with poison after a brief delay, gaining move speed if you hit an enemy champion. Lead your target when aiming, since the delay means they can walk out of it if you aim directly at them."
+    },
+    {
+      "key": "W",
+      "name": "Miasma",
+      "howToUseIt": "Release clouds of poison that slow, ground, and lightly damage enemies who pass through, with grounded enemies unable to use movement abilities. Use it to shut down an enemy's escape or engage tool right before they need it."
+    },
+    {
+      "key": "E",
+      "name": "Twin Fang",
+      "howToUseIt": "Deal bonus damage to poisoned targets, healing yourself for a portion of the damage, and refunding mana if the target dies from it. Use this as your primary damage and sustain tool once a target is already poisoned by your other spells."
+    },
+    {
+      "key": "R",
+      "name": "Petrifying Gaze",
+      "howToUseIt": "Release a swirl of energy that stuns enemies facing you and slows those with their back turned. Try to catch enemies off guard so they're facing you, since a full stun is far more valuable than the slow."
+    }
+  ],
+  "earlyGamePlan": "Poke with Noxious Blast to apply poison and gain move speed, then follow up with Twin Fang for extra damage once your target is poisoned. Play carefully in lane since you have no escape ability — respect all-in potential from your opponent and use Miasma defensively to ground them if they try to dash at you.",
+  "quickTips": [
+    "Lead your target with Noxious Blast since it has a delay before landing",
+    "Save Twin Fang for poisoned targets — it deals much more damage and heals you",
+    "Use Miasma proactively to ground an enemy before they try to engage or escape",
+    "Prioritize move speed to compensate for having no dash, since your passive amplifies it",
+    "Try to land Petrifying Gaze while enemies are facing you for the full stun instead of just a slow",
+    "Play cautiously around enemies with gap-closers, since you can't easily disengage"
+  ],
+  "whatToExpect": "An enemy Cassiopeia has no dash or blink, so if you can close the distance or catch her out of position, she has very few ways to escape. Turn your back to her before she casts Petrifying Gaze to only take the slow instead of the stun, and watch for Miasma zones on the ground since standing in them grounds you and prevents you from using movement abilities to escape.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance with low-commitment spells before going for a bigger trade."
+    },
+    {
+      "term": "gap-closer",
+      "definition": "An ability that lets a champion quickly close the distance to a target, like a dash or leap."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight and retreating, often using mobility or defensive abilities to escape safely."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to win it decisively, leaving little held in reserve."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking an enemy while continually moving away to avoid taking damage in return."
+    }
+  ]
+}

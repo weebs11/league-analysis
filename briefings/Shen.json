@@ -1,0 +1,80 @@
+{
+  "id": "Shen",
+  "name": "Shen",
+  "playstyleSummary": "Shen is a durable top-lane tank who protects his team from anywhere on the map. In lane he trades safely and blocks damage with shields, and once he hits level 6 he can teleport across the map to save a teammate in trouble. He feels less about dealing damage and more about making the right decisions on where to be.",
+  "strengths": [
+    "Very tanky and hard to kill in extended fights",
+    "Global ultimate can save allies or swing fights across the map",
+    "Shadow Dash taunt punishes enemies who get too aggressive",
+    "Strong at protecting teammates and peeling for carries"
+  ],
+  "weaknesses": [
+    "Deals relatively low damage compared to other top laners",
+    "Taunt can be dodged, wasting his main engage tool",
+    "Needs good map awareness to use his ultimate effectively",
+    "Not very threatening early unless enemies overextend"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Ki Barrier",
+      "howToUseIt": "Weave your abilities into fights whenever safe. Casting them gives you a shield, and hitting allies with your spells brings the shield back faster."
+    },
+    {
+      "key": "Q",
+      "name": "Twilight Assault",
+      "howToUseIt": "Use this on tanky enemies since it deals more damage the higher their max health is, and remember it slows anyone it collides with."
+    },
+    {
+      "key": "W",
+      "name": "Spirit's Refuge",
+      "howToUseIt": "Drop this to block incoming attacks for yourself and any allies standing near your spirit blade, great for protecting a teammate from a burst of damage."
+    },
+    {
+      "key": "E",
+      "name": "Shadow Dash",
+      "howToUseIt": "Dash toward enemies to taunt the first one you hit, forcing them to attack you. Use it to peel a diving enemy off a teammate or to start a fight."
+    },
+    {
+      "key": "R",
+      "name": "Stand United",
+      "howToUseIt": "Watch your teammates' health bars and use this to shield an ally under pressure anywhere on the map, then teleport in to back them up."
+    }
+  ],
+  "earlyGamePlan": "Play patiently in the top lane, using Spirit's Refuge to block damage during trades and only going for Shadow Dash when you're confident you'll land the taunt. Farm safely and don't force fights before level 6; your biggest early strength is not losing lane badly, since your global ultimate becomes a huge asset for the team once it's unlocked.",
+  "quickTips": [
+    "Cast a spell before trading to get your Ki Barrier shield up first.",
+    "Only use Shadow Dash when you're likely to hit; missing it wastes your main engage.",
+    "Watch the map after level 6 so you can use Stand United to save a teammate in danger.",
+    "Use Spirit's Refuge proactively to block burst damage, not just reactively.",
+    "Twilight Assault hits harder against tanky targets, so don't be afraid to use it in skirmishes.",
+    "Ward the top lane so you know when it's safe to leave and roam or teleport."
+  ],
+  "whatToExpect": "Shen will try to bait you into overextending so he can taunt and punish you, and later in the game he can teleport in to save a teammate you thought you had killed. Play a bit more cautiously around him once he's level 6, and try to burst down his teleport target quickly before he arrives.",
+  "glossary": [
+    {
+      "term": "top lane",
+      "definition": "The lane on the upper side of the map, typically played 1v1 by a durable or self-sufficient champion."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between two laners."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually with a tool that locks down an enemy."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate (often a carry) from enemies trying to attack them."
+    },
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help fights or objectives elsewhere on the map."
+    },
+    {
+      "term": "ultimate",
+      "definition": "A champion's most powerful ability, usually on a long cooldown and unlocked at level 6."
+    }
+  ]
+}

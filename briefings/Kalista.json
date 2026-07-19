@@ -1,0 +1,76 @@
+{
+  "id": "Kalista",
+  "name": "Kalista",
+  "playstyleSummary": "Kalista is a highly mobile marksman who hops with every attack and is bonded to an ally called her Oathsworn, whom she can pull into fights and combo with. She feels twitchy and precise - you're constantly repositioning between attacks while lining up spears for a big payoff.",
+  "strengths": [
+    "Constant micro-mobility makes her hard to pin down while attacking",
+    "Rend deals heavy bonus damage when built up over several hits",
+    "Fate's Call gives a strong team engage or save alongside her Oathsworn",
+    "Sentinel adds bonus damage and vision when coordinated with her Oathsworn"
+  ],
+  "weaknesses": [
+    "Her mobility depends on attacking, so she's much less slippery outside of combat range",
+    "Attack speed slows reduce how much distance she can cover",
+    "Cannot cancel her attack windup, giving a window for enemies to react",
+    "Relies on having an Oathsworn ally to unlock her full kit's potential"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Martial Poise",
+      "howToUseIt": "Enter a movement command while your basic attack or Pierce is winding up to hop a short distance as you fire - use this constantly to kite while still dealing damage."
+    },
+    {
+      "key": "Q",
+      "name": "Pierce",
+      "howToUseIt": "Throw a spear that passes through and keeps flying if it kills its target - good for both damage and repositioning through Martial Poise on the same cast."
+    },
+    {
+      "key": "W",
+      "name": "Sentinel",
+      "howToUseIt": "Deal bonus damage when you and your Oathsworn hit the same target; activate it to send a scouting soul ahead of you, revealing the path before you commit to a fight."
+    },
+    {
+      "key": "E",
+      "name": "Rend",
+      "howToUseIt": "Your attacks stick spears in enemies passively; activate to rip them all out at once for a slow and escalating damage based on how many spears landed - build up spears before you activate for maximum value."
+    },
+    {
+      "key": "R",
+      "name": "Fate's Call",
+      "howToUseIt": "Teleport your Oathsworn to your side and let them dash toward a location, knocking back enemies in the way - use it to either engage together or save your Oathsworn from danger."
+    }
+  ],
+  "earlyGamePlan": "In lane, focus on landing Pierce and building up Rend stacks on the enemy before ripping the spears out for a burst of damage, using Martial Poise to reposition after every attack. Coordinate with your support so hits from both of you charge Sentinel's bonus damage.",
+  "quickTips": [
+    "Enter a move command as you attack to hop with Martial Poise and stay slippery while fighting.",
+    "Build up several Rend stacks on a target before ripping the spears out for maximum damage.",
+    "Use Sentinel's scouting soul before walking into unclear areas.",
+    "Save Fate's Call to pull your Oathsworn out of danger or to combine for a surprise engage.",
+    "Avoid fighting from outside your attack range - your mobility only works while attacking.",
+    "Watch your attack speed; slows on you reduce how far Martial Poise can carry you."
+  ],
+  "whatToExpect": "An enemy Kalista is slippery while attacking but far less mobile if you can keep her at a distance or apply a slow, since her hops depend on attacking. She can't cancel her attack windup, so if you anticipate when she'll fire, that's your best window to land your own abilities on her - and watch for a surprise Fate's Call pulling her Oathsworn into the fight.",
+  "glossary": [
+    {
+      "term": "kite",
+      "definition": "Attacking or damaging an enemy while continuously moving away to avoid their retaliation."
+    },
+    {
+      "term": "windup",
+      "definition": "The brief pause before an attack or ability actually fires, during which a champion is committed to the action."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by being the first to commit crowd control or damage onto the enemy team."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "attack range",
+      "definition": "The maximum distance from which a champion's basic attacks can reach a target."
+    }
+  ]
+}

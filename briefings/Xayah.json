@@ -1,0 +1,87 @@
+{
+  "id": "Xayah",
+  "name": "Xayah",
+  "playstyleSummary": "Xayah is a marksman who plays a feather-collecting minigame while auto-attacking, building toward a big root that can lock down multiple enemies at once. She wants to fight from range and let feathers pile up on the ground before calling them back for damage and crowd control. She has a high skill ceiling because tracking feather placement and timing her recall well takes practice, but the basic attack-and-kite gameplan is approachable.",
+  "strengths": [
+    "Bladecaller can root and heavily damage several enemies at once",
+    "Featherstorm provides a strong dodge and repositioning tool",
+    "Passive attacks hit everything in a line, great against grouped enemies",
+    "Scales well into the late game as a consistent damage dealer"
+  ],
+  "weaknesses": [
+    "Needs time and space to set up feathers before her combo is strong",
+    "Vulnerable while feathers are still on cooldown or not yet placed",
+    "High difficulty to use optimally compared to other marksmen",
+    "Relies on positioning correctly to get full value from her root"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Clean Cuts",
+      "howToUseIt": "After casting any ability, your next basic attacks pierce through everyone in their path and drop a Feather, so weave abilities into your auto-attacks to hit multiple enemies and build up feathers."
+    },
+    {
+      "key": "Q",
+      "name": "Double Daggers",
+      "howToUseIt": "Throw this to poke enemies from range and drop extra Feathers on the ground that you can recall later with Bladecaller."
+    },
+    {
+      "key": "W",
+      "name": "Deadly Plumage",
+      "howToUseIt": "Activate this before an extended fight for attack speed and damage, and keep attacking champions to gain move speed and stick to your target."
+    },
+    {
+      "key": "E",
+      "name": "Bladecaller",
+      "howToUseIt": "Save this until you have Feathers spread around the enemy — pulling back 3 or more onto one target roots them, so try to place feathers on both sides of an enemy before casting."
+    },
+    {
+      "key": "R",
+      "name": "Featherstorm",
+      "howToUseIt": "Use this to dodge incoming skillshots or reposition since you're untargetable while airborne, and remember it drops more Feathers for a follow-up Bladecaller."
+    }
+  ],
+  "earlyGamePlan": "Lane with your support and focus on landing Double Daggers to poke the enemy bot lane while staying safe behind your minions. Look for moments when you can drop several Feathers near an isolated enemy, then use Bladecaller to root and burst them down. Avoid overextending before you have Feathers set up, since you have little defense until your combo is ready.",
+  "quickTips": [
+    "Try to land Feathers on both sides of an enemy so Bladecaller's return path hits them 3+ times",
+    "Use Featherstorm defensively to dodge key enemy abilities, not just offensively",
+    "Weave Double Daggers into your auto-attack pattern to trigger your passive's piercing attacks",
+    "Don't chase into fog of war without Feathers already placed",
+    "Deadly Plumage's move speed only triggers when you attack an enemy champion, so use it to stick during fights"
+  ],
+  "whatToExpect": "Xayah will poke you from range early and look to blanket the ground with Feathers before recalling them for a big root — back off or spread out with allies when you see several feathers land near you. She is vulnerable in the short window after using her abilities before feathers reset, so punish her when her cooldowns are down. Watch for Featherstorm, which lets her dodge your key abilities, so don't waste your combo the moment she jumps.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged, as opposed to one that automatically hits its target."
+    },
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range repeatedly to wear enemies down before a bigger fight."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that prevents a champion from moving but still lets them attack or cast most abilities."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while still attacking them, common for ranged champions fighting melee opponents."
+    },
+    {
+      "term": "skill ceiling",
+      "definition": "How much a champion's effectiveness can improve with player skill and practice."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time an ability needs after use before it can be cast again."
+    },
+    {
+      "term": "fog of war",
+      "definition": "The parts of the map not currently visible to your team, hidden until revealed by vision."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or fears that limit an enemy's ability to move or act."
+    }
+  ]
+}

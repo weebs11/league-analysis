@@ -1,0 +1,88 @@
+{
+  "id": "Teemo",
+  "name": "Teemo",
+  "playstyleSummary": "Teemo is a small, deceptively dangerous ranged fighter who blinds enemies, poisons them from range, and vanishes into invisibility to scout or escape. Playing him feels sneaky and annoying-in-a-good-way: you poke with Blinding Dart, kite around with poison ticking on your target, and litter the map with mushrooms that deny vision and punish careless enemies. He's extremely squishy, so avoiding damage matters more than tanking it.",
+  "strengths": [
+    "Guerrilla Warfare gives strong invisibility for scouting or escaping",
+    "Blinding Dart shuts down auto-attacking enemies in a fight",
+    "Toxic Shot poison keeps dealing damage even after you disengage",
+    "Noxious Trap mushrooms provide vision control and area denial around key spots like Dragon or Baron"
+  ],
+  "weaknesses": [
+    "Very squishy and easy to burst down if caught",
+    "Short attack range without items",
+    "Low mobility outside of Move Quick's passive speed",
+    "Loses most of his safety once he's spotted out of stealth"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Guerrilla Warfare",
+      "howToUseIt": "Standing still (or moving while in brush) without acting for a moment turns you invisible indefinitely. Use it to scout bushes safely or to vanish after poking someone in a fight."
+    },
+    {
+      "key": "Q",
+      "name": "Blinding Dart",
+      "howToUseIt": "Blinds the target so their attacks miss for the duration — save it for enemy auto-attackers in a fight, or use it defensively the moment they try to engage on you."
+    },
+    {
+      "key": "W",
+      "name": "Move Quick",
+      "howToUseIt": "You passively move faster until you're hit by an enemy champion or turret; use the active burst of speed to kite away from a fight or catch up to a retreating enemy."
+    },
+    {
+      "key": "E",
+      "name": "Toxic Shot",
+      "howToUseIt": "Every attack poisons the target for damage over time. This lets you poke, back off, and still deal damage as the poison ticks — you don't need to stay in range the whole time."
+    },
+    {
+      "key": "R",
+      "name": "Noxious Trap",
+      "howToUseIt": "Place mushrooms in bushes, chokepoints, or over objectives like Dragon and Baron to deny vision control and punish enemies who step on them. Throwing a mushroom onto another mushroom bounces it for extra range."
+    }
+  ],
+  "earlyGamePlan": "Poke the enemy laner with Blinding Dart followed by an auto-attack to apply Toxic Shot, then kite away rather than trading in melee. Drop a mushroom or two in nearby bushes to deny vision and warn you of ganks, and rely on Guerrilla Warfare to scout safely before committing to a fight.",
+  "quickTips": [
+    "Blind enemy auto-attackers with Blinding Dart right as they engage on you",
+    "Poke with an attack for Toxic Shot, then kite away and let the poison finish the job",
+    "Use invisibility to scout brush before walking into it blindly",
+    "Place mushrooms in bushes and chokepoints your enemies are likely to walk through",
+    "Stand still for a moment when it's safe to trigger Guerrilla Warfare and reset the fight",
+    "Avoid extended trades since you're one of the squishiest champions in the game"
+  ],
+  "whatToExpect": "Enemy Teemo will poke you with poison and blind your attacks in a fight, then vanish into brush using his invisibility once he's been spotted. Watch for mushrooms hidden in bushes and chokepoints, since they slow and damage you if you step on one, and consider a vision-clearing item or a control ward to deal with them.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chip damage dealt from a safe range to whittle enemies down before a bigger fight."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while continuing to attack them, keeping distance so they can't retaliate."
+    },
+    {
+      "term": "vision control",
+      "definition": "Placing or denying wards and map sight to control what each team can see."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "invisibility",
+      "definition": "A state where a champion cannot be seen by the enemy unless revealed by a special effect."
+    },
+    {
+      "term": "chokepoint",
+      "definition": "A narrow area of the map that forces champions to pass through a small space."
+    },
+    {
+      "term": "control ward",
+      "definition": "A purchasable ward that also reveals and disables enemy wards and traps nearby."
+    },
+    {
+      "term": "gank",
+      "definition": "Ambushing an enemy in a lane with extra teammates, usually from a jungle or side path."
+    }
+  ]
+}

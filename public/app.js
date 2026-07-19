@@ -89,6 +89,11 @@ function connectEvents() {
       onState(snap);
     } catch { /* ignore malformed frame */ }
   };
+  es.addEventListener('coachprogress', (ev) => {
+    try {
+      onCoachProgress(JSON.parse(ev.data));
+    } catch { /* ignore malformed frame */ }
+  });
   es.onerror = () => {
     // EventSource auto-reconnects; reflect uncertainty in the pill.
     setPill('waiting', 'Reconnecting…');
@@ -110,7 +115,7 @@ function onState(snap) {
     showView('waiting');
     renderWaiting();
     if (prevPhase === 'ingame' || prevPhase === 'champselect') {
-      currentPlan = null; currentCsAdvice = null; chatHistory = [];
+      currentPlan = null; currentCsAdvice = null; csBriefingKey = null; chatHistory = [];
     }
   }
 }
@@ -226,7 +231,8 @@ function renderChampSelect() {
   $('#cs-demo-badge').classList.toggle('hidden', !isDemo);
   $('#btn-exit-demo-cs').classList.toggle('hidden', !isDemo);
 
-  if (currentCsAdvice) renderCsAdvice(currentCsAdvice);
+  if (cs.me?.champion) loadCsBriefing();
+  else if (currentCsAdvice) renderCsAdvice(currentCsAdvice);
 }
 
 function renderCsAdvice(advice) {
@@ -234,7 +240,7 @@ function renderCsAdvice(advice) {
   const yc = advice.yourChampion;
   const parts = [];
   if (advice.basicMode) {
-    parts.push(`<div class="notice-box">Basic mode (no API key). This is Riot's official champion data — add an Anthropic API key in ⚙️ Settings for personalized coaching.</div>`);
+    parts.push(`<div class="notice-box">This champion isn't in the built-in briefing library yet (probably a brand-new release) — showing Riot's official data instead.</div>`);
   }
   if (yc) {
     parts.push(`<h4>How your champion works</h4><p>${esc(yc.playstyleSummary)}</p>`);
@@ -257,6 +263,9 @@ function renderCsAdvice(advice) {
     parts.push(`<h4>Quick tips</h4><ul class="tip-list">${advice.quickTips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`);
   }
   parts.push(glossaryDetails(advice.glossary));
+  if (advice.briefingPatch) {
+    parts.push(`<p class="muted" style="font-size:0.85em">Briefing from the built-in library (generated on patch ${esc(advice.briefingPatch)}).</p>`);
+  }
   $('#cs-advice').innerHTML = parts.join('');
 }
 
@@ -453,36 +462,74 @@ function selectTab(name) {
 }
 
 // ---------- generation ----------
+// Live progress for the in-flight generation, pushed by the server over SSE
+// as `coachprogress` events. Only rendered while our own request is running.
+let genInFlight = false;
+
+const GEN_PHASE_LABELS = {
+  preparing: 'Reading champion data and checking the current-patch meta…',
+  thinking: 'The coach is thinking through your matchup…',
+  writing: 'Writing your game plan…',
+};
+
+function onCoachProgress(p) {
+  if (!genInFlight || !p?.phase) return;
+  if (p.phase === 'error') return; // the request's catch handler renders the error
+  const label = GEN_PHASE_LABELS[p.phase];
+  if (label) $('#gen-sub').textContent = label;
+  const fill = $('#gen-progress-fill');
+  fill.style.width = `${Math.max(0, Math.min(100, p.pct || 0))}%`;
+  fill.classList.toggle('indeterminate', p.phase === 'preparing');
+}
+
 async function generatePlan(force = false) {
   const btn = force ? $('#btn-regenerate') : $('#btn-generate');
   btn.disabled = true;
+  genInFlight = true;
   $('#gen-title').textContent = state?.aiAvailable ? 'Analyzing your matchup…' : 'Building basic guidance…';
-  $('#gen-sub').innerHTML = state?.aiAvailable
-    ? 'The coach is studying all ten champions. This takes 30–90 seconds — perfect time to buy your starting items.'
+  $('#gen-sub').textContent = state?.aiAvailable
+    ? 'This takes 30–90 seconds — perfect time to buy your starting items.'
     : 'Assembling Riot\'s official data for this game.';
+  $('#gen-progress').classList.remove('hidden');
+  onCoachProgress({ phase: 'preparing', pct: 3 });
   try {
     const { plan } = await api('/api/coach/gameplan', { method: 'POST', body: { force } });
+    onCoachProgress({ phase: 'writing', pct: 100 });
     renderPlan(plan);
   } catch (err) {
     $('#gen-title').textContent = 'Something went wrong';
     $('#gen-sub').innerHTML = `<span class="error-box" style="display:inline-block">${esc(err.message)}</span>`;
     $('#btn-generate').classList.remove('hidden');
   } finally {
+    genInFlight = false;
+    $('#gen-progress').classList.add('hidden');
+    $('#gen-progress-fill').style.width = '0%';
+    $('#gen-progress-fill').classList.remove('indeterminate');
     btn.disabled = false;
   }
 }
 
-async function generateCsAdvice() {
-  const btn = $('#btn-cs-generate');
-  btn.disabled = true;
-  $('#cs-advice').innerHTML = `<div class="loading"><div class="spinner"></div> Preparing your briefing… (~20–40s)</div>`;
+// The briefing is pre-generated for every champion, so it loads automatically
+// whenever the hovered/locked champion or the visible enemy picks change.
+let csBriefingKey = null; // fingerprint of the briefing currently shown or loading
+
+async function loadCsBriefing() {
+  const cs = state?.champSelect;
+  if (!cs?.me?.champion) return;
+  const key = `${cs.me.champion.id}|${cs.theirTeam.map((m) => m.champion?.id || '').join(',')}`;
+  if (key === csBriefingKey) return; // already shown or in flight
+  csBriefingKey = key;
+  if (!currentCsAdvice) {
+    $('#cs-advice').innerHTML = `<div class="loading"><div class="spinner"></div> Loading your briefing…</div>`;
+  }
   try {
     const { advice } = await api('/api/coach/champselect', { method: 'POST', body: {} });
+    if (csBriefingKey !== key) return; // superseded by a newer pick
     renderCsAdvice(advice);
   } catch (err) {
+    if (csBriefingKey !== key) return;
+    csBriefingKey = null; // let the next snapshot retry
     $('#cs-advice').innerHTML = `<div class="error-box">${esc(err.message)}</div>`;
-  } finally {
-    btn.disabled = false;
   }
 }
 
@@ -1103,7 +1150,6 @@ function wire() {
 
   $('#btn-generate').onclick = () => generatePlan(false);
   $('#btn-regenerate').onclick = () => generatePlan(true);
-  $('#btn-cs-generate').onclick = generateCsAdvice;
 
   $$('.tab').forEach((t) => (t.onclick = () => selectTab(t.dataset.tab)));
 

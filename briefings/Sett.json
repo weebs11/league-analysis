@@ -1,0 +1,76 @@
+{
+  "id": "Sett",
+  "name": "Sett",
+  "playstyleSummary": "Sett is a simple, brawling fighter who punches his way through fights with alternating left and right hooks, and gets healthier as he takes damage. He stores incoming damage as Grit, which he can unleash as a shield and a big true-damage punch, making him feel unusually tough to fully commit against. He's a great pick for a newer player since his kit is straightforward and forgiving.",
+  "strengths": [
+    "Regenerates more health the lower his own health gets, making him hard to finish off",
+    "Haymaker's shield and true damage punch reward players for tanking hits",
+    "Facebreaker can stun two enemies at once if they're positioned on opposite sides of him",
+    "The Show Stopper can single-handedly remove a priority target from a fight"
+  ],
+  "weaknesses": [
+    "Relatively simple kit with limited mobility, no dashes or blinks",
+    "Facebreaker's stun only works if enemies are on opposite sides of him",
+    "Vulnerable to being kited by ranged champions who avoid his punches",
+    "Grit resets if he's out of the fight too long, losing the value of Haymaker"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Pit Grit",
+      "howToUseIt": "Just keep attacking — your right punch every other hit is stronger and faster, and staying in fights while low on health regenerates you faster, so don't panic and back off too early."
+    },
+    {
+      "key": "Q",
+      "name": "Knuckle Down",
+      "howToUseIt": "Use this before engaging to gain move speed toward enemy champions, then land your next two attacks for bonus damage based on the target's max health — great against tanky targets."
+    },
+    {
+      "key": "W",
+      "name": "Haymaker",
+      "howToUseIt": "Take some hits in a fight to build up Grit passively, then release it for a shield and a punch that deals true damage in the center — try to time the release for maximum stored Grit."
+    },
+    {
+      "key": "E",
+      "name": "Facebreaker",
+      "howToUseIt": "Position yourself between two enemies before casting this so both get stunned, since if they're only on one side they're just slowed instead."
+    },
+    {
+      "key": "R",
+      "name": "The Show Stopper",
+      "howToUseIt": "Grab a key enemy champion in a fight and slam them down to deal damage and slow everyone near the landing spot — use it on the enemy's most dangerous or fed champion to remove them from the fight."
+    }
+  ],
+  "earlyGamePlan": "Trade patiently in lane using Knuckle Down to punish enemies who get close, and let Pit Grit's regeneration keep you healthy through extended trades. Look for a chance to land Facebreaker when the enemy laner is positioned on the opposite side of a minion or wall from you.",
+  "quickTips": [
+    "Don't panic at low health — Sett heals more the lower his health gets",
+    "Position enemies on opposite sides of you before casting Facebreaker for a double stun",
+    "Take some damage in a fight before releasing Haymaker for a bigger shield and punch",
+    "Save The Show Stopper for the enemy's biggest threat, not just whoever's closest",
+    "Use Knuckle Down's bonus damage to punish tankier enemies who build a lot of health",
+    "Sett has no dash, so respect ranged poke and avoid fighting from too far away"
+  ],
+  "whatToExpect": "Enemy Sett gets tougher to kill the lower his health drops, so don't assume a low-health Sett is an easy finish, and watch your positioning so he can't land a double stun with Facebreaker. He has no mobility tools, so kiting him with ranged attacks or crowd control before he closes the distance is an effective way to fight him.",
+  "glossary": [
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resist entirely, dealing its full amount regardless of defenses."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range before a real fight starts."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from an enemy while still attacking or damaging them, staying out of their range."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that take away an enemy's ability to move or act."
+    }
+  ]
+}

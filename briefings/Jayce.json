@@ -1,0 +1,80 @@
+{
+  "id": "Jayce",
+  "name": "Jayce",
+  "playstyleSummary": "Jayce is a shapeshifting fighter/marksman who swaps between a melee Hammer Stance and a ranged Cannon Stance mid-fight, changing what each ability does. He feels demanding but rewarding - swapping stances at the right moment gives bonus speed and lets you dictate whether a fight happens up close or from range.",
+  "strengths": [
+    "Very strong early game power spike, especially in lane",
+    "Flexible - can fight in melee or at range depending on the situation",
+    "Stance swap gives free move speed, helping him kite or engage",
+    "Long-range poke and burst combo through Acceleration Gate"
+  ],
+  "weaknesses": [
+    "High skill ceiling - tracking two sets of abilities is demanding for newer players",
+    "Falls off relative to other fighters and marksmen in the late game",
+    "Squishy if caught out of position",
+    "Combo requires careful stance management to execute"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Hextech Capacitor",
+      "howToUseIt": "Swap between Hammer and Cannon Stance to get a short burst of move speed each time - use this to close a gap, chase, or escape."
+    },
+    {
+      "key": "Q",
+      "name": "To the Skies! / Shock Blast",
+      "howToUseIt": "In Hammer Stance, leap onto an enemy to deal damage and slow them; in Cannon Stance, fire a long-range orb that explodes on the first enemy hit or at max range, damaging everyone nearby."
+    },
+    {
+      "key": "W",
+      "name": "Lightning Field / Hyper Charge",
+      "howToUseIt": "In Hammer Stance, this passively restores mana per attack and can be activated for damage around you; in Cannon Stance, activate it to instantly max out your attack speed for a few hits."
+    },
+    {
+      "key": "E",
+      "name": "Thundering Blow / Acceleration Gate",
+      "howToUseIt": "In Hammer Stance, knock an enemy back with magic damage - useful to peel divers off you; in Cannon Stance, drop a gate that speeds up allies who walk through it and empowers a Shock Blast fired through it."
+    },
+    {
+      "key": "R",
+      "name": "Mercury Cannon / Mercury Hammer",
+      "howToUseIt": "This is your stance swap: switching to Cannon form extends your range and shreds the first target's resistances, while switching to Hammer form boosts your own defenses and deals bonus damage on your first hit."
+    }
+  ],
+  "earlyGamePlan": "Jayce is strongest in the first several minutes, so play aggressively in lane: poke with Shock Blast from Cannon Stance, then swap to Hammer Stance to finish trades in melee. Look to fire Shock Blast through your own Acceleration Gate for a long-range burst combo whenever the enemy overextends.",
+  "quickTips": [
+    "Swap stances often - you get free move speed every time, even outside of combat.",
+    "Poke with Cannon Stance's Shock Blast, then close in with Hammer Stance's leap to finish the trade.",
+    "Fire Shock Blast through your own Acceleration Gate for extra range, speed, and damage.",
+    "Use Thundering Blow's knockback to peel an enemy diver off you or an ally.",
+    "Play aggressively in the early game - Jayce's power spike fades in the late game.",
+    "Watch your mana in Hammer Stance; Lightning Field's passive restores it, so weave in attacks when you can."
+  ],
+  "whatToExpect": "An enemy Jayce will poke you from range in Cannon Stance and try to burst you down with a Shock Blast fired through his Acceleration Gate, or swap to Hammer Stance to leap on you once you're low. He's strongest early, so play carefully in the first several minutes and look to punish him once the game goes long.",
+  "glossary": [
+    {
+      "term": "power spike",
+      "definition": "A point in the game - usually tied to levels or items - where a champion becomes noticeably stronger."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range without committing to a full fight."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to stop enemies from reaching and killing a teammate you're protecting."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, past the safety of allies or turret, and becoming vulnerable."
+    }
+  ]
+}

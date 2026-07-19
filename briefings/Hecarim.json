@@ -1,0 +1,84 @@
+{
+  "id": "Hecarim",
+  "name": "Hecarim",
+  "playstyleSummary": "Hecarim is a fast, aggressive jungler built around gaining move speed to power up his own damage, then using that speed to run down fleeing enemies across the map. He feels like a freight train — the longer he charges before hitting you, the harder it hits.",
+  "strengths": [
+    "Excellent mobility and gap-closing via Devastating Charge",
+    "Scales damage off his own move speed, so speed boosts make him hit harder too",
+    "Strong teamfight ultimate that damages a line and scatters enemies in fear",
+    "Good sustain in fights from Spirit of Dread's healing"
+  ],
+  "weaknesses": [
+    "Relatively squishy for how much he wants to be in the middle of fights",
+    "His damage relies on setup — Devastating Charge needs distance traveled to hit hard",
+    "Can be kited if his gap-closers are on cooldown",
+    "His ultimate can accidentally scatter enemies away from your team instead of grouping them up"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Warpath",
+      "howToUseIt": "Your attack damage increases based on your bonus move speed. Buying or using speed boosts doesn't just help you get around the map, it directly increases your damage too."
+    },
+    {
+      "key": "Q",
+      "name": "Rampage",
+      "howToUseIt": "Cleave everyone nearby for damage; hitting at least one enemy increases the damage and lowers the cooldown of your next casts. Use it every time it's up during a fight or while clearing jungle camps."
+    },
+    {
+      "key": "W",
+      "name": "Spirit of Dread",
+      "howToUseIt": "Activate this before or during a fight for bonus resistances and damage over time to nearby enemies, healing you based on all damage they take from anyone. Turn this on early in a fight so your team's damage also heals you."
+    },
+    {
+      "key": "E",
+      "name": "Devastating Charge",
+      "howToUseIt": "Build up move speed and move through units for a short time; your next attack knocks the target back and deals more damage the farther you've traveled. Use Ghost, Flash, or your ultimate to extend the charge distance for a bigger hit."
+    },
+    {
+      "key": "R",
+      "name": "Onslaught of Shadows",
+      "howToUseIt": "Charge forward in a line dealing magic damage, then create a shockwave that makes enemies flee at the end. Use it to engage from a distance or peel a diver off your carry, but be aware it can also scatter a clustered enemy team."
+    }
+  ],
+  "earlyGamePlan": "Focus on clearing jungle camps efficiently with Rampage and look for ganks once you've built up move speed, since Devastating Charge hits much harder over distance. Use Spirit of Dread while clearing camps or dueling the enemy jungler for extra healing.",
+  "quickTips": [
+    "Use Rampage on cooldown in the jungle and in fights — hitting anything with it lowers its cooldown further.",
+    "Combine Devastating Charge with Ghost, Flash, or your ultimate's charge to maximize the bonus damage from distance traveled.",
+    "Turn on Spirit of Dread early in a fight rather than late, so you get healing from the whole fight's damage.",
+    "Use Onslaught of Shadows to engage from far away or peel divers off your teammates, but think about whether scattering enemies helps or hurts your team's follow-up.",
+    "Buy or use move speed boosts when you can — they make you hit harder too, thanks to Warpath.",
+    "Try to gank lanes where the enemy has already used their gap-closer or escape, since your own damage scales with the chase."
+  ],
+  "whatToExpect": "Enemy Hecarim gets more dangerous the more move speed he has, so expect bigger hits from Devastating Charge if he's had room to build up speed first. His ultimate charges forward and then scares enemies into fleeing, which can catch you out of position — try to fight him in a way that doesn't leave you isolated for an easy knockback, and use crowd control to stop his charge before it reaches you.",
+  "glossary": [
+    {
+      "term": "Gap-closer",
+      "definition": "A dash, blink, or leap that lets a champion close distance to a target quickly."
+    },
+    {
+      "term": "Kite",
+      "definition": "Attacking or retreating while keeping distance from a melee enemy so they can't catch you."
+    },
+    {
+      "term": "Sustain",
+      "definition": "Healing or health regeneration that lets a champion stay in a fight longer than usual."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "Peel",
+      "definition": "Using abilities or positioning to protect a teammate from an enemy trying to reach them."
+    },
+    {
+      "term": "Crowd control (CC)",
+      "definition": "Effects like stuns, roots, fears, or slows that take away an enemy's ability to move or act normally."
+    },
+    {
+      "term": "Squishy",
+      "definition": "A champion with low health or defenses who dies quickly if focused."
+    }
+  ]
+}

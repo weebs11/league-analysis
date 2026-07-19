@@ -1,0 +1,80 @@
+{
+  "id": "Lissandra",
+  "name": "Lissandra",
+  "playstyleSummary": "Lissandra is a control mage who fights at close-to-medium range, chaining crowd control together into burst damage before repositioning or escaping with her teleport dash. Her ultimate can either lock down an enemy with a stun or turn her briefly invulnerable to survive a burst of damage.",
+  "strengths": [
+    "Strong crowd control chain (slow into root into stun) that can lock a target down alone",
+    "Glacial Path gives great mobility to reposition or escape",
+    "Her ultimate can save her life by making her untargetable and invulnerable",
+    "Good at controlling fights from the front line of her own team"
+  ],
+  "weaknesses": [
+    "Shorter ability ranges than most mages, forcing riskier positioning",
+    "Vulnerable if her Glacial Path is on cooldown or she's caught before using it",
+    "Relies on landing multiple abilities in sequence for full impact",
+    "Ring of Frost has a long cooldown early, leaving her without her root"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Iceborn Subjugation",
+      "howToUseIt": "When an enemy champion dies near you, they leave behind a Frozen Thrall - stay nearby to benefit from the slow and burst of damage when it shatters."
+    },
+    {
+      "key": "Q",
+      "name": "Ice Shard",
+      "howToUseIt": "Line this shard up through multiple enemies since it passes through and damages everyone it hits, not just the first target."
+    },
+    {
+      "key": "W",
+      "name": "Ring of Frost",
+      "howToUseIt": "Use this to root enemies who get too close - since it has a long cooldown early, save it for a real engage or to protect yourself rather than to poke."
+    },
+    {
+      "key": "E",
+      "name": "Glacial Path",
+      "howToUseIt": "Send the claw out and reactivate it to blink to that location - use it to close distance onto a target or to escape when in danger."
+    },
+    {
+      "key": "R",
+      "name": "Frozen Tomb",
+      "howToUseIt": "Cast it on a key enemy to stun them during a fight, or cast it on yourself when about to die to become invulnerable and heal back up."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Ice Shard when you can hit multiple targets, and hold Ring of Frost until the enemy commits to a trade or dive since it recharges slowly at low ranks. Keep Glacial Path ready as your main escape tool rather than using it aggressively before level 6.",
+  "quickTips": [
+    "Approach from behind your minion wave so Ice Shard's slow catches a minion first, not you",
+    "Immobilize Lissandra before she reactivates Glacial Path to stop her escape",
+    "Self-cast your ultimate (hotkey plus self-cast key) to instantly wrap yourself in ice when low",
+    "Fake out enemies by casting Glacial Path one direction, then walking the other way",
+    "Watch for Ring of Frost's cooldown and engage while it's down",
+    "Stay at max range since Lissandra's abilities are shorter than most mages'"
+  ],
+  "whatToExpect": "Lissandra will try to land Ice Shard and Ring of Frost to slow and root you before finishing with Frozen Tomb for a stun, so try not to get caught alone. If she uses Glacial Path to dash in, immobilizing her immediately can prevent her from teleporting away - and remember she can also cast her ultimate on herself to become invulnerable if your team focuses her.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing laners."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing to an attack on the enemy team."
+    },
+    {
+      "term": "immobilize",
+      "definition": "Any crowd control effect, like a stun, root, or snare, that stops a champion from moving."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, and slows that limit an enemy's actions."
+    },
+    {
+      "term": "blink",
+      "definition": "A short-range instant teleport used to reposition."
+    }
+  ]
+}

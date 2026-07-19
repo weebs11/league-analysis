@@ -2,12 +2,14 @@
 // Serves the dashboard UI, watches for League games, and calls the AI coach.
 import express from 'express';
 import path from 'path';
+import { EventEmitter } from 'events';
 import { fileURLToPath } from 'url';
 import { getConfig, updateConfig } from './src/config.js';
 import * as ddragon from './src/ddragon.js';
 import * as gamestate from './src/gamestate.js';
 import * as coach from './src/coach.js';
 import * as fallback from './src/fallback.js';
+import * as briefings from './src/briefings.js';
 import * as mock from './src/mock.js';
 import * as lcu from './src/lcu.js';
 import { router as historyRouter } from './src/history/routes.js';
@@ -50,6 +52,10 @@ app.get('/img/item/:id', async (req, res) => {
 // Cached generations, keyed by a fingerprint of the situation, so we don't
 // re-bill for the same game every time the page reloads.
 const planCache = new Map();
+// Relays { phase, pct } updates from an in-flight game-plan generation to every
+// connected SSE client (as `coachprogress` events). Single-user app, so there
+// is at most one generation in flight and no need to key by request.
+const coachProgress = new EventEmitter();
 // Handed to the chat endpoint as context. Tagged with the patch it was
 // generated on so a plan from before an hourly patch refresh never grounds
 // post-refresh chat answers: { plan, patch }.
@@ -107,23 +113,23 @@ app.get('/api/events', (req, res) => {
   };
   send(gamestate.snapshot());
   gamestate.events.on('update', send);
+  const sendProgress = (p) => {
+    res.write(`event: coachprogress\ndata: ${JSON.stringify(p)}\n\n`);
+  };
+  coachProgress.on('progress', sendProgress);
   const heartbeat = setInterval(() => res.write(': ping\n\n'), 25000);
   req.on('close', () => {
     gamestate.events.off('update', send);
+    coachProgress.off('progress', sendProgress);
     clearInterval(heartbeat);
   });
 });
 
 // ---- Coaching endpoints ------------------------------------------------------
 
-function planKey(kind, snapshot, patch) {
-  // Keyed by patch too, so cached advice doesn't outlive a mid-session patch refresh.
-  if (kind === 'game') {
-    const g = snapshot;
-    return `${patch}:game:${g.me?.champion?.id}:${g.enemies.map((e) => e.champion?.id).join(',')}`;
-  }
-  const cs = snapshot;
-  return `${patch}:cs:${cs.me?.champion?.id}:${cs.theirTeam.map((e) => e.champion?.id || '_').join(',')}`;
+function planKey(g, patch) {
+  // Keyed by patch too, so a cached plan doesn't outlive a mid-session patch refresh.
+  return `${patch}:game:${g.me?.champion?.id}:${g.enemies.map((e) => e.champion?.id).join(',')}`;
 }
 
 app.post('/api/coach/gameplan', async (req, res) => {
@@ -137,53 +143,48 @@ app.post('/api/coach/gameplan', async (req, res) => {
   // refresh lands mid-generation, the plan is tagged with the patch whose
   // data actually produced it, so currentGamePlan() correctly drops it.
   const patch = ddragon.getVersion();
-  const key = planKey('game', game, patch);
+  const key = planKey(game, patch);
   if (!force && planCache.has(key)) {
     const plan = planCache.get(key);
     lastGamePlan = { plan, patch };
     return res.json({ plan, cached: true });
   }
+  const progress = (p) => coachProgress.emit('progress', p);
   try {
     let plan;
     if (coach.aiAvailable()) {
-      plan = await coach.generateGamePlan(game);
+      plan = await coach.generateGamePlan(game, progress);
       plan.basicMode = false;
     } else {
+      progress({ phase: 'preparing', pct: 10 });
       plan = await fallback.generateBasicGamePlan(game);
     }
     planCache.set(key, plan);
     lastGamePlan = { plan, patch };
     persistCoaching(plan, patch); // fire-and-forget; never blocks the response
+    progress({ phase: 'done', pct: 100 });
     res.json({ plan, cached: false });
   } catch (err) {
     console.error('gameplan generation failed:', err);
+    progress({ phase: 'error', pct: 0 });
     res.status(502).json({ error: coach.describeApiError(err) });
   }
 });
 
+// Served from the pre-generated briefing library — instant and keyless.
+// Basic mode only appears for a champion the library doesn't know
+// (i.e. released after the library was generated).
 app.post('/api/coach/champselect', async (req, res) => {
   const snap = gamestate.snapshot();
   const cs = snap.champSelect;
   if (!cs?.me?.champion) {
     return res.status(409).json({ error: 'Not in champion select (or no champion hovered yet).' });
   }
-  const force = Boolean(req.body?.force);
-  const key = planKey('cs', cs, ddragon.getVersion());
-  if (!force && planCache.has(key)) {
-    return res.json({ advice: planCache.get(key), cached: true });
-  }
   try {
-    let advice;
-    if (coach.aiAvailable()) {
-      advice = await coach.generateChampSelectAdvice(cs);
-      advice.basicMode = false;
-    } else {
-      advice = await fallback.generateBasicChampSelect(cs);
-    }
-    planCache.set(key, advice);
-    res.json({ advice, cached: false });
+    const advice = (await briefings.champSelectAdvice(cs)) || (await fallback.generateBasicChampSelect(cs));
+    res.json({ advice });
   } catch (err) {
-    console.error('champselect advice failed:', err);
+    console.error('champselect briefing failed:', err);
     res.status(502).json({ error: coach.describeApiError(err) });
   }
 });

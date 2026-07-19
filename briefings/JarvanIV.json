@@ -1,0 +1,80 @@
+{
+  "id": "JarvanIV",
+  "name": "Jarvan IV",
+  "playstyleSummary": "Jarvan IV is a mobile frontline fighter who dives into fights, locks a target down with a knock-up and arena combo, and punishes low-health targets with his passive. He feels aggressive and combo-based - you're often looking for the moment to flag-and-Q an enemy into your team.",
+  "strengths": [
+    "Strong engage with knock-up and ultimate arena",
+    "Passive punishes high-health targets hard",
+    "Good mobility via Dragon Strike's pull to his flag",
+    "Tanky enough to dive backline and survive"
+  ],
+  "weaknesses": [
+    "Combo can be dodged if enemies watch his flag placement",
+    "Cataclysm's arena can be crossed by mobility abilities",
+    "Falls off somewhat without a good engage window",
+    "Vulnerable if he uses his combo just to escape and has nothing left to fight with"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Martial Cadence",
+      "howToUseIt": "Land your first attack on a target to deal a big burst of bonus damage based on their current health - this resets every few seconds per target, so spread your attacks across multiple enemies at the start of a fight."
+    },
+    {
+      "key": "Q",
+      "name": "Dragon Strike",
+      "howToUseIt": "Throw your lance to damage and lower the armor of enemies in a line, then note that it pulls you toward your placed Demacian Standard flag and knocks up anyone caught between you and it - place the flag first for the full combo."
+    },
+    {
+      "key": "W",
+      "name": "Golden Aegis",
+      "howToUseIt": "Use this shield when you're about to take a burst of damage, since it also slows nearby enemies and helps you stick to a target or survive an engage."
+    },
+    {
+      "key": "E",
+      "name": "Demacian Standard",
+      "howToUseIt": "Passively gives you bonus attack speed at all times; actively throw the flag ahead of you to damage and speed up nearby allies, and to set up Dragon Strike's pull for a knock-up."
+    },
+    {
+      "key": "R",
+      "name": "Cataclysm",
+      "howToUseIt": "Leap onto a key target to wall them off inside an arena, damaging nearby enemies on impact - great for isolating a single enemy for your team to burst down, but remember dashes can cross the wall."
+    }
+  ],
+  "earlyGamePlan": "In lane, look to combo flag-then-Q for a quick knock-up and burst of damage on trades, using your passive's bonus damage to punish tankier opponents. Play a bit safer against high-mobility matchups, since your combo relies on landing the knock-up cleanly.",
+  "quickTips": [
+    "Throw Demacian Standard before Dragon Strike so the pull knocks up your target - order matters for the combo.",
+    "Use your passive's first-hit bonus damage early in trades against high-health enemies.",
+    "Save Cataclysm to isolate the enemy carry in a teamfight, not just as an escape.",
+    "Golden Aegis's slow can help you stick to a fleeing target - use it mid-chase.",
+    "Remember dashes and blinks can cross your Cataclysm arena, so don't rely on it to fully trap mobile champions.",
+    "Spread your basic attacks at the start of a fight to get passive value on more than one target."
+  ],
+  "whatToExpect": "An enemy Jarvan IV will try to flag-and-Q you for a knock-up, then wall you into a corner with Cataclysm while his team burns you down - his passive also means his first hit on you will do extra damage based on your current health. Watch where he drops his flag and be ready to use a dash or blink to escape his arena before it closes.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "Starting a fight by being the first to commit crowd control or damage onto the enemy team."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities used together for a stronger effect than casting them alone."
+    },
+    {
+      "term": "knock-up",
+      "definition": "A crowd control effect that lifts a champion into the air, briefly preventing them from acting."
+    },
+    {
+      "term": "backline",
+      "definition": "The back of the enemy team's formation in a fight, usually where squishy damage-dealers stand."
+    },
+    {
+      "term": "dash",
+      "definition": "A short, fast movement ability that repositions a champion, often used to escape or engage."
+    }
+  ]
+}

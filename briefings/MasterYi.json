@@ -1,0 +1,80 @@
+{
+  "id": "MasterYi",
+  "name": "Master Yi",
+  "playstyleSummary": "Master Yi is a fast, snowbally duelist who farms safely with Alpha Strike before switching into an unstoppable attacking machine with Highlander, chaining kills to keep the buff going. He wants to reach his power spike quickly and then run down the map picking off isolated enemies.",
+  "strengths": [
+    "Alpha Strike lets him farm safely while becoming untargetable",
+    "Highlander gives huge Move Speed and Attack Speed, and extends itself on kills",
+    "Meditate provides strong self-healing and damage reduction to recover between fights",
+    "Snowballs extremely hard once ahead, since kills refresh his ultimate and reduce cooldowns"
+  ],
+  "weaknesses": [
+    "Very vulnerable to being ganked early before his mobility and defenses come online",
+    "Alpha Strike leaves him predictable if used just to farm near enemies",
+    "Highlander doesn't prevent stuns, roots, or other hard crowd control, only slows",
+    "Falls off if he can't find picks to keep extending his ultimate"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Double Strike",
+      "howToUseIt": "This triggers automatically after a few consecutive attacks, dealing a bonus hit - just keep attacking the same target to build toward it."
+    },
+    {
+      "key": "Q",
+      "name": "Alpha Strike",
+      "howToUseIt": "Use this to farm minion waves safely since you're untargetable while dashing through them, and remember it can critically strike and deals bonus damage to monsters, making it great for jungle clears."
+    },
+    {
+      "key": "W",
+      "name": "Meditate",
+      "howToUseIt": "Channel this to heal up and reduce incoming damage between fights - it also builds Double Strike stacks and pauses your other buffs' durations while channeling, so use it to recover rather than mid-fight."
+    },
+    {
+      "key": "E",
+      "name": "Wuju Style",
+      "howToUseIt": "Keep this active while last-hitting or dueling since it adds true damage to your attacks, which is especially strong early."
+    },
+    {
+      "key": "R",
+      "name": "Highlander",
+      "howToUseIt": "Activate this to chase down or fight enemies with huge Move Speed and Attack Speed and immunity to slows - remember it extends on kills and assists, so keep fighting to keep it active."
+    }
+  ],
+  "earlyGamePlan": "Farm safely with Alpha Strike and Wuju Style to hit your power spikes as fast as possible, since Master Yi is weak before level 6 and vulnerable to being ganked while farming. Use Meditate defensively to sustain through poke rather than mid-fight, since you take reduced damage but can't act normally while channeling.",
+  "quickTips": [
+    "Farm with Alpha Strike and Wuju Style to reach your power spikes quickly",
+    "Use Meditate to heal up between fights, not mid-fight, since it pauses your other buffs while channeling",
+    "Chain kills and assists during Highlander to keep extending its duration",
+    "Remember Highlander blocks slows but not stuns, roots, or other hard crowd control",
+    "Attack frequently to refresh Alpha Strike's cooldown faster",
+    "Avoid overextending early since you're vulnerable to ganks before your mobility comes online"
+  ],
+  "whatToExpect": "Master Yi wants to farm safely and hit his power spike, then run down your team with Highlander's speed while chaining kills to keep it active, so try to punish him with a gank before he gets there. He can't be slowed while Highlander is active, but hard crowd control like stuns and roots still stop him, and interrupting his Meditate channel or hitting him while he heals with it can also set him back.",
+  "glossary": [
+    {
+      "term": "power spike",
+      "definition": "A point in the game (usually a level or item) where a champion becomes significantly stronger."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler leaves the jungle to ambush an enemy laner, usually with the laner's help."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, and slows that limit an enemy's actions."
+    },
+    {
+      "term": "snowball",
+      "definition": "When an early advantage compounds into a much bigger one as the game goes on."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes a period of time to complete, during which the caster is often vulnerable."
+    },
+    {
+      "term": "last-hit",
+      "definition": "Landing the killing blow on a minion to earn its gold."
+    }
+  ]
+}

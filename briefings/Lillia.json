@@ -1,0 +1,80 @@
+{
+  "id": "Lillia",
+  "name": "Lillia",
+  "playstyleSummary": "Lillia is a magic-damage fighter/mage, usually played in the jungle, who dances around fights landing skillshots that build up stacking Move Speed. She avoids autoattacking in favor of casting spells, then finishes fights by putting the whole enemy team to sleep with her ultimate.",
+  "strengths": [
+    "Strong area damage that scales off enemy max Health, good against tanks",
+    "High mobility once her Move Speed stacks build up",
+    "Powerful teamfight ultimate that can lock down multiple enemies at once",
+    "Clears jungle camps efficiently thanks to her AoE abilities"
+  ],
+  "weaknesses": [
+    "Difficult to learn, with a high skill ceiling",
+    "Vulnerable early before her Move Speed stacks build up",
+    "Skillshots can be dodged, leaving her with little damage",
+    "Mana hungry in the early game"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Dream-Laden Bough",
+      "howToUseIt": "Landing any of Lillia's skills applies extra damage over time, so favor casting spells over autoattacking to poke enemies down safely."
+    },
+    {
+      "key": "Q",
+      "name": "Blooming Blows",
+      "howToUseIt": "Use Blooming Blows on minions and jungle camps to quickly stack Move Speed, then activate it in fights and try to catch enemies on the outer edge of the blast for bonus true damage."
+    },
+    {
+      "key": "W",
+      "name": "Watch Out! Eep!",
+      "howToUseIt": "Aim the center of this ability directly on top of the enemy for maximum damage - it hits much weaker on the edges."
+    },
+    {
+      "key": "E",
+      "name": "Swirlseed",
+      "howToUseIt": "Throw Swirlseed down narrow paths like the river or jungle entrances so it keeps rolling and is more likely to connect with something."
+    },
+    {
+      "key": "R",
+      "name": "Lilting Lullaby",
+      "howToUseIt": "Land your other abilities on enemies first to apply Dream Dust, then use Lilting Lullaby to put them to sleep, and have your team attack immediately to wake them for bonus damage."
+    }
+  ],
+  "earlyGamePlan": "If jungling, clear camps with Blooming Blows and Watch Out! Eep! to farm Move Speed stacks quickly and look for ganks once your Q is fully stacked. If laning, poke safely with Swirlseed and Blooming Blows from range and avoid trading in melee since Lillia is fragile early.",
+  "quickTips": [
+    "Land skills instead of autoattacking to trigger passive damage and build Move Speed",
+    "Farm Move Speed stacks on camps or minions before diving into a fight",
+    "Use Swirlseed to scout brush and river since it reveals what it hits",
+    "Save your ultimate for teamfights, ideally after landing another ability to guarantee Dream Dust",
+    "Position at max range with Watch Out! Eep! since the center deals the most damage",
+    "Play patiently early - you have little defense until your stacks and levels come online"
+  ],
+  "whatToExpect": "A Lillia will try to poke you with skillshots from range and land her sleep ultimate to lock down your team in fights. If you see her stacking Move Speed by hitting camps or minions with abilities, be ready for her to dive in fast - try to burst her down quickly or disengage, since she has little defense of her own.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability you aim manually that can miss if the enemy moves out of the way."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before an all-in fight."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler leaves the jungle to ambush an enemy laner, usually with the laner's help."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage in a very short time."
+    },
+    {
+      "term": "jungle camp",
+      "definition": "A group of neutral monsters in the jungle that give gold and experience when killed."
+    }
+  ]
+}

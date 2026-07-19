@@ -1,0 +1,79 @@
+{
+  "id": "Amumu",
+  "name": "Amumu",
+  "playstyleSummary": "Amumu is a jungle tank built around area crowd control — pulling himself onto a target with Bandage Toss, then locking down a whole group with his ultimate. He doesn't deal much damage on his own, but a well-placed ultimate can win a team fight before it even really starts. He's a great low-complexity jungler for learning gank timing and team fight setup.",
+  "strengths": [
+    "Ultimate can stun an entire enemy team at once",
+    "Bandage Toss gives strong gank setup from range",
+    "Very tanky, especially against physical damage",
+    "Strong against enemy teams that stack a lot of health, thanks to Despair"
+  ],
+  "weaknesses": [
+    "Low damage output on his own",
+    "Very reliant on teammates to follow up his crowd control",
+    "Easy to dodge or juke Bandage Toss if he's out of position",
+    "Vulnerable before he gets levels in Tantrum's damage reduction"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Cursed Touch",
+      "howToUseIt": "Your basic attacks curse enemies, making them take bonus true damage from magic damage — this pairs well with any ally magic damage dealt to your curse targets."
+    },
+    {
+      "key": "Q",
+      "name": "Bandage Toss",
+      "howToUseIt": "Throw the bandage at a target to stun them and pull yourself to them — it's your main gap-closer and a great way to start a gank or fight."
+    },
+    {
+      "key": "W",
+      "name": "Despair",
+      "howToUseIt": "Drains a percentage of nearby enemies' max health each second and refreshes your Curse on them — strongest against tanky targets since it scales off their max health."
+    },
+    {
+      "key": "E",
+      "name": "Tantrum",
+      "howToUseIt": "Permanently reduces the physical damage you take, and each time you're hit its cooldown shortens — use the active in fights for area damage once the cooldown is low."
+    },
+    {
+      "key": "R",
+      "name": "Curse of the Sad Mummy",
+      "howToUseIt": "Entangles all nearby enemies, stunning and cursing them — this is your main teamfight tool, so try to land it on as many enemy champions as possible at once."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, clear efficiently and look for early ganks using Bandage Toss to stun an isolated laner. Since your ultimate is strongest when it hits multiple enemies, hold off using it on a single target early unless it secures a kill, and instead build toward bigger group fights.",
+  "quickTips": [
+    "Use Bandage Toss to initiate ganks on isolated enemies rather than as an escape.",
+    "Save your ultimate for moments it can hit multiple enemy champions.",
+    "Fight near allies who deal magic damage so your Curse's bonus true damage matters more.",
+    "Let Tantrum's cooldown come down naturally in extended fights by taking hits.",
+    "Group with your team before diving into fights — your value comes from setup, not solo damage."
+  ],
+  "whatToExpect": "Amumu will try to land Bandage Toss to stun and pull himself onto an isolated target, then follow up with his ultimate to lock down your whole group. Avoid grouping too tightly when an enemy Amumu is missing from view, since his ultimate hits everyone caught nearby. He deals relatively low damage himself, so focus down his teammates if he's the one engaging.",
+  "glossary": [
+    {
+      "term": "gank",
+      "definition": "When a jungler (sometimes with allies) ambushes an enemy laner to get a kill or force them back."
+    },
+    {
+      "term": "jungler",
+      "definition": "The player who fights neutral monsters in the jungle instead of laning, often roaming to help other lanes."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resistance entirely."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually with crowd control or mobility."
+    },
+    {
+      "term": "follow up",
+      "definition": "Adding damage or crowd control right after a teammate starts a fight."
+    }
+  ]
+}

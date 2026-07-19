@@ -1,0 +1,80 @@
+{
+  "id": "Janna",
+  "name": "Janna",
+  "playstyleSummary": "Janna is a classic peel-and-protect support who keeps her team topped up and enemies at arm's length. She feels like a bodyguard: shielding carries, slowing divers, and using a big knockback to save the whole team in a pinch.",
+  "strengths": [
+    "Excellent peel with knockback and slows",
+    "Strong shielding and healing for teammates",
+    "Passive move speed makes her hard to catch",
+    "Ultimate can single-handedly save her team from a bad fight"
+  ],
+  "weaknesses": [
+    "Low personal damage output",
+    "Howling Gale's charge-up telegraphs the knock-up, giving enemies time to dodge",
+    "Very dependent on levels and items to sustain constant casting",
+    "Weak if she gets caught out alone"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Tailwind",
+      "howToUseIt": "Stay near Janna to move faster, and know that her attacks and Zephyr deal more damage the more bonus move speed she has - so she gets stronger as the game goes on."
+    },
+    {
+      "key": "Q",
+      "name": "Howling Gale",
+      "howToUseIt": "Cast it early to let the storm grow, then activate again to launch it and knock back everyone in its path; firing it immediately without charging is a quicker, weaker version for disabling someone up close."
+    },
+    {
+      "key": "W",
+      "name": "Zephyr",
+      "howToUseIt": "Its passive lets Janna move faster and walk through units at all times, and activating it lets her slow and damage a single enemy - good for peeling a diver off a teammate."
+    },
+    {
+      "key": "E",
+      "name": "Eye Of The Storm",
+      "howToUseIt": "Shield an ally or turret before they take damage; it also boosts their attack damage, so use it on a teammate about to trade or on a tower under siege."
+    },
+    {
+      "key": "R",
+      "name": "Monsoon",
+      "howToUseIt": "Use it to knock enemies away from a low-health ally and then stand in the healing zone afterward to top your team back up - great for turning a losing fight around."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with a quick, uncharged Howling Gale when the enemy overextends, and hold Eye of the Storm to shield your carry when they trade or get harassed. Avoid all-in fights - your job early is to peel and set up your carry's damage, not to deal it yourself.",
+  "quickTips": [
+    "Charge Howling Gale fully before objective fights, but fire it early and uncharged for a quick disable in a skirmish.",
+    "Save Eye of the Storm for the moment your ally is about to take damage, not just as a poke shield.",
+    "Use Zephyr's slow to peel divers off your carry rather than to start fights.",
+    "Position on the edge of fights so you can knock enemies away from your team with Monsoon when things go wrong.",
+    "Walk toward Janna as an ally to benefit from her passive move speed.",
+    "Don't overextend - Janna has very little damage to fall back on if caught alone."
+  ],
+  "whatToExpect": "An enemy Janna will try to shield and speed up her carry while keeping you at range with slows and knockback, then use Monsoon to peel her whole team out of danger. Watch for the growing storm sound on Howling Gale - it means a knock-up is coming, so don't stand in a straight line with your allies.",
+  "glossary": [
+    {
+      "term": "peel",
+      "definition": "Using abilities to stop enemies from reaching and killing a teammate you're protecting."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range without committing to a full fight."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight, with little held back for safety."
+    },
+    {
+      "term": "disable",
+      "definition": "Any effect (stun, root, knockback, slow) that stops an enemy from acting normally."
+    },
+    {
+      "term": "skirmish",
+      "definition": "A small fight, usually involving only a few champions, short of a full teamfight."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far forward, past safety of allies or turret, and becoming vulnerable to a gank or ambush."
+    }
+  ]
+}

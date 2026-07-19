@@ -1,0 +1,79 @@
+{
+  "id": "Ashe",
+  "name": "Ashe",
+  "playstyleSummary": "Ashe is a marksman who slows everything she touches, using her passive to whittle enemies down and her ultimate to stun a target from clear across the map. She's a great beginner-friendly marksman since her core gameplan — auto-attack, slow, poke, repeat — is simple, and her ultimate can create huge plays even from far away.",
+  "strengths": [
+    "Global ultimate can stun and set up kills across the map",
+    "Passive slow helps her kite and peel effectively",
+    "Volley provides solid poke and wave clear",
+    "Hawkshot gives free map information without risk"
+  ],
+  "weaknesses": [
+    "Lower burst damage than many other marksmen",
+    "Very few defensive tools if caught without her ultimate",
+    "Enchanted Crystal Arrow travels slowly and can be dodged",
+    "Relies on teammates to follow up on her stun for full value"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Frost Shot",
+      "howToUseIt": "Every basic attack slows your target, and your critical strikes trade their bonus damage for an even stronger slow — this makes her great at kiting enemies or setting up allies to catch a slowed target."
+    },
+    {
+      "key": "Q",
+      "name": "Ranger's Focus",
+      "howToUseIt": "Build stacks of Focus by auto-attacking, then activate it at max stacks for a burst of attack speed and a stronger flurry attack — try to use it right as a fight starts for maximum value."
+    },
+    {
+      "key": "W",
+      "name": "Volley",
+      "howToUseIt": "Fires a cone of arrows dealing bonus damage and applying your slow — good for hitting multiple enemies at once or poking safely, but the arrows stop at the first thing they hit."
+    },
+    {
+      "key": "E",
+      "name": "Hawkshot",
+      "howToUseIt": "Sends your hawk to scout anywhere on the map — use it to check brush, a jungle camp, or an unseen area of the map for information without risking your own vision."
+    },
+    {
+      "key": "R",
+      "name": "Enchanted Crystal Arrow",
+      "howToUseIt": "A long-range global stun — lead the shot in the direction the enemy is moving, since it travels slowly and can be dodged, and the stun gets longer the farther the arrow travels before hitting."
+    }
+  ],
+  "earlyGamePlan": "Focus on landing basic attacks to keep enemies slowed and farm safely with them, since your passive already gives you strong lane pressure without much active input. Save Volley to poke when the enemy is out of position, and keep an eye on your ultimate's cooldown — if it's ready, be cautious about roaming alone since Ashe players will look for a long-range stun.",
+  "quickTips": [
+    "Keep attacking a target to maintain the slow from Frost Shot, which helps you kite.",
+    "Lead your ultimate in the direction the enemy is walking, since it's slow and easy to dodge if fired straight at them.",
+    "Use Hawkshot to scout brush or the jungle before walking into a risky area.",
+    "Pop Ranger's Focus right as a fight begins to maximize the bonus attack speed.",
+    "Be extra cautious moving alone if your ultimate isn't up yet, since you lose your main defensive option."
+  ],
+  "whatToExpect": "Ashe will try to keep you slowed with her basic attacks, and her ultimate can stun you from anywhere on the map if it's fired in your direction, so avoid walking in predictable straight lines when it might be up. She has few ways to escape or fight back if caught without her ultimate, so she's a good target to punish aggressively when you catch her alone. Watch out for Hawkshot revealing your position if you're hiding in brush.",
+  "glossary": [
+    {
+      "term": "kite",
+      "definition": "Moving away from an attacker while still dealing damage to them, keeping your distance."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect an ally from someone attacking them, usually with slows or crowd control."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe range before committing to a fight."
+    },
+    {
+      "term": "wave clear",
+      "definition": "How quickly and safely a champion can kill an incoming minion wave."
+    },
+    {
+      "term": "global",
+      "definition": "An ability that can reach or affect any part of the map, not just nearby areas."
+    },
+    {
+      "term": "brush",
+      "definition": "Foliage on the map that hides champions standing inside it from enemies outside."
+    }
+  ]
+}

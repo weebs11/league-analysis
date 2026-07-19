@@ -1,0 +1,75 @@
+{
+  "id": "Leblanc",
+  "name": "LeBlanc",
+  "playstyleSummary": "LeBlanc is a deceptive mid-lane mage-assassin who chains together a mark, a root, and a dash to burst a target down, then uses that same dash to return safely. Her kit is all about landing a precise combo and having an escape plan built in from the start. She has a high skill ceiling, since positioning her dash-and-return window well is the difference between a clean kill and getting caught out.",
+  "strengths": [
+    "Strong burst damage combo when Sigil of Malice, Ethereal Chains, and Distortion connect together.",
+    "Distortion gives a free return trip, letting her play aggressively with a safety net.",
+    "Mirror Image creates a decoy at low health that can confuse enemies about which one to chase.",
+    "Mimic gives flexibility to recast whichever spell fits the situation, effectively doubling her combo."
+  ],
+  "weaknesses": [
+    "Very squishy and easy to punish if her combo whiffs.",
+    "Ethereal Chains can be dodged, denying the root that ties her combo together.",
+    "Mirror Image's decoy deals no damage, so it shouldn't be relied on to win a trade.",
+    "Stunning or silencing her right after Distortion's dash prevents her from returning safely."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Mirror Image",
+      "howToUseIt": "When you drop below 40% Health, you'll briefly turn invisible and leave behind a harmless decoy — use that moment to reposition or escape while the enemy is confused about which one to chase."
+    },
+    {
+      "key": "Q",
+      "name": "Sigil of Malice",
+      "howToUseIt": "Mark a target with this, then hit them with another ability to detonate it for extra damage — a key piece of your burst combo. If it or the detonation kills the target, you get some of the Mana and cooldown back."
+    },
+    {
+      "key": "W",
+      "name": "Distortion",
+      "howToUseIt": "Dash in to deal damage, then activate it again within 4 seconds to return to where you started — this lets you go aggressive and still get out safely, but you need to press it a second time before the window closes."
+    },
+    {
+      "key": "E",
+      "name": "Ethereal Chains",
+      "howToUseIt": "Land this on an enemy and keep them shackled for 1.5 seconds without breaking the chain to root them for extra damage — it's your main way of pinning a target down for the rest of your combo."
+    },
+    {
+      "key": "R",
+      "name": "Mimic",
+      "howToUseIt": "Recast one of your basic spells for a copy of its effect — use it to add another hit of Sigil of Malice, another Distortion dash, or another set of Ethereal Chains depending on what the fight calls for."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Sigil of Malice and Distortion to poke safely, since Distortion lets you dash in and return to safety. Avoid all-in fights until level 6, when Mimic gives you a second cast of your combo pieces for much higher burst damage. Be careful engaging without a way to land Ethereal Chains, since it's the piece that lets you finish a combo.",
+  "quickTips": [
+    "Remember to press Distortion a second time within its window, or you'll be stuck out of position.",
+    "Chain Sigil of Malice into Ethereal Chains to lock down mobile enemies for several seconds.",
+    "Use Mimic to double up on whichever spell fits the situation best, not just out of habit.",
+    "Your Mirror Image decoy only appears below 40% Health and deals no damage — don't rely on it to win a trade.",
+    "Avoid overextending before level 6 — Mimic is a big power spike for your combo damage."
+  ],
+  "whatToExpect": "An enemy LeBlanc wants to land Sigil of Malice and Ethereal Chains on you, then detonate them for a big burst combo — try to dodge her Ethereal Chains, since that's the piece that lets her finish the combo. If she's below 40% Health, she may leave behind a harmless decoy and go invisible briefly — don't waste time chasing something that deals no damage. Stunning or silencing her right after she dashes in with Distortion prevents her from returning safely, so punish her hard during that window.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing damage from a safe distance to slowly wear an enemy down."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt in a very short time."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together for a bigger effect."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with no way to safely back out."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game where a champion becomes noticeably stronger."
+    }
+  ]
+}

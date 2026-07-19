@@ -1,0 +1,80 @@
+{
+  "id": "Volibear",
+  "name": "Volibear",
+  "playstyleSummary": "Volibear is a tanky fighter who charges straight into fights, stunning the first thing he touches and snowballing his attack speed the longer he fights. He feels very beginner-friendly: point yourself at the enemy, engage, and keep attacking, since most of his abilities reward simply being in the fray. His ultimate also disables nearby enemy towers briefly, letting him lead dives with real impact.",
+  "strengths": [
+    "Thundering Smash gives a reliable stun to start fights",
+    "Tanky and durable while still dealing solid sustained damage",
+    "Frenzied Maul rewards focusing a single target with bonus damage and healing",
+    "Stormbringer can disable enemy towers, making him strong for diving under turret"
+  ],
+  "weaknesses": [
+    "Lacks long-range tools, so kiting champions can avoid his engage",
+    "Committing his ultimate too early can be punished if the dive fails",
+    "Relatively simple kit means skilled opponents can predict his engage",
+    "Needs to actually connect Thundering Smash to get full value from his combo"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "The Relentless Storm",
+      "howToUseIt": "Your attacks and abilities grant attack speed, eventually causing your attacks to splash bonus magic damage to nearby enemies. Keep attacking and using abilities during fights to ramp this up rather than holding back."
+    },
+    {
+      "key": "Q",
+      "name": "Thundering Smash",
+      "howToUseIt": "Use this to gain speed toward an enemy and stun the first one you attack. Lead your engages with this to lock down a priority target before your team follows up."
+    },
+    {
+      "key": "W",
+      "name": "Frenzied Maul",
+      "howToUseIt": "Hit an enemy with this to mark them, then cast it again on the same target for bonus damage and healing. Focus the same target with both casts in a fight rather than spreading it across multiple enemies."
+    },
+    {
+      "key": "E",
+      "name": "Sky Splitter",
+      "howToUseIt": "Drop this lightning bolt on a location to damage and slow enemies, and stand inside the blast radius yourself to gain a shield. Use it both offensively in fights and defensively when you need the shield to survive incoming damage."
+    },
+    {
+      "key": "R",
+      "name": "Stormbringer",
+      "howToUseIt": "Leap to a location to slow and damage enemies underneath you while gaining bonus health, and disable nearby enemy towers briefly. Use it to dive under turret for a kill or to catch out enemies pushing your lane."
+    }
+  ],
+  "earlyGamePlan": "In lane or the jungle, look to engage fights with Thundering Smash to stun your target, then follow up with Frenzied Maul for bonus damage and sustain. Use Sky Splitter both to deal damage in trades and to shield yourself, and consider diving under turret with Stormbringer once you have levels, since it briefly disables the tower.",
+  "quickTips": [
+    "Lead engages with Thundering Smash to guarantee the stun before committing further",
+    "Cast Frenzied Maul twice on the same target to trigger its bonus damage and healing",
+    "Stand inside Sky Splitter's blast to pick up the shield for yourself",
+    "Use Stormbringer to dive under enemy towers, since it temporarily disables them",
+    "Keep attacking through fights to build up your passive's attack speed and splash damage",
+    "Avoid chasing kite-heavy enemies at range, since you have no ranged tools"
+  ],
+  "whatToExpect": "An enemy Volibear will try to charge in with Thundering Smash to stun you, then chain Frenzied Maul and Sky Splitter for heavy sustained damage while healing off you. Watch for his ultimate near towers, since it can disable them briefly for a dive, and try to keep your distance or use crowd control to interrupt him before he sticks onto you.",
+  "glossary": [
+    {
+      "term": "fighter",
+      "definition": "A champion type built to deal solid damage while also being durable enough to survive extended fights."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with crowd control or a dive."
+    },
+    {
+      "term": "dive",
+      "definition": "Pushing aggressively into enemy territory, often under their turret, to secure a kill."
+    },
+    {
+      "term": "sustain",
+      "definition": "The ability to recover health over time, often through healing effects, letting a champion stay in lane or fights longer."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from a melee attacker while still damaging them, to avoid taking damage in return."
+    },
+    {
+      "term": "turret",
+      "definition": "A defensive structure that deals heavy damage to enemies who come near it, also called a tower."
+    }
+  ]
+}

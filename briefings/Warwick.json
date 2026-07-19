@@ -1,0 +1,84 @@
+{
+  "id": "Warwick",
+  "name": "Warwick",
+  "playstyleSummary": "Warwick is a relentless jungler who hunts down low-health enemies and heals off his own attacks, so fights feel less scary than they look. He is very forgiving early on because his sustain lets him fight through jungle camps and skirmishes without going back to base often. His identity is finding weak targets and finishing them, so he rewards players who pay attention to enemy health bars.",
+  "strengths": [
+    "Strong self-healing lets him stay in the jungle and in fights longer",
+    "Excellent at chasing down and finishing low-health enemies",
+    "Ultimate is a guaranteed lockdown on a single target",
+    "Simple, low-mechanical-skill kit that is easy to pick up"
+  ],
+  "weaknesses": [
+    "Struggles to deal with full-health, tanky targets",
+    "Fairly short range means he has to get close to do anything",
+    "Weak against crowd control that stops him before he reaches a target",
+    "Early jungle clear can be slow compared to other junglers"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Eternal Hunger",
+      "howToUseIt": "Just keep auto-attacking — the lower your health, the more you heal from each hit, so don't be afraid to trade in a fight while you're hurt."
+    },
+    {
+      "key": "Q",
+      "name": "Jaws of the Beast",
+      "howToUseIt": "Hold the button down and it will keep following an enemy even if they dash or flash away, so use it to lock onto your target and to heal off the damage."
+    },
+    {
+      "key": "W",
+      "name": "Blood Hunt",
+      "howToUseIt": "This activates automatically when an enemy champion drops below 50% health anywhere on the map — watch for the visual cue and chase toward it for a speed and attack speed boost."
+    },
+    {
+      "key": "E",
+      "name": "Primal Howl",
+      "howToUseIt": "Turn this on before a fight to reduce incoming damage, and time the re-activation (or let it expire) so the fear effect scares enemies away right when you need space or a kill."
+    },
+    {
+      "key": "R",
+      "name": "Infinite Duress",
+      "howToUseIt": "Use this to leap onto a priority target and lock them down for your team — the more bonus move speed you have when you cast it, the farther it reaches, so cast it while already running."
+    }
+  ],
+  "earlyGamePlan": "Start in the jungle and clear camps efficiently, using Jaws of the Beast to heal back any health you lose. Look at the map often — Blood Hunt will light up when any enemy champion is low, which is your cue to path toward a kill instead of finishing your clear. Avoid full-health skirmishes against tanky enemies early since you don't have much burst damage yet.",
+  "quickTips": [
+    "Watch enemy health bars — Warwick gets much stronger the lower his target's health is",
+    "Save Infinite Duress for the enemy carry rather than the frontline tank when possible",
+    "Turn on Primal Howl before diving into a fight to reduce damage taken",
+    "Hold Jaws of the Beast's button to keep tracking a fleeing target",
+    "Don't try to solo a full-health tank — look for isolated, weakened targets instead",
+    "Use Blood Hunt's speed boost to catch fleeing enemies across the map"
+  ],
+  "whatToExpect": "Warwick will try to stay hidden in the jungle or in fog of war until you're at low health, then rush in for the kill using his ultimate to lock you down. Keep an eye on your own health total in fights and play safer once you're below half health, since that's when he becomes dangerous. Grouping with allies and keeping crowd control ready to stop his ultimate charge will neutralize most of his threat.",
+  "glossary": [
+    {
+      "term": "jungle",
+      "definition": "The area between lanes filled with neutral monster camps; junglers clear these camps for gold and experience instead of laning."
+    },
+    {
+      "term": "sustain",
+      "definition": "The ability to heal or regenerate health, letting a champion stay in fights or the jungle longer without returning to base."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or fears that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "skirmish",
+      "definition": "A small, often unplanned fight involving a few champions, usually shorter and less coordinated than a full team fight."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "frontline",
+      "definition": "The tankier champions positioned at the front of a team fight to absorb damage and engage."
+    },
+    {
+      "term": "fog of war",
+      "definition": "The parts of the map not currently visible to your team, hidden until revealed by vision."
+    }
+  ]
+}

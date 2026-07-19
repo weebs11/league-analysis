@@ -1,0 +1,79 @@
+{
+  "id": "AurelionSol",
+  "name": "Aurelion Sol",
+  "playstyleSummary": "Aurelion Sol is a mage who accumulates Stardust from damaging enemies, permanently powering up his abilities as the game goes on. He channels a dragon breath for continuous damage, flies over terrain to reposition, and can crash a star down for a huge area stun. He starts weaker than most mages but grows more dangerous the longer the game goes and the more he lands his spells.",
+  "strengths": [
+    "Scales up permanently through Stardust, getting stronger throughout the game",
+    "Astral Flight gives him unique mobility over terrain most mages lack",
+    "Falling Star's upgraded form can stun and heavily damage a whole enemy team",
+    "Strong area damage and zone control from Singularity"
+  ],
+  "weaknesses": [
+    "Weaker early before Stardust builds up",
+    "Breath of Light requires channeling, which can be interrupted by crowd control",
+    "Relatively immobile without Astral Flight active",
+    "Needs to land abilities on champions specifically to gain the most Stardust"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Cosmic Creator",
+      "howToUseIt": "Your damaging abilities collect Stardust from enemies you hit, which permanently strengthens your other abilities — the more you land your spells on champions, the stronger your whole kit becomes."
+    },
+    {
+      "key": "Q",
+      "name": "Breath of Light",
+      "howToUseIt": "Channel this at an enemy for continuous damage that increases the longer you hold it on them — try to keep the beam locked onto a champion rather than just minions to build Stardust faster."
+    },
+    {
+      "key": "W",
+      "name": "Astral Flight",
+      "howToUseIt": "Fly over terrain in a direction, letting you use other abilities while flying and removing Breath of Light's cooldown and channel limit while active — use it to escape, chase, or reposition over walls."
+    },
+    {
+      "key": "E",
+      "name": "Singularity",
+      "howToUseIt": "Summon a black hole that slowly pulls enemies toward its center and executes anyone who drops low enough inside it — good for zoning a group or finishing off a low-health enemy who wanders too close."
+    },
+    {
+      "key": "R",
+      "name": "Falling Star / The Skies Descend",
+      "howToUseIt": "Falling Star crashes a star down for damage and a stun; landing enough hits eventually upgrades your next cast into the bigger, wider The Skies Descend — save the upgraded version for a grouped enemy team if you can."
+    }
+  ],
+  "earlyGamePlan": "Focus on channeling Breath of Light onto enemy champions when it's safe to build up Stardust early, since your abilities get noticeably stronger as your Stardust grows. Use Astral Flight to reposition over walls and dodge ganks, since you have limited escape options otherwise, and look for chances to land Singularity on enemies to build even more Stardust.",
+  "quickTips": [
+    "Channel Breath of Light on enemy champions when safe to build Stardust quickly.",
+    "Use Astral Flight to fly over walls to escape ganks or reposition in fights.",
+    "Land damage in Singularity to build extra Stardust and threaten an execute.",
+    "Try to save your ultimate's upgraded form for when the enemy team is grouped.",
+    "Play safer early before your Stardust bonuses make your abilities much stronger."
+  ],
+  "whatToExpect": "Aurelion Sol gets stronger the more he lands his abilities on champions, so try to avoid standing in his dragon breath channel or his black hole for long. His ultimate can stun you from a distance and, once upgraded, can hit and stun a large area, so avoid grouping tightly when he has it ready. He has limited mobility unless he's actively using Astral Flight, so punishing him with an engage when that's on cooldown is a good time to strike.",
+  "glossary": [
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to complete and can be interrupted by crowd control or moving out of range."
+    },
+    {
+      "term": "scaling",
+      "definition": "How much stronger a champion becomes as the game goes on, usually through levels and items."
+    },
+    {
+      "term": "zone control",
+      "definition": "Using abilities to control where enemies can safely stand or move through."
+    },
+    {
+      "term": "execute",
+      "definition": "An effect that deals extra or guaranteed damage to low-health targets, often finishing them off."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually with crowd control or mobility."
+    }
+  ]
+}

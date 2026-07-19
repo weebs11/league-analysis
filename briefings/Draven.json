@@ -1,0 +1,88 @@
+{
+  "id": "Draven",
+  "name": "Draven",
+  "playstyleSummary": "Draven is a high-mechanics marksman whose whole identity is catching his own spinning axes to keep dealing bonus damage and gold. He rewards players who enjoy precise mouse movement and constant multitasking, since juggling axes while also killing minions for gold and dodging enemy attacks is genuinely difficult — but a Draven who's catching axes consistently hits far harder than most other marksmen.",
+  "strengths": [
+    "Extremely high damage output when catching Spinning Axes consistently",
+    "Blood Rush gives strong bursts of move speed and attack speed for chasing or repositioning",
+    "Stand Aside can knock aside and slow multiple enemies at once",
+    "Snowballs fast thanks to bonus gold from his passive"
+  ],
+  "weaknesses": [
+    "Very difficult to play well — dropping axes sharply reduces his damage",
+    "Move speed bonus from Blood Rush fades quickly if he doesn't catch another axe",
+    "Falls off hard if disrupted before he can catch his axes",
+    "High skill floor makes him a rough choice for a first marksman"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "League of Draven",
+      "howToUseIt": "Catching axes and getting kills builds up Adoration, which turns into bonus gold when you kill an enemy champion — the more consistently you catch axes, the richer you get."
+    },
+    {
+      "key": "Q",
+      "name": "Spinning Axe",
+      "howToUseIt": "Attack with this active for bonus damage, then stand still or move deliberately to control where the axe lands so you can catch it and ready another one — catching axes is the core of playing Draven well."
+    },
+    {
+      "key": "W",
+      "name": "Blood Rush",
+      "howToUseIt": "Use this to speed up for chasing, repositioning, or escaping; catching a Spinning Axe makes it ready again sooner, so it comes back often if you're catching axes consistently."
+    },
+    {
+      "key": "E",
+      "name": "Stand Aside",
+      "howToUseIt": "Throw this at a fleeing enemy or into a group to knock them aside and slow them, useful both for peeling aggressive enemies off you and for setting up a kill."
+    },
+    {
+      "key": "R",
+      "name": "Whirling Death",
+      "howToUseIt": "Throw this through enemies for damage; it will reverse and return to you, and you can recall it early — it also executes low-health enemies, so use it to clean up a fight."
+    }
+  ],
+  "earlyGamePlan": "In lane, focus on getting comfortable catching at least one Spinning Axe per attack cycle before worrying about anything fancier — even inconsistent catches still let you deal solid damage while killing minions for gold. Use Stand Aside to poke or punish enemies who overextend, and lean on Blood Rush if you need to disengage or chase down a kill.",
+  "quickTips": [
+    "Practice catching Spinning Axe in a practice tool before taking Draven into a real match",
+    "Move in the direction you want the axe to land after attacking, since Draven's movement steers where it falls",
+    "Don't panic if you drop an axe — just refocus on catching the next one",
+    "Use Blood Rush's speed boost to reposition immediately after catching an axe",
+    "Save Whirling Death to finish off fights rather than opening with it",
+    "Back off from all-ins if you've dropped your axes, since your damage drops without them"
+  ],
+  "whatToExpect": "Draven hits extremely hard while he's catching his axes, but he becomes far weaker the moment he drops one. Punish him with poke or crowd control when you see an axe fall to the ground uncaught, and be ready for skillshots from Stand Aside if you try to walk away from a fight.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss, rather than automatically hitting its target."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight, using your key abilities to try to win it outright rather than just exchanging hits."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight and retreating to safety."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate by knocking back, slowing, or otherwise stopping enemies attacking them."
+    },
+    {
+      "term": "snowball",
+      "definition": "When an early advantage compounds into a bigger and bigger lead as the game goes on."
+    },
+    {
+      "term": "execute",
+      "definition": "An ability that deals bonus or guaranteed damage to low-health targets, often finishing them off outright."
+    }
+  ]
+}

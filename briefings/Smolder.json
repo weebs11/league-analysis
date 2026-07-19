@@ -1,0 +1,76 @@
+{
+  "id": "Smolder",
+  "name": "Smolder",
+  "playstyleSummary": "Smolder is a marksman who starts out weak and unassuming but grows into a dragon powerhouse by stacking his passive over the course of the game. Early on you're focused on surviving and stacking safely; later you become one of the strongest damage dealers on the map. It's a patience-rewarding playstyle.",
+  "strengths": [
+    "Scales into extremely high damage in the late game",
+    "Abilities hit multiple enemies, rewarding good positioning against grouped targets",
+    "Flap, Flap, Flap can reach and finish low-health enemies from a distance",
+    "Ultimate deals heavy damage and slows a wide area"
+  ],
+  "weaknesses": [
+    "Very weak and vulnerable in the early game",
+    "Fully dependent on his team to protect him while he stacks",
+    "Falls behind badly if he can't safely gain Dragon Practice stacks",
+    "Low mobility outside of Flap, Flap, Flap makes him easy to catch"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Dragon Practice",
+      "howToUseIt": "Hit enemy champions with your abilities or get kills with Super Scorcher Breath to gain stacks. Prioritize safely landing abilities on champions over just farming, since stacks make your whole kit stronger."
+    },
+    {
+      "key": "Q",
+      "name": "Super Scorcher Breath",
+      "howToUseIt": "Use this as your main poke and farming tool. The more Dragon Practice stacks you have, the stronger it becomes, so keep landing it on champions when it's safe."
+    },
+    {
+      "key": "W",
+      "name": "Achooo!",
+      "howToUseIt": "Aim this to land directly on an enemy champion since it explodes on impact; hitting a champion is worth far more than hitting minions."
+    },
+    {
+      "key": "E",
+      "name": "Flap, Flap, Flap",
+      "howToUseIt": "Use this to reposition over terrain or to finish off the lowest-health enemy nearby, since it automatically targets whoever has the least health."
+    },
+    {
+      "key": "R",
+      "name": "MMOOOMMMM!",
+      "howToUseIt": "Use this in teamfights to hit a group of enemies from a distance, aiming for the center where the slow and bonus damage are strongest."
+    }
+  ],
+  "earlyGamePlan": "Play carefully in lane, prioritizing safety and last-hitting while looking for safe chances to land Super Scorcher Breath on your opponent to build Dragon Practice stacks. Avoid unnecessary risks or all-in fights before you're stacked up; Smolder's early game is genuinely weak and he needs to survive it to reach his strong late game.",
+  "quickTips": [
+    "Prioritize hitting champions with abilities over minions to stack Dragon Practice faster.",
+    "Play safe and avoid all-in fights early; you're much weaker before stacking up.",
+    "Aim Achooo! directly at enemy champions since it needs to hit them to explode.",
+    "Use Flap, Flap, Flap to escape over terrain or to snipe a fleeing low-health enemy.",
+    "Stay near your team for protection since Smolder has little way to defend himself alone.",
+    "Position at the edge of fights and use your ultimate on grouped enemies from safety."
+  ],
+  "whatToExpect": "Smolder is very weak early, so punish him while you can before he stacks up his passive into a serious late-game threat. Avoid grouping tightly against him once he has his ultimate, since it can hit and slow your whole team at once, and try to isolate him away from his protective teammates.",
+  "glossary": [
+    {
+      "term": "scaling",
+      "definition": "How a champion's power grows over the course of the game, often through levels and items or stacking effects."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance without committing to a full trade."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to try to kill an enemy in one engagement."
+    },
+    {
+      "term": "stacking",
+      "definition": "Building up a repeatable bonus effect over time by triggering it repeatedly."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A larger fight involving most or all champions from both teams."
+    }
+  ]
+}

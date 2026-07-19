@@ -1,0 +1,76 @@
+{
+  "id": "Brand",
+  "name": "Brand",
+  "playstyleSummary": "Brand is an all-out damage mage who sets enemies ablaze and chains his spells together for huge area damage, especially against clustered enemies. He plays aggressively and directly — land a spell, keep the combo going, and enemies who bunch up near each other pay a heavy price.",
+  "strengths": [
+    "Extremely high magic damage output",
+    "Excels against grouped enemies thanks to his passive spreading",
+    "Ultimate can bounce between multiple targets for huge team fight damage",
+    "Regains mana from kills, letting him keep casting in a won fight"
+  ],
+  "weaknesses": [
+    "Very low defense and easy to kill if caught out",
+    "Needs to land an ability to get his combo started",
+    "Predictable rhythm that can be disrupted by dodging his first spell",
+    "Weak against teams that spread out rather than clustering"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Blaze",
+      "howToUseIt": "Your spells set enemies ablaze, dealing damage over time and stacking up to 3 times; at max stacks it detonates for massive area damage. Try to stack Blaze on a target before using your highest-damage spells, and look to detonate it during fights for big bonus damage."
+    },
+    {
+      "key": "Q",
+      "name": "Sear",
+      "howToUseIt": "Launch a fireball that stuns the target if they're already ablaze. Use it to start your combo on a target, or as a follow-up stun once you've applied Blaze with another spell."
+    },
+    {
+      "key": "W",
+      "name": "Pillar of Flame",
+      "howToUseIt": "After a short delay, strike a target area with fire, dealing bonus damage to ablaze targets. Use it to poke from range or to punish enemies standing near minions, since the delay rewards good prediction."
+    },
+    {
+      "key": "E",
+      "name": "Conflagration",
+      "howToUseIt": "Blast a target that spreads to nearby enemies, with double spread range if the target is ablaze. This is your best tool against grouped enemies — use it to threaten anyone standing near their minions or teammates."
+    },
+    {
+      "key": "R",
+      "name": "Pyroclasm",
+      "howToUseIt": "Unleash a bouncing torrent of fire that prioritizes stacking Blaze to max on champions. Cast it into a cluster of enemies for maximum bounces, and remember its initial travel is slow, so it rewards good positioning more than instant reaction."
+    }
+  ],
+  "earlyGamePlan": "Poke with Pillar of Flame and Sear to whittle your opponent down safely, and look to combo into a stun once you land your first spell. Be cautious about your own low defenses — trade from range rather than standing in melee range trying to out-damage your lane opponent directly.",
+  "quickTips": [
+    "Land any spell first to start applying Blaze, then chain your combo for maximum damage",
+    "Cast Conflagration and Pyroclasm into clustered enemies for the biggest payoff",
+    "Use Sear's stun after Blaze is already applied, since a stunned target is easy to follow up on",
+    "Watch your positioning — you have very little defense and die quickly if caught alone",
+    "Remember Pyroclasm's slow initial speed gives enemies time to spread out, so cast it early in a fight",
+    "Take advantage of mana refunds from kills to keep casting through a won fight"
+  ],
+  "whatToExpect": "An enemy Brand needs to land a spell to get his combo rolling, so dodging his first cast — usually Sear or Pillar of Flame — disrupts his whole rhythm. If you see Pyroclasm coming, move away from your allies immediately since it bounces between clustered targets and can deal enormous damage to your whole team if you stay grouped up.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance with low-commitment spells before going for a bigger trade."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together in a specific order for maximum effect."
+    },
+    {
+      "term": "area damage",
+      "definition": "Damage that hits everyone within a zone rather than a single target."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "positioning",
+      "definition": "Where you stand relative to enemies and allies, which determines what abilities can hit you and what you can hit in return."
+    }
+  ]
+}

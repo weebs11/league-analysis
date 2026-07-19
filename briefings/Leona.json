@@ -1,0 +1,67 @@
+{
+  "id": "Leona",
+  "name": "Leona",
+  "playstyleSummary": "Leona is a tanky support built entirely around starting fights and locking enemies down with a huge amount of crowd control. She marks enemies with Sunlight so her allies can deal bonus damage to them, meaning her value comes from setting up kills as much as from her own damage. She's a great pick if you enjoy diving in first and creating chances for your team.",
+  "strengths": [
+    "Huge amount of crowd control, including two stuns, an immobilize, and a slow.",
+    "Sunlight marks enemies for bonus damage when allies follow up, rewarding good teamwork.",
+    "Eclipse lets her soak up damage in extended fights while gaining resistances.",
+    "Very tanky, making her hard to punish once she commits to a fight."
+  ],
+  "weaknesses": [
+    "Little mobility outside of dashing to a target with Zenith Blade.",
+    "Deals fairly limited damage on her own without allies following up.",
+    "Value depends heavily on her team reacting quickly to her Sunlight marks.",
+    "Vulnerable if she engages without support nearby to follow up or protect her."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Sunlight",
+      "howToUseIt": "Your damaging spells mark enemies with Sunlight for 1.5 seconds — call out or ping the marked enemy so your allies know to attack them and trigger the bonus magic damage."
+    },
+    {
+      "key": "Q",
+      "name": "Shield of Daybreak",
+      "howToUseIt": "Your next basic attack after casting this stuns the target and deals bonus damage — use it to start a fight or lock down a target your team is diving."
+    },
+    {
+      "key": "W",
+      "name": "Eclipse",
+      "howToUseIt": "Activate this to reduce incoming damage and gain Armor and Magic Resist — stay near enemies as the duration ends to deal bonus damage and extend the effect, which is great for soaking damage in extended fights."
+    },
+    {
+      "key": "E",
+      "name": "Zenith Blade",
+      "howToUseIt": "Hit an enemy champion with this and they'll be briefly immobilized while you dash to them — use it to engage a fight from range or to stick to a target trying to run."
+    },
+    {
+      "key": "R",
+      "name": "Solar Flare",
+      "howToUseIt": "Aim the center of this at your primary target to stun them, while enemies caught on the outside are only slowed — use it to start teamfights or catch out an isolated enemy."
+    }
+  ],
+  "earlyGamePlan": "In lane, look to combine Zenith Blade and Shield of Daybreak to engage on the enemy bot lane whenever they're out of position, marking them with Sunlight so your ally can punish the damage window. Stay near your ally early on, since your damage alone is limited and your value comes from setting up kills together.",
+  "quickTips": [
+    "Lead engages with Zenith Blade or Solar Flare, and let your team know when you've marked a target with Sunlight.",
+    "Use Shield of Daybreak's stun to start a fight before your team commits.",
+    "Stay in Eclipse's damage-reduction window near enemies as it ends for bonus damage and a longer effect.",
+    "Aim Solar Flare so your priority target is in the center for the full stun, not just the outer slow.",
+    "Don't engage alone — your crowd control is most valuable when your team can follow up immediately."
+  ],
+  "whatToExpect": "An enemy Leona wants to engage on you with Zenith Blade or Solar Flare and chain her crowd control together, so watch out when she starts walking toward you with a spell ready. Once she activates Eclipse, you have a few seconds to get away before it deals bonus damage and extends. Only the enemy in the center of Solar Flare gets stunned, so moving to the edge of the area can help you avoid the worst of it.",
+  "glossary": [
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit what a champion can do."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing first, often with crowd control or a dash."
+    },
+    {
+      "term": "isolated",
+      "definition": "Away from nearby allies who could help."
+    }
+  ]
+}

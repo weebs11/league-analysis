@@ -1,0 +1,76 @@
+{
+  "id": "Sylas",
+  "name": "Sylas",
+  "playstyleSummary": "Sylas is a mobile mage-assassin who mixes spellcasting with melee attacks and can steal the enemy team's ultimate ability to use as his own. He rewards aggressive, flexible play: diving onto priority targets and adapting his game plan around whatever ultimate he's stolen.",
+  "strengths": [
+    "Hijack lets him steal and use enemy ultimates, adding flexibility",
+    "Kingslayer heals him against champions, aiding sustained fighting",
+    "Strong mobility from Abscond/Abduct helps him engage or escape",
+    "Petricite Burst rewards weaving abilities and attacks together for extra damage"
+  ],
+  "weaknesses": [
+    "Vulnerable before he has an enemy ultimate to steal",
+    "His healthbar can look deceptively low while he's actually healthy",
+    "Needs to land Chain Lash's explosion or his combo loses a lot of value",
+    "Can be shut down by good positioning that denies a good Hijack target"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Petricite Burst",
+      "howToUseIt": "After casting a spell you store a charge that empowers your next attack with bonus damage and attack speed. Try to weave an attack in after each ability for extra value."
+    },
+    {
+      "key": "Q",
+      "name": "Chain Lash",
+      "howToUseIt": "Aim this so enemies are near the intersection point when the explosion goes off after the delay, since the initial hit is only part of the damage."
+    },
+    {
+      "key": "W",
+      "name": "Kingslayer",
+      "howToUseIt": "Use this to engage or finish a fight, especially against enemy champions, since it heals you back for landing it on them."
+    },
+    {
+      "key": "E",
+      "name": "Abscond / Abduct",
+      "howToUseIt": "Dash to reposition or escape, then recast it to pull yourself to an enemy you hit with the chains, great for closing the gap on a fleeing target."
+    },
+    {
+      "key": "R",
+      "name": "Hijack",
+      "howToUseIt": "Steal the enemy's ultimate ability when you cast this, and plan your fights around using it; pick your target for maximum value before engaging."
+    }
+  ],
+  "earlyGamePlan": "Play a bit cautiously in lane before level 6, focusing on landing Chain Lash for poke and farming safely with your basic abilities. Once you hit level 6, look for chances to steal a strong enemy ultimate and use the combination to swing skirmishes or ganks in your favor.",
+  "quickTips": [
+    "Weave an attack in after casting a spell to get the bonus Petricite Burst damage.",
+    "Time Chain Lash so enemies are still near the center when it explodes.",
+    "Save Kingslayer for when you or the enemy are near low health to maximize the effect.",
+    "Pick your Hijack target carefully; it defines your game plan for the fight.",
+    "Use Abscond to reposition safely, and only recast Abduct when you're confident about pulling in.",
+    "Don't judge Sylas's health at a glance; his passive and healing can make him tankier than he looks."
+  ],
+  "whatToExpect": "Sylas can steal your team's ultimate abilities, so be aware of what he might use against you and try not to be the only good target available. Watch for his gap-closing dash and pull, and don't assume he's about to die just because his health looks low; Kingslayer heals him significantly against champions.",
+  "glossary": [
+    {
+      "term": "assassin",
+      "definition": "A champion built to quickly burst down a single priority target, often with mobility to reach them."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight, usually with a tool that locks down an enemy."
+    },
+    {
+      "term": "gap closer",
+      "definition": "An ability that lets a champion quickly close the distance to a target, like a dash or pull."
+    },
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities used together for maximum effect."
+    },
+    {
+      "term": "gank",
+      "definition": "When a champion shows up to help ambush an enemy in a lane."
+    }
+  ]
+}

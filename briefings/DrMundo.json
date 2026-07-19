@@ -1,0 +1,88 @@
+{
+  "id": "DrMundo",
+  "name": "Dr. Mundo",
+  "playstyleSummary": "Dr. Mundo is a durable, low-maintenance tank-fighter who doesn't use mana and thrives on just walking at people and refusing to die. He's a great low-stress pick for a newer player top-laner, since his plan every fight is basically the same: soak damage, heal it back, and keep swinging until the enemy gives up.",
+  "strengths": [
+    "No mana means you can cast abilities freely without resource management",
+    "Very tanky with strong built-in healing, especially from his ultimate",
+    "Resists the first hard crowd control effect that hits him each time it's up",
+    "Simple game plan that doesn't require precise combos to be effective"
+  ],
+  "weaknesses": [
+    "Low early damage compared to other top laners",
+    "Vulnerable to burst damage and effects that punish healing before his passive resets",
+    "Not very mobile, so ranged enemies can back away while still attacking him",
+    "Needs to build up health and stacks over the game to become truly dangerous"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Goes Where He Pleases",
+      "howToUseIt": "The first time an enemy tries to stun, root, or otherwise lock you down, you shrug it off instead, losing some health and dropping a cannister you can walk over to heal and reduce this passive's cooldown — try to pick it back up quickly."
+    },
+    {
+      "key": "Q",
+      "name": "Infected Bonesaw",
+      "howToUseIt": "Throw this down a lane or into a fight to slow the first enemy hit and deal damage based on their current health, which makes it especially strong against tanky targets."
+    },
+    {
+      "key": "W",
+      "name": "Heart Zapper",
+      "howToUseIt": "Turn this on when enemies are near you in a fight to deal ongoing damage and store up some of the damage you take, then use it again (or let it end) for a burst that heals you if it lands."
+    },
+    {
+      "key": "E",
+      "name": "Blunt Force Trauma",
+      "howToUseIt": "This passively boosts your attack damage based on your max health at all times, and you can activate it to slam an enemy for extra damage based on your missing health — it hits hardest exactly when you're low."
+    },
+    {
+      "key": "R",
+      "name": "Maximum Dosage",
+      "howToUseIt": "Use this when you're low on health to instantly heal a chunk of missing health and gain move speed, then keep regenerating more health over the following seconds — great for surviving a fight or forcing a bad trade for the enemy."
+    }
+  ],
+  "earlyGamePlan": "In lane, farm minions and use Infected Bonesaw at range to poke and slow whoever you're facing, since it deals more damage the healthier they are. Don't be afraid to trade evenly or even lose some health early — your kit is built around outlasting fights, not winning them fast, and things get much easier once you have more health from items and levels.",
+  "quickTips": [
+    "Cast abilities freely since you have no mana to manage",
+    "Save Maximum Dosage for when you're genuinely low, not as a preemptive buff",
+    "Pick up the cannister your passive drops to heal and reset its cooldown faster",
+    "Turn on Heart Zapper during extended fights rather than brief trades",
+    "Remember Blunt Force Trauma's active hits harder the lower your health is",
+    "Use Infected Bonesaw to poke from range before committing to melee range"
+  ],
+  "whatToExpect": "Dr. Mundo will walk at you, soak up damage, and try to heal it all back with his ultimate, so burst damage and effects that reduce healing are your best answer. He shrugs off the first hard crowd control effect he takes, so don't expect your first stun or root on him to land as expected — save a second one if you have it.",
+  "glossary": [
+    {
+      "term": "mana",
+      "definition": "The resource many champions spend to cast abilities; running out means you can't use your skills."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing laners."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can cast it again."
+    },
+    {
+      "term": "stack",
+      "definition": "A stored charge or accumulated instance of an effect, such as extra health building up over time."
+    },
+    {
+      "term": "farm",
+      "definition": "Killing minions with your attacks to earn steady gold and experience."
+    }
+  ]
+}

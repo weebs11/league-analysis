@@ -1,0 +1,76 @@
+{
+  "id": "Jax",
+  "name": "Jax",
+  "playstyleSummary": "Jax is a duelist fighter who wants to jump onto a single target, dodge their damage, and out-attack them in an extended fight. He feels like a skirmisher - less about big combos, more about surviving the trade and grinding the enemy down with attacks.",
+  "strengths": [
+    "Extremely strong in extended 1v1 duels",
+    "Counter Strike punishes enemies who attack him at the wrong time",
+    "Leap Strike gives good mobility to engage or escape",
+    "Ultimate gives burst damage plus defensive stats"
+  ],
+  "weaknesses": [
+    "Low damage in short trades before his attack speed ramps up",
+    "Counter Strike has a short dodge window that can be baited out and waited out",
+    "Struggles against ranged poke that keeps him from attacking",
+    "Falls off if he can't consistently land basic attacks"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Relentless Assault",
+      "howToUseIt": "Keep attacking the same fight without pause - each consecutive basic attack makes you faster, so extended fights favor you over short trades."
+    },
+    {
+      "key": "Q",
+      "name": "Leap Strike",
+      "howToUseIt": "Leap onto an enemy to strike them and close the gap, or leap onto a friendly unit or ward to reposition safely - it's both your engage and escape tool."
+    },
+    {
+      "key": "W",
+      "name": "Empower",
+      "howToUseIt": "Activate before your next attack lands to add a burst of extra damage - time it right before engaging or right as a fight starts to maximize value."
+    },
+    {
+      "key": "E",
+      "name": "Counter Strike",
+      "howToUseIt": "Use it when you expect incoming attacks: you dodge everything briefly, then stun all nearby enemies when it ends - don't activate it too early or the dodge window will run out before the danger arrives."
+    },
+    {
+      "key": "R",
+      "name": "Grandmaster-at-Arms",
+      "howToUseIt": "Every third attack deals bonus magic damage passively; activate the ability itself in a fight for area damage around you plus a temporary boost to your armor and magic resist to help you survive."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for trades where you can land Empower and stack a few consecutive attacks, using Leap Strike to engage or disengage as needed. Save Counter Strike for when the enemy commits to attacking you, since the stun at the end can turn a losing trade into a winning one.",
+  "quickTips": [
+    "Time Counter Strike for when enemies are about to attack you, not as an opener.",
+    "Use Empower right before a trade so the bonus damage lands on your first hit.",
+    "Leap Strike to allied wards or minions to escape ganks.",
+    "Stay in fights longer rather than trading briefly - your passive rewards sustained attacking.",
+    "Activate your ultimate in a fight for both the damage and the defensive buff, not just for the passive bonus.",
+    "Avoid trading into champions with a lot of poke damage before you can close the gap."
+  ],
+  "whatToExpect": "An enemy Jax will try to leap onto you and grind you down with attacks, getting faster the longer the fight lasts, so avoid long extended trades with him. Watch for the moment he activates Counter Strike - wait out his dodge window before attacking again, since attacking him during it gets you stunned.",
+  "glossary": [
+    {
+      "term": "duelist",
+      "definition": "A champion built to win extended 1-on-1 fights rather than team-oriented utility."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by being the first to commit crowd control or damage onto the enemy team."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range without committing to a full fight."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally ambushes an enemy laner to help get a kill or lead."
+    }
+  ]
+}

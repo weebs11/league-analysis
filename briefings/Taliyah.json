@@ -1,0 +1,84 @@
+{
+  "id": "Taliyah",
+  "name": "Taliyah",
+  "playstyleSummary": "Taliyah is a mobile mage who shapes the battlefield with rock and stone, then uses walls and terrain to zip around the map. Playing her feels like being a control-mage-slash-scout: you clear waves with volleys of rock, set traps enemies stumble into, and use your wall to roam and gank other lanes far earlier than most champions can. She's much weaker when there's no wall or terrain nearby to surf.",
+  "strengths": [
+    "Exceptional roaming power thanks to Weaver's Wall and her passive speed near walls, which builds tempo for her team",
+    "Strong wave clear with Threaded Volley",
+    "Can set up a crowd control combo by shoving enemies with Seismic Shove into Unraveled Earth",
+    "Scales well and threatens kills from a distance"
+  ],
+  "weaknesses": [
+    "Very reliant on nearby walls or terrain for mobility",
+    "Squishy if caught without an escape route",
+    "Abilities are skillshots that can be dodged",
+    "Loses a lot of value in open areas with no walls"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Rock Surfing",
+      "howToUseIt": "You gain Move Speed near walls, so hug jungle walls and terrain edges whenever possible to move faster around the map."
+    },
+    {
+      "key": "Q",
+      "name": "Threaded Volley",
+      "howToUseIt": "Use it to farm waves and poke; if you cast it again on the Worked Ground it just created, you throw a stronger boulder that slows — save that follow-up cast for chasing or punishing enemies."
+    },
+    {
+      "key": "W",
+      "name": "Seismic Shove",
+      "howToUseIt": "Knocks enemies in a direction you choose. Combo it by shoving an enemy into your own Unraveled Earth minefield to stun them."
+    },
+    {
+      "key": "E",
+      "name": "Unraveled Earth",
+      "howToUseIt": "Lay this minefield in a choke point, over a wall enemies might dash through, or right where you plan to knock someone with Seismic Shove — walking, dashing, or being knocked through it triggers the stun."
+    },
+    {
+      "key": "R",
+      "name": "Weaver's Wall",
+      "howToUseIt": "Creates a long wall you can surf along for huge mobility. Use it to roam to another lane quickly, escape a gank, or reposition in a fight — you don't have to ride it all the way to the end."
+    }
+  ],
+  "earlyGamePlan": "Farm safely with Threaded Volley while staying aware of walls near your lane. Once you have a few levels, look to roam to a side lane using your passive speed or Weaver's Wall to help secure a kill, since Taliyah's roaming power is one of her biggest strengths early on.",
+  "quickTips": [
+    "Hug walls whenever you're not actively fighting to move faster",
+    "Combo Seismic Shove into Unraveled Earth for a reliable stun",
+    "Use your wall to roam to other lanes as soon as you hit level 6",
+    "Don't dash or walk through your own minefield during a fight",
+    "Farm with the basic Threaded Volley cast and save the empowered follow-up for punishing dodges or chases",
+    "Ward or check side lanes since Taliyah's own roams rely on the same terrain awareness"
+  ],
+  "whatToExpect": "Enemy Taliyah will often disappear from lane to roam to other lanes using her wall and passive speed near terrain, so ward flanks and check the minimap when she goes missing. In fights, avoid walking or dashing through the minefield she lays down, since that's what detonates it into a stun.",
+  "glossary": [
+    {
+      "term": "wave clear",
+      "definition": "The ability to quickly kill a wave of minions."
+    },
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help fight or gank in another part of the map."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, slows, or knockbacks that limit an enemy's ability to act."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss if the target moves out of its path."
+    },
+    {
+      "term": "tempo",
+      "definition": "The initiative or time advantage gained by acting efficiently, such as roaming or securing objectives faster than the enemy."
+    },
+    {
+      "term": "ward",
+      "definition": "A placeable item that reveals an area of the map, granting vision."
+    },
+    {
+      "term": "gank",
+      "definition": "Ambushing an enemy in a lane with extra teammates, usually from a jungle or side path."
+    }
+  ]
+}

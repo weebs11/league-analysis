@@ -1,0 +1,88 @@
+{
+  "id": "Heimerdinger",
+  "name": "Heimerdinger",
+  "playstyleSummary": "Heimerdinger is a unique mage typically played mid or support who fights through turrets he places on the ground rather than relying only on direct spell damage. He feels like a strategic siege and zone-control champion — you set up turret positions and poke or peel from behind them instead of dueling directly.",
+  "strengths": [
+    "Turrets provide strong zone control and wave clear from a safe distance",
+    "Electron Storm Grenade is a strong crowd control tool that can stun and peel",
+    "UPGRADE!!! adds burst versatility to whichever spell he uses next",
+    "Strong at defending a lane or objective area"
+  ],
+  "weaknesses": [
+    "Turrets are stationary and can be destroyed, especially by area damage",
+    "Low mobility and fairly fragile if caught without turret support",
+    "Needs setup time to place turrets before a fight",
+    "Turrets only deal half damage to towers, limiting his siege power against structures"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Hextech Affinity",
+      "howToUseIt": "You move faster near your own turrets and towers. Position your turrets so you can retreat toward them for a speed boost if a fight goes wrong."
+    },
+    {
+      "key": "Q",
+      "name": "H-28 G Evolution Turret",
+      "howToUseIt": "Place a turret to zone an area or add extra damage to your poke. Spread turrets out so enemies can't destroy them all at once with a single area attack, or place one in brush for a surprise hit."
+    },
+    {
+      "key": "W",
+      "name": "Hextech Micro-Rockets",
+      "howToUseIt": "Fire long-range rockets that converge on your cursor. Spread your aim across multiple targets for more reliable damage against several enemies, or focus your cursor on one target for maximum single-target impact."
+    },
+    {
+      "key": "E",
+      "name": "CH-2 Electron Storm Grenade",
+      "howToUseIt": "Lob this to stun anyone hit directly and slow everyone nearby. This is your main defense against being dove, so save it rather than using it just for poke when you can avoid it."
+    },
+    {
+      "key": "R",
+      "name": "UPGRADE!!!",
+      "howToUseIt": "Cast this before another spell to make that spell's next cast stronger. Save it as an answer to a dangerous situation, like empowering your grenade to escape a gank, rather than spending it as soon as it's available."
+    }
+  ],
+  "earlyGamePlan": "Set up your turrets defensively in lane, spacing them apart so one area-of-effect spell can't wipe them all out. Poke with Hextech Micro-Rockets and your turrets' damage while staying behind your zone, and save Electron Storm Grenade to punish dives or all-ins rather than just for extra poke.",
+  "quickTips": [
+    "Spread your turrets out instead of clustering them so enemies can't destroy them all with one spell.",
+    "Place a turret in brush near your lane for a surprise burst of damage on unsuspecting enemies.",
+    "Save Electron Storm Grenade's stun for defense against a gank or dive rather than using it purely to poke.",
+    "Time UPGRADE!!! for a critical moment, like escaping a gank, instead of using it automatically whenever it's off cooldown.",
+    "Retreat toward your own turrets when a fight turns bad, since you move faster near them.",
+    "Rebuild your turrets after every fight or return to lane, since they're a core part of your damage and zone control."
+  ],
+  "whatToExpect": "Enemy Heimerdinger will set up turrets to zone you away from parts of the lane and poke you from a distance with Hextech Micro-Rockets. If your team wants to dive or engage him, try to destroy his turrets first with area damage or focused attacks, and watch out for Electron Storm Grenade's stun when you commit to an all-in — it's his main defensive tool.",
+  "glossary": [
+    {
+      "term": "Zoning",
+      "definition": "Using threats of damage or crowd control to control where enemies can safely stand."
+    },
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that take away an enemy's ability to move or act normally."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Dive",
+      "definition": "Pushing deep into enemy territory, often under a tower, to secure a kill."
+    },
+    {
+      "term": "All-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to kill or be killed, rather than trading and retreating."
+    },
+    {
+      "term": "Siege",
+      "definition": "Attacking enemy towers or structures, usually with the help of a minion wave."
+    },
+    {
+      "term": "Gank",
+      "definition": "When a teammate (often the jungler) shows up in a lane to help kill or pressure an enemy laner."
+    }
+  ]
+}

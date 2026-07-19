@@ -1,0 +1,80 @@
+{
+  "id": "Udyr",
+  "name": "Udyr",
+  "playstyleSummary": "Udyr is a stance-dancing jungler who mashes his four abilities to buff his own auto-attacks instead of throwing out skillshots. You hold a button, walk up, and out-brawl people with sheer stat gains. It feels aggressive and simple to input, but knowing when to hold an ability for its Recast upgrade instead of firing it immediately is what separates a good Udyr from a button-masher.",
+  "strengths": [
+    "Very strong early-game jungler with fast clear and ganks",
+    "Tough to kill thanks to shields and healing from his kit",
+    "Simple inputs: mostly auto-attacking with abilities toggled on",
+    "Snowballs hard off early kills and objectives"
+  ],
+  "weaknesses": [
+    "No ranged tools, so kiting champions can shut him down",
+    "Falls off in the late game compared to scaling carries",
+    "Recasting one ability locks out empowering the others for a while",
+    "Vulnerable to crowd control chains since he has no hard escape until a certain ability is active"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Bridge Between",
+      "howToUseIt": "This is the core of Udyr: every ability you use is a stance swap that also speeds up your next two attacks. Weave abilities between auto-attacks constantly rather than saving them, since the attack speed bonus is most of your early damage."
+    },
+    {
+      "key": "Q",
+      "name": "Wilding Claw",
+      "howToUseIt": "Use this to boost your attack speed and add bonus damage to fights and jungle clears. Recast it once you're already fighting to add a lightning strike, but don't hold it too long or you lose tempo."
+    },
+    {
+      "key": "W",
+      "name": "Iron Mantle",
+      "howToUseIt": "Turn this on before taking damage from jungle camps or trades, since the shield and on-hit healing let you sustain through fights. Recast when you're at risk of dying for a bigger shield and a stronger heal over time."
+    },
+    {
+      "key": "E",
+      "name": "Blazing Stampede",
+      "howToUseIt": "Use this to close the distance on a gank or chase, since your first attack on each enemy stuns them. Recast when you need to stick to a target through crowd control, as it grants immunity to being immobilized."
+    },
+    {
+      "key": "R",
+      "name": "Wingborne Storm",
+      "howToUseIt": "Turn this on in teamfights or skirmishes to damage and slow everyone around you. Recast once enemies try to run so the storm chases them down for extra damage."
+    }
+  ],
+  "earlyGamePlan": "Start in the jungle and clear efficiently by weaving abilities between attacks on camps to keep the attack-speed bonus rolling. Look to gank a lane around level 3-4 once you have a couple of stances online, using Blazing Stampede to stun your target on the approach. Keep an eye on the enemy jungler's pathing so you can contest scuttle crab or invade a weak camp.",
+  "quickTips": [
+    "Weave an ability before every few auto-attacks to keep the attack speed buff active",
+    "Save a Recast for the moment you actually need the upgraded effect, not on cooldown",
+    "Use Iron Mantle proactively before big camp packs or trades, not reactively when low",
+    "Track when you last Awakened an ability, since you can't Awaken another right away",
+    "Group with your team for objectives since your ultimate is strong in close-range skirmishes",
+    "Avoid extended fights against champions who can kite you at range"
+  ],
+  "whatToExpect": "An enemy Udyr will try to stick onto you and win with sustained damage, healing, and a stun off Blazing Stampede, so don't stand still and trade auto-attacks with him. Kite him with movement and abilities that create distance, and be aware his shield absorbs damage before your team's crowd control lands, so time your own hard CC for after his shield or immunity window expires.",
+  "glossary": [
+    {
+      "term": "jungler",
+      "definition": "The player who clears neutral monster camps in the jungle instead of laning, and ganks lanes to help teammates."
+    },
+    {
+      "term": "gank",
+      "definition": "When a player, often the jungler, ambushes an enemy lane to help their ally get a kill or force enemies away."
+    },
+    {
+      "term": "tempo",
+      "definition": "The relative speed and efficiency of your actions compared to the enemy; wasting time loses tempo."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, slows, or knockups that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from a melee attacker while still damaging them, to avoid taking damage in return."
+    },
+    {
+      "term": "skirmish",
+      "definition": "A small fight between a few champions, smaller than a full teamfight."
+    }
+  ]
+}

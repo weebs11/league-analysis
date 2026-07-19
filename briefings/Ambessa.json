@@ -1,0 +1,79 @@
+{
+  "id": "Ambessa",
+  "name": "Ambessa",
+  "playstyleSummary": "Ambessa is a high-mobility melee fighter built for skirmishes, chaining dashes from her passive into extended combos and alternating a sweeping strike with a harder-hitting transformed version. She's one of the more complex champions to pick up, with a lot of ability interactions to learn, but rewards players who master her combo timing with relentless pressure.",
+  "strengths": [
+    "Extremely high mobility from chaining Drakehound's Step dashes",
+    "Strong burst damage and skirmishing power",
+    "Public Execution can pick off isolated enemies from far away",
+    "Repudiation gives her a defensive tool most fighters lack"
+  ],
+  "weaknesses": [
+    "High skill ceiling with a lot of ability interactions to learn",
+    "Energy resource can run out if abilities are used carelessly",
+    "Relatively squishy for a melee fighter, especially early",
+    "Public Execution can whiff or be blocked if the line is chosen poorly"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Drakehound's Step",
+      "howToUseIt": "Queue up a movement or attack command while an ability is casting to automatically dash afterward — this is core to her combos and how she closes distance, so practice weaving it into every ability."
+    },
+    {
+      "key": "Q",
+      "name": "Cunning Sweep / Sundering Slam",
+      "howToUseIt": "Cunning Sweep hits in a semicircle; landing it transforms your next cast into Sundering Slam, a line attack that hits harder — alternate between the two forms depending on how enemies are positioned around you."
+    },
+    {
+      "key": "W",
+      "name": "Repudiation",
+      "howToUseIt": "Brace to block incoming damage before slamming the ground — timing the brace against an incoming attack or ability makes the follow-up hit much harder."
+    },
+    {
+      "key": "E",
+      "name": "Lacerate",
+      "howToUseIt": "Whips around you to damage and slow nearby enemies — trigger Drakehound's Step off this to get a second hit at the end of your dash."
+    },
+    {
+      "key": "R",
+      "name": "Public Execution",
+      "howToUseIt": "Blinks to the farthest enemy champion in a chosen line and suppresses them before slamming them down — use it to pick off an isolated backline target or to lock down a key threat."
+    }
+  ],
+  "earlyGamePlan": "Since Ambessa is a difficult champion with a lot of moving parts, focus early levels on landing basic combos of Q into your passive dash rather than trying to chain everything perfectly. Use Repudiation's brace defensively when you expect incoming damage, and hold your ultimate for isolated targets rather than the middle of a group fight.",
+  "quickTips": [
+    "Queue an attack or move command mid-ability to trigger Drakehound's Step automatically.",
+    "Land Cunning Sweep to transform it into the harder-hitting Sundering Slam.",
+    "Time Repudiation's brace against incoming damage to power up the follow-up slam.",
+    "Save Public Execution for isolated targets rather than grouped fights.",
+    "Watch your energy bar so you don't run dry mid-combo."
+  ],
+  "whatToExpect": "Ambessa is a very mobile melee threat who can dash repeatedly through her passive, so don't assume she's out of range just because her first ability missed. Be careful about wandering off alone, since her ultimate can suppress and slam an isolated target from a long distance. Group up with allies when she's nearby to reduce the chance she can pick you off one-on-one.",
+  "glossary": [
+    {
+      "term": "skirmish",
+      "definition": "A small-scale fight, usually involving a few champions rather than a full team fight."
+    },
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage in a very short window."
+    },
+    {
+      "term": "skill ceiling",
+      "definition": "How much a champion's potential improves with player skill and practice."
+    },
+    {
+      "term": "isolated",
+      "definition": "Away from allies, and therefore vulnerable to being picked off one-on-one."
+    },
+    {
+      "term": "suppress",
+      "definition": "A crowd control effect stronger than a normal stun, which usually cannot be removed by cleanse effects."
+    },
+    {
+      "term": "backline",
+      "definition": "The back of a team's formation in a fight, usually where fragile damage dealers stand."
+    }
+  ]
+}

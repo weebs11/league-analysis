@@ -1,0 +1,80 @@
+{
+  "id": "Briar",
+  "name": "Briar",
+  "playstyleSummary": "Briar is a relentless, high-tempo fighter who charges into fights and heals herself through the damage she deals, getting stronger the lower her own health drops. She feels fast and committal — once you unleash her frenzy you're locked into pursuing a target, so timing when to let loose is the core skill.",
+  "strengths": [
+    "Strong self-healing that scales with how much damage she deals and takes",
+    "High mobility and pursuit potential once frenzied",
+    "Ultimate lets her single out and chase down one target relentlessly",
+    "Rewards aggressive, proactive play with big payoffs"
+  ],
+  "weaknesses": [
+    "No natural health regeneration, relying entirely on her healing bleed",
+    "Committing to Blood Frenzy locks her into chasing the nearest enemy",
+    "Vulnerable during Chilling Scream's charge-up if interrupted early",
+    "Can be kited or peeled away from her single target"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Crimson Curse",
+      "howToUseIt": "Your attacks and abilities apply a stacking bleed that heals you for a portion of the damage it deals, and you heal more the lower your health is. Since you lack natural regeneration, look to apply this bleed regularly in fights to keep yourself topped up rather than playing overly passively."
+    },
+    {
+      "key": "Q",
+      "name": "Head Rush",
+      "howToUseIt": "Leap to a unit and stun nearby enemies while breaking their Armor. Use it to engage a fight or as a follow-up during Blood Frenzy to lock down your target further."
+    },
+    {
+      "key": "W",
+      "name": "Blood Frenzy / Snack Attack",
+      "howToUseIt": "Leap forward into a frenzy that makes you relentlessly pursue the nearest enemy with bonus attack and move speed, and reactivate it for a big bite of extra damage. Only trigger this when you're ready to commit, since it locks your movement toward whoever is closest."
+    },
+    {
+      "key": "E",
+      "name": "Chilling Scream",
+      "howToUseIt": "Channel to remove Blood Frenzy and charge a scream that slows and damages, taking reduced damage and healing while charging, with a fully charged cast knocking enemies back into walls for a stun. Use it defensively to disengage from a bad fight, or offensively to knock an enemy into a wall for a stun."
+    },
+    {
+      "key": "R",
+      "name": "Certain Death",
+      "howToUseIt": "Mark the first champion hit as your prey and beeline toward them, fearing nearby enemies on arrival and gaining the benefits of Blood Frenzy plus bonus defenses and life steal. Use it to single out a priority target you intend to chase down for the rest of the fight."
+    }
+  ],
+  "earlyGamePlan": "Trade carefully using Head Rush and basic attacks to build up Crimson Curse stacks without fully committing to Blood Frenzy too early. Since you lack health regeneration, avoid taking unnecessary chip damage between fights, and look for good moments to frenzy in when the enemy is isolated.",
+  "quickTips": [
+    "Only activate Blood Frenzy when you're ready to fully commit, since it forces you toward the nearest enemy",
+    "Use Chilling Scream defensively to cancel a bad frenzy and disengage from a losing fight",
+    "Try to land a fully charged Chilling Scream to knock enemies into a wall for the stun",
+    "Remember your healing scales up as your health gets lower, so don't panic and retreat too early in a fight you can still win",
+    "Use Certain Death to single out the enemy's priority target rather than whoever is closest to you",
+    "Watch your positioning before frenzying in, since you can't easily change direction once committed"
+  ],
+  "whatToExpect": "An enemy Briar becomes very dangerous once she commits to Blood Frenzy, chasing down whoever is nearest with increasing speed, so try not to be the closest target when she engages. Since her healing gets stronger as her health drops, focus on burst damage or crowd control to lock her down rather than trying to slowly whittle her health away, and watch for Certain Death marking you specifically as her prey.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance or using crowd control on the enemy first."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight and retreating, often using mobility or defensive abilities to escape safely."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a squishy target in one combo."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking an enemy while continually moving away to avoid taking damage in return."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate by blocking, slowing, or removing a threat near them."
+    }
+  ]
+}

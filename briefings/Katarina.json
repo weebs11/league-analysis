@@ -1,0 +1,87 @@
+{
+  "id": "Katarina",
+  "name": "Katarina",
+  "playstyleSummary": "Katarina is an all-in assassin mage who throws daggers, blinks around with Shunpo, and tries to chain kills together for cooldown resets. She has no mana bar to manage, but she is very squishy, so games often feel like short bursts of aggression followed by careful waiting. She shines in chaotic teamfights where she can jump in and hit several enemies at once with Death Lotus.",
+  "strengths": [
+    "No mana means she never runs out of resources to fight or farm.",
+    "Very strong teamfight damage once she reaches level 6.",
+    "Killing a champion she's recently damaged resets her cooldowns through Voracity, letting her snowball extra kills.",
+    "Shunpo gives strong mobility to chase down or escape from enemies."
+  ],
+  "weaknesses": [
+    "Extremely squishy — most enemies can kill her in a single combo if they catch her.",
+    "No crowd control of her own, so she can't lock a target down by herself.",
+    "Death Lotus channels in place, making her an easy target to interrupt if focused.",
+    "Weak early trades in lane compared to many other mid laners."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Voracity",
+      "howToUseIt": "Walk over Daggers you've thrown to shorten Shunpo's cooldown, and remember that killing a champion you've recently damaged refreshes your other cooldowns — chain kills together instead of stopping after just one."
+    },
+    {
+      "key": "Q",
+      "name": "Bouncing Blade",
+      "howToUseIt": "Throw it through the minion wave to clear minions and damage several enemies at once, since it bounces between nearby targets."
+    },
+    {
+      "key": "W",
+      "name": "Preparation",
+      "howToUseIt": "Use the burst of Move Speed to reposition in a fight or run away, and pick up the Dagger it tosses later to shorten Shunpo's cooldown."
+    },
+    {
+      "key": "E",
+      "name": "Shunpo",
+      "howToUseIt": "Blink onto an enemy for a free hit, or onto an ally, minion, or Dagger to escape danger — it's your main tool both for getting into a fight and getting out."
+    },
+    {
+      "key": "R",
+      "name": "Death Lotus",
+      "howToUseIt": "Save this for teamfights where the enemy is distracted or already fighting your team, since you're stuck in place while channeling and easy to punish if you're focused down."
+    }
+  ],
+  "earlyGamePlan": "In lane, farm with Bouncing Blade and avoid risky trades — you don't have a strong early combo, and falling behind early is hard to recover from. Look to punish the enemy laner with Shunpo if they overextend. Once you hit level 6, look for roaming plays or set up kills with Death Lotus on isolated enemies.",
+  "quickTips": [
+    "Pick up your thrown Daggers whenever it's safe — they shorten Shunpo's cooldown.",
+    "Don't cast Death Lotus into a fight where you'll be the first target; wait for the chaos to start.",
+    "Use Shunpo onto a minion or Dagger as a free escape when you're in danger.",
+    "Chain kills quickly after Voracity triggers — the cooldown reset only helps while it's active.",
+    "Avoid 1v1 fights early; you become much stronger once you have levels and items."
+  ],
+  "whatToExpect": "An enemy Katarina will look to catch someone alone or jump into a fight your team is already losing focus in, then channel Death Lotus for huge burst damage. Save a stun, root, or silence for when she starts channeling — interrupting or killing her during Death Lotus shuts down most of her damage. She's very fragile, so focusing her down quickly in a fight usually works.",
+  "glossary": [
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight or play with no way to safely back out."
+    },
+    {
+      "term": "squishy",
+      "definition": "Has low health and defenses, so it dies quickly to damage."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams."
+    },
+    {
+      "term": "combo",
+      "definition": "A sequence of abilities used together for a bigger effect."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or silences that limit what a champion can do."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to complete, during which the caster is vulnerable."
+    },
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help teammates elsewhere on the map."
+    },
+    {
+      "term": "isolated",
+      "definition": "Away from nearby allies who could help."
+    }
+  ]
+}

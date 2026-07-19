@@ -1,0 +1,75 @@
+{
+  "id": "Olaf",
+  "name": "Olaf",
+  "playstyleSummary": "Olaf is an aggressive, straightforward fighter who gets stronger as his own health drops, making him great at diving into fights and winning duels. He throws axes to slow enemies, then leans on true damage and an unstoppable rage to win fights other champions would run from.",
+  "strengths": [
+    "Gets more powerful the lower his health gets",
+    "Ultimate makes him immune to crowd control while attacking",
+    "Strong 1v1 duelist thanks to true damage",
+    "Can reset his axe's cooldown by picking it back up"
+  ],
+  "weaknesses": [
+    "No hard crowd control of his own to lock enemies down",
+    "Vulnerable before his passive kicks in at high health",
+    "Reckless Swing costs his own health, so poor use can get him killed",
+    "Easily kited by ranged enemies if he can't close the distance"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Berserker Rage",
+      "howToUseIt": "The lower your health, the more attack speed and life steal you get - don't panic and retreat immediately when you drop low, since this is often when you deal and heal the most."
+    },
+    {
+      "key": "Q",
+      "name": "Undertow",
+      "howToUseIt": "Throw this into the enemy's path to slow and damage them, then walk over the axe to pick it up and reset the cooldown so you can throw it again."
+    },
+    {
+      "key": "W",
+      "name": "Tough It Out",
+      "howToUseIt": "Activate this before trading or diving in - the shield and attack speed help you survive the enemy's first hits and come out ahead."
+    },
+    {
+      "key": "E",
+      "name": "Reckless Swing",
+      "howToUseIt": "This deals true damage, which ignores armor and magic resist, but costs you health too - only use it when you can afford the cost or when it will kill the target and refund it."
+    },
+    {
+      "key": "R",
+      "name": "Ragnarok",
+      "howToUseIt": "Turn this on right before the enemy team locks you down with crowd control - while active you can't be stunned, slowed, or rooted as long as you keep attacking, though you take extra damage while it's on."
+    }
+  ],
+  "earlyGamePlan": "In lane, throw Undertow to poke and slow your opponent, then walk up to grab the axe back before trading further. Use Reckless Swing carefully since it costs your own health, lean on Tough It Out's shield when you plan to trade, and don't be afraid to fight even at lower health thanks to your passive.",
+  "quickTips": [
+    "Walk over your thrown axe to reset Undertow's cooldown",
+    "Save Tough It Out for right before a trade or dive, not after you're already losing",
+    "Only use Reckless Swing when the health cost is worth it",
+    "Turn on Ragnarok before the enemy's crowd control lands, not after",
+    "Don't play too passively at medium health - you get stronger as you take damage"
+  ],
+  "whatToExpect": "Olaf gets more dangerous the lower his health drops, so don't assume a low-health Olaf is an easy kill - he may out-damage and out-heal you. Save your hard crowd control for after his Ragnarok ends since he can't be locked down while it's active, and watch for him picking his thrown axe back up to keep chasing you.",
+  "glossary": [
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, and roots that limit what an enemy can do."
+    },
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resist, so it always deals its full value."
+    },
+    {
+      "term": "duelist",
+      "definition": "A champion built to win 1v1 fights."
+    },
+    {
+      "term": "kite",
+      "definition": "Attacking a melee enemy while moving away to avoid their retaliation."
+    },
+    {
+      "term": "dive",
+      "definition": "Going deep into or past the enemy's position, often under their tower, to secure a kill."
+    }
+  ]
+}

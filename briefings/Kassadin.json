@@ -1,0 +1,80 @@
+{
+  "id": "Kassadin",
+  "name": "Kassadin",
+  "playstyleSummary": "Kassadin is a mage-assassin who starts weak but snowballs into one of the most mobile champions in the game once he can chain his blink repeatedly. He feels like a slow-burn scaling pick - surviving the early game safely matters far more than early aggression.",
+  "strengths": [
+    "Riftwalk gives incredible mobility once it can be cast repeatedly",
+    "Void Stone passively reduces magic damage taken, helping him survive mage matchups",
+    "Null Sphere can interrupt dangerous channeled abilities",
+    "Scales into a very strong late-game threat and objective-taker"
+  ],
+  "weaknesses": [
+    "Very weak in the early levels before his kit comes online",
+    "Riftwalk's mana cost rises steeply with repeated casts, punishing overuse",
+    "Force Pulse needs several nearby spell casts to charge before it's usable",
+    "Falls behind quickly if he gets pushed around or ganked early"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Void Stone",
+      "howToUseIt": "You take reduced magic damage and can walk through other units at all times - lean on this to survive early trades against mages and to reposition through crowded fights."
+    },
+    {
+      "key": "Q",
+      "name": "Null Sphere",
+      "howToUseIt": "Fire this to damage an enemy and interrupt anything they're channeling, while also wrapping yourself in a shield that absorbs magic damage - use it defensively against dangerous channeled ultimates as much as offensively."
+    },
+    {
+      "key": "W",
+      "name": "Nether Blade",
+      "howToUseIt": "Your basic attacks deal bonus magic damage passively at all times; activate it before an attack for a much bigger burst of bonus damage plus mana restoration, useful for both trading and sustaining in lane."
+    },
+    {
+      "key": "E",
+      "name": "Force Pulse",
+      "howToUseIt": "This charges up automatically from nearby spell casts, including enemy ones; once charged, use it to damage and slow enemies in a cone - track the charge so you know when it's ready in a fight."
+    },
+    {
+      "key": "R",
+      "name": "Riftwalk",
+      "howToUseIt": "Blink to a nearby location for area damage, and note that casting it multiple times quickly costs more mana but also deals more damage each time - save repeated casts for when you're ready to commit to a kill or a big engage."
+    }
+  ],
+  "earlyGamePlan": "Play very passively in lane, farming safely and avoiding all-in trades until you have some levels and items, since Kassadin is one of the weakest champions in the early game. Once you're online, use Riftwalk to roam and threaten kills across the map with your newfound mobility.",
+  "quickTips": [
+    "Avoid trading early - Kassadin is weak until he has levels and items behind him.",
+    "Save Null Sphere to interrupt a dangerous enemy channel when you can.",
+    "Track Force Pulse's charge so you know exactly when it becomes available in a fight.",
+    "Don't chain too many Riftwalks in a row without a plan - the mana cost climbs fast.",
+    "Use Void Stone's unit-walking to escape being surrounded in a skirmish.",
+    "Look to snowball once you're strong - Kassadin's power grows a lot faster than most champions past the early game."
+  ],
+  "whatToExpect": "An enemy Kassadin is nearly harmless in the first several minutes, so punish him early with aggression before he scales up - but be very careful once he has levels and mana for repeated Riftwalks, since he becomes extremely hard to pin down and can burst you from a blink away. Save an interrupt or hard crowd control for when he tries to all-in you with his ultimate.",
+  "glossary": [
+    {
+      "term": "scaling",
+      "definition": "How much stronger a champion gets over time as they gain levels and items, relative to others."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to cast, during which the caster is vulnerable and can often be interrupted."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight, with little held back for safety."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "roam",
+      "definition": "Leaving your lane temporarily to help fight or gain an advantage in another part of the map."
+    },
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into an even bigger one, making a strong player or team harder to stop over time."
+    }
+  ]
+}

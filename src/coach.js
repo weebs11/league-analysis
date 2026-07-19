@@ -219,30 +219,6 @@ const GAME_PLAN_SCHEMA = obj({
   glossary: GLOSSARY,
 });
 
-const CHAMP_SELECT_SCHEMA = obj({
-  yourChampion: obj({
-    playstyleSummary: str, // what playing this champ feels like, for a newer player
-    strengths: strArr,
-    weaknesses: strArr,
-    abilities: arr(
-      obj({
-        key: { type: 'string', enum: ['Passive', 'Q', 'W', 'E', 'R'] },
-        name: str,
-        howToUseIt: str,
-      })
-    ),
-  }),
-  earlyGamePlan: str, // what to do in the first few minutes
-  knownEnemies: arr(
-    obj({
-      champion: str,
-      whatToExpect: str,
-    })
-  ),
-  quickTips: strArr,
-  glossary: GLOSSARY,
-});
-
 // ---- Context building --------------------------------------------------------
 
 async function abilityContext(champRefs) {
@@ -315,7 +291,19 @@ async function buildGameContext(game) {
 
 // ---- Generation ---------------------------------------------------------------
 
-async function generateStructured(schema, userPrompt, { maxTokens = 16000, effort = 'high' } = {}) {
+// Progress model for the UI: 'preparing' (context + meta search) -> 'thinking'
+// (the model reasoning, pct 8-30) -> 'writing' (JSON streaming in, pct 30-95).
+// The server adds 'done'/'error'. Percentages are estimates — thinking length is
+// unknowable up front and plan length varies — so the writing phase is scaled
+// against the previous plan's size and both phases are capped short of 100.
+const THINKING_CHARS_TYPICAL = 6000;
+
+async function generateStructured(schema, userPrompt, {
+  maxTokens = 16000,
+  effort = 'high',
+  onProgress = null,
+  expectedChars = 9000,
+} = {}) {
   const anthropic = client();
   if (!anthropic) throw new CoachError('no_api_key', 'No Anthropic API key configured.');
   const cfg = getConfig();
@@ -331,6 +319,25 @@ async function generateStructured(schema, userPrompt, { maxTokens = 16000, effor
     },
     messages: [{ role: 'user', content: userPrompt }],
   });
+
+  if (onProgress) {
+    let thinkingChars = 0;
+    let textChars = 0;
+    let lastEmit = 0;
+    stream.on('streamEvent', (event) => {
+      if (event.type !== 'content_block_delta') return;
+      if (event.delta?.type === 'thinking_delta') thinkingChars += event.delta.thinking.length;
+      else if (event.delta?.type === 'text_delta') textChars += event.delta.text.length;
+      else return;
+      // Throttle: deltas arrive many times per second, the bar doesn't need to.
+      const now = Date.now();
+      if (now - lastEmit < 400) return;
+      lastEmit = now;
+      onProgress(textChars > 0
+        ? { phase: 'writing', pct: 30 + Math.round(65 * Math.min(1, textChars / expectedChars)) }
+        : { phase: 'thinking', pct: 8 + Math.round(22 * Math.min(1, thinkingChars / THINKING_CHARS_TYPICAL)) });
+    });
+  }
 
   const message = await stream.finalMessage();
   if (message.stop_reason === 'refusal') {
@@ -368,8 +375,14 @@ export function describeApiError(err) {
   return `Unexpected error: ${err.message}`;
 }
 
+// Writing-phase progress is scaled against the last plan's actual JSON size,
+// which beats any fixed guess after the first generation of a session.
+let lastPlanChars = 9000;
+
 // Full in-game breakdown: matchup, threats, strategy, items.
-export async function generateGamePlan(game) {
+// `onProgress` receives { phase, pct } updates for the UI's progress bar.
+export async function generateGamePlan(game, onProgress = () => {}) {
+  onProgress({ phase: 'preparing', pct: 3 });
   const [context, metaNotes] = await Promise.all([
     buildGameContext(game),
     fetchMetaNotes(game.me?.champion?.name, game.me?.role),
@@ -396,33 +409,13 @@ export async function generateGamePlan(game) {
     `- "glossary" should define every jargon term you used (aim for 5-12 terms).`,
   ].join('\n');
   // The game plan is the deliverable — full effort here.
-  return generateStructured(GAME_PLAN_SCHEMA, prompt, { effort: 'high' });
-}
-
-// Lighter champ-select briefing (enemy picks may be partially known).
-export async function generateChampSelectAdvice(champSelect) {
-  const myChamp = champSelect.me?.champion;
-  if (!myChamp) throw new CoachError('no_champion', 'Lock in (or hover) a champion first.');
-  const knownEnemies = champSelect.theirTeam.map((m) => m.champion).filter(Boolean);
-  const allies = champSelect.myTeam.filter((m) => !m.isMe).map((m) => m.champion).filter(Boolean);
-  const champData = await abilityContext([myChamp, ...knownEnemies]);
-  const role = champSelect.me.role ? `My assigned role is ${champSelect.me.role}.` : '';
-
-  const prompt = [
-    `I'm in champion select, playing ${myChamp.name}. ${role}`,
-    knownEnemies.length
-      ? `Known enemy picks so far: ${knownEnemies.map((c) => c.name).join(', ')}.`
-      : `No enemy picks are visible yet.`,
-    allies.length ? `My teammates picked: ${allies.map((c) => c.name).join(', ')}.` : '',
-    ``,
-    `PATCH: ${ddragon.getVersion()}`,
-    `CURRENT-PATCH CHAMPION DATA (authoritative):`,
-    JSON.stringify(champData),
-    ``,
-    `Give me a pre-game briefing I can absorb in ~90 seconds: how my champion works, a plan for the first minutes, and what to expect from any known enemies.`,
-  ].join('\n');
-  // A 90-second briefing doesn't need game-plan depth.
-  return generateStructured(CHAMP_SELECT_SCHEMA, prompt, { maxTokens: 8000, effort: 'medium' });
+  const plan = await generateStructured(GAME_PLAN_SCHEMA, prompt, {
+    effort: 'high',
+    onProgress,
+    expectedChars: lastPlanChars,
+  });
+  lastPlanChars = Math.max(4000, JSON.stringify(plan).length);
+  return plan;
 }
 
 // Follow-up Q&A about the current game. `history` is [{role, content}] from

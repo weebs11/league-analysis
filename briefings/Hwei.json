@@ -1,0 +1,88 @@
+{
+  "id": "Hwei",
+  "name": "Hwei",
+  "playstyleSummary": "Hwei is a highly flexible, high-skill-cap mage typically played mid or support, where each of his basic abilities is actually a choice between three different spells depending on which stance you pick. This gives him huge flexibility in any given situation, but there's a lot to learn — expect a longer learning curve than most mages.",
+  "strengths": [
+    "Extremely flexible kit — can choose damage, utility, or crowd control spells depending on the situation",
+    "Strong poke and burst combo potential via his passive's signature detonation",
+    "Ultimate can devastate an entire team if it hits the right target",
+    "Good at zoning and area denial"
+  ],
+  "weaknesses": [
+    "Very high complexity — nine total spell options to learn between his three stances",
+    "Slow cast times on many of his spells make him easy to punish if caught out of position",
+    "Needs to land two separate damaging abilities to trigger his passive's full damage",
+    "Low base durability, so he's vulnerable if rushed"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Signature of the Visionary",
+      "howToUseIt": "Hitting an enemy champion with a damaging ability primes them, and a second damaging ability completes and detonates a signature for bonus area damage. Try to land two different damaging spells on the same target in a short window."
+    },
+    {
+      "key": "Q",
+      "name": "Subject: Disaster",
+      "howToUseIt": "Swap into this stance to access three damage-focused spells (Devastating Fire, Severing Bolt, Molten Fissure). Use it when you want to maximize damage output in a trade or poke."
+    },
+    {
+      "key": "W",
+      "name": "Subject: Serenity",
+      "howToUseIt": "Swap into this stance to access three utility spells (Fleeting Current, Pool of Reflection, Stirring Lights). Use it for mobility, shields, or utility rather than damage."
+    },
+    {
+      "key": "E",
+      "name": "Subject: Torment",
+      "howToUseIt": "Swap into this stance to access three crowd control spells (Grim Visage, Gaze of the Abyss, Crushing Maw). Use it when you need to lock an enemy down, but be aware you're briefly more vulnerable while committed to casting it."
+    },
+    {
+      "key": "R",
+      "name": "Spiraling Despair",
+      "howToUseIt": "The first enemy champion hit becomes the center of an expanding, damaging zone that slows nearby enemies until it reaches max size or the target dies. Aim it at a priority target in the middle of the enemy team for maximum value."
+    }
+  ],
+  "earlyGamePlan": "Because Hwei has so many spell options, start by leaning mostly on Subject: Disaster for poke damage in lane, and keep Subject: Torment in reserve as your answer to an enemy engage or dive. Practice landing two different damaging spells on the same target to trigger your passive's bonus detonation, and play a bit safer than usual while you learn his timings, since several of his spells have a visible cast time that lets sharp enemies dodge or punish you.",
+  "quickTips": [
+    "Land two separate damaging spells on the same enemy champion in a short window to trigger your passive's bonus area damage.",
+    "Use Subject: Torment defensively as your crowd control answer when you're about to be dove or all-in'd.",
+    "Aim Spiraling Despair at whichever enemy champion you most want to slow and zone out of the fight.",
+    "Don't feel like you need to master all nine sub-spells at once — start with Subject: Disaster for poke and expand from there.",
+    "Watch your cast times — several of Hwei's spells telegraph before they go off, so don't cast them the instant an enemy is in range if they can easily step away.",
+    "Keep your distance in fights; you have low durability and want to poke and zone rather than trade at close range."
+  ],
+  "whatToExpect": "Enemy Hwei needs to predict where you'll be and take time to cast his spells, so punishing him when he whiffs a slow cast or catching him by surprise is effective. Watch for him landing two damaging spells on you in a row — that combo detonates for extra burst damage. His ultimate is a big threat if it lands on you specifically, since it will slow and damage you until it reaches max size, so try to dodge the initial hit or spread out from teammates so it can't also catch them.",
+  "glossary": [
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Zoning",
+      "definition": "Using threats of damage or crowd control to control where enemies can safely stand."
+    },
+    {
+      "term": "Crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that take away an enemy's ability to move or act normally."
+    },
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "All-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to kill or be killed, rather than trading and retreating."
+    },
+    {
+      "term": "Dive",
+      "definition": "Pushing deep into enemy territory, often under a tower, to secure a kill."
+    },
+    {
+      "term": "Telegraph / cast time",
+      "definition": "The visible wind-up or delay before a spell actually goes off, which lets alert opponents dodge or react."
+    }
+  ]
+}

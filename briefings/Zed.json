@@ -1,0 +1,79 @@
+{
+  "id": "Zed",
+  "name": "Zed",
+  "playstyleSummary": "Zed is an assassin who uses shadow clones to threaten targets from two places at once, then dashes in to finish off low-health enemies with his passive's bonus damage. Playing him feels like a hit-and-run game of positioning, since his shadow lets him poke, escape, or set up a kill without fully committing his body. He has real mechanical depth in juggling his shadow's placement, making him a satisfying but challenging pick for players who enjoy high-risk, high-reward assassins.",
+  "strengths": [
+    "Death Mark lets him dive onto a target while briefly untargetable",
+    "Living Shadow's shadow clone provides strong repositioning and escape options",
+    "Contempt for the Weak adds bonus damage against low-health targets, helping him finish kills",
+    "Strong at picking off isolated enemies caught out of position"
+  ],
+  "weaknesses": [
+    "Fragile with low defense, so he dies quickly if focused",
+    "Highly dependent on his energy resource and Living Shadow being available",
+    "Vulnerable right after using Living Shadow, since his damage and mobility depend on it",
+    "Armor is especially effective against him since he relies on physical attack damage items"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Contempt for the Weak",
+      "howToUseIt": "Attack low-health enemy champions to trigger bonus magic damage, which helps you secure kills once a target is already worn down."
+    },
+    {
+      "key": "Q",
+      "name": "Razor Shuriken",
+      "howToUseIt": "Throw this alongside your shadow so both shurikens hit the target for extra damage, useful for poking or finishing off a fleeing enemy."
+    },
+    {
+      "key": "W",
+      "name": "Living Shadow",
+      "howToUseIt": "Send your shadow forward to scout, poke, or set up a swap, then reactivate it to instantly swap places for a quick escape or engage — double-tapping it teleports you to the shadow immediately."
+    },
+    {
+      "key": "E",
+      "name": "Shadow Slash",
+      "howToUseIt": "Use this near your shadow so both of you hit nearby enemies, slowing anyone struck by the shadow's slash, which is helpful for both farming and fighting."
+    },
+    {
+      "key": "R",
+      "name": "Death Mark",
+      "howToUseIt": "Dash onto an enemy champion while untargetable to mark them, then follow up with damage before the mark triggers a few seconds later, repeating a portion of the damage you dealt to them."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Razor Shuriken and Shadow Slash together with your shadow to poke safely from a distance while farming. Save your energy and cooldowns rather than using everything in a single trade, since a full combo needs W, Q, E, and R together to do maximum damage. Look for kill opportunities once the enemy is low enough for Contempt for the Weak to trigger, or once you reach level 6 with Death Mark available.",
+  "quickTips": [
+    "Save your full combo (energy and cooldowns) for one big burst window rather than trading piece by piece",
+    "Double-tap Living Shadow to teleport to it instantly for a fast escape",
+    "Place a shadow before using Death Mark so you have a safe path out of the fight afterward",
+    "Look to finish enemies who are already low health, since your passive adds bonus damage there",
+    "Avoid engaging without energy saved for Living Shadow, since it's central to your damage and mobility"
+  ],
+  "whatToExpect": "Zed will try to poke you with his shadow from range, then commit his full combo including Death Mark once he can burst you down, so play carefully around level 6 and when he has full energy. He is most vulnerable right after using Living Shadow, since his damage and escape depend on where his shadow is placed, so punish him if you can catch him without it. Building armor is especially effective against him since his damage comes mostly from physical attack items.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing small amounts of damage from range repeatedly to wear enemies down before a bigger fight."
+    },
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities cast together for maximum effect."
+    },
+    {
+      "term": "burst",
+      "definition": "Dealing a large amount of damage very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance on the enemy team."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time an ability needs after use before it can be cast again."
+    }
+  ]
+}

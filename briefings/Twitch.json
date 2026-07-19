@@ -1,0 +1,88 @@
+{
+  "id": "Twitch",
+  "name": "Twitch",
+  "playstyleSummary": "Twitch is a marksman who ambushes enemies from stealth, stacks poison on everyone he touches, and can wipe out a low-health enemy from a huge distance with his ultimate. Playing him feels sneaky and explosive: you farm safely from range early, then use invisibility to flank an unsuspecting enemy or slip into a teamfight unseen before revealing yourself with a burst of Attack Speed. He's extremely fragile, so positioning and stealth are what keep him alive.",
+  "strengths": [
+    "Strong flanking potential using Ambush's stealth",
+    "High sustained damage once Deadly Venom stacks build up",
+    "Spray and Pray threatens massive damage from very long range",
+    "Snowballs hard once he gets ahead"
+  ],
+  "weaknesses": [
+    "Extremely fragile and easy to burst down if caught",
+    "Short effective range until stealth or items kick in",
+    "Becomes fully visible and telegraphed once Ambush ends",
+    "Needs poison stacks built up before Contaminate deals its full damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Deadly Venom",
+      "howToUseIt": "Your attacks poison the target for true damage over time. Stack it up on enemies before using Contaminate for a big burst of extra damage."
+    },
+    {
+      "key": "Q",
+      "name": "Ambush",
+      "howToUseIt": "Turns you invisible and speeds you up; leaving stealth gives bonus Attack Speed. Killing a poisoned enemy champion resets its cooldown, so use it to flank unseen and chain kills together."
+    },
+    {
+      "key": "W",
+      "name": "Venom Cask",
+      "howToUseIt": "Throws a cask that slows an area and poisons anyone inside — use it to catch a fleeing enemy or to apply poison stacks from range before you engage."
+    },
+    {
+      "key": "E",
+      "name": "Contaminate",
+      "howToUseIt": "Deals bonus damage to poisoned enemies at long range. Apply as many stacks of Deadly Venom as you can first, then use this to finish them off."
+    },
+    {
+      "key": "R",
+      "name": "Spray and Pray",
+      "howToUseIt": "Fires piercing bolts over a huge distance for massive extended-range damage. Use it to poke, finish a low-health enemy, or deal damage in a teamfight from a safe distance."
+    }
+  ],
+  "earlyGamePlan": "Farm safely with basic attacks since your range is short early, and avoid unnecessary trades. Once you have a few levels, look for chances to use Ambush to flank a lone enemy or scout the map safely, since stealth is where most of your early kill potential comes from.",
+  "quickTips": [
+    "Use Ambush to flank rather than approaching enemies head-on",
+    "Stack Deadly Venom on multiple enemies before using Contaminate for a bigger payoff",
+    "Save Spray and Pray to poke from safety or finish a low-health target",
+    "Remember killing a poisoned champion resets Ambush's cooldown, so look for chain kills",
+    "Stay spread out from your team in fights so a single ambush can't hit everyone",
+    "Buy or rely on vision to avoid being caught out by an enemy's own flank"
+  ],
+  "whatToExpect": "Enemy Twitch will try to flank you from stealth and stack poison on your team before revealing himself with a burst of Attack Speed, so spread out in fights so his ambush can't hit multiple people at once. He has very little health, so focus him down quickly if you catch him, and use vision to spot him before he can set up.",
+  "glossary": [
+    {
+      "term": "stealth",
+      "definition": "Being invisible or hidden from enemy vision, usually via an ability."
+    },
+    {
+      "term": "flank",
+      "definition": "Attacking an enemy from an unexpected angle or from behind, rather than head-on."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage dealt from a safe range to whittle enemies down before a bigger fight."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill outright."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into a bigger and bigger lead over the course of the game."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight over parts of the map, usually granted by wards, that reveals enemy movement."
+    }
+  ]
+}

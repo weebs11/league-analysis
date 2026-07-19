@@ -1,0 +1,80 @@
+{
+  "id": "Shyvana",
+  "name": "Shyvana",
+  "playstyleSummary": "Shyvana is an aggressive jungler who fights monsters and enemies head-on, building up Fury toward a dragon transformation that makes her even scarier. She rewards a straightforward, attack-focused playstyle: get in, hit things, and use your ultimate to turn a fight around.",
+  "strengths": [
+    "Fast, efficient jungle clear",
+    "Strong dueling and skirmishing power",
+    "Dragon form ultimate boosts her damage and area control",
+    "Scalemail passive makes her tankier the more takedowns she gets"
+  ],
+  "weaknesses": [
+    "Loses a lot of power if kept at range",
+    "Vulnerable if her Fury bar isn't ready for her ultimate",
+    "Can be kited by enemies who avoid clustering",
+    "Relatively simple kit that experienced opponents can predict"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Scalemail",
+      "howToUseIt": "Look for takedowns on champions, big minions, or big jungle monsters. Each one boosts your defenses, so getting kills and objectives makes you tankier."
+    },
+    {
+      "key": "Q",
+      "name": "Emberstrike",
+      "howToUseIt": "Use this before an auto attack to hit a wider area, and remember it can be recast, with an extra recast available while in Dragon Form."
+    },
+    {
+      "key": "W",
+      "name": "Inferno Aegis",
+      "howToUseIt": "Cast this before diving in for a shield and speed boost, then let the delayed explosion go off on top of enemies for damage. In Dragon Form it heals you instead."
+    },
+    {
+      "key": "E",
+      "name": "Molten Burst",
+      "howToUseIt": "Throw this at bigger targets like champions or monsters to slow them. In Dragon Form it passes through and leaves fire behind, so use it to zone a group."
+    },
+    {
+      "key": "R",
+      "name": "Dragon's Descent",
+      "howToUseIt": "Save your Fury bar for skirmishes, then transform to leap into the fight, scattering enemies and empowering all your other abilities."
+    }
+  ],
+  "earlyGamePlan": "Clear your jungle efficiently while building Fury, and look for early ganks on lanes that are pushed up or missing vision. Avoid long-range poke matchups where you can't get your hands on the enemy; your strength comes from being in melee range attacking things.",
+  "quickTips": [
+    "Track your Fury bar; it fills up as you deal and take damage, and unlocks Dragon's Descent.",
+    "Attack speed helps every one of Shyvana's abilities work better, since they trigger off auto attacks.",
+    "Save your ultimate for skirmishes rather than using it just to travel, since it's also your main damage tool.",
+    "In Dragon Form, spread damage across grouped enemies rather than focusing just one target.",
+    "Ward enemy jungle entrances so you can find good gank angles.",
+    "Avoid diving too deep if your Fury bar is empty and your ultimate isn't ready."
+  ],
+  "whatToExpect": "Shyvana wants to get in your face and fight at close range, especially once she can transform into her dragon form. Try to keep your distance, use crowd control before she gets to you, and avoid grouping tightly since her Dragon Form abilities hit multiple targets at once.",
+  "glossary": [
+    {
+      "term": "jungle clear",
+      "definition": "The routine of killing neutral jungle monsters, usually done by the jungler for gold and experience."
+    },
+    {
+      "term": "gank",
+      "definition": "When a champion, often the jungler, shows up in a lane to help ambush an enemy."
+    },
+    {
+      "term": "kite",
+      "definition": "Moving away from a melee attacker while still damaging them, keeping distance instead of standing still."
+    },
+    {
+      "term": "skirmish",
+      "definition": "A small, often unplanned fight involving a few champions, short of a full teamfight."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's movement or actions."
+    },
+    {
+      "term": "zone",
+      "definition": "Using threats or area effects to control where enemies can safely stand or walk."
+    }
+  ]
+}

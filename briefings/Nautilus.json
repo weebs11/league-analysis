@@ -1,0 +1,79 @@
+{
+  "id": "Nautilus",
+  "name": "Nautilus",
+  "playstyleSummary": "Nautilus is a tank who initiates fights by hooking an enemy from range and then chaining crowd control to lock them down for his team. He feels methodical rather than fast - you're patiently waiting for a good hook, then following up hard once it lands.",
+  "strengths": [
+    "Dredge Line is a strong long-range hook that starts fights",
+    "Very tanky, with a shield that adds area damage over time once active",
+    "Riptide provides a reliable area slow around himself",
+    "Depth Charge is a near-guaranteed knock-up and stun once it locks on"
+  ],
+  "weaknesses": [
+    "Relatively slow and immobile outside of his hook",
+    "Mana hungry early in the game",
+    "Low personal damage compared to true damage-focused champions",
+    "His telegraphed engage can be interrupted or crowd controlled before it lands"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Staggering Blow",
+      "howToUseIt": "Your first attack on a target deals bonus damage and briefly roots them - use it to guarantee a follow-up before they can walk away."
+    },
+    {
+      "key": "Q",
+      "name": "Dredge Line",
+      "howToUseIt": "Aim this at terrain to pull yourself toward an enemy, or directly at an enemy to pull them to you - this is your main engage tool, so look for a good angle before committing."
+    },
+    {
+      "key": "W",
+      "name": "Titan's Wrath",
+      "howToUseIt": "Build up the shield before engaging so your attacks are already dealing extra damage over time to everyone nearby once you arrive."
+    },
+    {
+      "key": "E",
+      "name": "Riptide",
+      "howToUseIt": "Use this around yourself when enemies are chasing or fighting you - the explosions are delayed, so it also works as a deterrent against enemies following you."
+    },
+    {
+      "key": "R",
+      "name": "Depth Charge",
+      "howToUseIt": "Fire this at a target during a fight for a near-guaranteed knock-up and stun once it reaches them - use it as a follow-up right after your hook lands."
+    }
+  ],
+  "earlyGamePlan": "Look for chances to hook an enemy with Dredge Line, ideally off terrain for a longer pull, to set up a kill with your lane partner. Play a little cautiously otherwise, since you're mana hungry early and don't have much damage without landing your hook.",
+  "quickTips": [
+    "Aim Dredge Line at terrain near an enemy for a sneaky pull, since it's harder to predict than aiming directly at them.",
+    "Follow up a landed hook with Depth Charge for a guaranteed knock-up and stun.",
+    "Build Titan's Wrath's shield before engaging so you're already dealing bonus damage the moment you arrive.",
+    "Riptide's explosions are delayed, so use it defensively while retreating - enemies chasing you will walk into it.",
+    "Watch your mana early, since your engage tools all cost resources you can't always refill quickly."
+  ],
+  "whatToExpect": "Nautilus will try to hook you with Dredge Line to pull you in and lock you down, often finishing with Depth Charge for a guaranteed stun. Stay behind minions or terrain to block his hook, and if he does land it, expect heavy crowd control to follow - use your own defensive tools immediately rather than trying to fight through it.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "Starting a fight, usually by committing crowd control or a dash onto an enemy."
+    },
+    {
+      "term": "hook",
+      "definition": "A targeted crowd control ability that pulls an enemy toward the caster."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "follow-up",
+      "definition": "Additional damage or crowd control used right after an initial ability lands."
+    },
+    {
+      "term": "deterrent",
+      "definition": "Something that discourages enemies from approaching or chasing."
+    },
+    {
+      "term": "mana hungry",
+      "definition": "Needing to spend a lot of mana relative to how much is available, leading to resource shortages."
+    }
+  ]
+}

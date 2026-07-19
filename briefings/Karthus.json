@@ -1,0 +1,76 @@
+{
+  "id": "Karthus",
+  "name": "Karthus",
+  "playstyleSummary": "Karthus is a mage who deals damage from a distance and even keeps fighting for a few seconds after he dies, making him deceptively dangerous to ignore. He feels patient and calculated - much of his power comes from farming safely with Lay Waste and timing a global ultimate rather than diving into fights.",
+  "strengths": [
+    "Requiem deals damage to every enemy champion on the map at once",
+    "Death Defied lets him keep casting spells for a few seconds after dying",
+    "Lay Waste is excellent at farming and poking from a safe distance",
+    "Wall of Pain weakens enemies who cross it, punishing bad positioning"
+  ],
+  "weaknesses": [
+    "Very fragile with almost no escape tools",
+    "Requiem takes a long channel, telegraphing his ultimate",
+    "Defile drains his own mana quickly if held down too long",
+    "Needs to hit a delayed skillshot with Lay Waste, so it can be dodged"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Death Defied",
+      "howToUseIt": "When you die, you enter a spirit form and can keep casting spells for a few seconds - use this window to land a farming Lay Waste or even a game-changing Requiem before you're fully gone."
+    },
+    {
+      "key": "Q",
+      "name": "Lay Waste",
+      "howToUseIt": "Aim this delayed blast at minion waves or enemies; it deals bonus damage to isolated targets, so it's especially strong for solo picking off an enemy who's alone."
+    },
+    {
+      "key": "W",
+      "name": "Wall of Pain",
+      "howToUseIt": "Place this passable wall of energy across a path enemies are likely to cross; anyone who walks through has their move speed and magic resist reduced for a while, weakening them for your team to follow up."
+    },
+    {
+      "key": "E",
+      "name": "Defile",
+      "howToUseIt": "Passively gain mana whenever you get a kill; activate to damage all nearby enemies continuously, but watch your mana bar since it drains quickly while active."
+    },
+    {
+      "key": "R",
+      "name": "Requiem",
+      "howToUseIt": "Channel for 3 seconds to deal damage to every enemy champion on the map regardless of distance - coordinate with your team to use it for a finishing blow on low-health enemies across different lanes."
+    }
+  ],
+  "earlyGamePlan": "Farm safely from range with Lay Waste, avoiding melee trades since Karthus is very fragile early. Use Wall of Pain across likely paths to weaken enemies before fights, and start checking in with allies once you have Requiem so you can help finish kills across the map.",
+  "quickTips": [
+    "Farm with Lay Waste from a safe distance rather than trading directly.",
+    "Use Wall of Pain on chokepoints enemies are likely to walk through before a fight.",
+    "Coordinate Requiem with allies to finish off low-health enemies anywhere on the map.",
+    "Remember Death Defied lets you cast one more spell after dying - make it count.",
+    "Watch your mana closely when Defile is active, since it drains fast.",
+    "Stay at maximum range in fights; Karthus has no escape tools if caught."
+  ],
+  "whatToExpect": "An enemy Karthus will farm safely from range and can finish you off with a global Requiem even from across the map, so keep your health topped up, especially in the late game. He can also keep casting spells for a few seconds after you kill him, so back away from his body rather than standing near it after a kill.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss, rather than one that automatically hits a target."
+    },
+    {
+      "term": "isolated",
+      "definition": "Being separated from allies, making a champion an easier and safer target to attack."
+    },
+    {
+      "term": "chokepoint",
+      "definition": "A narrow path on the map where enemies are forced to pass close together."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to cast, during which the caster is vulnerable and can often be interrupted."
+    },
+    {
+      "term": "global",
+      "definition": "An ability that can affect any part of the map, regardless of the caster's location."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "id": "Evelynn",
+  "name": "Evelynn",
+  "playstyleSummary": "Evelynn is a stealthy jungle assassin who hides in camouflage between fights and ambushes lone targets with a charm that sets up a huge burst of damage. She is one of the hardest champions in the game to play well because so much of her power depends on patiently clearing the jungle unseen and picking the exact right moment to strike, but a well-timed ambush can delete a target almost instantly.",
+  "strengths": [
+    "Camouflage after level 6 makes her extremely hard to track or predict",
+    "Allure's charm sets up devastating burst damage",
+    "Demon Shade heals her when out of combat and low on health",
+    "Excellent at picking off isolated targets away from their team"
+  ],
+  "weaknesses": [
+    "Very weak before level 6, when she has no camouflage",
+    "Extremely high difficulty, especially around positioning and timing",
+    "Vulnerable if spotted before Allure's charm goes off",
+    "Contributes little to group fights compared to picking off lone targets"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Demon Shade",
+      "howToUseIt": "When you're out of combat you enter Demon Shade, which heals you if you're low on health and grants camouflage once you hit level 6 — use quiet moments in the jungle to heal up and reset before your next play."
+    },
+    {
+      "key": "Q",
+      "name": "Hate Spike",
+      "howToUseIt": "Use this to clear jungle camps efficiently and to poke enemies at range before you commit to an ambush."
+    },
+    {
+      "key": "W",
+      "name": "Allure",
+      "howToUseIt": "Curse a target so your next attack or spell charms and weakens their magic resist after a delay — land this before going for a kill, since the charm is what makes your burst damage so dangerous."
+    },
+    {
+      "key": "E",
+      "name": "Whiplash",
+      "howToUseIt": "Whip your target for damage and gain a burst of move speed afterward, useful for both closing the gap on an ambush and chasing a fleeing target."
+    },
+    {
+      "key": "R",
+      "name": "Last Caress",
+      "howToUseIt": "Go untargetable and deal a wave of damage in front of you before warping backward — use it either to land a final burst on a low-health target or to escape a fight that's gone wrong."
+    }
+  ],
+  "earlyGamePlan": "Before level 6 you're quite weak and vulnerable without camouflage, so focus on efficiently clearing jungle camps with Hate Spike and only gank lanes where you have a clear advantage. Once you hit level 6 and gain camouflage from Demon Shade, start looking for isolated enemies to ambush with Allure, since that's when Evelynn's kill pressure really comes online.",
+  "quickTips": [
+    "Avoid fighting or ganking before level 6 unless you have a clear advantage — you have no camouflage yet",
+    "Land Allure's charm before committing fully to a kill, since it sets up your burst damage",
+    "Use quiet time between objectives to sit in Demon Shade and heal back up",
+    "Ambush isolated targets rather than group fights, where your impact is much smaller",
+    "Use Whiplash's move speed burst to close gaps or chase down a fleeing kill",
+    "Save Last Caress as an escape option if an ambush goes wrong, not just as a damage tool"
+  ],
+  "whatToExpect": "Evelynn will lurk in camouflage waiting for you to be alone, then charm you with Allure before unloading burst damage. Buy vision to reveal her hiding spots, avoid wandering off alone once she's past level 6, and warn teammates on the map or in chat if you suspect she's about to strike.",
+  "glossary": [
+    {
+      "term": "camouflage",
+      "definition": "A state that hides a champion completely from enemy sight unless they are revealed by a nearby detection effect."
+    },
+    {
+      "term": "jungle",
+      "definition": "The area of the map between lanes filled with neutral monster camps, cleared by the jungler instead of laning."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally ambushes a lane to help get a kill, usually from an unexpected direction."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill before the target can react."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "vision",
+      "definition": "Sight over parts of the map, usually provided by wards, that lets you see enemies before they reach you."
+    },
+    {
+      "term": "clear",
+      "definition": "Killing through a set of jungle monster camps, typically done efficiently and in a set order."
+    },
+    {
+      "term": "objective",
+      "definition": "A major neutral goal on the map, like a tower, dragon, or Baron, that gives a team a big advantage when taken."
+    }
+  ]
+}

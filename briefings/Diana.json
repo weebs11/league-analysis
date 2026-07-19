@@ -1,0 +1,88 @@
+{
+  "id": "Diana",
+  "name": "Diana",
+  "playstyleSummary": "Diana is a magic-damage fighter who dives onto a marked target and refuses to let go. Her whole kit is built around landing a skillshot to mark an enemy, then dashing to them repeatedly for free, which makes her feel relentless and mobile once you get the timing down, though she can feel clunky if that first skillshot keeps missing.",
+  "strengths": [
+    "Lunar Rush has no cooldown when dashing to a Moonlight-marked enemy, giving huge mobility",
+    "Pale Cascade gives her a shield to survive early trades",
+    "Strong dive potential onto priority targets in teamfights",
+    "Scales well and can 1v1 most champions once ahead"
+  ],
+  "weaknesses": [
+    "Relies on landing the Crescent Strike skillshot to unlock her best mobility",
+    "Vulnerable to slows and stuns right after diving in with Lunar Rush",
+    "Pale Cascade's shield is temporary and disappears if you wait too long to fight",
+    "Moonfall requires enemies to be pulled in to deal its big damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Moonsilver Blade",
+      "howToUseIt": "Every third attack cleaves nearby enemies for bonus damage, and casting a spell gives you attack speed for a few seconds — weave in auto-attacks between spells to make the most of it."
+    },
+    {
+      "key": "Q",
+      "name": "Crescent Strike",
+      "howToUseIt": "Throw this early in a trade to mark your target with Moonlight; it's cheap and comes back quickly, so don't be afraid to miss one and try again."
+    },
+    {
+      "key": "W",
+      "name": "Pale Cascade",
+      "howToUseIt": "Cast this before or during a fight for a shield that absorbs damage — try to let all three orbs detonate on enemies to get the biggest shield."
+    },
+    {
+      "key": "E",
+      "name": "Lunar Rush",
+      "howToUseIt": "Dash onto a Moonlight-marked enemy for free with no cooldown, or use it without a mark as a plain dash to close distance or escape when you really need it."
+    },
+    {
+      "key": "R",
+      "name": "Moonfall",
+      "howToUseIt": "Use this to pull nearby enemies toward you and slow them; if you catch enemy champions, a delayed burst of magic damage lands around you, so it's strongest when several enemies are grouped up."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for chances to land Crescent Strike on your opponent, then follow up with an attack or two to trigger Moonsilver Blade before backing off. Once you hit level 6, dashing onto a marked enemy with Lunar Rush during a trade can turn a poke fight into a kill, but don't dive in without Pale Cascade's shield up if you can help it.",
+  "quickTips": [
+    "Throw Crescent Strike often in lane — it's low cost and low cooldown, so misses aren't a big deal",
+    "Shield up with Pale Cascade before diving into a trade, not after",
+    "Chase with Lunar Rush only when your target has the Moonlight mark for the free cooldown reset",
+    "Weave auto-attacks between spells to trigger Moonsilver Blade's cleave and attack speed",
+    "Save Moonfall for when enemies are grouped so the delayed burst hits more than one target",
+    "Back off after Pale Cascade's shield pops since Diana loses a lot of survivability without it"
+  ],
+  "whatToExpect": "Diana will try to land Crescent Strike to mark you, then dash onto you for free with Lunar Rush and follow up with her shielded Pale Cascade orbs. She's most dangerous with a fresh Lunar Rush and Pale Cascade shield up, so try to slow or stun her right after she dives in, when both are down.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss, rather than automatically hitting its target."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can cast it again."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing laners."
+    },
+    {
+      "term": "shield",
+      "definition": "A temporary buffer of extra effective health that absorbs incoming damage before your health is lost."
+    },
+    {
+      "term": "dive",
+      "definition": "Aggressively pushing into or past the enemy's usual position (or even their turret) to secure a kill."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "magic damage",
+      "definition": "Damage reduced by a target's magic resist stat, rather than their armor."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once, as opposed to a small skirmish."
+    }
+  ]
+}

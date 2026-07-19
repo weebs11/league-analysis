@@ -1,0 +1,87 @@
+{
+  "id": "Nami",
+  "name": "Nami",
+  "playstyleSummary": "Nami is a support mage who heals and speeds up her allies while landing a long-range stun to start fights for her team. She feels like a facilitator - much of her power comes from empowering an ally's engage or peeling for a teammate under pressure, rather than dealing damage herself.",
+  "strengths": [
+    "Aqua Prison is a strong long-range stun for starting fights or saving allies",
+    "Ebb and Flow gives consistent healing and poke from a single cast",
+    "Tidal Wave is a powerful teamfight engage that knocks up and slows a wide area",
+    "Surging Tides adds useful move speed to any ally she touches with an ability"
+  ],
+  "weaknesses": [
+    "Aqua Prison has a long cooldown and must land as a skillshot to be effective",
+    "Low base damage and toughness compared to other champions",
+    "Positioning Tidal Wave and Ebb and Flow well takes practice",
+    "Relies on teammates to follow up on the fights she starts"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Surging Tides",
+      "howToUseIt": "Landing abilities on allies gives them bonus move speed, so time your heals and stun right before an ally engages, chases, or needs to retreat."
+    },
+    {
+      "key": "Q",
+      "name": "Aqua Prison",
+      "howToUseIt": "This is your main engage and peel tool - a skillshot that stuns everyone it lands on, so use it to start fights or to save an ally being chased."
+    },
+    {
+      "key": "W",
+      "name": "Ebb and Flow",
+      "howToUseIt": "Cast this toward an ally to heal them or toward an enemy to poke them - aim it so it bounces between the two to get both effects from one cast."
+    },
+    {
+      "key": "E",
+      "name": "Tidecaller's Blessing",
+      "howToUseIt": "Empower an ally who's about to trade or all-in - their next attacks and spells deal bonus damage and slow, so cast it right before a fight rather than mid-fight."
+    },
+    {
+      "key": "R",
+      "name": "Tidal Wave",
+      "howToUseIt": "Send this out early since it travels slowly - use it to knock up and slow enemies from far away, or to double the move speed boost allies get from Surging Tides."
+    }
+  ],
+  "earlyGamePlan": "Stick close to your ADC and look for chances to land Aqua Prison on an overextended enemy to set up a kill. Use Ebb and Flow to heal your lane partner during trades while also poking the enemy, since it hits both in one cast.",
+  "quickTips": [
+    "Aqua Prison has a long cooldown, so don't waste it on a low-value target - wait for a real engage opportunity.",
+    "Aim Ebb and Flow so it bounces between your ally and an enemy to get healing and poke from a single cast.",
+    "Send Tidal Wave out early since it travels slowly across the map - fights won't wait for it.",
+    "Use Tidecaller's Blessing on an ally right before they commit to a trade, not after.",
+    "Since you have no escape, stay behind minions and let your ADC or jungler create engage opportunities for you."
+  ],
+  "whatToExpect": "Nami will look to land Aqua Prison on you from range to set up a kill for her team, and can peel for her allies by healing and speeding them up with Ebb and Flow. Watch for the long, slow-moving Tidal Wave in teamfights - it telegraphs where it's going, so you can usually walk out of its path if you're paying attention.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "Starting a fight, usually by committing crowd control or a dash onto an enemy."
+    },
+    {
+      "term": "peel",
+      "definition": "Protecting an ally, often a carry, by slowing, stunning, or blocking enemies attacking them."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed manually and can be dodged, rather than one that automatically hits its target."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage traded from range to wear enemies down before a real fight."
+    },
+    {
+      "term": "trade",
+      "definition": "Exchanging damage with an opponent, usually in lane."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and cooldowns to try to kill an enemy right now."
+    },
+    {
+      "term": "escape",
+      "definition": "An ability used to quickly get away from danger."
+    },
+    {
+      "term": "overextended",
+      "definition": "Pushed too far forward, away from allies, turret protection, or vision."
+    }
+  ]
+}

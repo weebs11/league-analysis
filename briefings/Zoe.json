@@ -1,0 +1,80 @@
+{
+  "id": "Zoe",
+  "name": "Zoe",
+  "playstyleSummary": "Zoe is a burst mage who fights from far away, then repositions unpredictably with a short-range blink. She feels tricky and high-skill: her missile can curve in flight, her sleep sets up huge burst damage, and she can even steal enemy summoner spells and item actives, but almost everything she does takes practice to use well.",
+  "strengths": [
+    "Extremely high burst damage once Sleepy Trouble Bubble lands, since the first hit against a sleeping target is doubled",
+    "Paddle Star! can be redirected in flight, making it hard to dodge once you learn her tricks",
+    "Portal Jump gives a short, hard-to-predict repositioning tool in fights",
+    "Spell Thief can steal enemy summoner spells or item actives for surprise value"
+  ],
+  "weaknesses": [
+    "Very fragile and has little to fall back on if her sleep or blink is used up or whiffs",
+    "Portal Jump returns her to her starting spot, so she can be punished if she jumps in without a plan",
+    "Needs to land the skillshot from Sleepy Trouble Bubble to get her biggest damage, and it can be dodged",
+    "Low attack range and no basic escape make her vulnerable early if she overextends"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "More Sparkles!",
+      "howToUseIt": "After casting any spell, your next basic attack deals bonus magic damage — try to weave in an attack right after each ability instead of only using abilities on their own."
+    },
+    {
+      "key": "Q",
+      "name": "Paddle Star!",
+      "howToUseIt": "Aim it, then click again to redirect its flight path; it deals more damage the farther it's traveled in a straight line, so firing it out and around a corner before redirecting can hit much harder."
+    },
+    {
+      "key": "W",
+      "name": "Spell Thief",
+      "howToUseIt": "Walk over the leftover glow from an enemy summoner spell or item active to pick it up and use it once yourself; casting your own summoner spell also fires 3 homing missiles at the nearest enemy, so use one during a fight when you can."
+    },
+    {
+      "key": "E",
+      "name": "Sleepy Trouble Bubble",
+      "howToUseIt": "This is your key damage setup — the target falls asleep after a short delay, and the first hit that breaks their sleep deals double damage, so follow up immediately with your biggest damage source once they're asleep."
+    },
+    {
+      "key": "R",
+      "name": "Portal Jump",
+      "howToUseIt": "Use this to dodge an incoming ability or slip past a wall for a surprise angle, but remember you'll automatically blink back to where you started after 1 second, so don't jump in expecting to stay."
+    }
+  ],
+  "earlyGamePlan": "Play at max range in lane, using Paddle Star! to poke and farm minions from behind your own creeps. Look for a chance to land Sleepy Trouble Bubble on the enemy laner, then immediately follow up with your strongest damage to take advantage of the doubled damage on their sleep. Avoid overextending, since you have no reliable escape besides the short, round-trip Portal Jump.",
+  "quickTips": [
+    "Always basic-attack right after casting a spell to trigger your passive's bonus damage",
+    "Try redirecting Paddle Star! from behind a wall or minion wave so it's harder to see coming",
+    "Save your biggest damage for the moment an enemy falls asleep from Sleepy Trouble Bubble",
+    "Remember Portal Jump brings you back to your starting spot — don't use it to permanently escape",
+    "Grab enemy summoner spell or item glows on the ground with Spell Thief when it's safe to walk over them",
+    "Stay behind your minions in lane since you have low defenses and no basic escape"
+  ],
+  "whatToExpect": "An enemy Zoe will try to poke you with Paddle Star! from unusual angles and land Sleepy Trouble Bubble to set up a huge burst combo, so watch for the sleep effect and try to walk out of it before the first hit lands. She has very little defense and Portal Jump only lets her dash out and immediately snap back, so punishing her right after she jumps in or misses her sleep is one of the best ways to fight her.",
+  "glossary": [
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a squishy target in one combo."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that has to be aimed and can miss, rather than one that automatically hits its target."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before a real fight starts."
+    },
+    {
+      "term": "farm",
+      "definition": "Earning gold and experience by last-hitting minions."
+    },
+    {
+      "term": "overextend",
+      "definition": "Pushing too far into dangerous territory, past the point where your team can help you."
+    },
+    {
+      "term": "minion wave",
+      "definition": "The group of minions marching down a lane together; used as cover or as a way to judge lane position."
+    }
+  ]
+}

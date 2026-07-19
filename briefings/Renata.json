@@ -1,0 +1,80 @@
+{
+  "id": "Renata",
+  "name": "Renata Glasc",
+  "playstyleSummary": "Renata Glasc is a support who plays like a puppet master: you root enemies and throw them into your team, shield and empower your allies, and can even force enemy champions to lose control and start attacking anything nearby. It's a high-impact, high-risk style where landing your root or getting a good ultimate can single-handedly flip a fight.",
+  "strengths": [
+    "Handshake's root-and-throw can reposition an enemy right into your team",
+    "Bailout can save a teammate from dying and even refund itself on a takedown",
+    "Hostile Takeover can throw the enemy team into total chaos in a fight",
+    "Leverage lets your team punish anyone you've recently hit"
+  ],
+  "weaknesses": [
+    "Handshake is a skillshot that's easy to miss if you haven't practiced it",
+    "Fairly fragile and reliant on landing abilities rather than raw stats",
+    "Hostile Takeover can occasionally help the enemy team too if aimed poorly",
+    "Low mobility, so getting caught out of position is dangerous"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Leverage",
+      "howToUseIt": "Auto-attack an enemy to mark them, then have your allies attack that same target so they get bonus damage on it — call out marked targets to your team."
+    },
+    {
+      "key": "Q",
+      "name": "Handshake",
+      "howToUseIt": "Fire this at an enemy to root the first one hit, then recast it to throw them in a direction — throw them toward your team or away from their own team to set up a kill."
+    },
+    {
+      "key": "W",
+      "name": "Bailout",
+      "howToUseIt": "Use this on a teammate who's about to die in a fight to buff them and delay their death; if they get a kill while it's active it refunds, so save it for close calls rather than every skirmish."
+    },
+    {
+      "key": "E",
+      "name": "Loyalty Program",
+      "howToUseIt": "Throw this toward your team when they're trading damage — it shields allies it passes through and slows and damages any enemies it hits."
+    },
+    {
+      "key": "R",
+      "name": "Hostile Takeover",
+      "howToUseIt": "Use this in a grouped teamfight to make enemies hit by it go berserk and lose control of who they attack, creating chaos you and your team can capitalize on."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for chances to land Handshake on an overextended enemy and throw them toward your ADC for a kill, but don't force it if the angle isn't there since missing leaves you with no engage. Use Loyalty Program to shield your ADC and poke the enemy bot lane during trades.",
+  "quickTips": [
+    "Aim Handshake at enemies who are out of position, then throw them toward your team",
+    "Save Bailout for a teammate who's genuinely about to die, not as a general buff",
+    "Only use Hostile Takeover when the fight is grouped up so the chaos favors your side",
+    "Call out marked targets from Leverage so your ADC knows who to focus",
+    "Loyalty Program is good for both poking the enemy and shielding your carry at once",
+    "Stay near your team — you have little escape if caught alone"
+  ],
+  "whatToExpect": "Enemy Renata will try to root you with Handshake and throw you into her team, or use Hostile Takeover in a fight to make your champion attack uncontrollably at the worst time. Avoid overextending past your minions where she has a clean shot at you, and try to fight in a way that a single root doesn't immediately doom you.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability you have to aim manually that can miss, rather than one that automatically hits its target."
+    },
+    {
+      "term": "root",
+      "definition": "A crowd control effect that stops an enemy from moving but doesn't stop them from attacking or casting."
+    },
+    {
+      "term": "engage",
+      "definition": "Starting a fight by committing crowd control or damage on the enemy team first."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range before a real fight starts."
+    },
+    {
+      "term": "overextended",
+      "definition": "Being positioned too far from your team or turret, making you vulnerable to being caught."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    }
+  ]
+}

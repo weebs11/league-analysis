@@ -1,0 +1,80 @@
+{
+  "id": "Riven",
+  "name": "Riven",
+  "playstyleSummary": "Riven is a high-mobility fighter who strings together short dashes and stuns into a fast, aggressive combo. She has no healing or shielding, so every fight is a gamble on landing her combo cleanly and using Valor to block damage or escape at the right moment. She rewards mechanical practice more than most champions, but feels incredibly satisfying once her combo clicks.",
+  "strengths": [
+    "Extremely mobile with three dashes from Broken Wings plus Valor",
+    "Ki Burst's stun lets her chain together a strong burst combo",
+    "Blade of the Exile gives her a powerful ranged finisher for closing out fights",
+    "Strong dueling potential against other melee champions"
+  ],
+  "weaknesses": [
+    "No built-in healing or sustain, so trades can go badly if she doesn't win them",
+    "Combo can be interrupted by roots or silences, shutting down most of her damage",
+    "Mechanically demanding — mistimed dashes waste her mobility",
+    "Weak against ranged harass since she has to close the distance first"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Runic Blade",
+      "howToUseIt": "Use an ability right before attacking so your next basic attack deals bonus damage — weaving abilities and attacks together is how Riven does most of her damage."
+    },
+    {
+      "key": "Q",
+      "name": "Broken Wings",
+      "howToUseIt": "Aim your cursor where you want to end up before each cast since it locks onto whatever's under your cursor at that moment; use the three hits to stick to a target or the final knockback to peel one off you."
+    },
+    {
+      "key": "W",
+      "name": "Ki Burst",
+      "howToUseIt": "Cast this to stun nearby enemies and open up your combo — it's usually best used right after closing the gap with Broken Wings so the stun lands cleanly."
+    },
+    {
+      "key": "E",
+      "name": "Valor",
+      "howToUseIt": "Use this to step forward and block incoming damage, either to close a gap safely or to soak a key ability before it hits you; it also works as an escape tool when used away from the fight."
+    },
+    {
+      "key": "R",
+      "name": "Blade of the Exile",
+      "howToUseIt": "Activate this before a fight for bonus attack damage and range, and save the Wind Slash ranged attack to finish off a fleeing enemy from a distance."
+    }
+  ],
+  "earlyGamePlan": "Farm safely with your abilities until you have enough levels to threaten an all-in, since you have no sustain to fall back on if you lose an early trade. Look for a moment when the enemy is out of position or low to dash in with Broken Wings and Ki Burst for a full combo.",
+  "quickTips": [
+    "Aim your cursor past your target before casting Broken Wings if you want to end up past them",
+    "Weave abilities before attacks to trigger Runic Blade's bonus damage on every hit",
+    "Use Valor to block a big incoming ability, not just as a dash",
+    "Don't commit your full combo unless you're confident you can win the trade — you have no heal to fall back on",
+    "Save Wind Slash from Blade of the Exile to finish off enemies trying to run",
+    "Riven struggles against ranged poke, so play patiently until you can close the gap"
+  ],
+  "whatToExpect": "Enemy Riven will look to burst you down quickly with her combo of dashes and a stun, then finish with a ranged Wind Slash if you try to run. She has no sustain, so trading with her in short bursts and punishing her when her combo is on cooldown is effective, and crowd control that interrupts her dashes shuts her down hard.",
+  "glossary": [
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities and attacks used together for maximum effect."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with no plan to disengage, betting everything on winning it."
+    },
+    {
+      "term": "sustain",
+      "definition": "Healing or life-recovery effects that let a champion stay in lane or a fight longer."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range before a real fight starts."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or silences that take away an enemy's ability to move or act."
+    }
+  ]
+}

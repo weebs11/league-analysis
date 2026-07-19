@@ -1,0 +1,87 @@
+{
+  "id": "Yone",
+  "name": "Yone",
+  "playstyleSummary": "Yone is a swordsman who blends melee combos with a spirit-form dash that lets him detach from his body, deal damage, and then snap back. Playing him feels like a hybrid between a bruiser and an assassin, since he can shield himself in fights while also diving deep to blink behind priority targets with his ultimate. He has a fairly demanding kit, so expect to spend time practicing his ability order before he clicks.",
+  "strengths": [
+    "Spirit Cleave gives him a shield that scales with how many enemies he hits",
+    "Fate Sealed can blink behind the enemy backline and pull multiple targets together",
+    "Deals a mix of physical and magic damage, making him harder to itemize against",
+    "Strong dueling power thanks to his passive's bonus damage on every second attack"
+  ],
+  "weaknesses": [
+    "Soul Unbound leaves his body behind and briefly locks him into a plan he must commit to",
+    "Vulnerable during the brief return after Soul Unbound ends",
+    "High difficulty to sequence his combo correctly",
+    "Can be shut down hard by crowd control before he reaches his target"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Way of the Hunter",
+      "howToUseIt": "Keep auto-attacking in fights since every second attack deals bonus magic damage, and remember your critical strike chance is naturally higher than most melee champions."
+    },
+    {
+      "key": "Q",
+      "name": "Mortal Steel",
+      "howToUseIt": "Land two hits in a row to dash forward and knock enemies airborne, which sets up a strong follow-up with your ultimate."
+    },
+    {
+      "key": "W",
+      "name": "Spirit Cleave",
+      "howToUseIt": "Use this in fights to shield yourself, positioning to hit as many enemies as possible since the shield gets stronger with each additional target hit."
+    },
+    {
+      "key": "E",
+      "name": "Soul Unbound",
+      "howToUseIt": "Use this to scout ahead or reposition as a spirit with bonus move speed, but remember you'll be pulled back to your body afterward and take a portion of the damage you dealt, so don't overcommit your body's position."
+    },
+    {
+      "key": "R",
+      "name": "Fate Sealed",
+      "howToUseIt": "Cast this to blink behind the farthest enemy in a line and pull everyone hit toward you, ideal for catching a fleeing backline target and setting up a follow-up fight."
+    }
+  ],
+  "earlyGamePlan": "Focus on landing clean trades with Mortal Steel to poke and set up knockups, saving Soul Unbound mainly for repositioning or scouting rather than aggressive all-ins early. Use Spirit Cleave defensively in lane to shield through incoming damage while farming. Look for kill opportunities once you have Fate Sealed available, since it can turn a losing fight into a favorable one by pulling a target out of position.",
+  "quickTips": [
+    "Land two Mortal Steel hits to unlock the airborne dash for engages",
+    "Use Spirit Cleave right before trades to shield through incoming damage",
+    "Remember Soul Unbound pulls your spirit back to your body, so don't send it too far from where your body actually is",
+    "Save Fate Sealed to catch out an isolated enemy or turn a fight by pulling multiple targets together",
+    "Weave auto-attacks into every fight to trigger your passive's bonus magic damage"
+  ],
+  "whatToExpect": "Yone will look to land two Mortal Steel hits for a knockup dash, then follow with Fate Sealed to blink onto a backline target and pull others toward the fight — spread out with allies to reduce how many people his ultimate can pull. He is briefly vulnerable right when Soul Unbound ends and he snaps back to his body, so punish that window if you can catch him then. Interrupting his combo early with crowd control significantly reduces his damage output.",
+  "glossary": [
+    {
+      "term": "combo",
+      "definition": "A specific sequence of abilities cast together for maximum effect."
+    },
+    {
+      "term": "trade",
+      "definition": "An exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight with the intent to win it or kill the target, without holding back resources."
+    },
+    {
+      "term": "backline",
+      "definition": "The squishier, high-damage champions positioned behind the frontline in a team fight, like mages and marksmen."
+    },
+    {
+      "term": "knockup",
+      "definition": "A crowd control effect that launches a champion into the air, preventing them from acting until they land."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance on the enemy team."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or fears that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "critical strike (crit)",
+      "definition": "An attack that deals significantly increased damage, occurring at a percentage chance determined by critical strike chance."
+    }
+  ]
+}

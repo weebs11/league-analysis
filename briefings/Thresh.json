@@ -1,0 +1,80 @@
+{
+  "id": "Thresh",
+  "name": "Thresh",
+  "playstyleSummary": "Thresh is a playmaking support who hooks enemies out of position, saves allies with a lantern, and permanently grows stronger by collecting souls from nearby deaths. Playing him feels high-skill and high-reward: landing a hook can win a fight on its own, but missing one leaves you with little else to fall back on. He rewards good positioning and map awareness more than mechanical combos.",
+  "strengths": [
+    "Death Sentence can single-handedly start a kill from long range",
+    "Scales infinitely by collecting souls, even from deaths he's not involved in",
+    "Strong engage and peel using his lantern and chain abilities",
+    "High skill ceiling for outplays and game-changing plays"
+  ],
+  "weaknesses": [
+    "Death Sentence is a skillshot that's easy to dodge if telegraphed",
+    "Low base damage early if he hasn't collected many souls",
+    "Lantern can be baited or mistimed, wasting its save",
+    "Very dependent on good positioning to land his combo"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Damnation",
+      "howToUseIt": "Collect souls from nearby deaths, whether or not you got the kill, to permanently gain Armor and Ability Power. Position yourself near skirmishes even ones you're not fighting in to pick up souls."
+    },
+    {
+      "key": "Q",
+      "name": "Death Sentence",
+      "howToUseIt": "A long-range hook that pulls an enemy toward you; casting it a second time instead pulls you to them, which can be used to engage or to escape. Line it up on isolated or overextended enemies."
+    },
+    {
+      "key": "W",
+      "name": "Dark Passage",
+      "howToUseIt": "Throw a lantern that shields whoever picks it up and lets them dash to you. Use it proactively to save a diving ally before they're already in danger, not just as a last resort."
+    },
+    {
+      "key": "E",
+      "name": "Flay",
+      "howToUseIt": "Deals more damage the longer you wait between attacks, and the active knocks enemies back in the direction you swing — use it to shove enemies off an ally or push them toward your team."
+    },
+    {
+      "key": "R",
+      "name": "The Box",
+      "howToUseIt": "Drops walls around an area that slow and damage anyone who breaks through them. Position it so escaping is difficult, or intentionally break one wall yourself to let a fleeing ally through."
+    }
+  ],
+  "earlyGamePlan": "Poke safely and look for chances to land Death Sentence on an overextended enemy, following up with Flay to knock them further out of position. Keep your lantern in mind as a proactive save rather than only using it once an ally is critically low, and collect souls from any nearby deaths whenever you can.",
+  "quickTips": [
+    "Land Death Sentence before committing to a fight, not during one, since it's your main engage",
+    "Throw your lantern proactively to save a diving ally, not only as a last resort",
+    "Combine Death Sentence and Flay in either order for a strong crowd control chain",
+    "Position The Box so it's hard for enemies to walk out of it",
+    "Collect souls near any nearby deaths, even in fights you're not part of",
+    "Communicate with allies about how you plan to use your lantern"
+  ],
+  "whatToExpect": "Enemy Thresh will try to land Death Sentence from a distance to set up a kill, so stay behind minions when he has it up and be ready to dodge. He'll also throw his lantern to save a diving ally — watch for it appearing near a low-health enemy and decide whether to punish them before they can reach it.",
+  "glossary": [
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by committing an ability or your positioning first."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to knock back, slow, or otherwise stop an enemy from reaching a teammate."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss if the target moves out of its path."
+    },
+    {
+      "term": "poke",
+      "definition": "Chip damage dealt from a safe range to whittle enemies down before a bigger fight."
+    },
+    {
+      "term": "crowd control chain",
+      "definition": "Landing multiple stuns, slows, or knockbacks back to back so a target never regains control of their champion."
+    },
+    {
+      "term": "overextended",
+      "definition": "Pushed or positioned too far from safety, such as too far from teammates or turret protection."
+    }
+  ]
+}

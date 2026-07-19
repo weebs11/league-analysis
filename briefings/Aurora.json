@@ -1,0 +1,80 @@
+{
+  "id": "Aurora",
+  "name": "Aurora",
+  "playstyleSummary": "Aurora is a mobile mage/assassin who pokes enemies from range with a curse, then dashes in to burst them down while ducking in and out of an invisible spirit form. It feels fast and slippery, but every ability has real risk if you misjudge distance or timing, so it rewards patience as much as aggression.",
+  "strengths": [
+    "High burst damage once she lands her curse",
+    "Great mobility for dodging skillshots and repositioning",
+    "Built-in sustain from her passive as she damages enemies",
+    "Strong at picking off isolated targets"
+  ],
+  "weaknesses": [
+    "Mana hungry early, especially if you miss abilities",
+    "Squishy and easy to punish if her cooldowns are down",
+    "Combo requires good aim and timing to land",
+    "Vulnerable during the brief moment before she reaches invisibility"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Spirit Abjuration",
+      "howToUseIt": "Every spell or attack that damages an enemy exorcises a spirit that follows you and heals you over time, so trading damage in lane also keeps you topped up. Don't be afraid to poke — it pays you back in health."
+    },
+    {
+      "key": "Q",
+      "name": "Twofold Hex",
+      "howToUseIt": "Send the missile out to curse a target, then recast it to yank the curse back through them for extra damage. Use it for poke and last-hitting, and save the recast for when you want a second burst of damage in a trade."
+    },
+    {
+      "key": "W",
+      "name": "Across the Veil",
+      "howToUseIt": "Leap to reposition and become briefly invisible with bonus move speed. Use it to dodge an incoming skillshot, escape a gank, or reset a fight by vanishing right after your burst."
+    },
+    {
+      "key": "E",
+      "name": "The Weirding",
+      "howToUseIt": "Fire a slowing blast and hop backward to safety in one motion. It's both damage and a small escape, so use it in trades to poke and create distance at the same time."
+    },
+    {
+      "key": "R",
+      "name": "Between Worlds",
+      "howToUseIt": "Leap in to slow and damage enemies, then use the area it creates to teleport back and forth between its two sides. This lets you dive onto a target and immediately reposition out of danger, so use it to start fights on your terms."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Twofold Hex from max range to poke and farm without walking into melee range. Only go for an all-in combo once you have several ranks in your abilities and the enemy is low on health or out of position — Aurora's early trades favor patience over forcing fights.",
+  "quickTips": [
+    "Recast Twofold Hex to pull the curse back through your target for a second hit of damage",
+    "Use Across the Veil's invisibility to dodge a key skillshot, not just to close distance",
+    "Watch your mana bar early — missing Q repeatedly will leave you unable to trade",
+    "Save The Weirding's backward hop for when you need to escape a trade, not just for damage",
+    "Between Worlds is best used to dive an already-weakened target, since the teleport lets you escape after",
+    "Let your passive's healing spirits accumulate before committing to a longer fight"
+  ],
+  "whatToExpect": "An enemy Aurora will try to poke you with Twofold Hex from safe range, then suddenly close the gap and use Across the Veil's invisibility to appear where you don't expect. If she commits her ultimate, expect a full burst combo — respect her curse stacks and back off behind minions when you're low, since she snowballs hard once she gets a kill.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance with low-commitment spells before going for a bigger trade."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a squishy target in one combo."
+    },
+    {
+      "term": "squishy",
+      "definition": "A champion with low health and defenses who dies quickly if caught out."
+    },
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged by moving out of its path."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can use it again."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to win it decisively, leaving little held in reserve."
+    }
+  ]
+}

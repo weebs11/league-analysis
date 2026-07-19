@@ -1,0 +1,88 @@
+{
+  "id": "Graves",
+  "name": "Graves",
+  "playstyleSummary": "Graves is a shotgun-wielding marksman typically played in the jungle (sometimes top), dealing burst damage at close-to-mid range rather than kiting from max range like a typical marksman. He feels more like a brawler with a gun — get in, unload your ammo, and use Smoke Screen and Quickdraw to control the fight.",
+  "strengths": [
+    "High burst damage at close range",
+    "Smoke Screen provides strong utility for engaging, disengaging, or hiding objectives",
+    "Quickdraw grants a defensive stat boost while repositioning",
+    "Strong dueling and jungle clear"
+  ],
+  "weaknesses": [
+    "Limited ammo means periodic reloads with lower damage output during that window",
+    "Shorter effective range than typical marksmen, so he's vulnerable to poke",
+    "Requires good positioning to land Q's max damage",
+    "End of the Line rewards precise aim since it detonates fast"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "New Destiny",
+      "howToUseIt": "Your basic attacks fire 4 bullets that can't pass through units, and you must reload once your ammo runs out. Fight when you have a full clip, and be mindful of your ammo count before committing to an extended trade."
+    },
+    {
+      "key": "Q",
+      "name": "End of the Line",
+      "howToUseIt": "Aim it to detonate right behind your target for maximum point-blank damage, since it also explodes automatically after 1 second. Use it as your primary burst tool in trades and skirmishes."
+    },
+    {
+      "key": "W",
+      "name": "Smoke Screen",
+      "howToUseIt": "Throw it to block vision and slow or damage anyone caught in the initial impact. Use it to hide an objective, set up an ambush, or cover your escape."
+    },
+    {
+      "key": "E",
+      "name": "Quickdraw",
+      "howToUseIt": "Dash forward to reposition and gain armor and magic resist; dashing at an enemy champion also builds True Grit stacks, and landing attacks refreshes the dash's cooldown and resistance boost, so weave attacks in after using it."
+    },
+    {
+      "key": "R",
+      "name": "Collateral Damage",
+      "howToUseIt": "Fire this at an enemy champion for heavy single-target damage, then it explodes in a cone hitting anyone behind them. Line it up through multiple enemies when you can for extra value."
+    }
+  ],
+  "earlyGamePlan": "If jungling, clear efficiently with End of the Line and Quickdraw to save health, then look for ganks using Smoke Screen to block vision before you engage. In lane or early skirmishes, fight with a full ammo clip when possible and disengage to reload rather than getting caught empty.",
+  "quickTips": [
+    "Try to detonate End of the Line right as it hits or right against terrain for maximum damage, rather than firing it from max range and letting the timer run out early.",
+    "Use Smoke Screen proactively to block enemy vision before an objective fight or ambush, not just reactively to escape.",
+    "Keep track of your ammo count — don't start a fight if you're about to need to reload.",
+    "Weave basic attacks in after Quickdraw to refresh its cooldown and keep your resistance boost active.",
+    "Aim Collateral Damage through multiple enemies lined up to hit more than one target with the cone explosion.",
+    "Because your effective range is shorter than other marksmen, look for picks and skirmishes rather than long poke wars."
+  ],
+  "whatToExpect": "Enemy Graves hits hard at close-to-mid range but has to reload periodically, so pressuring him right after he empties his clip is a good window to fight. Watch for Smoke Screen — it blocks your vision and slows or damages you if you're caught in it — and be ready to disengage or spread out so his Collateral Damage cone can't hit multiple people on your team.",
+  "glossary": [
+    {
+      "term": "Burst",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a target in one combo."
+    },
+    {
+      "term": "Kite",
+      "definition": "Attacking or retreating while keeping distance from an enemy so they can't catch you."
+    },
+    {
+      "term": "Engage",
+      "definition": "The act of initiating a fight, usually by committing a crowd control ability or dash onto the enemy team."
+    },
+    {
+      "term": "Disengage",
+      "definition": "Breaking off from a fight or trade, usually by retreating or using an escape tool."
+    },
+    {
+      "term": "Poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged spells or attacks before a real fight starts."
+    },
+    {
+      "term": "Skirmish",
+      "definition": "A small-scale fight involving only a few champions, usually over vision, a camp, or a bit of map control."
+    },
+    {
+      "term": "Gank",
+      "definition": "When a teammate (often the jungler) shows up in a lane to help kill or pressure an enemy laner."
+    },
+    {
+      "term": "Pick",
+      "definition": "Isolating and killing a single enemy champion, usually to create a numbers advantage for a follow-up fight or objective."
+    }
+  ]
+}

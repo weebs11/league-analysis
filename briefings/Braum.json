@@ -1,0 +1,80 @@
+{
+  "id": "Braum",
+  "name": "Braum",
+  "playstyleSummary": "Braum is a tanky support who protects his allies by blocking incoming damage and setting up stuns alongside them. He feels very team-oriented and reactive — a lot of his power comes from timing his shield and jumps to protect a teammate at exactly the right moment rather than dealing damage himself.",
+  "strengths": [
+    "Excellent peel and protection for allies",
+    "Can block an entire volley of projectiles with his shield",
+    "Powerful stun when he and an ally stack attacks on the same target",
+    "Very tanky and hard to kill in extended fights"
+  ],
+  "weaknesses": [
+    "Low personal damage output",
+    "Needs an ally nearby to make full use of his kit",
+    "Ultimate has a long cast time that can be dodged",
+    "Relies on landing Winter's Bite or an attack to start his stun combo"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Concussive Blows",
+      "howToUseIt": "Your attacks apply a stack, and once applied, your allies' attacks stack it too — at 4 stacks the target is stunned and takes bonus damage. Coordinate with allies to focus attacks on a marked target to trigger the stun."
+    },
+    {
+      "key": "Q",
+      "name": "Winter's Bite",
+      "howToUseIt": "Fire freezing ice that slows and damages while applying a stack of Concussive Blows. Use it to start your stun combo from range or to slow down a fleeing or chasing enemy."
+    },
+    {
+      "key": "W",
+      "name": "Stand Behind Me",
+      "howToUseIt": "Leap to an ally, granting both of you Armor and Magic Resist on arrival. Use it proactively to reach an ally under threat, giving both of you extra survivability right when a fight starts."
+    },
+    {
+      "key": "E",
+      "name": "Unbreakable",
+      "howToUseIt": "Raise your shield in a direction to block projectiles, fully negating the first hit and reducing damage from the rest. Point it toward the enemy's main damage source to protect yourself or an ally standing behind you."
+    },
+    {
+      "key": "R",
+      "name": "Glacial Fissure",
+      "howToUseIt": "Slam the ground to knock up enemies in front of you and leave a slowing fissure behind. Use it to peel enemies off an ally, split up an approaching team, or slow their retreat after a won fight."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Winter's Bite to start applying Concussive Blows, then encourage your ally to follow up with attacks to trigger the stun. Use Unbreakable to block incoming poke aimed at you or your carry, and look for all-in windows once the enemy is marked.",
+  "quickTips": [
+    "Coordinate with your ally to land basic attacks on a Concussive Blows target to trigger the stun",
+    "Point Unbreakable toward the direction enemy damage is coming from to protect your carry",
+    "Use Stand Behind Me proactively to reach an ally before they get caught, not just reactively",
+    "Position Glacial Fissure to split the enemy team or block their approach in fights",
+    "Let Caretaker-style trades happen from range with Winter's Bite before committing to a full engage",
+    "Remember Unbreakable only blocks projectiles from one direction, so watch your positioning"
+  ],
+  "whatToExpect": "An enemy Braum wants to land Winter's Bite or a basic attack on you to start stacking Concussive Blows — if you get marked, try to break line of sight or leave combat before three more hits land, or you'll be stunned. His ultimate has a long cast time, so use that window to get out of its path, and be aware that Unbreakable can completely block your key damage-dealing projectile if aimed your way.",
+  "glossary": [
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate by blocking, slowing, or removing a threat near them."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance with low-commitment spells before going for a bigger trade."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to win it decisively, leaving little held in reserve."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance or using crowd control on the enemy first."
+    },
+    {
+      "term": "line of sight",
+      "definition": "Whether a clear path exists between two points; some abilities and effects require it and can be blocked by terrain."
+    },
+    {
+      "term": "carry",
+      "definition": "A champion, usually a damage dealer, whose performance a team relies on to win fights."
+    }
+  ]
+}

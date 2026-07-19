@@ -299,6 +299,22 @@ select option { background: var(--hx-panel-2); }
 /* ---- generation bar ---- */
 .gen-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .gen-bar p { margin: 2px 0 0; }
+.gen-bar .gen-text { flex: 1; min-width: 260px; }
+
+/* ---- generation progress bar ---- */
+.progress {
+  margin-top: 10px; height: 6px; border-radius: 3px; overflow: hidden;
+  background: var(--hx-deep); border: 1px solid var(--hx-line);
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-mid), var(--teal));
+  transition: width 0.5s ease;
+  box-shadow: 0 0 8px rgba(10, 200, 185, 0.35);
+}
+/* While preparing, the true duration is unknown — pulse instead of crawling. */
+.progress-fill.indeterminate { animation: progress-pulse 1.6s ease-in-out infinite; }
+@keyframes progress-pulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
 .gen-bar strong { font-family: var(--serif); text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-bright); font-size: 1.02rem; }
 
 /* ---- tabs ---- */

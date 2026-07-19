@@ -1,0 +1,88 @@
+{
+  "id": "MissFortune",
+  "name": "Miss Fortune",
+  "playstyleSummary": "Miss Fortune is a ranged marksman who wins by staying at range and chipping away at enemies with poke, then deleting grouped-up enemies with her ultimate. She feels straightforward to pick up: right-click to auto attack, throw out Double Up and Make It Rain for damage, and unload Bullet Time when a teamfight breaks out. Because she has no dash or hard escape, playing her well is mostly about positioning safely and using move speed instead of blinking away from danger.",
+  "strengths": [
+    "Huge burst damage in teamfights with Bullet Time",
+    "Strong wave clear and poke from Make It Rain",
+    "Love Tap rewards you for spreading damage across multiple targets",
+    "Easy to snowball an early lead into kills"
+  ],
+  "weaknesses": [
+    "No dash or hard escape - very vulnerable if caught out of position",
+    "Squishy and dies quickly if focused",
+    "Bullet Time requires her to stand still while channeling, which is risky",
+    "Falls off if she gets behind early since she needs items and levels to do damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Love Tap",
+      "howToUseIt": "Attack a new target you haven't just hit to deal bonus damage - spread your auto attacks across the wave and enemy champions instead of only hitting one target."
+    },
+    {
+      "key": "Q",
+      "name": "Double Up",
+      "howToUseIt": "Line it up through a minion so the shot bounces into the enemy champion standing behind it for extra poke damage."
+    },
+    {
+      "key": "W",
+      "name": "Strut",
+      "howToUseIt": "Avoid taking damage to naturally build move speed, and activate the ability right before you commit to a fight for bonus attack speed."
+    },
+    {
+      "key": "E",
+      "name": "Make It Rain",
+      "howToUseIt": "Throw this over the wave or into an enemy's escape path - it helps with wave clear and slows anyone who stands in it."
+    },
+    {
+      "key": "R",
+      "name": "Bullet Time",
+      "howToUseIt": "Channel this cone of bullets when enemies are grouped or under crowd control; get into position first since you barely move while channeling."
+    }
+  ],
+  "earlyGamePlan": "Focus on getting the killing blow on minions with Double Up for extra gold, and poke the enemy bot lane with Make It Rain when they push up. Avoid committing to an all-in before level 6 since you have no escape if it goes wrong. Stay near your support so you're not an easy target for a gank.",
+  "quickTips": [
+    "Save Bullet Time for when the enemy team is grouped or crowd controlled - it does far less if they can just walk out of the cone.",
+    "Angle Double Up through a minion toward the enemy champion behind it for free poke.",
+    "Use Strut's move speed to reposition in fights instead of trading blows head-on.",
+    "Since you have no escape, stay behind your teammates and let them start fights first.",
+    "Make It Rain is great for wave clear when you need to catch up on minions.",
+    "Check your positioning before ulting - you can't move much while channeling Bullet Time."
+  ],
+  "whatToExpect": "Miss Fortune will try to poke you with Double Up and Make It Rain from a distance, then look to land a huge Bullet Time on your team if you ever group up in a fight. Spread out in teamfights so one channel can't hit everyone, and remember she has no escape - if you can reach her with crowd control or a dash, she dies fast.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Chip damage traded from range to wear enemies down before a real fight."
+    },
+    {
+      "term": "wave clear",
+      "definition": "Killing a group of minions quickly, usually with an ability that hits multiple targets."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and cooldowns to try to kill an enemy right now, rather than trading and backing off."
+    },
+    {
+      "term": "escape",
+      "definition": "An ability (like a dash or blink) used to quickly get away from danger."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act (often shortened to CC)."
+    },
+    {
+      "term": "channel",
+      "definition": "Casting an ability that takes time to complete, during which the caster is often vulnerable and can't move freely."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) shows up in a lane to help kill an enemy laner by surprise."
+    }
+  ]
+}

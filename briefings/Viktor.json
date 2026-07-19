@@ -1,0 +1,80 @@
+{
+  "id": "Viktor",
+  "name": "Viktor",
+  "playstyleSummary": "Viktor is a scaling mage whose kit literally upgrades as the game goes on: kill enough enemies to gather Hex Fragments and each of his abilities gains a stronger, augmented version. Playing him feels like a slow build-up where early game is about survival and farming, while the late game rewards you with a fully evolved kit that can control fights from range. He has one of the higher skill ceilings among mages, since choosing when and what to augment matters.",
+  "strengths": [
+    "Abilities permanently upgrade over the course of the game via Hex Fragments",
+    "Gravity Field and Hextech Ray combine well to control and punish enemy positioning",
+    "Arcane Storm can be redirected mid-cast and interrupts enemy channels",
+    "Strong area-denial tools that scale into the late game"
+  ],
+  "weaknesses": [
+    "Relatively weak and passive in the very early game before augments",
+    "Needs proximity to enemies for his strongest plays, which is risky since he's squishy",
+    "Requires good decision-making about which ability to augment first",
+    "Vulnerable to being caught before his kit comes online"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Glorious Evolution",
+      "howToUseIt": "You gain Hex Fragments from kills, and every 100 permanently augments one of your abilities. Prioritize picking off minions and champions safely so you can pick which ability to upgrade first, based on what your team needs."
+    },
+    {
+      "key": "Q",
+      "name": "Siphon Power",
+      "howToUseIt": "Use this on an enemy to gain a shield and empower your next auto-attack. Once augmented, it gives an even bigger shield and move speed, so use it more freely to trade or disengage."
+    },
+    {
+      "key": "W",
+      "name": "Gravity Field",
+      "howToUseIt": "Place this to slow enemies caught inside and stun anyone who stays too long. Use it to zone enemies away from you or to trap them for your Hextech Ray, and once augmented it adds a slow to all your other spells."
+    },
+    {
+      "key": "E",
+      "name": "Hextech Ray",
+      "howToUseIt": "Fire this in a line to damage everyone caught in its path, and combine it with Gravity Field so enemies can't dodge it. Once augmented, an explosion follows the ray for extra damage."
+    },
+    {
+      "key": "R",
+      "name": "Arcane Storm",
+      "howToUseIt": "Conjure this storm to deal repeated damage and interrupt enemy channeled abilities, redirecting it during the fight to follow your target. Once augmented, it moves faster and grows in size and duration whenever champions die from its damage."
+    }
+  ],
+  "earlyGamePlan": "In lane, play carefully and use Siphon Power to poke and shield yourself while farming safely, since you're weaker before your kit augments come online. Focus on gathering Hex Fragments from safe kills, and pick your first augment based on whether you need more poke, control, or damage against your specific matchup.",
+  "quickTips": [
+    "Choose your ability augments based on what your team needs, not just personal preference",
+    "Combine Gravity Field with Hextech Ray so enemies can't easily walk out of the damage",
+    "Use Arcane Storm to interrupt important enemy channeled abilities in fights",
+    "Play safely early since your damage and control improve significantly with augments",
+    "Watch the color of the light on Viktor's staff to track how many augments he has, if you're playing against him",
+    "Stay closer to enemies once your kit is online, since Viktor's control improves at close range"
+  ],
+  "whatToExpect": "An enemy Viktor is fairly weak early, so consider pressuring him before his abilities get augmented, but respect his kit more as the game goes on since his damage and control both scale up significantly. Watch the light color on his staff to gauge how many augments he has, and try to avoid standing in Gravity Field's radius for too long since it will stun you if you linger.",
+  "glossary": [
+    {
+      "term": "mage",
+      "definition": "A champion type that primarily deals magic damage through abilities rather than auto-attacks."
+    },
+    {
+      "term": "scale",
+      "definition": "How a champion's power grows over the course of the game, usually through levels and items."
+    },
+    {
+      "term": "zone",
+      "definition": "Using threats of damage or crowd control to keep an enemy away from an area, like minions or an objective."
+    },
+    {
+      "term": "channel",
+      "definition": "An ability that takes time to cast while the caster keeps performing it, often interruptible by crowd control."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before committing to a full fight."
+    },
+    {
+      "term": "area denial",
+      "definition": "Using abilities to make a location dangerous or unusable for the enemy, controlling space without direct engagement."
+    }
+  ]
+}

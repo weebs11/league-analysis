@@ -1,0 +1,76 @@
+{
+  "id": "Sona",
+  "name": "Sona",
+  "playstyleSummary": "Sona is a support who empowers her team from a distance with auras and buffs while poking enemies down with her basic abilities. She feels proactive and low-risk to play, since most of her power comes from casting spells near allies rather than getting into direct danger.",
+  "strengths": [
+    "Strong poke and passive healing/damage from a safe distance",
+    "Crescendo is a powerful team-wide stun that can win fights outright",
+    "Auras give allies who stand near her extra value on every ability",
+    "Scales her cooldowns down the more she uses her abilities well"
+  ],
+  "weaknesses": [
+    "Very squishy and easy to kill if caught alone",
+    "Relies on allies actually standing in her auras to get full value",
+    "Enemies can spread out to reduce Crescendo's impact",
+    "Low escape tools if dived on directly"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Power Chord",
+      "howToUseIt": "Weave your basic abilities into fights. Every few casts your next attack deals bonus damage plus an extra effect based on your last ability, and using abilities well also speeds up their cooldowns."
+    },
+    {
+      "key": "Q",
+      "name": "Hymn of Valor",
+      "howToUseIt": "Cast this to poke enemies and tag nearby allies with an aura that boosts their next attack. Try to hit champions rather than just minions when you can."
+    },
+    {
+      "key": "W",
+      "name": "Aria of Perseverance",
+      "howToUseIt": "Use this to heal yourself or a hurt ally, and its aura grants a shield to any allies tagged within it; great to use right before an expected trade."
+    },
+    {
+      "key": "E",
+      "name": "Song of Celerity",
+      "howToUseIt": "Cast this to speed up your team for chasing or repositioning, and its aura gives extra Move Speed to tagged allies."
+    },
+    {
+      "key": "R",
+      "name": "Crescendo",
+      "howToUseIt": "Save this for a key moment in a fight; it stuns every enemy champion hit, so try to catch as many as possible instead of just one."
+    }
+  ],
+  "earlyGamePlan": "In lane, alternate your basic abilities to poke the enemy and tag your ally with their auras before trades, keeping your distance from danger. Play safely and avoid overextending, since you have little defense if the enemy jungler or a burst champion catches you alone; your value comes from surviving to use your kit repeatedly.",
+  "quickTips": [
+    "Tag your allies with your ability auras before a trade or fight for the bonus effect.",
+    "Save Crescendo for a moment where it can hit multiple enemies, not just one.",
+    "Cycle through your abilities in fights to build up Power Chord for bonus attack damage.",
+    "Stay near your team; you have very little defense if caught alone.",
+    "Use Song of Celerity's speed boost to help allies chase or escape.",
+    "Heal with Aria of Perseverance proactively before damage lands, not only after."
+  ],
+  "whatToExpect": "Sona will poke you from range and try to land her Crescendo stun on your whole team, so spread out in fights so she can't catch everyone at once. She's very fragile if caught alone, so look for chances to kill her first before she can use her stun or heal her team.",
+  "glossary": [
+    {
+      "term": "support",
+      "definition": "A role focused on protecting and enabling teammates rather than dealing the most damage."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance without committing to a full trade."
+    },
+    {
+      "term": "aura",
+      "definition": "An effect that applies to allies standing near the champion casting it."
+    },
+    {
+      "term": "peel",
+      "definition": "Using abilities to protect a teammate from enemies trying to attack them."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    }
+  ]
+}

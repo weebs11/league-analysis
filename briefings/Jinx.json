@@ -1,0 +1,84 @@
+{
+  "id": "Jinx",
+  "name": "Jinx",
+  "playstyleSummary": "Jinx is a high-damage marksman who swaps between a rapid-fire minigun for close fights and a slower rocket launcher for poke and waveclear. She feels explosive in the late game - once she's fed and ramped up, few champions can out-damage her in a straight fight.",
+  "strengths": [
+    "Massive scaling damage output in the late game",
+    "Super Mega Death Rocket threatens kills across the entire map",
+    "Flame Chompers give strong zone control and root potential",
+    "Passive grants huge speed after securing objectives or kills, letting her snowball"
+  ],
+  "weaknesses": [
+    "Very weak and immobile in the early game",
+    "No dash or blink, making her easy to catch when isolated",
+    "Minigun needs time to ramp up attack speed before it's effective",
+    "Flame Chompers have a long cooldown, leaving her without an escape if she misses"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Get Excited!",
+      "howToUseIt": "After you help kill an enemy champion, epic monster, or structure, you get a big burst of move and attack speed - chain kills and objectives together to snowball a lead."
+    },
+    {
+      "key": "Q",
+      "name": "Switcheroo!",
+      "howToUseIt": "Switch to Pow-Pow (minigun) for attack speed in close fights, or Fishbones (rocket launcher) for longer range and area damage at the cost of mana and attack speed - pick based on whether you want to poke or duel."
+    },
+    {
+      "key": "W",
+      "name": "Zap!",
+      "howToUseIt": "Fire this at a fleeing or approaching enemy to slow and reveal them - it's your main tool for finishing a kill or spotting someone diving you."
+    },
+    {
+      "key": "E",
+      "name": "Flame Chompers!",
+      "howToUseIt": "Throw a line of these before a fight or across a chokepoint; they root any enemy champion who walks over them, so use them defensively to stop a diver or offensively to lock down a target."
+    },
+    {
+      "key": "R",
+      "name": "Super Mega Death Rocket!",
+      "howToUseIt": "Fire this across the map at a low-health enemy - it deals more damage the lower their health is, so save it to finish kills rather than to open a fight."
+    }
+  ],
+  "earlyGamePlan": "Play safely in lane since Jinx is weak before she has items - use Fishbones' rockets to poke and clear waves from a distance rather than trading in melee. Farm patiently and wait for teamfights and objectives, where her passive speed boost and scaling damage start to take over games.",
+  "quickTips": [
+    "Switch to Fishbones for poke and waveclear, and to Pow-Pow when a fight gets close.",
+    "Save Flame Chompers to stop a diver or root a target - don't throw them randomly, since the cooldown is long.",
+    "Use your ultimate to finish low-health targets, not to start a fight.",
+    "Stay near allies early since you have no dash and are easy to catch.",
+    "Chain kills and objectives together to keep your passive speed boost active and snowball.",
+    "Position at the edge of teamfights and let your minigun ramp up once it's safe."
+  ],
+  "whatToExpect": "An enemy Jinx is dangerous once she gets going, so try to shut her down early before she has items - she has no dash, so a well-timed gank can punish her hard. Watch for her rockets poking from a distance, and be very careful sitting at low health anywhere on the map, since her ultimate can execute you from across the screen.",
+  "glossary": [
+    {
+      "term": "snowball",
+      "definition": "Turning an early advantage into an even bigger one, making a strong player or team harder to stop over time."
+    },
+    {
+      "term": "scaling",
+      "definition": "How much stronger a champion gets over time as they gain levels and items, relative to others."
+    },
+    {
+      "term": "waveclear",
+      "definition": "The ability to quickly kill a wave of minions, useful for controlling lane and pushing."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at enemy health from range without committing to a full fight."
+    },
+    {
+      "term": "dash",
+      "definition": "A short, fast movement ability that repositions a champion, often used to escape or engage."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally ambushes an enemy laner to help get a kill or lead."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    }
+  ]
+}

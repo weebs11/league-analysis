@@ -1,0 +1,80 @@
+{
+  "id": "Vladimir",
+  "name": "Vladimir",
+  "playstyleSummary": "Vladimir is a mage-fighter hybrid who fuels his spells with his own health instead of mana, and converts bonus health into ability power through his unique passive. Playing him feels like a resource-management puzzle: pay health to deal damage, then heal it back with Transfusion and Hemoplague. He's tough to kill outright thanks to Sanguine Pool, making him a resilient, sustain-heavy pick.",
+  "strengths": [
+    "Sanguine Pool makes him briefly untargetable, dodging most damage and hard crowd control",
+    "Crimson Pact means building health also boosts his damage, giving him great flexibility",
+    "Hemoplague deals big burst damage and heals him for every champion it hits",
+    "Strong sustain in lane thanks to Transfusion's life steal-like healing"
+  ],
+  "weaknesses": [
+    "Pays his own health for several abilities, which can be risky if used carelessly",
+    "Sanguine Pool has a real cooldown, so timing it wrong leaves him vulnerable",
+    "Relatively weak against burst damage that can kill him before he can react",
+    "Struggles if he falls behind, since his damage relies on landing spells consistently"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Crimson Pact",
+      "howToUseIt": "Bonus health converts into ability power and vice versa, so building tankier items still boosts your damage output. Take advantage of this by building toward survivability without feeling like you're sacrificing damage."
+    },
+    {
+      "key": "Q",
+      "name": "Transfusion",
+      "howToUseIt": "Use this to poke and heal off enemies in lane; when your resource bar is full, it deals much more damage and healing. Time your trades around your resource being full for maximum value."
+    },
+    {
+      "key": "W",
+      "name": "Sanguine Pool",
+      "howToUseIt": "Sink into this pool to become untargetable for 2 seconds, dodging incoming damage or crowd control while slowing and draining enemies standing on it. Use it defensively to survive a burst combo, or offensively to slow enemies chasing you."
+    },
+    {
+      "key": "E",
+      "name": "Tides of Blood",
+      "howToUseIt": "Charge this by paying your own health, then release it to damage the area around you, though enemy units can block it. Use it in fights where you're already ahead on health, and be mindful of the health cost when low."
+    },
+    {
+      "key": "R",
+      "name": "Hemoplague",
+      "howToUseIt": "Cast this on a grouped area to mark enemies for increased damage taken, then let it detonate to deal magic damage and heal you for each champion hit. Cast it early in a fight so your team's damage lands during the increased-damage window, and aim for as many enemies as possible to maximize your heal."
+    }
+  ],
+  "earlyGamePlan": "In lane, use Transfusion to poke and sustain through trades, holding it for full charge when possible for the bonus damage and healing. Play patiently and use Sanguine Pool defensively to dodge poke or all-in attempts, since surviving with your resource high lets you win extended trades over time.",
+  "quickTips": [
+    "Wait for your resource bar to fill before trading with Transfusion for the bonus effect",
+    "Save Sanguine Pool to dodge burst damage or hard crowd control rather than using it early",
+    "Cast Hemoplague early in a fight so your team's damage benefits from the increased-damage debuff",
+    "Aim Hemoplague to hit as many enemy champions as possible to maximize your healing",
+    "Be mindful of your own health total when using Tides of Blood, since it costs health to charge",
+    "Build toward survivability without worrying about losing damage, thanks to your passive"
+  ],
+  "whatToExpect": "An enemy Vladimir will try to poke you with Transfusion and burst you down with Hemoplague in fights, healing off every champion it hits, so try to spread out so his ultimate can't catch your whole team. Bait out his Sanguine Pool before committing your hard crowd control or all-in damage, since he's briefly untargetable and immune to most effects while submerged.",
+  "glossary": [
+    {
+      "term": "mage",
+      "definition": "A champion type that primarily deals magic damage through abilities rather than auto-attacks."
+    },
+    {
+      "term": "untargetable",
+      "definition": "A state where a champion cannot be selected as the target of enemy abilities or attacks, though area effects may still hit them."
+    },
+    {
+      "term": "sustain",
+      "definition": "The ability to recover health over time, often through healing effects, letting a champion stay in lane or fights longer."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before committing to a full fight."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all of your damage and abilities into a single fight or trade, with little held in reserve."
+    },
+    {
+      "term": "burst damage",
+      "definition": "A large amount of damage dealt very quickly, often enough to kill a squishy target outright."
+    }
+  ]
+}

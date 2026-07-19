@@ -1,0 +1,75 @@
+{
+  "id": "Kayn",
+  "name": "Kayn",
+  "playstyleSummary": "Kayn is a jungle fighter-assassin built around a big mid-game choice: transform into the healing, tanky Rhaast or the bursty, elusive Shadow Assassin. His signature trick is walking straight through walls with Shadow Step, letting him gank and escape from angles most champions can't. He rewards players who like flexible, high-mobility playstyles and reading the game state before committing to a form.",
+  "strengths": [
+    "Shadow Step lets him walk through terrain to flank or escape, giving him unmatched map mobility.",
+    "Choosing between Rhaast and the Shadow Assassin lets him adapt to what his team and the enemy need.",
+    "Umbral Trespass can end a fight by hiding inside a low-health enemy and bursting out for massive damage.",
+    "Strong dueling and jungle clearing thanks to Reaping Slash and Blade's Reach."
+  ],
+  "weaknesses": [
+    "Umbral Trespass only works on a target he's already damaged with an ability, so it can be denied.",
+    "Enemies get a visual warning near the wall he's hiding in during Shadow Step.",
+    "Being damaged or hit with crowd control ends Shadow Step early, leaving him exposed.",
+    "Choosing a transformation is a big commitment that's hard to change once made."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "The Darkin Scythe",
+      "howToUseIt": "You'll eventually choose to become the Shadow Assassin, who deals extra burst damage against champions, or master Rhaast the Darkin, who heals from spell damage — pay attention to your team's needs and the enemy composition when the choice comes and pick the one that fits the situation."
+    },
+    {
+      "key": "Q",
+      "name": "Reaping Slash",
+      "howToUseIt": "Use it to dash in and slash for damage — good for both engaging on a target and repositioning during a fight."
+    },
+    {
+      "key": "W",
+      "name": "Blade's Reach",
+      "howToUseIt": "Aim this at an enemy in a line to damage and slow them — landing it also lets you follow up with Umbral Trespass from farther away."
+    },
+    {
+      "key": "E",
+      "name": "Shadow Step",
+      "howToUseIt": "Walk through terrain to flank enemies or escape — but remember enemies get a visual warning near the wall you're hiding in, and damaging or crowd-controlling you can end it early."
+    },
+    {
+      "key": "R",
+      "name": "Umbral Trespass",
+      "howToUseIt": "You need to damage an enemy champion with an ability first before you can use this on them — hide inside them, then burst out for massive damage, ideally after they've used their escape tools."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, focus on efficiently clearing jungle camps and looking for opportunities to gank lanes using Shadow Step to appear from an unexpected angle. Use Reaping Slash and Blade's Reach to damage camps and enemies safely. Decide roughly which transformation you're leaning toward based on how your early game goes and what the enemy team looks like.",
+  "quickTips": [
+    "Look at both team compositions before deciding which form to take — it's a big commitment.",
+    "Land Blade's Reach before trying to use Umbral Trespass at long range, since you need to have damaged the target with an ability first.",
+    "Use Shadow Step to gank from unusual angles the enemy won't expect.",
+    "Remember enemies can see a warning near the wall you're hiding in with Shadow Step.",
+    "Avoid using Shadow Step to hide from crowd control — being hit still ends it immediately."
+  ],
+  "whatToExpect": "An enemy Kayn is very mobile thanks to Shadow Step letting him walk through walls, so wards near jungle walls help you see him coming. He needs to damage you with an ability before he can use Umbral Trespass, so try to dodge Blade's Reach. If he goes into Shadow Step near you, attacking him or hitting him with crowd control can shorten or end it early.",
+  "glossary": [
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) shows up in a lane to help get a kill."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit what a champion can do."
+    },
+    {
+      "term": "team composition (comp)",
+      "definition": "The mix of champions and roles on a team."
+    },
+    {
+      "term": "flank",
+      "definition": "Attacking an enemy from the side or behind, away from their teammates."
+    },
+    {
+      "term": "ward",
+      "definition": "A placeable item that reveals an area of the map, helping you see enemies coming."
+    }
+  ]
+}

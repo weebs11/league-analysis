@@ -1,0 +1,80 @@
+{
+  "id": "Swain",
+  "name": "Swain",
+  "playstyleSummary": "Swain is a mage who grows tankier as fights go on, draining health from everyone around him once his ultimate is active. He plays like a slow, inevitable threat: landing roots to lock enemies down, then transforming into a demon that's hard to kill and hard to escape from.",
+  "strengths": [
+    "Demonic Ascension makes him extremely tanky and hard to kill in fights",
+    "Nevermove can root and pull multiple enemies into a bad position",
+    "Passive grants permanent health growth over the course of the game",
+    "Strong area damage once transformed"
+  ],
+  "weaknesses": [
+    "High mobility enemies can avoid most of his kit",
+    "Vision of Empire has a long delay, making it easy to dodge",
+    "Vulnerable to healing-reduction effects while transformed",
+    "Very easy to punish if his crowd control gets dodged or interrupted early"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Ravenous Flock",
+      "howToUseIt": "Collect Soul Fragments from your abilities and takedowns to heal yourself and permanently grow your max health. The more you fight and get value, the tankier you become."
+    },
+    {
+      "key": "Q",
+      "name": "Death's Hand",
+      "howToUseIt": "Fire this down a lane or at retreating enemies since it pierces through them, dealing more damage for every bolt that connects with the same target."
+    },
+    {
+      "key": "W",
+      "name": "Vision of Empire",
+      "howToUseIt": "Aim this at skirmishes or distracted enemies rather than trying to land it 1v1, since the long delay makes it easy to dodge if they're paying attention."
+    },
+    {
+      "key": "E",
+      "name": "Nevermove",
+      "howToUseIt": "Throw this out and let it return to you to root anyone it hits on the way back, then choose whether to pull rooted enemies toward you for a follow-up."
+    },
+    {
+      "key": "R",
+      "name": "Demonic Ascension",
+      "howToUseIt": "Activate this in fights to drain health from nearby enemies and become much harder to kill; use Demonflare inside it to hit a wide area with extra damage."
+    }
+  ],
+  "earlyGamePlan": "Play patiently in lane, using Death's Hand's piercing damage to poke safely from range without engaging directly. Look for chances to land Nevermove when the enemy is near their own minions, since the explosion is easier to land as a surprise, and avoid using your ultimate too early before you have Soul Fragments built up.",
+  "quickTips": [
+    "Poke with Death's Hand from a safe distance rather than walking up to trade.",
+    "Look for Vision of Empire opportunities during skirmishes, not isolated 1v1s.",
+    "Land Nevermove near enemy minions to disguise the return hit as a surprise.",
+    "Use Demonic Ascension to sustain through fights, not just as a damage cooldown.",
+    "Build up Soul Fragments before committing to a big fight for extra health.",
+    "Watch for Grievous Wounds effects on enemies that can weaken your Demonic Ascension healing."
+  ],
+  "whatToExpect": "Swain wants to root you with Nevermove and then either burn you down with Death's Hand or transform and drain your health in a fight. Stay mobile so his slow-moving abilities miss, and try to punish him with high burst or crowd control before he can activate Demonic Ascension.",
+  "glossary": [
+    {
+      "term": "mage",
+      "definition": "A champion focused on dealing damage through spells rather than basic attacks."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance without committing to a full trade."
+    },
+    {
+      "term": "skirmish",
+      "definition": "A small, often unplanned fight involving a few champions."
+    },
+    {
+      "term": "follow-up",
+      "definition": "Adding damage or crowd control right after a teammate starts a fight."
+    },
+    {
+      "term": "Grievous Wounds",
+      "definition": "A debuff that reduces how much health an affected champion can regain from healing effects."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's movement or actions."
+    }
+  ]
+}

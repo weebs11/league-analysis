@@ -1,0 +1,80 @@
+{
+  "id": "Urgot",
+  "name": "Urgot",
+  "playstyleSummary": "Urgot is a lumbering top-lane bruiser who fights by landing his leg abilities in a specific direction before unloading with Purge. He feels methodical rather than flashy: you're managing which ability is on cooldown and lining up his execute ultimate on a weakened target. Once you get the hang of tracking his ability directions, he becomes a very forgiving, high-damage brawler.",
+  "strengths": [
+    "Deals huge sustained damage once his leg abilities are online",
+    "Fear Beyond Death can execute low-health enemies from a distance, even over walls",
+    "Tanky enough to soak damage while dealing plenty back",
+    "Strong at punishing enemies who overextend near his ultimate's range"
+  ],
+  "weaknesses": [
+    "Leg abilities only trigger in the direction Urgot is facing, so positioning mistakes waste damage",
+    "Purge slows himself while firing, making him easy to kite while it's active",
+    "Relatively low mobility compared to other top laners",
+    "Vulnerable early before his ultimate and item power come online"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Echoing Flames",
+      "howToUseIt": "Your attacks and Purge periodically trigger extra flame damage from your legs, so keep attacking or using Purge in fights rather than holding back, since this passive quietly makes up a large chunk of your damage."
+    },
+    {
+      "key": "Q",
+      "name": "Corrosive Charge",
+      "howToUseIt": "Fire this at a target location to slow and damage enemies, and use it to lock onto a target so your Purge prioritizes them. Landing this before Purge lets you unload on the right enemy in a fight."
+    },
+    {
+      "key": "W",
+      "name": "Purge",
+      "howToUseIt": "Turn this on when you're ready to commit to a fight, since it lets you unload rapid attacks on nearby enemies, prioritizing anyone you've already hit with another ability. Remember it slows you, so don't activate it while trying to chase down a fleeing enemy."
+    },
+    {
+      "key": "E",
+      "name": "Disdain",
+      "howToUseIt": "Charge in a direction to shield yourself and shove through minions; if you catch an enemy champion, you'll stop and throw them behind you. Use it to engage a fight or to reposition an enemy away from their team."
+    },
+    {
+      "key": "R",
+      "name": "Fear Beyond Death",
+      "howToUseIt": "Save this for enemies who are already low enough to fall under the execution threshold, since it can finish them off even while they try to flee. It also stops enemy healing on the target, so it's great for chasing down a healer."
+    }
+  ],
+  "earlyGamePlan": "In the early laning phase, play a bit passively and use Corrosive Charge to poke and slow your opponent while waiting for your leg abilities to come off cooldown before engaging. Watch which direction you're facing before trading, since your legs only trigger in that direction. Once you have a few levels and items, look to punish enemies who push too far into your Disdain and Fear Beyond Death range.",
+  "quickTips": [
+    "Face your target before trading so your leg abilities actually trigger",
+    "Land Corrosive Charge or Disdain first to mark a target, then Purge to burst them down",
+    "Don't activate Purge while chasing, since it slows your own movement",
+    "Save Fear Beyond Death for finishing kills, not as your opening move",
+    "Use Disdain to shove through a wave of minions quickly when you need to reset lane",
+    "Play patiently early and look for your power spike once your legs and items come online"
+  ],
+  "whatToExpect": "An enemy Urgot will try to poke you down with Corrosive Charge, then commit with Disdain and Purge once he's landed enough hits, finishing with Fear Beyond Death if you're low. Try to dodge his charge ability and avoid standing still in his attack direction, and be very careful about your health total once you see his ultimate cooldown is up, since it can execute you from surprising range.",
+  "glossary": [
+    {
+      "term": "top lane",
+      "definition": "The solo lane on the top side of the map, often played by tanky or bruiser champions."
+    },
+    {
+      "term": "bruiser",
+      "definition": "A champion built to deal solid damage while also being tanky enough to survive extended fights."
+    },
+    {
+      "term": "execute",
+      "definition": "An ability that deals bonus or guaranteed damage to enemies below a certain health threshold, often finishing them off."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance before committing to a full fight."
+    },
+    {
+      "term": "power spike",
+      "definition": "A point in the game, often tied to a level or item, where a champion becomes significantly stronger."
+    },
+    {
+      "term": "wave",
+      "definition": "A group of minions marching down a lane together."
+    }
+  ]
+}

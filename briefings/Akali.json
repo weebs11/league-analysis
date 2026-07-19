@@ -1,0 +1,79 @@
+{
+  "id": "Akali",
+  "name": "Akali",
+  "playstyleSummary": "Akali is a melee assassin who darts in and out of fights using her smoke bomb for safety and her shuriken for a quick gap-closer. She rewards aggressive, precise play — poking from range, then diving in for a burst kill once she's ahead. She's a high-skill pick, so expect an adjustment period before her combos feel smooth.",
+  "strengths": [
+    "Extremely high burst and mobility",
+    "Can dive into the backline and get back out safely",
+    "Twilight Shroud's invisibility gives strong protection mid-fight",
+    "Snowballs hard once she gets ahead on kills"
+  ],
+  "weaknesses": [
+    "Very squishy and easy to punish if caught",
+    "Energy resource limits how often she can use her abilities",
+    "Area-of-effect spells can still hit her while she's hidden in her shroud",
+    "Much weaker if she falls behind or runs out of energy mid-fight"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Assassin's Mark",
+      "howToUseIt": "After hitting an enemy champion with a spell, walk out of the ring around them before attacking to get bonus range and damage on your next attack — this rewards weaving in and out rather than standing still."
+    },
+    {
+      "key": "Q",
+      "name": "Five Point Strike",
+      "howToUseIt": "Use this at max range to slow and poke enemies safely; it costs more energy at close range, so try to land it from farther away when you can."
+    },
+    {
+      "key": "W",
+      "name": "Twilight Shroud",
+      "howToUseIt": "Drop this to become untargetable and gain move speed — great for repositioning safely or setting up a dive, but attacking or casting spells briefly reveals you."
+    },
+    {
+      "key": "E",
+      "name": "Shuriken Flip",
+      "howToUseIt": "Throw the shuriken to mark an enemy, then recast it to dash to them for bonus damage — this is your main gap-closer and escape tool."
+    },
+    {
+      "key": "R",
+      "name": "Perfect Execution",
+      "howToUseIt": "Leap in to deal damage, then recast to dash through and execute low-health enemies — save the recast until your target is low enough to finish off."
+    }
+  ],
+  "earlyGamePlan": "Play patiently and poke with Five Point Strike from max range rather than trading in melee, since your energy is limited and your all-in power comes online more at higher levels. Use Twilight Shroud to safely disengage from bad trades, and look to combo Shuriken Flip into a kill once you have a level or item advantage.",
+  "quickTips": [
+    "Land Five Point Strike from max range to save energy and stay safe.",
+    "Step out of the ring left by Assassin's Mark before auto-attacking for bonus damage.",
+    "Use Twilight Shroud to reset a bad fight rather than only as an engage tool.",
+    "Watch your energy bar — running dry mid-fight leaves you with no options.",
+    "Save your ultimate's execute recast for finishing a low-health target, not opening a fight."
+  ],
+  "whatToExpect": "Akali will try to poke you with Five Point Strike, then dive in behind Twilight Shroud where she's briefly untargetable, before finishing with her ultimate's execute. She can still be hit by area-of-effect abilities while inside her shroud, so keep damaging the general area if you see her vanish. Play cautiously and back off entirely if your health is low and her ultimate is up.",
+  "glossary": [
+    {
+      "term": "burst",
+      "definition": "Dealing a lot of damage very quickly, often enough to kill a target outright."
+    },
+    {
+      "term": "gap-closer",
+      "definition": "An ability that lets a champion quickly close the distance to a target, usually a dash or leap."
+    },
+    {
+      "term": "execute",
+      "definition": "An effect that deals extra or guaranteed damage to low-health targets, often finishing them off."
+    },
+    {
+      "term": "squishy",
+      "definition": "A champion with low health and defenses who dies quickly if caught."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight, intending to kill rather than just trade."
+    },
+    {
+      "term": "area-of-effect (AoE)",
+      "definition": "An ability that damages or affects everything in a zone, rather than a single target."
+    }
+  ]
+}

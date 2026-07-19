@@ -1,0 +1,79 @@
+{
+  "id": "Zac",
+  "name": "Zac",
+  "playstyleSummary": "Zac is a bouncy, elastic jungler who stretches across the map to grab enemies, explodes for area damage, and can even split into pieces and revive after a fatal hit. Playing him feels chaotic and fun since his abilities let him launch himself long distances and reshape fights around him, but managing his passive's health-restoring goo takes a bit of getting used to. He's a strong pick for players who enjoy diving into the middle of fights and disrupting the enemy team.",
+  "strengths": [
+    "Cell Division lets him revive after taking fatal damage if he splits and reforms",
+    "Elastic Slingshot gives him a long-range engage or escape tool",
+    "Let's Bounce! provides repeated knockups and slows across a wide area",
+    "Naturally tanky with high defense, letting him absorb damage for his team"
+  ],
+  "weaknesses": [
+    "Loses healing potential if his goo chunks aren't picked up in time",
+    "Can be interrupted by crowd control while charging Elastic Slingshot",
+    "Enemies can kill his bloblets after a revive to prevent him from reforming",
+    "Deals relatively low physical damage compared to other jungle fighters"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Cell Division",
+      "howToUseIt": "Walk over goo chunks after using abilities to heal, and if you're about to die, try to position so your bloblets land somewhere the enemy can't easily finish them off, since surviving bloblets let you revive."
+    },
+    {
+      "key": "Q",
+      "name": "Stretching Strikes",
+      "howToUseIt": "Grab an enemy with this, then attack a different enemy to throw both of them together, which is a strong way to pull an enemy out of position or into your team."
+    },
+    {
+      "key": "W",
+      "name": "Unstable Matter",
+      "howToUseIt": "Use this in fights since it deals damage based on the target's maximum health, making it especially effective against tankier enemies."
+    },
+    {
+      "key": "E",
+      "name": "Elastic Slingshot",
+      "howToUseIt": "Charge this up to launch yourself a long distance — charging from fog of war gives enemies less warning, but remember you can be interrupted by crowd control while charging."
+    },
+    {
+      "key": "R",
+      "name": "Let's Bounce!",
+      "howToUseIt": "Use this to bounce through a group of enemies, knocking them up and slowing them each time you land, which is great for starting or turning a team fight."
+    }
+  ],
+  "earlyGamePlan": "Clear the jungle efficiently and pick up your goo chunks after each camp to stay healthy, since Cell Division rewards you for collecting them. Look for early ganks using Elastic Slingshot to close distance quickly, ideally charging it from a bush or fog of war so the enemy doesn't see you coming. Use Stretching Strikes to pull an isolated enemy toward your ally for an easy kill.",
+  "quickTips": [
+    "Always pick up your goo chunks after fights or clears to heal back up",
+    "Charge Elastic Slingshot from fog of war so enemies have less time to react",
+    "Use Stretching Strikes to grab an enemy, then attack a different target to throw them together",
+    "If Cell Division is ready, try to die somewhere your bloblets can't easily be finished off",
+    "Let's Bounce! is strongest when it can hit several enemies grouped together, so time your engage for when they're clustered"
+  ],
+  "whatToExpect": "Zac will try to bounce into your team with Let's Bounce! to knock up and slow several people at once, so avoid grouping too tightly when he's nearby. If you kill him, watch for his bloblets — killing all of them quickly prevents him from reviving, so don't walk away from a Zac you just killed. Interrupting his Elastic Slingshot with crowd control while he's charging stops his engage entirely.",
+  "glossary": [
+    {
+      "term": "jungle",
+      "definition": "The area between lanes filled with neutral monster camps; junglers clear these camps for gold and experience instead of laning."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler (or another ally) ambushes a lane to help get a kill on an overextended enemy."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance on the enemy team."
+    },
+    {
+      "term": "crowd control (CC)",
+      "definition": "Effects like stuns, roots, or fears that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "fog of war",
+      "definition": "The parts of the map not currently visible to your team, hidden until revealed by vision."
+    },
+    {
+      "term": "knockup",
+      "definition": "A crowd control effect that launches a champion into the air, preventing them from acting until they land."
+    }
+  ]
+}

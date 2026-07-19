@@ -1,0 +1,88 @@
+{
+  "id": "Fizz",
+  "name": "Fizz",
+  "playstyleSummary": "Fizz is a slippery melee assassin who dashes through minions, becomes briefly untargetable in midair, and punishes anyone who lets their guard down. He's a high-mobility pick that rewards aggressive, hit-and-run play, but that same mobility means you'll need to learn when to commit and when to hop away before the enemy team collapses on you.",
+  "strengths": [
+    "Playful / Trickster makes him untargetable, dodging both spells and attacks",
+    "Nimble Fighter lets him move through units and reduces incoming damage",
+    "Deals a lot of damage very quickly against fragile targets, especially with his empowered attacks",
+    "Chum the Waters can set up a big engage with a knock-up for himself and allies"
+  ],
+  "weaknesses": [
+    "Very reliant on his mobility to survive, and vulnerable once it's on cooldown",
+    "Fragile if caught without Playful / Trickster available",
+    "Short range compared to ranged mages and marksmen",
+    "Needs to land his empowered attacks and Chum the Waters fish to reach full damage"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Nimble Fighter",
+      "howToUseIt": "You can move through units and take reduced damage from all sources at all times, so don't be afraid to walk through the minion wave to reach a target or dodge a skillshot's angle."
+    },
+    {
+      "key": "Q",
+      "name": "Urchin Strike",
+      "howToUseIt": "Dash through a target to deal damage and apply on-hit effects — use it both to engage and to reposition yourself past your target."
+    },
+    {
+      "key": "W",
+      "name": "Seastone Trident",
+      "howToUseIt": "Your attacks apply a damage-over-time bleed; walking through minions with your passive helps you build this up before empowering your next attack for a burst of bonus damage."
+    },
+    {
+      "key": "E",
+      "name": "Playful / Trickster",
+      "howToUseIt": "Hop into the air to become untargetable, dodging incoming damage and abilities, then choose to jump again or slam down — save this to dodge a key enemy ability or to escape a bad fight."
+    },
+    {
+      "key": "R",
+      "name": "Chum the Waters",
+      "howToUseIt": "Throw this fish at a target or toward where you expect them to go; after a delay a shark erupts, knocking up and slowing anyone caught nearby, so it's great both for engaging and for setting up allies."
+    }
+  ],
+  "earlyGamePlan": "In lane, walk through the minion wave with your passive to poke safely and start building up Seastone Trident's bleed, then look for a chance to all-in with Urchin Strike once your empowered attack is ready. Save Playful / Trickster to dodge a dangerous skillshot or escape a gank rather than using it just to poke, since it's your main defensive tool before level 6.",
+  "quickTips": [
+    "Walk through minions with your passive to line up favorable exchanges and dodge skillshot angles",
+    "Save Playful / Trickster to dodge a big incoming ability rather than spending it early",
+    "Empower your attacks with Seastone Trident before committing to an all-in",
+    "Aim Chum the Waters either directly at a target or ahead of where they're likely running",
+    "Use Urchin Strike to both start a fight and reposition through your target",
+    "Play cautiously whenever Playful / Trickster is on cooldown, since you lose your main defensive tool"
+  ],
+  "whatToExpect": "Fizz will try to bait out your key ability, then hop untargetable with Playful / Trickster to dodge your follow-up before diving in with an empowered attack. He's much easier to punish while that hop is on cooldown, so watch for when he's used it recently and press the advantage while he has no way to dodge.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can miss, rather than automatically hitting its target."
+    },
+    {
+      "term": "on-hit effects",
+      "definition": "Bonus effects that trigger automatically whenever a champion's basic attack lands."
+    },
+    {
+      "term": "engage",
+      "definition": "Initiating a fight by moving in on the enemy team, usually with a dash or stun."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing fully to a fight, using your key abilities to try to win it outright rather than just exchanging hits."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away an enemy's health from a safe distance with ranged abilities before committing to a fight."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally ambushes a lane to help get a kill, usually from an unexpected direction."
+    },
+    {
+      "term": "bait",
+      "definition": "Deliberately looking vulnerable to provoke an enemy into using an ability or committing to a fight you're actually prepared for."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can cast it again."
+    }
+  ]
+}

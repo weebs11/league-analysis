@@ -1,0 +1,84 @@
+{
+  "id": "Pyke",
+  "name": "Pyke",
+  "playstyleSummary": "Pyke is an unusual support who plays more like an assassin - he's very fragile but rewards you for landing hooks and stuns to set up executions with his ultimate, which even gives gold to the ally who helps finish the kill. He wants to poke, hide, heal back up, and strike again rather than stand and trade normally.",
+  "strengths": [
+    "Bone Skewer can pull enemies into your team or hit through several enemies at once",
+    "Death From Below executes low-health enemies and can be re-cast if it kills",
+    "Healing from Gift of the Drowned Ones is strong once out of enemy vision",
+    "Phantom Undertow gives a long-range stun for setting up kills"
+  ],
+  "weaknesses": [
+    "Very low health pool since he never gains bonus max health",
+    "Most of his healing requires being hidden, which isn't always possible",
+    "His aggressive spells double as his only real ways to reposition",
+    "Needs to land skillshots to be effective, missing them leaves little impact"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Gift of the Drowned Ones",
+      "howToUseIt": "You heal a large amount of the damage you've recently taken from champions, but only while hidden from enemy vision - retreat into a bush after a trade to heal back up instead of walking back to base."
+    },
+    {
+      "key": "Q",
+      "name": "Bone Skewer",
+      "howToUseIt": "Tap it for a fast stab that deals bonus damage, or hold it to pull an enemy toward you a fixed distance - use the pull version in melee range to yank an enemy behind you, away from their team."
+    },
+    {
+      "key": "W",
+      "name": "Ghostwater Dive",
+      "howToUseIt": "Enter camouflage and gain move speed that fades over time - use this to reposition unseen, set up an ambush, or heal safely using your passive."
+    },
+    {
+      "key": "E",
+      "name": "Phantom Undertow",
+      "howToUseIt": "Dash forward, then a phantom returns to you, stunning any enemy champions it passes through - it stuns on the way back too, so time your dash to line up the return path."
+    },
+    {
+      "key": "R",
+      "name": "Death From Below",
+      "howToUseIt": "Blink to and execute a low-health enemy; if it kills them, you can cast it again immediately, and an assisting ally gets bonus gold - look for a low-health target your team can follow up on."
+    }
+  ],
+  "earlyGamePlan": "As a support, poke with Bone Skewer's tap version alongside your ADC, and retreat into brush to heal off your passive whenever you take damage. Look for opportunities to land Phantom Undertow's return stun on an overextended enemy, and hold Death From Below until an enemy is low enough to guarantee the execute.",
+  "quickTips": [
+    "Retreat into brush after trading to heal off your passive",
+    "Use Bone Skewer's hold version in melee range to pull enemies away from their team",
+    "Time Phantom Undertow so its return path passes back through the enemy",
+    "Don't be afraid to disengage - your aggressive spells are also your escape tools",
+    "Save Death From Below for confirmed low-health kills",
+    "Use Ghostwater Dive to reposition or set up an ambush, not just to run away"
+  ],
+  "whatToExpect": "Pyke heals a large amount whenever he's out of your sight, so don't assume he's low health just because you hit him hard - if he vanishes, expect him back at full strength soon. Avoid standing near low-health allies once the enemy team has Pyke at level 6, since his ultimate executes low-health targets and grants extra gold to whichever ally assists, making you a priority kill target.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed manually and can miss if the enemy moves out of the way."
+    },
+    {
+      "term": "camouflage",
+      "definition": "A state that hides a champion from enemies unless they're very close, unlike full invisibility."
+    },
+    {
+      "term": "brush",
+      "definition": "Foliage on the map that hides champions standing inside it from enemies outside."
+    },
+    {
+      "term": "execute",
+      "definition": "An effect that deals bonus or guaranteed damage to low-health targets, sometimes enough to kill them outright."
+    },
+    {
+      "term": "blink",
+      "definition": "A spell effect that instantly moves a champion to a nearby location, ignoring terrain."
+    },
+    {
+      "term": "ADC",
+      "definition": "Short for Attack Damage Carry, the ranged damage-focused role usually paired with a support in bot lane."
+    },
+    {
+      "term": "disengage",
+      "definition": "Retreating from a fight rather than continuing to trade."
+    }
+  ]
+}

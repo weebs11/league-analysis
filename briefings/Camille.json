@@ -1,0 +1,80 @@
+{
+  "id": "Camille",
+  "name": "Camille",
+  "playstyleSummary": "Camille is a precise, mobile fighter/assassin who uses walls to reposition around fights and picks off vulnerable targets with a strong dueling combo. She feels calculated rather than chaotic — her strength comes from patience, waiting for the right moment to strike rather than forcing early fights.",
+  "strengths": [
+    "Strong dueling potential thanks to her attack combo and shield",
+    "Hookshot lets her use walls to reposition, escape, or engage",
+    "Ultimate can isolate a single target away from their team",
+    "Adaptive shield makes her resilient against whichever damage type she's fighting"
+  ],
+  "weaknesses": [
+    "Needs walls nearby to use Hookshot effectively",
+    "The Hextech Ultimatum has a short cast range, so it can be avoided with mobility",
+    "Her passive shield only blocks one damage type at a time",
+    "Vulnerable if she commits Q's second cast too early and gets interrupted"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Adaptive Defenses",
+      "howToUseIt": "Basic attacks on champions grant a shield against whichever damage type they dealt, physical or magic. Use this to your advantage by initiating trades with an attack so you're shielded against the bigger threat in the fight."
+    },
+    {
+      "key": "Q",
+      "name": "Precision Protocol",
+      "howToUseIt": "Your next attack deals bonus damage and grants move speed, and can be recast for much more bonus damage if you delay between the two hits. Try to use crowd control from your other abilities to safely land both casts on the same target."
+    },
+    {
+      "key": "W",
+      "name": "Tactical Sweep",
+      "howToUseIt": "Blast in a cone after a delay, dealing extra damage and healing you against enemies caught in the outer half. Aim for the outer edge of the cone against your target for the bonus damage and healing, not just the center."
+    },
+    {
+      "key": "E",
+      "name": "Hookshot",
+      "howToUseIt": "Pull yourself to a wall and leap off it, knocking up enemy champions on landing. Use it to close the distance on a target, escape danger, or reposition around a fight — always be aware of nearby walls before committing to a fight."
+    },
+    {
+      "key": "R",
+      "name": "The Hextech Ultimatum",
+      "howToUseIt": "Dash to a target champion and anchor them to the area, dealing bonus magic damage with your basic attacks against them while it's active. Use it to isolate a priority target away from their team, but get in range carefully since its cast range is short."
+    }
+  ],
+  "earlyGamePlan": "Use Tactical Sweep's outer edge to poke and harass while farming, saving Hookshot to reposition around fights or escape ganks. Look for chances to land both casts of Precision Protocol on your opponent during a trade, using any crowd control you have to keep them in range for the second hit.",
+  "quickTips": [
+    "Land the outer half of Tactical Sweep for bonus damage and healing, not the inner part",
+    "Use crowd control to guarantee both hits of Precision Protocol during an all-in",
+    "Always check for nearby walls before committing to a fight, since Hookshot depends on them",
+    "Wait for the right moment to use The Hextech Ultimatum — it isolates a target but has a short range",
+    "Remember your passive shield only helps against one damage type, so be mindful of mixed-damage fights",
+    "Try waiting until the enemy team is distracted before diving in with Hookshot to pick off a vulnerable target"
+  ],
+  "whatToExpect": "An enemy Camille wants to isolate you away from your team with The Hextech Ultimatum, so try to stay near allies or keep your escape ability ready when she's nearby with her ultimate up. Her shield only blocks one damage type, so if your team has mixed physical and magic damage, focus the type she isn't currently shielded against, and try to flash or dash away before she gets in range to engage.",
+  "glossary": [
+    {
+      "term": "duel",
+      "definition": "A one-on-one fight between two champions."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to win it decisively, leaving little held in reserve."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or roaming ally ambushes an enemy in a lane to help get a kill."
+    },
+    {
+      "term": "poke",
+      "definition": "Chipping away at an enemy's health from a safe distance with low-commitment spells before going for a bigger trade."
+    },
+    {
+      "term": "isolate",
+      "definition": "Separating a single enemy from their team so they can be fought without allies helping them."
+    }
+  ]
+}

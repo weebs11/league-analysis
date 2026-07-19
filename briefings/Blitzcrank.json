@@ -1,0 +1,80 @@
+{
+  "id": "Blitzcrank",
+  "name": "Blitzcrank",
+  "playstyleSummary": "Blitzcrank is a tanky support built around a single high-impact ability: grabbing an enemy from across the lane and dragging them into danger. He's very approachable for newer players because his gameplan is simple to understand — land the grab, follow up, win the trade — even if landing it consistently takes practice.",
+  "strengths": [
+    "Rocket Grab can single-handedly win a trade or set up a kill",
+    "Very tanky and hard to kill once he has some defensive stats",
+    "Simple, clear game plan built around one key ability",
+    "Strong at punishing enemies who overextend near his grab range"
+  ],
+  "weaknesses": [
+    "Deals relatively little damage on his own without landing his grab",
+    "Rocket Grab is a skillshot that can be dodged or blocked by minions",
+    "Easy to punish if you miss your grab, since it has a long cooldown",
+    "Low mobility outside of Rocket Grab and Overdrive"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Mana Barrier",
+      "howToUseIt": "When you drop to low health, you automatically gain a shield based on your mana. This makes you more durable in extended trades than you might expect, so don't panic the instant you're low if you still have mana banked."
+    },
+    {
+      "key": "Q",
+      "name": "Rocket Grab",
+      "howToUseIt": "Fire your hand out to grab the first enemy it hits and drag them toward you, dealing damage. This is your main tool for starting fights — use it on enemies who step too far forward, and remember it only pulls the first target in its path."
+    },
+    {
+      "key": "W",
+      "name": "Overdrive",
+      "howToUseIt": "Supercharge yourself for a big burst of move and attack speed, with a slow afterward. Use it to chase down a target you've grabbed, engage onto the enemy team, or escape a bad fight before the slow kicks in."
+    },
+    {
+      "key": "E",
+      "name": "Power Fist",
+      "howToUseIt": "Charge your next attack to deal double damage and knock the target into the air. Combo this right after Rocket Grab to keep your target locked down and add extra damage."
+    },
+    {
+      "key": "R",
+      "name": "Static Field",
+      "howToUseIt": "Enemies you attack are marked and take lightning damage after a delay, and you can activate it to strip nearby enemy shields, damage them, and silence them briefly. Use the active during a fight to remove shields or stop an enemy from casting a key spell."
+    }
+  ],
+  "earlyGamePlan": "In lane, look for chances to land Rocket Grab on enemies who push up too far or misposition near minion waves, then follow up with Power Fist and an all-in. If you miss your grab, play safe and wait for your cooldown to come back rather than forcing more fights.",
+  "quickTips": [
+    "Combo Rocket Grab into Power Fist for a strong burst of damage and control on a single target",
+    "Only throw out Rocket Grab when you have a real chance to hit it — missing leaves you vulnerable",
+    "Use Overdrive to chase after landing a grab, not just to walk around faster",
+    "Save Static Field's active for removing an important shield or interrupting an enemy cast",
+    "Remember your passive shield can bail you out of a trade you'd otherwise lose",
+    "Pulling an enemy into your tower's range with Rocket Grab lets your tower help finish them off"
+  ],
+  "whatToExpect": "An enemy Blitzcrank is always threatening to grab you the moment you step forward, so stay behind your minions whenever his Rocket Grab is likely to be up — it only pulls the first thing in its path, so a minion in front of you can save you. If he does land a grab, expect a big burst of damage right after, so be ready to use your own escape or crowd control immediately rather than waiting it out.",
+  "glossary": [
+    {
+      "term": "skillshot",
+      "definition": "An ability that must be aimed and can be dodged by moving out of its path."
+    },
+    {
+      "term": "trade",
+      "definition": "A short exchange of damage between opposing champions, usually in lane."
+    },
+    {
+      "term": "engage",
+      "definition": "The act of initiating a fight, usually by closing distance or using crowd control on the enemy first."
+    },
+    {
+      "term": "all-in",
+      "definition": "Committing all your damage and abilities to a fight with the intent to win it decisively, leaving little held in reserve."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, slows, or roots that limit an enemy's ability to move or act."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can use it again."
+    }
+  ]
+}

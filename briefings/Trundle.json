@@ -1,0 +1,80 @@
+{
+  "id": "Trundle",
+  "name": "Trundle",
+  "playstyleSummary": "Trundle is a tough fighter troll who excels at 1-on-1 duels, especially when he can force the fight onto ground he controls. Playing him feels like bullying: you weaken an enemy's stats with Chomp and Subjugate, heal off nearby deaths, and use ice walls to control where fights happen. He's less flashy than other fighters, but very hard to beat in a straight duel once he's set up.",
+  "strengths": [
+    "Extremely strong in 1v1 duels, especially on his Frozen Domain",
+    "Good passive sustain from King's Tribute whenever units die nearby",
+    "Pillar of Ice gives strong zoning and objective control",
+    "Subjugate can swing a duel or a fight by weakening the toughest enemy target"
+  ],
+  "weaknesses": [
+    "Loses a lot of value away from his Frozen Domain",
+    "Limited mobility outside of Pillar of Ice's terrain-blocking",
+    "Weaker in open teamfights compared to a duel or skirmish",
+    "Relies on nearby deaths to keep his sustain flowing"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "King's Tribute",
+      "howToUseIt": "Heal a chunk of health whenever an enemy unit dies near you. Fight near minion waves or skirmishes where things are dying to keep your sustain flowing."
+    },
+    {
+      "key": "Q",
+      "name": "Chomp",
+      "howToUseIt": "Damages, slows, and saps Attack Damage from your target — use it on the enemy's biggest damage dealer in a fight to weaken their trade while boosting your own."
+    },
+    {
+      "key": "W",
+      "name": "Frozen Domain",
+      "howToUseIt": "Turns the ground beneath you into your Domain, granting bonus Attack Speed, Move Speed, and healing. Try to fight and duel opponents while standing on it."
+    },
+    {
+      "key": "E",
+      "name": "Pillar of Ice",
+      "howToUseIt": "Creates an impassable ice wall that slows nearby enemies. Use it to block a chasing enemy's escape route, split up an enemy group, or wall off a narrow chokepoint like a river crossing."
+    },
+    {
+      "key": "R",
+      "name": "Subjugate",
+      "howToUseIt": "Steals a percentage of your target's Health, Armor, and Magic Resistance, doubling over the next few seconds. Use it on the enemy's toughest target to soften them for your team or to win a duel yourself."
+    }
+  ],
+  "earlyGamePlan": "If jungling, clear efficiently using your passive sustain and look to duel isolated enemies near your Frozen Domain whenever possible. Use Pillar of Ice to secure objectives by walling off approaching enemies, or to block the enemy jungler's usual pathing.",
+  "quickTips": [
+    "Try to fight on your Frozen Domain whenever you can for the bonus stats",
+    "Use Chomp on the enemy's main damage dealer to weaken their trade",
+    "Wall off chasing enemies or split an enemy group with Pillar of Ice",
+    "Save Subjugate for the toughest enemy target rather than someone already low",
+    "Fight near dying minions or monsters to keep your passive sustain topped up",
+    "Look for isolated duels rather than diving straight into a full teamfight"
+  ],
+  "whatToExpect": "Enemy Trundle wants to duel you 1v1, especially near his Frozen Domain where he gets extra stats and healing, so avoid isolated fights on his terrain. His Pillar of Ice can wall you off from allies or block your escape route, so watch your positioning near chokepoints whenever he's nearby.",
+  "glossary": [
+    {
+      "term": "duel",
+      "definition": "A 1-on-1 fight between two champions."
+    },
+    {
+      "term": "sustain",
+      "definition": "Healing or shielding that lets a champion stay in a fight or lane longer."
+    },
+    {
+      "term": "zoning",
+      "definition": "Using threats or area denial to control where an enemy can safely stand or move."
+    },
+    {
+      "term": "objective control",
+      "definition": "Securing or denying map objectives like Dragon, Baron, or towers."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams at once."
+    },
+    {
+      "term": "chokepoint",
+      "definition": "A narrow area of the map that forces champions to pass through a small space."
+    }
+  ]
+}

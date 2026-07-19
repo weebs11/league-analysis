@@ -1,0 +1,87 @@
+{
+  "id": "Nidalee",
+  "name": "Nidalee",
+  "playstyleSummary": "Nidalee is a shapeshifter who alternates between a ranged human form for poke, traps, and healing, and a melee cougar form built for mobility and burst execute damage. She has one of the highest skill ceilings in the game - landing her human-form abilities before switching forms is the difference between an effective Nidalee and a weak one.",
+  "strengths": [
+    "Javelin Toss deals huge burst damage from range, especially against low-health targets",
+    "Extremely mobile once in cougar form, great for jungle clears and ganks",
+    "Takedown deals a massive execute against Hunted low-health targets",
+    "Primal Surge provides a strong heal to set up ganks or trades"
+  ],
+  "weaknesses": [
+    "Very difficult to play well - a high skill floor to use effectively",
+    "Squishy in both human and cougar form",
+    "Damage falls off badly if her human-form abilities miss",
+    "Requires constant form-switching decisions under pressure"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Prowl",
+      "howToUseIt": "Move through brush or toward visible enemies to build move speed, and hit champions or monsters with Javelin Toss or Bushwhack to trigger a Hunt, revealing them and empowering your cougar-form abilities against that target."
+    },
+    {
+      "key": "Q",
+      "name": "Javelin Toss / Takedown",
+      "howToUseIt": "In human form, throw this from as far away as possible - it deals more damage the farther it flies. In cougar form, use Takedown to finish off low-health Hunted targets for a big execute."
+    },
+    {
+      "key": "W",
+      "name": "Bushwhack / Pounce",
+      "howToUseIt": "In human form, place traps along paths enemies are likely to walk, especially in the jungle or brush, to reveal and damage them. In cougar form, use Pounce to close distance quickly or to escape."
+    },
+    {
+      "key": "E",
+      "name": "Primal Surge / Swipe",
+      "howToUseIt": "In human form, heal yourself or an ally and give them attack speed right before a fight or gank. In cougar form, Swipe hits everything in front of you, useful for clearing camps or hitting multiple enemies."
+    },
+    {
+      "key": "R",
+      "name": "Aspect Of The Cougar",
+      "howToUseIt": "Transform into cougar form for a completely different, mobility-and-damage-focused set of abilities - switch back to human form whenever you need to poke, trap, or heal instead."
+    }
+  ],
+  "earlyGamePlan": "If jungling, prioritize a good jungle clear with Swipe and Javelin Toss, and look to trigger a Hunt on the enemy jungler or a lane opponent before diving in for a gank. Land Javelin Toss or Bushwhack first whenever possible, since Hunt makes your cougar-form follow-up much more dangerous.",
+  "quickTips": [
+    "Throw Javelin Toss from max range for the biggest damage bonus.",
+    "Land Javelin Toss or Bushwhack before switching to cougar form - Hunt makes your follow-up hit much harder.",
+    "Use brush to build move speed passively and to hide your approach before a gank.",
+    "Save Takedown for Hunted targets who are already low, since it deals extreme damage the lower their health is.",
+    "Switch back to human form to heal or trap rather than staying in cougar form for the whole fight."
+  ],
+  "whatToExpect": "Nidalee will try to land Javelin Toss or a Bushwhack trap on you to trigger a Hunt, then switch to cougar form and chase you down with Takedown for a massive execute if you're low on health. Dodge her human-form abilities whenever you can, since avoiding the Hunt trigger takes away most of her follow-up damage, and punish her with crowd control if she commits to cougar form to engage.",
+  "glossary": [
+    {
+      "term": "shapeshifter",
+      "definition": "A champion who can transform between different forms, each with its own set of abilities."
+    },
+    {
+      "term": "execute",
+      "definition": "An ability or effect that deals bonus damage to low-health targets, often finishing them off."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    },
+    {
+      "term": "jungle clear",
+      "definition": "Killing the neutral monster camps in the jungle for gold and experience."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally shows up in a lane to help kill an enemy laner by surprise."
+    },
+    {
+      "term": "brush",
+      "definition": "Bushes on the map that hide any unit standing inside them from enemies outside."
+    },
+    {
+      "term": "follow-up",
+      "definition": "Additional damage or crowd control used right after an initial ability lands."
+    },
+    {
+      "term": "crowd control",
+      "definition": "Effects like stuns, roots, or slows that limit an enemy's ability to move or act."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "Rammus",
+  "name": "Rammus",
+  "playstyleSummary": "Rammus is a tanky jungler who rolls into fights, taunts a single enemy into attacking him, and then reflects that damage back while shrugging off nearly everything thrown at him. He's straightforward to pick up, but timing his taunt and defensive stance well is what separates a good Rammus from a great one.",
+  "strengths": [
+    "Extremely tanky when Defensive Ball Curl is active",
+    "Frenzying Taunt forces a single enemy to attack him, great for peeling a threat off your carries",
+    "Powerball gives strong mobility to gank lanes or chase",
+    "Gains bonus attack damage from his own defensive stats"
+  ],
+  "weaknesses": [
+    "Much weaker and easier to burst down when Defensive Ball Curl is not active",
+    "Relatively low mobility outside of Powerball",
+    "Low damage output if his build leans fully defensive",
+    "Frenzying Taunt can be wasted if used on a target your team can't follow up on"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Spiked Shell",
+      "howToUseIt": "You gain bonus attack damage that scales with your armor and magic resist, so building defensive stats also makes your attacks hit harder."
+    },
+    {
+      "key": "Q",
+      "name": "Powerball",
+      "howToUseIt": "Roll toward the enemy team, damaging and slowing whoever you hit on impact - use this to gank lanes, chase down enemies, or quickly reposition around the map."
+    },
+    {
+      "key": "W",
+      "name": "Defensive Ball Curl",
+      "howToUseIt": "Activate this to massively increase your armor and magic resist and reflect damage back at attackers - turn it on before diving into a fight or a group of enemies."
+    },
+    {
+      "key": "E",
+      "name": "Frenzying Taunt",
+      "howToUseIt": "Force an enemy champion or monster to attack you instead of anyone else - use it on a dangerous enemy attacking your ally, or on a monster to control aggro during your jungle clear."
+    },
+    {
+      "key": "R",
+      "name": "Soaring Slam",
+      "howToUseIt": "Hop into the air and slam down, slowing enemies hit - cast it while already rolling in Powerball to also knock up enemies near the center, combining the two for a stronger engage."
+    }
+  ],
+  "earlyGamePlan": "As a jungler, use Frenzying Taunt on jungle monsters to control which one they attack, speeding up your clear, and use Powerball to move quickly between camps and set up ganks. Once you gank, taunt the enemy laner to protect your ally and turn on Defensive Ball Curl before trading, since your tankiness is much lower without it active.",
+  "quickTips": [
+    "Always activate Defensive Ball Curl before committing to a fight",
+    "Use Frenzying Taunt on a threat attacking your teammate to peel them off",
+    "Combine Powerball into Soaring Slam for a knock-up instead of just a slow",
+    "Use Powerball to gank lanes quickly and catch enemies off guard",
+    "Build up armor and magic resist, since your passive turns those stats into extra damage too"
+  ],
+  "whatToExpect": "Rammus is far more dangerous with Defensive Ball Curl turned on, so try to burst him down or avoid fighting him while it's active, and punish him when it's off since his defenses drop a lot. If he taunts one of your teammates, focus down Rammus or help peel the taunted ally, since Frenzying Taunt forces them to attack him whether they want to or not.",
+  "glossary": [
+    {
+      "term": "jungler",
+      "definition": "The role and area between lanes filled with monsters that junglers fight for gold and experience."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler leaves their area to ambush an enemy in a lane."
+    },
+    {
+      "term": "aggro",
+      "definition": "Which target a monster or turret is currently attacking."
+    },
+    {
+      "term": "peel",
+      "definition": "Protecting a teammate by fighting off or slowing down enemies attacking them."
+    },
+    {
+      "term": "knock-up",
+      "definition": "A crowd control effect that launches a target into the air, briefly disabling them."
+    },
+    {
+      "term": "burst",
+      "definition": "A large amount of damage dealt very quickly."
+    }
+  ]
+}

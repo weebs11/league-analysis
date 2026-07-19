@@ -1,0 +1,88 @@
+{
+  "id": "Darius",
+  "name": "Darius",
+  "playstyleSummary": "Darius is a brutal, straightforward top-lane bully who wants to stack bleeding wounds on his target and finish them with a guaranteed-feeling execute. He is one of the simplest champions to pick up because his combo is short and his power just comes from landing his axe pull and sticking to people, making him a great choice if you want to learn aggressive laning without juggling many buttons.",
+  "strengths": [
+    "Very strong early lane bully with simple, high-damage combos",
+    "Noxian Guillotine can execute low-health enemies for a guaranteed kill",
+    "Heals off Decimate when it hits champions or large monsters",
+    "Snowballs hard — the longer a fight goes, the more dangerous he gets"
+  ],
+  "weaknesses": [
+    "Very little escape if his hook and pull are on cooldown",
+    "Struggles against enemies who can keep their distance and dash away rather than standing to fight",
+    "Falls off in effectiveness if he gets behind early",
+    "Easy to punish while Apprehend is down since he has no other engage tool"
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Hemorrhage",
+      "howToUseIt": "Every attack and ability stacks bleeding damage on your target up to five times — once you hit max stacks you enrage and hit much harder, so try to land as many stacks as possible before going for the kill."
+    },
+    {
+      "key": "Q",
+      "name": "Decimate",
+      "howToUseIt": "Swing this at maximum range to hit enemies safely from a distance, or use it up close in a fight since hitting with the blade (not the handle) deals much more damage and heals you off champions and large monsters."
+    },
+    {
+      "key": "W",
+      "name": "Crippling Strike",
+      "howToUseIt": "Use this on your next attack to slow a fleeing enemy and keep them in range for your other abilities."
+    },
+    {
+      "key": "E",
+      "name": "Apprehend",
+      "howToUseIt": "This is your main engage tool — hook an enemy from range to pull them into range of your other abilities, since Darius has almost no other way to close a gap."
+    },
+    {
+      "key": "R",
+      "name": "Noxian Guillotine",
+      "howToUseIt": "Save this to execute a low-health enemy champion; it deals more true damage for each stack of Hemorrhage they have, and lands a kill you get the cooldown back, letting you chain it into another target."
+    }
+  ],
+  "earlyGamePlan": "In lane, kill minions with your attacks for gold while looking for a chance to hit Apprehend on your opponent when they step too close to the wave. Once you land the pull, follow with Decimate and attacks to stack Hemorrhage, then finish with Noxian Guillotine if they're low enough — and be cautious pushing too far up since you have no dash to escape a gank.",
+  "quickTips": [
+    "Land Apprehend before committing to a fight — it's your only way to close distance",
+    "Aim Decimate's blade side, not the handle, for the real damage",
+    "Stack Hemorrhage to five before using Noxian Guillotine for maximum true damage",
+    "Killing with Noxian Guillotine refreshes its cooldown, so look for a second target",
+    "Avoid overextending past minion waves since you have no escape tools",
+    "Fight near your own turret early if you're behind, since you can't disengage safely"
+  ],
+  "whatToExpect": "Darius will try to hook you with Apprehend and stack bleeding damage before executing you with Noxian Guillotine once you're low. Since he has almost no escape or gap-closer besides that hook, punish him hard whenever it's on cooldown, and avoid standing still in range of it after he's used it once.",
+  "glossary": [
+    {
+      "term": "true damage",
+      "definition": "Damage that ignores armor and magic resist entirely, so building defense doesn't reduce it."
+    },
+    {
+      "term": "execute",
+      "definition": "An ability that deals bonus or guaranteed damage to low-health targets, often finishing them off outright."
+    },
+    {
+      "term": "snowball",
+      "definition": "When an early advantage compounds into a bigger and bigger lead as the game goes on."
+    },
+    {
+      "term": "gank",
+      "definition": "When a jungler or ally ambushes a lane to help get a kill, usually from an unexpected direction."
+    },
+    {
+      "term": "gap-closer",
+      "definition": "An ability that lets a champion quickly close the distance to a target, like a dash, leap, or pull."
+    },
+    {
+      "term": "disengage",
+      "definition": "Breaking off from a fight and retreating to safety."
+    },
+    {
+      "term": "cooldown",
+      "definition": "The time you must wait after using an ability before you can cast it again."
+    },
+    {
+      "term": "stack",
+      "definition": "A stored charge or accumulated instance of an effect, such as repeated bleeding damage adding up on a target."
+    }
+  ]
+}

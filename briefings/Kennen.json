@@ -1,0 +1,67 @@
+{
+  "id": "Kennen",
+  "name": "Kennen",
+  "playstyleSummary": "Kennen is a ranged mage who wants to zap enemies with shurikens and lightning until he's landed three Marks of the Storm, which stuns them. He runs on Energy instead of mana, so he can afford to use his abilities frequently as long as he manages it well. His ultimate turns teamfights into an area-wide lightning storm, making him a strong pick when he can get into the middle of a fight safely.",
+  "strengths": [
+    "Slicing Maelstrom is a strong area-of-effect ultimate for teamfights.",
+    "Landing three Marks of the Storm on a target stuns them, giving him reliable crowd control.",
+    "Lightning Rush gives him mobility to enter or leave fights by passing through units.",
+    "Low resource pressure once you learn to weave attacks and abilities together."
+  ],
+  "weaknesses": [
+    "Fragile if caught without Lightning Rush available.",
+    "Needs to land three separate marks before getting his stun, which takes setup.",
+    "Vulnerable right after Lightning Rush ends, since he loses his mobility until it's back up.",
+    "Can run out of Energy if abilities are used carelessly."
+  ],
+  "abilities": [
+    {
+      "key": "Passive",
+      "name": "Mark of the Storm",
+      "howToUseIt": "Landing three stacks of this mark on an enemy stuns them — combine your abilities, like Thundering Shuriken and Electrical Surge, to stack marks quickly instead of relying on just one ability."
+    },
+    {
+      "key": "Q",
+      "name": "Thundering Shuriken",
+      "howToUseIt": "Throw it down a lane or at an enemy to start a Mark of the Storm stack and deal damage — great for poking before you go in."
+    },
+    {
+      "key": "W",
+      "name": "Electrical Surge",
+      "howToUseIt": "Its passive adds extra damage and marks to your regular attacks, so keep auto-attacking marked targets; activate it to add another mark to a target who's already been hit."
+    },
+    {
+      "key": "E",
+      "name": "Lightning Rush",
+      "howToUseIt": "Use this to move through the enemy team, apply marks to everyone you pass through, and gain attack speed when you land — a great way to start or extend a fight."
+    },
+    {
+      "key": "R",
+      "name": "Slicing Maelstrom",
+      "howToUseIt": "Cast this in the middle of a teamfight to deal ongoing magic damage to all nearby enemy champions — it rewards being surrounded by enemies, which usually means you should combine it with Lightning Rush."
+    }
+  ],
+  "earlyGamePlan": "In lane, poke with Thundering Shuriken and rely on Electrical Surge's passive damage on trades. You're fragile early, so avoid extended fights until you have a few levels and can threaten the stun from Mark of the Storm. Look to use Lightning Rush to escape or punish enemies who overextend.",
+  "quickTips": [
+    "Track how many Marks of the Storm you've landed on a target — the third one stuns them, which is a great time to commit to a fight.",
+    "Use Lightning Rush to enter or exit fights, since it lets you pass through enemies while gaining Move Speed.",
+    "Don't get caught out of Energy — plan your ability usage so you have enough left to escape or fight.",
+    "Save Slicing Maelstrom for when you're already close to multiple enemies, since it only hits nearby targets.",
+    "Play safer than usual after Lightning Rush ends, since you lose its mobility until it's back up."
+  ],
+  "whatToExpect": "An enemy Kennen wants to stack three Marks of the Storm on you to stun you, so watch your stacks and back off before the third one lands. He's fragile if he gets caught out of Lightning Rush, so punishing him when that's on cooldown is effective. In teamfights, spreading out reduces how many people his Slicing Maelstrom ultimate can hit at once.",
+  "glossary": [
+    {
+      "term": "poke",
+      "definition": "Dealing damage from a safe distance to slowly wear an enemy down."
+    },
+    {
+      "term": "teamfight",
+      "definition": "A fight involving most or all champions from both teams."
+    },
+    {
+      "term": "stack",
+      "definition": "To build up multiple instances of an effect — here, Marks of the Storm — on a target."
+    }
+  ]
+}
