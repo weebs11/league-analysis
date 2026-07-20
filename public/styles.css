@@ -226,29 +226,10 @@ select option { background: var(--hx-panel-2); }
 }
 
 /* ---- champ select ---- */
-.cs-grid { display: grid; grid-template-columns: 340px 1fr; gap: 16px; align-items: start; }
+.cs-grid { display: grid; grid-template-columns: 400px 1fr; gap: 16px; align-items: start; }
 @media (max-width: 900px) { .cs-grid { grid-template-columns: 1fr; } }
-.team-list { display: flex; flex-direction: column; gap: 6px; }
-.team-member {
-  display: flex; align-items: center; gap: 10px; padding: 7px 9px;
-  border-radius: 2px; background: rgba(6, 17, 25, 0.7);
-  border: 1px solid rgba(30, 45, 64, 0.8);
-}
-.team-member.me {
-  border-color: var(--gold-dark);
-  background: linear-gradient(90deg, rgba(200, 170, 110, 0.12), rgba(200, 170, 110, 0.03));
-  box-shadow: inset 0 0 14px rgba(200, 170, 110, 0.07);
-}
-.team-member img { width: 36px; height: 36px; border-radius: 2px; border: 1px solid var(--gold-deep); }
-.team-member.me img { border-color: var(--gold); }
-.team-member .who { flex: 1; }
-.team-member .who .nm { font-weight: 600; font-size: 0.92rem; }
-.team-member.me .who .nm { color: var(--gold-bright); }
-.team-member .who .rl { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; }
-.champ-placeholder {
-  width: 36px; height: 36px; border-radius: 2px; border: 1px dashed var(--hx-line);
-  display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 1.05rem;
-}
+/* Broadcast card rows in the champ-select sidebar: 5 cards fill the column width. */
+.cs-row .strip-champ { flex: 1 1 0; min-width: 0; max-width: calc(20% - 4px); }
 .ban-row { display: flex; gap: 6px; flex-wrap: wrap; }
 .ban-row img {
   width: 30px; height: 30px; border-radius: 2px; border: 1px solid var(--red);
@@ -262,10 +243,10 @@ select option { background: var(--hx-panel-2); }
     linear-gradient(180deg, rgba(200, 170, 110, 0.55), rgba(120, 90, 40, 0.55) 30%, rgba(70, 55, 20, 0.6) 85%) border-box;
 }
 
-/* ---- teams strip (in game) ---- */
+/* ---- teams strip (in game): broadcast-draft style ---- */
 .teams-strip {
-  display: flex; align-items: center; justify-content: space-between; gap: 14px;
-  padding: 18px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 16px;
 }
 .teams-strip.has-splash {
   background:
@@ -273,27 +254,78 @@ select option { background: var(--hx-panel-2); }
     var(--splash) center 22% / cover no-repeat padding-box,
     linear-gradient(180deg, rgba(200, 170, 110, 0.55), rgba(120, 90, 40, 0.55) 30%, rgba(70, 55, 20, 0.6) 85%) border-box;
 }
-.team-side { display: flex; gap: 9px; align-items: flex-start; flex-wrap: wrap; }
-.strip-champ { position: relative; text-align: center; width: 60px; }
-.strip-champ img {
-  width: 48px; height: 48px; border-radius: 2px;
-  border: 2px solid var(--gold-deep);
-  transition: transform 0.12s, border-color 0.12s;
+.team-side { display: flex; gap: 5px; flex: 1; min-width: 0; }
+.teams-strip .team-side.enemy { justify-content: flex-end; }
+.strip-champ {
+  position: relative; overflow: hidden;
+  flex: 0 1 106px; min-width: 54px;
+  /* Data Dragon loading-screen art is 308x560; matching it shows the full card. */
+  aspect-ratio: 308 / 560;
+  border: 1px solid var(--gold-deep);
+  background: var(--hx-deep);
+  transition: border-color 0.15s;
 }
-.strip-champ:hover img { transform: scale(1.08); border-color: var(--gold); }
-.strip-champ.me img {
+.team-side.ally .strip-champ { border-bottom: 3px solid var(--teal-dark); }
+.team-side.enemy .strip-champ { border-bottom: 3px solid var(--red); }
+.strip-champ.empty { border: 1px dashed var(--hx-line); border-bottom-width: 3px; }
+.strip-empty {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim); font-family: var(--serif); font-size: 1.4rem;
+}
+.strip-champ img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
+  transition: transform 0.25s ease;
+}
+.strip-champ:hover { border-color: var(--gold); }
+.strip-champ:hover img { transform: scale(1.06); }
+.strip-champ.me {
   border-color: var(--gold);
-  box-shadow: 0 0 16px rgba(200, 170, 110, 0.55);
+  box-shadow: 0 0 18px rgba(200, 170, 110, 0.5), inset 0 0 0 1px rgba(240, 230, 210, 0.35);
+}
+.strip-champ .you-tag {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  padding: 1px 8px 2px;
+  font-family: var(--serif); font-size: 0.56rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--hx-black);
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 6px 100%);
+}
+.strip-champ .plate {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 26px 5px 5px;
+  background: linear-gradient(180deg, transparent, rgba(1, 10, 19, 0.55) 40%, rgba(1, 10, 19, 0.92) 80%);
+  text-align: center;
+  pointer-events: none;
 }
 .strip-champ .cn {
-  display: block; font-size: 0.64rem; color: var(--gold-text); margin-top: 3px;
+  display: block;
+  font-family: var(--serif); font-weight: 600; font-size: 0.66rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--gold-bright);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  text-shadow: 0 1px 3px #000;
+}
+.strip-champ .rl {
+  display: block; font-size: 0.55rem; color: var(--gold-text); opacity: 0.85;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   text-shadow: 0 1px 3px #000;
 }
 .vs {
-  font-family: var(--serif); font-weight: 700; font-size: 1.3rem;
+  font-family: var(--serif); font-weight: 700; font-size: 1.6rem;
   color: var(--gold);
   text-shadow: 0 0 14px rgba(200, 170, 110, 0.5);
+  flex-shrink: 0;
+}
+/* Narrow screens: min-width cards can no longer fit side by side, so stack the teams. */
+@media (max-width: 720px) {
+  .teams-strip { flex-direction: column; gap: 8px; }
+  .teams-strip .team-side { width: 100%; }
+  .teams-strip .team-side.enemy { justify-content: flex-start; }
+  .teams-strip .strip-champ { flex: 1 1 0; min-width: 0; }
+  .teams-strip .vs { font-size: 1.1rem; }
 }
 
 /* ---- generation bar ---- */
@@ -567,17 +599,27 @@ select option { background: var(--hx-panel-2); }
 .pl-team { margin-top: 10px; }
 .pl-head { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 5px; }
 .pl-row {
-  display: grid; grid-template-columns: 30px minmax(90px, 1.4fr) 66px 62px auto;
+  /* Fixed widths for every non-name column so rows and both team blocks line up. */
+  /* Items column: 7 x 24px slots + 6 x 2px gaps + 6px trinket offset = 186px. */
+  display: grid; grid-template-columns: 30px minmax(90px, 1fr) 62px 58px 186px;
   gap: 9px; align-items: center; padding: 4px 6px; border-radius: 3px; font-size: 0.8rem;
+  border: 1px solid transparent;
 }
-.pl-row.me { background: rgba(200, 170, 110, 0.1); border: 1px solid var(--gold-deep); }
-.pl-row img, .pl-img { width: 30px; height: 30px; border-radius: 3px; }
+.pl-row.me { background: rgba(200, 170, 110, 0.1); border-color: var(--gold-deep); }
+.pl-row > img, .pl-img { width: 30px; height: 30px; border-radius: 3px; display: block; }
 .pl-who { display: flex; flex-direction: column; min-width: 0; }
 .pl-name { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.pl-sub { font-size: 0.68rem; color: var(--text-dim); }
+.pl-sub { font-size: 0.68rem; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pl-kda, .pl-cs { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .pl-items { display: flex; gap: 2px; }
-.item-icon { width: 20px; height: 20px; border-radius: 2px; background: var(--hx-deep); }
-.item-icon.empty { display: inline-block; border: 1px solid var(--hx-line); }
+/* Trinket (7th slot) sits apart from the six item slots, scoreboard-style. */
+.pl-items .item-icon:nth-child(7) { margin-left: 6px; }
+.item-icon { width: 24px; height: 24px; border-radius: 2px; background: var(--hx-deep); flex-shrink: 0; }
+.item-icon.empty {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(30, 45, 64, 0.55), rgba(30, 45, 64, 0.25));
+  border: 1px solid #2e4159;
+}
 
 .obj-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .obj-col.mine { color: var(--gold-bright); }

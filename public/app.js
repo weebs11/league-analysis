@@ -201,24 +201,12 @@ function renderWaiting() {
 }
 
 // ---------- champ select ----------
-function memberRow(m) {
-  const img = m.champion
-    ? `<img src="${esc(m.champion.image)}" alt="${esc(m.champion.name)}" />`
-    : `<div class="champ-placeholder">?</div>`;
-  const name = m.champion ? m.champion.name : (m.locked ? 'Unknown' : 'Picking…');
-  return `<div class="team-member ${m.isMe ? 'me' : ''}">
-    ${img}
-    <div class="who"><div class="nm">${esc(name)}${m.isMe ? ' (you)' : ''}</div>
-    <div class="rl">${esc(m.role || '')}</div></div>
-  </div>`;
-}
-
 function renderChampSelect() {
   const cs = state.champSelect;
   if (!cs) return;
-  $('#cs-myteam').innerHTML = cs.myTeam.map(memberRow).join('');
+  $('#cs-myteam').innerHTML = cs.myTeam.map(stripChamp).join('');
   $('#cs-theirteam').innerHTML = cs.theirTeam.length
-    ? cs.theirTeam.map(memberRow).join('')
+    ? cs.theirTeam.map(stripChamp).join('')
     : '<p class="muted">No enemy picks visible yet.</p>';
   $('#cs-bans').innerHTML = cs.bans.length
     ? cs.bans.map((b) => `<img src="${esc(b.image)}" title="${esc(b.name)}" alt="${esc(b.name)}" />`).join('')
@@ -269,12 +257,21 @@ function renderCsAdvice(advice) {
   $('#cs-advice').innerHTML = parts.join('');
 }
 
-// ---------- in-game header ----------
+// ---------- broadcast-style champion cards (live game + champ select) ----------
 function stripChamp(p) {
-  if (!p.champion) return '';
-  return `<div class="strip-champ ${p.isMe ? 'me' : ''}" title="${esc(p.champion.name)}${p.role ? ' — ' + esc(p.role) : ''}">
-    <img src="${esc(p.champion.image)}" alt="${esc(p.champion.name)}" />
-    <span class="cn">${esc(p.champion.name)}</span>
+  const c = p.champion;
+  const label = c ? c.name : (p.locked ? 'Unknown' : 'Picking…');
+  const art = c
+    ? `<img src="/img/champion/loading/${esc(c.id)}" alt="${esc(c.name)}"
+        onerror="this.onerror=null;this.src='${esc(c.image)}'" />`
+    : `<span class="strip-empty">?</span>`;
+  return `<div class="strip-champ ${p.isMe ? 'me' : ''} ${c ? '' : 'empty'}" title="${esc(label)}${p.role ? ' — ' + esc(p.role) : ''}">
+    ${art}
+    ${p.isMe ? '<span class="you-tag">You</span>' : ''}
+    <span class="plate">
+      <span class="cn">${esc(label)}</span>
+      ${p.role ? `<span class="rl">${esc(p.role)}</span>` : ''}
+    </span>
   </div>`;
 }
 
@@ -284,9 +281,9 @@ function renderGameHeader() {
   const mins = Math.floor((g.gameTime || 0) / 60);
   $('#game-meta').textContent = `${g.gameMode === 'CLASSIC' ? "Summoner's Rift" : g.gameMode} · ${mins} min · you: ${g.me?.champion?.name || '?'}${g.me?.role ? ' (' + g.me.role + ')' : ''}`;
   $('#game-teams').innerHTML = `
-    <div class="team-side">${g.allies.map(stripChamp).join('')}</div>
+    <div class="team-side ally">${g.allies.map(stripChamp).join('')}</div>
     <div class="vs">VS</div>
-    <div class="team-side">${g.enemies.map(stripChamp).join('')}</div>`;
+    <div class="team-side enemy">${g.enemies.map(stripChamp).join('')}</div>`;
   setSplash($('#game-teams'), g.me?.champion?.id);
   const isDemo = state.mode === 'demo';
   $('#game-demo-badge').classList.toggle('hidden', !isDemo);
