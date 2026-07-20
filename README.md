@@ -24,12 +24,35 @@ Everything is written to teach, not just instruct — advice explains the *why* 
 
 ## Setup (Windows)
 
-1. **Install [Node.js](https://nodejs.org)** (LTS version — click through the installer with defaults).
-2. **Download this project** (green *Code* button → *Download ZIP* → extract), or `git clone` it.
-3. Open the folder and double-click **`start.bat`** (or run `npm install` then `npm start` in a terminal).
-4. Open **http://localhost:3000** in your browser.
-5. Click **⚙️ Settings** and paste your Anthropic API key (get one at [platform.claude.com](https://platform.claude.com) → API keys). It's stored only on your PC, in `config.json`.
-6. Play League. The dashboard switches views automatically when you enter champ select or load into a game. A second monitor is ideal; alt-tab works fine too.
+The app is a desktop application. Build the installer once, then it behaves like any other
+program on your PC:
+
+1. `git clone` this project, then `npm install` and `npm run dist` in the folder.
+2. Run **`dist\LoL Matchup Coach-Setup-1.0.0.exe`** — per-user install, no admin prompt,
+   Start-menu entry included.
+3. Launch **LoL Matchup Coach**. Click **⚙️ Settings** and paste your Anthropic API key
+   (get one at [platform.claude.com](https://platform.claude.com) → API keys). It's stored
+   only on your PC.
+4. Play League. The window switches views automatically when you enter champ select or load
+   into a game. A second monitor is ideal; alt-tab works fine too.
+
+**Closing the window doesn't quit** — the app minimizes to the tray and keeps watching for
+games and recording your matches. Quit from the tray icon's right-click menu. While it runs,
+the dashboard is also available to any browser at **http://localhost:3000**.
+
+The installed app keeps its data (match archive, settings, caches) in
+`%APPDATA%\LoL Matchup Coach\`. Uninstalling never deletes it. If you previously ran from
+source and have an archive in the project's `data\` folder, quit the app and copy `data\` and
+`config.json` into `%APPDATA%\LoL Matchup Coach\` once — nothing merges or overwrites; the
+index rebuilds itself.
+
+### Running from source
+
+For development, or if you'd rather skip the installer:
+
+- `npm run app` — the same desktop window, using the repo's `config.json` and `data\`.
+- `npm start` (or double-click `start.bat`) — browser mode: no window, open
+  **http://localhost:3000** yourself.
 
 > **No API key?** Everything still runs in basic mode — champion briefings, enemy ability breakdowns, and damage-profile advice built from Riot's official data. The AI coach adds the personalized matchup analysis, game plan, itemization reasoning, and chat.
 
@@ -93,6 +116,9 @@ Note: champ select detection needs the League *client*; in-game detection works 
 
 ```
 server.js          Express server: static UI, SSE state stream, coaching endpoints
+electron/main.js   Desktop shell: window, tray, single-instance, packaged-mode data paths
+electron/window-state.js  Remembers window size/position across launches
+scripts/make-icons.mjs    Regenerates the app/tray/installer icons (no image tools needed)
 src/lcu.js         League Client API discovery (lockfile / process args) + champ select
 src/livegame.js    Live Client Data API (https://127.0.0.1:2999)
 src/gamestate.js   State machine merging both sources into UI snapshots

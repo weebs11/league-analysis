@@ -262,18 +262,34 @@ ddragon.startAutoRefresh();
 
 gamestate.start();
 
+// Resolves once the server is listening, rejects if binding fails. The Electron
+// shell (electron/main.js) awaits this to know when to open the window and what
+// to put in an error dialog. Under plain `node server.js` nothing awaits it —
+// the no-op catch keeps a bind failure from also printing an unhandled-rejection
+// warning next to the real error message below.
+let readyResolve, readyReject;
+export const ready = new Promise((resolve, reject) => {
+  readyResolve = resolve;
+  readyReject = reject;
+});
+ready.catch(() => {});
+
 // Bind to localhost only — the app stores an API key and is meant for the
 // machine League runs on.
 const server = app.listen(port, '127.0.0.1', () => {
   console.log(`\n  LoL Matchup Coach is running:  http://localhost:${port}\n`);
   console.log('  Leave this window open while you play. The app detects');
   console.log('  champion select and live games automatically.\n');
+  readyResolve({ port });
 });
 
 // Fail with a readable explanation instead of an unhandled 'error' event and a
 // raw stack trace. EADDRINUSE almost always means the app is already running in
-// another window.
+// another window. Inside Electron the server shares the GUI process, so exiting
+// here would kill the window with no dialog — the shell handles the `ready`
+// rejection instead.
 server.on('error', (err) => {
+  readyReject(err);
   if (err.code === 'EADDRINUSE') {
     console.error(`\n  Port ${port} is already in use.\n`);
     console.error('  The LoL Matchup Coach is probably already running in another window.');
@@ -282,7 +298,8 @@ server.on('error', (err) => {
     console.error('  start this app on a different port, e.g. in a terminal:\n');
     console.error('      set PORT=3100 && node server.js     (Windows)');
     console.error('      PORT=3100 node server.js            (macOS/Linux)\n');
-    process.exit(1);
+    if (!process.versions.electron) process.exit(1);
+    return;
   }
-  throw err;
+  if (!process.versions.electron) throw err;
 });
