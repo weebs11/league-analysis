@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title id="title">LoL Matchup Coach opposing lanes mark</title>
+  <defs>
+    <linearGradient id="left-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0c96c" />
+      <stop offset="1" stop-color="#c89b3c" />
+    </linearGradient>
+    <linearGradient id="right-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0e6d2" />
+      <stop offset="1" stop-color="#c8aa6e" />
+    </linearGradient>
+  </defs>
+  <path fill="url(#left-gold)" d="M43 9 18 26v48l26 18V73L31 64v-7l11-7-11-7v-7l12-8Z" />
+  <path fill="url(#right-gold)" d="M57 9 82 26v48L56 92V73l13-9v-7l-11-7 11-7v-7l-12-8Z" />
+  <path fill="#0ac8b9" d="m50 37 12 13-12 13-12-13Z" />
+</svg>

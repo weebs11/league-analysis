@@ -41,6 +41,15 @@ than the concepts warrant.
 | **Coaching Record** | The Game Plan that was generated for a Match, persisted alongside it and joined on Match ID. Lets the detail view show what you were told next to how it went. |
 | **Rank Snapshot** | One observation of the player's standing in one ranked queue — tier, division, LP, wins, losses — recorded by Forward Sync whenever the standing changed. Forward-only: historical LP is not retrievable from any API ([ADR-0006](docs/adr/0006-forward-only-rank-tracking.md)). Avoid: "LP history" as if it were fetched — it is observed, never downloaded. |
 
+### Champion Database
+
+| Term | Meaning |
+|---|---|
+| **Champion Database** | The browsable Champions section: every champion's most common build — rune page, summoner spells, item order, skill order — from real global usage and win rates ([ADR-0008](docs/adr/0008-opgg-build-stats-adapter.md)). Avoid: "builds tab", "meta page". |
+| **Build Extract** | The compact per-(champion, role, Tier) stats file under `data/builds/`, parsed from one op.gg payload and validated before writing. A cache, explicitly regenerable — the opposite of the Archive. Refreshed after 24h; served stale (and labeled) when the feed is unreachable. |
+| **Roster** | The one-call summary of all champions and the roles they are actually played in this patch, from op.gg's ranking endpoint. Powers the grid's role badges and role filter; the grid itself renders from Data Dragon alone if the Roster is unavailable. |
+| **Tier** | The rank bracket a build aggregate is filtered to (`emerald_plus` by default). A UI filter and a cache key, not the player's own rank. Avoid: "rank" bare — that's the player's Rank Snapshot. |
+
 ## Scope
 
 **Ranked only.** Match history covers `queueId` 420 (Solo/Duo) and 440 (Flex). ARAM, Arena,

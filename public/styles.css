@@ -671,3 +671,103 @@ select option { background: var(--hx-panel-2); }
 .rank-table th { text-align: left; color: var(--text-dim); font-weight: 500; font-size: 0.72rem;
   text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px 3px 0; }
 .rank-table td { padding: 3px 10px 3px 0; border-top: 1px solid var(--hx-line); font-variant-numeric: tabular-nums; }
+
+/* ---- champion database ---- */
+.champ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 10px;
+}
+.champ-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 6px 8px;
+  background: linear-gradient(180deg, var(--hx-panel), var(--hx-panel-2));
+  border: 1px solid var(--hx-line); border-radius: 6px;
+  color: var(--text); font: inherit; cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.champ-card:hover { border-color: var(--gold-dark); transform: translateY(-2px); }
+.champ-card img {
+  width: 64px; height: 64px; border-radius: 4px;
+  border: 1px solid var(--gold-deep); background: var(--hx-black);
+}
+.champ-card .cc-name {
+  font-size: 0.74rem; color: var(--gold-text); text-align: center;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
+}
+
+.build-head { display: flex; align-items: center; gap: 14px; margin: 12px 0; }
+.build-head .bh-portrait {
+  width: 64px; height: 64px; border-radius: 6px; border: 1px solid var(--gold-dark);
+}
+.build-roles { margin-bottom: 12px; }
+
+.build-grid {
+  display: grid; grid-template-columns: minmax(340px, 1fr) minmax(300px, 1fr);
+  gap: 14px; margin-bottom: 14px; align-items: start;
+}
+@media (max-width: 900px) { .build-grid { grid-template-columns: 1fr; } }
+
+.wr-note { color: var(--text-dim); font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.72rem; font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 8px; }
+.build-sub { margin-top: 16px; }
+
+.build-items { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.build-items img {
+  width: 34px; height: 34px; border-radius: 4px;
+  border: 1px solid var(--gold-deep); background: var(--hx-black);
+}
+.bi-arrow { color: var(--gold-dark); font-size: 0.9rem; margin: 0 2px; }
+
+.late-items { display: flex; flex-direction: column; gap: 4px; }
+.late-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 3px 6px; border-radius: 4px; font-size: 0.82rem;
+}
+.late-item:nth-child(odd) { background: rgba(30, 45, 64, 0.35); }
+.late-item img { width: 26px; height: 26px; border-radius: 3px; border: 1px solid var(--gold-deep); }
+.late-item .li-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.late-item .li-wr { color: var(--teal); font-variant-numeric: tabular-nums; }
+.late-item .li-games { font-size: 0.72rem; font-variant-numeric: tabular-nums; }
+
+/* rune page: full trees, picked runes lit, the rest dimmed */
+.rune-page { display: flex; gap: 20px; flex-wrap: wrap; }
+.rune-tree { min-width: 130px; }
+.rune-side { display: flex; flex-direction: column; gap: 12px; }
+.rt-head {
+  display: flex; align-items: center; gap: 7px; margin-bottom: 8px;
+  color: var(--gold); font-family: var(--serif); font-size: 0.8rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.rt-head img { width: 22px; height: 22px; }
+.rune-slot, .shard-row { display: flex; align-items: center; gap: 8px; margin: 7px 0; }
+.rune {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid transparent; background: var(--hx-black);
+}
+.rune.keystone { width: 40px; height: 40px; }
+.rune.shard { width: 24px; height: 24px; padding: 2px; }
+.rune.on { border-color: var(--gold); box-shadow: 0 0 7px rgba(200, 170, 110, 0.45); }
+.rune.dim { opacity: 0.28; filter: grayscale(0.9); }
+
+/* skill order: one row per key, one column per level */
+.skill-priority { margin-bottom: 10px; color: var(--text-dim); font-size: 0.85rem;
+  display: flex; align-items: center; gap: 7px; }
+.skill-priority .skill-key { margin: 0; }
+.skill-grid { display: flex; flex-direction: column; gap: 4px; overflow-x: auto; padding-bottom: 4px; }
+.skill-row { display: flex; gap: 4px; align-items: center; }
+.skill-key {
+  width: 22px; height: 22px; flex: none; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--teal-deep); color: var(--teal); border-radius: 3px;
+  font-size: 0.78rem; font-weight: 700;
+}
+.skill-cell {
+  width: 26px; height: 22px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(30, 45, 64, 0.4); border-radius: 3px;
+  font-size: 0.72rem; color: var(--hx-black); font-variant-numeric: tabular-nums;
+}
+.skill-cell.on {
+  background: linear-gradient(180deg, var(--gold), var(--gold-mid));
+  font-weight: 700;
+}

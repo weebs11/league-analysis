@@ -1,0 +1,770 @@
+{
+  "data": [
+    {
+      "id": 86,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 66382,
+        "win_rate": 0.509521,
+        "pick_rate": 0.0726835,
+        "ban_rate": 0.0584674,
+        "kda": 1.818338,
+        "tier": 2,
+        "rank": 26,
+        "tier_data": {
+          "tier": 2,
+          "rank": 26,
+          "rank_prev": 25,
+          "rank_prev_patch": 7
+        }
+      },
+      "positions": [
+        {
+          "name": "TOP",
+          "stats": {
+            "play": 60727,
+            "win_rate": 0.510662,
+            "pick_rate": 0.0671689,
+            "role_rate": 0.914811,
+            "ban_rate": 0.0584104,
+            "kda": 1.796759,
+            "tier_data": {
+              "tier": 1,
+              "rank": 3,
+              "rank_prev": 2,
+              "rank_prev_patch": 1
+            }
+          },
+          "roles": [
+            {
+              "name": "MARKSMAN",
+              "stats": {
+                "win_rate": 0.531924,
+                "role_rate": 0.422741,
+                "play": 23556,
+                "win": 12530
+              }
+            },
+            {
+              "name": "FIGHTER",
+              "stats": {
+                "win_rate": 0.483523,
+                "role_rate": 0.407344,
+                "play": 22698,
+                "win": 10975
+              }
+            },
+            {
+              "name": "TANK",
+              "stats": {
+                "win_rate": 0.504824,
+                "role_rate": 0.120904,
+                "play": 6737,
+                "win": 3401
+              }
+            },
+            {
+              "name": "SLAYER",
+              "stats": {
+                "win_rate": 0.556757,
+                "role_rate": 0.0464807,
+                "play": 2590,
+                "win": 1442
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 893,
+              "play": 105,
+              "win": 44
+            },
+            {
+              "champion_id": 110,
+              "play": 135,
+              "win": 57
+            },
+            {
+              "champion_id": 23,
+              "play": 984,
+              "win": 439
+            }
+          ]
+        },
+        {
+          "name": "MID",
+          "stats": {
+            "play": 4851,
+            "win_rate": 0.513502,
+            "pick_rate": 0.00529199,
+            "role_rate": 0.073077,
+            "ban_rate": 0.0538846,
+            "kda": 2.089959,
+            "tier_data": {
+              "tier": 4,
+              "rank": 41,
+              "rank_prev": 41,
+              "rank_prev_patch": null
+            }
+          },
+          "roles": [
+            {
+              "name": "MARKSMAN",
+              "stats": {
+                "win_rate": 0.53998,
+                "role_rate": 0.457853,
+                "play": 2026,
+                "win": 1094
+              }
+            },
+            {
+              "name": "FIGHTER",
+              "stats": {
+                "win_rate": 0.485109,
+                "role_rate": 0.394576,
+                "play": 1746,
+                "win": 847
+              }
+            },
+            {
+              "name": "TANK",
+              "stats": {
+                "win_rate": 0.497326,
+                "role_rate": 0.0845198,
+                "play": 374,
+                "win": 186
+              }
+            },
+            {
+              "name": "SLAYER",
+              "stats": {
+                "win_rate": 0.562249,
+                "role_rate": 0.0562712,
+                "play": 249,
+                "win": 140
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 61,
+              "play": 30,
+              "win": 10
+            },
+            {
+              "champion_id": 910,
+              "play": 65,
+              "win": 26
+            },
+            {
+              "champion_id": 84,
+              "play": 123,
+              "win": 51
+            }
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "id": 64,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 131970,
+        "win_rate": 0.492764,
+        "pick_rate": 0.144498,
+        "ban_rate": 0.158596,
+        "kda": 2.93171,
+        "tier": 2,
+        "rank": 31,
+        "tier_data": {
+          "tier": 2,
+          "rank": 31,
+          "rank_prev": 31,
+          "rank_prev_patch": 44
+        }
+      },
+      "positions": [
+        {
+          "name": "JUNGLE",
+          "stats": {
+            "play": 126829,
+            "win_rate": 0.494161,
+            "pick_rate": 0.138662,
+            "role_rate": 0.961044,
+            "ban_rate": 0.158568,
+            "kda": 2.990841,
+            "tier_data": {
+              "tier": 2,
+              "rank": 10,
+              "rank_prev": 10,
+              "rank_prev_patch": 10
+            }
+          },
+          "roles": [
+            {
+              "name": "FIGHTER",
+              "stats": {
+                "win_rate": 0.493408,
+                "role_rate": 0.929805,
+                "play": 108776,
+                "win": 53671
+              }
+            },
+            {
+              "name": "SLAYER",
+              "stats": {
+                "win_rate": 0.50491,
+                "role_rate": 0.0644169,
+                "play": 7536,
+                "win": 3805
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 33,
+              "play": 608,
+              "win": 273
+            },
+            {
+              "champion_id": 19,
+              "play": 1425,
+              "win": 641
+            },
+            {
+              "champion_id": 133,
+              "play": 638,
+              "win": 292
+            }
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "id": 21,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 99078,
+        "win_rate": 0.496467,
+        "pick_rate": 0.108483,
+        "ban_rate": 0.00789147,
+        "kda": 2.240636,
+        "tier": 3,
+        "rank": 48,
+        "tier_data": {
+          "tier": 3,
+          "rank": 48,
+          "rank_prev": 50,
+          "rank_prev_patch": 75
+        }
+      },
+      "positions": [
+        {
+          "name": "ADC",
+          "stats": {
+            "play": 95724,
+            "win_rate": 0.499363,
+            "pick_rate": 0.103225,
+            "role_rate": 0.966148,
+            "ban_rate": 0.00788643,
+            "kda": 2.254201,
+            "tier_data": {
+              "tier": 2,
+              "rank": 9,
+              "rank_prev": 9,
+              "rank_prev_patch": 9
+            }
+          },
+          "roles": [
+            {
+              "name": "MARKSMAN",
+              "stats": {
+                "win_rate": 0.500964,
+                "role_rate": 0.938209,
+                "play": 82431,
+                "win": 41295
+              }
+            },
+            {
+              "name": "SLAYER",
+              "stats": {
+                "win_rate": 0.512518,
+                "role_rate": 0.056829,
+                "play": 4993,
+                "win": 2559
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 30,
+              "play": 265,
+              "win": 108
+            },
+            {
+              "champion_id": 112,
+              "play": 835,
+              "win": 374
+            },
+            {
+              "champion_id": 115,
+              "play": 2418,
+              "win": 1094
+            }
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "id": 412,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 111285,
+        "win_rate": 0.521023,
+        "pick_rate": 0.121849,
+        "ban_rate": 0.0768945,
+        "kda": 2.819093,
+        "tier": 1,
+        "rank": 2,
+        "tier_data": {
+          "tier": 1,
+          "rank": 2,
+          "rank_prev": 2,
+          "rank_prev_patch": 3
+        }
+      },
+      "positions": [
+        {
+          "name": "SUPPORT",
+          "stats": {
+            "play": 110769,
+            "win_rate": 0.521653,
+            "pick_rate": 0.122566,
+            "role_rate": 0.995363,
+            "ban_rate": 0.076872,
+            "kda": 2.822551,
+            "tier_data": {
+              "tier": 0,
+              "rank": 1,
+              "rank_prev": 1,
+              "rank_prev_patch": 2
+            }
+          },
+          "roles": [
+            {
+              "name": "CONTROLLER",
+              "stats": {
+                "win_rate": 0.524431,
+                "role_rate": 0.789347,
+                "play": 80451,
+                "win": 42191
+              }
+            },
+            {
+              "name": "TANK",
+              "stats": {
+                "win_rate": 0.514059,
+                "role_rate": 0.205179,
+                "play": 20912,
+                "win": 10750
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 9,
+              "play": 219,
+              "win": 100
+            },
+            {
+              "champion_id": 3,
+              "play": 407,
+              "win": 195
+            },
+            {
+              "champion_id": 142,
+              "play": 334,
+              "win": 163
+            }
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "id": 103,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 88446,
+        "win_rate": 0.513579,
+        "pick_rate": 0.096842,
+        "ban_rate": 0.0286855,
+        "kda": 2.547278,
+        "tier": 1,
+        "rank": 8,
+        "tier_data": {
+          "tier": 1,
+          "rank": 8,
+          "rank_prev": 8,
+          "rank_prev_patch": 14
+        }
+      },
+      "positions": [
+        {
+          "name": "MID",
+          "stats": {
+            "play": 84370,
+            "win_rate": 0.513785,
+            "pick_rate": 0.0920398,
+            "role_rate": 0.953915,
+            "ban_rate": 0.0286642,
+            "kda": 2.563279,
+            "tier_data": {
+              "tier": 1,
+              "rank": 2,
+              "rank_prev": 2,
+              "rank_prev_patch": 3
+            }
+          },
+          "roles": [
+            {
+              "name": "MAGE",
+              "stats": {
+                "win_rate": 0.512671,
+                "role_rate": 0.998168,
+                "play": 77894,
+                "win": 39934
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 18,
+              "play": 240,
+              "win": 110
+            },
+            {
+              "champion_id": 1,
+              "play": 951,
+              "win": 445
+            },
+            {
+              "champion_id": 246,
+              "play": 735,
+              "win": 351
+            }
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "id": 62,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 58976,
+        "win_rate": 0.514124,
+        "pick_rate": 0.0645744,
+        "ban_rate": 0.0198568,
+        "kda": 2.747182,
+        "tier": 2,
+        "rank": 17,
+        "tier_data": {
+          "tier": 2,
+          "rank": 17,
+          "rank_prev": 17,
+          "rank_prev_patch": 9
+        }
+      },
+      "positions": [
+        {
+          "name": "JUNGLE",
+          "stats": {
+            "play": 49058,
+            "win_rate": 0.515777,
+            "pick_rate": 0.053635,
+            "role_rate": 0.83183,
+            "ban_rate": 0.0198044,
+            "kda": 2.945707,
+            "tier_data": {
+              "tier": 1,
+              "rank": 3,
+              "rank_prev": 4,
+              "rank_prev_patch": 3
+            }
+          },
+          "roles": [
+            {
+              "name": "FIGHTER",
+              "stats": {
+                "win_rate": 0.51749,
+                "role_rate": 0.975212,
+                "play": 44024,
+                "win": 22782
+              }
+            },
+            {
+              "name": "SLAYER",
+              "stats": {
+                "win_rate": 0.488,
+                "role_rate": 0.0166139,
+                "play": 750,
+                "win": 366
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 79,
+              "play": 111,
+              "win": 47
+            },
+            {
+              "champion_id": 143,
+              "play": 140,
+              "win": 62
+            },
+            {
+              "champion_id": 77,
+              "play": 465,
+              "win": 211
+            }
+          ]
+        },
+        {
+          "name": "TOP",
+          "stats": {
+            "play": 8308,
+            "win_rate": 0.50987,
+            "pick_rate": 0.0091893,
+            "role_rate": 0.140871,
+            "ban_rate": 0.0188762,
+            "kda": 1.955341,
+            "tier_data": {
+              "tier": 3,
+              "rank": 44,
+              "rank_prev": 46,
+              "rank_prev_patch": 33
+            }
+          },
+          "roles": [
+            {
+              "name": "FIGHTER",
+              "stats": {
+                "win_rate": 0.501061,
+                "role_rate": 0.91534,
+                "play": 7071,
+                "win": 3543
+              }
+            },
+            {
+              "name": "SLAYER",
+              "stats": {
+                "win_rate": 0.548747,
+                "role_rate": 0.0464725,
+                "play": 359,
+                "win": 197
+              }
+            },
+            {
+              "name": "MARKSMAN",
+              "stats": {
+                "win_rate": 0.534031,
+                "role_rate": 0.0250065,
+                "play": 191,
+                "win": 102
+              }
+            },
+            {
+              "name": "TANK",
+              "stats": {
+                "win_rate": 0.375,
+                "role_rate": 0.0113916,
+                "play": 88,
+                "win": 33
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 240,
+              "play": 51,
+              "win": 19
+            },
+            {
+              "champion_id": 2,
+              "play": 102,
+              "win": 40
+            },
+            {
+              "champion_id": 54,
+              "play": 194,
+              "win": 79
+            }
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "id": 202,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 133672,
+        "win_rate": 0.497292,
+        "pick_rate": 0.146361,
+        "ban_rate": 0.0112376,
+        "kda": 2.779298,
+        "tier": 2,
+        "rank": 18,
+        "tier_data": {
+          "tier": 2,
+          "rank": 18,
+          "rank_prev": 18,
+          "rank_prev_patch": 23
+        }
+      },
+      "positions": [
+        {
+          "name": "ADC",
+          "stats": {
+            "play": 129730,
+            "win_rate": 0.498574,
+            "pick_rate": 0.139895,
+            "role_rate": 0.97051,
+            "ban_rate": 0.0112317,
+            "kda": 2.801186,
+            "tier_data": {
+              "tier": 1,
+              "rank": 6,
+              "rank_prev": 6,
+              "rank_prev_patch": 5
+            }
+          },
+          "roles": [
+            {
+              "name": "MARKSMAN",
+              "stats": {
+                "win_rate": 0.501197,
+                "role_rate": 0.979979,
+                "play": 116934,
+                "win": 58607
+              }
+            },
+            {
+              "name": "SLAYER",
+              "stats": {
+                "win_rate": 0.394776,
+                "role_rate": 0.0170043,
+                "play": 2029,
+                "win": 801
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 55,
+              "play": 316,
+              "win": 139
+            },
+            {
+              "champion_id": 157,
+              "play": 659,
+              "win": 292
+            },
+            {
+              "champion_id": 147,
+              "play": 1950,
+              "win": 871
+            }
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "id": 51,
+      "is_rotation": false,
+      "is_rip": false,
+      "average_stats": {
+        "play": 139458,
+        "win_rate": 0.492069,
+        "pick_rate": 0.152696,
+        "ban_rate": 0.186463,
+        "kda": 1.996807,
+        "tier": 2,
+        "rank": 28,
+        "tier_data": {
+          "tier": 2,
+          "rank": 28,
+          "rank_prev": 29,
+          "rank_prev_patch": 28
+        }
+      },
+      "positions": [
+        {
+          "name": "ADC",
+          "stats": {
+            "play": 136794,
+            "win_rate": 0.493406,
+            "pick_rate": 0.147513,
+            "role_rate": 0.980897,
+            "ban_rate": 0.186408,
+            "kda": 2.00876,
+            "tier_data": {
+              "tier": 1,
+              "rank": 7,
+              "rank_prev": 7,
+              "rank_prev_patch": 7
+            }
+          },
+          "roles": [
+            {
+              "name": "MARKSMAN",
+              "stats": {
+                "win_rate": 0.493701,
+                "role_rate": 0.996602,
+                "play": 125813,
+                "win": 62114
+              }
+            }
+          ],
+          "counters": [
+            {
+              "champion_id": 30,
+              "play": 348,
+              "win": 150
+            },
+            {
+              "champion_id": 101,
+              "play": 1761,
+              "win": 766
+            },
+            {
+              "champion_id": 99,
+              "play": 889,
+              "win": 389
+            }
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "meta": {
+    "version": "16.14",
+    "cached_at": "2026-07-21 02:56:28",
+    "match_count": 9133025,
+    "analyzed_at": "2026-07-21T02:56:28+09:00"
+  }
+}
