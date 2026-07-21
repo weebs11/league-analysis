@@ -13,6 +13,7 @@ import * as briefings from './src/briefings.js';
 import * as mock from './src/mock.js';
 import * as lcu from './src/lcu.js';
 import { router as historyRouter } from './src/history/routes.js';
+import { router as buildsRouter } from './src/builds/routes.js';
 import * as historyStore from './src/history/store.js';
 import { ensureDirs, makeMatchId } from './src/history/paths.js';
 
@@ -38,6 +39,42 @@ app.get('/img/champion/:kind/:id', async (req, res) => {
 app.get('/img/item/:id', async (req, res) => {
   try {
     const img = await ddragon.itemImage(req.params.id);
+    if (!img) return res.status(404).end();
+    res.set('Content-Type', img.type);
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(img.data);
+  } catch {
+    res.status(502).end();
+  }
+});
+
+app.get('/img/rune/:id', async (req, res) => {
+  try {
+    const img = await ddragon.runeImage(req.params.id);
+    if (!img) return res.status(404).end();
+    res.set('Content-Type', img.type);
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(img.data);
+  } catch {
+    res.status(502).end();
+  }
+});
+
+app.get('/img/spell/:id', async (req, res) => {
+  try {
+    const img = await ddragon.spellImage(req.params.id);
+    if (!img) return res.status(404).end();
+    res.set('Content-Type', img.type);
+    res.set('Cache-Control', 'public, max-age=86400');
+    res.send(img.data);
+  } catch {
+    res.status(502).end();
+  }
+});
+
+app.get('/img/shard/:id', async (req, res) => {
+  try {
+    const img = await ddragon.shardImage(req.params.id);
     if (!img) return res.status(404).end();
     res.set('Content-Type', img.type);
     res.set('Cache-Control', 'public, max-age=86400');
@@ -207,6 +244,10 @@ app.post('/api/coach/chat', async (req, res) => {
 // ---- Match history --------------------------------------------------------------
 
 app.use('/api/history', historyRouter);
+
+// ---- Champion database ----------------------------------------------------------
+
+app.use('/api/builds', buildsRouter);
 
 // ---- Demo mode ----------------------------------------------------------------
 

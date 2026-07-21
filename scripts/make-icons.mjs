@@ -1,5 +1,5 @@
 // Generates the desktop app's icons procedurally — no image tooling required.
-// A hextech-style gold diamond (ring + center stone) in the app's palette:
+// The Opposing Lanes brand mark: two matchup paths around a teal waypoint.
 //
 //   node scripts/make-icons.mjs
 //
@@ -72,22 +72,46 @@ function encodeIco(png) {
 }
 
 // ---- The emblem -------------------------------------------------------------
-// Palette from public/styles.css: near-black tile, hextech gold gradient.
+// Geometry mirrors public/brand-mark.svg. Keep both representations in sync.
 
 const BG = [10, 20, 32]; // #0a1420
-const GOLD_LIGHT = [240, 230, 210]; // #f0e6d2
-const GOLD_DEEP = [160, 131, 57]; // #a08339
+const LEFT_LIGHT = [240, 201, 108]; // #f0c96c
+const LEFT_DEEP = [200, 155, 60]; // #c89b3c
+const RIGHT_LIGHT = [240, 230, 210]; // #f0e6d2
+const RIGHT_DEEP = [200, 170, 110]; // #c8aa6e
+const TEAL = [10, 200, 185]; // #0ac8b9
 
 const lerp = (a, b, t) => a + (b - a) * t;
 
+const LEFT = [
+  [0.43, 0.09], [0.18, 0.26], [0.18, 0.74], [0.44, 0.92],
+  [0.44, 0.73], [0.31, 0.64], [0.31, 0.57], [0.42, 0.50],
+  [0.31, 0.43], [0.31, 0.36], [0.43, 0.28],
+];
+const RIGHT = LEFT.map(([x, y]) => [1 - x, y]);
+const WAYPOINT = [[0.50, 0.37], [0.62, 0.50], [0.50, 0.63], [0.38, 0.50]];
+
+function insidePolygon(x, y, polygon) {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const [xi, yi] = polygon[i];
+    const [xj, yj] = polygon[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+function gradient(top, bottom, y) {
+  return [0, 1, 2].map((i) => Math.round(lerp(top[i], bottom[i], y)));
+}
+
 // Color at a sample point (u, v in 0..1), or null for transparent.
-// The emblem is a diamond ring plus a center stone, both in a vertical gold
-// gradient. `tile` adds the dark rounded-square backdrop for the window icon;
-// the tray icon stays transparent so it reads on any taskbar.
+// `tile` adds the dark rounded-square backdrop for the window icon; the tray
+// icon stays transparent so it reads on any taskbar.
 function sample(u, v, tile) {
-  const d = Math.abs(u - 0.5) + Math.abs(v - 0.5); // L1 distance = diamond contours
-  const gold = [0, 1, 2].map((i) => Math.round(lerp(GOLD_LIGHT[i], GOLD_DEEP[i], v)));
-  if ((d <= 0.36 && d >= 0.24) || d <= 0.11) return [...gold, 255];
+  if (insidePolygon(u, v, WAYPOINT)) return [...TEAL, 255];
+  if (insidePolygon(u, v, LEFT)) return [...gradient(LEFT_LIGHT, LEFT_DEEP, v), 255];
+  if (insidePolygon(u, v, RIGHT)) return [...gradient(RIGHT_LIGHT, RIGHT_DEEP, v), 255];
   if (!tile) return null;
   // Rounded-square tile: inside test against a rect with corner radius 0.09.
   const r = 0.09;

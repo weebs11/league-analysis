@@ -146,12 +146,15 @@ function showSection(name) {
   activeSection = name;
   $('#section-live').classList.toggle('hidden', name !== 'live');
   $('#section-history').classList.toggle('hidden', name !== 'history');
+  $('#section-champions').classList.toggle('hidden', name !== 'champions');
   $$('.navbtn').forEach((b) => b.classList.toggle('active', b.dataset.section === name));
   if (name === 'live') {
     hidePhaseNotice();
     applyCurrentPhase();
-  } else {
+  } else if (name === 'history') {
     refreshHistory();
+  } else if (name === 'champions') {
+    refreshChampions();
   }
 }
 
@@ -1130,6 +1133,228 @@ function renderMatchDetail(d) {
   $('#btn-hist-back').onclick = closeMatchDetail;
 }
 
+// ---------- champion database ----------
+// Browsable builds for every champion: real global usage and win rates,
+// fetched lazily per champion and cached server-side (see /api/builds).
+const db = {
+  champs: null,  // /api/builds/champions payload
+  meta: null,    // /api/builds/meta payload (rune trees, shard rows, labels)
+  search: '',
+  roleFilter: '',
+  current: null, // ddragon id of the open champion
+  tier: 'emerald_plus',
+};
+
+function wrTextOf(sec) {
+  if (!sec?.play) return '';
+  const wr = sec.winRate ?? sec.wins / sec.play;
+  return `${(100 * wr).toFixed(1)}% WR · ${sec.play.toLocaleString()} games`;
+}
+
+function roleLabelOf(id) {
+  return db.meta?.roles.find((r) => r.id === id)?.label || id;
+}
+
+async function refreshChampions() {
+  if (db.champs) return; // grid is static per session; renders stay client-side
+  $('#champ-grid').innerHTML = `<div class="loading"><div class="spinner"></div> Loading champions…</div>`;
+  try {
+    const [champs, meta] = await Promise.all([api('/api/builds/champions'), api('/api/builds/meta')]);
+    db.champs = champs;
+    db.meta = meta;
+    $('#champ-role-filter').innerHTML =
+      `<option value="">All roles</option>` +
+      meta.roles.map((r) => `<option value="${esc(r.id)}">${esc(r.label)}</option>`).join('');
+    const note = $('#champ-data-note');
+    note.textContent = champs.dataPatch
+      ? `Patch ${champs.dataPatch}${champs.matchCount ? ` · ${champs.matchCount.toLocaleString()} ranked games analyzed` : ''}${champs.rosterStale ? ' (cached)' : ''}`
+      : `Patch ${champs.patch}`;
+  } catch (err) {
+    $('#champ-grid').innerHTML = `<div class="error-box">${esc(err.message)}</div>`;
+    db.champs = null;
+    return;
+  }
+  renderChampionGrid();
+}
+
+function renderChampionGrid() {
+  if (!db.champs) return;
+  const needle = db.search.trim().toLowerCase();
+  const list = db.champs.champions.filter((c) =>
+    (!needle || c.name.toLowerCase().includes(needle)) &&
+    (!db.roleFilter || c.roles.includes(db.roleFilter)));
+  $('#champ-grid').innerHTML = list.length
+    ? list.map((c) => `<button class="champ-card" data-champ="${esc(c.id)}" title="${esc(c.name)} — ${esc(c.title)}">
+        <img src="${esc(c.image)}" alt="" loading="lazy" />
+        <span class="cc-name">${esc(c.name)}</span>
+      </button>`).join('')
+    : `<p class="muted">No champions match.</p>`;
+  $$('#champ-grid .champ-card').forEach((el) => {
+    el.onclick = () => openChampionBuild(el.dataset.champ);
+  });
+}
+
+async function openChampionBuild(champId, role = null, { refresh = false } = {}) {
+  db.current = champId;
+  $('#champ-grid-view').classList.add('hidden');
+  const view = $('#champ-detail-view');
+  view.classList.remove('hidden');
+  view.innerHTML = `<div class="loading"><div class="spinner"></div> Loading build stats…</div>`;
+  const q = new URLSearchParams({ tier: db.tier });
+  if (role) q.set('role', role);
+  if (refresh) q.set('refresh', '1');
+  try {
+    const d = await api(`/api/builds/champion/${encodeURIComponent(champId)}?${q}`);
+    if (db.current !== champId) return; // user already navigated away
+    renderChampionBuild(d);
+  } catch (err) {
+    view.innerHTML = `
+      <button class="btn secondary" id="btn-champ-back">← All champions</button>
+      <div class="error-box">${esc(err.message)}</div>
+      <button class="btn secondary" id="btn-champ-retry">↻ Try again</button>`;
+    $('#btn-champ-back').onclick = closeChampionBuild;
+    $('#btn-champ-retry').onclick = () => openChampionBuild(champId, role, { refresh: true });
+  }
+}
+
+function closeChampionBuild() {
+  db.current = null;
+  $('#champ-detail-view').classList.add('hidden');
+  $('#champ-detail-view').innerHTML = '';
+  $('#champ-grid-view').classList.remove('hidden');
+}
+
+function iconRowHtml(list, { arrows = false, size = '' } = {}) {
+  return `<div class="build-items ${size}">${list.map((it, i) =>
+    `${i && arrows ? '<span class="bi-arrow">→</span>' : ''}<img src="${esc(it.icon)}" alt="${esc(it.name)}" title="${esc(it.name)}" />`).join('')}</div>`;
+}
+
+function lateItemsHtml(items) {
+  if (!items?.length) return '<p class="muted small">No data.</p>';
+  return `<div class="late-items">${items.map((it) => `
+    <div class="late-item">
+      <img src="${esc(it.icon)}" alt="" title="${esc(it.name)}" />
+      <span class="li-name">${esc(it.name)}</span>
+      <span class="li-wr">${(100 * it.winRate).toFixed(1)}%</span>
+      <span class="li-games muted">${it.play.toLocaleString()} games</span>
+    </div>`).join('')}</div>`;
+}
+
+// The full two-tree rune page: every rune rendered, the picked ones lit.
+function runeTreeHtml(style, selectedIds, { withKeystones }) {
+  if (!style) return '';
+  const slots = withKeystones ? style.slots : style.slots.slice(1);
+  return `<div class="rune-tree">
+    <div class="rt-head"><img src="${esc(style.icon)}" alt="" /><span>${esc(style.name)}</span></div>
+    ${slots.map((slot, i) => `<div class="rune-slot">
+      ${slot.map((r) => `<img class="rune ${withKeystones && i === 0 ? 'keystone' : ''} ${selectedIds.includes(r.id) ? 'on' : 'dim'}"
+        src="${esc(r.icon)}" alt="${esc(r.name)}" title="${esc(r.name)}" />`).join('')}
+    </div>`).join('')}
+  </div>`;
+}
+
+function runePageHtml(runes) {
+  const styles = db.meta.styles;
+  const primary = styles.find((s) => s.id === runes.primaryStyle.id);
+  const sub = styles.find((s) => s.id === runes.subStyle.id);
+  // Shard picks arrive slot-ordered (offense/flex/defense), matching shardRows.
+  const shardRows = db.meta.shardRows.map((row, i) => `<div class="shard-row">
+    ${row.map((sh) => `<img class="rune shard ${runes.shards[i]?.id === sh.id ? 'on' : 'dim'}"
+      src="${esc(sh.icon)}" alt="${esc(sh.name)}" title="${esc(sh.name)}" />`).join('')}
+  </div>`).join('');
+  return `<div class="rune-page">
+    ${runeTreeHtml(primary, runes.primaryPerks.map((p) => p.id), { withKeystones: true })}
+    <div class="rune-side">
+      ${runeTreeHtml(sub, runes.subPerks.map((p) => p.id), { withKeystones: false })}
+      <div class="rune-tree shards">
+        <div class="rt-head"><span>Shards</span></div>
+        ${shardRows}
+      </div>
+    </div>
+  </div>`;
+}
+
+function skillOrderHtml(skills) {
+  const cols = Math.max(skills.order.length, 15);
+  const rows = ['Q', 'W', 'E', 'R'].map((k) => {
+    let cells = '';
+    for (let lv = 0; lv < cols; lv++) {
+      const on = skills.order[lv] === k;
+      cells += `<span class="skill-cell ${on ? 'on' : ''}">${on ? lv + 1 : ''}</span>`;
+    }
+    return `<div class="skill-row"><span class="skill-key">${k}</span>${cells}</div>`;
+  }).join('');
+  return `<div class="skill-priority">Max order:
+      ${skills.priority.map((k) => `<b class="skill-key">${esc(k)}</b>`).join('<span class="bi-arrow">→</span>')}
+    </div>
+    <div class="skill-grid">${rows}</div>`;
+}
+
+function renderChampionBuild(d) {
+  const tierOpts = db.meta.tiers.map((t) =>
+    `<option value="${esc(t.id)}" ${t.id === d.tier ? 'selected' : ''}>${esc(t.label)}</option>`).join('');
+  const roleTabs = d.roles.map((r) =>
+    `<button class="tab ${r === d.role ? 'active' : ''}" data-role="${esc(r)}">${esc(roleLabelOf(r))}</button>`).join('');
+
+  $('#champ-detail-view').innerHTML = `
+    <button class="btn secondary" id="btn-champ-back">← All champions</button>
+
+    <div class="card build-head">
+      <img class="bh-portrait" src="${esc(d.champion.image.square)}" alt="" />
+      <div>
+        <h2>${esc(d.champion.name)} <span class="muted">${esc(d.champion.title)}</span></h2>
+        <p class="muted">${(100 * d.overall.winRate).toFixed(1)}% win rate · ${d.overall.play.toLocaleString()} games · patch ${esc(d.patch)}</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="field inline">
+        <label for="build-tier">Rank</label>
+        <select id="build-tier">${tierOpts}</select>
+      </div>
+    </div>
+
+    <nav class="tabs build-roles">${roleTabs}</nav>
+
+    ${d.stale ? `<div class="notice-box">Live stats couldn't be refreshed — showing the last saved data (patch ${esc(d.patch)}).
+      <button class="btn tiny" id="btn-build-refresh">↻ Retry</button></div>` : ''}
+
+    <div class="build-grid">
+      <div class="card">
+        <h3>Runes <span class="wr-note">${wrTextOf(d.runes)}</span></h3>
+        ${runePageHtml(d.runes)}
+      </div>
+      <div class="card">
+        <h3>Summoner spells <span class="wr-note">${wrTextOf(d.spells)}</span></h3>
+        ${iconRowHtml(d.spells.list)}
+        <h3 class="build-sub">Starting items <span class="wr-note">${wrTextOf(d.startingItems)}</span></h3>
+        ${iconRowHtml(d.startingItems.list)}
+        <h3 class="build-sub">Core build <span class="wr-note">${wrTextOf(d.coreItems)}</span></h3>
+        ${iconRowHtml(d.coreItems.list, { arrows: true })}
+        <h3 class="build-sub">Boots <span class="wr-note">${wrTextOf(d.boots)}</span></h3>
+        ${iconRowHtml(d.boots.list)}
+        <h3 class="build-sub">Late &amp; situational</h3>
+        ${lateItemsHtml(d.lateItems)}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Skill order <span class="wr-note">${wrTextOf(d.skills)}</span></h3>
+      ${skillOrderHtml(d.skills)}
+    </div>
+
+    <p class="muted small">Aggregated from ranked games worldwide (${esc(db.meta.tiers.find((t) => t.id === d.tier)?.label || d.tier)}) · data via OP.GG · fetched ${esc(relTime(d.fetchedAt) || 'just now')}</p>`;
+
+  $('#btn-champ-back').onclick = closeChampionBuild;
+  $$('#champ-detail-view .build-roles .tab').forEach((t) => {
+    t.onclick = () => openChampionBuild(d.champion.id, t.dataset.role);
+  });
+  $('#build-tier').onchange = (e) => {
+    db.tier = e.target.value;
+    openChampionBuild(d.champion.id, d.role);
+  };
+  const refreshBtn = $('#btn-build-refresh');
+  if (refreshBtn) refreshBtn.onclick = () => openChampionBuild(d.champion.id, d.role, { refresh: true });
+}
+
 // ---------- wiring ----------
 function wire() {
   $('#btn-settings').onclick = openSettings;
@@ -1178,6 +1403,13 @@ function wire() {
   };
   $('#hist-role').onchange = (e) => { hist.role = e.target.value; hist.page = 0; loadMatches(); };
   $('#hist-queue').onchange = (e) => { hist.queue = e.target.value; hist.page = 0; loadMatches(); };
+
+  let champSearchTimer = null;
+  $('#champ-search').oninput = (e) => {
+    clearTimeout(champSearchTimer);
+    champSearchTimer = setTimeout(() => { db.search = e.target.value; renderChampionGrid(); }, 150);
+  };
+  $('#champ-role-filter').onchange = (e) => { db.roleFilter = e.target.value; renderChampionGrid(); };
 
   // Close modals when clicking the backdrop.
   for (const id of ['modal-settings', 'modal-glossary']) {

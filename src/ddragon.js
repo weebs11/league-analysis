@@ -13,6 +13,8 @@ let championIndex = null; // { byId, byKey, byName }
 const championDetails = new Map(); // ddragon id -> full champion data
 let items = null; // itemId -> { name, plaintext, tags, gold }
 let itemCatalog = null; // compact text list of purchasable SR items, for the coach
+let runes = null; // { byId: perk/style id -> { id, name, icon }, styles: [tree] }
+let spells = null; // numeric key -> { id, key, name } (summoner spells)
 
 function cachePath(name) {
   return path.join(CACHE_DIR, name);
@@ -77,6 +79,31 @@ export async function init() {
 
   const itemJson = await cachedFetch(`item-${nextVersion}.json`, `${BASE}/cdn/${nextVersion}/data/en_US/item.json`);
 
+  // Runes and summoner spells, for the Champion Database. Both indexed by the
+  // ids that op.gg/match data use (perk ids, numeric spell keys).
+  const runesJson = await cachedFetch(`runes-${nextVersion}.json`, `${BASE}/cdn/${nextVersion}/data/en_US/runesReforged.json`);
+  const runesById = {};
+  const runeStylesList = [];
+  for (const style of runesJson) {
+    runesById[style.id] = { id: style.id, name: style.name, icon: style.icon };
+    runeStylesList.push({
+      id: style.id,
+      key: style.key,
+      name: style.name,
+      icon: style.icon,
+      slots: style.slots.map((slot) => slot.runes.map((r) => ({ id: r.id, name: r.name, icon: r.icon }))),
+    });
+    for (const slot of style.slots) {
+      for (const r of slot.runes) runesById[r.id] = { id: r.id, name: r.name, icon: r.icon };
+    }
+  }
+
+  const summonerJson = await cachedFetch(`summoner-${nextVersion}.json`, `${BASE}/cdn/${nextVersion}/data/en_US/summoner.json`);
+  const spellsByKey = {};
+  for (const s of Object.values(summonerJson.data)) {
+    spellsByKey[Number(s.key)] = { id: s.id, key: Number(s.key), name: s.name };
+  }
+
   // Commit — everything for nextVersion is in hand.
   fs.mkdirSync(CACHE_DIR, { recursive: true });
   fs.writeFileSync(cachePath('version.json'), JSON.stringify(nextVersion));
@@ -84,6 +111,8 @@ export async function init() {
   championIndex = { byId, byKey, byName };
   items = itemJson.data;
   itemCatalog = buildItemCatalog(items);
+  runes = { byId: runesById, styles: runeStylesList };
+  spells = spellsByKey;
 }
 
 export function getVersion() {
@@ -229,6 +258,49 @@ export function itemName(itemId) {
   return items?.[String(itemId)]?.name || `Item ${itemId}`;
 }
 
+// ---- Runes, summoner spells, stat shards ------------------------------------
+
+export function runeInfo(id) {
+  return runes?.byId[Number(id)] || null;
+}
+
+// The full rune trees, in display order — what a rune-page renderer needs.
+export function runeStyles() {
+  return runes?.styles || [];
+}
+
+export function spellByNumericKey(key) {
+  return spells?.[Number(key)] || null;
+}
+
+// Stat shards are not in Data Dragon at all. They also change once every few
+// years, so a hardcoded table beats taking on a third upstream dependency —
+// only the icons come from Community Dragon, fetched lazily like all other art.
+const SHARD_ICON_BASE = 'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods';
+const STAT_SHARDS = {
+  5001: { name: 'Health Scaling', icon: 'statmodshealthscalingicon.png' },
+  5005: { name: 'Attack Speed', icon: 'statmodsattackspeedicon.png' },
+  5007: { name: 'Ability Haste', icon: 'statmodscdrscalingicon.png' },
+  5008: { name: 'Adaptive Force', icon: 'statmodsadaptiveforceicon.png' },
+  5010: { name: 'Move Speed', icon: 'statmodsmovementspeedicon.png' },
+  5011: { name: 'Health', icon: 'statmodshealthplusicon.png' },
+  5013: { name: 'Tenacity and Slow Resist', icon: 'statmodstenacityicon.png' },
+};
+// The three shard slots (offense / flex / defense) as picked in game.
+const SHARD_ROWS = [
+  [5008, 5005, 5007],
+  [5008, 5010, 5001],
+  [5011, 5013, 5001],
+];
+
+export function shardInfo(id) {
+  return STAT_SHARDS[Number(id)] || null;
+}
+
+export function shardRows() {
+  return SHARD_ROWS;
+}
+
 // Artwork is served through the app (/img/champion/...) rather than linking
 // the browser straight to Riot's CDN — the server fetches each image once
 // and caches it on disk, so art always renders and survives going offline.
@@ -299,4 +371,47 @@ export async function championImage(kind, ddragonId) {
   })().finally(() => inflightImages.delete(inflightKey));
   inflightImages.set(inflightKey, fetching);
   return fetching;
+}
+
+// Shared fetch-and-cache for the rune/spell/shard icons below. Same contract as
+// the champion/item art: disk cache under data/cache/img, in-flight dedupe, and
+// callers validate ids against loaded indexes before any path is built.
+async function cachedImage(cacheName, url, type = 'image/png') {
+  const file = path.join(CACHE_DIR, 'img', cacheName);
+  try {
+    return { data: fs.readFileSync(file), type };
+  } catch {
+    // not cached yet
+  }
+  if (inflightImages.has(cacheName)) return inflightImages.get(cacheName);
+  const fetching = (async () => {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = Buffer.from(await res.arrayBuffer());
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, data);
+    return { data, type };
+  })().finally(() => inflightImages.delete(cacheName));
+  inflightImages.set(cacheName, fetching);
+  return fetching;
+}
+
+// Rune icons accept a perk id or a style id. Their CDN paths are unversioned,
+// like splash art.
+export function runeImage(id) {
+  const info = runeInfo(id);
+  if (!info) return null;
+  return cachedImage(`rune-${info.id}.png`, `${BASE}/cdn/img/${info.icon}`);
+}
+
+export function spellImage(numericKey) {
+  const s = spellByNumericKey(numericKey);
+  if (!s) return null;
+  return cachedImage(`spell-${version}-${s.key}.png`, `${BASE}/cdn/${version}/img/spell/${s.id}.png`);
+}
+
+export function shardImage(id) {
+  const s = shardInfo(id);
+  if (!s) return null;
+  return cachedImage(`shard-${Number(id)}.png`, `${SHARD_ICON_BASE}/${s.icon}`);
 }

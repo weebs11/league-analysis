@@ -8,20 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,4 92,27 92,73 50,96 8,73 8,27' fill='none' stroke='%23c8aa6e' stroke-width='7'/><polygon points='50,26 71,38 71,62 50,74 29,62 29,38' fill='%230ac8b9'/></svg>" />
+  <link rel="icon" href="brand-mark.svg" type="image/svg+xml" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <svg class="brand-icon" viewBox="0 0 100 100" aria-hidden="true">
-        <polygon points="50,4 92,27 92,73 50,96 8,73 8,27" fill="none" stroke="url(#goldgrad)" stroke-width="6" />
-        <polygon points="50,26 71,38 71,62 50,74 29,62 29,38" fill="#0ac8b9" opacity="0.9" />
-        <defs>
-          <linearGradient id="goldgrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#f0e6d2" /><stop offset="0.5" stop-color="#c8aa6e" /><stop offset="1" stop-color="#785a28" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <img class="brand-icon" src="brand-mark.svg" alt="" />
       <div>
         <h1>LoL <span class="gold">Matchup Coach</span></h1>
         <p class="tagline">Learn every matchup as you play</p>
@@ -39,6 +31,7 @@
     <nav class="mainnav">
       <button class="navbtn active" data-section="live">Live</button>
       <button class="navbtn" data-section="history">History</button>
+      <button class="navbtn" data-section="champions">Champions</button>
     </nav>
 
     <!-- Live: the three phase views below auto-switch exactly as before. -->
@@ -199,6 +192,27 @@
       </div>
 
       <div id="history-detail-view" class="hidden"></div>
+    </section>
+
+    <!-- ======== CHAMPIONS (build database) ======== -->
+    <section id="section-champions" class="hidden">
+      <div id="champ-grid-view">
+        <div class="history-toolbar">
+          <div class="field inline">
+            <label for="champ-search">Find a champion</label>
+            <input id="champ-search" type="text" placeholder="Search by name…" autocomplete="off" />
+          </div>
+          <div class="field inline">
+            <label for="champ-role-filter">Role</label>
+            <select id="champ-role-filter"><option value="">All roles</option></select>
+          </div>
+          <div class="spacer"></div>
+          <span id="champ-data-note" class="muted small"></span>
+        </div>
+        <div id="champ-grid" class="champ-grid"></div>
+      </div>
+
+      <div id="champ-detail-view" class="hidden"></div>
     </section>
   </main>
 
