@@ -92,7 +92,10 @@ router.get('/matches/:matchId', async (req, res) => {
 // retrievable from any API (ADR-0006).
 router.get('/rank', async (_req, res) => {
   try {
-    const rows = await store.readRankHistory();
+    const [rows, matches] = await Promise.all([
+      store.readRankHistory(),
+      store.loadIndex(),
+    ]);
     const byQueue = new Map();
     for (const row of rows) {
       if (!byQueue.has(row.queueId)) byQueue.set(row.queueId, []);
@@ -104,6 +107,15 @@ router.get('/rank', async (_req, res) => {
         queueLabel: QUEUE_LABELS[queueId] || 'Ranked',
         points,
       })),
+      games: matches
+        .filter((match) => [420, 440].includes(match.queueId) && !match.isRemake)
+        .map((match) => ({
+          at: match.playedAt,
+          queueId: match.queueId,
+          matchId: match.matchId,
+          win: match.win,
+          championName: match.championName,
+        })),
     });
   } catch (err) {
     console.error('rank history failed:', err);

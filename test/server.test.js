@@ -158,6 +158,18 @@ test('serves champion artwork with caching headers', async () => {
   assert.equal((await get('/img/champion/bogus/Jinx')).status, 404);
 });
 
+test('serves the ECharts bundle locally for offline charting', async () => {
+  const vendor = await get('/vendor/echarts.min.js');
+  assert.equal(vendor.status, 200);
+  assert.match(vendor.type, /javascript/);
+  assert.ok(vendor.body.byteLength > 500_000, 'expected the production ECharts bundle');
+
+  const layout = await get('/rank-layout.js');
+  assert.equal(layout.status, 200);
+  assert.match(layout.type, /javascript/);
+  assert.ok(layout.body.byteLength > 1_000, 'expected the day-aware rank layout helper');
+});
+
 test('demo mode overrides live detection and champ select advice works', async () => {
   const start = await post('/api/demo/start', { scenario: 'top', phase: 'champselect' });
   assert.equal(start.status, 200);
@@ -342,6 +354,11 @@ test('history: rank is snapshotted by sync and served grouped per queue', async 
     { tier: 'GOLD', division: 'IV', lp: 43, value: 1243 }
   );
   assert.ok(p.at > 0 && p.wins >= 0 && p.losses >= 0);
+  assert.ok(rank.games.length > 0, 'archived ranked matches are available to the chart');
+  assert.ok(rank.games.every((game) =>
+    typeof game.at === 'number'
+    && [420, 440].includes(game.queueId)
+    && typeof game.win === 'boolean'));
 
   // An unchanged standing must not append: rank history grows on change, not
   // on every sync tick.
