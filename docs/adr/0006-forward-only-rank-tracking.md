@@ -51,6 +51,10 @@ Riot orders them anyway.
 - A player who stops running the app gets gaps. Acceptable: the app is a companion, and
   the safety-net trigger records a catch-up point on next launch (one point per gap, at
   whatever the standing then is).
+- A catch-up Rank Snapshot can cover several archived Matches. The History chart must not
+  imply that one snapshot equals one Match or invent intermediate LP. It shows every archived
+  ranked Match in a separate activity row and renders a multi-Match snapshot transition as an
+  uncertain connector.
 - Promos, dodges and decay are not modeled — the series just shows the standing whenever
   it was observed to change. Good enough for a trend line; not a per-game LP ledger.
 - If Riot ever exposes historical LP, this becomes seedable — the store is a plain array

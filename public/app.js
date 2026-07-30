@@ -832,15 +832,19 @@ function renderPager() {
 // ---------- rank chart ----------
 //
 // LP over time, from the snapshots Forward Sync records (ADR-0006). Forward-only
-// by nature — no API serves historical LP — so the graph grows from the day
-// tracking started. Vanilla SVG: 2px lines, 8px markers ringed in the surface
-// color, hairline solid gridlines, a crosshair + one tooltip listing every
-// series at the hovered time. Series colors are validated steps of the app's
-// teal and gold (CVD ΔE 11.9, both ≥3:1 on the panel surface) — don't swap in
-// the raw brand hexes, they fail the lightness/chroma checks.
+// by nature — no Riot API serves historical LP — but externally observed
+// snapshots may extend it. A focus + context chart keeps recent movement
+// readable without distorting elapsed time: the main plot opens to 14 days and
+// ECharts' navigator always shows the full range.
 const RANK_SERIES = { 420: { color: '#0b9a8e', label: 'Solo/Duo' }, 440: { color: '#bd8a2e', label: 'Flex' } };
 const RANK_TIERS = ['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Emerald', 'Diamond'];
 const RANK_DIVS = ['IV', 'III', 'II', 'I'];
+const RANK_PRESETS = [7, 14, 'all'];
+
+let rankChartInstance = null;
+let rankChartResizeObserver = null;
+let rankChartLayout = null;
+let rankChartPreset = 14;
 
 // Inverse of the server's ladderValue: a y-axis position back into words.
 // Apex (≥2800) can't distinguish Master/GM/Challenger from the value alone, so
@@ -856,140 +860,521 @@ function pointLabel(p) {
   return p.division ? `${tier} ${p.division} · ${p.lp} LP` : `${tier} · ${p.lp} LP`;
 }
 
+function rankSource(p) {
+  return p.source === 'opgg' ? 'opgg' : 'forward-sync';
+}
+
+function rankDatum(p) {
+  return { value: [p.chartX, p.value], snapshot: p };
+}
+
+function chartCss(name, fallback) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+}
+
+function rankColors() {
+  return {
+    text: chartCss('--text', '#d8e1e8'),
+    dim: chartCss('--text-dim', '#8998a7'),
+    line: chartCss('--hx-line', '#263747'),
+    panel: chartCss('--hx-panel', '#111d2a'),
+    deep: chartCss('--hx-deep', '#09131d'),
+  };
+}
+
+// A reliable run is a sequence of Forward Sync observations no more than two
+// days apart. Rank is piecewise constant, so ECharts renders each run as
+// step-after. OP.GG points and longer observation gaps are deliberately not
+// smoothed into the run.
+function rankRuns(points) {
+  const runs = [];
+  let run = [];
+  for (const p of points) {
+    const prev = run[run.length - 1];
+    const continues = rankSource(p) === 'forward-sync'
+      && (!prev || RankChartLayout.isCertainTransition(prev, p));
+    if (!continues) {
+      if (run.length) runs.push(run);
+      run = [];
+    }
+    if (rankSource(p) === 'forward-sync') run.push(p);
+  }
+  if (run.length) runs.push(run);
+  return runs;
+}
+
+function rankGapPairs(points) {
+  return points.slice(1).flatMap((p, i) => {
+    const prev = points[i];
+    const uncertain = !RankChartLayout.isCertainTransition(prev, p);
+    return uncertain ? [[prev, p]] : [];
+  });
+}
+
+function rankAxisBoundary(extent, edge) {
+  let low = Number(extent.min);
+  let high = Number(extent.max);
+  if (!Number.isFinite(low) || !Number.isFinite(high)) return edge === 'min' ? 0 : 100;
+  const pad = Math.max(25, (high - low) * 0.12);
+  low -= pad;
+  high += pad;
+  if (high - low < 100) {
+    const middle = (low + high) / 2;
+    low = middle - 50;
+    high = middle + 50;
+  }
+  return edge === 'min' ? Math.floor(low / 100) * 100 : Math.ceil(high / 100) * 100;
+}
+
+function rankWindow(preset) {
+  return RankChartLayout.windowForPreset(rankChartLayout, preset);
+}
+
+function rankRangeText(start, end) {
+  const days = RankChartLayout.daysInWindow(rankChartLayout, start, end);
+  if (!days.length) return '';
+  const fmt = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+  return `${fmt.format(new Date(days[0].at))}–${fmt.format(new Date(days[days.length - 1].at))}`;
+}
+
+function detectedRankPreset(start, end) {
+  if (!rankChartLayout) return null;
+  const tolerance = 0.01;
+  const candidates = [rankChartPreset, 'all', 7, 14]
+    .filter((value, index, values) => value != null && values.indexOf(value) === index);
+  for (const preset of candidates) {
+    const [expectedStart, expectedEnd] = rankWindow(preset);
+    if (Math.abs(start - expectedStart) < tolerance && Math.abs(end - expectedEnd) < tolerance) return preset;
+  }
+  return null;
+}
+
+function syncRankRangeUi(start, end) {
+  rankChartPreset = detectedRankPreset(start, end);
+  $$('.rank-range-btn').forEach((button) => {
+    const value = button.dataset.range === 'all' ? 'all' : Number(button.dataset.range);
+    button.setAttribute('aria-pressed', String(value === rankChartPreset));
+    button.classList.toggle('active', value === rankChartPreset);
+  });
+  const text = `Showing ${rankRangeText(start, end)}`;
+  const label = $('#rank-window-label');
+  const status = $('#rank-range-status');
+  if (label) label.textContent = text;
+  if (status) status.textContent = text;
+}
+
+function setRankWindow(preset) {
+  if (!rankChartInstance || !rankChartLayout) return;
+  rankChartPreset = preset;
+  const [startValue, endValue] = rankWindow(preset);
+  rankChartInstance.dispatchAction({ type: 'dataZoom', startValue, endValue });
+  syncRankRangeUi(startValue, endValue);
+}
+
+function currentRankWindow() {
+  const zoom = rankChartInstance?.getModel()?.getComponent('dataZoom', 0);
+  const range = zoom?.getValueRange?.();
+  return Array.isArray(range) && range.length === 2 ? range.map(Number) : null;
+}
+
+function rankTooltip(params) {
+  const values = (Array.isArray(params) ? params : [params])
+    .filter((p) => p?.data?.snapshot && !String(p.seriesId || '').startsWith('rank-context'));
+  const seen = new Set();
+  const rows = [];
+  for (const item of values) {
+    const p = item.data.snapshot;
+    const key = `${p.queueId}:${p.at}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const source = rankSource(p) === 'opgg' ? 'OP.GG snapshot' : 'Forward Sync';
+    const record = p.wins == null || p.losses == null ? '' : ` · ${p.wins}–${p.losses}`;
+    rows.push(`<div class="rk-tip-row"><span class="rk-swatch" style="background:${RANK_SERIES[p.queueId]?.color || item.color}"></span>`
+      + `<b>${esc(pointLabel(p))}</b><span>${esc(RANK_SERIES[p.queueId]?.label || 'Ranked')}</span></div>`
+      + `<div class="rk-tip-source">${esc(source + record)}</div>`);
+  }
+  if (!rows.length) return '';
+  const at = values[0].data.snapshot.at;
+  return `${rows.join('')}<div class="rk-tip-when">${esc(new Date(at).toLocaleString())}</div>`;
+}
+
+function rankGameTooltip(game) {
+  const result = game.win ? 'Victory' : 'Defeat';
+  const queue = RANK_SERIES[game.queueId]?.label || 'Ranked';
+  const champion = game.championName ? ` · ${game.championName}` : '';
+  return `<div class="rk-tip-row"><span class="rk-game-result ${game.win ? 'win' : 'loss'}">${result}</span>`
+    + `<b>${esc(queue + champion)}</b></div>`
+    + `<div class="rk-tip-when">${esc(new Date(game.at).toLocaleString())}</div>`;
+}
+
+function buildRankSeries(queues, colors, games = []) {
+  const oneQueue = queues.length === 1;
+  const series = [];
+
+  for (const queue of queues) {
+    const meta = RANK_SERIES[queue.queueId];
+    const points = [...queue.points].sort((a, b) => a.at - b.at);
+    const areaColor = oneQueue
+      ? new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: `${meta.color}42` },
+          { offset: 1, color: `${meta.color}00` },
+        ])
+      : null;
+
+    // Invisible full-range series feeds the navigator thumbnail. Main-plot
+    // semantics come from the explicit exact, gap, and imported-point series.
+    series.push({
+      id: `rank-context-${queue.queueId}`,
+      name: `${meta.label} context`,
+      type: 'line',
+      data: points.map(rankDatum),
+      step: 'end',
+      showSymbol: false,
+      silent: true,
+      tooltip: { show: false },
+      lineStyle: { opacity: 0 },
+      itemStyle: { opacity: 0 },
+      emphasis: { disabled: true },
+      z: -1,
+    });
+
+    rankRuns(points).forEach((run, index) => {
+      series.push({
+        id: `rank-exact-${queue.queueId}-${index}`,
+        name: meta.label,
+        type: 'line',
+        data: run.map(rankDatum),
+        step: 'end',
+        showSymbol: run.length === 1,
+        symbol: 'circle',
+        symbolSize: 5,
+        lineStyle: { color: meta.color, width: 2 },
+        itemStyle: { color: meta.color, borderColor: colors.panel, borderWidth: 2 },
+        areaStyle: areaColor ? { color: areaColor } : undefined,
+        emphasis: { disabled: true },
+        connectNulls: false,
+        z: 3,
+      });
+    });
+
+    rankGapPairs(points).forEach(([from, to], index) => {
+      series.push({
+        id: `rank-gap-${queue.queueId}-${index}`,
+        name: 'Observation gap',
+        type: 'line',
+        data: [[from.chartX, from.value], [to.chartX, to.value]],
+        showSymbol: false,
+        silent: true,
+        tooltip: { show: false },
+        lineStyle: { color: meta.color, width: 1.25, type: 'dashed', opacity: 0.55 },
+        emphasis: { disabled: true },
+        z: 1,
+      });
+    });
+
+    const imported = points.filter((p) => rankSource(p) === 'opgg');
+    if (imported.length) {
+      series.push({
+        id: `rank-opgg-${queue.queueId}`,
+        name: `${meta.label} · OP.GG`,
+        type: 'scatter',
+        data: imported.map(rankDatum),
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: { color: colors.panel, borderColor: meta.color, borderWidth: 2 },
+        emphasis: { scale: 1.25 },
+        z: 5,
+      });
+    }
+
+    const latest = points[points.length - 1];
+    series.push({
+      id: `rank-now-${queue.queueId}`,
+      name: `${meta.label} now`,
+      type: 'scatter',
+      data: [rankDatum(latest)],
+      symbol: 'circle',
+      symbolSize: 9,
+      silent: true,
+      tooltip: { show: false },
+      itemStyle: { color: meta.color, borderColor: colors.panel, borderWidth: 2 },
+      z: 6,
+    });
+  }
+
+  for (const result of [
+    { win: true, id: 'rank-games-win', color: '#39c98a' },
+    { win: false, id: 'rank-games-loss', color: '#e2556f' },
+  ]) {
+    const resultGames = games.filter((game) => game.win === result.win);
+    if (!resultGames.length) continue;
+    series.push({
+      id: result.id,
+      name: result.win ? 'Ranked wins' : 'Ranked losses',
+      type: 'scatter',
+      xAxisIndex: 1,
+      yAxisIndex: 1,
+      data: resultGames.map((game) => ({ value: [game.chartX, 0.5], game })),
+      symbol: 'rect',
+      symbolSize: [4, 13],
+      itemStyle: { color: result.color, opacity: 0.9 },
+      emphasis: { scale: 1.35 },
+      tooltip: {
+        show: true,
+        trigger: 'item',
+        formatter: (item) => rankGameTooltip(item.data.game),
+      },
+      z: 8,
+    });
+  }
+
+  return series;
+}
+
+function disposeRankChart() {
+  rankChartResizeObserver?.disconnect();
+  rankChartResizeObserver = null;
+  rankChartInstance?.dispose();
+  rankChartInstance = null;
+}
+
 async function loadRankChart() {
   try {
     const data = await api('/api/history/rank');
-    renderRankChart(data.queues || []);
+    renderRankChart(data.queues || [], data.games || []);
   } catch {
     $('#history-rank').innerHTML = '';
   }
 }
 
-function renderRankChart(queues) {
+function renderRankChart(queues, games = []) {
   const card = $('#history-rank');
-  const series = queues.filter((q) => q.points?.length && RANK_SERIES[q.queueId]);
-  if (!series.length) {
+  const sourceQueues = queues
+    .filter((q) => q.points?.length && RANK_SERIES[q.queueId])
+    .map((q) => ({ ...q, points: [...q.points].sort((a, b) => a.at - b.at) }));
+  disposeRankChart();
+
+  if (!sourceQueues.length) {
     card.innerHTML = `<div class="rank-head"><span class="lbl">Rank over time</span></div>
       <p class="muted small">No rank recorded yet. Your LP graph starts building the first time the app sees the
       League client — snapshots are taken automatically after each game.</p>`;
     return;
   }
 
-  const W = 640, H = 220, PAD = { t: 14, r: 16, b: 26, l: 66 };
-  const pts = series.flatMap((s) => s.points);
-  let tMin = Math.min(...pts.map((p) => p.at));
-  let tMax = Math.max(...pts.map((p) => p.at));
-  if (tMax - tMin < 36e5) { tMin -= 432e5; tMax += 432e5; } // <1h of data: pad ±12h so lone points sit mid-chart
-  let vMin = Math.min(...pts.map((p) => p.value));
-  let vMax = Math.max(...pts.map((p) => p.value));
-  vMin = Math.floor((vMin - 25) / 100) * 100; // snap to division boundaries
-  vMax = Math.ceil((vMax + 25) / 100) * 100;
-
-  const x = (t) => PAD.l + ((t - tMin) / (tMax - tMin)) * (W - PAD.l - PAD.r);
-  const y = (v) => H - PAD.b - ((v - vMin) / (vMax - vMin)) * (H - PAD.t - PAD.b);
-
-  // Gridlines on division boundaries, thinned to ≤5 labeled ticks.
-  const step = 100 * Math.max(1, Math.ceil((vMax - vMin) / 100 / 5));
-  let grid = '';
-  for (let v = vMin; v <= vMax; v += step) {
-    grid += `<line class="rk-grid" x1="${PAD.l}" y1="${y(v)}" x2="${W - PAD.r}" y2="${y(v)}"/>
-      <text class="rk-tick" x="${PAD.l - 8}" y="${y(v) + 3}" text-anchor="end">${esc(rankLabel(v))}</text>`;
+  if (!window.RankChartLayout) {
+    card.innerHTML = '<p class="error-box">The rank chart layout could not be loaded.</p>';
+    return;
   }
-  const day = (t) => new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-  grid += `<text class="rk-tick" x="${PAD.l}" y="${H - 8}">${esc(day(tMin))}</text>
-    <text class="rk-tick" x="${W - PAD.r}" y="${H - 8}" text-anchor="end">${esc(day(tMax))}</text>`;
 
-  const marks = series.map((s) => {
-    const c = RANK_SERIES[s.queueId].color;
-    const line = s.points.length > 1
-      ? `<polyline class="rk-line" stroke="${c}" points="${s.points.map((p) => `${x(p.at)},${y(p.value)}`).join(' ')}"/>`
-      : '';
-    const dots = s.points.map((p) =>
-      `<circle class="rk-dot" cx="${x(p.at)}" cy="${y(p.value)}" r="4" fill="${c}"/>`).join('');
-    return line + dots;
-  }).join('');
+  rankChartLayout = RankChartLayout.layoutQueues(sourceQueues, games);
+  const ranked = rankChartLayout.queues;
+  const rankedGames = rankChartLayout.games;
+  const points = ranked.flatMap((s) => s.points);
+  const firstDay = rankChartLayout.days[0];
+  const lastDay = rankChartLayout.days[rankChartLayout.days.length - 1];
+  if (lastDay.ordinal - firstDay.ordinal <= 13 * 24 * 60 * 60 * 1000) rankChartPreset = 'all';
 
-  // Legend only when both queues are present — one series is named by the title.
-  const legend = series.length > 1
-    ? `<span class="rank-legend">${series.map((s) =>
+  const legend = ranked.length > 1
+    ? `<span class="rank-legend">${ranked.map((s) =>
         `<span class="rk-key"><span class="rk-swatch" style="background:${RANK_SERIES[s.queueId].color}"></span>${esc(RANK_SERIES[s.queueId].label)}</span>`).join('')}</span>`
     : '';
-  const latest = series.map((s) => {
+  const hasImported = points.some((p) => rankSource(p) === 'opgg');
+  const sourceKey = hasImported
+    ? `<span class="rank-source-key"><span class="rk-source-dot"></span>OP.GG snapshot</span>`
+    : '';
+  const gameKey = rankedGames.length
+    ? `<span class="rank-game-key"><span class="rk-game-tick win"></span><span class="rk-game-tick loss"></span>Ranked matches (win / loss)</span>`
+    : '';
+  const latest = ranked.map((s) => {
     const p = s.points[s.points.length - 1];
-    return `<span class="rk-now"><span class="rk-swatch" style="background:${RANK_SERIES[s.queueId].color}"></span><b>${esc(pointLabel(p))}</b></span>`;
+    return `<span class="rk-now"><span class="rk-now-lbl">Now</span><span class="rk-swatch" style="background:${RANK_SERIES[s.queueId].color}"></span><b>${esc(pointLabel(p))}</b></span>`;
   }).join('');
+  const table = ranked.flatMap((s) => s.points.map((p) => ({ s, p })))
+    .sort((a, b) => b.p.at - a.p.at)
+    .map(({ s, p }) => `<tr><td>${esc(new Date(p.at).toLocaleString())}</td><td>${esc(RANK_SERIES[s.queueId].label)}</td><td>${esc(pointLabel(p))}</td><td>${p.wins == null || p.losses == null ? '—' : `${p.wins}–${p.losses}`}</td></tr>`)
+    .join('');
 
   card.innerHTML = `
     <div class="rank-head">
-      <span class="lbl">Rank over time</span>${legend}<span class="spacer"></span>${latest}
+      <span class="lbl">Rank over time</span>${legend}${sourceKey}${gameKey}<span class="spacer"></span>${latest}
     </div>
-    <div class="rank-plot">
-      <svg viewBox="0 0 ${W} ${H}" tabindex="0" role="img" aria-label="LP and rank over time">
-        ${grid}
-        <line class="rk-cross hidden" y1="${PAD.t}" y2="${H - PAD.b}"/>
-        ${marks}
-      </svg>
-      <div class="rank-tip hidden"></div>
+    <div class="rank-controls">
+      <div class="rank-range" role="group" aria-label="Visible rank-history range">
+        ${RANK_PRESETS.map((preset) => {
+          const label = preset === 'all' ? 'All' : `${preset}D`;
+          return `<button type="button" class="rank-range-btn" data-range="${preset}" aria-pressed="false">${label}</button>`;
+        }).join('')}
+      </div>
+      <span id="rank-window-label" class="rank-window-label muted small"></span>
+      <span class="rank-zoom-hint muted small">Dashed = unobserved LP path · Drag navigator · Ctrl+scroll to zoom</span>
     </div>
+    <div id="rank-echart" class="rank-echart"></div>
+    <span id="rank-range-status" class="sr-only" aria-live="polite"></span>
     <details class="rank-table"><summary class="muted small">View as table</summary>
-      <table><thead><tr><th>When</th><th>Queue</th><th>Rank</th><th>W–L</th></tr></thead><tbody>${
-        series.flatMap((s) => s.points.map((p) => ({ s, p })))
-          .sort((a, b) => b.p.at - a.p.at)
-          .map(({ s, p }) => `<tr><td>${esc(new Date(p.at).toLocaleString())}</td><td>${esc(RANK_SERIES[s.queueId].label)}</td><td>${esc(pointLabel(p))}</td><td>${p.wins}–${p.losses}</td></tr>`).join('')
-      }</tbody></table>
+      <table><thead><tr><th>When</th><th>Queue</th><th>Rank</th><th>W–L</th></tr></thead><tbody>${table}</tbody></table>
     </details>`;
 
-  attachRankHover(card, series, x, tMin, tMax);
-}
-
-// Crosshair + one tooltip for all series: the hairline snaps to the nearest
-// snapshot time, and the readout lists every queue's standing at that moment —
-// nobody has to land a pointer on a 2px line. Focus shows the newest point, so
-// the same details are reachable from the keyboard.
-function attachRankHover(card, series, x, tMin, tMax) {
-  const svg = card.querySelector('svg');
-  const cross = card.querySelector('.rk-cross');
-  const tip = card.querySelector('.rank-tip');
-  const times = [...new Set(series.flatMap((s) => s.points.map((p) => p.at)))].sort((a, b) => a - b);
-
-  const show = (t) => {
-    cross.setAttribute('x1', x(t)); cross.setAttribute('x2', x(t));
-    cross.classList.remove('hidden');
-    tip.replaceChildren(...series.map((s) => {
-      // Standing "as of" the crosshair time: the latest snapshot at or before it.
-      const p = [...s.points].reverse().find((q) => q.at <= t) || s.points[0];
-      const row = document.createElement('div');
-      row.className = 'rk-tip-row';
-      const key = document.createElement('span');
-      key.className = 'rk-swatch';
-      key.style.background = RANK_SERIES[s.queueId].color;
-      const val = document.createElement('b');
-      val.textContent = pointLabel(p); // LCU strings are untrusted — textContent, never innerHTML
-      const lbl = document.createElement('span');
-      lbl.className = 'muted';
-      lbl.textContent = ` ${RANK_SERIES[s.queueId].label}`;
-      row.append(key, val, lbl);
-      return row;
-    }));
-    const when = document.createElement('div');
-    when.className = 'rk-tip-when muted';
-    when.textContent = new Date(t).toLocaleString();
-    tip.append(when);
-    tip.classList.remove('hidden');
-    const box = svg.getBoundingClientRect();
-    const px = ((x(t)) / 640) * box.width;
-    tip.style.left = `${Math.min(Math.max(px, 70), box.width - 70)}px`;
-  };
-  const hide = () => { cross.classList.add('hidden'); tip.classList.add('hidden'); };
-
-  svg.addEventListener('pointermove', (ev) => {
-    const box = svg.getBoundingClientRect();
-    const t = tMin + ((ev.clientX - box.left) / box.width) * (tMax - tMin);
-    show(times.reduce((a, b) => (Math.abs(b - t) < Math.abs(a - t) ? b : a)));
+  $$('.rank-range-btn').forEach((button) => {
+    button.onclick = () => setRankWindow(button.dataset.range === 'all' ? 'all' : Number(button.dataset.range));
   });
-  svg.addEventListener('pointerleave', hide);
-  svg.addEventListener('focus', () => show(times[times.length - 1]));
-  svg.addEventListener('blur', hide);
+
+  if (!window.echarts) {
+    $('#rank-echart').innerHTML = '<p class="error-box">The chart library could not be loaded.</p>';
+    return;
+  }
+
+  const colors = rankColors();
+  const [startValue, endValue] = rankWindow(rankChartPreset);
+  const container = $('#rank-echart');
+  const [axisMin, axisMax] = rankChartLayout.xExtent;
+  const dayByCenter = new Map(rankChartLayout.days.map((day) => [day.center, day]));
+  const dayLabel = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' });
+  rankChartInstance = echarts.init(container, null, { renderer: 'svg' });
+  rankChartInstance.setOption({
+    animation: false,
+    backgroundColor: 'transparent',
+    textStyle: { color: colors.text, fontFamily: getComputedStyle(document.body).fontFamily },
+    aria: {
+      enabled: true,
+      description: 'Rank over time. Active days are evenly spaced. Green and red ticks represent ranked wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the 7 day, 14 day, and All buttons to change the visible range. Exact snapshot values are also available in the table below.',
+    },
+    grid: [
+      { top: 16, right: 18, bottom: 128, left: 78, containLabel: false },
+      { right: 18, bottom: 73, height: 18, left: 78, containLabel: false },
+    ],
+    xAxis: [
+      {
+        type: 'value',
+        gridIndex: 0,
+        min: axisMin,
+        max: axisMax,
+        interval: 1,
+        boundaryGap: false,
+        axisLine: { lineStyle: { color: colors.line } },
+        axisTick: { show: false },
+        axisLabel: {
+          color: colors.dim,
+          hideOverlap: true,
+          formatter: (value) => {
+            const rounded = Math.round(value);
+            const day = Math.abs(value - rounded) < 0.01 ? dayByCenter.get(rounded) : null;
+            return day ? dayLabel.format(new Date(day.at)) : '';
+          },
+        },
+        splitLine: { show: false },
+        axisPointer: { lineStyle: { color: colors.dim, width: 1 } },
+      },
+      {
+        type: 'value',
+        gridIndex: 1,
+        min: axisMin,
+        max: axisMax,
+        show: false,
+      },
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        gridIndex: 0,
+        scale: true,
+        splitNumber: 5,
+        minInterval: 100,
+        min: (extent) => rankAxisBoundary(extent, 'min'),
+        max: (extent) => rankAxisBoundary(extent, 'max'),
+        axisLine: { show: false },
+        axisTick: { show: false },
+        axisLabel: { color: colors.dim, margin: 12, formatter: (value) => rankLabel(Math.round(value)) },
+        splitLine: { lineStyle: { color: colors.line, width: 1 } },
+      },
+      {
+        type: 'value',
+        gridIndex: 1,
+        min: 0,
+        max: 1,
+        show: false,
+      },
+    ],
+    tooltip: {
+      trigger: 'axis',
+      confine: true,
+      backgroundColor: colors.deep,
+      borderColor: colors.line,
+      borderWidth: 1,
+      padding: [7, 10],
+      textStyle: { color: colors.text, fontSize: 12 },
+      axisPointer: { type: 'line', snap: true },
+      formatter: rankTooltip,
+    },
+    dataZoom: [
+      {
+        id: 'rank-inside',
+        type: 'inside',
+        xAxisIndex: [0, 1],
+        filterMode: 'filter',
+        startValue,
+        endValue,
+        zoomOnMouseWheel: 'ctrl',
+        moveOnMouseMove: true,
+        moveOnMouseWheel: false,
+        preventDefaultMouseMove: true,
+      },
+      {
+        id: 'rank-slider',
+        type: 'slider',
+        xAxisIndex: [0, 1],
+        filterMode: 'filter',
+        startValue,
+        endValue,
+        bottom: 8,
+        height: 34,
+        showDetail: false,
+        showDataShadow: true,
+        brushSelect: false,
+        backgroundColor: colors.deep,
+        borderColor: colors.line,
+        dataBackground: {
+          lineStyle: { color: colors.dim, opacity: 0.55 },
+          areaStyle: { color: colors.dim, opacity: 0.12 },
+        },
+        selectedDataBackground: {
+          lineStyle: { color: RANK_SERIES[ranked[0].queueId].color, opacity: 0.9 },
+          areaStyle: { color: RANK_SERIES[ranked[0].queueId].color, opacity: 0.2 },
+        },
+        fillerColor: `${RANK_SERIES[ranked[0].queueId].color}20`,
+        handleSize: '85%',
+        handleStyle: {
+          color: colors.panel,
+          borderColor: RANK_SERIES[ranked[0].queueId].color,
+          borderWidth: 1.5,
+        },
+        moveHandleStyle: { color: colors.dim, opacity: 0.75 },
+        textStyle: { color: colors.dim },
+      },
+    ],
+    graphic: rankedGames.length ? [{
+      type: 'text',
+      left: 20,
+      bottom: 76,
+      silent: true,
+      style: { text: 'GAMES', fill: colors.dim, font: '10px sans-serif' },
+    }] : [],
+    series: buildRankSeries(ranked, colors, rankedGames),
+  });
+
+  syncRankRangeUi(startValue, endValue);
+  rankChartInstance.on('datazoom', () => {
+    requestAnimationFrame(() => {
+      const range = currentRankWindow();
+      if (range) syncRankRangeUi(range[0], range[1]);
+    });
+  });
+
+  if ('ResizeObserver' in window) {
+    rankChartResizeObserver = new ResizeObserver(() => rankChartInstance?.resize());
+    rankChartResizeObserver.observe(container);
+  } else {
+    window.addEventListener('resize', () => rankChartInstance?.resize(), { once: true });
+  }
 }
 
 // ---------- history detail ----------

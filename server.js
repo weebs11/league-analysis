@@ -20,6 +20,14 @@ import { ensureDirs, makeMatchId } from './src/history/paths.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 app.use(express.json({ limit: '1mb' }));
+// ECharts is a pinned production dependency, served locally so the desktop app
+// stays fully offline-capable. Keep the browser build out of public/ rather than
+// checking a 1 MB generated vendor file into the repo.
+app.get('/vendor/echarts.min.js', (_req, res) => {
+  res.type('application/javascript');
+  res.set('Cache-Control', 'public, max-age=31536000, immutable');
+  res.sendFile(path.join(__dirname, 'node_modules', 'echarts', 'dist', 'echarts.min.js'));
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ---- Champion artwork (proxied + cached from Riot's CDN) --------------------
