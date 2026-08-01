@@ -13,6 +13,7 @@ let championIndex = null; // { byId, byKey, byName }
 const championDetails = new Map(); // ddragon id -> full champion data
 let items = null; // itemId -> { name, plaintext, tags, gold }
 let itemCatalog = null; // compact text list of purchasable SR items, for the coach
+let itemList = null; // [{ id, name, gold, stats, summary }] for UI icons + tooltips
 let runes = null; // { byId: perk/style id -> { id, name, icon }, styles: [tree] }
 let spells = null; // numeric key -> { id, key, name } (summoner spells)
 
@@ -63,6 +64,11 @@ export async function init() {
   const champJson = await cachedFetch(`champion-${nextVersion}.json`, `${BASE}/cdn/${nextVersion}/data/en_US/champion.json`);
   const byId = {}; const byKey = {}; const byName = {};
   for (const c of Object.values(champJson.data)) {
+    // Patch 16.15 added LoL Classic variants to champion.json: ids prefixed
+    // "Jade_" with numeric keys offset by 60000 (e.g. Jade_Ahri / 60103).
+    // They share display names with the live roster, so keeping them would
+    // duplicate the champion grid and clobber the by-name index. Skip them.
+    if (c.id.startsWith('Jade_') || Number(c.key) >= 60000) continue;
     const entry = {
       id: c.id, // e.g. "MissFortune"
       key: Number(c.key), // numeric id used by LCU, e.g. 21
@@ -111,6 +117,7 @@ export async function init() {
   championIndex = { byId, byKey, byName };
   items = itemJson.data;
   itemCatalog = buildItemCatalog(items);
+  itemList = buildItemList(items);
   runes = { byId: runesById, styles: runeStylesList };
   spells = spellsByKey;
 }
@@ -124,7 +131,7 @@ export function getVersion() {
 // be grounded in what the shop actually sells right now. This builds a compact
 // one-line-per-item listing of every purchasable Summoner's Rift item.
 
-function buildItemCatalog(itemData) {
+function purchasableItems(itemData) {
   // The same item can appear under several ids (e.g. Ornn masterwork variants).
   // Keep one entry per name — the base-shop version with the lowest id.
   const byName = new Map();
@@ -137,7 +144,11 @@ function buildItemCatalog(itemData) {
     const prev = byName.get(it.name);
     if (!prev || Number(id) < Number(prev.id)) byName.set(it.name, { id, it });
   }
-  const lines = [...byName.values()].map(({ it }) => {
+  return [...byName.values()];
+}
+
+function buildItemCatalog(itemData) {
+  const lines = purchasableItems(itemData).map(({ it }) => {
     const cat = it.tags?.includes('Boots') ? 'Boots'
       : it.tags?.includes('Consumable') ? 'Consumable'
       : it.into?.length ? 'Component'
@@ -150,6 +161,33 @@ function buildItemCatalog(itemData) {
 
 export function itemCatalogText() {
   return itemCatalog;
+}
+
+// Stat lines from the <stats> block of an item's rich description, e.g.
+// ["65 Attack Damage", "25% Critical Strike Chance"]. Consumables and some
+// components have no stats block — they return [].
+function itemStatLines(it) {
+  const m = /<stats>([\s\S]*?)<\/stats>/i.exec(it.description || '');
+  if (!m) return [];
+  return m[1].split(/<br\s*\/?>/i).map((line) => stripHtml(line)).filter(Boolean);
+}
+
+function buildItemList(itemData) {
+  return purchasableItems(itemData).map(({ id, it }) => ({
+    id: Number(id),
+    name: it.name,
+    gold: it.gold?.total ?? 0,
+    stats: itemStatLines(it),
+    // The compact effect one-liner ("Deal bonus damage to low-health enemies").
+    summary: (it.plaintext || '').slice(0, 160),
+  }));
+}
+
+// For the UI: turns the item names the coach writes back into ids (icons) and
+// stat lines (hover tooltips). Same inclusion rules as the coach's catalog, so
+// every name the model is allowed to recommend resolves here.
+export function itemLookup() {
+  return itemList || [];
 }
 
 // ---- Patch auto-refresh -----------------------------------------------------
@@ -246,6 +284,9 @@ export async function champDetails(ddragonId) {
       key: keys[i] || '?',
       name: s.name,
       description: stripHtml(s.description).slice(0, 300),
+      // Seconds per rank, e.g. [12, 11, 10, 9, 8]. Riot's data uses one entry
+      // per rank; transform-style kits can deviate, so don't assume length 5.
+      cooldowns: Array.isArray(s.cooldown) ? s.cooldown : [],
     })),
     allytips: c.allytips || [],
     enemytips: c.enemytips || [],

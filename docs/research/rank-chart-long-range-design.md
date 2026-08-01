@@ -1,8 +1,24 @@
 # Rank Snapshot chart across sparse and dense time ranges
 
-**Checked:** 2026-07-23
+**Checked:** 2026-07-23  
+**Revised after visual validation:** 2026-07-31
 
 ## Recommendation
+
+Use a **continuous datetime scale** for the horizontal axis:
+
+- Position every Rank Snapshot and archived ranked Match at its actual timestamp.
+- Make horizontal distance proportional to real elapsed time, including inactive days.
+- Open to the latest 14 days, with `7D`, `14D`, `30D`, and `All` controls.
+- Connect consecutive observed post-Match standings with a clean point-to-point line.
+  A multi-Match or long observation gap remains dashed and explicitly unobserved.
+- Keep the full-history navigator and the quieter win/loss activity row for context.
+
+This supersedes both the original active-day recommendation below and the briefly tested
+Match-ordinal revision. The product requirement is that this graph represent time; Match
+ordinal made dense sessions readable but changed the meaning of horizontal distance.
+
+## Original recommendation (superseded)
 
 Use a **focus + context** chart:
 
@@ -38,18 +54,18 @@ and table; the chart's horizontal geometry instead communicates active days and 
 This is intentionally not "one point = one slot", which would let a high-volume day consume
 most of the graph.
 
-## Why the current chart fails
+## Why the active-day implementation failed
 
-The chart in [`public/app.js`](../../public/app.js) maps the complete timestamp extent into
-one 558 px plot using a single linear expression. The current data spans about 54.5 days,
-while 32 of 35 points fall in the latest five days. Those recent points therefore receive
-only about 49 px. Four OP.GG observations also create long, solid diagonal segments across
-14-18 day intervals even though the app did not observe the standing between them
-([current Rank Snapshots](../../data/matches/rank-history.json)).
+The first ECharts implementation replaced linear time with equal-width active-day bands, but
+then squeezed every Match and Rank Snapshot inside a busy day into the same 1.36-unit band.
+The real corpus has more than 100 ranked Matches across only a dozen active days, including
+sessions of 15-20 Matches. A busy session therefore received no more room than a one-Match
+day, leaving its observed LP changes as tiny, unreadable stair-steps.
 
-The problem is not point count or rendering performance. It is that one fixed viewport is
-being asked to show both overview and detail, elapsed downtime is receiving visual emphasis,
-and the same solid line style is being used for two different evidence qualities.
+The problem is not point count or rendering performance. It is the unit of horizontal
+comparison: rank changes happen after Matches, so Matches—not elapsed hours or active
+calendar days—need to receive the visual weight. Evidence quality still remains distinct:
+solid segments mean consecutive observations, while dashed segments mean an unobserved path.
 
 ## Design details
 
@@ -165,18 +181,19 @@ frontend dependencies appear. The project is Apache-2.0 licensed
 
 ## Proposed acceptance checks
 
-1. On initial load, the last 14 days occupy the full focus plot while the navigator shows all
-   history.
-2. `7D`, `14D`, and `All` work by mouse and keyboard and announce the visible date range.
-3. Active days remain equally spaced after dragging or resizing the navigator; hours within
-   and between days never change their horizontal weight.
+1. On initial load, the latest 14 elapsed days occupy the full focus plot while the navigator
+   shows all history.
+2. `7D`, `14D`, `30D`, and `All` work by mouse and keyboard and announce the visible date
+   range.
+3. Horizontal distance remains proportional to timestamp differences after dragging or
+   resizing the navigator; a three-day gap is three times wider than a one-day gap.
 4. OP.GG observations are visually distinguishable and no solid line crosses their long
    unobserved gaps.
-5. Dense Forward Sync data uses step-after transitions; tooltips still expose exact Rank
-   Snapshot values and timestamps.
+5. Dense Forward Sync data uses a clean point-to-point trend; tooltips still expose exact
+   Rank Snapshot values and timestamps.
 6. The complete table remains available and readable without operating the chart.
-7. A day with one observation, a day with 20+ observations, widely separated active days,
-   and large LP swings all render without hour-driven gaps or clipped range boundaries.
+7. A one-Match day, a 20+ Match session, widely separated play dates, and large LP swings all
+   render without clipped range boundaries or misleading horizontal spacing.
 8. Every non-remake ranked Match in the Archive produces exactly one activity tick, including
    Match-only days with no Rank Snapshot.
 9. A Rank Snapshot whose cumulative record jumps by more than one game never creates a solid

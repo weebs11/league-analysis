@@ -26,7 +26,8 @@ Rules for every piece of advice you write:
 - Ability descriptions must match the CURRENT patch data provided. If provided data conflicts with your memory, trust the provided data.
 - Item advice must come from the CURRENT-PATCH ITEM CATALOG provided in this conversation. Your training data's item knowledge is outdated — items are added, removed, and reworked every patch. Recommend only items that appear in the catalog, using their exact names. If the player mentions an item you don't recognize, check the catalog before ever claiming it doesn't exist.
 - Never invent items or abilities.
-- Keep individual strings tight: 1-3 sentences unless the field clearly calls for more.
+- Be scannable. Lead with the action, cut filler ("remember to", "make sure to", "try to", "it's important to"). One idea per sentence.
+- Keep individual strings tight: 1-2 sentences unless the field clearly calls for more.
 - Difficulty and threat ratings should be honest — don't inflate everything to "High".`;
 
 // System prompt + current-patch item catalog. The catalog is a stable ~7k-token
@@ -161,6 +162,10 @@ async function fetchMetaNotes(championName, role) {
 
 const str = { type: 'string' };
 const strArr = { type: 'array', items: { type: 'string' } };
+// Field intent must ride IN the schema as `description` — the model never sees
+// JS comments. Length guidance lives here; count caps live in the user prompt
+// (structured outputs don't enforce maxItems).
+const desc = (description) => ({ type: 'string', description });
 const obj = (properties) => ({
   type: 'object',
   properties,
@@ -173,48 +178,64 @@ const GLOSSARY = arr(obj({ term: str, definition: str }));
 
 const GAME_PLAN_SCHEMA = obj({
   overview: obj({
-    summary: str, // 2-4 sentences: the shape of this game for the player
+    summary: desc('The shape of this game for the player — at most 2 sentences, no filler.'),
     matchupDifficulty: { type: 'string', enum: ['Easy', 'Moderate', 'Hard', 'Very Hard'] },
-    keyPrinciple: str, // the ONE thing to remember this game
-    winCondition: str, // how the player's team wins this game
+    keyPrinciple: desc('The ONE thing to remember this game — a single imperative sentence.'),
+    winCondition: desc('How the player\'s team wins — one sentence naming who carries and how.'),
   }),
   laneMatchup: obj({
-    analysis: str, // how the direct lane matchup plays out
+    analysis: desc('How the direct lane matchup plays out — at most 2 sentences.'),
     whoIsStrongerEarly: { type: 'string', enum: ['You', 'Enemy', 'Even'] },
-    tradingPattern: str, // when/how to trade damage
-    dangerWindows: str, // levels/moments where the enemy can kill you
-    tips: strArr,
+    tradingPattern: desc('When and how to trade damage — one sentence keyed to a concrete trigger (an ability on cooldown, a wave state).'),
+    dangerWindows: desc('When the enemy can kill the player — name the specific levels or minute marks and what changes at each.'),
   }),
   enemyThreats: arr(
     obj({
-      champion: str, // exact champion name
+      champion: desc('Exact champion name as it appears in the roster.'),
       role: str,
       threatLevel: { type: 'string', enum: ['Low', 'Moderate', 'High', 'Extreme'] },
-      summary: str, // what this champion does, in plain language
+      summary: desc('What this champion does, in plain language — one sentence.'),
       keyAbilities: arr(
         obj({
           key: { type: 'string', enum: ['Passive', 'Q', 'W', 'E', 'R'] },
-          name: str,
-          whatItDoes: str,
-          howToReact: str,
+          name: desc('Ability name exactly as in the champion data.'),
+          whatItDoes: desc('What the ability does to the player — one short sentence.'),
+          howToReact: desc('The concrete reaction — one short sentence.'),
         })
       ),
-      howToPlayAgainst: str,
+      howToPlayAgainst: desc('Matchup-level counterplay — at most 2 sentences.'),
     })
   ),
+  // The laning threat board: the enemy abilities most likely to kill or catch
+  // the player before ~14 minutes. Cooldowns (and ult unlock levels) are
+  // attached server-side from Data Dragon (attachCooldowns), never model-said.
   gamePlan: obj({
-    earlyGame: obj({ goal: str, tips: strArr }),
-    midGame: obj({ goal: str, tips: strArr }),
-    lateGame: obj({ goal: str, tips: strArr }),
-    teamfightRole: str, // what the player should be doing in fights
+    earlyGame: obj({
+      goal: desc('The laning-phase goal — one sentence.'),
+      threats: arr(
+        obj({
+          champion: desc('Exact champion name as it appears in the roster.'),
+          ability: { type: 'string', enum: ['Passive', 'Q', 'W', 'E', 'R'] },
+          name: desc('Ability name exactly as in the champion data.'),
+          danger: desc('What it does to the player — one clause, under ~12 words.'),
+          play: desc('The dodge cue, or what to punish while it\'s down — one clause, under ~12 words.'),
+        })
+      ),
+      tips: {
+        type: 'array',
+        description: 'The ONLY lane-tips list (3-4 items).',
+        items: desc('One imperative sentence under ~14 words. Lead with the action.'),
+      },
+    }),
+    teamfightRole: desc('What the player does in teamfights — position and target priority, at most 2 sentences.'),
   }),
   itemization: obj({
-    startingItems: obj({ items: strArr, why: str }),
-    coreBuild: arr(obj({ item: str, why: str })), // in purchase order
-    boots: obj({ item: str, why: str }),
-    situational: arr(obj({ item: str, buyWhen: str })),
+    startingItems: obj({ items: strArr, why: desc('One sentence.') }),
+    coreBuild: arr(obj({ item: str, why: desc('Why this item into this enemy team — one sentence.') })), // in purchase order
+    boots: obj({ item: str, why: desc('One sentence.') }),
+    situational: arr(obj({ item: str, buyWhen: desc('The trigger to buy it — one clause.') })),
     enemyDamageProfile: { type: 'string', enum: ['Mostly Physical', 'Mostly Magic', 'Mixed'] },
-    defensiveAdvice: str, // how to adapt defensively vs this comp
+    defensiveAdvice: desc('How to adapt defensively vs this comp — at most 2 sentences.'),
   }),
   glossary: GLOSSARY,
 });
@@ -245,10 +266,52 @@ async function abilityContext(champRefs) {
   return out;
 }
 
+// Attach per-rank cooldowns from Data Dragon to every ability the plan calls
+// out. Cooldowns are patch facts, not coaching judgment — decorating after
+// generation means the UI never shows a hallucinated number. Best-effort: an
+// unmatched champion name or ability key just renders without a cooldown chip.
+// Exported for tests.
+export async function attachCooldowns(plan, game) {
+  const idByName = new Map(
+    (game.enemies || []).map((e) => e.champion).filter(Boolean).map((c) => [c.name, c.id])
+  );
+  const spellCache = new Map(); // champion name -> spells[] | null
+  const spellsFor = async (name) => {
+    if (!spellCache.has(name)) {
+      let spells = null;
+      try {
+        const id = idByName.get(name);
+        if (id) spells = (await ddragon.champDetails(id))?.spells || null;
+      } catch {
+        // offline with a cold champion-details cache
+      }
+      spellCache.set(name, spells);
+    }
+    return spellCache.get(name);
+  };
+  const decorate = async (championName, entry, key) => {
+    const spells = await spellsFor(championName);
+    const spell = spells?.find((s) => s.key === key); // 'Passive' never matches — no cooldown
+    if (spell?.cooldowns?.length) {
+      entry.cooldowns = spell.cooldowns;
+      // A standard 3-rank ultimate unlocks at level 6 — decisive on a lane
+      // threat board ("this button doesn't exist yet"). Kits whose R ranks
+      // differently (Elise, Nidalee, Jayce…) are left untagged.
+      if (key === 'R' && spell.cooldowns.length === 3) entry.unlockLevel = 6;
+    }
+  };
+  for (const t of plan.gamePlan?.earlyGame?.threats || []) await decorate(t.champion, t, t.ability);
+  for (const enemy of plan.enemyThreats || []) {
+    for (const a of enemy.keyAbilities || []) await decorate(enemy.champion, a, a.key);
+  }
+  return plan;
+}
+
 function playerLine(p) {
   const bits = [p.champion?.name || 'Unknown'];
   if (p.role) bits.push(`role: ${p.role}`);
   if (p.level) bits.push(`level ${p.level}`);
+  if (p.spells?.length) bits.push(`summoners: ${p.spells.join('/')}`);
   if (p.items?.length) bits.push(`items: ${p.items.map((i) => i.name).join(', ')}`);
   if (p.scores) bits.push(`KDA ${p.scores.kills}/${p.scores.deaths}/${p.scores.assists}, ${p.scores.cs} CS`);
   return bits.join(' — ');
@@ -405,8 +468,12 @@ export async function generateGamePlan(game, onProgress = () => {}) {
     `Produce the full coaching breakdown:`,
     `- "laneMatchup" should focus on the enemy laner(s) directly opposing my role (for bot lane, cover both the enemy ADC and support as a duo).`,
     `- "enemyThreats" must cover ALL five enemy champions, ordered from most to least dangerous to me specifically. Only include abilities worth knowing about (2-4 per champion).`,
+    `- "gamePlan.earlyGame.threats" is my laning threat board: the 3-6 enemy abilities most likely to kill or catch me before ~14 minutes — my direct lane opponent(s)' scariest buttons plus the enemy jungler's main gank tool, ordered by danger. For the jungler's entry, "play" must say when the first gank window opens and which side to ward. Do NOT state cooldown numbers anywhere — real per-rank cooldowns are attached automatically from patch data.`,
+    `- "gamePlan.earlyGame.tips" (3-4 items) is the ONLY lane-tips list. Make one tip my first-back plan: the gold amount to look for and what to buy, using exact catalog names.`,
+    `- Factor summoner spells into the advice where they matter (enemy Ignite kill pressure, a laner without Flash, Teleport ganks).`,
     `- "itemization" must react to the actual enemy team (their damage types, healing, tanks) and to items they already have. Recommend current-patch items only.`,
     `- "glossary" should define every jargon term you used (aim for 5-12 terms).`,
+    `- Obey every field's length guidance exactly — this UI is scanned in the seconds before minions spawn, not read.`,
   ].join('\n');
   // The game plan is the deliverable — full effort here.
   const plan = await generateStructured(GAME_PLAN_SCHEMA, prompt, {
@@ -415,7 +482,7 @@ export async function generateGamePlan(game, onProgress = () => {}) {
     expectedChars: lastPlanChars,
   });
   lastPlanChars = Math.max(4000, JSON.stringify(plan).length);
-  return plan;
+  return attachCooldowns(plan, game);
 }
 
 // Follow-up Q&A about the current game. `history` is [{role, content}] from

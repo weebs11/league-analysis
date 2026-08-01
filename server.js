@@ -56,6 +56,14 @@ app.get('/img/item/:id', async (req, res) => {
   }
 });
 
+// Item metadata for the UI's icons and hover-stat tooltips. Names in coaching
+// plans resolve to ids client-side; stats come from the same patch data as the
+// icons, so a tooltip can never disagree with the shop.
+app.get('/api/items', (_req, res) => {
+  res.set('Cache-Control', 'no-cache'); // changes on patch day, cheap to refetch
+  res.json({ patch: ddragon.getVersion(), items: ddragon.itemLookup() });
+});
+
 app.get('/img/rune/:id', async (req, res) => {
   try {
     const img = await ddragon.runeImage(req.params.id);

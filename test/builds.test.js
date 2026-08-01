@@ -263,6 +263,13 @@ test('builds: champion build is decorated and role defaults to the primary', asy
   assert.ok(body.lateItems.every((i) => i.name && i.winRate > 0.3 && i.winRate < 0.7));
   assert.ok(body.runes.winRate > 0.3 && body.runes.winRate < 0.7);
   assert.ok(body.skills.order.length >= 9);
+
+  // Ability cooldowns, decorated from Data Dragon for the skill-order card.
+  assert.deepEqual(body.abilities.map((a) => a.key), ['Q', 'W', 'E', 'R']);
+  for (const a of body.abilities) {
+    assert.ok(a.name.length > 0);
+    assert.ok(a.cooldowns.length >= 1 && a.cooldowns.every((c) => typeof c === 'number' && c >= 0));
+  }
 });
 
 test('builds: a second request is served from the cache, not op.gg', async () => {

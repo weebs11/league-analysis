@@ -2,7 +2,6 @@
   'use strict';
 
   const DAY_MS = 24 * 60 * 60 * 1000;
-  const DAY_POINT_SPAN = 1.36;
   const CERTAIN_GAP_MS = 48 * 60 * 60 * 1000;
 
   function dayIdentity(at) {
@@ -21,8 +20,9 @@
     const projected = queues.map((queue) => ({
       ...queue,
       points: [...(queue.points || [])]
+        .filter((point) => Number.isFinite(Number(point.at)))
         .sort((a, b) => Number(a.at) - Number(b.at))
-        .map((point) => ({ ...point })),
+        .map((point) => ({ ...point, chartX: Number(point.at) })),
     }));
     const rankEntries = projected.flatMap((queue, queueIndex) =>
       queue.points.map((point, pointIndex) => ({
@@ -36,7 +36,8 @@
     const projectedGames = [...games]
       .filter((game) => Number.isFinite(Number(game.at)))
       .sort((a, b) => Number(a.at) - Number(b.at))
-      .map((game) => ({ ...game }));
+      .map((game) => ({ ...game, chartX: Number(game.at) }));
+
     const gameEntries = projectedGames.map((game, pointIndex) => ({
       kind: 'game',
       queueId: game.queueId,
@@ -45,13 +46,8 @@
       point: game,
       day: dayIdentity(game.at),
     }));
-    const entries = [...rankEntries, ...gameEntries];
-
-    entries.sort((a, b) =>
-      Number(a.point.at) - Number(b.point.at)
-      || Number(a.queueId) - Number(b.queueId)
-      || a.kind.localeCompare(b.kind)
-      || a.pointIndex - b.pointIndex);
+    const entries = [...rankEntries, ...gameEntries]
+      .sort((a, b) => Number(a.point.at) - Number(b.point.at));
 
     const groups = new Map();
     for (const entry of entries) {
@@ -59,52 +55,55 @@
         groups.set(entry.day.key, { ...entry.day, entries: [] });
       }
       groups.get(entry.day.key).entries.push(entry);
+      entry.point.dayKey = entry.day.key;
     }
 
     const days = [...groups.values()]
       .sort((a, b) => a.ordinal - b.ordinal)
-      .map((day, index) => {
-        const center = index * 2 + 1;
-        const count = day.entries.length;
-        day.entries.forEach((entry, entryIndex) => {
-          const offset = count === 1
-            ? 0
-            : -DAY_POINT_SPAN / 2 + DAY_POINT_SPAN * entryIndex / (count - 1);
-          entry.point.chartX = center + offset;
-          entry.point.dayKey = day.key;
-        });
+      .map((day) => {
+        const positions = day.entries.map((entry) => entry.point.chartX);
         return {
           key: day.key,
           ordinal: day.ordinal,
           at: day.at,
-          center,
-          pointCount: count,
+          center: positions.reduce((sum, value) => sum + value, 0) / positions.length,
+          minX: Math.min(...positions),
+          maxX: Math.max(...positions),
+          pointCount: positions.length,
           gameCount: day.entries.filter((entry) => entry.kind === 'game').length,
           snapshotCount: day.entries.filter((entry) => entry.kind === 'snapshot').length,
         };
       });
 
+    const positions = entries.map((entry) => entry.point.chartX);
+    const minX = positions.length ? Math.min(...positions) : Date.now();
+    const maxX = positions.length ? Math.max(...positions) : minX;
+    const span = maxX - minX;
+    const padding = span ? Math.min(DAY_MS / 2, Math.max(30 * 60 * 1000, span * 0.01)) : DAY_MS / 2;
+
     return {
       queues: projected,
       games: projectedGames,
       days,
-      xExtent: days.length ? [0, days.length * 2] : [0, 1],
+      xExtent: [minX - padding, maxX + padding],
       firstAt: entries.length ? Number(entries[0].point.at) : null,
       lastAt: entries.length ? Number(entries[entries.length - 1].point.at) : null,
     };
   }
 
   function windowForPreset(layout, preset) {
-    const days = layout.days || [];
-    if (!days.length || preset === 'all') return [...layout.xExtent];
-    const finalDay = days[days.length - 1];
-    const cutoff = finalDay.ordinal - Math.max(0, Number(preset) - 1) * DAY_MS;
-    const firstDay = days.find((day) => day.ordinal >= cutoff) || finalDay;
-    return [firstDay.center - 1, finalDay.center + 1];
+    if (preset === 'all' || !Number.isFinite(layout.lastAt)) return [...layout.xExtent];
+    const duration = Math.max(1, Number(preset)) * DAY_MS;
+    if (layout.lastAt - layout.firstAt <= duration) return [...layout.xExtent];
+    return [layout.lastAt - duration, layout.xExtent[1]];
   }
 
   function daysInWindow(layout, start, end) {
-    return (layout.days || []).filter((day) => day.center > start && day.center < end);
+    return (layout.days || []).filter((day) => day.maxX >= start && day.minX <= end);
+  }
+
+  function matchesInWindow(layout, start, end) {
+    return (layout.games || []).filter((game) => game.chartX >= start && game.chartX <= end);
   }
 
   function isCertainTransition(from, to) {
@@ -126,6 +125,7 @@
     layoutQueues,
     windowForPreset,
     daysInWindow,
+    matchesInWindow,
     isCertainTransition,
   });
 })(globalThis);

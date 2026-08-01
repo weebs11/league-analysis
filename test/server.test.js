@@ -115,6 +115,14 @@ test('generates a basic-mode game plan for the detected game', async () => {
   assert.equal(status, 200);
   assert.equal(body.plan.basicMode, true);
   assert.equal(body.plan.enemyThreats.length, 5);
+  // The plan is laning-focused: no mid/late-game phases anymore.
+  assert.equal(body.plan.gamePlan.midGame, undefined);
+  assert.equal(body.plan.gamePlan.lateGame, undefined);
+  assert.ok(body.plan.gamePlan.earlyGame.goal.length > 0);
+  // Every key ability carries real per-rank cooldowns from Data Dragon.
+  for (const t of body.plan.enemyThreats) {
+    assert.ok(t.keyAbilities.every((a) => Array.isArray(a.cooldowns) && a.cooldowns.length >= 1));
+  }
   // Second call must hit the cache instead of regenerating.
   const again = await post('/api/coach/gameplan');
   assert.equal(again.body.cached, true);
@@ -144,6 +152,15 @@ test('gameplan generation streams coachprogress events over SSE', async () => {
   assert.ok(frames.some((f) => f.phase === 'preparing'), 'reports the preparing phase');
   const last = frames[frames.length - 1];
   assert.deepEqual({ phase: last.phase, pct: last.pct }, { phase: 'done', pct: 100 });
+});
+
+test('serves the item index for icons and stat tooltips', async () => {
+  const { status, body } = await get('/api/items');
+  assert.equal(status, 200);
+  assert.ok(body.patch, 'reports the patch the data came from');
+  assert.ok(body.items.length > 150);
+  const dblade = body.items.find((i) => i.name === "Doran's Blade");
+  assert.ok(dblade.id > 0 && Array.isArray(dblade.stats));
 });
 
 test('serves champion artwork with caching headers', async () => {

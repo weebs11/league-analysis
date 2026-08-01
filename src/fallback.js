@@ -67,6 +67,7 @@ export async function generateBasicGamePlan(game) {
         name: s.name,
         whatItDoes: s.description,
         howToReact: '',
+        cooldowns: s.cooldowns,
       })),
       howToPlayAgainst: [
         ...(d.enemytips.slice(0, 3)),
@@ -104,8 +105,6 @@ export async function generateBasicGamePlan(game) {
         goal: 'Farm safely and learn your matchup.',
         tips: (myDetail?.allytips || []).slice(0, 4),
       },
-      midGame: { goal: 'Group with your team and take objectives when the enemy is dead or far away.', tips: [] },
-      lateGame: { goal: 'Stay together — one bad death can lose the game after 30 minutes.', tips: [] },
       teamfightRole: '',
     },
     itemization: {
