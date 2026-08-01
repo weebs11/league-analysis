@@ -420,6 +420,49 @@ select option { background: var(--hx-panel-2); }
 .ability-body .an { font-weight: 650; color: var(--gold-text); }
 .ability-body .react { color: var(--teal); font-size: 0.86rem; margin-top: 3px; }
 
+/* ---- cooldown chip + early-game laning threat board ---- */
+.cd-chip {
+  display: inline-block; margin-left: 8px; padding: 1px 8px;
+  background: rgba(6, 17, 25, 0.9); border: 1px solid var(--teal-deep); border-radius: 2px;
+  color: var(--teal); font-size: 0.78rem; font-weight: 700;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  cursor: help;
+}
+.lvl-chip {
+  display: inline-block; padding: 1px 8px;
+  border: 1px solid var(--gold-dark); border-radius: 2px;
+  color: var(--gold-text); font-size: 0.72rem; font-weight: 700;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+  cursor: help;
+}
+.et-h { margin: 14px 0 6px; }
+.early-threats { display: flex; flex-direction: column; gap: 6px; }
+.et-row {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 9px 11px;
+  background: rgba(6, 17, 25, 0.7); border: 1px solid rgba(30, 45, 64, 0.6); border-radius: 2px;
+}
+/* Fixed-width, right-aligned: the key hex (and the text column after it) stays
+   put even when a portrait fails to resolve. 80 = 38 img + 8 gap + 34 key. */
+.et-who { flex: 0 0 80px; display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.et-who img {
+  width: 38px; height: 38px; border-radius: 2px;
+  border: 2px solid var(--gold-deep);
+}
+.et-body { font-size: 0.9rem; min-width: 0; }
+.et-head { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 8px; }
+.et-head .an { font-weight: 650; color: var(--gold-text); }
+.et-head .et-champ {
+  font-size: 0.7rem; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.et-head .cd-chip { margin-left: 0; }
+.et-head .et-tag { font-size: 0.6rem; padding: 2px 8px; }
+.et-danger { margin-top: 2px; }
+.et-body .react { color: var(--teal); font-size: 0.86rem; margin-top: 3px; }
+/* History cards use the same fill the rows do — keep the boxes visible there. */
+.coaching-body .et-row, .coaching-body .ability-row { background: rgba(30, 45, 64, 0.22); }
+
 .build-step { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(70, 55, 20, 0.35); }
 .build-step:last-child { border-bottom: none; }
 .build-step .idx {
@@ -432,6 +475,10 @@ select option { background: var(--hx-panel-2); }
 }
 .build-step .item-n { font-weight: 650; color: var(--gold-text); }
 .build-step .item-w { color: var(--text-dim); font-size: 0.88rem; }
+
+/* Inline item reference: small icon + name, stat tooltip on hover. */
+.item-ref { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; cursor: help; }
+.item-ref .item-icon.sm { width: 20px; height: 20px; border: 1px solid #2e4159; }
 
 .glossary-inline { margin-top: 16px; }
 .glossary-inline summary {
@@ -675,6 +722,7 @@ select option { background: var(--hx-panel-2); }
   min-height: 32px; display: flex; align-items: center; gap: 12px;
   flex-wrap: wrap; margin: 3px 0 0;
 }
+.rank-range-title { text-transform: uppercase; letter-spacing: 0.06em; }
 .rank-range {
   display: inline-flex; overflow: hidden; border: 1px solid var(--hx-line);
   border-radius: 4px; background: var(--hx-deep);
@@ -815,3 +863,8 @@ select option { background: var(--hx-panel-2); }
   background: linear-gradient(180deg, var(--gold), var(--gold-mid));
   font-weight: 700;
 }
+.skill-cd {
+  margin-left: 8px; flex: none; white-space: nowrap;
+  font-size: 0.72rem; color: var(--text-dim); font-variant-numeric: tabular-nums;
+}
+.skill-priority .sp-note { margin-left: auto; font-size: 0.75rem; }

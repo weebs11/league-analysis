@@ -321,9 +321,54 @@ function kv(k, v, extra = '') {
   return `<div class="kv"><div class="k">${esc(k)}</div><div class="v">${extra}${esc(v)}</div></div>`;
 }
 
+// "12 / 11 / 10 / 9 / 8s" — collapsed to "12s" when the cooldown never changes.
+// Shared by the coaching chips here and the champion-DB skill-order grid.
+function cooldownTextOf(cooldowns) {
+  if (!cooldowns?.length) return '';
+  const perRank = cooldowns.every((c) => c === cooldowns[0]) ? [cooldowns[0]] : cooldowns;
+  return `${perRank.join(' / ')}s`;
+}
+
+// Cooldown chip for an ability the coach called out. Shows the rank-1 number
+// (the one that matters in lane) with the full per-rank list in the tooltip.
+// Cooldowns are attached server-side from patch data; absent → no chip.
+function cdChip(cooldowns) {
+  if (!cooldowns?.length || !cooldowns[0]) return '';
+  return `<span class="cd-chip" title="${esc(`Cooldown by rank: ${cooldownTextOf(cooldowns)}`)}">⏱ ${esc(String(cooldowns[0]))}s CD</span>`;
+}
+
+// The laning threat board: one row per enemy ability that can kill or catch
+// you early, with its real cooldown so you know how long it's down after a miss.
+// `roleOf` maps champion name -> role (from the plan itself, so it works
+// identically for live games and archived history).
+function earlyThreatsHtml(threats, imageFor, roleOf = new Map()) {
+  if (!threats?.length) return '';
+  return `<div class="early-threats">${threats.map((t) => {
+    const img = imageFor(t.champion);
+    const jungler = /jungl/i.test(roleOf.get(t.champion) || '');
+    return `<div class="et-row">
+      <div class="et-who" title="${esc(t.champion)}">
+        ${img ? `<img src="${esc(img)}" alt="${esc(t.champion)}" />` : ''}
+        <span class="ability-key">${esc(t.ability === 'Passive' ? 'P' : t.ability)}</span>
+      </div>
+      <div class="et-body">
+        <div class="et-head">
+          <span class="an">${esc(t.name)}</span>
+          <span class="et-champ">${esc(t.champion)}</span>
+          ${jungler ? `<span class="badge neutral et-tag" title="Comes from the fog of war — answer with wards, not sidesteps">Jungle</span>` : ''}
+          ${cdChip(t.cooldowns)}
+          ${t.unlockLevel ? `<span class="lvl-chip" title="${esc(`Unlocked at level ${t.unlockLevel} — this threat doesn't exist before then`)}">from lvl ${esc(String(t.unlockLevel))}</span>` : ''}
+        </div>
+        <div class="et-danger">${esc(t.danger)}</div>
+        <div class="react">↳ ${esc(t.play)}</div>
+      </div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
 // The *Html builders below are shared by the live tabs and the history detail
 // view, so coaching renders identically whether you're mid-game or reviewing.
-function planTabHtml(plan) {
+function planTabHtml(plan, imageFor = champImageByName) {
   const o = plan.overview || {};
   const gp = plan.gamePlan || {};
   const phase = (label, ph) => ph ? `
@@ -332,18 +377,27 @@ function planTabHtml(plan) {
       <p><b>Goal:</b> ${esc(ph.goal || '')}</p>
       ${ph.tips?.length ? `<ul class="tip-list">${ph.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
     </div>` : '';
+  const eg = gp.earlyGame;
+  const roleOf = new Map((plan.enemyThreats || []).map((t) => [t.champion, t.role || '']));
+  const early = eg ? `
+    <div class="card">
+      <h3>🌅 Early game (0–14 min)</h3>
+      <p><b>Goal:</b> ${esc(eg.goal || '')}</p>
+      ${eg.threats?.length ? `<h4 class="et-h">⚠️ Abilities that can kill you</h4>${earlyThreatsHtml(eg.threats, imageFor, roleOf)}` : ''}
+      ${eg.tips?.length ? `<h4 class="et-h">✅ How to win the lane</h4><ul class="tip-list">${eg.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+    </div>` : '';
   return `
     ${plan.basicMode ? `<div class="notice-box">Basic mode (no API key) — showing Riot's official data. Add an Anthropic API key in ⚙️ Settings for a personalized plan.</div>` : ''}
     <div class="card">
       <h3>The shape of this game</h3>
       <p>${esc(o.summary || '')}</p>
       <div class="kv-grid">
-        ${kv('Matchup difficulty', o.matchupDifficulty || '—', o.matchupDifficulty ? levelBadge(o.matchupDifficulty) + ' ' : '')}
+        ${kv('Matchup difficulty', o.matchupDifficulty ? '' : '—', o.matchupDifficulty ? levelBadge(o.matchupDifficulty) : '')}
         ${kv('The one thing to remember', o.keyPrinciple || '—')}
         ${kv('How your team wins', o.winCondition || '—')}
       </div>
     </div>
-    ${phase('🌅 Early game (0–14 min)', gp.earlyGame)}
+    ${early}
     ${phase('⚔️ Mid game (14–25 min)', gp.midGame)}
     ${phase('🏰 Late game (25+ min)', gp.lateGame)}
     ${gp.teamfightRole ? `<div class="card"><h3>Your job in teamfights</h3><p>${esc(gp.teamfightRole)}</p></div>` : ''}
@@ -394,9 +448,9 @@ function threatsTabHtml(plan, imageFor = champImageByName) {
           <p>${esc(t.summary || '')}</p>
           ${(t.keyAbilities || []).map((a) => `
             <div class="ability-row">
-              <div class="ability-key">${esc(a.key)}</div>
+              <div class="ability-key" title="${esc(a.key)}">${esc(a.key === 'Passive' ? 'P' : a.key)}</div>
               <div class="ability-body">
-                <span class="an">${esc(a.name)}</span> — ${esc(a.whatItDoes)}
+                <span class="an">${esc(a.name)}</span>${cdChip(a.cooldowns)} — ${esc(a.whatItDoes)}
                 ${a.howToReact ? `<div class="react">↳ ${esc(a.howToReact)}</div>` : ''}
               </div>
             </div>`).join('')}
@@ -413,22 +467,22 @@ function itemsTabHtml(plan) {
   const core = (it.coreBuild || []).map((s, i) => `
     <div class="build-step">
       <div class="idx">${i + 1}</div>
-      <div><div class="item-n">${esc(s.item)}</div><div class="item-w">${esc(s.why)}</div></div>
+      <div><div class="item-n">${itemRefHtml(s.item)}</div><div class="item-w">${esc(s.why)}</div></div>
     </div>`).join('');
   return `
     ${plan.basicMode ? `<div class="notice-box">Basic mode can only analyze the enemy damage profile. Add an Anthropic API key in ⚙️ Settings to get a full build path — starting items, core build order, boots, and situational swaps with reasons.</div>` : ''}
     ${it.startingItems?.items?.length ? `
     <div class="card">
       <h3>🛒 Start with</h3>
-      <p><b>${esc(it.startingItems.items.join(' + '))}</b></p>
+      <p><b>${it.startingItems.items.map(itemRefHtml).join(' + ')}</b></p>
       <p class="muted">${esc(it.startingItems.why || '')}</p>
     </div>` : ''}
     ${core ? `<div class="card"><h3>🧱 Core build (in order)</h3>${core}</div>` : ''}
-    ${it.boots?.item ? `<div class="card"><h3>👢 Boots</h3><p><b>${esc(it.boots.item)}</b> — ${esc(it.boots.why || '')}</p></div>` : ''}
+    ${it.boots?.item ? `<div class="card"><h3>👢 Boots</h3><p><b>${itemRefHtml(it.boots.item)}</b> — ${esc(it.boots.why || '')}</p></div>` : ''}
     ${it.situational?.length ? `
     <div class="card">
       <h3>🔀 Situational swaps</h3>
-      ${it.situational.map((s) => `<div class="build-step"><div class="idx">→</div><div><div class="item-n">${esc(s.item)}</div><div class="item-w">Buy when: ${esc(s.buyWhen)}</div></div></div>`).join('')}
+      ${it.situational.map((s) => `<div class="build-step"><div class="idx">→</div><div><div class="item-n">${itemRefHtml(s.item)}</div><div class="item-w">Buy when: ${esc(s.buyWhen)}</div></div></div>`).join('')}
     </div>` : ''}
     <div class="card">
       <h3>🛡️ Defending against this team</h3>
@@ -667,8 +721,39 @@ function relTime(ms) {
   return new Date(ms).toLocaleDateString();
 }
 
+// ---------- item index (icons + stat tooltips) ----------
+// Coaching plans carry item NAMES (the prompt pins them to exact catalog
+// names); this index turns them back into ids for icons and hover stats.
+// Loaded once at boot from the same patch data that draws the icons. Until it
+// arrives — or for a name the shop doesn't know — items render as plain text.
+const itemIndex = { byName: new Map(), byId: new Map() };
+
+async function loadItemIndex() {
+  const { items } = await api('/api/items');
+  for (const it of items) {
+    itemIndex.byName.set(it.name.toLowerCase(), it);
+    itemIndex.byId.set(it.id, it);
+  }
+}
+
+function itemTitle(it) {
+  const lines = [`${it.name} — ${it.gold}g`, ...(it.stats || [])];
+  if (it.summary) lines.push(it.summary);
+  return lines.join('\n');
+}
+
+// Icon + name, with the stat tooltip. Falls back to the bare name.
+function itemRefHtml(name) {
+  if (!name) return '';
+  const it = itemIndex.byName.get(String(name).toLowerCase());
+  if (!it) return esc(name);
+  return `<span class="item-ref" title="${esc(itemTitle(it))}"><img class="item-icon sm" src="/img/item/${it.id}" alt="" loading="lazy" />${esc(name)}</span>`;
+}
+
 function itemImg(id) {
-  return id ? `<img class="item-icon" src="/img/item/${id}" alt="" loading="lazy" />` : `<span class="item-icon empty"></span>`;
+  if (!id) return `<span class="item-icon empty"></span>`;
+  const it = itemIndex.byId.get(Number(id));
+  return `<img class="item-icon" src="/img/item/${id}" alt="${esc(it?.name || '')}"${it ? ` title="${esc(itemTitle(it))}"` : ''} loading="lazy" />`;
 }
 
 // How a signed number should read: the class that colours it, the arrow, and an
@@ -834,12 +919,12 @@ function renderPager() {
 // LP over time, from the snapshots Forward Sync records (ADR-0006). Forward-only
 // by nature — no Riot API serves historical LP — but externally observed
 // snapshots may extend it. A focus + context chart keeps recent movement
-// readable without distorting elapsed time: the main plot opens to 14 days and
-// ECharts' navigator always shows the full range.
+// readable while preserving real elapsed time: the main plot opens to the
+// latest 14 days and the navigator shows the full timeline.
 const RANK_SERIES = { 420: { color: '#0b9a8e', label: 'Solo/Duo' }, 440: { color: '#bd8a2e', label: 'Flex' } };
 const RANK_TIERS = ['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Emerald', 'Diamond'];
 const RANK_DIVS = ['IV', 'III', 'II', 'I'];
-const RANK_PRESETS = [7, 14, 'all'];
+const RANK_PRESETS = [7, 14, 30, 'all'];
 
 let rankChartInstance = null;
 let rankChartResizeObserver = null;
@@ -883,9 +968,8 @@ function rankColors() {
 }
 
 // A reliable run is a sequence of Forward Sync observations no more than two
-// days apart. Rank is piecewise constant, so ECharts renders each run as
-// step-after. OP.GG points and longer observation gaps are deliberately not
-// smoothed into the run.
+// days apart. Consecutive post-Match standings form the solid trend line;
+// OP.GG points and longer observation gaps are deliberately kept outside it.
 function rankRuns(points) {
   const runs = [];
   let run = [];
@@ -934,7 +1018,12 @@ function rankRangeText(start, end) {
   const days = RankChartLayout.daysInWindow(rankChartLayout, start, end);
   if (!days.length) return '';
   const fmt = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-  return `${fmt.format(new Date(days[0].at))}–${fmt.format(new Date(days[days.length - 1].at))}`;
+  const scope = rankChartPreset === 'all'
+    ? 'All time'
+    : rankChartPreset
+      ? `Last ${rankChartPreset} days`
+      : 'Custom range';
+  return `${scope} · ${fmt.format(new Date(days[0].at))}–${fmt.format(new Date(days[days.length - 1].at))}`;
 }
 
 function detectedRankPreset(start, end) {
@@ -956,7 +1045,7 @@ function syncRankRangeUi(start, end) {
     button.setAttribute('aria-pressed', String(value === rankChartPreset));
     button.classList.toggle('active', value === rankChartPreset);
   });
-  const text = `Showing ${rankRangeText(start, end)}`;
+  const text = rankRangeText(start, end);
   const label = $('#rank-window-label');
   const status = $('#rank-range-status');
   if (label) label.textContent = text;
@@ -1008,19 +1097,11 @@ function rankGameTooltip(game) {
 }
 
 function buildRankSeries(queues, colors, games = []) {
-  const oneQueue = queues.length === 1;
   const series = [];
 
   for (const queue of queues) {
     const meta = RANK_SERIES[queue.queueId];
     const points = [...queue.points].sort((a, b) => a.at - b.at);
-    const areaColor = oneQueue
-      ? new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: `${meta.color}42` },
-          { offset: 1, color: `${meta.color}00` },
-        ])
-      : null;
-
     // Invisible full-range series feeds the navigator thumbnail. Main-plot
     // semantics come from the explicit exact, gap, and imported-point series.
     series.push({
@@ -1028,7 +1109,6 @@ function buildRankSeries(queues, colors, games = []) {
       name: `${meta.label} context`,
       type: 'line',
       data: points.map(rankDatum),
-      step: 'end',
       showSymbol: false,
       silent: true,
       tooltip: { show: false },
@@ -1044,13 +1124,11 @@ function buildRankSeries(queues, colors, games = []) {
         name: meta.label,
         type: 'line',
         data: run.map(rankDatum),
-        step: 'end',
         showSymbol: run.length === 1,
         symbol: 'circle',
         symbolSize: 5,
-        lineStyle: { color: meta.color, width: 2 },
+        lineStyle: { color: meta.color, width: 2.25 },
         itemStyle: { color: meta.color, borderColor: colors.panel, borderWidth: 2 },
-        areaStyle: areaColor ? { color: areaColor } : undefined,
         emphasis: { disabled: true },
         connectNulls: false,
         z: 3,
@@ -1116,8 +1194,8 @@ function buildRankSeries(queues, colors, games = []) {
       yAxisIndex: 1,
       data: resultGames.map((game) => ({ value: [game.chartX, 0.5], game })),
       symbol: 'rect',
-      symbolSize: [4, 13],
-      itemStyle: { color: result.color, opacity: 0.9 },
+      symbolSize: [3, 9],
+      itemStyle: { color: result.color, opacity: 0.72 },
       emphasis: { scale: 1.35 },
       tooltip: {
         show: true,
@@ -1170,9 +1248,9 @@ function renderRankChart(queues, games = []) {
   const ranked = rankChartLayout.queues;
   const rankedGames = rankChartLayout.games;
   const points = ranked.flatMap((s) => s.points);
-  const firstDay = rankChartLayout.days[0];
-  const lastDay = rankChartLayout.days[rankChartLayout.days.length - 1];
-  if (lastDay.ordinal - firstDay.ordinal <= 13 * 24 * 60 * 60 * 1000) rankChartPreset = 'all';
+  rankChartPreset = rankChartLayout.lastAt - rankChartLayout.firstAt <= 14 * 24 * 60 * 60 * 1000
+    ? 'all'
+    : 14;
 
   const legend = ranked.length > 1
     ? `<span class="rank-legend">${ranked.map((s) =>
@@ -1199,6 +1277,7 @@ function renderRankChart(queues, games = []) {
       <span class="lbl">Rank over time</span>${legend}${sourceKey}${gameKey}<span class="spacer"></span>${latest}
     </div>
     <div class="rank-controls">
+      <span class="rank-range-title muted small">Time</span>
       <div class="rank-range" role="group" aria-label="Visible rank-history range">
         ${RANK_PRESETS.map((preset) => {
           const label = preset === 'all' ? 'All' : `${preset}D`;
@@ -1227,7 +1306,6 @@ function renderRankChart(queues, games = []) {
   const [startValue, endValue] = rankWindow(rankChartPreset);
   const container = $('#rank-echart');
   const [axisMin, axisMax] = rankChartLayout.xExtent;
-  const dayByCenter = new Map(rankChartLayout.days.map((day) => [day.center, day]));
   const dayLabel = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' });
   rankChartInstance = echarts.init(container, null, { renderer: 'svg' });
   rankChartInstance.setOption({
@@ -1236,7 +1314,7 @@ function renderRankChart(queues, games = []) {
     textStyle: { color: colors.text, fontFamily: getComputedStyle(document.body).fontFamily },
     aria: {
       enabled: true,
-      description: 'Rank over time. Active days are evenly spaced. Green and red ticks represent ranked wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the 7 day, 14 day, and All buttons to change the visible range. Exact snapshot values are also available in the table below.',
+      description: 'Rank over elapsed time. Rank Snapshots and ranked Matches appear at their actual dates and times. Green and red ticks represent wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the 7 day, 14 day, 30 day, and All buttons to change the visible time range. Exact snapshot values and dates are also available in the table below.',
     },
     grid: [
       { top: 16, right: 18, bottom: 128, left: 78, containLabel: false },
@@ -1244,28 +1322,23 @@ function renderRankChart(queues, games = []) {
     ],
     xAxis: [
       {
-        type: 'value',
+        type: 'time',
         gridIndex: 0,
         min: axisMin,
         max: axisMax,
-        interval: 1,
         boundaryGap: false,
         axisLine: { lineStyle: { color: colors.line } },
         axisTick: { show: false },
         axisLabel: {
           color: colors.dim,
           hideOverlap: true,
-          formatter: (value) => {
-            const rounded = Math.round(value);
-            const day = Math.abs(value - rounded) < 0.01 ? dayByCenter.get(rounded) : null;
-            return day ? dayLabel.format(new Date(day.at)) : '';
-          },
+          formatter: (value) => dayLabel.format(new Date(Number(value))),
         },
         splitLine: { show: false },
         axisPointer: { lineStyle: { color: colors.dim, width: 1 } },
       },
       {
-        type: 'value',
+        type: 'time',
         gridIndex: 1,
         min: axisMin,
         max: axisMax,
@@ -1284,7 +1357,7 @@ function renderRankChart(queues, games = []) {
         axisLine: { show: false },
         axisTick: { show: false },
         axisLabel: { color: colors.dim, margin: 12, formatter: (value) => rankLabel(Math.round(value)) },
-        splitLine: { lineStyle: { color: colors.line, width: 1 } },
+        splitLine: { lineStyle: { color: colors.line, width: 1, type: 'dashed', opacity: 0.8 } },
       },
       {
         type: 'value',
@@ -1426,7 +1499,7 @@ function coachingHtml(coaching, players) {
   return `<details class="card coaching-block">
     <summary><b>💬 What you were told before this game</b> <span class="muted small">${esc(when)}${coaching.model ? ' · ' + esc(coaching.model) : ''}</span></summary>
     <div class="coaching-body">
-      ${planTabHtml(plan)}
+      ${planTabHtml(plan, imageFor)}
       ${matchupTabHtml(plan)}
       ${threatsTabHtml(plan, imageFor)}
       ${itemsTabHtml(plan)}
@@ -1609,16 +1682,23 @@ function closeChampionBuild() {
   $('#champ-grid-view').classList.remove('hidden');
 }
 
-function iconRowHtml(list, { arrows = false, size = '' } = {}) {
+// Rich stat tooltip when the ref is an item the index knows; plain name
+// otherwise (summoner-spell rows reuse this renderer with item ids absent).
+function refTitle(ref, itemStats) {
+  const it = itemStats ? itemIndex.byId.get(Number(ref.id)) : null;
+  return it ? itemTitle(it) : ref.name;
+}
+
+function iconRowHtml(list, { arrows = false, size = '', itemStats = false } = {}) {
   return `<div class="build-items ${size}">${list.map((it, i) =>
-    `${i && arrows ? '<span class="bi-arrow">→</span>' : ''}<img src="${esc(it.icon)}" alt="${esc(it.name)}" title="${esc(it.name)}" />`).join('')}</div>`;
+    `${i && arrows ? '<span class="bi-arrow">→</span>' : ''}<img src="${esc(it.icon)}" alt="${esc(it.name)}" title="${esc(refTitle(it, itemStats))}" />`).join('')}</div>`;
 }
 
 function lateItemsHtml(items) {
   if (!items?.length) return '<p class="muted small">No data.</p>';
   return `<div class="late-items">${items.map((it) => `
     <div class="late-item">
-      <img src="${esc(it.icon)}" alt="" title="${esc(it.name)}" />
+      <img src="${esc(it.icon)}" alt="" title="${esc(refTitle(it, true))}" />
       <span class="li-name">${esc(it.name)}</span>
       <span class="li-wr">${(100 * it.winRate).toFixed(1)}%</span>
       <span class="li-games muted">${it.play.toLocaleString()} games</span>
@@ -1659,18 +1739,30 @@ function runePageHtml(runes) {
   </div>`;
 }
 
-function skillOrderHtml(skills) {
+function skillOrderHtml(skills, abilities) {
+  const abilityOf = {};
+  for (const a of abilities || []) abilityOf[a.key] = a;
   const cols = Math.max(skills.order.length, 15);
   const rows = ['Q', 'W', 'E', 'R'].map((k) => {
+    const ab = abilityOf[k];
     let cells = '';
+    let rank = 0;
     for (let lv = 0; lv < cols; lv++) {
       const on = skills.order[lv] === k;
-      cells += `<span class="skill-cell ${on ? 'on' : ''}">${on ? lv + 1 : ''}</span>`;
+      if (on) rank++;
+      const cd = on ? ab?.cooldowns?.[rank - 1] : undefined;
+      const tip = cd === undefined ? '' : ` title="${esc(`${ab.name} rank ${rank}: ${cd}s cooldown`)}"`;
+      cells += `<span class="skill-cell ${on ? 'on' : ''}"${tip}>${on ? lv + 1 : ''}</span>`;
     }
-    return `<div class="skill-row"><span class="skill-key">${k}</span>${cells}</div>`;
+    const cdText = cooldownTextOf(ab?.cooldowns);
+    const cdCol = cdText
+      ? `<span class="skill-cd" title="${esc(`${ab.name} — cooldown per rank, in seconds`)}">${esc(cdText)}</span>` : '';
+    return `<div class="skill-row"><span class="skill-key"${ab ? ` title="${esc(ab.name)}"` : ''}>${k}</span>${cells}${cdCol}</div>`;
   }).join('');
+  const haveCds = ['Q', 'W', 'E', 'R'].some((k) => abilityOf[k]?.cooldowns?.length);
   return `<div class="skill-priority">Max order:
       ${skills.priority.map((k) => `<b class="skill-key">${esc(k)}</b>`).join('<span class="bi-arrow">→</span>')}
+      ${haveCds ? '<span class="sp-note">cooldowns per rank (s)</span>' : ''}
     </div>
     <div class="skill-grid">${rows}</div>`;
 }
@@ -1711,11 +1803,11 @@ function renderChampionBuild(d) {
         <h3>Summoner spells <span class="wr-note">${wrTextOf(d.spells)}</span></h3>
         ${iconRowHtml(d.spells.list)}
         <h3 class="build-sub">Starting items <span class="wr-note">${wrTextOf(d.startingItems)}</span></h3>
-        ${iconRowHtml(d.startingItems.list)}
+        ${iconRowHtml(d.startingItems.list, { itemStats: true })}
         <h3 class="build-sub">Core build <span class="wr-note">${wrTextOf(d.coreItems)}</span></h3>
-        ${iconRowHtml(d.coreItems.list, { arrows: true })}
+        ${iconRowHtml(d.coreItems.list, { arrows: true, itemStats: true })}
         <h3 class="build-sub">Boots <span class="wr-note">${wrTextOf(d.boots)}</span></h3>
-        ${iconRowHtml(d.boots.list)}
+        ${iconRowHtml(d.boots.list, { itemStats: true })}
         <h3 class="build-sub">Late &amp; situational</h3>
         ${lateItemsHtml(d.lateItems)}
       </div>
@@ -1723,7 +1815,7 @@ function renderChampionBuild(d) {
 
     <div class="card">
       <h3>Skill order <span class="wr-note">${wrTextOf(d.skills)}</span></h3>
-      ${skillOrderHtml(d.skills)}
+      ${skillOrderHtml(d.skills, d.abilities)}
     </div>
 
     <p class="muted small">Aggregated from ranked games worldwide (${esc(db.meta.tiers.find((t) => t.id === d.tier)?.label || d.tier)}) · data via OP.GG · fetched ${esc(relTime(d.fetchedAt) || 'just now')}</p>`;
@@ -1807,5 +1899,6 @@ function wire() {
 // ---------- boot ----------
 wire();
 loadScenarios().catch(() => {});
+loadItemIndex().catch(() => {}); // icons/tooltips degrade to plain names without it
 api('/api/state').then(onState).catch(() => setPill('waiting', 'Server unreachable'));
 connectEvents();

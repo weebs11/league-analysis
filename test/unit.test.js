@@ -32,6 +32,16 @@ test('ddragon: champion lookups work by name, ddragon id, and numeric key', () =
   assert.ok(ddragon.allChampions().length > 150, 'expected the full champion roster');
 });
 
+test('ddragon: roster excludes LoL Classic variants and has no duplicate names', () => {
+  const champs = ddragon.allChampions();
+  const classic = champs.filter((c) => c.id.startsWith('Jade_') || c.key >= 60000);
+  assert.deepEqual(classic, [], 'LoL Classic (Jade_) entries must be filtered out');
+  const names = champs.map((c) => c.name);
+  assert.equal(new Set(names).size, names.length, 'no duplicate display names');
+  // The live entry, not the Classic one, must win the by-name lookup.
+  assert.equal(ddragon.champByName('Ahri').key, 103);
+});
+
 test('ddragon: champion details include passive, 4 spells, and tips', async () => {
   const d = await ddragon.champDetails('Garen');
   assert.deepEqual(d.spells.map((s) => s.key), ['Q', 'W', 'E', 'R']);
@@ -39,6 +49,30 @@ test('ddragon: champion details include passive, 4 spells, and tips', async () =
   assert.ok(Array.isArray(d.enemytips));
   assert.ok(Array.isArray(d.allytips));
   assert.equal(await ddragon.champDetails('NotAChampion'), null);
+});
+
+test('ddragon: champion details carry per-rank cooldowns for every spell', async () => {
+  const d = await ddragon.champDetails('Garen');
+  for (const s of d.spells) {
+    assert.ok(s.cooldowns.length >= 1, `${s.key} has at least one rank`);
+    assert.ok(s.cooldowns.every((c) => typeof c === 'number' && c >= 0), `${s.key} cooldowns are seconds`);
+  }
+  // Basic abilities rank to 5; the ultimate to 3.
+  assert.equal(d.spells[0].cooldowns.length, 5);
+  assert.equal(d.spells[3].cooldowns.length, 3);
+});
+
+test('ddragon: item lookup carries ids, gold, and stat lines for tooltips', () => {
+  const list = ddragon.itemLookup();
+  assert.ok(list.length > 150, 'covers the purchasable catalog');
+  for (const it of list) {
+    assert.ok(it.id > 0 && it.name.length > 0 && typeof it.gold === 'number');
+    assert.ok(Array.isArray(it.stats));
+  }
+  const ie = list.find((i) => i.name === 'Infinity Edge');
+  assert.ok(ie.gold > 1000, 'legendary items carry their gold cost');
+  assert.ok(ie.stats.length >= 1 && ie.stats.some((s) => /\d/.test(s)), 'stat lines carry numbers');
+  assert.ok(list.some((i) => i.name === "Doran's Blade"), 'starter items included');
 });
 
 test('ddragon: item ids resolve to names', () => {
@@ -115,6 +149,10 @@ test('gamestate: normalizeLiveGame maps Live Client data', () => {
     scores: { kills: 1, deaths: 0, assists: 2, creepScore: 25 },
     summonerName: `${name} P`,
     riotIdGameName: `${name} P`,
+    summonerSpells: {
+      summonerSpellOne: { displayName: 'Flash' },
+      summonerSpellTwo: { displayName: 'Heal' },
+    },
   });
   const data = {
     activePlayer: { riotIdGameName: 'Miss Fortune P', level: 3, currentGold: 500.7 },
@@ -135,6 +173,7 @@ test('gamestate: normalizeLiveGame maps Live Client data', () => {
   assert.equal(g.gameTime, 300);
   assert.equal(g.activePlayer.gold, 500);
   assert.equal(g.me.items[0].name, "Doran's Blade");
+  assert.deepEqual(g.me.spells, ['Flash', 'Heal'], 'summoner spells reach the coach context');
   assert.equal(normalizeLiveGame(null), null);
   assert.equal(normalizeLiveGame({ allPlayers: [] }), null);
 });
@@ -243,4 +282,34 @@ test('coach: cleanly refuses without an API key', async () => {
 test('coach: error descriptions are user-friendly', () => {
   assert.equal(coach.describeApiError(new coach.CoachError('x', 'Custom message')), 'Custom message');
   assert.match(coach.describeApiError(new Error('boom')), /Unexpected error: boom/);
+});
+
+test('coach: attachCooldowns decorates called-out abilities with patch data', async () => {
+  const game = mock.buildGameSnapshot('top'); // enemies include Darius and Blitzcrank
+  const plan = {
+    gamePlan: {
+      earlyGame: {
+        threats: [
+          { champion: 'Darius', ability: 'Q', name: 'Decimate', danger: 'x', play: 'y' },
+          { champion: 'Darius', ability: 'Passive', name: 'Hemorrhage', danger: 'x', play: 'y' },
+          { champion: 'Warwick', ability: 'R', name: 'Infinite Duress', danger: 'x', play: 'y' },
+          { champion: 'Not A Champion', ability: 'Q', name: 'x', danger: 'x', play: 'y' },
+        ],
+      },
+    },
+    enemyThreats: [
+      { champion: 'Blitzcrank', keyAbilities: [{ key: 'Q', name: 'Rocket Grab' }] },
+    ],
+  };
+  await coach.attachCooldowns(plan, game);
+  const [q, passive, ult, unknown] = plan.gamePlan.earlyGame.threats;
+  assert.ok(q.cooldowns.length >= 1 && q.cooldowns.every((c) => typeof c === 'number' && c >= 0));
+  assert.equal(q.unlockLevel, undefined, 'basic abilities carry no unlock level');
+  assert.equal(passive.cooldowns, undefined, 'passives have no spell cooldown to attach');
+  assert.equal(ult.unlockLevel, 6, 'a standard 3-rank ultimate is tagged as level-6');
+  assert.equal(unknown.cooldowns, undefined, 'a name the roster lacks decorates to nothing');
+  assert.ok(plan.enemyThreats[0].keyAbilities[0].cooldowns.length >= 1, 'threat-tab abilities get cooldowns too');
+  // Guard rails: a plan or game missing whole branches must never throw —
+  // decoration failing after a paid generation would turn success into a 502.
+  await coach.attachCooldowns({}, {});
 });

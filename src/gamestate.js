@@ -103,6 +103,11 @@ export function normalizeLiveGame(data) {
       level: p.level,
       role: LIVE_POSITION_LABELS[p.position] || '',
       isDead: Boolean(p.isDead),
+      // Summoner spells decide lanes (Ignite kill pressure, a burned Flash) —
+      // pass them through so the coach can reason about them.
+      spells: p.summonerSpells
+        ? [p.summonerSpells.summonerSpellOne?.displayName, p.summonerSpells.summonerSpellTwo?.displayName].filter(Boolean)
+        : [],
       items: (p.items || []).map((it) => ({ id: it.itemID, name: it.displayName || ddragon.itemName(it.itemID) })),
       scores: p.scores
         ? { kills: p.scores.kills, deaths: p.scores.deaths, assists: p.scores.assists, cs: p.scores.creepScore }

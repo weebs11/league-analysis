@@ -128,6 +128,16 @@ router.get('/champion/:champId', async (req, res) => {
     const { extract, source, stale } = await service.getBuild(champ.id, role, tier, {
       refresh: req.query.refresh === '1',
     });
+    // Ability cooldowns are Data Dragon decoration, like item names — not part
+    // of the Build Extract. Best-effort: a cold cache while offline just means
+    // the skill order renders without cooldowns.
+    let abilities = null;
+    try {
+      const details = await ddragon.champDetails(champ.id);
+      if (details) abilities = details.spells.map((s) => ({ key: s.key, name: s.name, cooldowns: s.cooldowns }));
+    } catch {
+      // offline with no cached champion details
+    }
     res.json({
       champion: { id: champ.id, key: champ.key, name: champ.name, title: champ.title, image: ddragon.imageUrls(champ.id) },
       role,
@@ -152,6 +162,7 @@ router.get('/champion/:champId', async (req, res) => {
       coreItems: { ...withWr(extract.coreItems), list: extract.coreItems.ids.map(itemRef) },
       lateItems: extract.lateItems.map((e) => ({ ...itemRef(e.id), ...withWr(e) })),
       skills: withWr(extract.skills),
+      abilities,
     });
   } catch (err) {
     if (err instanceof service.BuildsUnavailableError) {
