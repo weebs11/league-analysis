@@ -14,7 +14,7 @@ const DEFAULTS = {
   anthropicApiKey: '',
   // Model used for coaching. Opus is the most capable; the settings UI lists
   // cheaper alternatives with cost estimates.
-  model: 'claude-opus-4-8',
+  model: 'claude-opus-5',
   // Where League of Legends is installed (used to find the LCU lockfile).
   // Empty string = try common locations + process inspection.
   leaguePath: '',
