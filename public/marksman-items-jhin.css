@@ -1,0 +1,50 @@
+:root {
+  --blue: #d54845;
+  --blue-dark: #8f2e35;
+}
+
+.hero-art {
+  background-image: url("https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Jhin_0.jpg");
+  background-position: 69% 24%;
+}
+
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(10,8,14,.97) 0%, rgba(10,8,14,.84) 39%, rgba(23,10,15,.34) 66%, rgba(23,10,15,.18) 100%),
+    linear-gradient(0deg, rgba(10,8,14,.9) 0%, transparent 38%),
+    linear-gradient(180deg, rgba(10,8,14,.56) 0%, transparent 24%);
+}
+
+.hero h1 em,
+.eyebrow,
+.section-kicker {
+  color: #e6b76a;
+}
+
+.live-dot { background: #d54845; box-shadow: 0 0 0 5px rgba(213,72,69,.13); }
+.decision-card.gold-card { background: #b88745; border-color: #b88745; }
+.scope-dot,
+.item-card[data-fit="excellent"] .scope-dot { background: #a4353b; box-shadow: 0 0 0 4px rgba(164,53,59,.1); }
+.fit-badge { color: #8f2e35; background: #f3e3e0; border-color: #dfbbb7; }
+.fit-filter.active { background: #8f2e35; border-color: #8f2e35; }
+.searchbox input:focus { border-color: #8f2e35; box-shadow: 0 0 0 3px rgba(143,46,53,.1); }
+.item-card:hover { border-color: rgba(143,46,53,.46); }
+
+.jhin-math {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: -28px 0 14px;
+  background: rgba(11,18,32,.15);
+  border: 1px solid rgba(11,18,32,.15);
+}
+
+.jhin-math div { padding: 19px 20px; background: #ece7de; }
+.jhin-math span { display: block; min-height: 26px; color: #8f2e35; font-size: 8px; font-weight: 700; letter-spacing: .12em; }
+.jhin-math strong { display: block; color: #111827; font-family: var(--serif); font-size: 30px; font-weight: 400; }
+.jhin-math p { margin: 2px 0 0; color: #737875; font-size: 10px; line-height: 1.45; }
+
+@media (max-width: 760px) {
+  .hero-art { background-position: 69% center; }
+  .jhin-math { grid-template-columns: repeat(2, 1fr); margin-top: -16px; }
+}
