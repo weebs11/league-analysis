@@ -53,7 +53,7 @@ function systemBlocks() {
 // ---- Model capabilities ------------------------------------------------------
 // Haiku 4.5 predates the 4.6-era API surface: it supports neither `effort` nor
 // adaptive thinking, and rejects both with a 400 rather than ignoring them.
-// Opus 4.8 and Sonnet 5 — the other two options in Settings — support both.
+// Opus 5 and Sonnet 5 — the other two options in Settings — support both.
 function isLegacyModel(model) {
   return model.startsWith('claude-haiku');
 }

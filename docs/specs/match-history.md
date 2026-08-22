@@ -138,8 +138,8 @@ list, before the ranked filter, and never writes it back as `null`.
 {
   "matchId": "EUW1_5603939853",
   "generatedAt": 1752799000000,
-  "model": "claude-opus-4-8",
-  "patch": "16.14.1",
+  "model": "claude-opus-5",
+  "patch": "16.16.1",
   "basicMode": false,
   "plan": { /* exactly the object /api/coach/gameplan returns */ }
 }

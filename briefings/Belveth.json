@@ -12,7 +12,7 @@
     "Very high difficulty to play and pilot well",
     "Falls behind if she can't clear camps and fight safely early",
     "Vulnerable before her ultimate is available or off cooldown",
-    "Needs Void coral remnants near epic monsters to get her strongest ultimate uptime"
+    "Needs Void coral remnants from epic monsters to unlock her strongest ultimate form"
   ],
   "abilities": [
     {
@@ -38,19 +38,19 @@
     {
       "key": "R",
       "name": "Endless Banquet",
-      "howToUseIt": "Consume Void coral remnants to transform into your true form, gaining increased health, attack range, attack speed, and out-of-combat move speed. Time this transformation around fights and objectives, since consuming remnants near an epic monster gives you extra duration and lets you summon Void remora."
+      "howToUseIt": "Consume Void coral remnants to transform into your true form, gaining increased max health, attack range, and attack speed. Time this transformation around fights and objectives, since consuming the remnants of a Void epic monster also grants you the power to summon Void remora."
     }
   ],
   "earlyGamePlan": "Clear jungle camps efficiently to build up Death in Lavender stacks and look for Void coral remnants to fuel your ultimate. Avoid extended duels before you have your ultimate available, since Bel'Veth's power grows sharply once she can transform — play patiently and gank when a lane is clearly overextended.",
   "quickTips": [
     "Farm large jungle camps first since they build your permanent attack speed stacks faster",
     "Save Royal Maelstrom for when you're already close to your target, since it roots you in place",
-    "Try to time Endless Banquet around fights near epic monsters for the longest duration",
+    "Try to take Void coral from epic monsters before transforming, since it adds Void remora to your ultimate",
     "Avoid committing to fights before your ultimate is up if you can help it",
     "Use Void Surge to reposition mid-fight, not just to close distance",
     "Track when the enemy jungler is likely low on cooldowns before invading their camps"
   ],
-  "whatToExpect": "An early Bel'Veth is manageable, but she gets significantly more dangerous once her ultimate is available, transforming into a fast, high-damage duelist. Try to avoid isolated fights against her once she has Endless Banquet up, and focus on kiting or using crowd control to interrupt her Royal Maelstrom channel before it can heal her back up.",
+  "whatToExpect": "An early Bel'Veth is manageable, but she gets significantly more dangerous once her ultimate is available, transforming into a longer-ranged, high-damage duelist. Try to avoid isolated fights against her once she has Endless Banquet up, and focus on kiting or using crowd control to interrupt her Royal Maelstrom channel before it can heal her back up.",
   "glossary": [
     {
       "term": "jungle clear",
