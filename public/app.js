@@ -1727,14 +1727,24 @@ function wrClass(wr, play, totalPlay) {
   return wr >= 0.52 ? 'wr-good' : wr < 0.48 ? 'wr-bad' : '';
 }
 
-// Section metadata line, rendered as a sibling of the <h3> rather than inside
-// it. Abbreviated count on screen, exact count in the tooltip.
+// Section metadata, rendered inline inside the card's header line so label
+// and stats share one row. Abbreviated count on screen, exact in the tooltip.
 function wrMetaHtml(sec, overallPlay) {
   if (!sec?.play) return '';
   const wr = sec.winRate ?? sec.wins / sec.play;
   const cls = wrClass(wr, sec.play, overallPlay);
   const tip = `${sec.play.toLocaleString()} games${cls === 'wr-low' ? ' — low sample' : ''}`;
-  return `<p class="sec-meta" title="${esc(tip)}"><span class="${cls}">${(100 * wr).toFixed(1)}% WR</span> · ${fmtGames(sec.play)} games</p>`;
+  return `<span class="sec-meta" title="${esc(tip)}"><span class="${cls}">${(100 * wr).toFixed(1)}% WR</span> · ${fmtGames(sec.play)} games</span>`;
+}
+
+// Compact variant for sub-group headers (Boots, Starting items, Spells):
+// rides inline in the h3 so the group is one header line + one icon row.
+function subMetaHtml(sec, overallPlay) {
+  if (!sec?.play) return '';
+  const wr = sec.winRate ?? sec.wins / sec.play;
+  const cls = wrClass(wr, sec.play, overallPlay);
+  const tip = `${(100 * wr).toFixed(1)}% WR · ${sec.play.toLocaleString()} games${cls === 'wr-low' ? ' — low sample' : ''}`;
+  return `<span class="sub-meta" title="${esc(tip)}"><span class="${cls}">${(100 * wr).toFixed(1)}%</span></span>`;
 }
 
 function roleLabelOf(id) {
@@ -1841,18 +1851,20 @@ function iconRowHtml(list, { arrows = false, size = '', itemStats = false, label
 
 function lateItemsHtml(items, overallPlay) {
   if (!items?.length) return '<p class="muted small">No data.</p>';
-  // Popularity bar: each row's fill is its share of the most-picked item, so
-  // the 6× gap between the top and bottom of the list is visible at a glance.
+  // Popularity meter: each row's fill is its share of the most-picked item,
+  // as a discrete little bar rather than a row-wide wash.
   const maxPlay = Math.max(...items.map((it) => it.play));
   return `<div class="late-items">${items.map((it) => {
-    const pct = Math.round((100 * it.play) / maxPlay);
+    const pct = Math.max(5, Math.round((100 * it.play) / maxPlay));
     const cls = wrClass(it.winRate, it.play, overallPlay);
+    const games = `${it.play.toLocaleString()} games`;
     return `
-    <div class="late-item" style="background: linear-gradient(90deg, rgba(200,170,110,0.10) ${pct}%, transparent ${pct}%)">
+    <div class="late-item">
       <img src="${esc(it.icon)}" alt="" title="${esc(refTitle(it, true))}" />
       <span class="li-name">${esc(it.name)}</span>
+      <span class="li-meter" title="${esc(`${games} — share of the most-picked option`)}"><i style="width:${pct}%"></i></span>
       <span class="li-wr ${cls}"${cls === 'wr-low' ? ' title="low sample"' : ''}>${(100 * it.winRate).toFixed(1)}%</span>
-      <span class="li-games muted" title="${it.play.toLocaleString()} games">${fmtGames(it.play)} games</span>
+      <span class="li-games muted" title="${esc(games)}">${fmtGames(it.play)}</span>
     </div>`;
   }).join('')}</div>`;
 }
@@ -1871,8 +1883,7 @@ function runeTreeHtml(style, selectedIds, { withKeystones }) {
       return `<div class="rune-slot">
       ${slot.map((r) => `<img class="rune ${keystoneRow ? 'keystone' : ''} ${selectedIds.includes(r.id) ? 'on' : 'dim'}"
         src="${esc(r.icon)}" alt="${esc(r.name)}" title="${esc(r.name)}" />`).join('')}
-      ${picked ? `<span class="rune-name">${esc(picked.name)}</span>` : ''}
-    </div>`;
+    </div>${picked ? `<div class="rune-keystone-name">${esc(picked.name)}</div>` : ''}`;
     }).join('')}
   </div>`;
 }
@@ -1982,9 +1993,8 @@ function renderChampionBuild(d) {
   const total = d.overall.play;
 
   $('#champ-detail-view').innerHTML = `
-    <button class="btn secondary" id="btn-champ-back">← All champions</button>
-
     <div class="card build-head">
+      <button class="btn secondary" id="btn-champ-back">← All champions</button>
       <img class="bh-portrait" src="${esc(d.champion.image.square)}" alt="" />
       <div>
         <h2>${esc(d.champion.name)} <span class="muted">${esc(d.champion.title)}</span></h2>
@@ -2003,51 +2013,45 @@ function renderChampionBuild(d) {
       <button class="btn tiny" id="btn-build-refresh">↻ Retry</button></div>` : ''}
 
     <div class="build-grid">
-      <div class="build-col">
-        <div class="card">
-          <h3>Runes</h3>
-          ${wrMetaHtml(d.runes, total)}
-          ${runePageHtml(d.runes)}
-        </div>
-        ${d.baseStats ? `
-        <div class="card">
-          <h3>Base stats</h3>
-          <p class="sec-meta">level 1 → 18 · same in every role</p>
-          ${baseStatsHtml(d.baseStats, d.champion.partype)}
-        </div>` : ''}
+      <div class="card">
+        <h3>Runes ${wrMetaHtml(d.runes, total)}</h3>
+        ${runePageHtml(d.runes)}
       </div>
-      <div class="build-col">
-        <div class="card">
-          <h3>Core build</h3>
-          ${wrMetaHtml(d.coreItems, total)}
-          ${iconRowHtml(d.coreItems.list, { arrows: true, itemStats: true, size: 'lg', labels: true })}
-          <div class="build-trio">
-            <div>
-              <h3 class="build-sub">Boots</h3>
-              ${wrMetaHtml(d.boots, total)}
-              ${iconRowHtml(d.boots.list, { itemStats: true })}
-            </div>
-            <div>
-              <h3 class="build-sub">Starting items</h3>
-              ${wrMetaHtml(d.startingItems, total)}
-              ${iconRowHtml(d.startingItems.list, { itemStats: true })}
-            </div>
-            <div>
-              <h3 class="build-sub">Summoner spells</h3>
-              ${wrMetaHtml(d.spells, total)}
-              ${iconRowHtml(d.spells.list)}
-            </div>
-          </div>
-          <h3 class="build-sub">Late &amp; situational</h3>
-          ${lateItemsHtml(d.lateItems, total)}
+      <div class="card">
+        <h3>Core build ${wrMetaHtml(d.coreItems, total)}</h3>
+        ${iconRowHtml(d.coreItems.list, { arrows: true, itemStats: true, labels: true })}
+        <div class="build-line">
+          <h4>Boots</h4>
+          ${iconRowHtml(d.boots.list, { itemStats: true })}
+          ${subMetaHtml(d.boots, total)}
         </div>
+        <div class="build-line">
+          <h4>Starting items</h4>
+          ${iconRowHtml(d.startingItems.list, { itemStats: true })}
+          ${subMetaHtml(d.startingItems, total)}
+        </div>
+        <div class="build-line">
+          <h4>Spells</h4>
+          ${iconRowHtml(d.spells.list)}
+          ${subMetaHtml(d.spells, total)}
+        </div>
+      </div>
+      <div class="card">
+        <h3>Late &amp; situational</h3>
+        ${lateItemsHtml(d.lateItems, total)}
       </div>
     </div>
 
-    <div class="card">
-      <h3>Skill order</h3>
-      ${wrMetaHtml(d.skills, total)}
-      ${skillOrderHtml(d.skills, d.abilities)}
+    <div class="build-row2${d.baseStats ? '' : ' solo'}">
+      <div class="card">
+        <h3>Skill order ${wrMetaHtml(d.skills, total)}</h3>
+        ${skillOrderHtml(d.skills, d.abilities)}
+      </div>
+      ${d.baseStats ? `
+      <div class="card">
+        <h3>Base stats <span class="sec-meta">level 1 → 18 · same in every role</span></h3>
+        ${baseStatsHtml(d.baseStats, d.champion.partype)}
+      </div>` : ''}
     </div>
 
     <p class="muted small">Aggregated from ranked games worldwide (${esc(tierLabel)}) · data via OP.GG · fetched ${esc(relTime(d.fetchedAt) || 'just now')}</p>`;
