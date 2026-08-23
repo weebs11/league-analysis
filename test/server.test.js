@@ -128,6 +128,25 @@ test('generates a basic-mode game plan for the detected game', async () => {
   assert.equal(again.body.cached, true);
 });
 
+test('serves a deterministic level-1 lane comparison for the detected game', async () => {
+  const { status, body } = await get('/api/lanecompare');
+  assert.equal(status, 200);
+  assert.ok(body.patch, 'reports the patch the stats came from');
+  assert.equal(body.lanes.length, 5, 'all five lanes paired by role');
+  const mine = body.lanes.find((l) => l.isMyLane);
+  assert.equal(mine.role, 'ADC (Bot)');
+  assert.equal(mine.ally.champion.name, 'Miss Fortune');
+  assert.equal(mine.enemy.champion.name, 'Ezreal');
+  for (const lane of body.lanes) {
+    assert.ok(lane.rows.length >= 10, 'full stat sheet per lane');
+    assert.ok(['ally', 'enemy', 'even'].includes(lane.verdict.side));
+    assert.ok(lane.ally.champion.image.startsWith('/img/champion/'), 'portraits come from the local proxy');
+  }
+  // Deterministic by design: two calls, byte-identical answers.
+  const again = await get('/api/lanecompare');
+  assert.deepEqual(again.body, body);
+});
+
 test('gameplan generation streams coachprogress events over SSE', async () => {
   const res = await fetch(`${BASE}/api/events`);
   const reader = res.body.getReader();
@@ -194,6 +213,9 @@ test('demo mode overrides live detection and champ select advice works', async (
   assert.equal(state.phase, 'champselect');
   assert.equal(state.mode, 'demo');
   assert.equal(state.champSelect.me.champion.name, 'Garen');
+
+  // Champ select has no game yet, so the lane comparison correctly refuses.
+  assert.equal((await get('/api/lanecompare')).status, 409);
 
   const advice = await post('/api/coach/champselect');
   assert.equal(advice.status, 200);

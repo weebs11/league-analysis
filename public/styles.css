@@ -188,7 +188,10 @@ main { flex: 1; width: min(1180px, 96vw); margin: 24px auto; }
   filter: brightness(1.08);
 }
 .btn.big { padding: 13px 26px; font-size: 0.92rem; }
-.btn.tiny { padding: 5px 10px; font-size: 0.66rem; letter-spacing: 0.08em; }
+.btn.tiny { padding: 6px 12px; font-size: 0.72rem; letter-spacing: 0.08em; }
+.btn:focus-visible, .tab:focus-visible, .champ-card:focus-visible {
+  outline: 1px solid var(--gold); outline-offset: 2px;
+}
 .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn-row.right { justify-content: flex-end; margin-top: 14px; }
 
@@ -788,17 +791,45 @@ select option { background: var(--hx-panel-2); }
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
 }
 
-.build-head { display: flex; align-items: center; gap: 14px; margin: 12px 0; }
+.build-head { display: flex; align-items: center; gap: 16px; margin: 16px 0; }
 .build-head .bh-portrait {
-  width: 64px; height: 64px; border-radius: 6px; border: 1px solid var(--gold-dark);
+  width: 80px; height: 80px; border-radius: 6px; border: 2px solid var(--gold-dark);
 }
-.build-roles { margin-bottom: 12px; }
+#champ-detail-view .build-head h2 { font-size: 1.4rem; }
+#champ-detail-view .bh-stats {
+  margin: 2px 0 0; font-size: 0.85rem; color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.build-roles { margin-bottom: 16px; }
 
 .build-grid {
   display: grid; grid-template-columns: minmax(340px, 1fr) minmax(300px, 1fr);
-  gap: 14px; margin-bottom: 14px; align-items: start;
+  gap: 16px; margin-bottom: 16px; align-items: start;
 }
 @media (max-width: 900px) { .build-grid { grid-template-columns: 1fr; } }
+/* Column wrappers stack cards (Runes + Base stats left, items right) so the
+   two columns bottom out together instead of leaving a void under Runes. */
+.build-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.build-col > .card { margin-bottom: 0; }
+
+/* Section metadata as a sibling line under the h3 (not crammed inside it). */
+#champ-detail-view .sec-meta {
+  margin: -6px 0 10px; font-size: 0.78rem; color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+/* One win-rate rule everywhere: good ≥ 52%, bad < 48%, muted on low sample. */
+#champ-detail-view .wr-good { color: var(--green); }
+#champ-detail-view .wr-bad { color: var(--red); }
+#champ-detail-view .wr-low { color: var(--text-dim); }
+
+/* Role/tier switches dim the page in place instead of collapsing it. */
+#champ-detail-view { transition: opacity 0.15s; }
+#champ-detail-view.is-refreshing { opacity: 0.55; pointer-events: none; }
+
+/* Base stats shares .stat-table with lane-compare — widen it here only. */
+#champ-detail-view .stat-table { max-width: none; }
+#champ-detail-view .stat-table th:not(:first-child),
+#champ-detail-view .stat-table td:not(:first-child) { text-align: right; }
 
 .wr-note { color: var(--text-dim); font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 0.72rem; font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 8px; }
@@ -810,61 +841,136 @@ select option { background: var(--hx-panel-2); }
   border: 1px solid var(--gold-deep); background: var(--hx-black);
 }
 .bi-arrow { color: var(--gold-dark); font-size: 0.9rem; margin: 0 2px; }
+/* Size ladder, scoped so coaching-output icon rows keep their size:
+   core build 48 > spells/starting/boots 40 > late items 32. */
+#champ-detail-view .build-items img { width: 40px; height: 40px; }
+#champ-detail-view .build-items.lg img { width: 48px; height: 48px; }
+#champ-detail-view .build-items.lg { align-items: flex-start; }
+#champ-detail-view .build-items.lg .bi-arrow { line-height: 48px; }
+#champ-detail-view .bi {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px;
+}
+#champ-detail-view .bi-name {
+  font-size: 0.78rem; color: var(--gold-text); text-align: center; line-height: 1.2;
+}
+
+/* Boots | Starting items | Summoner spells share one row under Core build. */
+#champ-detail-view .build-trio {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+}
 
 .late-items { display: flex; flex-direction: column; gap: 4px; }
+/* Row background is an inline popularity bar (share of the most-picked item),
+   set from lateItemsHtml. */
 .late-item {
   display: flex; align-items: center; gap: 9px;
-  padding: 3px 6px; border-radius: 4px; font-size: 0.82rem;
+  padding: 4px 8px; border-radius: 4px; font-size: 0.82rem;
 }
-.late-item:nth-child(odd) { background: rgba(30, 45, 64, 0.35); }
-.late-item img { width: 26px; height: 26px; border-radius: 3px; border: 1px solid var(--gold-deep); }
+.late-item img { width: 32px; height: 32px; border-radius: 3px; border: 1px solid var(--gold-deep); }
 .late-item .li-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.late-item .li-wr { color: var(--teal); font-variant-numeric: tabular-nums; }
-.late-item .li-games { font-size: 0.72rem; font-variant-numeric: tabular-nums; }
+.late-item .li-wr {
+  color: var(--text); min-width: 52px; text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.late-item .li-games {
+  min-width: 84px; text-align: right;
+  font-size: 0.78rem; font-variant-numeric: tabular-nums;
+}
 
 /* rune page: full trees, picked runes lit, the rest dimmed */
-.rune-page { display: flex; gap: 20px; flex-wrap: wrap; }
-.rune-tree { min-width: 130px; }
+.rune-page { display: flex; justify-content: space-evenly; gap: 24px; flex-wrap: wrap; }
+.rune-tree { min-width: 0; }
 .rune-side { display: flex; flex-direction: column; gap: 12px; }
 .rt-head {
   display: flex; align-items: center; gap: 7px; margin-bottom: 8px;
   color: var(--gold); font-family: var(--serif); font-size: 0.8rem;
   text-transform: uppercase; letter-spacing: 0.05em;
 }
-.rt-head img { width: 22px; height: 22px; }
+.rt-head img { width: 26px; height: 26px; }
 .rune-slot, .shard-row { display: flex; align-items: center; gap: 8px; margin: 7px 0; }
 .rune {
-  width: 30px; height: 30px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 50%;
   border: 1px solid transparent; background: var(--hx-black);
 }
-.rune.keystone { width: 40px; height: 40px; }
-.rune.shard { width: 24px; height: 24px; padding: 2px; }
+.rune.keystone { width: 52px; height: 52px; }
+.rune.shard { width: 28px; height: 28px; padding: 2px; }
 .rune.on { border-color: var(--gold); box-shadow: 0 0 7px rgba(200, 170, 110, 0.45); }
-.rune.dim { opacity: 0.28; filter: grayscale(0.9); }
+/* Dim enough that picks pop, bright enough that the tree stays legible. */
+.rune.dim { opacity: 0.45; filter: grayscale(0.7) brightness(0.85); }
+.rune-name { font-size: 0.8rem; color: var(--gold-text); align-self: center; margin-left: 4px; }
 
-/* skill order: one row per key, one column per level */
-.skill-priority { margin-bottom: 10px; color: var(--text-dim); font-size: 0.85rem;
+/* skill order: an axis row of level numbers, then one row per key. Cells
+   flex to fill the card; every row carries the same trailing cooldown box so
+   columns stay aligned across rows. */
+.skill-priority { margin-bottom: 10px; color: var(--text-dim); font-size: 0.9rem;
   display: flex; align-items: center; gap: 7px; }
 .skill-priority .skill-key { margin: 0; }
 .skill-grid { display: flex; flex-direction: column; gap: 4px; overflow-x: auto; padding-bottom: 4px; }
 .skill-row { display: flex; gap: 4px; align-items: center; }
 .skill-key {
-  width: 22px; height: 22px; flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; flex: none; display: inline-flex; align-items: center; justify-content: center;
   background: var(--teal-deep); color: var(--teal); border-radius: 3px;
   font-size: 0.78rem; font-weight: 700;
 }
+.skill-key.axis { visibility: hidden; }
 .skill-cell {
-  width: 26px; height: 22px; flex: none;
+  flex: 1 0 30px; max-width: 40px; height: 24px;
   display: inline-flex; align-items: center; justify-content: center;
-  background: rgba(30, 45, 64, 0.4); border-radius: 3px;
-  font-size: 0.72rem; color: var(--hx-black); font-variant-numeric: tabular-nums;
+  background: transparent; box-shadow: inset 0 0 0 1px var(--hx-line);
+  border-radius: 3px; font-variant-numeric: tabular-nums;
 }
+.skill-cell.head { box-shadow: none; color: var(--text-dim); font-size: 0.78rem; }
 .skill-cell.on {
   background: linear-gradient(180deg, var(--gold), var(--gold-mid));
-  font-weight: 700;
+  box-shadow: none;
 }
 .skill-cd {
-  margin-left: 8px; flex: none; white-space: nowrap;
-  font-size: 0.72rem; color: var(--text-dim); font-variant-numeric: tabular-nums;
+  flex: 0 0 150px; margin-left: 10px; padding-left: 10px; align-self: center;
+  border-left: 1px solid var(--hx-line);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-size: 0.78rem; color: var(--text-dim); font-variant-numeric: tabular-nums;
 }
-.skill-priority .sp-note { margin-left: auto; font-size: 0.75rem; }
+.skill-cd.axis { border-left-color: transparent; }
+.skill-priority .sp-note { margin-left: auto; font-size: 0.78rem; }
+
+/* ---------- shared stat table (champion base stats, lane comparison) ---------- */
+.stat-table { width: 100%; max-width: 620px; border-collapse: collapse; font-size: 0.82rem; margin-top: 8px; }
+.stat-table th {
+  text-align: left; color: var(--text-dim); font-weight: 500; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 10px 5px 0;
+}
+.stat-table td {
+  padding: 3px 10px 3px 0; border-top: 1px solid var(--hx-line);
+  font-variant-numeric: tabular-nums;
+}
+.stat-table td:first-child { color: var(--text-dim); }
+.stat-table td.win { color: var(--green); font-weight: 600; }
+
+/* ---------- level-1 lane comparison ---------- */
+.lc-intro { margin: 8px 0 4px; }
+.lane-row { padding: 10px 0 8px; border-top: 1px solid var(--hx-line); }
+.lane-row:first-of-type { border-top: none; }
+.lane-row.me { background: linear-gradient(90deg, rgba(200, 170, 110, 0.07), transparent 70%); }
+.lc-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lc-role {
+  flex: none; width: 92px; color: var(--text-dim); font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.lc-role .lc-you { color: var(--gold); }
+.lc-champ { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; min-width: 0; }
+.lc-champ img { width: 26px; height: 26px; border-radius: 3px; border: 1px solid var(--gold-deep); }
+.lc-champ.ally img { border-bottom: 2px solid var(--teal-dark); }
+.lc-champ.enemy img { border-bottom: 2px solid var(--red); }
+.lc-vs { color: var(--text-dim); font-size: 0.7rem; }
+.lc-drivers { margin: 5px 0 0 102px; font-size: 0.8rem; color: var(--text-dim); }
+.lc-driver.ally { color: var(--teal); }
+.lc-driver.enemy { color: var(--red); }
+.lc-sep { color: var(--text-dim); }
+.lc-details { margin: 4px 0 0 102px; }
+.lc-details summary { cursor: pointer; color: var(--text-dim); font-size: 0.76rem; }
+.lc-details summary:hover { color: var(--gold-text); }
+.lc-cd { white-space: nowrap; margin-right: 6px; }
+@media (max-width: 720px) {
+  .lc-role { width: 100%; }
+  .lc-drivers, .lc-details { margin-left: 0; }
+}

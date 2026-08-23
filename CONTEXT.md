@@ -20,6 +20,7 @@ than the concepts warrant.
 | **Game Plan** | The AI-generated coaching for one game: matchup analysis, phase-by-phase plan, threat cards, itemization with reasoning. Avoid: "advice" (that's the champ-select variant), "report". |
 | **Basic Mode** | Coaching generated from Riot data alone. For the in-game Game Plan it appears when no Anthropic API key is present; for the champ-select briefing it appears only when a champion is missing from the Briefing Library. |
 | **Briefing Library** | The checked-in, pre-generated per-champion briefings under `briefings/` (one JSON per champion plus `manifest.json`). Written by Claude (Sonnet) at authoring time from current-patch Data Dragon data, served instantly during champ select with no API key or network call. Regenerated on demand, not automatically — `manifest.json` records the patch and model that produced it. Avoid: "cache" — nothing regenerates it at runtime. |
+| **Lane Check** | The deterministic level-1 comparison on the in-game view: every lane paired ally-vs-enemy and compared on Data Dragon base stats plus derived combat math (auto-attack DPS, effective HP), with a weighted stat-sheet verdict per lane ([ADR-0009](docs/adr/0009-deterministic-level1-lane-check.md)). Never model-generated — it must stay verifiable by hand, instant, and keyless. Ability damage is out of scope (Riot publishes no ability numbers for most champions); rank-1 cooldowns/costs are in. Avoid: "matchup analysis" — that's the Game Plan's AI-written lane section. |
 
 ### Match history (new)
 

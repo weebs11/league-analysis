@@ -111,11 +111,13 @@ function onState(snap) {
     showView('ingame');
     renderGameHeader();
     if (prevPhase !== 'ingame') resetGamePanels();
+    loadLaneCompare();
   } else {
     showView('waiting');
     renderWaiting();
     if (prevPhase === 'ingame' || prevPhase === 'champselect') {
       currentPlan = null; currentCsAdvice = null; csBriefingKey = null; chatHistory = [];
+      resetLaneCompare();
     }
   }
 }
@@ -296,6 +298,7 @@ function renderGameHeader() {
 function resetGamePanels() {
   currentPlan = null;
   chatHistory = [];
+  resetLaneCompare(); // a new game means a new comparison — loadLaneCompare refills it
   $('#tabs').classList.add('hidden');
   $('#tab-panels').classList.add('hidden');
   $('#gen-bar').classList.remove('hidden');
@@ -307,6 +310,113 @@ function resetGamePanels() {
     ? 'Generates a matchup breakdown, a plan for your role, and an item path — tailored to all ten champions.'
     : 'No API key set — you\'ll get basic mode (Riot data only). Add a key in ⚙️ Settings for full coaching.';
   $('#chat-log').innerHTML = `<div class="chat-msg assistant"><p>Ask me anything about this game — "why that item?", "what does kiting mean?", "how do I fight Darius?"…</p></div>`;
+}
+
+// ---------- level-1 lane comparison ----------
+// Deterministic stat-sheet math from /api/lanecompare — rendered the moment a
+// game is detected, before (and independent of) any AI coaching. The server
+// computes everything; this is display only.
+let laneCompareKey = null; // fingerprint of the comparison currently shown or loading
+
+function laneCompareKeyOf(g) {
+  const side = (list) => (list || []).map((p) => `${p.champion?.id || ''}:${p.role || ''}`).join(',');
+  return `${side(g.allies)}|${side(g.enemies)}`;
+}
+
+function resetLaneCompare() {
+  laneCompareKey = null;
+  $('#lane-compare').classList.add('hidden');
+  $('#lane-compare').innerHTML = '';
+}
+
+async function loadLaneCompare() {
+  const g = state?.game;
+  if (!g) return;
+  const key = laneCompareKeyOf(g);
+  if (key === laneCompareKey) return; // already shown or in flight
+  laneCompareKey = key;
+  try {
+    const data = await api('/api/lanecompare');
+    if (laneCompareKey !== key) return; // superseded
+    renderLaneCompare(data);
+  } catch {
+    if (laneCompareKey !== key) return;
+    laneCompareKey = null; // let the next snapshot retry
+    $('#lane-compare').classList.add('hidden');
+  }
+}
+
+function laneVerdictHtml(lane) {
+  const v = lane.verdict;
+  if (v.side === 'even') return badge('Even at level 1', 'neutral');
+  const winner = v.side === 'ally' ? lane.ally : lane.enemy;
+  return badge(`${winner.champion.name}: ${v.label.toLowerCase()}`, v.side === 'ally' ? 'low' : 'high');
+}
+
+function laneSpellCell(side) {
+  if (!side.spells?.length) return '<span class="muted">—</span>';
+  return side.spells.map((s) => {
+    const cd = s.cooldown === null ? '?' : `${s.cooldown}s`;
+    const title = `${s.name} — rank 1: ${s.cooldown ?? '?'}s cooldown${s.cost ? `, costs ${s.cost}` : ''}`;
+    return `<span class="lc-cd" title="${esc(title)}">${esc(s.key)} ${esc(cd)}</span>`;
+  }).join(' ');
+}
+
+function laneTableHtml(lane) {
+  const cell = (row, side) => `<td class="${row.better === side ? 'win' : ''}">${esc(row[side])}</td>`;
+  return `<table class="stat-table">
+    <thead><tr><th></th><th>${esc(lane.ally.champion.name)}</th><th>${esc(lane.enemy.champion.name)}</th></tr></thead>
+    <tbody>
+      ${lane.rows.map((r) => `<tr><td>${esc(r.label)}</td>${cell(r, 'ally')}${cell(r, 'enemy')}</tr>`).join('')}
+      <tr><td>Resource</td><td>${esc(lane.ally.resource)}</td><td>${esc(lane.enemy.resource)}</td></tr>
+      <tr><td>Ability cooldowns (rank 1)</td><td>${laneSpellCell(lane.ally)}</td><td>${laneSpellCell(lane.enemy)}</td></tr>
+    </tbody>
+  </table>`;
+}
+
+function laneRowHtml(lane) {
+  const champCell = (side, cls) => `<span class="lc-champ ${cls}">
+      <img src="${esc(side.champion.image)}" alt="" loading="lazy" />
+      <span>${esc(side.champion.name)}</span>
+    </span>`;
+  const drivers = lane.verdict.drivers.length
+    ? lane.verdict.drivers.map((d) => {
+        const who = d.side === 'ally' ? lane.ally : lane.enemy;
+        return `<span class="lc-driver ${d.side}">${esc(who.champion.name)}: ${esc(d.text)}</span>`;
+      }).join(' <span class="lc-sep">·</span> ')
+    : '<span class="lc-driver">stat sheets are nearly identical</span>';
+  return `<div class="lane-row ${lane.isMyLane ? 'me' : ''}">
+    <div class="lc-head">
+      <span class="lc-role">${esc(lane.role || '—')}${lane.isMyLane ? ' <b class="lc-you">· you</b>' : ''}</span>
+      ${champCell(lane.ally, 'ally')}
+      <span class="lc-vs">vs</span>
+      ${champCell(lane.enemy, 'enemy')}
+      <span class="spacer"></span>
+      ${laneVerdictHtml(lane)}
+    </div>
+    <div class="lc-drivers">${drivers}</div>
+    <details class="lc-details">
+      <summary>Full level-1 stat sheet</summary>
+      ${laneTableHtml(lane)}
+    </details>
+  </div>`;
+}
+
+function renderLaneCompare(data) {
+  const box = $('#lane-compare');
+  if (!data?.lanes?.length) {
+    box.classList.add('hidden');
+    box.innerHTML = '';
+    return;
+  }
+  box.innerHTML = `<div class="card lane-cmp">
+    <h3>⚖️ Level-1 lane check <span class="wr-note">Riot base stats · no AI</span></h3>
+    <p class="muted small lc-intro">Who starts ahead, lane by lane, from the stat sheet alone — health, damage,
+    resists, range. Abilities, passives, and runes aren't counted (Riot doesn't publish ability damage numbers
+    for most champions), so read an edge as a head start, not a verdict.</p>
+    ${data.lanes.map(laneRowHtml).join('')}
+  </div>`;
+  box.classList.remove('hidden');
 }
 
 // ---------- game plan rendering ----------
@@ -1601,12 +1711,30 @@ const db = {
   roleFilter: '',
   current: null, // ddragon id of the open champion
   tier: 'emerald_plus',
+  buildSeq: 0,   // request token: only the latest role/tier/champ fetch may render
 };
 
-function wrTextOf(sec) {
+function fmtGames(n) {
+  if (n >= 1e6) return `${(n / 1e6).toFixed(1)}M`;
+  return n >= 1000 ? `${(n / 1000).toFixed(n < 10000 ? 1 : 0)}k` : String(n);
+}
+
+// One win-rate rule for the whole page: good ≥ 52%, bad < 48%, and muted
+// entirely when the sample is under 2% of the champion's games — a 54% item
+// on 900 games is noise, and coloring it would actively recommend it.
+function wrClass(wr, play, totalPlay) {
+  if (totalPlay && play / totalPlay < 0.02) return 'wr-low';
+  return wr >= 0.52 ? 'wr-good' : wr < 0.48 ? 'wr-bad' : '';
+}
+
+// Section metadata line, rendered as a sibling of the <h3> rather than inside
+// it. Abbreviated count on screen, exact count in the tooltip.
+function wrMetaHtml(sec, overallPlay) {
   if (!sec?.play) return '';
   const wr = sec.winRate ?? sec.wins / sec.play;
-  return `${(100 * wr).toFixed(1)}% WR · ${sec.play.toLocaleString()} games`;
+  const cls = wrClass(wr, sec.play, overallPlay);
+  const tip = `${sec.play.toLocaleString()} games${cls === 'wr-low' ? ' — low sample' : ''}`;
+  return `<p class="sec-meta" title="${esc(tip)}"><span class="${cls}">${(100 * wr).toFixed(1)}% WR</span> · ${fmtGames(sec.play)} games</p>`;
 }
 
 function roleLabelOf(id) {
@@ -1654,18 +1782,30 @@ function renderChampionGrid() {
 
 async function openChampionBuild(champId, role = null, { refresh = false } = {}) {
   db.current = champId;
+  const seq = ++db.buildSeq;
   $('#champ-grid-view').classList.add('hidden');
   const view = $('#champ-detail-view');
   view.classList.remove('hidden');
-  view.innerHTML = `<div class="loading"><div class="spinner"></div> Loading build stats…</div>`;
+  // Full spinner only on first open; role/tier switches dim the existing page
+  // in place instead of collapsing it (which scroll-jumped to the top).
+  if (view.querySelector('.build-grid')) {
+    view.classList.add('is-refreshing');
+  } else {
+    view.innerHTML = `<div class="loading"><div class="spinner"></div> Loading build stats…</div>`;
+  }
   const q = new URLSearchParams({ tier: db.tier });
   if (role) q.set('role', role);
   if (refresh) q.set('refresh', '1');
   try {
     const d = await api(`/api/builds/champion/${encodeURIComponent(champId)}?${q}`);
-    if (db.current !== champId) return; // user already navigated away
+    // Token check covers same-champion role/tier switches too, so two quick
+    // tab clicks can't render out of order.
+    if (seq !== db.buildSeq || db.current !== champId) return;
+    view.classList.remove('is-refreshing');
     renderChampionBuild(d);
   } catch (err) {
+    if (seq !== db.buildSeq || db.current !== champId) return;
+    view.classList.remove('is-refreshing');
     view.innerHTML = `
       <button class="btn secondary" id="btn-champ-back">← All champions</button>
       <div class="error-box">${esc(err.message)}</div>
@@ -1677,7 +1817,9 @@ async function openChampionBuild(champId, role = null, { refresh = false } = {})
 
 function closeChampionBuild() {
   db.current = null;
+  db.buildSeq++; // orphan any in-flight fetch
   $('#champ-detail-view').classList.add('hidden');
+  $('#champ-detail-view').classList.remove('is-refreshing');
   $('#champ-detail-view').innerHTML = '';
   $('#champ-grid-view').classList.remove('hidden');
 }
@@ -1689,20 +1831,30 @@ function refTitle(ref, itemStats) {
   return it ? itemTitle(it) : ref.name;
 }
 
-function iconRowHtml(list, { arrows = false, size = '', itemStats = false } = {}) {
-  return `<div class="build-items ${size}">${list.map((it, i) =>
-    `${i && arrows ? '<span class="bi-arrow">→</span>' : ''}<img src="${esc(it.icon)}" alt="${esc(it.name)}" title="${esc(refTitle(it, itemStats))}" />`).join('')}</div>`;
+function iconRowHtml(list, { arrows = false, size = '', itemStats = false, labels = false } = {}) {
+  return `<div class="build-items ${size}">${list.map((it, i) => {
+    const img = `<img src="${esc(it.icon)}" alt="${esc(it.name)}" title="${esc(refTitle(it, itemStats))}" />`;
+    const cell = labels ? `<span class="bi">${img}<span class="bi-name">${esc(it.name)}</span></span>` : img;
+    return `${i && arrows ? '<span class="bi-arrow">→</span>' : ''}${cell}`;
+  }).join('')}</div>`;
 }
 
-function lateItemsHtml(items) {
+function lateItemsHtml(items, overallPlay) {
   if (!items?.length) return '<p class="muted small">No data.</p>';
-  return `<div class="late-items">${items.map((it) => `
-    <div class="late-item">
+  // Popularity bar: each row's fill is its share of the most-picked item, so
+  // the 6× gap between the top and bottom of the list is visible at a glance.
+  const maxPlay = Math.max(...items.map((it) => it.play));
+  return `<div class="late-items">${items.map((it) => {
+    const pct = Math.round((100 * it.play) / maxPlay);
+    const cls = wrClass(it.winRate, it.play, overallPlay);
+    return `
+    <div class="late-item" style="background: linear-gradient(90deg, rgba(200,170,110,0.10) ${pct}%, transparent ${pct}%)">
       <img src="${esc(it.icon)}" alt="" title="${esc(refTitle(it, true))}" />
       <span class="li-name">${esc(it.name)}</span>
-      <span class="li-wr">${(100 * it.winRate).toFixed(1)}%</span>
-      <span class="li-games muted">${it.play.toLocaleString()} games</span>
-    </div>`).join('')}</div>`;
+      <span class="li-wr ${cls}"${cls === 'wr-low' ? ' title="low sample"' : ''}>${(100 * it.winRate).toFixed(1)}%</span>
+      <span class="li-games muted" title="${it.play.toLocaleString()} games">${fmtGames(it.play)} games</span>
+    </div>`;
+  }).join('')}</div>`;
 }
 
 // The full two-tree rune page: every rune rendered, the picked ones lit.
@@ -1711,10 +1863,17 @@ function runeTreeHtml(style, selectedIds, { withKeystones }) {
   const slots = withKeystones ? style.slots : style.slots.slice(1);
   return `<div class="rune-tree">
     <div class="rt-head"><img src="${esc(style.icon)}" alt="" /><span>${esc(style.name)}</span></div>
-    ${slots.map((slot, i) => `<div class="rune-slot">
-      ${slot.map((r) => `<img class="rune ${withKeystones && i === 0 ? 'keystone' : ''} ${selectedIds.includes(r.id) ? 'on' : 'dim'}"
+    ${slots.map((slot, i) => {
+      const keystoneRow = withKeystones && i === 0;
+      // The keystone is the build-defining pick — name it in visible text so
+      // the page has a headline readable without hovering.
+      const picked = keystoneRow ? slot.find((r) => selectedIds.includes(r.id)) : null;
+      return `<div class="rune-slot">
+      ${slot.map((r) => `<img class="rune ${keystoneRow ? 'keystone' : ''} ${selectedIds.includes(r.id) ? 'on' : 'dim'}"
         src="${esc(r.icon)}" alt="${esc(r.name)}" title="${esc(r.name)}" />`).join('')}
-    </div>`).join('')}
+      ${picked ? `<span class="rune-name">${esc(picked.name)}</span>` : ''}
+    </div>`;
+    }).join('')}
   </div>`;
 }
 
@@ -1743,6 +1902,12 @@ function skillOrderHtml(skills, abilities) {
   const abilityOf = {};
   for (const a of abilities || []) abilityOf[a.key] = a;
   const cols = Math.max(skills.order.length, 15);
+  const haveCds = ['Q', 'W', 'E', 'R'].some((k) => abilityOf[k]?.cooldowns?.length);
+  // Every row (axis included) carries the same trailing cooldown box so the
+  // flexing cells get identical space and the columns stay aligned.
+  const axis = `<div class="skill-row"><span class="skill-key axis">Q</span>${
+    Array.from({ length: cols }, (_, lv) => `<span class="skill-cell head">${lv + 1}</span>`).join('')}${
+    haveCds ? '<span class="skill-cd axis"></span>' : ''}</div>`;
   const rows = ['Q', 'W', 'E', 'R'].map((k) => {
     const ab = abilityOf[k];
     let cells = '';
@@ -1752,19 +1917,60 @@ function skillOrderHtml(skills, abilities) {
       if (on) rank++;
       const cd = on ? ab?.cooldowns?.[rank - 1] : undefined;
       const tip = cd === undefined ? '' : ` title="${esc(`${ab.name} rank ${rank}: ${cd}s cooldown`)}"`;
-      cells += `<span class="skill-cell ${on ? 'on' : ''}"${tip}>${on ? lv + 1 : ''}</span>`;
+      cells += `<span class="skill-cell ${on ? 'on' : ''}"${tip}></span>`;
     }
     const cdText = cooldownTextOf(ab?.cooldowns);
-    const cdCol = cdText
-      ? `<span class="skill-cd" title="${esc(`${ab.name} — cooldown per rank, in seconds`)}">${esc(cdText)}</span>` : '';
+    const cdCol = haveCds
+      ? `<span class="skill-cd"${cdText ? ` title="${esc(`${ab.name} — cooldown per rank, in seconds`)}"` : ''}>${esc(cdText)}</span>` : '';
     return `<div class="skill-row"><span class="skill-key"${ab ? ` title="${esc(ab.name)}"` : ''}>${k}</span>${cells}${cdCol}</div>`;
   }).join('');
-  const haveCds = ['Q', 'W', 'E', 'R'].some((k) => abilityOf[k]?.cooldowns?.length);
   return `<div class="skill-priority">Max order:
       ${skills.priority.map((k) => `<b class="skill-key">${esc(k)}</b>`).join('<span class="bi-arrow">→</span>')}
       ${haveCds ? '<span class="sp-note">cooldowns per rank (s)</span>' : ''}
     </div>
-    <div class="skill-grid">${rows}</div>`;
+    <div class="skill-grid">${axis}${rows}</div>`;
+}
+
+// Base stats table: level 1, growth per level, level 18. Riot's growth curve
+// back-loads gains but sums to exactly 17 full increments by level 18, so
+// level 18 = base + 17 × growth. Attack speed growth is a percentage of base
+// rather than a flat add; range and move speed never grow.
+function fmtStat(v) {
+  return String(Math.round(v * 1000) / 1000);
+}
+
+function baseStatsHtml(s, partype) {
+  if (!s) return '';
+  const at18 = (base, per) => base + 17 * per;
+  const rows = [
+    ['Health', s.hp, s.hpperlevel],
+    ['Health regen (per 5s)', s.hpregen, s.hpregenperlevel],
+  ];
+  if (s.mp > 0 && partype) {
+    rows.push([partype, s.mp, s.mpperlevel]);
+    rows.push([`${partype} regen (per 5s)`, s.mpregen, s.mpregenperlevel]);
+  }
+  rows.push(
+    ['Attack damage', s.attackdamage, s.attackdamageperlevel],
+    ['Attack speed', s.attackspeed, s.attackspeedperlevel, {
+      growthText: `+${fmtStat(s.attackspeedperlevel)}%`,
+      at18: s.attackspeed * (1 + (17 * s.attackspeedperlevel) / 100),
+    }],
+    ['Attack range', s.attackrange, 0],
+    ['Armor', s.armor, s.armorperlevel],
+    ['Magic resist', s.spellblock, s.spellblockperlevel],
+    ['Move speed', s.movespeed, 0],
+  );
+  return `<table class="stat-table">
+    <thead><tr><th></th><th>Level 1</th><th>Growth / level</th><th>Level 18</th></tr></thead>
+    <tbody>${rows.map(([label, base, per, extra]) => `<tr>
+      <td>${esc(label)}</td>
+      <td>${esc(fmtStat(base))}</td>
+      <td>${esc(extra?.growthText ?? (per ? `+${fmtStat(per)}` : '—'))}</td>
+      <td>${esc(fmtStat(extra?.at18 ?? at18(base, per)))}</td>
+    </tr>`).join('')}
+    </tbody>
+  </table>`;
 }
 
 function renderChampionBuild(d) {
@@ -1772,6 +1978,8 @@ function renderChampionBuild(d) {
     `<option value="${esc(t.id)}" ${t.id === d.tier ? 'selected' : ''}>${esc(t.label)}</option>`).join('');
   const roleTabs = d.roles.map((r) =>
     `<button class="tab ${r === d.role ? 'active' : ''}" data-role="${esc(r)}">${esc(roleLabelOf(r))}</button>`).join('');
+  const tierLabel = db.meta.tiers.find((t) => t.id === d.tier)?.label || d.tier;
+  const total = d.overall.play;
 
   $('#champ-detail-view').innerHTML = `
     <button class="btn secondary" id="btn-champ-back">← All champions</button>
@@ -1780,7 +1988,7 @@ function renderChampionBuild(d) {
       <img class="bh-portrait" src="${esc(d.champion.image.square)}" alt="" />
       <div>
         <h2>${esc(d.champion.name)} <span class="muted">${esc(d.champion.title)}</span></h2>
-        <p class="muted">${(100 * d.overall.winRate).toFixed(1)}% win rate · ${d.overall.play.toLocaleString()} games · patch ${esc(d.patch)}</p>
+        <p class="bh-stats"><span class="${wrClass(d.overall.winRate)}">${(100 * d.overall.winRate).toFixed(1)}% WR</span> · ${fmtGames(total)} games · ${esc(tierLabel)} · patch ${esc(d.patch)}</p>
       </div>
       <div class="spacer"></div>
       <div class="field inline">
@@ -1795,30 +2003,54 @@ function renderChampionBuild(d) {
       <button class="btn tiny" id="btn-build-refresh">↻ Retry</button></div>` : ''}
 
     <div class="build-grid">
-      <div class="card">
-        <h3>Runes <span class="wr-note">${wrTextOf(d.runes)}</span></h3>
-        ${runePageHtml(d.runes)}
+      <div class="build-col">
+        <div class="card">
+          <h3>Runes</h3>
+          ${wrMetaHtml(d.runes, total)}
+          ${runePageHtml(d.runes)}
+        </div>
+        ${d.baseStats ? `
+        <div class="card">
+          <h3>Base stats</h3>
+          <p class="sec-meta">level 1 → 18 · same in every role</p>
+          ${baseStatsHtml(d.baseStats, d.champion.partype)}
+        </div>` : ''}
       </div>
-      <div class="card">
-        <h3>Summoner spells <span class="wr-note">${wrTextOf(d.spells)}</span></h3>
-        ${iconRowHtml(d.spells.list)}
-        <h3 class="build-sub">Starting items <span class="wr-note">${wrTextOf(d.startingItems)}</span></h3>
-        ${iconRowHtml(d.startingItems.list, { itemStats: true })}
-        <h3 class="build-sub">Core build <span class="wr-note">${wrTextOf(d.coreItems)}</span></h3>
-        ${iconRowHtml(d.coreItems.list, { arrows: true, itemStats: true })}
-        <h3 class="build-sub">Boots <span class="wr-note">${wrTextOf(d.boots)}</span></h3>
-        ${iconRowHtml(d.boots.list, { itemStats: true })}
-        <h3 class="build-sub">Late &amp; situational</h3>
-        ${lateItemsHtml(d.lateItems)}
+      <div class="build-col">
+        <div class="card">
+          <h3>Core build</h3>
+          ${wrMetaHtml(d.coreItems, total)}
+          ${iconRowHtml(d.coreItems.list, { arrows: true, itemStats: true, size: 'lg', labels: true })}
+          <div class="build-trio">
+            <div>
+              <h3 class="build-sub">Boots</h3>
+              ${wrMetaHtml(d.boots, total)}
+              ${iconRowHtml(d.boots.list, { itemStats: true })}
+            </div>
+            <div>
+              <h3 class="build-sub">Starting items</h3>
+              ${wrMetaHtml(d.startingItems, total)}
+              ${iconRowHtml(d.startingItems.list, { itemStats: true })}
+            </div>
+            <div>
+              <h3 class="build-sub">Summoner spells</h3>
+              ${wrMetaHtml(d.spells, total)}
+              ${iconRowHtml(d.spells.list)}
+            </div>
+          </div>
+          <h3 class="build-sub">Late &amp; situational</h3>
+          ${lateItemsHtml(d.lateItems, total)}
+        </div>
       </div>
     </div>
 
     <div class="card">
-      <h3>Skill order <span class="wr-note">${wrTextOf(d.skills)}</span></h3>
+      <h3>Skill order</h3>
+      ${wrMetaHtml(d.skills, total)}
       ${skillOrderHtml(d.skills, d.abilities)}
     </div>
 
-    <p class="muted small">Aggregated from ranked games worldwide (${esc(db.meta.tiers.find((t) => t.id === d.tier)?.label || d.tier)}) · data via OP.GG · fetched ${esc(relTime(d.fetchedAt) || 'just now')}</p>`;
+    <p class="muted small">Aggregated from ranked games worldwide (${esc(tierLabel)}) · data via OP.GG · fetched ${esc(relTime(d.fetchedAt) || 'just now')}</p>`;
 
   $('#btn-champ-back').onclick = closeChampionBuild;
   $$('#champ-detail-view .build-roles .tab').forEach((t) => {

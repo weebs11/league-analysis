@@ -139,7 +139,7 @@ router.get('/champion/:champId', async (req, res) => {
       // offline with no cached champion details
     }
     res.json({
-      champion: { id: champ.id, key: champ.key, name: champ.name, title: champ.title, image: ddragon.imageUrls(champ.id) },
+      champion: { id: champ.id, key: champ.key, name: champ.name, title: champ.title, partype: champ.partype, image: ddragon.imageUrls(champ.id) },
       role,
       roles: roles.length ? roles : [role],
       tier,
@@ -163,6 +163,9 @@ router.get('/champion/:champId', async (req, res) => {
       lateItems: extract.lateItems.map((e) => ({ ...itemRef(e.id), ...withWr(e) })),
       skills: withWr(extract.skills),
       abilities,
+      // Base stats come from the champion index (Data Dragon), not the Build
+      // Extract — always present, current patch, no op.gg involvement.
+      baseStats: champ.stats || null,
     });
   } catch (err) {
     if (err instanceof service.BuildsUnavailableError) {
