@@ -77,6 +77,11 @@ export async function init() {
       tags: c.tags, // e.g. ["Marksman"]
       info: c.info, // { attack, defense, magic, difficulty } 0-10
       partype: c.partype,
+      // Base stats + per-level growth (hp, attackdamage, armor, attackrange…),
+      // straight from Riot. Level 1 values are the bases; level N adds
+      // growth × (N−1) on Riot's curve, which lands at exactly base + 17×growth
+      // at level 18. attackspeedperlevel is a percentage of base, not a flat add.
+      stats: c.stats,
     };
     byId[entry.id] = entry;
     byKey[entry.key] = entry;
@@ -278,6 +283,7 @@ export async function champDetails(ddragonId) {
     tags: c.tags,
     info: c.info,
     partype: c.partype,
+    stats: c.stats,
     lore: c.blurb,
     passive: { name: c.passive.name, description: stripHtml(c.passive.description).slice(0, 300) },
     spells: c.spells.map((s, i) => ({
@@ -287,6 +293,8 @@ export async function champDetails(ddragonId) {
       // Seconds per rank, e.g. [12, 11, 10, 9, 8]. Riot's data uses one entry
       // per rank; transform-style kits can deviate, so don't assume length 5.
       cooldowns: Array.isArray(s.cooldown) ? s.cooldown : [],
+      // Resource cost per rank, in the champion's partype. Manaless kits read 0.
+      costs: Array.isArray(s.cost) ? s.cost : [],
     })),
     allytips: c.allytips || [],
     enemytips: c.enemytips || [],

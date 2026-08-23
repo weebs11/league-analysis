@@ -9,6 +9,7 @@ import * as ddragon from './src/ddragon.js';
 import * as gamestate from './src/gamestate.js';
 import * as coach from './src/coach.js';
 import * as fallback from './src/fallback.js';
+import * as lanecompare from './src/lanecompare.js';
 import * as briefings from './src/briefings.js';
 import * as mock from './src/mock.js';
 import * as lcu from './src/lcu.js';
@@ -254,6 +255,22 @@ app.post('/api/coach/chat', async (req, res) => {
   } catch (err) {
     console.error('chat failed:', err);
     res.status(502).json({ error: coach.describeApiError(err) });
+  }
+});
+
+// ---- Level-1 lane comparison -----------------------------------------------------
+// Deterministic (no model, no key, no cache needed): recomputed from Data
+// Dragon base stats on every call, so it can never disagree with the patch data.
+app.get('/api/lanecompare', async (_req, res) => {
+  const game = gamestate.snapshot().game;
+  if (!game) {
+    return res.status(409).json({ error: 'No active game.' });
+  }
+  try {
+    res.json(await lanecompare.compareGame(game));
+  } catch (err) {
+    console.error('lane comparison failed:', err);
+    res.status(500).json({ error: 'Could not compute the lane comparison.' });
   }
 });
 

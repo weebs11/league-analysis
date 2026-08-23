@@ -12,6 +12,7 @@ process.env.LOL_COACH_CONFIG = path.join(os.tmpdir(), `lol-coach-unit-${process.
 const ddragon = await import('../src/ddragon.js');
 const { normalizeChampSelect, normalizeLiveGame } = await import('../src/gamestate.js');
 const fallback = await import('../src/fallback.js');
+const lanecompare = await import('../src/lanecompare.js');
 const mock = await import('../src/mock.js');
 const coach = await import('../src/coach.js');
 const briefings = await import('../src/briefings.js');
@@ -60,6 +61,24 @@ test('ddragon: champion details carry per-rank cooldowns for every spell', async
   // Basic abilities rank to 5; the ultimate to 3.
   assert.equal(d.spells[0].cooldowns.length, 5);
   assert.equal(d.spells[3].cooldowns.length, 3);
+});
+
+test('ddragon: champion index entries carry base stats', () => {
+  const cait = ddragon.champByName('Caitlyn');
+  assert.ok(cait.stats, 'index entries keep the Data Dragon stats block');
+  assert.ok(cait.stats.hp > 400 && cait.stats.hpperlevel > 0);
+  assert.equal(cait.stats.attackrange, 650, 'Caitlyn keeps the longest base range in the game');
+  assert.ok(cait.stats.attackdamage > 0 && cait.stats.armor > 0 && cait.stats.movespeed > 0);
+  // Every champion has the block — the lane comparison depends on it.
+  assert.ok(ddragon.allChampions().every((c) => c.stats && c.stats.hp > 0));
+});
+
+test('ddragon: champion details carry base stats and per-rank costs', async () => {
+  const d = await ddragon.champDetails('Caitlyn');
+  assert.ok(d.stats.hp > 400);
+  const q = d.spells[0];
+  assert.ok(Array.isArray(q.costs) && q.costs.length >= 1, 'Q carries per-rank costs');
+  assert.ok(q.costs.every((c) => typeof c === 'number' && c >= 0));
 });
 
 test('ddragon: item lookup carries ids, gold, and stat lines for tooltips', () => {
@@ -198,6 +217,62 @@ test('mock: every scenario builds complete game and champ select snapshots', () 
   }
   assert.equal(mock.buildGameSnapshot('nope'), null);
   assert.equal(mock.buildChampSelectSnapshot('nope'), null);
+});
+
+// ---- level-1 lane comparison ---------------------------------------------------
+
+test('lanecompare: pairs every lane by role and flags the player\'s own', async () => {
+  const cmp = await lanecompare.compareGame(mock.buildGameSnapshot('botlane'));
+  assert.equal(cmp.lanes.length, 5, 'all five lanes paired');
+  assert.deepEqual(cmp.lanes.map((l) => l.role), ['Top', 'Jungle', 'Mid', 'ADC (Bot)', 'Support']);
+  const mine = cmp.lanes.find((l) => l.isMyLane);
+  assert.equal(mine.role, 'ADC (Bot)');
+  assert.equal(mine.ally.champion.name, 'Jinx');
+  assert.equal(mine.enemy.champion.name, 'Caitlyn');
+  assert.equal(cmp.lanes.filter((l) => l.isMyLane).length, 1, 'exactly one lane is mine');
+  assert.ok(cmp.patch, 'reports the patch the stats came from');
+});
+
+test('lanecompare: rows carry formatted level-1 values with a winner per stat', async () => {
+  const cmp = await lanecompare.compareGame(mock.buildGameSnapshot('botlane'));
+  const mine = cmp.lanes.find((l) => l.isMyLane);
+  const byId = Object.fromEntries(mine.rows.map((r) => [r.id, r]));
+  // Values match Data Dragon exactly — this view must be verifiable by hand.
+  const jinx = ddragon.champByName('Jinx').stats;
+  const cait = ddragon.champByName('Caitlyn').stats;
+  assert.equal(byId.hp.ally, String(jinx.hp));
+  assert.equal(byId.hp.enemy, String(cait.hp));
+  assert.equal(byId.range.enemy, String(cait.attackrange));
+  assert.equal(byId.range.better, 'enemy', 'Caitlyn out-ranges Jinx at level 1');
+  // Derived math: DPS = AD × AS, effective HP folds in resists.
+  assert.equal(byId.dps.ally, (Math.round(jinx.attackdamage * jinx.attackspeed * 10) / 10).toString().replace(/\.0$/, ''));
+  assert.ok(Number(byId.ehpphys.ally) > jinx.hp);
+  for (const lane of cmp.lanes) {
+    assert.ok(lane.rows.length >= 10, 'full stat sheet per lane');
+    assert.ok(lane.rows.every((r) => ['ally', 'enemy', null].includes(r.better)));
+    assert.ok(['ally', 'enemy', 'even'].includes(lane.verdict.side));
+    assert.ok(lane.verdict.drivers.length <= 3);
+    assert.ok(lane.ally.resource.length > 0 && lane.enemy.resource.length > 0);
+  }
+});
+
+test('lanecompare: verdicts are deterministic and spells decorate best-effort', async () => {
+  const game = mock.buildGameSnapshot('botlane');
+  const [a, b] = await Promise.all([lanecompare.compareGame(game), lanecompare.compareGame(game)]);
+  assert.deepEqual(a, b, 'same game in, same comparison out — no model, no randomness');
+  const mine = a.lanes.find((l) => l.isMyLane);
+  // With the Data Dragon cache primed, rank-1 cooldowns are present.
+  assert.equal(mine.ally.spells.length, 4);
+  assert.deepEqual(mine.ally.spells.map((s) => s.key), ['Q', 'W', 'E', 'R']);
+  assert.ok(mine.ally.spells.every((s) => s.cooldown === null || s.cooldown >= 0));
+});
+
+test('lanecompare: role gaps fall back to list order instead of dropping champions', async () => {
+  const game = mock.buildGameSnapshot('botlane');
+  for (const p of [...game.allies, ...game.enemies]) p.role = ''; // no position data at all
+  const cmp = await lanecompare.compareGame(game);
+  assert.equal(cmp.lanes.length, 5, 'all five pairs still form');
+  assert.ok(cmp.lanes.every((l) => l.ally.champion.id && l.enemy.champion.id));
 });
 
 // ---- fallback (basic mode) coach ---------------------------------------------------

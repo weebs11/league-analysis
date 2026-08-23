@@ -270,6 +270,11 @@ test('builds: champion build is decorated and role defaults to the primary', asy
     assert.ok(a.name.length > 0);
     assert.ok(a.cooldowns.length >= 1 && a.cooldowns.every((c) => typeof c === 'number' && c >= 0));
   }
+
+  // Base stats, from Data Dragon (not the Build Extract) for the stats card.
+  assert.ok(body.baseStats.hp > 400 && body.baseStats.hpperlevel > 0);
+  assert.equal(body.baseStats.attackrange, 650);
+  assert.equal(body.champion.partype, 'Mana');
 });
 
 test('builds: a second request is served from the cache, not op.gg', async () => {
