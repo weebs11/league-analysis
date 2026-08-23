@@ -791,31 +791,57 @@ select option { background: var(--hx-panel-2); }
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
 }
 
-.build-head { display: flex; align-items: center; gap: 16px; margin: 16px 0; }
+.build-head { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+#champ-detail-view .build-head { padding: 10px 16px; }
 .build-head .bh-portrait {
-  width: 80px; height: 80px; border-radius: 6px; border: 2px solid var(--gold-dark);
+  width: 56px; height: 56px; border-radius: 6px; border: 2px solid var(--gold-dark);
 }
-#champ-detail-view .build-head h2 { font-size: 1.4rem; }
+#champ-detail-view .build-head h2 { font-size: 1.2rem; margin-bottom: 2px; }
 #champ-detail-view .bh-stats {
   margin: 2px 0 0; font-size: 0.85rem; color: var(--text-dim);
   font-variant-numeric: tabular-nums;
 }
-.build-roles { margin-bottom: 16px; }
+.build-roles { margin-bottom: 12px; }
 
+/* Mobalytics-style density: one row of three tight panels (Runes | Items |
+   Late & situational), then Skill order | Base stats below. Compact padding;
+   cards end where their content ends. */
 .build-grid {
-  display: grid; grid-template-columns: minmax(340px, 1fr) minmax(300px, 1fr);
+  display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 3fr) minmax(0, 3.6fr);
   gap: 16px; margin-bottom: 16px; align-items: start;
 }
-@media (max-width: 900px) { .build-grid { grid-template-columns: 1fr; } }
-/* Column wrappers stack cards (Runes + Base stats left, items right) so the
-   two columns bottom out together instead of leaving a void under Runes. */
-.build-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-.build-col > .card { margin-bottom: 0; }
+.build-row2 {
+  display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+  gap: 16px; margin-bottom: 16px; align-items: start;
+}
+.build-row2.solo { grid-template-columns: 1fr; }
+.build-grid > .card, .build-row2 > .card { margin-bottom: 0; padding: 14px 16px; }
+/* Card headers are one quiet sans-serif label line — no serif theater, no
+   engraved underline — with the section's stats right-aligned on the same
+   line so the header spans the card. */
+#champ-detail-view .card > h3:first-child {
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.09em; color: var(--text-dim);
+  display: flex; align-items: baseline; gap: 8px;
+  padding-bottom: 0; margin-bottom: 8px;
+}
+#champ-detail-view .card > h3:first-child::after { content: none; }
+#champ-detail-view h3 .sec-meta { margin-left: auto; font-weight: 400; }
+@media (max-width: 1020px) {
+  .build-grid, .build-row2 { grid-template-columns: 1fr; }
+}
 
-/* Section metadata as a sibling line under the h3 (not crammed inside it). */
+/* Section metadata, inline in the header line. */
 #champ-detail-view .sec-meta {
-  margin: -6px 0 10px; font-size: 0.78rem; color: var(--text-dim);
-  font-variant-numeric: tabular-nums;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-weight: 400;
+  font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0;
+  text-transform: none; font-variant-numeric: tabular-nums;
+}
+/* Sub-group stats ride inline in their small header: one line per group. */
+#champ-detail-view .sub-meta {
+  font-family: 'Segoe UI', system-ui, sans-serif; font-weight: 400;
+  font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0;
+  text-transform: none; margin-left: 6px; font-variant-numeric: tabular-nums;
 }
 /* One win-rate rule everywhere: good ≥ 52%, bad < 48%, muted on low sample. */
 #champ-detail-view .wr-good { color: var(--green); }
@@ -826,14 +852,26 @@ select option { background: var(--hx-panel-2); }
 #champ-detail-view { transition: opacity 0.15s; }
 #champ-detail-view.is-refreshing { opacity: 0.55; pointer-events: none; }
 
-/* Base stats shares .stat-table with lane-compare — widen it here only. */
+/* Base stats shares .stat-table with lane-compare — widen and compress it
+   here only. */
 #champ-detail-view .stat-table { max-width: none; }
 #champ-detail-view .stat-table th:not(:first-child),
 #champ-detail-view .stat-table td:not(:first-child) { text-align: right; }
+#champ-detail-view .stat-table td { padding: 2px 10px 2px 0; }
 
 .wr-note { color: var(--text-dim); font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 0.72rem; font-weight: 400; text-transform: none; letter-spacing: 0; margin-left: 8px; }
-.build-sub { margin-top: 16px; }
+#champ-detail-view .build-items { margin: 2px 0; }
+/* Full-span sub-group rows: fixed label column, icons, WR% anchored right —
+   every row spans the card like the late-items list does. */
+#champ-detail-view .build-line { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+#champ-detail-view .build-line h4 {
+  flex: 0 0 96px; margin: 0;
+  font: 700 0.7rem 'Segoe UI', system-ui, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim);
+}
+#champ-detail-view .build-line .build-items { margin: 0; }
+#champ-detail-view .build-line .sub-meta { margin-left: auto; }
 
 .build-items { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
 .build-items img {
@@ -841,63 +879,76 @@ select option { background: var(--hx-panel-2); }
   border: 1px solid var(--gold-deep); background: var(--hx-black);
 }
 .bi-arrow { color: var(--gold-dark); font-size: 0.9rem; margin: 0 2px; }
-/* Size ladder, scoped so coaching-output icon rows keep their size:
-   core build 48 > spells/starting/boots 40 > late items 32. */
-#champ-detail-view .build-items img { width: 40px; height: 40px; }
-#champ-detail-view .build-items.lg img { width: 48px; height: 48px; }
-#champ-detail-view .build-items.lg { align-items: flex-start; }
-#champ-detail-view .build-items.lg .bi-arrow { line-height: 48px; }
+/* One item-icon size everywhere on this page — hierarchy comes from labels
+   and placement, not a ladder of sizes. Scoped so coaching-output icon rows
+   keep theirs. */
+#champ-detail-view .build-items img { width: 36px; height: 36px; }
+#champ-detail-view .build-items:has(.bi) {
+  align-items: flex-start; justify-content: space-between;
+}
+#champ-detail-view .build-items .bi-arrow { line-height: 36px; }
 #champ-detail-view .bi {
-  display: flex; flex-direction: column; align-items: center; gap: 4px; width: 72px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px; width: 70px;
 }
 #champ-detail-view .bi-name {
-  font-size: 0.78rem; color: var(--gold-text); text-align: center; line-height: 1.2;
+  font-size: 0.75rem; color: var(--gold-text); text-align: center; line-height: 1.2;
 }
 
-/* Boots | Starting items | Summoner spells share one row under Core build. */
-#champ-detail-view .build-trio {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
-}
 
-.late-items { display: flex; flex-direction: column; gap: 4px; }
-/* Row background is an inline popularity bar (share of the most-picked item),
-   set from lateItemsHtml. */
+.late-items { display: flex; flex-direction: column; gap: 2px; }
 .late-item {
-  display: flex; align-items: center; gap: 9px;
-  padding: 4px 8px; border-radius: 4px; font-size: 0.82rem;
+  display: flex; align-items: center; gap: 8px;
+  padding: 2px 8px; border-radius: 4px; font-size: 0.82rem;
 }
+.late-item:nth-child(odd) { background: rgba(30, 45, 64, 0.28); }
 .late-item img { width: 32px; height: 32px; border-radius: 3px; border: 1px solid var(--gold-deep); }
-.late-item .li-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.late-item .li-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Discrete popularity meter: share of the most-picked option. */
+.late-item .li-meter {
+  flex: 0 0 44px; height: 6px; border-radius: 3px; overflow: hidden;
+  background: rgba(30, 45, 64, 0.7); cursor: help;
+}
+.late-item .li-meter i {
+  display: block; height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold-mid));
+}
 .late-item .li-wr {
-  color: var(--text); min-width: 52px; text-align: right;
+  color: var(--text); min-width: 48px; text-align: right;
   font-variant-numeric: tabular-nums;
 }
 .late-item .li-games {
-  min-width: 84px; text-align: right;
+  min-width: 40px; text-align: right;
   font-size: 0.78rem; font-variant-numeric: tabular-nums;
 }
 
 /* rune page: full trees, picked runes lit, the rest dimmed */
-.rune-page { display: flex; justify-content: space-evenly; gap: 24px; flex-wrap: wrap; }
+.rune-page { display: flex; gap: 14px; flex-wrap: wrap; }
 .rune-tree { min-width: 0; }
-.rune-side { display: flex; flex-direction: column; gap: 12px; }
+.rune-side { display: flex; flex-direction: column; gap: 8px; }
 .rt-head {
-  display: flex; align-items: center; gap: 7px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 7px; margin-bottom: 4px;
   color: var(--gold); font-family: var(--serif); font-size: 0.8rem;
   text-transform: uppercase; letter-spacing: 0.05em;
 }
-.rt-head img { width: 26px; height: 26px; }
-.rune-slot, .shard-row { display: flex; align-items: center; gap: 8px; margin: 7px 0; }
+.rt-head img { width: 22px; height: 22px; }
+.rune-slot, .shard-row { display: flex; align-items: center; gap: 5px; margin: 3px 0; }
 .rune {
-  width: 36px; height: 36px; border-radius: 50%;
+  width: 32px; height: 32px; border-radius: 50%;
   border: 1px solid transparent; background: var(--hx-black);
 }
-.rune.keystone { width: 52px; height: 52px; }
-.rune.shard { width: 28px; height: 28px; padding: 2px; }
+.rune.keystone { width: 44px; height: 44px; }
+.rune.shard { width: 24px; height: 24px; padding: 2px; }
 .rune.on { border-color: var(--gold); box-shadow: 0 0 7px rgba(200, 170, 110, 0.45); }
-/* Dim enough that picks pop, bright enough that the tree stays legible. */
-.rune.dim { opacity: 0.45; filter: grayscale(0.7) brightness(0.85); }
-.rune-name { font-size: 0.8rem; color: var(--gold-text); align-self: center; margin-left: 4px; }
+/* Unpicked runes must read as content, not voids: solid gray discs (like
+   Mobalytics), with picks popping via full color + the gold ring. */
+.rune.dim {
+  opacity: 0.9; filter: grayscale(1) brightness(0.7);
+  border-color: rgba(200, 170, 110, 0.12);
+}
+/* Keystone name as its own caption line under the keystone row. */
+.rune-keystone-name {
+  margin: 0 0 2px; font-size: 0.72rem; color: var(--gold-text);
+}
 
 /* skill order: an axis row of level numbers, then one row per key. Cells
    flex to fill the card; every row carries the same trailing cooldown box so
@@ -905,8 +956,8 @@ select option { background: var(--hx-panel-2); }
 .skill-priority { margin-bottom: 10px; color: var(--text-dim); font-size: 0.9rem;
   display: flex; align-items: center; gap: 7px; }
 .skill-priority .skill-key { margin: 0; }
-.skill-grid { display: flex; flex-direction: column; gap: 4px; overflow-x: auto; padding-bottom: 4px; }
-.skill-row { display: flex; gap: 4px; align-items: center; }
+.skill-grid { display: flex; flex-direction: column; gap: 4px; overflow-x: auto; padding-bottom: 2px; }
+.skill-row { display: flex; gap: 3px; align-items: center; }
 .skill-key {
   width: 24px; height: 24px; flex: none; display: inline-flex; align-items: center; justify-content: center;
   background: var(--teal-deep); color: var(--teal); border-radius: 3px;
@@ -914,7 +965,7 @@ select option { background: var(--hx-panel-2); }
 }
 .skill-key.axis { visibility: hidden; }
 .skill-cell {
-  flex: 1 0 30px; max-width: 40px; height: 24px;
+  flex: 1 0 28px; max-width: 38px; height: 24px;
   display: inline-flex; align-items: center; justify-content: center;
   background: transparent; box-shadow: inset 0 0 0 1px var(--hx-line);
   border-radius: 3px; font-variant-numeric: tabular-nums;
