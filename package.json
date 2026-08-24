@@ -1,7 +1,7 @@
 {
   "name": "lol-matchup-coach",
   "productName": "LoL Matchup Coach",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "A local companion app that detects your active League of Legends game and coaches you through matchups, strategy, and itemization — built for players who are still learning the game.",
   "type": "module",
   "main": "electron/main.js",
