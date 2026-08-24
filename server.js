@@ -11,7 +11,6 @@ import * as coach from './src/coach.js';
 import * as fallback from './src/fallback.js';
 import * as lanecompare from './src/lanecompare.js';
 import * as briefings from './src/briefings.js';
-import * as mock from './src/mock.js';
 import * as lcu from './src/lcu.js';
 import { router as historyRouter } from './src/history/routes.js';
 import { router as buildsRouter } from './src/builds/routes.js';
@@ -127,7 +126,6 @@ function currentGamePlan() {
 // arrives later via Forward Sync and joins on the same id.
 async function persistCoaching(plan, patch) {
   try {
-    if (gamestate.snapshot().mode !== 'live') return; // demo never reaches the archive
     const session = await lcu.gameflowSession();
     const gameId = session?.gameData?.gameId;
     if (!gameId) return;
@@ -281,24 +279,6 @@ app.use('/api/history', historyRouter);
 // ---- Champion database ----------------------------------------------------------
 
 app.use('/api/builds', buildsRouter);
-
-// ---- Demo mode ----------------------------------------------------------------
-
-app.get('/api/demo/scenarios', (_req, res) => res.json(mock.scenarioList()));
-
-app.post('/api/demo/start', (req, res) => {
-  const { scenario = 'botlane', phase = 'game' } = req.body || {};
-  const snapshotBuilder = phase === 'champselect' ? mock.buildChampSelectSnapshot : mock.buildGameSnapshot;
-  const snap = snapshotBuilder(scenario);
-  if (!snap) return res.status(400).json({ error: `Unknown scenario: ${scenario}` });
-  gamestate.enterDemo(phase === 'champselect' ? 'champselect' : 'game', snap);
-  res.json({ ok: true });
-});
-
-app.post('/api/demo/stop', (_req, res) => {
-  gamestate.exitDemo();
-  res.json({ ok: true });
-});
 
 // ---- Settings -------------------------------------------------------------------
 

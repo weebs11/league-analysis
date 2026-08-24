@@ -69,5 +69,3 @@ second account on the same machine stays separable, but the UI shows one account
   Index is rebuilt.
 - **Forward Sync never requires an API key.** Only Import does. Keeping the ongoing path
   keyless is deliberate — see [ADR-0003](docs/adr/0003-one-time-match-v5-import.md).
-- **Demo mode must never reach the Archive.** Demo produces game-shaped objects; the Archive
-  only ever accepts data read from the LCU or `match-v5`.

@@ -1,7 +1,8 @@
-// Demo scenarios — realistic game snapshots so the app can be explored (and
-// tested) without League running. Champion sets chosen to be instructive for
-// a newer player: classic matchups, mixed damage profiles, healing to punish.
-import * as ddragon from './ddragon.js';
+// Snapshot fixtures — realistic game and champ select snapshots in the shape
+// gamestate.js produces, so the coach, the fallback advice and the lane check
+// can be tested without League running. Champion sets are deliberately varied:
+// classic matchups, mixed damage profiles, healing to punish.
+import * as ddragon from '../../src/ddragon.js';
 
 function ref(ddragonId) {
   const c = ddragon.champByName(ddragonId) || null;

@@ -309,7 +309,6 @@ select option { background: var(--panel); }
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
   font-family: var(--ui);
 }
-.badge.demo { box-shadow: inset 0 0 0 1px rgba(200, 170, 110, 0.28); color: var(--gold-text); padding: 4px 10px; }
 .badge.easy, .badge.low { background: rgba(63, 191, 107, 0.12); box-shadow: inset 0 0 0 1px rgba(63, 191, 107, 0.28); color: var(--green); }
 .badge.moderate, .badge.mixed { background: rgba(200, 170, 110, 0.1); box-shadow: inset 0 0 0 1px rgba(200, 170, 110, 0.3); color: var(--gold); }
 .badge.hard, .badge.high { background: rgba(232, 64, 87, 0.12); box-shadow: inset 0 0 0 1px rgba(232, 64, 87, 0.3); color: var(--red); }
@@ -347,12 +346,6 @@ select option { background: var(--panel); }
 .hero-stats .sep { width: 1px; height: 14px; background: var(--line-strong); }
 .hero-stats b.w { color: var(--green); font-weight: 600; }
 .hero-stats b.l { color: var(--red); font-weight: 600; }
-.hero-controls { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; flex: none; }
-.hero-controls select {
-  width: auto; max-width: 380px; padding: 9px 12px;
-  background: rgba(1, 10, 19, 0.72); color: var(--text-body);
-  border: 1px solid var(--line-strong); font-size: 13px;
-}
 
 /* Home recent-games rows */
 .home-row {
