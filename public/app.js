@@ -1290,13 +1290,19 @@ function renderPager() {
 // snapshots may extend it. A focus + context chart keeps recent movement
 // readable while preserving real elapsed time: the main plot opens to the
 // latest 14 days and the navigator shows the full timeline.
+//
+// The horizontal scale follows the range group in use. Time presets measure
+// real elapsed time (docs/research/rank-chart-long-range-design.md). Game
+// presets measure games, one equal slot each, because "the last 25 games" drawn
+// on a time axis is mostly the whitespace between sessions. Day labels stay on
+// both scales, so a game-scale window still says which day it covers.
 const RANK_SERIES = { 420: { color: '#0b9a8e', label: 'Solo/Duo' }, 440: { color: '#bd8a2e', label: 'Flex' } };
 const RANK_TIERS = ['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Emerald', 'Diamond'];
 const RANK_DIVS = ['IV', 'III', 'II', 'I'];
 const RANK_PRESETS = [7, 14, 30, 'all'];
-// Game-count presets window to the last N ranked games ('g25' etc.); the axis
-// stays real elapsed time either way. 'gall' shows the full range like the
-// Time group's All, but keeps its own id so the button you clicked lights up.
+// Game-count presets window to the last N ranked games ('g25' etc.) and put the
+// x-axis on the game scale. 'gall' shows every game the same way, but keeps its
+// own id so the button you clicked lights up.
 const RANK_GAME_PRESETS = ['g10', 'g25', 'g100', 'gall'];
 
 function isGamePreset(preset) {
@@ -1312,6 +1318,12 @@ let rankChartInstance = null;
 let rankChartResizeObserver = null;
 let rankChartLayout = null;
 let rankChartPreset = 14;
+let rankChartOptionBuilder = null;
+let rankChartMode = 'time';
+
+function rankModeOf(preset) {
+  return isGamePreset(preset) ? 'games' : 'time';
+}
 
 // Inverse of the server's ladderValue: a y-axis position back into words.
 // Apex (≥2800) can't distinguish Master/GM/Challenger from the value alone, so
@@ -1331,8 +1343,13 @@ function rankSource(p) {
   return p.source === 'opgg' ? 'opgg' : 'forward-sync';
 }
 
+// Horizontal position of a snapshot or game under the scale currently in use.
+function rankX(point) {
+  return rankChartMode === 'games' ? point.gameX : point.chartX;
+}
+
 function rankDatum(p) {
-  return { value: [p.chartX, p.value], snapshot: p };
+  return { value: [rankX(p), p.value], snapshot: p };
 }
 
 function chartCss(name, fallback) {
@@ -1393,7 +1410,7 @@ function rankAxisBoundary(extent, edge) {
 }
 
 function rankWindow(preset) {
-  if (preset === 'gall') return RankChartLayout.windowForPreset(rankChartLayout, 'all');
+  if (preset === 'gall') return [...rankChartLayout.gameExtent];
   if (isGamePreset(preset)) {
     return RankChartLayout.windowForGames(rankChartLayout, Number(preset.slice(1)));
   }
@@ -1401,7 +1418,7 @@ function rankWindow(preset) {
 }
 
 function rankRangeText(start, end) {
-  const days = RankChartLayout.daysInWindow(rankChartLayout, start, end);
+  const days = RankChartLayout.daysInWindow(rankChartLayout, start, end, rankChartMode);
   if (!days.length) return '';
   const fmt = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
   const scope = rankChartPreset === 'all' || rankChartPreset === 'gall'
@@ -1416,11 +1433,12 @@ function rankRangeText(start, end) {
 
 function detectedRankPreset(start, end) {
   if (!rankChartLayout) return null;
-  // echarts echoes dataZoom values back rounded to whole milliseconds, so
-  // the match needs slack; presets are hours apart, so a second is safe.
-  const tolerance = 1000;
-  const candidates = [rankChartPreset, 'all', 7, 14, 30, ...RANK_GAME_PRESETS]
-    .filter((value, index, values) => value != null && values.indexOf(value) === index);
+  // Only the live scale's presets are candidates: the two scales share no
+  // units, so a millisecond bound would land inside some slot's tolerance.
+  // echarts echoes dataZoom values back rounded, so the match needs slack — a
+  // second of elapsed time, or a hundredth of a game slot.
+  const tolerance = rankChartMode === 'games' ? 0.01 : 1000;
+  const candidates = rankChartMode === 'games' ? RANK_GAME_PRESETS : RANK_PRESETS;
   for (const preset of candidates) {
     const [expectedStart, expectedEnd] = rankWindow(preset);
     if (Math.abs(start - expectedStart) < tolerance && Math.abs(end - expectedEnd) < tolerance) return preset;
@@ -1444,7 +1462,13 @@ function syncRankRangeUi(start, end) {
 
 function setRankWindow(preset) {
   if (!rankChartInstance || !rankChartLayout) return;
+  const mode = rankModeOf(preset);
   rankChartPreset = preset;
+  if (mode !== rankChartMode) {
+    rankChartMode = mode;
+    applyRankChartOption();
+    return;
+  }
   const [startValue, endValue] = rankWindow(preset);
   rankChartInstance.dispatchAction({ type: 'dataZoom', startValue, endValue });
   syncRankRangeUi(startValue, endValue);
@@ -1530,7 +1554,7 @@ function buildRankSeries(queues, colors, games = []) {
         id: `rank-gap-${queue.queueId}-${index}`,
         name: 'Observation gap',
         type: 'line',
-        data: [[from.chartX, from.value], [to.chartX, to.value]],
+        data: [[rankX(from), from.value], [rankX(to), to.value]],
         showSymbol: false,
         silent: true,
         tooltip: { show: false },
@@ -1582,7 +1606,7 @@ function buildRankSeries(queues, colors, games = []) {
       type: 'scatter',
       xAxisIndex: 1,
       yAxisIndex: 1,
-      data: resultGames.map((game) => ({ value: [game.chartX, 0.5], game })),
+      data: resultGames.map((game) => ({ value: [rankX(game), 0.5], game })),
       symbol: 'rect',
       symbolSize: [3, 9],
       itemStyle: { color: result.color, opacity: 0.72 },
@@ -1599,11 +1623,81 @@ function buildRankSeries(queues, colors, games = []) {
   return series;
 }
 
+const RANK_DAY_LABEL = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' });
+const RANK_CLOCK_LABEL = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit' });
+
+function rankTimeAxisLabel(value) {
+  const at = new Date(Number(value));
+  // Time ticks fall on midnight at day resolution and on the hour below it.
+  // Dating an hourly tick is what printed "Aug 22" five times in a row.
+  return at.getHours() === 0 && at.getMinutes() === 0
+    ? RANK_DAY_LABEL.format(at)
+    : RANK_CLOCK_LABEL.format(at);
+}
+
+// On the game scale a day starts wherever its first observation fell, which is
+// a fractional slot — so its ticks are placed explicitly, not at round numbers.
+function rankDayStarts() {
+  return (rankChartLayout.days || []).map((day) => day.minGameX);
+}
+
+function rankGameAxisLabel(value) {
+  const days = rankChartLayout.days || [];
+  const slot = Number(value);
+  const day = days.find((entry) => Math.abs(entry.minGameX - slot) < 1e-6)
+    || days.filter((entry) => entry.minGameX <= slot).pop()
+    || days[0];
+  return day ? RANK_DAY_LABEL.format(new Date(day.at)) : '';
+}
+
+function rankXAxes(colors) {
+  const bySlot = rankChartMode === 'games';
+  const [axisMin, axisMax] = bySlot ? rankChartLayout.gameExtent : rankChartLayout.xExtent;
+  const type = bySlot ? 'value' : 'time';
+  const dayStarts = bySlot ? rankDayStarts() : undefined;
+  return [
+    {
+      type,
+      gridIndex: 0,
+      min: axisMin,
+      max: axisMax,
+      boundaryGap: false,
+      axisLine: { lineStyle: { color: colors.line } },
+      axisTick: bySlot
+        ? { show: true, customValues: dayStarts, length: 4, lineStyle: { color: colors.line } }
+        : { show: false },
+      axisLabel: {
+        color: colors.dim,
+        hideOverlap: true,
+        customValues: dayStarts,
+        formatter: bySlot ? rankGameAxisLabel : rankTimeAxisLabel,
+      },
+      splitLine: { show: false },
+      axisPointer: { lineStyle: { color: colors.dim, width: 1 } },
+    },
+    { type, gridIndex: 1, min: axisMin, max: axisMax, show: false },
+  ];
+}
+
+function rankAriaDescription() {
+  return rankChartMode === 'games'
+    ? 'Rank over ranked games. Every ranked game takes an equal share of the horizontal axis in the order it was played, and axis labels mark the day each one falls on. Green and red ticks represent wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the Games 10, 25, 100, and All buttons to change how many games are shown, or a Time button to return to an elapsed-time axis. Exact snapshot values and dates are also available in the table below.'
+    : 'Rank over elapsed time. Rank Snapshots and ranked Matches appear at their actual dates and times. Green and red ticks represent wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the 7 day, 14 day, 30 day, and All buttons to change the visible time range. Exact snapshot values and dates are also available in the table below.';
+}
+
+function applyRankChartOption() {
+  if (!rankChartInstance || !rankChartOptionBuilder) return;
+  rankChartInstance.setOption(rankChartOptionBuilder(), true);
+  const [startValue, endValue] = rankWindow(rankChartPreset);
+  syncRankRangeUi(startValue, endValue);
+}
+
 function disposeRankChart() {
   rankChartResizeObserver?.disconnect();
   rankChartResizeObserver = null;
   rankChartInstance?.dispose();
   rankChartInstance = null;
+  rankChartOptionBuilder = null;
 }
 
 async function loadRankChart() {
@@ -1642,6 +1736,7 @@ function renderRankChart(queues, games = []) {
   rankChartPreset = rankChartLayout.lastAt - rankChartLayout.firstAt <= 14 * 24 * 60 * 60 * 1000
     ? 'all'
     : 14;
+  rankChartMode = rankModeOf(rankChartPreset);
 
   const legend = ranked.length > 1
     ? `<span class="rank-legend">${ranked.map((s) =>
@@ -1702,139 +1797,118 @@ function renderRankChart(queues, games = []) {
     return;
   }
 
-  const colors = rankColors();
-  const [startValue, endValue] = rankWindow(rankChartPreset);
   const container = $('#rank-echart');
-  const [axisMin, axisMax] = rankChartLayout.xExtent;
-  const dayLabel = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric' });
   rankChartInstance = echarts.init(container, null, { renderer: 'svg' });
-  rankChartInstance.setOption({
-    animation: false,
-    backgroundColor: 'transparent',
-    textStyle: { color: colors.text, fontFamily: getComputedStyle(document.body).fontFamily },
-    aria: {
-      enabled: true,
-      description: 'Rank over elapsed time. Rank Snapshots and ranked Matches appear at their actual dates and times. Green and red ticks represent wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the 7 day, 14 day, 30 day, and All buttons to change the visible time range. Exact snapshot values and dates are also available in the table below.',
-    },
-    grid: [
-      { top: 16, right: 18, bottom: 128, left: 78, containLabel: false },
-      { right: 18, bottom: 73, height: 18, left: 78, containLabel: false },
-    ],
-    xAxis: [
-      {
-        type: 'time',
-        gridIndex: 0,
-        min: axisMin,
-        max: axisMax,
-        boundaryGap: false,
-        axisLine: { lineStyle: { color: colors.line } },
-        axisTick: { show: false },
-        axisLabel: {
-          color: colors.dim,
-          hideOverlap: true,
-          formatter: (value) => dayLabel.format(new Date(Number(value))),
+  // Rebuilt whole rather than merged: the two scales share no x values, so
+  // changing range group moves every series and both x axes at once.
+  rankChartOptionBuilder = () => {
+    const colors = rankColors();
+    const [startValue, endValue] = rankWindow(rankChartPreset);
+    return {
+      animation: false,
+      backgroundColor: 'transparent',
+      textStyle: { color: colors.text, fontFamily: getComputedStyle(document.body).fontFamily },
+      aria: {
+        enabled: true,
+        description: rankAriaDescription(),
+      },
+      grid: [
+        { top: 16, right: 18, bottom: 128, left: 78, containLabel: false },
+        { right: 18, bottom: 73, height: 18, left: 78, containLabel: false },
+      ],
+      xAxis: rankXAxes(colors),
+      yAxis: [
+        {
+          type: 'value',
+          gridIndex: 0,
+          scale: true,
+          splitNumber: 5,
+          minInterval: 100,
+          min: (extent) => rankAxisBoundary(extent, 'min'),
+          max: (extent) => rankAxisBoundary(extent, 'max'),
+          axisLine: { show: false },
+          axisTick: { show: false },
+          axisLabel: { color: colors.dim, margin: 12, formatter: (value) => rankLabel(Math.round(value)) },
+          splitLine: { lineStyle: { color: colors.line, width: 1, type: 'dashed', opacity: 0.8 } },
         },
-        splitLine: { show: false },
-        axisPointer: { lineStyle: { color: colors.dim, width: 1 } },
-      },
-      {
-        type: 'time',
-        gridIndex: 1,
-        min: axisMin,
-        max: axisMax,
-        show: false,
-      },
-    ],
-    yAxis: [
-      {
-        type: 'value',
-        gridIndex: 0,
-        scale: true,
-        splitNumber: 5,
-        minInterval: 100,
-        min: (extent) => rankAxisBoundary(extent, 'min'),
-        max: (extent) => rankAxisBoundary(extent, 'max'),
-        axisLine: { show: false },
-        axisTick: { show: false },
-        axisLabel: { color: colors.dim, margin: 12, formatter: (value) => rankLabel(Math.round(value)) },
-        splitLine: { lineStyle: { color: colors.line, width: 1, type: 'dashed', opacity: 0.8 } },
-      },
-      {
-        type: 'value',
-        gridIndex: 1,
-        min: 0,
-        max: 1,
-        show: false,
-      },
-    ],
-    tooltip: {
-      trigger: 'axis',
-      confine: true,
-      backgroundColor: colors.deep,
-      borderColor: colors.line,
-      borderWidth: 1,
-      padding: [7, 10],
-      textStyle: { color: colors.text, fontSize: 12 },
-      axisPointer: { type: 'line', snap: true },
-      formatter: rankTooltip,
-    },
-    dataZoom: [
-      {
-        id: 'rank-inside',
-        type: 'inside',
-        xAxisIndex: [0, 1],
-        filterMode: 'filter',
-        startValue,
-        endValue,
-        zoomOnMouseWheel: 'ctrl',
-        moveOnMouseMove: true,
-        moveOnMouseWheel: false,
-        preventDefaultMouseMove: true,
-      },
-      {
-        id: 'rank-slider',
-        type: 'slider',
-        xAxisIndex: [0, 1],
-        filterMode: 'filter',
-        startValue,
-        endValue,
-        bottom: 8,
-        height: 34,
-        showDetail: false,
-        showDataShadow: true,
-        brushSelect: false,
+        {
+          type: 'value',
+          gridIndex: 1,
+          min: 0,
+          max: 1,
+          show: false,
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        confine: true,
         backgroundColor: colors.deep,
         borderColor: colors.line,
-        dataBackground: {
-          lineStyle: { color: colors.dim, opacity: 0.55 },
-          areaStyle: { color: colors.dim, opacity: 0.12 },
-        },
-        selectedDataBackground: {
-          lineStyle: { color: RANK_SERIES[ranked[0].queueId].color, opacity: 0.9 },
-          areaStyle: { color: RANK_SERIES[ranked[0].queueId].color, opacity: 0.2 },
-        },
-        fillerColor: `${RANK_SERIES[ranked[0].queueId].color}20`,
-        handleSize: '85%',
-        handleStyle: {
-          color: colors.panel,
-          borderColor: RANK_SERIES[ranked[0].queueId].color,
-          borderWidth: 1.5,
-        },
-        moveHandleStyle: { color: colors.dim, opacity: 0.75 },
-        textStyle: { color: colors.dim },
+        borderWidth: 1,
+        padding: [7, 10],
+        textStyle: { color: colors.text, fontSize: 12 },
+        axisPointer: { type: 'line', snap: true },
+        formatter: rankTooltip,
       },
-    ],
-    graphic: rankedGames.length ? [{
-      type: 'text',
-      left: 20,
-      bottom: 76,
-      silent: true,
-      style: { text: 'GAMES', fill: colors.dim, font: '10px sans-serif' },
-    }] : [],
-    series: buildRankSeries(ranked, colors, rankedGames),
-  });
+      dataZoom: [
+        {
+          id: 'rank-inside',
+          type: 'inside',
+          xAxisIndex: [0, 1],
+          filterMode: 'filter',
+          startValue,
+          endValue,
+          zoomOnMouseWheel: 'ctrl',
+          moveOnMouseMove: true,
+          moveOnMouseWheel: false,
+          preventDefaultMouseMove: true,
+        },
+        {
+          id: 'rank-slider',
+          type: 'slider',
+          xAxisIndex: [0, 1],
+          filterMode: 'filter',
+          startValue,
+          endValue,
+          bottom: 8,
+          height: 34,
+          showDetail: false,
+          showDataShadow: true,
+          brushSelect: false,
+          backgroundColor: colors.deep,
+          borderColor: colors.line,
+          dataBackground: {
+            lineStyle: { color: colors.dim, opacity: 0.55 },
+            areaStyle: { color: colors.dim, opacity: 0.12 },
+          },
+          selectedDataBackground: {
+            lineStyle: { color: RANK_SERIES[ranked[0].queueId].color, opacity: 0.9 },
+            areaStyle: { color: RANK_SERIES[ranked[0].queueId].color, opacity: 0.2 },
+          },
+          fillerColor: `${RANK_SERIES[ranked[0].queueId].color}20`,
+          handleSize: '85%',
+          handleStyle: {
+            color: colors.panel,
+            borderColor: RANK_SERIES[ranked[0].queueId].color,
+            borderWidth: 1.5,
+          },
+          moveHandleStyle: { color: colors.dim, opacity: 0.75 },
+          textStyle: { color: colors.dim },
+        },
+      ],
+      graphic: rankedGames.length ? [{
+        type: 'text',
+        left: 20,
+        bottom: 76,
+        silent: true,
+        style: { text: 'GAMES', fill: colors.dim, font: '10px sans-serif' },
+      }] : [],
+      series: buildRankSeries(ranked, colors, rankedGames),
+    };
+  };
 
-  syncRankRangeUi(startValue, endValue);
+  applyRankChartOption();
+
   rankChartInstance.on('datazoom', () => {
     requestAnimationFrame(() => {
       const range = currentRankWindow();

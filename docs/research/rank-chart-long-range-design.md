@@ -1,7 +1,8 @@
 # Rank Snapshot chart across sparse and dense time ranges
 
 **Checked:** 2026-07-23  
-**Revised after visual validation:** 2026-07-31
+**Revised after visual validation:** 2026-07-31  
+**Revised again after the Games presets shipped:** 2026-08-23
 
 ## Recommendation
 
@@ -14,9 +15,31 @@ Use a **continuous datetime scale** for the horizontal axis:
   A multi-Match or long observation gap remains dashed and explicitly unobserved.
 - Keep the full-history navigator and the quieter win/loss activity row for context.
 
-This supersedes both the original active-day recommendation below and the briefly tested
-Match-ordinal revision. The product requirement is that this graph represent time; Match
-ordinal made dense sessions readable but changed the meaning of horizontal distance.
+This supersedes the original active-day recommendation below. The product requirement is
+that this graph represent time, and the `7D`/`14D`/`30D`/`All` presets still do exactly that.
+
+## Revision: the Games presets carry their own scale
+
+The `10`/`25`/`100`/`All` Games presets were added later, and at first only moved the window
+on the same datetime axis. That does not work: "the last 25 games" is a count, and drawn
+against elapsed time it is mostly the whitespace between sessions. In the real corpus a
+25-game window spans about three days, so the plot showed a few dense clusters, wide empty
+plateaus, and an axis reading "Aug 22" five times over.
+
+The horizontal scale now follows the range group in use:
+
+- **Time presets** keep the continuous datetime scale described above. Nothing changes.
+- **Games presets** give every ranked game one equal-width slot, in the order played. A Rank
+  Snapshot sits between the games that bracket it, at the same fraction of real time, so a
+  post-game snapshot still reads as belonging to that game. Axis ticks mark where each
+  calendar day begins, so a game-scale window still says which days it covers, and the
+  window label above the chart names the date range outright.
+
+This is the Match-ordinal idea the earlier revision rejected, kept off the default view and
+scoped to the control that already asked for it. The objection then — that Match ordinal
+changes the meaning of horizontal distance — still holds, and is exactly why it is not the
+Time presets' scale. Under a control labelled in games, distance measuring games is the
+correct reading rather than a compromise.
 
 ## Original recommendation (superseded)
 
@@ -198,3 +221,9 @@ frontend dependencies appear. The project is Apache-2.0 licensed
    Match-only days with no Rank Snapshot.
 9. A Rank Snapshot whose cumulative record jumps by more than one game never creates a solid
    "known LP" segment across those Matches.
+10. A Games preset puts exactly that many Matches on the plot, each the same width, however
+    far apart they were played, and the axis labels each calendar day once.
+11. Switching between the Time and Games groups redraws the whole chart, and the button for
+    the visible window stays lit through the switch.
+12. No axis label repeats a date within one window, including a window zoomed below a day —
+    sub-day ticks read as clock times.
