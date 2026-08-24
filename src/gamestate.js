@@ -17,7 +17,6 @@ const POLL_MS = 2000;
 const HISTORY_SYNC_INTERVAL_MS = 5 * 60 * 1000;
 
 const state = {
-  mode: 'live', // 'live' | 'demo'
   phase: 'waiting', // 'waiting' | 'champselect' | 'ingame'
   clientDetected: false,
   champSelect: null, // normalized champ select snapshot
@@ -199,11 +198,7 @@ function fireHistorySync() {
   );
 }
 
-// Demo mode fabricates game-shaped objects. The archive is permanent, so it only
-// ever accepts data read from a real client — hence the mode guard here, on top
-// of sync reading the LCU directly rather than these snapshots.
 function checkHistoryTriggers(phase) {
-  if (state.mode !== 'live') return;
   const detected = state.clientDetected;
 
   if (detected && !lastClientDetected) fireHistorySync();
@@ -216,8 +211,6 @@ function checkHistoryTriggers(phase) {
 }
 
 async function pollOnce() {
-  if (state.mode === 'demo') return;
-
   // 1) A running match takes priority — the Live Client API answers only in game.
   const liveData = await live.fetchAllGameData();
   if (liveData) {
@@ -257,29 +250,10 @@ export function start() {
 
 export function snapshot() {
   return {
-    mode: state.mode,
     phase: state.phase,
     clientDetected: state.clientDetected,
     champSelect: state.champSelect,
     game: state.game,
     ddragonVersion: ddragon.getVersion(),
   };
-}
-
-// ---- Demo mode -------------------------------------------------------------
-
-export function enterDemo(phase, payload) {
-  state.mode = 'demo';
-  if (phase === 'champselect') {
-    setPhase('champselect', { champSelect: payload });
-  } else {
-    if (payload?.me?.role) state.lastAssignedRole = payload.me.role;
-    setPhase('ingame', { game: payload });
-  }
-}
-
-export function exitDemo() {
-  state.mode = 'live';
-  state.lastAssignedRole = null;
-  setPhase('waiting');
 }

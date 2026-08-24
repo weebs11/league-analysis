@@ -298,10 +298,12 @@ Wire in `src/gamestate.js`, which already polls every 2s and calls `lcu.gameflow
 | Game end | `gameflowPhase()` transitions into `EndOfGame` |
 | Safety net | every 5 minutes while `lcu.isConnected()` |
 
-Guard all three with `state.mode === 'live'`. **Demo mode must never reach the Archive**
-(`CONTEXT.md` boundaries). Sync reads the LCU directly rather than gamestate snapshots, so
-demo data cannot leak through the data path — but the coaching capture path (§6) *does* run
-through gamestate and needs the guard explicitly.
+Sync reads the LCU directly rather than gamestate snapshots, so only data the real client
+served can ever reach the Archive.
+
+> Superseded: this section originally required a `state.mode === 'live'` guard on all three
+> triggers, to keep the app's demo mode out of the Archive. Demo mode was removed, and with it
+> the guard.
 
 Sync runs must not overlap: hold a module-level `syncing` boolean and return early.
 
@@ -416,7 +418,7 @@ In `server.js`, `/api/coach/gameplan` currently caches by champion composition
    reads the platform off *any* match rather than only ranked ones (§2.3).
 2. On success, `store.writeCoaching(matchId, { plan, model, generatedAt, patch, basicMode })`.
 3. Keep `planCache` as-is for in-session reuse — this adds durability, it does not replace it.
-4. **Skip entirely when `gamestate` is in demo mode**, or when no `gameId` is available.
+4. **Skip entirely when no `gameId` is available.**
 
 The Match itself arrives later via Forward Sync; the join is on `matchId` and needs no
 coordination. `hasCoachingRecord` on the Index Row is set during normalize by checking for the
@@ -560,8 +562,8 @@ overridden cheaply.
 
 1. **Remake rule** — `durationSec < 300 || gameEndedInEarlySurrender`. Stored, not
    display-time. Listed but excluded from aggregates.
-2. **Demo isolation** — sync reads the LCU directly so demo cannot leak via the data path; the
-   coaching path gets an explicit `state.mode === 'live'` guard.
+2. **Client-only data** — sync reads the LCU directly, so nothing but what the real client
+   served can reach the Archive.
 3. **Import identity** — `sync-state.json` → running client → `--riot-id`, in that order.
 4. **Upgrade trigger** — manual only, via `--upgrade`. Nothing upgrades automatically.
 5. **Raw container accumulates Sources** (§2.1) rather than one payload per file. Not because

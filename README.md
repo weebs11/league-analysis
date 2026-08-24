@@ -102,10 +102,6 @@ Add `--dry-run` to see what it would fetch without writing anything.
 It walks month by month, respects Riot's rate limits (expect 10–20 minutes for a few
 hundred games), and can be interrupted and re-run — it picks up where it stopped.
 
-## Try it without League
-
-Click **Demo live game** on the home screen — it loads a practice scenario (bot lane, jungle, or top) so you can explore every feature without the game running. This also works on a laptop that doesn't have League installed.
-
 ## If the app never detects your League client
 
 The app finds the client via its `lockfile`. If you installed League somewhere unusual, set the install folder in **⚙️ Settings** (the folder containing `LeagueClient.exe`, e.g. `C:\Riot Games\League of Legends`).
@@ -125,10 +121,10 @@ src/gamestate.js   State machine merging both sources into UI snapshots
 src/ddragon.js     Data Dragon static data with disk cache
 src/coach.js       Claude API integration (structured JSON coaching + chat)
 src/fallback.js    Basic mode advice from Riot data (no API key)
-src/mock.js        Demo scenarios
 src/history/       Match history: archive, sync, normalizers, benchmarks, routes
 scripts/import-history.mjs  One-time historical import via Riot's match-v5 API
 test/mock-league-server.js  Fake Live Client API + LCU for development
+test/fixtures/snapshots.js  Game / champ select snapshot fixtures for the tests
 public/            Dashboard (vanilla HTML/CSS/JS, no build step)
 ```
 
@@ -136,7 +132,7 @@ To develop without League: `node test/mock-league-server.js` in one terminal, th
 `LIVE_CLIENT_INSECURE_HTTP=1 npm start` in another — the app will "detect" a fake game.
 
 **Tests:** `npm test` (Node's built-in runner, no extra dependencies). Unit tests cover
-the Data Dragon client, the game-state normalizers, the demo scenarios, the basic-mode
+the Data Dragon client, the game-state normalizers, the snapshot fixtures, the basic-mode
 coach, and the match-history subsystem — its two payload normalizers (against payloads
 captured from a real client), role assignment, remake handling, benchmarks, aggregates,
 archive concurrency, and the import script's windowing. Integration tests boot the real

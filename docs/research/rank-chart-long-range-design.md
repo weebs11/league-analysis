@@ -2,7 +2,8 @@
 
 **Checked:** 2026-07-23  
 **Revised after visual validation:** 2026-07-31  
-**Revised again after the Games presets shipped:** 2026-08-23
+**Revised again after the Games presets shipped:** 2026-08-23  
+**Revised again after the game scale became a game count:** 2026-08-24
 
 ## Recommendation
 
@@ -10,7 +11,8 @@ Use a **continuous datetime scale** for the horizontal axis:
 
 - Position every Rank Snapshot and archived ranked Match at its actual timestamp.
 - Make horizontal distance proportional to real elapsed time, including inactive days.
-- Open to the latest 14 days, with `7D`, `14D`, `30D`, and `All` controls.
+- Offer `7D`, `14D`, `30D`, and `All` controls over that scale. (The chart itself opens on
+  the `25` Games preset — see the revision below.)
 - Connect consecutive observed post-Match standings with a clean point-to-point line.
   A multi-Match or long observation gap remains dashed and explicitly unobserved.
 - Keep the full-history navigator and the quieter win/loss activity row for context.
@@ -30,16 +32,31 @@ The horizontal scale now follows the range group in use:
 
 - **Time presets** keep the continuous datetime scale described above. Nothing changes.
 - **Games presets** give every ranked game one equal-width slot, in the order played. A Rank
-  Snapshot sits between the games that bracket it, at the same fraction of real time, so a
-  post-game snapshot still reads as belonging to that game. Axis ticks mark where each
-  calendar day begins, so a game-scale window still says which days it covers, and the
-  window label above the chart names the date range outright.
+  Snapshot takes the slot of the game it followed, because that is what it records: where you
+  stood after that game. Consecutive post-game observations therefore land exactly one slot
+  apart, so the plotted points come out evenly distributed and horizontal distance means
+  games throughout. Two snapshots with no ranked game between them share a slot, which is the
+  honest reading — the LP moved with no game to attribute it to.
+- **The axis counts games.** Ticks are whole game numbers at whatever interval fits the
+  window; a window edge falls half a slot outside the games it holds and goes unlabelled. The
+  window label above the chart names the dates the window covers, and the tooltip and the
+  table keep every exact timestamp.
+- **The chart opens on `25` games.** The question it answers is "how am I trending", and rank
+  moves in games, so the game scale is the default read; the Time presets are one click away.
+  With no ranked game archived there is no game scale to open on, and the elapsed-time default
+  applies instead.
 
-This is the Match-ordinal idea the earlier revision rejected, kept off the default view and
-scoped to the control that already asked for it. The objection then — that Match ordinal
-changes the meaning of horizontal distance — still holds, and is exactly why it is not the
-Time presets' scale. Under a control labelled in games, distance measuring games is the
-correct reading rather than a compromise.
+This is the Match-ordinal idea the earlier revision rejected, scoped to the control that
+already asked for it. The objection then — that Match ordinal changes the meaning of
+horizontal distance — still holds, and is exactly why it is not the Time presets' scale.
+Under a control labelled in games, distance measuring games is the correct reading rather
+than a compromise, and both scales stay one click apart.
+
+The first cut of the game scale kept snapshots at their fraction of real time between the
+two games bracketing them. That was a half-measure: it left the points unevenly spread
+across the slots and put calendar-day ticks on an axis that was no longer measuring days, so
+the view still read as a lumpy time axis. Snapping each snapshot to its game and numbering
+the ticks in games is what actually makes the scale a count.
 
 ## Original recommendation (superseded)
 

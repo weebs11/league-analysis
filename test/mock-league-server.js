@@ -9,6 +9,11 @@
 // The LCU half replays captured real payloads from test/fixtures so the
 // normalizers are exercised against the shapes Riot actually sends — including
 // the empty timeline deltas and the unreliable lane data.
+//
+// Both halves default to "a match is running". POST /__control?phase=ChampSelect
+// on the LCU port flips them to champ select instead (the Live Client API stops
+// answering, the gameflow reports ChampSelect, and the champ select session is
+// served); POST /__control?phase= restores the running match.
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
@@ -62,10 +67,14 @@ const allGameData = {
   },
 };
 
+// Shared by both halves — see the control endpoint below.
+let controlPhase = '';
+
 const port = Number(process.env.MOCK_PORT || 2999);
 http
   .createServer((req, res) => {
-    if (req.url === '/liveclientdata/allgamedata') {
+    // Only a running match answers here, exactly like the real API.
+    if (req.url === '/liveclientdata/allgamedata' && controlPhase !== 'ChampSelect') {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(allGameData));
     } else {
@@ -92,6 +101,7 @@ const rankedStats = fixture('lcu-ranked-stats.json');
 const matchList = fixture('lcu-matchlist.json');
 const matchDetail = fixture('lcu-match-detail.json');
 const gameflow = fixture('lcu-gameflow-session.json');
+const champSelect = fixture('lcu-champ-select-session.json');
 
 // The detail fixture is one real match. Replaying it verbatim for every game id
 // would collapse 20 matches into one, so the per-game fields that actually
@@ -124,8 +134,18 @@ http
       res.end(JSON.stringify(body));
     };
 
+    if (url.pathname === '/__control') {
+      controlPhase = url.searchParams.get('phase') || '';
+      return send({ phase: controlPhase });
+    }
     if (url.pathname === '/lol-summoner/v1/current-summoner') return summoner ? send(summoner) : send({}, 404);
-    if (url.pathname === '/lol-gameflow/v1/gameflow-phase') return send(process.env.MOCK_GAMEFLOW_PHASE || 'None');
+    if (url.pathname === '/lol-gameflow/v1/gameflow-phase') {
+      return send(controlPhase || process.env.MOCK_GAMEFLOW_PHASE || 'None');
+    }
+    if (url.pathname === '/lol-champ-select/v1/session') {
+      // The real client 404s outside champ select.
+      return controlPhase === 'ChampSelect' && champSelect ? send(champSelect) : send({}, 404);
+    }
     if (url.pathname === '/lol-gameflow/v1/session') return gameflow ? send(gameflow) : send({}, 404);
     if (url.pathname === '/lol-ranked/v1/current-ranked-stats') return rankedStats ? send(rankedStats) : send({}, 404);
     if (url.pathname === '/lol-match-history/v1/products/lol/current-summoner/matches') {

@@ -179,11 +179,11 @@ test('the game scale gives every ranked game an equal slot whatever the clock di
   ];
   const layout = layoutQueues([], games);
 
-  assert.deepEqual(Array.from(layout.games, (game) => game.gameX), [0, 1, 2, 3]);
-  assert.deepEqual(Array.from(layout.gameExtent), [-0.5, 3.5]);
+  assert.deepEqual(Array.from(layout.games, (game) => game.gameX), [1, 2, 3, 4]);
+  assert.deepEqual(Array.from(layout.gameExtent), [0.5, 4.5]);
 });
 
-test('the game scale keeps snapshots with the game they followed', () => {
+test('the game scale puts every snapshot on the game it followed', () => {
   const games = Array.from({ length: 4 }, (_, index) => ({
     at: at(2026, 7, 19, 8, index * 30),
     queueId: 420,
@@ -197,11 +197,28 @@ test('the game scale keeps snapshots with the game they followed', () => {
   const layout = layoutQueues([{ queueId: 420, points }], games);
   const slots = Array.from(layout.queues[0].points, (point) => point.gameX);
 
-  slots.slice(0, 4).forEach((slot, index) => {
-    assert.ok(slot > index && slot < index + 1, `snapshot ${index} must sit just past its game`);
-  });
-  assert.ok(slots[4] > 3 && slots[4] < 4, 'a trailing snapshot stays inside the last slot');
-  assert.ok(slots.every((slot, index) => index === 0 || slot > slots[index - 1]), 'order is preserved');
+  // Exactly one slot apart: neither the half hour between games nor the six
+  // hours after the last one buys a snapshot any extra width.
+  assert.deepEqual(slots.slice(0, 4), [1, 2, 3, 4]);
+  assert.equal(slots[4], 4, 'a snapshot with no game after it stays on the last game');
+});
+
+test('the game scale stacks snapshots taken without a game between them', () => {
+  const games = [
+    { at: at(2026, 7, 19, 8), queueId: 420, matchId: 'a' },
+    { at: at(2026, 7, 19, 9), queueId: 420, matchId: 'b' },
+  ];
+  // Two observations of the same standing, an hour apart, no game between.
+  const points = [
+    { at: at(2026, 7, 19, 8, 5), value: 600 },
+    { at: at(2026, 7, 19, 8, 50), value: 600 },
+    { at: at(2026, 7, 19, 9, 5), value: 620 },
+  ];
+  const layout = layoutQueues([{ queueId: 420, points }], games);
+
+  // Sharing a slot is the honest reading — there is no game to credit the
+  // second observation to — and it leaves the one-slot rhythm intact.
+  assert.deepEqual(Array.from(layout.queues[0].points, (point) => point.gameX), [1, 1, 2]);
 });
 
 test('a snapshot recorded before the first game stays left of it', () => {
@@ -212,7 +229,7 @@ test('a snapshot recorded before the first game stays left of it', () => {
   );
 
   const slot = layout.queues[0].points[0].gameX;
-  assert.ok(slot < 0 && slot > -1, 'it sits in the half slot before game zero');
+  assert.ok(slot > 0 && slot < 1, 'it sits in the sliver before game one');
   assert.equal(layout.gameExtent[0] < slot, true);
 });
 

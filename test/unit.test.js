@@ -13,7 +13,7 @@ const ddragon = await import('../src/ddragon.js');
 const { normalizeChampSelect, normalizeLiveGame } = await import('../src/gamestate.js');
 const fallback = await import('../src/fallback.js');
 const lanecompare = await import('../src/lanecompare.js');
-const mock = await import('../src/mock.js');
+const fixtures = await import('./fixtures/snapshots.js');
 const coach = await import('../src/coach.js');
 const briefings = await import('../src/briefings.js');
 
@@ -197,32 +197,32 @@ test('gamestate: normalizeLiveGame maps Live Client data', () => {
   assert.equal(normalizeLiveGame({ allPlayers: [] }), null);
 });
 
-// ---- demo scenarios -------------------------------------------------------------
+// ---- snapshot fixtures ----------------------------------------------------------
 
-test('mock: every scenario builds complete game and champ select snapshots', () => {
-  const scenarios = mock.scenarioList();
+test('fixtures: every scenario builds complete game and champ select snapshots', () => {
+  const scenarios = fixtures.scenarioList();
   assert.equal(scenarios.length, 3);
   for (const s of scenarios) {
-    const g = mock.buildGameSnapshot(s.id);
+    const g = fixtures.buildGameSnapshot(s.id);
     assert.equal(g.allies.length, 5, `${s.id}: 5 allies`);
     assert.equal(g.enemies.length, 5, `${s.id}: 5 enemies`);
     assert.ok(g.me?.champion?.id, `${s.id}: player champion resolves`);
     for (const p of [...g.allies, ...g.enemies]) {
       assert.ok(p.champion?.id, `${s.id}: champion ${p.summonerName} resolves in ddragon`);
     }
-    const cs = mock.buildChampSelectSnapshot(s.id);
+    const cs = fixtures.buildChampSelectSnapshot(s.id);
     assert.ok(cs.me?.champion?.id);
     assert.equal(cs.myTeam.length, 5);
     assert.equal(cs.theirTeam.length, 5);
   }
-  assert.equal(mock.buildGameSnapshot('nope'), null);
-  assert.equal(mock.buildChampSelectSnapshot('nope'), null);
+  assert.equal(fixtures.buildGameSnapshot('nope'), null);
+  assert.equal(fixtures.buildChampSelectSnapshot('nope'), null);
 });
 
 // ---- level-1 lane comparison ---------------------------------------------------
 
 test('lanecompare: pairs every lane by role and flags the player\'s own', async () => {
-  const cmp = await lanecompare.compareGame(mock.buildGameSnapshot('botlane'));
+  const cmp = await lanecompare.compareGame(fixtures.buildGameSnapshot('botlane'));
   assert.equal(cmp.lanes.length, 5, 'all five lanes paired');
   assert.deepEqual(cmp.lanes.map((l) => l.role), ['Top', 'Jungle', 'Mid', 'ADC (Bot)', 'Support']);
   const mine = cmp.lanes.find((l) => l.isMyLane);
@@ -234,7 +234,7 @@ test('lanecompare: pairs every lane by role and flags the player\'s own', async 
 });
 
 test('lanecompare: rows carry formatted level-1 values with a winner per stat', async () => {
-  const cmp = await lanecompare.compareGame(mock.buildGameSnapshot('botlane'));
+  const cmp = await lanecompare.compareGame(fixtures.buildGameSnapshot('botlane'));
   const mine = cmp.lanes.find((l) => l.isMyLane);
   const byId = Object.fromEntries(mine.rows.map((r) => [r.id, r]));
   // Values match Data Dragon exactly — this view must be verifiable by hand.
@@ -257,7 +257,7 @@ test('lanecompare: rows carry formatted level-1 values with a winner per stat', 
 });
 
 test('lanecompare: verdicts are deterministic and spells decorate best-effort', async () => {
-  const game = mock.buildGameSnapshot('botlane');
+  const game = fixtures.buildGameSnapshot('botlane');
   const [a, b] = await Promise.all([lanecompare.compareGame(game), lanecompare.compareGame(game)]);
   assert.deepEqual(a, b, 'same game in, same comparison out — no model, no randomness');
   const mine = a.lanes.find((l) => l.isMyLane);
@@ -268,7 +268,7 @@ test('lanecompare: verdicts are deterministic and spells decorate best-effort', 
 });
 
 test('lanecompare: role gaps fall back to list order instead of dropping champions', async () => {
-  const game = mock.buildGameSnapshot('botlane');
+  const game = fixtures.buildGameSnapshot('botlane');
   for (const p of [...game.allies, ...game.enemies]) p.role = ''; // no position data at all
   const cmp = await lanecompare.compareGame(game);
   assert.equal(cmp.lanes.length, 5, 'all five pairs still form');
@@ -278,7 +278,7 @@ test('lanecompare: role gaps fall back to list order instead of dropping champio
 // ---- fallback (basic mode) coach ---------------------------------------------------
 
 test('fallback: basic game plan covers all enemies with riot data', async () => {
-  const plan = await fallback.generateBasicGamePlan(mock.buildGameSnapshot('botlane'));
+  const plan = await fallback.generateBasicGamePlan(fixtures.buildGameSnapshot('botlane'));
   assert.equal(plan.basicMode, true);
   assert.equal(plan.enemyThreats.length, 5);
   assert.ok(['Mostly Physical', 'Mostly Magic', 'Mixed'].includes(plan.itemization.enemyDamageProfile));
@@ -292,12 +292,12 @@ test('fallback: basic game plan covers all enemies with riot data', async () => 
 });
 
 test('fallback: jungle scenario flags enemy healing (Soraka/Warwick)', async () => {
-  const plan = await fallback.generateBasicGamePlan(mock.buildGameSnapshot('jungle'));
+  const plan = await fallback.generateBasicGamePlan(fixtures.buildGameSnapshot('jungle'));
   assert.match(plan.itemization.defensiveAdvice, /Grievous Wounds/i, 'anti-heal lesson should trigger');
 });
 
 test('fallback: basic champ select briefing lists passive + QWER', async () => {
-  const advice = await fallback.generateBasicChampSelect(mock.buildChampSelectSnapshot('top'));
+  const advice = await fallback.generateBasicChampSelect(fixtures.buildChampSelectSnapshot('top'));
   assert.equal(advice.basicMode, true);
   assert.deepEqual(advice.yourChampion.abilities.map((a) => a.key), ['Passive', 'Q', 'W', 'E', 'R']);
   assert.ok(advice.knownEnemies.length >= 1, 'visible enemy picks are covered');
@@ -331,7 +331,7 @@ test('briefings: every briefing has the full structure', () => {
 });
 
 test('briefings: champ select advice assembles from the library', async () => {
-  const advice = await briefings.champSelectAdvice(mock.buildChampSelectSnapshot('top'));
+  const advice = await briefings.champSelectAdvice(fixtures.buildChampSelectSnapshot('top'));
   assert.equal(advice.basicMode, false);
   assert.ok(advice.briefingPatch, 'reports the patch it was generated on');
   assert.deepEqual(advice.yourChampion.abilities.map((a) => a.key), ['Passive', 'Q', 'W', 'E', 'R']);
@@ -345,7 +345,7 @@ test('briefings: champ select advice assembles from the library', async () => {
 test('coach: cleanly refuses without an API key', async () => {
   assert.equal(coach.aiAvailable(), false);
   await assert.rejects(
-    coach.generateGamePlan(mock.buildGameSnapshot('top')),
+    coach.generateGamePlan(fixtures.buildGameSnapshot('top')),
     (e) => e instanceof coach.CoachError && e.code === 'no_api_key'
   );
   await assert.rejects(
@@ -360,7 +360,7 @@ test('coach: error descriptions are user-friendly', () => {
 });
 
 test('coach: attachCooldowns decorates called-out abilities with patch data', async () => {
-  const game = mock.buildGameSnapshot('top'); // enemies include Darius and Blitzcrank
+  const game = fixtures.buildGameSnapshot('top'); // enemies include Darius and Blitzcrank
   const plan = {
     gamePlan: {
       earlyGame: {

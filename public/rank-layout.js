@@ -16,9 +16,9 @@
     };
   }
 
-  // Typical spacing between ranked games, used to size the lead-in and tail
-  // room around the game sequence. The median ignores the overnight gaps that
-  // would otherwise make one slot swallow a whole session.
+  // Typical spacing between ranked games, used to size the lead-in room ahead
+  // of the game sequence. The median ignores the overnight gaps that would
+  // otherwise make one slot swallow a whole session.
   function typicalGameGap(games) {
     const gaps = games.slice(1)
       .map((game, index) => Number(game.at) - Number(games[index].at))
@@ -27,28 +27,30 @@
     return gaps.length ? gaps[Math.floor(gaps.length / 2)] : 30 * 60 * 1000;
   }
 
-  // Fraction of one slot to give an observation that falls outside the game
-  // sequence. Strictly increasing in elapsed time and always short of a full
-  // slot, so however long the tail runs it never overtakes the next game.
+  // Fraction of one slot to hold back an observation recorded before the first
+  // game. Strictly increasing in elapsed time and always short of a full slot,
+  // so however far back the lead-in runs it never reaches game one.
   function slotOverhang(elapsed, gap) {
     const distance = Math.max(0, Number(elapsed));
     return 0.95 * (distance / (distance + gap));
   }
 
-  // The game scale: every ranked game owns one equal-width slot, game i at x=i.
-  // A snapshot sits between the games that bracket it, at the same fraction of
-  // real time, so a post-game snapshot reads as belonging to that game and the
-  // order of everything recorded during a session survives intact.
+  // The game scale: every ranked game owns one equal-width slot, the nth game
+  // at x=n. A snapshot takes the slot of the game it followed — it records
+  // where you stood after that game — so consecutive post-game snapshots come
+  // out exactly one slot apart whatever the clock did in between, and the axis
+  // measures games rather than the whitespace between sessions. Two snapshots
+  // with no ranked game between them share a slot, which is the honest reading:
+  // the LP moved without a game to attribute it to.
   function gamePosition(at, games, gap) {
-    if (!games.length) return 0;
+    if (!games.length) return 1;
     const time = Number(at);
     let played = 0;
     while (played < games.length && Number(games[played].at) <= time) played += 1;
-    if (played === 0) return -slotOverhang(Number(games[0].at) - time, gap);
-    const prev = Number(games[played - 1].at);
-    if (played === games.length) return (games.length - 1) + slotOverhang(time - prev, gap);
-    const next = Number(games[played].at);
-    return (played - 1) + (next > prev ? (time - prev) / (next - prev) : 0.5);
+    // Nothing to attach a pre-history snapshot to, so it keeps an ordered
+    // sliver of the slot ahead of game one instead of landing on it.
+    if (played === 0) return 1 - slotOverhang(Number(games[0].at) - time, gap);
+    return played;
   }
 
   function layoutQueues(queues, games = []) {
@@ -62,7 +64,7 @@
     const projectedGames = [...games]
       .filter((game) => Number.isFinite(Number(game.at)))
       .sort((a, b) => Number(a.at) - Number(b.at))
-      .map((game, index) => ({ ...game, chartX: Number(game.at), gameX: index }));
+      .map((game, index) => ({ ...game, chartX: Number(game.at), gameX: index + 1 }));
     const gameGap = typicalGameGap(projectedGames);
     for (const queue of projected) {
       for (const point of queue.points) {

@@ -38,6 +38,13 @@ const post = async (p, body = {}) => {
   return { status: res.status, body: await res.json().catch(() => null) };
 };
 
+// Flips the mock League client between a running match and champ select.
+const mockPhase = async (phase) => {
+  const res = await fetch(`http://127.0.0.1:${MOCK_LCU_PORT}/__control?phase=${phase}`, { method: 'POST' });
+  assert.equal(res.status, 200);
+  await res.json();
+};
+
 async function waitFor(fn, what, timeoutMs = 45000, everyMs = 400) {
   const deadline = Date.now() + timeoutMs;
   let lastErr = null;
@@ -206,34 +213,34 @@ test('serves the ECharts bundle locally for offline charting', async () => {
   assert.ok(layout.body.byteLength > 1_000, 'expected the day-aware rank layout helper');
 });
 
-test('demo mode overrides live detection and champ select advice works', async () => {
-  const start = await post('/api/demo/start', { scenario: 'top', phase: 'champselect' });
-  assert.equal(start.status, 200);
-  const { body: state } = await get('/api/state');
-  assert.equal(state.phase, 'champselect');
-  assert.equal(state.mode, 'demo');
-  assert.equal(state.champSelect.me.champion.name, 'Garen');
+// The mock spends the rest of the suite in a running match, so this is the one
+// test that flips it to champ select — and it must flip back before it returns.
+test('picks up champ select from the client and advises on it', async () => {
+  await mockPhase('ChampSelect');
+  try {
+    const state = await waitFor(async () => {
+      const { body } = await get('/api/state');
+      return body.phase === 'champselect' ? body : null;
+    }, 'champ select to be detected');
+    assert.equal(state.champSelect.me.champion.name, 'Miss Fortune');
+    assert.equal(state.champSelect.me.role, 'ADC (Bot)');
+    // Two enemies are still unpicked in the fixture, exactly as mid-draft.
+    assert.equal(state.champSelect.theirTeam.filter((m) => m.champion).length, 3);
 
-  // Champ select has no game yet, so the lane comparison correctly refuses.
-  assert.equal((await get('/api/lanecompare')).status, 409);
+    // Champ select has no game yet, so the lane comparison correctly refuses.
+    assert.equal((await get('/api/lanecompare')).status, 409);
 
-  const advice = await post('/api/coach/champselect');
-  assert.equal(advice.status, 200);
-  // Served from the checked-in briefing library — no API key involved.
-  assert.equal(advice.body.advice.basicMode, false);
-  assert.ok(advice.body.advice.briefingPatch);
-  assert.ok(advice.body.advice.yourChampion.abilities.length === 5);
-  assert.ok(advice.body.advice.knownEnemies.length > 0);
-
-  const stop = await post('/api/demo/stop');
-  assert.equal(stop.status, 200);
-});
-
-test('demo scenarios endpoint lists all three roles', async () => {
-  const { body } = await get('/api/demo/scenarios');
-  assert.deepEqual(body.map((s) => s.id).sort(), ['botlane', 'jungle', 'top']);
-  const bad = await post('/api/demo/start', { scenario: 'nonsense' });
-  assert.equal(bad.status, 400);
+    const advice = await post('/api/coach/champselect');
+    assert.equal(advice.status, 200);
+    // Served from the checked-in briefing library — no API key involved.
+    assert.equal(advice.body.advice.basicMode, false);
+    assert.ok(advice.body.advice.briefingPatch);
+    assert.ok(advice.body.advice.yourChampion.abilities.length === 5);
+    assert.ok(advice.body.advice.knownEnemies.length > 0);
+  } finally {
+    await mockPhase('');
+    await waitFor(async () => (await get('/api/state')).body.phase === 'ingame', 'the match to come back');
+  }
 });
 
 test('chat requires an API key and says so clearly', async () => {

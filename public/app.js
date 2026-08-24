@@ -149,7 +149,7 @@ function renderStatus() {
   if (!state) return;
   const meta = $('#topbar-meta');
   if (state.phase === 'ingame') {
-    setPill('ingame', state.mode === 'demo' ? 'Demo game' : 'In game');
+    setPill('ingame', 'In game');
     // renderGameHeader fills the meta with mode + minutes right after.
   } else if (state.phase === 'champselect') {
     setPill('champselect', 'Champion select');
@@ -159,9 +159,6 @@ function renderStatus() {
     else setPill('waiting', 'Waiting for League');
     meta.textContent = state.ddragonVersion ? `Patch ${state.ddragonVersion}` : '';
   }
-  const isDemo = state.mode === 'demo';
-  $('#topbar-demo').classList.toggle('hidden', !isDemo);
-  $('#btn-exit-demo').classList.toggle('hidden', !isDemo);
 }
 
 // ---------- sections (user navigation) ----------
@@ -1051,20 +1048,6 @@ async function saveSettings() {
   onState(st);
 }
 
-// ---------- demo ----------
-async function loadScenarios() {
-  const list = await api('/api/demo/scenarios');
-  $('#demo-scenario').innerHTML = list.map((s) => `<option value="${esc(s.id)}">${esc(s.label)}</option>`).join('');
-}
-
-async function startDemo(phase) {
-  const scenario = $('#demo-scenario').value;
-  await api('/api/demo/start', { method: 'POST', body: { scenario, phase } });
-}
-async function stopDemo() {
-  await api('/api/demo/stop', { method: 'POST' });
-}
-
 // ---------- match history ----------
 const hist = { page: 0, size: 20, role: '', queue: '', total: 0 };
 
@@ -1635,41 +1618,36 @@ function rankTimeAxisLabel(value) {
     : RANK_CLOCK_LABEL.format(at);
 }
 
-// On the game scale a day starts wherever its first observation fell, which is
-// a fractional slot — so its ticks are placed explicitly, not at round numbers.
-function rankDayStarts() {
-  return (rankChartLayout.days || []).map((day) => day.minGameX);
-}
-
+// The game scale counts games, so its ticks are game numbers — evenly spaced
+// by construction, at whatever whole-game interval fits the window. A window
+// edge falls half a slot outside the games it holds, and half a game is not a
+// number worth printing, so only whole games are labelled.
 function rankGameAxisLabel(value) {
-  const days = rankChartLayout.days || [];
-  const slot = Number(value);
-  const day = days.find((entry) => Math.abs(entry.minGameX - slot) < 1e-6)
-    || days.filter((entry) => entry.minGameX <= slot).pop()
-    || days[0];
-  return day ? RANK_DAY_LABEL.format(new Date(day.at)) : '';
+  const game = Number(value);
+  return Number.isInteger(game) ? String(game) : '';
 }
 
 function rankXAxes(colors) {
   const bySlot = rankChartMode === 'games';
   const [axisMin, axisMax] = bySlot ? rankChartLayout.gameExtent : rankChartLayout.xExtent;
   const type = bySlot ? 'value' : 'time';
-  const dayStarts = bySlot ? rankDayStarts() : undefined;
   return [
     {
       type,
       gridIndex: 0,
       min: axisMin,
       max: axisMax,
+      // Half a game is not a position anything can occupy, so the game scale
+      // never subdivides a slot however far the window is zoomed in.
+      minInterval: bySlot ? 1 : undefined,
       boundaryGap: false,
       axisLine: { lineStyle: { color: colors.line } },
       axisTick: bySlot
-        ? { show: true, customValues: dayStarts, length: 4, lineStyle: { color: colors.line } }
+        ? { show: true, length: 4, lineStyle: { color: colors.line } }
         : { show: false },
       axisLabel: {
         color: colors.dim,
         hideOverlap: true,
-        customValues: dayStarts,
         formatter: bySlot ? rankGameAxisLabel : rankTimeAxisLabel,
       },
       splitLine: { show: false },
@@ -1681,7 +1659,7 @@ function rankXAxes(colors) {
 
 function rankAriaDescription() {
   return rankChartMode === 'games'
-    ? 'Rank over ranked games. Every ranked game takes an equal share of the horizontal axis in the order it was played, and axis labels mark the day each one falls on. Green and red ticks represent wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the Games 10, 25, 100, and All buttons to change how many games are shown, or a Time button to return to an elapsed-time axis. Exact snapshot values and dates are also available in the table below.'
+    ? 'Rank over ranked games. Every ranked game takes an equal share of the horizontal axis in the order it was played, and axis labels count games rather than dates; the window label above the chart names the dates covered. Each rank snapshot sits on the game it followed. Green and red ticks represent wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the Games 10, 25, 100, and All buttons to change how many games are shown, or a Time button to return to an elapsed-time axis. Exact snapshot values and dates are also available in the table below.'
     : 'Rank over elapsed time. Rank Snapshots and ranked Matches appear at their actual dates and times. Green and red ticks represent wins and losses. Dashed lines connect snapshots with an unobserved LP path. Use the 7 day, 14 day, 30 day, and All buttons to change the visible time range. Exact snapshot values and dates are also available in the table below.';
 }
 
@@ -1733,9 +1711,12 @@ function renderRankChart(queues, games = []) {
   const ranked = rankChartLayout.queues;
   const rankedGames = rankChartLayout.games;
   const points = ranked.flatMap((s) => s.points);
-  rankChartPreset = rankChartLayout.lastAt - rankChartLayout.firstAt <= 14 * 24 * 60 * 60 * 1000
-    ? 'all'
-    : 14;
+  // Opens on the last 25 games: the question this chart answers is "how am I
+  // trending", and games are the unit rank moves in. Without any ranked game
+  // archived there is no game scale to open on, so fall back to elapsed time.
+  rankChartPreset = rankedGames.length
+    ? 'g25'
+    : (rankChartLayout.lastAt - rankChartLayout.firstAt <= 14 * 24 * 60 * 60 * 1000 ? 'all' : 14);
   rankChartMode = rankModeOf(rankChartPreset);
 
   const legend = ranked.length > 1
@@ -1896,13 +1877,24 @@ function renderRankChart(queues, games = []) {
           textStyle: { color: colors.dim },
         },
       ],
-      graphic: rankedGames.length ? [{
-        type: 'text',
-        left: 20,
-        bottom: 76,
-        silent: true,
-        style: { text: 'GAMES', fill: colors.dim, font: '10px sans-serif' },
-      }] : [],
+      graphic: [
+        // Names the unit the bare tick numbers are counting, in the margin the
+        // win/loss row already labels the same way.
+        ...(rankChartMode === 'games' ? [{
+          type: 'text',
+          left: 20,
+          bottom: 110,
+          silent: true,
+          style: { text: 'GAME #', fill: colors.dim, font: '10px sans-serif' },
+        }] : []),
+        ...(rankedGames.length ? [{
+          type: 'text',
+          left: 20,
+          bottom: 76,
+          silent: true,
+          style: { text: 'GAMES', fill: colors.dim, font: '10px sans-serif' },
+        }] : []),
+      ],
       series: buildRankSeries(ranked, colors, rankedGames),
     };
   };
@@ -2498,10 +2490,6 @@ function wire() {
   $('#btn-glossary-close').onclick = () => $('#modal-glossary').classList.add('hidden');
   $('#glossary-search').oninput = (e) => renderGlossaryModal(e.target.value);
 
-  $('#btn-demo-game').onclick = () => startDemo('game').catch((e) => alert(e.message));
-  $('#btn-demo-cs').onclick = () => startDemo('champselect').catch((e) => alert(e.message));
-  $('#btn-exit-demo').onclick = () => stopDemo();
-
   $('#btn-generate').onclick = () => generatePlan(false);
   $('#btn-regenerate').onclick = () => generatePlan(true);
 
@@ -2555,7 +2543,6 @@ function wire() {
 
 // ---------- boot ----------
 wire();
-loadScenarios().catch(() => {});
 loadItemIndex().catch(() => {}); // icons/tooltips degrade to plain names without it
 loadSettingsInfo(); // model name for the sidebar attribution line
 api('/api/state').then(onState).catch(() => setPill('waiting', 'Server unreachable'));
