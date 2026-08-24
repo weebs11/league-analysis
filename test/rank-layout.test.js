@@ -12,6 +12,7 @@ vm.runInNewContext(source, sandbox, { filename: 'rank-layout.js' });
 const {
   layoutQueues,
   windowForPreset,
+  windowForGames,
   daysInWindow,
   matchesInWindow,
   isCertainTransition,
@@ -166,6 +167,78 @@ test('rank range presets select real elapsed calendar time', () => {
     ['2026-07-16', '2026-07-17', '2026-07-23'],
   );
   assert.equal(matchesInWindow(layout, ...sevenDays).length, 3);
+});
+
+test('the game scale gives every ranked game an equal slot whatever the clock did', () => {
+  // Two games minutes apart, then a two-day break, then two more.
+  const games = [
+    { at: at(2026, 7, 21, 20, 0), queueId: 420, matchId: 'a' },
+    { at: at(2026, 7, 21, 20, 30), queueId: 420, matchId: 'b' },
+    { at: at(2026, 7, 23, 21, 0), queueId: 420, matchId: 'c' },
+    { at: at(2026, 7, 23, 21, 30), queueId: 420, matchId: 'd' },
+  ];
+  const layout = layoutQueues([], games);
+
+  assert.deepEqual(Array.from(layout.games, (game) => game.gameX), [0, 1, 2, 3]);
+  assert.deepEqual(Array.from(layout.gameExtent), [-0.5, 3.5]);
+});
+
+test('the game scale keeps snapshots with the game they followed', () => {
+  const games = Array.from({ length: 4 }, (_, index) => ({
+    at: at(2026, 7, 19, 8, index * 30),
+    queueId: 420,
+    matchId: `match-${index + 1}`,
+  }));
+  // One snapshot a minute after each game, plus a trailing one hours later.
+  const points = [
+    ...games.map((game, index) => ({ at: game.at + 60_000, value: 600 + index })),
+    { at: at(2026, 7, 19, 14), value: 640 },
+  ];
+  const layout = layoutQueues([{ queueId: 420, points }], games);
+  const slots = Array.from(layout.queues[0].points, (point) => point.gameX);
+
+  slots.slice(0, 4).forEach((slot, index) => {
+    assert.ok(slot > index && slot < index + 1, `snapshot ${index} must sit just past its game`);
+  });
+  assert.ok(slots[4] > 3 && slots[4] < 4, 'a trailing snapshot stays inside the last slot');
+  assert.ok(slots.every((slot, index) => index === 0 || slot > slots[index - 1]), 'order is preserved');
+});
+
+test('a snapshot recorded before the first game stays left of it', () => {
+  const games = [{ at: at(2026, 7, 19, 12), queueId: 420, matchId: 'only' }];
+  const layout = layoutQueues(
+    [{ queueId: 420, points: [{ at: at(2026, 7, 19, 8), value: 600 }] }],
+    games,
+  );
+
+  const slot = layout.queues[0].points[0].gameX;
+  assert.ok(slot < 0 && slot > -1, 'it sits in the half slot before game zero');
+  assert.equal(layout.gameExtent[0] < slot, true);
+});
+
+test('a game window holds exactly that many games however far apart they were played', () => {
+  const games = Array.from({ length: 30 }, (_, index) => ({
+    // Ten games a night across three nights: dense sessions, long breaks.
+    at: at(2026, 7, 19 + Math.floor(index / 10), 20, (index % 10) * 25),
+    queueId: 420,
+    matchId: `match-${index + 1}`,
+  }));
+  const layout = layoutQueues([], games);
+
+  const window = windowForGames(layout, 25);
+  assert.equal(matchesInWindow(layout, ...window, 'games').length, 25);
+  assert.deepEqual(Array.from(windowForGames(layout, 100)), Array.from(layout.gameExtent));
+
+  // Every one of the 25 gets the same width; on the time axis the same window
+  // would have spent most of its room on the two overnight breaks.
+  const slots = matchesInWindow(layout, ...window, 'games').map((game) => game.gameX);
+  const steps = slots.slice(1).map((slot, index) => slot - slots[index]);
+  assert.ok(steps.every((step) => step === 1), 'slots are evenly spaced');
+
+  assert.deepEqual(
+    Array.from(daysInWindow(layout, ...window, 'games'), (day) => day.key),
+    ['2026-07-19', '2026-07-20', '2026-07-21'],
+  );
 });
 
 test('rank transitions are uncertain when one snapshot catches up multiple games', () => {
