@@ -74,6 +74,21 @@ function setSplash(el, ddragonId) {
 const HERO_CHAMPS = ['Jinx', 'Ahri', 'Yasuo', 'Lux', 'Garen', 'Kaisa', 'Ezreal', 'Vi', 'Thresh', 'Leona'];
 const heroChamp = HERO_CHAMPS[Math.floor(Math.random() * HERO_CHAMPS.length)];
 
+// ---------- coaching models ----------
+const MODEL_OPTIONS = [
+  { id: 'claude-opus-5', name: 'Claude Opus 5', desc: 'smartest coaching', cost: '10–15¢ / game' },
+  { id: 'claude-sonnet-5', name: 'Claude Sonnet 5', desc: 'great quality', cost: '6–9¢ / game' },
+  { id: 'claude-haiku-4-5', name: 'Claude Haiku 4.5', desc: 'fastest and cheapest', cost: '1–2¢ / game' },
+];
+function modelLabel(id) {
+  return MODEL_OPTIONS.find((m) => m.id === id)?.name || id || '';
+}
+// Cached /api/settings info for the sidebar attribution line.
+let settingsInfo = null;
+async function loadSettingsInfo() {
+  settingsInfo = await api('/api/settings').catch(() => null);
+}
+
 // ---------- state ----------
 let state = null;           // latest server snapshot
 let currentPlan = null;     // generated game plan
@@ -114,11 +129,12 @@ function onState(snap) {
     loadLaneCompare();
   } else {
     showView('waiting');
-    renderWaiting();
     if (prevPhase === 'ingame' || prevPhase === 'champselect') {
       currentPlan = null; currentCsAdvice = null; csBriefingKey = null; chatHistory = [];
       resetLaneCompare();
+      home.loaded = false; // a finished game means fresh history for the home screen
     }
+    renderWaiting();
   }
 }
 
@@ -131,10 +147,21 @@ function setPill(cls, text) {
 
 function renderStatus() {
   if (!state) return;
-  if (state.phase === 'ingame') setPill('ingame', state.mode === 'demo' ? 'Demo game' : 'In game');
-  else if (state.phase === 'champselect') setPill('champselect', state.mode === 'demo' ? 'Demo champ select' : 'Champion select');
-  else if (state.clientDetected) setPill('waiting', 'League client detected — waiting for a game');
-  else setPill('waiting', 'Waiting for League to start');
+  const meta = $('#topbar-meta');
+  if (state.phase === 'ingame') {
+    setPill('ingame', state.mode === 'demo' ? 'Demo game' : 'In game');
+    // renderGameHeader fills the meta with mode + minutes right after.
+  } else if (state.phase === 'champselect') {
+    setPill('champselect', 'Champion select');
+    meta.textContent = '';
+  } else {
+    if (state.clientDetected) setPill('waiting detected', 'Client detected');
+    else setPill('waiting', 'Waiting for League');
+    meta.textContent = state.ddragonVersion ? `Patch ${state.ddragonVersion}` : '';
+  }
+  const isDemo = state.mode === 'demo';
+  $('#topbar-demo').classList.toggle('hidden', !isDemo);
+  $('#btn-exit-demo').classList.toggle('hidden', !isDemo);
 }
 
 // ---------- sections (user navigation) ----------
@@ -195,34 +222,119 @@ function showView(name) {
   showPhaseView(name);
 }
 
+// ---------- home (waiting) ----------
+// The hero pulls its headline and stats from local history; everything is
+// cached per session and refreshed when a game ends.
+const home = { loaded: false, loading: false, summary: null, rank: null, matches: null, total: 0 };
+
 function renderWaiting() {
-  setSplash($('.hero-card'), heroChamp);
-  const el = $('#detect-status');
-  if (state.clientDetected) {
-    el.innerHTML = `<span class="ok">✔ League client detected.</span> Queue up — I'll follow you into champ select.`;
-  } else {
-    el.innerHTML = `<span class="warn">●</span> League client not detected yet. Start League on this computer (or set the install folder in Settings if it never connects).`;
+  setSplash($('#home-hero'), heroChamp);
+  $('#hero-eyebrow').innerHTML = state.clientDetected
+    ? `${icon('radar', 14)}Watching for a game`
+    : `${icon('radar', 14)}Start League on this computer — watching for the client`;
+  if (!home.loaded && !home.loading) loadHome();
+  else renderHome();
+}
+
+async function loadHome() {
+  home.loading = true;
+  const [summary, rank, matches] = await Promise.allSettled([
+    api('/api/history/summary?window=20'),
+    api('/api/history/rank'),
+    api('/api/history/matches?page=0&size=6'),
+  ]);
+  home.summary = summary.status === 'fulfilled' ? summary.value : null;
+  home.rank = rank.status === 'fulfilled' ? rank.value : null;
+  home.matches = matches.status === 'fulfilled' ? matches.value.rows : null;
+  home.total = matches.status === 'fulfilled' ? matches.value.total : 0;
+  home.loaded = true;
+  home.loading = false;
+  renderHome();
+}
+
+function latestRankPoint() {
+  const queues = home.rank?.queues || [];
+  for (const queueId of [420, 440]) {
+    const q = queues.find((x) => x.queueId === queueId && x.points?.length);
+    if (q) return [...q.points].sort((a, b) => a.at - b.at).pop();
   }
+  return null;
+}
+
+function renderHome() {
+  const s = home.summary;
+  const rank = latestRankPoint();
+  $('#hero-headline').textContent = rank ? pointLabel(rank) : 'Ready when you are';
+  const stats = [];
+  if (s?.playableMatches > 0) {
+    stats.push(`<span><b class="w">${s.record.wins}</b>W <b class="l">${s.record.losses}</b>L last ${Math.min(s.window, s.playableMatches)}</span>`);
+    if (s.baseline?.csPerMin?.current != null) stats.push(`<span>${s.baseline.csPerMin.current} CS/min</span>`);
+    if (s.baseline?.killParticipation?.current != null) stats.push(`<span>${pctText(s.baseline.killParticipation.current)} kill participation</span>`);
+  } else {
+    stats.push(`<span class="muted">Your record, rank and recent games appear here after you play.</span>`);
+  }
+  $('#hero-stats').innerHTML = stats.join('<span class="sep"></span>');
+
+  const rows = home.matches || [];
+  $('#home-recent-meta').textContent = home.total ? `recorded locally · ${home.total} kept` : '';
+  $('#home-recent').innerHTML = rows.length
+    ? rows.map(homeRowHtml).join('')
+    : `<p class="muted">No games recorded yet. They appear here automatically after you play — leave the app running.</p>`;
+  $$('#home-recent .home-row').forEach((el) => {
+    el.onclick = () => { showSection('history'); openMatchDetail(el.dataset.match); };
+  });
+}
+
+function homeRowHtml(m) {
+  return `<button class="home-row ${outcomeClass(m)}" data-match="${esc(m.matchId)}">
+    <span class="stripe"></span>
+    ${m.championImage ? `<img src="${esc(m.championImage)}" alt="" loading="lazy" />` : '<span></span>'}
+    <span style="min-width:0">
+      <span class="hr-champ">${esc(m.championName || '?')}</span>
+      <span class="hr-sub">${esc(m.role || '')}${m.role ? ' · ' : ''}${esc(m.queueLabel || '')}</span>
+    </span>
+    <span class="r">${m.kills}/${m.deaths}/${m.assists}</span>
+    <span class="r">${m.cs} CS <span class="muted">${m.csPerMin ?? '—'}</span></span>
+    <span class="r">${signed(m.csDiffVsLaneOpponent)}</span>
+    <span class="r">
+      <span class="hr-outcome">${outcomeLabel(m)}</span>
+      <span class="hr-when">${fmtDuration(m.durationSec)} · ${esc(relTime(m.playedAt))}</span>
+    </span>
+  </button>`;
 }
 
 // ---------- champ select ----------
+function csPlayerRow(p, side) {
+  const c = p.champion;
+  if (!c) {
+    return `<div class="cs-player pending">
+      <span class="q">?</span>
+      <span style="font-size:13px">${p.locked ? 'Locked — unknown' : 'Not picked yet'}</span>
+    </div>`;
+  }
+  return `<div class="cs-player ${side} ${p.isMe ? 'me' : ''}" title="${esc(c.name)}${p.role ? ' — ' + esc(p.role) : ''}">
+    <img src="${esc(c.image)}" alt="" />
+    <span class="who">
+      <span class="n">${esc(c.name)}</span>
+      ${p.role ? `<span class="rl">${esc(p.role)}</span>` : ''}
+    </span>
+    ${p.isMe ? '<span class="you-chip">You</span>' : ''}
+  </div>`;
+}
+
 function renderChampSelect() {
   const cs = state.champSelect;
   if (!cs) return;
-  $('#cs-myteam').innerHTML = cs.myTeam.map(stripChamp).join('');
-  $('#cs-theirteam').innerHTML = cs.theirTeam.length
-    ? cs.theirTeam.map(stripChamp).join('')
-    : '<p class="muted">No enemy picks visible yet.</p>';
+  $('#cs-myteam').innerHTML = cs.myTeam.map((p) => csPlayerRow(p, 'ally')).join('');
+  const known = cs.theirTeam.filter((p) => p.champion).length;
+  const enemyRows = cs.theirTeam.map((p) => csPlayerRow(p, 'enemy'));
+  while (enemyRows.length < 5) enemyRows.push(csPlayerRow({}, 'enemy'));
+  $('#cs-theirteam').innerHTML = enemyRows.join('');
+  $('#cs-enemy-count').textContent = `${known} of 5`;
   $('#cs-bans').innerHTML = cs.bans.length
     ? cs.bans.map((b) => `<img src="${esc(b.image)}" title="${esc(b.name)}" alt="${esc(b.name)}" />`).join('')
     : '<span class="muted">None yet</span>';
   $('#cs-bans-wrap').classList.toggle('hidden', false);
-
-  setSplash($('#view-champselect .advice-panel'), cs.me?.champion?.id);
-
-  const isDemo = state.mode === 'demo';
-  $('#cs-demo-badge').classList.toggle('hidden', !isDemo);
-  $('#btn-exit-demo-cs').classList.toggle('hidden', !isDemo);
 
   if (cs.me?.champion) loadCsBriefing();
   else if (currentCsAdvice) renderCsAdvice(currentCsAdvice);
@@ -231,38 +343,78 @@ function renderChampSelect() {
 function renderCsAdvice(advice) {
   currentCsAdvice = advice;
   const yc = advice.yourChampion;
+  const me = state?.champSelect?.me;
+  const champ = me?.champion;
   const parts = [];
+
+  if (champ) {
+    const tags = [me.role, ...(champ.tags || [])].filter(Boolean);
+    parts.push(`<section class="champ-banner" id="cs-banner">
+      <div class="cb-inner">
+        <img class="cb-portrait" src="${esc(champ.image)}" alt="" />
+        <div>
+          <h2>${esc(champ.name)}${champ.title ? ` <span class="cb-title">${esc(champ.title)}</span>` : ''}</h2>
+          <div class="cb-tags">${tags.map((t, i) => `<span${i ? ' class="dim"' : ''}>${esc(t)}</span>`).join('')}</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="cb-right">
+          <div class="lbl">Briefing</div>
+          <div class="val">${advice.basicMode ? "Riot's official data" : `built-in library${advice.briefingPatch ? ` · patch ${esc(advice.briefingPatch)}` : ''}`}</div>
+        </div>
+      </div>
+    </section>`);
+  }
   if (advice.basicMode) {
     parts.push(`<div class="notice-box">This champion isn't in the built-in briefing library yet (probably a brand-new release) — showing Riot's official data instead.</div>`);
   }
-  if (yc) {
-    parts.push(`<h4>How your champion works</h4><p>${esc(yc.playstyleSummary)}</p>`);
-    if (yc.strengths?.length) parts.push(`<p><b style="color:var(--green)">Strengths:</b> ${esc(yc.strengths.join(' · '))}</p>`);
-    if (yc.weaknesses?.length) parts.push(`<p><b style="color:var(--red)">Weaknesses:</b> ${esc(yc.weaknesses.join(' · '))}</p>`);
-    if (yc.abilities?.length) {
-      parts.push(yc.abilities.map((a) => `
-        <div class="ability-row">
-          <div class="ability-key">${esc(a.key)}</div>
-          <div class="ability-body"><span class="an">${esc(a.name)}</span> — ${esc(a.howToUseIt)}</div>
-        </div>`).join(''));
-    }
+
+  const worksBody = yc ? `
+    <p style="margin:0 0 14px">${esc(yc.playstyleSummary)}</p>
+    ${yc.strengths?.length ? `<div class="sw-row">${icon('trending-up', 15, 'good')}<div><b class="good">Strengths</b> — ${esc(yc.strengths.join(' · '))}</div></div>` : ''}
+    ${yc.weaknesses?.length ? `<div class="sw-row">${icon('trending-down', 15, 'bad')}<div><b class="bad">Weaknesses</b> — ${esc(yc.weaknesses.join(' · '))}</div></div>` : ''}` : '';
+  const firstBody = `
+    ${advice.earlyGamePlan ? `<p style="margin:0 0 14px">${esc(advice.earlyGamePlan)}</p>` : ''}
+    ${advice.quickTips?.length ? `<ul class="tip-list compact">${advice.quickTips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}`;
+  if (worksBody.trim() || firstBody.trim()) {
+    parts.push(`<div class="two-col">
+      <section class="panel">
+        <div class="panel-head"><span class="crest">${icon('book-open', 14)}</span><h3>How your champion works</h3></div>
+        ${worksBody}
+      </section>
+      <section class="panel">
+        <div class="panel-head">${icon('clock', 15)}<h3>Your first few minutes</h3></div>
+        ${firstBody}
+      </section>
+    </div>`);
   }
-  if (advice.earlyGamePlan) parts.push(`<h4>Your first few minutes</h4><p>${esc(advice.earlyGamePlan)}</p>`);
+
+  if (yc?.abilities?.length) {
+    parts.push(`<section class="panel">
+      <div class="panel-head">${icon('zap', 15)}<h3>Abilities</h3>
+        <span class="head-meta" style="margin-left:auto">plain-language, in the order you'll use them</span></div>
+      <div class="ab-grid">${yc.abilities.map((a) => `
+        <div class="ab-card">
+          <span class="ability-key">${esc(a.key === 'Passive' ? 'P' : a.key)}</span>
+          <div style="min-width:0">
+            <div class="ab-name">${esc(a.name)}</div>
+            <div class="ab-how">${esc(a.howToUseIt)}</div>
+          </div>
+        </div>`).join('')}</div>
+    </section>`);
+  }
+
   if (advice.knownEnemies?.length) {
-    parts.push(`<h4>Known enemies</h4>` + advice.knownEnemies.map((e) =>
-      `<p><b>${esc(e.champion)}:</b> ${esc(e.whatToExpect)}</p>`).join(''));
-  }
-  if (advice.quickTips?.length) {
-    parts.push(`<h4>Quick tips</h4><ul class="tip-list">${advice.quickTips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`);
+    parts.push(`<section class="panel">
+      <div class="panel-head">${icon('eye', 15)}<h3>Known enemies</h3></div>
+      ${advice.knownEnemies.map((e) => `<p><b style="color:var(--gold-text)">${esc(e.champion)}:</b> ${esc(e.whatToExpect)}</p>`).join('')}
+    </section>`);
   }
   parts.push(glossaryDetails(advice.glossary));
-  if (advice.briefingPatch) {
-    parts.push(`<p class="muted" style="font-size:0.85em">Briefing from the built-in library (generated on patch ${esc(advice.briefingPatch)}).</p>`);
-  }
   $('#cs-advice').innerHTML = parts.join('');
+  if (champ) setSplash($('#cs-banner'), champ.id);
 }
 
-// ---------- broadcast-style champion cards (live game + champ select) ----------
+// ---------- broadcast-style champion tiles (live game strip) ----------
 function stripChamp(p) {
   const c = p.champion;
   const label = c ? c.name : (p.locked ? 'Unknown' : 'Picking…');
@@ -275,7 +427,6 @@ function stripChamp(p) {
     ${p.isMe ? '<span class="you-tag">You</span>' : ''}
     <span class="plate">
       <span class="cn">${esc(label)}</span>
-      ${p.role ? `<span class="rl">${esc(p.role)}</span>` : ''}
     </span>
   </div>`;
 }
@@ -284,15 +435,49 @@ function renderGameHeader() {
   const g = state.game;
   if (!g) return;
   const mins = Math.floor((g.gameTime || 0) / 60);
-  $('#game-meta').textContent = `${g.gameMode === 'CLASSIC' ? "Summoner's Rift" : g.gameMode} · ${mins} min · you: ${g.me?.champion?.name || '?'}${g.me?.role ? ' (' + g.me.role + ')' : ''}`;
-  $('#game-teams').innerHTML = `
+  $('#topbar-meta').textContent = `${g.gameMode === 'CLASSIC' ? "Summoner's Rift" : g.gameMode} · ${mins} min`;
+  $('#game-teams').innerHTML = `<div class="teams-inner">
     <div class="team-side ally">${g.allies.map(stripChamp).join('')}</div>
     <div class="vs">VS</div>
-    <div class="team-side enemy">${g.enemies.map(stripChamp).join('')}</div>`;
+    <div class="team-side enemy">${g.enemies.map(stripChamp).join('')}</div>
+  </div>`;
   setSplash($('#game-teams'), g.me?.champion?.id);
-  const isDemo = state.mode === 'demo';
-  $('#game-demo-badge').classList.toggle('hidden', !isDemo);
-  $('#btn-exit-demo-game').classList.toggle('hidden', !isDemo);
+}
+
+// Pre-coaching sidebar: the deterministic lane check renders separately into
+// #lane-compare; this fills the rest (key hint + glossary chips).
+function renderSideBasic() {
+  const chips = (currentPlan?.glossary?.length ? currentPlan.glossary.map((g) => g.term) : STATIC_GLOSSARY.slice(0, 7).map(([t]) => t));
+  const noKey = !state?.aiAvailable ? `
+    <section class="side-panel">
+      <div class="side-label">${icon('key-round', 13)}No API key set</div>
+      <p class="side-note" style="margin:0 0 14px">Basic mode uses Riot's own data: champion briefings, enemy abilities, damage profile. The AI coach adds the personalised plan.</p>
+      <button class="btn secondary" id="btn-side-settings">${icon('settings', 14)}Add a key</button>
+    </section>` : '';
+  return `${noKey}
+    <section class="side-panel">
+      <div class="side-label">${icon('book-open', 13)}Terms in this plan</div>
+      <div class="chip-row">${chips.map((t) => `<button class="chip" data-term="${esc(t)}">${esc(shortTerm(t))}</button>`).join('')}</div>
+    </section>`;
+}
+
+// "CS (creep score)" reads better as a chip without the parenthetical.
+function shortTerm(t) {
+  return String(t).replace(/\s*\(.*\)$/, '');
+}
+
+function wireSideExtra() {
+  const settings = $('#btn-side-settings');
+  if (settings) settings.onclick = openSettings;
+  $$('#game-side-extra .chip').forEach((el) => {
+    el.onclick = () => {
+      renderGlossaryModal(shortTerm(el.dataset.term));
+      $('#glossary-search').value = shortTerm(el.dataset.term);
+      $('#modal-glossary').classList.remove('hidden');
+    };
+  });
+  const ask = $('#btn-side-ask');
+  if (ask) ask.onclick = () => selectTab('chat');
 }
 
 function resetGamePanels() {
@@ -307,8 +492,10 @@ function resetGamePanels() {
   $('#btn-regenerate').classList.add('hidden');
   $('#gen-title').textContent = 'Ready to coach this game';
   $('#gen-sub').textContent = state?.aiAvailable
-    ? 'Generates a matchup breakdown, a plan for your role, and an item path — tailored to all ten champions.'
-    : 'No API key set — you\'ll get basic mode (Riot data only). Add a key in ⚙️ Settings for full coaching.';
+    ? 'A matchup breakdown, a plan for your role and an item path — tailored to all ten champions.'
+    : 'No API key set — you\'ll get basic mode (Riot data only). Add a key in Settings for full coaching.';
+  $('#game-side-extra').innerHTML = renderSideBasic();
+  wireSideExtra();
   $('#chat-log').innerHTML = `<div class="chat-msg assistant"><p>Ask me anything about this game — "why that item?", "what does kiting mean?", "how do I fight Darius?"…</p></div>`;
 }
 
@@ -346,59 +533,24 @@ async function loadLaneCompare() {
   }
 }
 
-function laneVerdictHtml(lane) {
-  const v = lane.verdict;
-  if (v.side === 'even') return badge('Even at level 1', 'neutral');
-  const winner = v.side === 'ally' ? lane.ally : lane.enemy;
-  return badge(`${winner.champion.name}: ${v.label.toLowerCase()}`, v.side === 'ally' ? 'low' : 'high');
-}
-
-function laneSpellCell(side) {
-  if (!side.spells?.length) return '<span class="muted">—</span>';
-  return side.spells.map((s) => {
-    const cd = s.cooldown === null ? '?' : `${s.cooldown}s`;
-    const title = `${s.name} — rank 1: ${s.cooldown ?? '?'}s cooldown${s.cost ? `, costs ${s.cost}` : ''}`;
-    return `<span class="lc-cd" title="${esc(title)}">${esc(s.key)} ${esc(cd)}</span>`;
-  }).join(' ');
-}
-
-function laneTableHtml(lane) {
-  const cell = (row, side) => `<td class="${row.better === side ? 'win' : ''}">${esc(row[side])}</td>`;
-  return `<table class="stat-table">
-    <thead><tr><th></th><th>${esc(lane.ally.champion.name)}</th><th>${esc(lane.enemy.champion.name)}</th></tr></thead>
-    <tbody>
-      ${lane.rows.map((r) => `<tr><td>${esc(r.label)}</td>${cell(r, 'ally')}${cell(r, 'enemy')}</tr>`).join('')}
-      <tr><td>Resource</td><td>${esc(lane.ally.resource)}</td><td>${esc(lane.enemy.resource)}</td></tr>
-      <tr><td>Ability cooldowns (rank 1)</td><td>${laneSpellCell(lane.ally)}</td><td>${laneSpellCell(lane.enemy)}</td></tr>
-    </tbody>
-  </table>`;
-}
-
+// Compact sidebar rows: role · both squares · the strongest driver · verdict.
+// The full driver list rides in the tooltip.
 function laneRowHtml(lane) {
-  const champCell = (side, cls) => `<span class="lc-champ ${cls}">
-      <img src="${esc(side.champion.image)}" alt="" loading="lazy" />
-      <span>${esc(side.champion.name)}</span>
-    </span>`;
-  const drivers = lane.verdict.drivers.length
-    ? lane.verdict.drivers.map((d) => {
+  const v = lane.verdict;
+  const verdictWord = v.side === 'ally' ? 'Ally' : v.side === 'enemy' ? 'Enemy' : 'Even';
+  const drivers = v.drivers?.length
+    ? v.drivers.map((d) => {
         const who = d.side === 'ally' ? lane.ally : lane.enemy;
-        return `<span class="lc-driver ${d.side}">${esc(who.champion.name)}: ${esc(d.text)}</span>`;
-      }).join(' <span class="lc-sep">·</span> ')
-    : '<span class="lc-driver">stat sheets are nearly identical</span>';
-  return `<div class="lane-row ${lane.isMyLane ? 'me' : ''}">
-    <div class="lc-head">
-      <span class="lc-role">${esc(lane.role || '—')}${lane.isMyLane ? ' <b class="lc-you">· you</b>' : ''}</span>
-      ${champCell(lane.ally, 'ally')}
-      <span class="lc-vs">vs</span>
-      ${champCell(lane.enemy, 'enemy')}
-      <span class="spacer"></span>
-      ${laneVerdictHtml(lane)}
-    </div>
-    <div class="lc-drivers">${drivers}</div>
-    <details class="lc-details">
-      <summary>Full level-1 stat sheet</summary>
-      ${laneTableHtml(lane)}
-    </details>
+        return `${who.champion.name} ${d.text}`;
+      })
+    : ['Stat sheets nearly identical'];
+  const tip = v.side === 'even' ? drivers.join(' · ') : `${v.label} — ${drivers.join(' · ')}`;
+  return `<div class="side-row ${lane.isMyLane ? 'me' : ''}" title="${esc(tip)}">
+    <span class="role">${esc(lane.isMyLane ? 'You' : (lane.role || '—'))}</span>
+    <img class="sq26 ally" src="${esc(lane.ally.champion.image)}" alt="${esc(lane.ally.champion.name)}" loading="lazy" />
+    <img class="sq26 enemy" src="${esc(lane.enemy.champion.image)}" alt="${esc(lane.enemy.champion.name)}" loading="lazy" />
+    <span class="driver">${esc(drivers[0])}</span>
+    <span class="verdict ${v.side}">${verdictWord}</span>
   </div>`;
 }
 
@@ -409,21 +561,20 @@ function renderLaneCompare(data) {
     box.innerHTML = '';
     return;
   }
-  box.innerHTML = `<div class="card lane-cmp">
-    <h3>⚖️ Level-1 lane check <span class="wr-note">Riot base stats · no AI</span></h3>
-    <p class="muted small lc-intro">Who starts ahead, lane by lane, from the stat sheet alone — health, damage,
-    resists, range. Abilities, passives, and runes aren't counted (Riot doesn't publish ability damage numbers
-    for most champions), so read an edge as a head start, not a verdict.</p>
+  box.innerHTML = `<section class="side-panel accent">
+    <div class="side-label">${icon('scale', 13)}Level-1 lane check
+      <span class="side-label-meta" title="Who starts ahead, lane by lane, from the stat sheet alone — health, damage, resists, range. Abilities, passives, and runes aren't counted, so read an edge as a head start, not a verdict.">Riot stats · no AI</span>
+    </div>
     ${data.lanes.map(laneRowHtml).join('')}
-  </div>`;
+  </section>`;
   box.classList.remove('hidden');
 }
 
 // ---------- game plan rendering ----------
 function glossaryDetails(glossary) {
   if (!glossary?.length) return '';
-  return `<details class="glossary-inline"><summary>📖 Terms used (${glossary.length})</summary>
-    ${glossary.map((g) => `<p class="g-term"><b>${esc(g.term)}</b> — ${esc(g.definition)}</p>`).join('')}
+  return `<details class="glossary-inline"><summary>${icon('book-open', 13)} Terms used (${glossary.length})</summary>
+    ${glossary.map((g) => `<div class="g-term"><b>${esc(g.term)}</b>${esc(g.definition)}</div>`).join('')}
   </details>`;
 }
 
@@ -444,7 +595,7 @@ function cooldownTextOf(cooldowns) {
 // Cooldowns are attached server-side from patch data; absent → no chip.
 function cdChip(cooldowns) {
   if (!cooldowns?.length || !cooldowns[0]) return '';
-  return `<span class="cd-chip" title="${esc(`Cooldown by rank: ${cooldownTextOf(cooldowns)}`)}">⏱ ${esc(String(cooldowns[0]))}s CD</span>`;
+  return `<span class="cd-chip" title="${esc(`Cooldown by rank: ${cooldownTextOf(cooldowns)}`)}">${icon('timer', 11)}${esc(String(cooldowns[0]))}s</span>`;
 }
 
 // The laning threat board: one row per enemy ability that can kill or catch
@@ -470,7 +621,7 @@ function earlyThreatsHtml(threats, imageFor, roleOf = new Map()) {
           ${t.unlockLevel ? `<span class="lvl-chip" title="${esc(`Unlocked at level ${t.unlockLevel} — this threat doesn't exist before then`)}">from lvl ${esc(String(t.unlockLevel))}</span>` : ''}
         </div>
         <div class="et-danger">${esc(t.danger)}</div>
-        <div class="react">↳ ${esc(t.play)}</div>
+        <div class="react">${icon('corner-down-right', 13)}${esc(t.play)}</div>
       </div>
     </div>`;
   }).join('')}</div>`;
@@ -481,36 +632,45 @@ function earlyThreatsHtml(threats, imageFor, roleOf = new Map()) {
 function planTabHtml(plan, imageFor = champImageByName) {
   const o = plan.overview || {};
   const gp = plan.gamePlan || {};
-  const phase = (label, ph) => ph ? `
-    <div class="card">
-      <h3>${esc(label)}</h3>
-      <p><b>Goal:</b> ${esc(ph.goal || '')}</p>
-      ${ph.tips?.length ? `<ul class="tip-list">${ph.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
-    </div>` : '';
+  const phase = (label, iconName, range, ph) => ph ? `
+    <section class="panel">
+      <div class="panel-head">${icon(iconName, 15)}<h3>${esc(label)}</h3>
+        <span class="head-meta" style="margin-left:auto">${esc(range)}</span></div>
+      <p style="margin:0 0 10px"><b class="goal">Goal —</b> ${esc(ph.goal || '')}</p>
+      ${ph.tips?.length ? `<ul class="tip-list compact">${ph.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+    </section>` : '';
   const eg = gp.earlyGame;
   const roleOf = new Map((plan.enemyThreats || []).map((t) => [t.champion, t.role || '']));
   const early = eg ? `
-    <div class="card">
-      <h3>🌅 Early game (0–14 min)</h3>
-      <p><b>Goal:</b> ${esc(eg.goal || '')}</p>
-      ${eg.threats?.length ? `<h4 class="et-h">⚠️ Abilities that can kill you</h4>${earlyThreatsHtml(eg.threats, imageFor, roleOf)}` : ''}
-      ${eg.tips?.length ? `<h4 class="et-h">✅ How to win the lane</h4><ul class="tip-list">${eg.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
-    </div>` : '';
+    <section class="panel">
+      <div class="panel-head">${icon('sunrise', 15)}<h3>Early game</h3><span class="head-meta">0–14 min</span></div>
+      <p style="margin:0 0 18px"><b class="goal">Goal —</b> ${esc(eg.goal || '')}</p>
+      ${eg.threats?.length ? `<div class="et-h danger">${icon('triangle-alert', 13)}Abilities that can kill you</div>${earlyThreatsHtml(eg.threats, imageFor, roleOf)}` : ''}
+      ${eg.tips?.length ? `<div class="et-h good">${icon('check', 13)}How to win the lane</div><ul class="tip-list">${eg.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+    </section>` : '';
+  const midLate = (gp.midGame || gp.lateGame)
+    ? `<div class="two-col">
+        ${phase('Mid game', 'swords', '14–25', gp.midGame)}
+        ${phase('Late game', 'castle', '25+', gp.lateGame)}
+      </div>`
+    : '';
   return `
-    ${plan.basicMode ? `<div class="notice-box">Basic mode (no API key) — showing Riot's official data. Add an Anthropic API key in ⚙️ Settings for a personalized plan.</div>` : ''}
-    <div class="card">
-      <h3>The shape of this game</h3>
-      <p>${esc(o.summary || '')}</p>
+    ${plan.basicMode ? `<div class="notice-box">Basic mode (no API key) — showing Riot's official data. Add an Anthropic API key in Settings for a personalized plan.</div>` : ''}
+    <section class="panel">
+      <div class="panel-head"><span class="crest">${icon('map', 14)}</span><h3>The shape of this game</h3></div>
+      <p style="margin:0">${esc(o.summary || '')}</p>
       <div class="kv-grid">
-        ${kv('Matchup difficulty', o.matchupDifficulty ? '' : '—', o.matchupDifficulty ? levelBadge(o.matchupDifficulty) : '')}
-        ${kv('The one thing to remember', o.keyPrinciple || '—')}
+        ${kv('Difficulty', o.matchupDifficulty ? '' : '—', o.matchupDifficulty ? levelBadge(o.matchupDifficulty) : '')}
+        ${kv('Remember this', o.keyPrinciple || '—')}
         ${kv('How your team wins', o.winCondition || '—')}
       </div>
-    </div>
+    </section>
     ${early}
-    ${phase('⚔️ Mid game (14–25 min)', gp.midGame)}
-    ${phase('🏰 Late game (25+ min)', gp.lateGame)}
-    ${gp.teamfightRole ? `<div class="card"><h3>Your job in teamfights</h3><p>${esc(gp.teamfightRole)}</p></div>` : ''}
+    ${midLate}
+    ${gp.teamfightRole ? `<section class="panel">
+      <div class="panel-head">${icon('users', 15)}<h3>Your job in teamfights</h3></div>
+      <p style="margin:0">${esc(gp.teamfightRole)}</p>
+    </section>` : ''}
     ${glossaryDetails(plan.glossary)}`;
 }
 function renderPlanTab(plan) { $('#panel-plan').innerHTML = planTabHtml(plan); }
@@ -518,19 +678,19 @@ function renderPlanTab(plan) { $('#panel-plan').innerHTML = planTabHtml(plan); }
 function matchupTabHtml(plan) {
   const lm = plan.laneMatchup;
   if (!lm) {
-    return `<div class="card"><p class="muted">Lane matchup analysis needs the AI coach — add an Anthropic API key in ⚙️ Settings.</p></div>`;
+    return `<div class="panel"><p class="muted" style="margin:0">Lane matchup analysis needs the AI coach — add an Anthropic API key in Settings.</p></div>`;
   }
   return `
-    <div class="card">
-      <h3>How this lane plays out</h3>
-      <p>${esc(lm.analysis || '')}</p>
+    <section class="panel">
+      <div class="panel-head">${icon('crosshair', 15)}<h3>How this lane plays out</h3></div>
+      <p style="margin:0">${esc(lm.analysis || '')}</p>
       <div class="kv-grid">
         ${kv('Stronger early', lm.whoIsStrongerEarly || '—', lm.whoIsStrongerEarly === 'You' ? badge('You', 'low') + ' ' : lm.whoIsStrongerEarly === 'Enemy' ? badge('Enemy', 'high') + ' ' : '')}
         ${kv('When to trade damage', lm.tradingPattern || '—')}
         ${kv('Danger windows', lm.dangerWindows || '—')}
       </div>
-      ${lm.tips?.length ? `<h4>Lane tips</h4><ul class="tip-list">${lm.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
-    </div>`;
+      ${lm.tips?.length ? `<div class="et-h good">${icon('check', 13)}Lane tips</div><ul class="tip-list">${lm.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
+    </section>`;
 }
 function renderMatchupTab(plan) { $('#panel-matchup').innerHTML = matchupTabHtml(plan); }
 
@@ -545,10 +705,10 @@ function champImageByName(name) {
 function threatsTabHtml(plan, imageFor = champImageByName) {
   const threats = plan.enemyThreats || [];
   return threats.length
-    ? `<p class="muted" style="margin-bottom:12px">Ordered by how dangerous they are <b>to you specifically</b>.</p>` +
+    ? `<p class="muted" style="margin:0 0 12px">Ordered by how dangerous they are <b>to you specifically</b>.</p>` +
       threats.map((t) => {
         const img = imageFor(t.champion);
-        return `<div class="card threat-card">
+        return `<div class="panel threat-card">
           <div class="threat-head">
             ${img ? `<img src="${esc(img)}" alt="${esc(t.champion)}" />` : ''}
             <div><div class="t-name">${esc(t.champion)}</div><div class="t-role">${esc(t.role || '')}</div></div>
@@ -561,13 +721,13 @@ function threatsTabHtml(plan, imageFor = champImageByName) {
               <div class="ability-key" title="${esc(a.key)}">${esc(a.key === 'Passive' ? 'P' : a.key)}</div>
               <div class="ability-body">
                 <span class="an">${esc(a.name)}</span>${cdChip(a.cooldowns)} — ${esc(a.whatItDoes)}
-                ${a.howToReact ? `<div class="react">↳ ${esc(a.howToReact)}</div>` : ''}
+                ${a.howToReact ? `<div class="react">${icon('corner-down-right', 13)}${esc(a.howToReact)}</div>` : ''}
               </div>
             </div>`).join('')}
-          ${t.howToPlayAgainst ? `<p><b>How to play against ${esc(t.champion)}:</b> ${esc(t.howToPlayAgainst)}</p>` : ''}
+          ${t.howToPlayAgainst ? `<p style="margin-bottom:0"><b style="color:var(--gold-text)">How to play against ${esc(t.champion)}:</b> ${esc(t.howToPlayAgainst)}</p>` : ''}
         </div>`;
       }).join('')
-    : `<div class="card"><p class="muted">No threat data.</p></div>`;
+    : `<div class="panel"><p class="muted" style="margin:0">No threat data.</p></div>`;
 }
 function renderThreatsTab(plan) { $('#panel-threats').innerHTML = threatsTabHtml(plan); }
 
@@ -579,35 +739,112 @@ function itemsTabHtml(plan) {
       <div class="idx">${i + 1}</div>
       <div><div class="item-n">${itemRefHtml(s.item)}</div><div class="item-w">${esc(s.why)}</div></div>
     </div>`).join('');
+  const head = (name, label, meta = '') => `<div class="panel-head">${icon(name, 15)}<h3>${label}</h3>${meta ? `<span class="head-meta" style="margin-left:auto">${meta}</span>` : ''}</div>`;
   return `
-    ${plan.basicMode ? `<div class="notice-box">Basic mode can only analyze the enemy damage profile. Add an Anthropic API key in ⚙️ Settings to get a full build path — starting items, core build order, boots, and situational swaps with reasons.</div>` : ''}
+    ${plan.basicMode ? `<div class="notice-box">Basic mode can only analyze the enemy damage profile. Add an Anthropic API key in Settings to get a full build path — starting items, core build order, boots, and situational swaps with reasons.</div>` : ''}
     ${it.startingItems?.items?.length ? `
-    <div class="card">
-      <h3>🛒 Start with</h3>
-      <p><b>${it.startingItems.items.map(itemRefHtml).join(' + ')}</b></p>
-      <p class="muted">${esc(it.startingItems.why || '')}</p>
-    </div>` : ''}
-    ${core ? `<div class="card"><h3>🧱 Core build (in order)</h3>${core}</div>` : ''}
-    ${it.boots?.item ? `<div class="card"><h3>👢 Boots</h3><p><b>${itemRefHtml(it.boots.item)}</b> — ${esc(it.boots.why || '')}</p></div>` : ''}
+    <section class="panel">
+      ${head('shopping-cart', 'Start with')}
+      <p style="margin:0 0 6px"><b>${it.startingItems.items.map(itemRefHtml).join(' + ')}</b></p>
+      <p class="muted" style="margin:0">${esc(it.startingItems.why || '')}</p>
+    </section>` : ''}
+    ${core ? `<section class="panel">${head('brick-wall', 'Core build', 'in order')}${core}</section>` : ''}
+    ${it.boots?.item ? `<section class="panel">${head('footprints', 'Boots')}<p style="margin:0"><b>${itemRefHtml(it.boots.item)}</b> — ${esc(it.boots.why || '')}</p></section>` : ''}
     ${it.situational?.length ? `
-    <div class="card">
-      <h3>🔀 Situational swaps</h3>
+    <section class="panel">
+      ${head('shuffle', 'Situational swaps')}
       ${it.situational.map((s) => `<div class="build-step"><div class="idx">→</div><div><div class="item-n">${itemRefHtml(s.item)}</div><div class="item-w">Buy when: ${esc(s.buyWhen)}</div></div></div>`).join('')}
-    </div>` : ''}
-    <div class="card">
-      <h3>🛡️ Defending against this team</h3>
-      <p>Enemy damage profile: ${badge(it.enemyDamageProfile || 'Mixed', profCls)}</p>
-      <p>${esc(it.defensiveAdvice || '')}</p>
-    </div>`;
+    </section>` : ''}
+    <section class="panel">
+      ${head('shield', 'Defending against this team')}
+      <p style="margin:0 0 6px">Enemy damage profile: ${badge(it.enemyDamageProfile || 'Mixed', profCls)}</p>
+      <p style="margin:0">${esc(it.defensiveAdvice || '')}</p>
+    </section>`;
 }
 function renderItemsTab(plan) { $('#panel-items').innerHTML = itemsTabHtml(plan); }
 
+// ---------- coached sidebar ----------
+let planGeneratedAt = null;
+
+// Threat level → meter fill + color for the sidebar danger ranking.
+function threatMeter(level) {
+  const l = String(level || '').toLowerCase();
+  if (/extreme|very/.test(l)) return { pct: 95, color: 'var(--red)', label: 'High' };
+  if (/high|hard/.test(l)) return { pct: 78, color: 'var(--red)', label: 'High' };
+  if (/mod|mixed|medium/.test(l)) return { pct: 52, color: 'var(--gold)', label: 'Mod' };
+  return { pct: 24, color: 'var(--green)', label: 'Low' };
+}
+
+function sideRankingHtml(plan) {
+  const threats = plan.enemyThreats || [];
+  if (!threats.length) return '';
+  return `<section class="side-panel">
+    <div class="side-label">${icon('skull', 13)}Danger ranking</div>
+    ${threats.map((t) => {
+      const m = threatMeter(t.threatLevel);
+      const img = champImageByName(t.champion);
+      return `<div class="rank-row" title="${esc(t.summary || t.champion)}">
+        ${img ? `<img src="${esc(img)}" alt="" loading="lazy" />` : ''}
+        <span class="n">${esc(t.champion)}</span>
+        <span class="meter"><i style="width:${m.pct}%;background:${m.color}"></i></span>
+        <span class="lv" style="color:${m.color}">${m.label}</span>
+      </div>`;
+    }).join('')}
+  </section>`;
+}
+
+function sideItemPathHtml(plan) {
+  const it = plan.itemization || {};
+  const names = [
+    ...(it.startingItems?.items?.slice(0, 1) || []),
+    ...(it.coreBuild || []).map((s) => s.item),
+    ...(it.boots?.item ? [it.boots.item] : []),
+  ];
+  const resolved = names
+    .map((n) => itemIndex.byName.get(String(n).toLowerCase()))
+    .filter(Boolean);
+  if (resolved.length < 2) return '';
+  const last = resolved[resolved.length - 1];
+  const lead = resolved.slice(0, -1);
+  const prof = it.enemyDamageProfile ? `vs ${it.enemyDamageProfile.toLowerCase()}` : '';
+  const note = it.coreBuild?.[0]?.why || '';
+  return `<section class="side-panel">
+    <div class="side-label">${icon('sword', 13)}Item path
+      ${prof ? `<span class="side-label-meta">${esc(prof)}</span>` : ''}
+    </div>
+    <div class="side-items">
+      ${lead.map((i) => `<img src="/img/item/${i.id}" alt="" title="${esc(itemTitle(i))}" loading="lazy" />`).join('')}
+      <span class="chev">${icon('chevron-right', 14)}</span>
+      <img class="final" src="/img/item/${last.id}" alt="" title="${esc(itemTitle(last))}" loading="lazy" />
+    </div>
+    ${note ? `<div class="side-note">${esc(note)}</div>` : ''}
+  </section>`;
+}
+
+function renderSideCoached(plan) {
+  const attribution = plan.basicMode
+    ? `${icon('shield-half', 12)}Riot data · no AI`
+    : `${icon('sparkles', 12)}${esc(modelLabel(settingsInfo?.model))} · generated ${esc(relTime(planGeneratedAt) || 'just now')}`;
+  $('#game-side-extra').innerHTML = `
+    ${sideRankingHtml(plan)}
+    ${sideItemPathHtml(plan)}
+    ${plan.glossary?.length ? `<section class="side-panel">
+      <div class="side-label">${icon('book-open', 13)}Terms in this plan</div>
+      <div class="chip-row">${plan.glossary.map((g) => `<button class="chip" data-term="${esc(g.term)}">${esc(shortTerm(g.term))}</button>`).join('')}</div>
+    </section>` : ''}
+    <button class="btn primary big block" id="btn-side-ask">${icon('message-circle', 16)}Ask the coach</button>
+    <div class="side-attribution">${attribution}</div>`;
+  wireSideExtra();
+}
+
 function renderPlan(plan) {
   currentPlan = plan;
+  planGeneratedAt = Date.now();
   renderPlanTab(plan);
   renderMatchupTab(plan);
   renderThreatsTab(plan);
   renderItemsTab(plan);
+  renderSideCoached(plan);
   $('#tabs').classList.remove('hidden');
   $('#tab-panels').classList.remove('hidden');
   $('#btn-generate').classList.add('hidden');
@@ -771,16 +1008,31 @@ function renderGlossaryModal(filter = '') {
     return !f || k.includes(f);
   });
   $('#glossary-list').innerHTML = all.length
-    ? all.map(([t, d]) => `<p class="g-term"><b>${esc(t)}</b> — ${esc(d)}</p>`).join('')
+    ? all.map(([t, d]) => `<div class="g-term"><b>${esc(t)}</b>${esc(d)}</div>`).join('')
     : '<p class="muted">No matching terms.</p>';
 }
 
 // ---------- settings ----------
+let settingsModel = MODEL_OPTIONS[0].id;
+
+function renderModelOptions() {
+  $('#model-options').innerHTML = MODEL_OPTIONS.map((m) => `
+    <button type="button" class="model-option ${m.id === settingsModel ? 'selected' : ''}" data-model="${esc(m.id)}">
+      <span class="mark"></span>
+      <span style="flex:1"><span class="mo-name">${esc(m.name)}</span><span class="mo-desc">${esc(m.desc)}</span></span>
+      <span class="mo-cost">${esc(m.cost)}</span>
+    </button>`).join('');
+  $$('#model-options .model-option').forEach((el) => {
+    el.onclick = () => { settingsModel = el.dataset.model; renderModelOptions(); };
+  });
+}
+
 async function openSettings() {
   const s = await api('/api/settings');
   $('#set-apikey').value = '';
-  $('#set-apikey').placeholder = s.hasApiKey ? '•••••••• (key saved — type to replace)' : 'sk-ant-…';
-  $('#set-model').value = s.model;
+  $('#set-apikey').placeholder = s.hasApiKey ? '•••••••• key saved — type to replace' : 'sk-ant-…';
+  settingsModel = MODEL_OPTIONS.some((m) => m.id === s.model) ? s.model : MODEL_OPTIONS[0].id;
+  renderModelOptions();
   $('#set-leaguepath').value = s.leaguePath || '';
   $('#modal-settings').classList.remove('hidden');
 }
@@ -788,11 +1040,12 @@ async function openSettings() {
 async function saveSettings() {
   const key = $('#set-apikey').value.trim();
   const body = {
-    model: $('#set-model').value,
+    model: settingsModel,
     leaguePath: $('#set-leaguepath').value.trim(),
   };
   if (key) body.anthropicApiKey = key;
   await api('/api/settings', { method: 'POST', body });
+  await loadSettingsInfo();
   $('#modal-settings').classList.add('hidden');
   const st = await api('/api/state');
   onState(st);
@@ -870,9 +1123,9 @@ function itemImg(id) {
 // explicit "+" so a positive value never looks neutral. Shared by lane
 // differentials and baseline trends, which say the same thing two ways.
 function deltaParts(n) {
-  if (n > 0) return { cls: 'up', arrow: '▲', sign: '+' };
-  if (n < 0) return { cls: 'down', arrow: '▼', sign: '' };
-  return { cls: '', arrow: '', sign: '' };
+  if (n > 0) return { cls: 'up', sign: '+' };
+  if (n < 0) return { cls: 'down', sign: '' };
+  return { cls: '', sign: '' };
 }
 
 // A signed number, coloured by whether it's good news. Used for lane
@@ -919,7 +1172,7 @@ function baselineCell(label, b, fmt = (v) => v) {
   let trend = '';
   if (b.delta !== null && b.delta !== undefined) {
     const d = deltaParts(b.delta);
-    trend = `<span class="trend ${d.cls}">${d.arrow} ${d.sign}${fmt(b.delta)}</span>`;
+    trend = `<span class="trend ${d.cls}">${d.sign}${fmt(b.delta)}</span>`;
   }
   const bm = b.benchmark === null || b.benchmark === undefined
     ? ''
@@ -936,20 +1189,22 @@ function renderSummary(s) {
     $('#history-summary').innerHTML = `<p class="muted">No ranked matches recorded yet. They appear here automatically after you play — leave the app running.</p>`;
     return;
   }
+  const rankNow = latestRankPoint();
   const champs = s.topChampions.map((c) => `
     <div class="sum-champ" title="${esc(c.championName || '')}">
       ${c.championImage ? `<img src="${esc(c.championImage)}" alt="${esc(c.championName || '')}" />` : ''}
       <div><div class="cn">${esc(c.championName || '?')}</div>
-      <div class="cs2">${c.games}g · ${pctText(c.winrate)}</div></div>
+      <div class="cs2">${c.games} games · ${pctText(c.winrate)}</div></div>
     </div>`).join('');
 
   $('#history-summary').innerHTML = `
     <div class="sum-left">
+      <div class="lbl">Last ${Math.min(s.window, s.playableMatches)} ranked games</div>
       <div class="sum-record">
-        <b class="w">${s.record.wins}</b>W <b class="l">${s.record.losses}</b>L
+        <span class="wl"><b class="w">${s.record.wins}</b>W <b class="l">${s.record.losses}</b>L</span>
         <span class="wr">${pctText(s.record.winrate)}</span>
+        <span class="ctx">${s.role ? `mostly ${esc(s.role)}` : ''}${rankNow ? `${s.role ? ' · ' : ''}${esc(pointLabel(rankNow))}` : ''}</span>
       </div>
-      <div class="muted small">Last ${Math.min(s.window, s.playableMatches)} ranked games${s.role ? ` · mostly ${esc(s.role)}` : ''}</div>
     </div>
     <div class="sum-stats">
       ${baselineCell('CS / min', s.baseline.csPerMin)}
@@ -957,6 +1212,7 @@ function renderSummary(s) {
       ${baselineCell('Vision score', s.baseline.visionScore, (v) => Math.round(v * 10) / 10)}
       ${s.insufficientData ? `<div class="sum-note muted small">Trends need ${10 - s.playableMatches} more game(s).</div>` : ''}
     </div>
+    <div class="spacer"></div>
     <div class="sum-champs">${champs}</div>`;
 }
 
@@ -967,6 +1223,9 @@ async function loadMatches() {
   try {
     const data = await api(`/api/history/matches?${q}`);
     hist.total = data.total;
+    $('#hist-count').textContent = data.total
+      ? `${data.total} matches recorded · ${data.rows.length} shown`
+      : '';
     renderMatchList(data.rows);
     renderPager();
   } catch (err) {
@@ -988,12 +1247,11 @@ function matchRowHtml(m) {
       <span class="muted">${esc(kdaText)}</span>
     </span>
     <span class="mr-col">
-      <b>${m.cs} CS</b>
-      <span class="muted">${m.csPerMin ?? '—'}/min</span>
+      <b>${m.cs}</b>
+      <span class="muted">${m.csPerMin ?? '—'} / min</span>
     </span>
     <span class="mr-col">
       ${signed(m.csDiffVsLaneOpponent)}
-      <span class="muted">vs lane</span>
     </span>
     <span class="mr-col right">
       <b>${outcomeLabel(m)}</b>
@@ -1003,6 +1261,7 @@ function matchRowHtml(m) {
 }
 
 function renderMatchList(rows) {
+  $('#history-list-head').classList.toggle('hidden', !rows.length);
   $('#history-list').innerHTML = rows.length
     ? rows.map(matchRowHtml).join('')
     : `<p class="muted">No matches match those filters.</p>`;
@@ -1015,9 +1274,9 @@ function renderPager() {
   const pages = Math.ceil(hist.total / hist.size) || 1;
   if (pages <= 1) { $('#history-pager').innerHTML = ''; return; }
   $('#history-pager').innerHTML = `
-    <button class="btn tiny" id="pg-prev" ${hist.page === 0 ? 'disabled' : ''}>← Newer</button>
-    <span class="muted">Page ${hist.page + 1} of ${pages} · ${hist.total} matches</span>
-    <button class="btn tiny" id="pg-next" ${hist.page >= pages - 1 ? 'disabled' : ''}>Older →</button>`;
+    <button class="btn tiny" id="pg-prev" ${hist.page === 0 ? 'disabled' : ''}>Newer</button>
+    <span class="muted">Page ${hist.page + 1} of ${pages}</span>
+    <button class="btn tiny" id="pg-next" ${hist.page >= pages - 1 ? 'disabled' : ''}>Older</button>`;
   const prev = $('#pg-prev');
   const next = $('#pg-next');
   if (prev) prev.onclick = () => { hist.page--; loadMatches(); };
@@ -1035,6 +1294,19 @@ const RANK_SERIES = { 420: { color: '#0b9a8e', label: 'Solo/Duo' }, 440: { color
 const RANK_TIERS = ['Iron', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Emerald', 'Diamond'];
 const RANK_DIVS = ['IV', 'III', 'II', 'I'];
 const RANK_PRESETS = [7, 14, 30, 'all'];
+// Game-count presets window to the last N ranked games ('g25' etc.); the axis
+// stays real elapsed time either way. 'gall' shows the full range like the
+// Time group's All, but keeps its own id so the button you clicked lights up.
+const RANK_GAME_PRESETS = ['g10', 'g25', 'g100', 'gall'];
+
+function isGamePreset(preset) {
+  return typeof preset === 'string' && preset.startsWith('g');
+}
+
+// A button's data-range back into a canonical preset value.
+function parseRankRange(value) {
+  return value === 'all' || value.startsWith('g') ? value : Number(value);
+}
 
 let rankChartInstance = null;
 let rankChartResizeObserver = null;
@@ -1121,6 +1393,10 @@ function rankAxisBoundary(extent, edge) {
 }
 
 function rankWindow(preset) {
+  if (preset === 'gall') return RankChartLayout.windowForPreset(rankChartLayout, 'all');
+  if (isGamePreset(preset)) {
+    return RankChartLayout.windowForGames(rankChartLayout, Number(preset.slice(1)));
+  }
   return RankChartLayout.windowForPreset(rankChartLayout, preset);
 }
 
@@ -1128,18 +1404,22 @@ function rankRangeText(start, end) {
   const days = RankChartLayout.daysInWindow(rankChartLayout, start, end);
   if (!days.length) return '';
   const fmt = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
-  const scope = rankChartPreset === 'all'
+  const scope = rankChartPreset === 'all' || rankChartPreset === 'gall'
     ? 'All time'
-    : rankChartPreset
-      ? `Last ${rankChartPreset} days`
-      : 'Custom range';
+    : isGamePreset(rankChartPreset)
+      ? `Last ${rankChartPreset.slice(1)} games`
+      : rankChartPreset
+        ? `Last ${rankChartPreset} days`
+        : 'Custom range';
   return `${scope} · ${fmt.format(new Date(days[0].at))}–${fmt.format(new Date(days[days.length - 1].at))}`;
 }
 
 function detectedRankPreset(start, end) {
   if (!rankChartLayout) return null;
-  const tolerance = 0.01;
-  const candidates = [rankChartPreset, 'all', 7, 14]
+  // echarts echoes dataZoom values back rounded to whole milliseconds, so
+  // the match needs slack; presets are hours apart, so a second is safe.
+  const tolerance = 1000;
+  const candidates = [rankChartPreset, 'all', 7, 14, 30, ...RANK_GAME_PRESETS]
     .filter((value, index, values) => value != null && values.indexOf(value) === index);
   for (const preset of candidates) {
     const [expectedStart, expectedEnd] = rankWindow(preset);
@@ -1151,7 +1431,7 @@ function detectedRankPreset(start, end) {
 function syncRankRangeUi(start, end) {
   rankChartPreset = detectedRankPreset(start, end);
   $$('.rank-range-btn').forEach((button) => {
-    const value = button.dataset.range === 'all' ? 'all' : Number(button.dataset.range);
+    const value = parseRankRange(button.dataset.range);
     button.setAttribute('aria-pressed', String(value === rankChartPreset));
     button.classList.toggle('active', value === rankChartPreset);
   });
@@ -1329,6 +1609,7 @@ function disposeRankChart() {
 async function loadRankChart() {
   try {
     const data = await api('/api/history/rank');
+    home.rank = data; // the summary strip and home hero reuse the latest point
     renderRankChart(data.queues || [], data.games || []);
   } catch {
     $('#history-rank').innerHTML = '';
@@ -1388,12 +1669,21 @@ function renderRankChart(queues, games = []) {
     </div>
     <div class="rank-controls">
       <span class="rank-range-title muted small">Time</span>
-      <div class="rank-range" role="group" aria-label="Visible rank-history range">
+      <div class="rank-range" role="group" aria-label="Visible rank-history range in days">
         ${RANK_PRESETS.map((preset) => {
           const label = preset === 'all' ? 'All' : `${preset}D`;
           return `<button type="button" class="rank-range-btn" data-range="${preset}" aria-pressed="false">${label}</button>`;
         }).join('')}
       </div>
+      ${rankedGames.length ? `
+      <span class="rank-range-title muted small">Games</span>
+      <div class="rank-range" role="group" aria-label="Visible rank-history range in games">
+        ${RANK_GAME_PRESETS.map((preset) => {
+          const label = preset === 'gall' ? 'All' : preset.slice(1);
+          const title = preset === 'gall' ? 'All ranked games' : `Last ${preset.slice(1)} ranked games`;
+          return `<button type="button" class="rank-range-btn" data-range="${preset}" aria-pressed="false" title="${title}">${label}</button>`;
+        }).join('')}
+      </div>` : ''}
       <span id="rank-window-label" class="rank-window-label muted small"></span>
       <span class="rank-zoom-hint muted small">Dashed = unobserved LP path · Drag navigator · Ctrl+scroll to zoom</span>
     </div>
@@ -1404,7 +1694,7 @@ function renderRankChart(queues, games = []) {
     </details>`;
 
   $$('.rank-range-btn').forEach((button) => {
-    button.onclick = () => setRankWindow(button.dataset.range === 'all' ? 'all' : Number(button.dataset.range));
+    button.onclick = () => setRankWindow(parseRankRange(button.dataset.range));
   });
 
   if (!window.echarts) {
@@ -1565,11 +1855,10 @@ function renderRankChart(queues, games = []) {
 function benchRow(label, cmp, fmt = (v) => v) {
   if (!cmp) return '';
   const dirCls = cmp.direction === 'above' ? 'up' : 'down';
-  const arrow = cmp.direction === 'above' ? '▲' : '▼';
   return `<div class="bench-row">
     <span class="bl">${esc(label)}</span>
     <span class="bv">${esc(String(fmt(cmp.value)))}</span>
-    <span class="bb ${dirCls}">${arrow} target ${esc(String(fmt(cmp.benchmark)))}</span>
+    <span class="bb ${dirCls}">target ${esc(String(fmt(cmp.benchmark)))}</span>
   </div>`;
 }
 
@@ -1586,18 +1875,28 @@ function playerRowHtml(p, mePuuid) {
   </div>`;
 }
 
+const OBJECTIVE_ROWS = [
+  ['towerKills', 'Towers', 'castle'],
+  ['dragonKills', 'Drakes', 'flame'],
+  ['baronKills', 'Barons', 'crown'],
+  ['riftHeraldKills', 'Heralds', 'eye'],
+];
+
 function objectivesHtml(teams, myTeamId) {
   if (!teams?.length) return '';
-  const cell = (t) => `<div class="obj-col ${t.teamId === myTeamId ? 'mine' : ''}">
-    <div class="obj-title">${t.teamId === myTeamId ? 'Your team' : 'Enemy team'} — ${t.win ? 'Victory' : 'Defeat'}</div>
-    <div class="obj-grid">
-      <span>🏰 ${t.towerKills} towers</span>
-      <span>🐉 ${t.dragonKills} drakes</span>
-      <span>🦀 ${t.baronKills} barons</span>
-      <span>👁 ${t.riftHeraldKills} heralds</span>
-    </div>
-  </div>`;
-  return `<div class="card"><h3>Objectives</h3><div class="obj-wrap">${teams.map(cell).join('')}</div></div>`;
+  const mine = teams.find((t) => t.teamId === myTeamId);
+  const theirs = teams.find((t) => t.teamId !== myTeamId);
+  if (!mine || !theirs) return '';
+  return `<section class="panel">
+    <div class="panel-head">${icon('castle', 15)}<h3>Objectives</h3></div>
+    <div class="obj-cols"><span></span><span class="yours">Yours</span><span class="theirs">Theirs</span></div>
+    ${OBJECTIVE_ROWS.map(([key, label, ic]) => `
+      <div class="obj-row">
+        <span class="lbl">${icon(ic, 15)}${label}</span>
+        <span class="mine">${mine[key] ?? '—'}</span>
+        <span class="theirs">${theirs[key] ?? '—'}</span>
+      </div>`).join('')}
+  </section>`;
 }
 
 function coachingHtml(coaching, players) {
@@ -1605,16 +1904,22 @@ function coachingHtml(coaching, players) {
   const byName = new Map(players.map((p) => [p.championName, p.championImage]));
   const imageFor = (name) => byName.get(name) || null;
   const plan = coaching.plan;
-  const when = coaching.generatedAt ? new Date(coaching.generatedAt).toLocaleString() : '';
-  return `<details class="card coaching-block">
-    <summary><b>💬 What you were told before this game</b> <span class="muted small">${esc(when)}${coaching.model ? ' · ' + esc(coaching.model) : ''}</span></summary>
-    <div class="coaching-body">
-      ${planTabHtml(plan, imageFor)}
-      ${matchupTabHtml(plan)}
-      ${threatsTabHtml(plan, imageFor)}
-      ${itemsTabHtml(plan)}
-    </div>
-  </details>`;
+  const when = coaching.generatedAt ? relTime(new Date(coaching.generatedAt).getTime()) : '';
+  const quote = plan.overview?.summary || plan.overview?.keyPrinciple || '';
+  return `<section class="panel">
+    <div class="panel-head">${icon('sparkles', 15)}<h3>What you were told</h3>
+      <span class="head-meta" style="margin-left:auto">before the game${coaching.model ? ` · ${esc(modelLabel(coaching.model))}` : ''}${when ? ` · ${esc(when)}` : ''}</span></div>
+    ${quote ? `<p class="coaching-quote">“${esc(quote)}”</p>` : ''}
+    <details class="coaching-block">
+      <summary class="muted small">Read the full plan you were given</summary>
+      <div class="coaching-body">
+        ${planTabHtml(plan, imageFor)}
+        ${matchupTabHtml(plan)}
+        ${threatsTabHtml(plan, imageFor)}
+        ${itemsTabHtml(plan)}
+      </div>
+    </details>
+  </section>`;
 }
 
 async function openMatchDetail(matchId) {
@@ -1643,61 +1948,92 @@ function renderMatchDetail(d) {
   const myTeamId = me?.teamId ?? d.players[0]?.teamId;
   const allies = d.players.filter((p) => p.teamId === myTeamId);
   const enemies = d.players.filter((p) => p.teamId !== myTeamId);
+  const myTeam = (d.teams || []).find((t) => t.teamId === myTeamId);
+  const heroSub = [
+    `${m?.kills}/${m?.deaths}/${m?.assists}`,
+    `${m?.cs} CS`,
+    m?.damageShare != null ? `${pctText(m.damageShare)} of team damage` : null,
+  ].filter(Boolean).join(' · ');
+  // Always render the coaching slot so the page keeps its shape; without a
+  // saved plan it explains itself instead of leaving a bare footnote.
+  const coachingPanel = coachingHtml(d.coaching, d.players) || `<section class="panel">
+    <div class="panel-head">${icon('sparkles', 15)}<h3>What you were told</h3></div>
+    <p class="muted" style="margin:0">No coaching was generated for this game. Plans you generate during a game are saved and reviewed here after it ends.</p>
+  </section>`;
 
   $('#history-detail-view').innerHTML = `
-    <button class="btn secondary" id="btn-hist-back">← Back to history</button>
-
-    <div class="card detail-head ${outcomeClass(m)}">
-      ${m?.championImage ? `<img src="${esc(m.championImage)}" alt="" />` : ''}
-      <div>
-        <h2>${esc(m?.championName || '?')} <span class="muted">${esc(m?.role || '')}</span></h2>
-        <p class="muted">${esc(m?.queueLabel || '')} · ${fmtDuration(m?.durationSec)} · ${esc(relTime(m?.playedAt))} · patch ${esc(m?.patch || '?')}</p>
-      </div>
-      <div class="spacer"></div>
-      <div class="detail-result">${outcomeLabel(m)}</div>
+    <div class="detail-topline">
+      <button class="btn secondary" id="btn-hist-back">${icon('arrow-left', 14)}History</button>
+      <span class="meta">${esc(m?.matchId || '')} · patch ${esc(m?.patch || '?')}</span>
     </div>
+
+    <section class="detail-hero ${outcomeClass(m)}" id="detail-hero">
+      <div class="dh-inner">
+        ${m?.championImage ? `<img class="dh-portrait" src="${esc(m.championImage)}" alt="" />` : ''}
+        <div>
+          <h2>${esc(m?.championName || '?')}</h2>
+          <div class="dh-tags">
+            ${m?.role ? `<span class="gold">${esc(m.role)}</span>` : ''}
+            <span>${esc(m?.queueLabel || '')}</span>
+            <span>${fmtDuration(m?.durationSec)}</span>
+            <span>${esc(relTime(m?.playedAt))}</span>
+          </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="dh-right">
+          <div class="detail-result">${outcomeLabel(m)}</div>
+          <div class="dh-sub">${esc(heroSub)}</div>
+        </div>
+      </div>
+    </section>
 
     ${m?.isRemake ? `<div class="notice-box">This game was a remake, so it's excluded from your winrate and averages.</div>` : ''}
 
-    <div class="detail-grid">
-      <div class="card">
-        <h3>Your performance</h3>
-        <div class="kv-grid">
-          ${kv('Score', `${m?.kills}/${m?.deaths}/${m?.assists}`)}
-          ${kv('Creep score', `${m?.cs} (${m?.csPerMin ?? '—'}/min)`)}
-          ${kv('Gold earned', String(m?.goldEarned ?? '—'))}
-          ${kv('Damage to champions', String(m?.damageToChampions ?? '—'))}
-        </div>
-        <h4>Against your role</h4>
+    <div class="detail-cols">
+      <div class="dcol">
+      <section class="panel">
+        <div class="panel-head"><span class="crest">${icon('target', 14)}</span><h3>Against your role</h3></div>
         ${benchRow('CS / min', d.benchmarks.csPerMin)}
-        ${benchRow('Vision score', d.benchmarks.visionScore)}
+        ${m?.csDiffVsLaneOpponent != null ? `<div class="bench-row">
+          <span class="bl">CS vs lane opponent</span>
+          <span class="bv">${signed(m.csDiffVsLaneOpponent)}</span>
+          <span class="bb">${m?.csDiffAt10 != null ? `best lead at 10m: ${esc(String(m.csDiffAt10))}` : ''}</span>
+        </div>` : ''}
         ${benchRow('Kill participation', d.benchmarks.killParticipation, pctText)}
+        ${benchRow('Vision score', d.benchmarks.visionScore)}
+        ${m?.damageShare != null ? `<div class="bench-row">
+          <span class="bl">Share of team damage</span>
+          <span class="bv">${esc(pctText(m.damageShare))}</span>
+          <span class="bb"></span>
+        </div>` : ''}
         ${Object.keys(d.benchmarks).length === 0 ? '<p class="muted">No role benchmarks for this match.</p>' : ''}
-        <h4>Lane &amp; team</h4>
-        <div class="kv-grid">
-          ${kv('CS vs lane opponent', '', signed(m?.csDiffVsLaneOpponent))}
-          ${kv('Share of team damage', pctText(m?.damageShare))}
-          ${m?.csDiffAt10 !== null && m?.csDiffAt10 !== undefined ? kv('Best CS lead at 10m', String(m.csDiffAt10)) : ''}
+        <div class="kv-grid" style="margin-top:18px">
+          ${kv('Gold earned', (m?.goldEarned ?? '—').toLocaleString?.() ?? String(m?.goldEarned ?? '—'))}
+          ${kv('Damage to champions', (m?.damageToChampions ?? '—').toLocaleString?.() ?? String(m?.damageToChampions ?? '—'))}
         </div>
+      </section>
+
+      ${objectivesHtml(d.teams, myTeamId)}
       </div>
 
-      <div class="card">
-        <h3>All players</h3>
-        <div class="pl-team">
-          <div class="pl-head">Your team</div>
+      <div class="dcol">
+      <section class="panel">
+        <div class="panel-head">${icon('users', 15)}<h3>Scoreboard</h3></div>
+        <div class="pl-team" style="margin-top:0">
+          <div class="pl-head ally">Your team · ${myTeam ? (myTeam.win ? 'victory' : 'defeat') : ''}</div>
           ${allies.map((p) => playerRowHtml(p, m?.puuid)).join('')}
         </div>
         <div class="pl-team">
-          <div class="pl-head">Enemy team</div>
+          <div class="pl-head enemy">Enemy team · ${myTeam ? (myTeam.win ? 'defeat' : 'victory') : ''}</div>
           ${enemies.map((p) => playerRowHtml(p, m?.puuid)).join('')}
         </div>
+      </section>
+
+      ${coachingPanel}
       </div>
-    </div>
+    </div>`;
 
-    ${objectivesHtml(d.teams, myTeamId)}
-    ${coachingHtml(d.coaching, d.players)}
-    ${!d.coaching ? `<p class="muted small">No coaching was generated for this game.</p>` : ''}`;
-
+  if (m?.championId) setSplash($('#detail-hero'), m.championId);
   $('#btn-hist-back').onclick = closeMatchDetail;
 }
 
@@ -1817,9 +2153,9 @@ async function openChampionBuild(champId, role = null, { refresh = false } = {})
     if (seq !== db.buildSeq || db.current !== champId) return;
     view.classList.remove('is-refreshing');
     view.innerHTML = `
-      <button class="btn secondary" id="btn-champ-back">← All champions</button>
+      <button class="btn secondary" id="btn-champ-back">${icon('arrow-left', 14)}All champions</button>
       <div class="error-box">${esc(err.message)}</div>
-      <button class="btn secondary" id="btn-champ-retry">↻ Try again</button>`;
+      <button class="btn secondary" id="btn-champ-retry">${icon('refresh-cw', 14)}Try again</button>`;
     $('#btn-champ-back').onclick = closeChampionBuild;
     $('#btn-champ-retry').onclick = () => openChampionBuild(champId, role, { refresh: true });
   }
@@ -1993,31 +2329,32 @@ function renderChampionBuild(d) {
   const total = d.overall.play;
 
   $('#champ-detail-view').innerHTML = `
-    <div class="card build-head">
-      <button class="btn secondary" id="btn-champ-back">← All champions</button>
-      <img class="bh-portrait" src="${esc(d.champion.image.square)}" alt="" />
-      <div>
-        <h2>${esc(d.champion.name)} <span class="muted">${esc(d.champion.title)}</span></h2>
-        <p class="bh-stats"><span class="${wrClass(d.overall.winRate)}">${(100 * d.overall.winRate).toFixed(1)}% WR</span> · ${fmtGames(total)} games · ${esc(tierLabel)} · patch ${esc(d.patch)}</p>
+    <section class="build-hero" id="build-hero">
+      <div class="bh-inner">
+        <button class="btn secondary" id="btn-champ-back">${icon('arrow-left', 14)}All champions</button>
+        <img class="bh-portrait" src="${esc(d.champion.image.square)}" alt="" />
+        <div>
+          <h2>${esc(d.champion.name)} <span class="bh-title">${esc(d.champion.title)}</span></h2>
+          <p class="bh-stats"><span class="${wrClass(d.overall.winRate)}">${(100 * d.overall.winRate).toFixed(1)}% win rate</span><span>${fmtGames(total)} games</span><span>${esc(tierLabel)}</span><span>patch ${esc(d.patch)}</span></p>
+        </div>
+        <div class="spacer"></div>
+        <div class="field inline">
+          <select id="build-tier" title="Rank tier">${tierOpts}</select>
+        </div>
       </div>
-      <div class="spacer"></div>
-      <div class="field inline">
-        <label for="build-tier">Rank</label>
-        <select id="build-tier">${tierOpts}</select>
-      </div>
-    </div>
+    </section>
 
     <nav class="tabs build-roles">${roleTabs}</nav>
 
     ${d.stale ? `<div class="notice-box">Live stats couldn't be refreshed — showing the last saved data (patch ${esc(d.patch)}).
-      <button class="btn tiny" id="btn-build-refresh">↻ Retry</button></div>` : ''}
+      <button class="btn tiny" id="btn-build-refresh">${icon('refresh-cw', 13)}Retry</button></div>` : ''}
 
     <div class="build-grid">
-      <div class="card">
+      <div class="panel">
         <h3>Runes ${wrMetaHtml(d.runes, total)}</h3>
         ${runePageHtml(d.runes)}
       </div>
-      <div class="card">
+      <div class="panel">
         <h3>Core build ${wrMetaHtml(d.coreItems, total)}</h3>
         ${iconRowHtml(d.coreItems.list, { arrows: true, itemStats: true, labels: true })}
         <div class="build-line">
@@ -2026,7 +2363,7 @@ function renderChampionBuild(d) {
           ${subMetaHtml(d.boots, total)}
         </div>
         <div class="build-line">
-          <h4>Starting items</h4>
+          <h4>Starting</h4>
           ${iconRowHtml(d.startingItems.list, { itemStats: true })}
           ${subMetaHtml(d.startingItems, total)}
         </div>
@@ -2036,25 +2373,27 @@ function renderChampionBuild(d) {
           ${subMetaHtml(d.spells, total)}
         </div>
       </div>
-      <div class="card">
-        <h3>Late &amp; situational</h3>
+      <div class="panel">
+        <h3>Late &amp; situational <span class="sec-meta">share of picks · win rate</span></h3>
         ${lateItemsHtml(d.lateItems, total)}
       </div>
     </div>
 
     <div class="build-row2${d.baseStats ? '' : ' solo'}">
-      <div class="card">
+      <div class="panel">
         <h3>Skill order ${wrMetaHtml(d.skills, total)}</h3>
         ${skillOrderHtml(d.skills, d.abilities)}
       </div>
       ${d.baseStats ? `
-      <div class="card">
+      <div class="panel">
         <h3>Base stats <span class="sec-meta">level 1 → 18 · same in every role</span></h3>
         ${baseStatsHtml(d.baseStats, d.champion.partype)}
       </div>` : ''}
     </div>
 
     <p class="muted small">Aggregated from ranked games worldwide (${esc(tierLabel)}) · data via OP.GG · fetched ${esc(relTime(d.fetchedAt) || 'just now')}</p>`;
+
+  setSplash($('#build-hero'), d.champion.id);
 
   $('#btn-champ-back').onclick = closeChampionBuild;
   $$('#champ-detail-view .build-roles .tab').forEach((t) => {
@@ -2069,19 +2408,25 @@ function renderChampionBuild(d) {
 }
 
 // ---------- wiring ----------
+function openGlossary(term = '') {
+  renderGlossaryModal(term);
+  $('#glossary-search').value = term;
+  $('#modal-glossary').classList.remove('hidden');
+}
+
 function wire() {
   $('#btn-settings').onclick = openSettings;
   $('#btn-settings-close').onclick = () => $('#modal-settings').classList.add('hidden');
+  $('#btn-settings-close-x').onclick = () => $('#modal-settings').classList.add('hidden');
   $('#btn-settings-save').onclick = () => saveSettings().catch((e) => alert(e.message));
 
-  $('#btn-open-glossary').onclick = () => { renderGlossaryModal(); $('#modal-glossary').classList.remove('hidden'); };
+  $('#nav-glossary').onclick = () => openGlossary();
   $('#btn-glossary-close').onclick = () => $('#modal-glossary').classList.add('hidden');
   $('#glossary-search').oninput = (e) => renderGlossaryModal(e.target.value);
 
   $('#btn-demo-game').onclick = () => startDemo('game').catch((e) => alert(e.message));
   $('#btn-demo-cs').onclick = () => startDemo('champselect').catch((e) => alert(e.message));
-  $('#btn-exit-demo-cs').onclick = () => stopDemo();
-  $('#btn-exit-demo-game').onclick = () => stopDemo();
+  $('#btn-exit-demo').onclick = () => stopDemo();
 
   $('#btn-generate').onclick = () => generatePlan(false);
   $('#btn-regenerate').onclick = () => generatePlan(true);
@@ -2097,7 +2442,8 @@ function wire() {
     sendChat(text);
   };
 
-  $$('.navbtn').forEach((b) => (b.onclick = () => showSection(b.dataset.section)));
+  $$('.navbtn[data-section]').forEach((b) => (b.onclick = () => showSection(b.dataset.section)));
+  $('#btn-home-history').onclick = () => showSection('history');
   $('#btn-goto-live').onclick = () => showSection('live');
   $('#btn-dismiss-notice').onclick = hidePhaseNotice;
   $('#btn-hist-sync').onclick = async () => {
@@ -2106,12 +2452,13 @@ function wire() {
     btn.textContent = 'Syncing…';
     try {
       await api('/api/history/sync', { method: 'POST', body: {} });
+      home.loaded = false; // the home screen shares this data
       await refreshHistory();
     } catch (e) {
       alert(e.message);
     } finally {
       btn.disabled = false;
-      btn.textContent = '↻ Sync now';
+      btn.innerHTML = `${icon('refresh-cw', 14)}Sync now`;
     }
   };
   $('#hist-role').onchange = (e) => { hist.role = e.target.value; hist.page = 0; loadMatches(); };
@@ -2136,5 +2483,6 @@ function wire() {
 wire();
 loadScenarios().catch(() => {});
 loadItemIndex().catch(() => {}); // icons/tooltips degrade to plain names without it
+loadSettingsInfo(); // model name for the sidebar attribution line
 api('/api/state').then(onState).catch(() => setPill('waiting', 'Server unreachable'));
 connectEvents();

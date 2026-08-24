@@ -98,6 +98,25 @@
     return [layout.lastAt - duration, layout.xExtent[1]];
   }
 
+  // Window covering the most recent `count` ranked games. Time on the axis
+  // stays real elapsed time — this only picks where the window starts. The
+  // lead-in padding is capped at half the gap to the game before the window
+  // so exactly `count` games are inside, and the bounds are whole
+  // milliseconds because echarts rounds dataZoom values (a fractional start
+  // would never match the preset again after the zoom event echoes back).
+  function windowForGames(layout, count) {
+    const games = layout.games || [];
+    if (!games.length || games.length <= count) return [...layout.xExtent];
+    const first = games[games.length - count];
+    const prev = games[games.length - count - 1];
+    const span = layout.xExtent[1] - first.chartX;
+    const padding = Math.min(
+      (first.chartX - prev.chartX) / 2,
+      Math.max(30 * 60 * 1000, span * 0.02),
+    );
+    return [Math.round(first.chartX - padding), Math.round(layout.xExtent[1])];
+  }
+
   function daysInWindow(layout, start, end) {
     return (layout.days || []).filter((day) => day.maxX >= start && day.minX <= end);
   }
@@ -124,6 +143,7 @@
   root.RankChartLayout = Object.freeze({
     layoutQueues,
     windowForPreset,
+    windowForGames,
     daysInWindow,
     matchesInWindow,
     isCertainTransition,

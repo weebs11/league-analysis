@@ -6,7 +6,7 @@
   <title>LoL Matchup Coach</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="brand-mark.svg" type="image/svg+xml" />
 </head>
@@ -14,84 +14,84 @@
   <header class="topbar">
     <div class="brand">
       <img class="brand-icon" src="brand-mark.svg" alt="" />
-      <div>
-        <h1>LoL <span class="gold">Matchup Coach</span></h1>
-        <p class="tagline">Learn every matchup as you play</p>
-      </div>
+      <span class="brand-name">Matchup Coach</span>
     </div>
-    <div class="topbar-right">
-      <div id="status-pill" class="status-pill waiting">
-        <span class="dot"></span><span id="status-text">Starting…</span>
-      </div>
-      <button id="btn-settings" class="icon-btn" title="Settings">⚙️</button>
+    <nav class="topnav">
+      <button class="navbtn active" data-section="live"><i data-icon="swords"></i>Live</button>
+      <button class="navbtn" data-section="history"><i data-icon="history"></i>History</button>
+      <button class="navbtn" data-section="champions"><i data-icon="shield-half"></i>Champions</button>
+      <button class="navbtn" id="nav-glossary"><i data-icon="book-open"></i>Glossary</button>
+    </nav>
+    <div class="spacer"></div>
+    <div id="phase-notice" class="phase-notice hidden">
+      <span id="phase-notice-text"></span>
+      <button id="btn-goto-live" class="btn tiny">Go to live</button>
+      <button id="btn-dismiss-notice" class="icon-btn small" title="Dismiss"><i data-icon="x" data-size="13"></i></button>
     </div>
+    <div id="status-pill" class="status-pill waiting">
+      <span class="dot"></span><span id="status-text">Starting…</span>
+    </div>
+    <span id="topbar-meta" class="topbar-meta"></span>
+    <span id="topbar-demo" class="badge demo hidden">Demo</span>
+    <button id="btn-exit-demo" class="btn tiny hidden">Exit demo</button>
+    <button id="btn-settings" class="icon-btn" title="Settings"><i data-icon="settings" data-size="17"></i></button>
   </header>
 
   <main id="main">
-    <nav class="mainnav">
-      <button class="navbtn active" data-section="live">Live</button>
-      <button class="navbtn" data-section="history">History</button>
-      <button class="navbtn" data-section="champions">Champions</button>
-    </nav>
-
     <!-- Live: the three phase views below auto-switch exactly as before. -->
     <div id="section-live">
     <!-- ======== WAITING VIEW ======== -->
     <section id="view-waiting" class="view">
-      <div class="waiting-grid">
-        <div class="card hero-card">
-          <h2>Waiting for a game…</h2>
-          <p>Leave this page open while you play. The coach wakes up automatically when you:</p>
-          <ul class="checklist">
-            <li><strong>Enter champion select</strong> — get a briefing on your champion and early plan</li>
-            <li><strong>Load into a match</strong> — get a full matchup breakdown, strategy for your role, and an item plan</li>
-          </ul>
-          <div id="detect-status" class="detect-status"></div>
-        </div>
-
-        <div class="card demo-card">
-          <h2>👀 Try it without League running</h2>
-          <p>Explore a practice scenario to see what the coach does:</p>
-          <div class="field">
-            <label for="demo-scenario">Scenario</label>
+      <section id="home-hero" class="home-hero cut-corner">
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div id="hero-eyebrow" class="hero-eyebrow"><i data-icon="radar" data-size="14"></i>Watching for a game</div>
+            <h2 id="hero-headline" class="hero-headline">Ready when you are</h2>
+            <div id="hero-stats" class="hero-stats"></div>
+          </div>
+          <div class="spacer"></div>
+          <div class="hero-controls">
             <select id="demo-scenario"></select>
-          </div>
-          <div class="btn-row">
-            <button id="btn-demo-cs" class="btn secondary">Demo champ select</button>
-            <button id="btn-demo-game" class="btn primary">Demo live game</button>
+            <div class="btn-row">
+              <button id="btn-demo-game" class="btn secondary glass"><i data-icon="play" data-size="13"></i>Demo game</button>
+              <button id="btn-demo-cs" class="btn secondary glass">Champ select</button>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="card learn-card">
-          <h2>📖 While you wait: the vocabulary</h2>
-          <p>League has a lot of jargon. Browse the glossary any time — the coach also defines terms as it uses them.</p>
-          <button id="btn-open-glossary" class="btn secondary">Open glossary</button>
+      <section class="panel">
+        <div class="panel-head">
+          <span class="crest"><i data-icon="history" data-size="14"></i></span>
+          <h3>Last games</h3>
+          <span id="home-recent-meta" class="head-meta"></span>
+          <div class="spacer"></div>
+          <button id="btn-home-history" class="linklike">All history <i data-icon="arrow-right" data-size="13"></i></button>
         </div>
-      </div>
+        <div id="home-recent"></div>
+      </section>
     </section>
 
     <!-- ======== CHAMP SELECT VIEW ======== -->
     <section id="view-champselect" class="view hidden">
-      <div class="phase-banner">
-        <h2>Champion Select</h2>
-        <span id="cs-demo-badge" class="badge demo hidden">DEMO</span>
-        <button id="btn-exit-demo-cs" class="btn tiny hidden">Exit demo</button>
-      </div>
       <div class="cs-grid">
-        <div class="card">
-          <h3>Your team</h3>
-          <div id="cs-myteam" class="team-side ally cs-row"></div>
-          <h3 style="margin-top:14px">Enemy picks so far</h3>
-          <div id="cs-theirteam" class="team-side enemy cs-row"></div>
-          <div id="cs-bans-wrap">
-            <h3 style="margin-top:14px">Bans</h3>
+        <div class="cs-side">
+          <section class="panel">
+            <div class="side-label ally-label"><i data-icon="users-round" data-size="13"></i>Your team</div>
+            <div id="cs-myteam"></div>
+          </section>
+          <section class="panel">
+            <div class="side-label enemy-label"><i data-icon="eye" data-size="13"></i>Enemy picks so far
+              <span id="cs-enemy-count" class="side-label-meta"></span>
+            </div>
+            <div id="cs-theirteam"></div>
+          </section>
+          <section class="panel" id="cs-bans-wrap">
+            <div class="side-label"><i data-icon="ban" data-size="13"></i>Bans</div>
             <div id="cs-bans" class="ban-row"></div>
-          </div>
+          </section>
         </div>
-        <div class="card advice-panel">
-          <div class="advice-header">
-            <h3>Pre-game briefing</h3>
-          </div>
+        <div class="advice-panel">
           <div id="cs-advice" class="advice-body">
             <p class="muted">Hover or lock in a champion — your briefing appears here automatically.</p>
           </div>
@@ -101,96 +101,93 @@
 
     <!-- ======== IN-GAME VIEW ======== -->
     <section id="view-ingame" class="view hidden">
-      <div class="phase-banner">
-        <h2>Live Game</h2>
-        <span id="game-meta" class="muted"></span>
-        <span id="game-demo-badge" class="badge demo hidden">DEMO</span>
-        <button id="btn-exit-demo-game" class="btn tiny hidden">Exit demo</button>
-      </div>
+      <div id="game-teams" class="teams-strip cut-corner-sm"></div>
 
-      <div id="game-teams" class="card teams-strip"></div>
+      <div class="game-cols">
+        <div class="game-main">
+          <div class="gen-bar" id="gen-bar">
+            <div class="gen-text">
+              <strong id="gen-title">Ready to coach this game</strong>
+              <p class="muted" id="gen-sub">A matchup breakdown, a plan for your role and an item path — tailored to all ten champions.</p>
+              <div id="gen-progress" class="progress hidden"><div id="gen-progress-fill" class="progress-fill"></div></div>
+            </div>
+            <div class="btn-row">
+              <button id="btn-generate" class="btn primary big"><i data-icon="sparkles" data-size="16"></i>Coach this game</button>
+              <button id="btn-regenerate" class="btn secondary hidden" title="Re-analyze with current items and levels"><i data-icon="refresh-cw" data-size="14"></i>Refresh</button>
+            </div>
+          </div>
 
-      <!-- Deterministic level-1 stat comparison — rendered from Riot data the
-           moment the game is detected, no AI or API key involved. -->
-      <div id="lane-compare" class="hidden"></div>
+          <nav id="tabs" class="tabs hidden">
+            <button data-tab="plan" class="tab active"><i data-icon="map"></i>Game plan</button>
+            <button data-tab="matchup" class="tab"><i data-icon="crosshair"></i>Your lane</button>
+            <button data-tab="threats" class="tab"><i data-icon="skull"></i>Threats</button>
+            <button data-tab="items" class="tab"><i data-icon="sword"></i>Items</button>
+            <button data-tab="chat" class="tab"><i data-icon="message-circle"></i>Ask</button>
+          </nav>
 
-      <div class="gen-bar card" id="gen-bar">
-        <div class="gen-text">
-          <strong id="gen-title">Ready to coach this game</strong>
-          <p class="muted" id="gen-sub">Generates a matchup breakdown, a plan for your role, and an item path — tailored to all ten champions.</p>
-          <div id="gen-progress" class="progress hidden"><div id="gen-progress-fill" class="progress-fill"></div></div>
-        </div>
-        <div class="btn-row">
-          <button id="btn-generate" class="btn primary big">Coach this game</button>
-          <button id="btn-regenerate" class="btn secondary hidden" title="Re-analyze with current items and levels">↻ Refresh</button>
-        </div>
-      </div>
-
-      <nav id="tabs" class="tabs hidden">
-        <button data-tab="plan" class="tab active">Game plan</button>
-        <button data-tab="matchup" class="tab">Your lane</button>
-        <button data-tab="threats" class="tab">Enemy threats</button>
-        <button data-tab="items" class="tab">Items</button>
-        <button data-tab="chat" class="tab">Ask the coach</button>
-      </nav>
-
-      <div id="tab-panels" class="hidden">
-        <div id="panel-plan" class="panel"></div>
-        <div id="panel-matchup" class="panel hidden"></div>
-        <div id="panel-threats" class="panel hidden"></div>
-        <div id="panel-items" class="panel hidden"></div>
-        <div id="panel-chat" class="panel hidden">
-          <div class="card chat-card">
-            <div id="chat-log" class="chat-log">
-              <div class="chat-msg assistant">
-                <p>Ask me anything about this game — "why that item?", "what does kiting mean?", "how do I fight Darius?"…</p>
+          <div id="tab-panels" class="hidden">
+            <div id="panel-plan" class="tabpanel"></div>
+            <div id="panel-matchup" class="tabpanel hidden"></div>
+            <div id="panel-threats" class="tabpanel hidden"></div>
+            <div id="panel-items" class="tabpanel hidden"></div>
+            <div id="panel-chat" class="tabpanel hidden">
+              <div class="panel chat-card">
+                <div class="panel-head">
+                  <span class="crest"><i data-icon="message-circle" data-size="14"></i></span>
+                  <h3>Ask the coach</h3>
+                </div>
+                <div id="chat-log" class="chat-log">
+                  <div class="chat-msg assistant">
+                    <p>Ask me anything about this game — "why that item?", "what does kiting mean?", "how do I fight Darius?"…</p>
+                  </div>
+                </div>
+                <form id="chat-form" class="chat-form">
+                  <input id="chat-input" type="text" placeholder="Ask a question about this game…" autocomplete="off" />
+                  <button class="btn primary" type="submit">Send</button>
+                </form>
               </div>
             </div>
-            <form id="chat-form" class="chat-form">
-              <input id="chat-input" type="text" placeholder="Ask a question about this game…" autocomplete="off" />
-              <button class="btn primary" type="submit">Send</button>
-            </form>
           </div>
         </div>
+
+        <aside class="game-side">
+          <!-- Deterministic level-1 stat comparison — rendered from Riot data the
+               moment the game is detected, no AI or API key involved. -->
+          <div id="lane-compare" class="hidden"></div>
+          <div id="game-side-extra"></div>
+        </aside>
       </div>
     </section>
     </div><!-- /#section-live -->
 
     <!-- ======== HISTORY ======== -->
     <section id="section-history" class="hidden">
-      <!-- Phase changes never navigate away from History; they surface here. -->
-      <div id="phase-notice" class="phase-notice hidden">
-        <span id="phase-notice-text"></span>
-        <button id="btn-goto-live" class="btn tiny">Go to live</button>
-        <button id="btn-dismiss-notice" class="icon-btn small" title="Dismiss">✕</button>
-      </div>
-
       <div id="history-list-view">
-        <div id="history-summary" class="summary-strip card"></div>
+        <div id="history-summary" class="summary-strip"></div>
 
-        <div id="history-rank" class="card rank-card"></div>
+        <div id="history-rank" class="panel rank-card"></div>
 
         <div class="history-toolbar">
-          <div class="field inline">
-            <label for="hist-role">Role</label>
-            <select id="hist-role">
-              <option value="">All roles</option>
-              <option>Top</option><option>Jungle</option><option>Mid</option>
-              <option>ADC</option><option>Support</option>
-            </select>
-          </div>
-          <div class="field inline">
-            <label for="hist-queue">Queue</label>
-            <select id="hist-queue">
-              <option value="">All ranked</option>
-              <option value="420">Solo/Duo</option>
-              <option value="440">Flex</option>
-            </select>
-          </div>
+          <select id="hist-role" title="Role">
+            <option value="">All roles</option>
+            <option>Top</option><option>Jungle</option><option>Mid</option>
+            <option>ADC</option><option>Support</option>
+          </select>
+          <select id="hist-queue" title="Queue">
+            <option value="">All ranked</option>
+            <option value="420">Solo/Duo</option>
+            <option value="440">Flex</option>
+          </select>
+          <span id="hist-count" class="muted small"></span>
           <div class="spacer"></div>
-          <button id="btn-hist-sync" class="btn secondary">↻ Sync now</button>
+          <button id="btn-hist-sync" class="btn secondary"><i data-icon="refresh-cw" data-size="14"></i>Sync now</button>
         </div>
 
+        <div id="history-list-head" class="history-list-head hidden">
+          <span></span><span></span><span>Champion</span>
+          <span class="r">K / D / A</span><span class="r">Creep score</span>
+          <span class="r">vs lane</span><span class="r">Result</span>
+        </div>
         <div id="history-list" class="history-list"></div>
         <div id="history-pager" class="pager"></div>
       </div>
@@ -202,14 +199,8 @@
     <section id="section-champions" class="hidden">
       <div id="champ-grid-view">
         <div class="history-toolbar">
-          <div class="field inline">
-            <label for="champ-search">Find a champion</label>
-            <input id="champ-search" type="text" placeholder="Search by name…" autocomplete="off" />
-          </div>
-          <div class="field inline">
-            <label for="champ-role-filter">Role</label>
-            <select id="champ-role-filter"><option value="">All roles</option></select>
-          </div>
+          <span class="search-box"><i data-icon="search"></i><input id="champ-search" type="text" placeholder="Search by name…" autocomplete="off" /></span>
+          <select id="champ-role-filter" title="Role"><option value="">All roles</option></select>
           <div class="spacer"></div>
           <span id="champ-data-note" class="muted small"></span>
         </div>
@@ -222,24 +213,25 @@
 
   <!-- ======== SETTINGS MODAL ======== -->
   <div id="modal-settings" class="modal hidden">
-    <div class="modal-card card">
-      <h2>Settings</h2>
+    <div class="modal-card cut-corner accent">
+      <div class="modal-head">
+        <span class="crest"><i data-icon="settings" data-size="14"></i></span>
+        <h2>Settings</h2>
+        <button id="btn-settings-close-x" class="icon-btn ghost" title="Close"><i data-icon="x" data-size="16"></i></button>
+      </div>
       <div class="field">
         <label for="set-apikey">Anthropic API key</label>
         <input id="set-apikey" type="password" placeholder="sk-ant-…" />
-        <p class="hint" id="apikey-hint">Powers the AI coach. Get a key at <a href="https://platform.claude.com" target="_blank" rel="noreferrer">platform.claude.com</a>. Stored only on this computer.</p>
+        <p class="hint" id="apikey-hint">Powers the AI coach. Stored only on this computer — get a key at <a href="https://platform.claude.com" target="_blank" rel="noreferrer">platform.claude.com</a>.</p>
       </div>
       <div class="field">
-        <label for="set-model">Coaching model</label>
-        <select id="set-model">
-          <option value="claude-opus-5">Claude Opus 5 — smartest coaching (~10–15¢ per game)</option>
-          <option value="claude-sonnet-5">Claude Sonnet 5 — great quality (~6–9¢ per game)</option>
-          <option value="claude-haiku-4-5">Claude Haiku 4.5 — fastest & cheapest (~1–2¢ per game)</option>
-        </select>
+        <label>Coaching model</label>
+        <div id="model-options" class="model-options"></div>
       </div>
       <div class="field">
-        <label for="set-leaguepath">League install folder <span class="muted">(only if auto-detect fails)</span></label>
+        <label for="set-leaguepath">League install folder</label>
         <input id="set-leaguepath" type="text" placeholder="C:\Riot Games\League of Legends" />
+        <p class="hint">Only needed if auto-detect never finds the client.</p>
       </div>
       <div class="btn-row right">
         <button id="btn-settings-close" class="btn secondary">Cancel</button>
@@ -250,12 +242,13 @@
 
   <!-- ======== GLOSSARY MODAL ======== -->
   <div id="modal-glossary" class="modal hidden">
-    <div class="modal-card card wide">
-      <div class="advice-header">
-        <h2>📖 League glossary</h2>
-        <button id="btn-glossary-close" class="btn secondary">Close</button>
+    <div class="modal-card wide cut-corner">
+      <div class="modal-head">
+        <i data-icon="book-open" data-cls="gold"></i>
+        <h2>League glossary</h2>
+        <button id="btn-glossary-close" class="icon-btn ghost" title="Close"><i data-icon="x" data-size="16"></i></button>
       </div>
-      <input id="glossary-search" type="text" placeholder="Search terms…" />
+      <span class="search-box"><i data-icon="search"></i><input id="glossary-search" type="text" placeholder="Search terms…" /></span>
       <div id="glossary-list" class="glossary-list"></div>
     </div>
   </div>
@@ -265,6 +258,7 @@
   </footer>
 
   <script src="/vendor/echarts.min.js"></script>
+  <script src="icons.js"></script>
   <script src="rank-layout.js"></script>
   <script src="app.js"></script>
 </body>
